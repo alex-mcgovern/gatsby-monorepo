@@ -1,0 +1,33 @@
+.insta_post_link_wrapper {
+  margin-right: $spacing-4;
+  margin-bottom: $spacing-4;
+  position: relative;
+  @include placeholderGrid;
+
+  .image {
+    height: 100%;
+    border-radius: $spacing-4;
+    overflow: hidden;
+  }
+  .caption_overlay {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    padding: $spacing-4;
+
+    background-color: rgba($color-navy, 0.8);
+    color: $white;
+    opacity: 0;
+
+    // transition: opacity 300ms;
+  }
+  &:hover {
+    .caption_overlay {
+      opacity: 1;
+    }
+  }
+}

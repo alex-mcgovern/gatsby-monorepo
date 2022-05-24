@@ -1,0 +1,36 @@
+.controls {
+  display: flex;
+  margin: $spacing-8 0;
+
+  &_search {
+    width: calc(var(--grid-column-8) - $spacing-4);
+    margin-right: $spacing-4;
+
+    border-top: 1px dashed $color-gray-light;
+    border-bottom: 1px dashed $color-gray-light;
+  }
+  &_language {
+    border: 1px dashed $color-gray-light;
+  }
+}
+.pokemon {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  &_inner {
+    width: calc(var(--grid-column-8) - $spacing-4);
+    border-right: 1px dashed $color-gray-light;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &_image {
+    @include placeholderGrid($borderRight: false);
+
+    width: var(--grid-column-4);
+  }
+}

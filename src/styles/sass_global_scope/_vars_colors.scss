@@ -1,0 +1,80 @@
+/*——————————————————————————————————————————————————————————————————————————————
+ |                             BRAND COLOR PALETTE                             |
+———————————————————————————————————————————————————————————————————————————————**/
+
+$white: #fff;
+
+/*——————————————————————————————————————————————————————————————
+ |                     BRAND COLOR SCHEME                      |
+———————————————————————————————————————————————————————————————**/
+$maxWidth-none: "none";
+$maxWidth-xs: 20rem;
+$maxWidth-sm: 24rem;
+$maxWidth-md: 28rem;
+$maxWidth-lg: 32rem;
+$maxWidth-xl: 36rem;
+$maxWidth-2xl: 42rem;
+$maxWidth-3xl: 48rem;
+$maxWidth-4xl: 56rem;
+$maxWidth-full: "100%";
+$maxWidth-wrapper: $maxWidth-2xl;
+
+/*——————————————————————————————————————————————————————————————
+ |                          NEUTRALS                           |
+———————————————————————————————————————————————————————————————**/
+$color-white: #ffffff;
+$color-gray-lightest: #eeeeee;
+$color-gray-light: #dddddd;
+$color-gray-medium: #cccccc;
+$color-gray-dark: #bbbbbb;
+$color-gray-darkest: #aaaaaa;
+/*——————————————————————————————————————————————————————————————
+ |                          PRIMARY PALETTE                           |
+———————————————————————————————————————————————————————————————**/
+
+$color-navy: #051f39;
+$color-navy-80: tint($color-navy, 20%);
+$color-navy-50: tint($color-navy, 50%);
+$color-navy-30: tint($color-navy, 70%);
+$color-navy-10: tint($color-navy, 90%);
+
+$color-purple: #4a2480;
+$color-purple-80: tint($color-purple, 20%);
+$color-purple-50: tint($color-purple, 50%);
+$color-purple-30: tint($color-purple, 70%);
+$color-purple-10: tint($color-purple, 90%);
+
+$color-magenta: #c53a9d;
+$color-magenta-80: tint($color-magenta, 20%);
+$color-magenta-50: tint($color-magenta, 50%);
+$color-magenta-30: tint($color-magenta, 70%);
+$color-magenta-10: tint($color-magenta, 90%);
+
+$color-orange: #ff8e80;
+$color-orange-80: tint($color-orange, 20%);
+$color-orange-50: tint($color-orange, 50%);
+$color-orange-30: tint($color-orange, 70%);
+$color-orange-10: tint($color-orange, 90%);
+
+/*——————————————————————————————————————————————————————————————
+ |                          COLOR SCHEME
+———————————————————————————————————————————————————————————————**/
+$color-foreground: $color-white;
+$color-midground: $color-gray-lightest;
+$color-background: $color-gray-light;
+$color-primary: $color-orange;
+$color-text: $color-navy;
+$color-text-light: rgba($color-navy, 0.8);
+$color-heading: $color-navy;
+$color-heading-black: $color-navy;
+$color-accent: $color-magenta;
+
+/* ——————————————————————————————————————————————————————————————————————————————
+//      SEMANTIC UI COLORS                                                      
+// —————————————————————————————————————————————————————————————————————————————— */
+
+$semantic-green: #399847;
+$semantic-red: #c00023;
+$semantic-red-30: #d34d65;
+$semantic-red-10: #f9e6e9;
+$semantic-pink: #ffc2d2;

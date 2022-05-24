@@ -1,0 +1,27 @@
+.grid {
+  @include resetList;
+  display: grid;
+
+  &_item {
+    margin-right: $spacing-4;
+    margin-bottom: $spacing-4;
+  }
+
+  &.split {
+    &_2 {
+      grid-template-columns: repeat(2, 1fr);
+      @include S-screens-down {
+        grid-template-columns: 1fr;
+      }
+    }
+    &_3 {
+      grid-template-columns: repeat(3, 1fr);
+      @include M-screens-down {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include S-screens-down {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

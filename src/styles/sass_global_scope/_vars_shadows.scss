@@ -1,0 +1,19 @@
+$shadow-extra-dark: -4px 4px 12px rgba($color-navy, 0.25),
+  0px 0px 2px rgba($color-navy, 0.1);
+
+$shadow-dark: -4px 4px 12px rgba($color-navy, 0.175),
+  0px 0px 2px rgba($color-navy, 0.1);
+
+// whatever you set the offset to (1st & 2nd value), set the spread (4th value) to the negative of it.
+$shadow-dark-bottom-only: -4px 4px 12px -4px rgba($color-navy, 0.175),
+  0px 1px 2px -1px rgba($color-navy, 0.1);
+
+$shadow-light: -4px 4px 12px rgba($color-navy, 0.1),
+  0px 0px 2px rgba($color-navy, 0.1);
+
+// whatever you set the offset to (1st & 2nd value), set the spread (4th value) to the negative of it.
+$shadow-light-bottom-only: -4px 4px 12px -4px rgba($color-navy, 0.1),
+  0px 1px 2px -1px rgba($color-navy, 0.1);
+
+$shadow-extra-light: -4px 4px 12px rgba($color-navy, 0.05),
+  0px 0px 2px rgba($color-navy, 0.1);

@@ -1,0 +1,36 @@
+.bio {
+  display: flex;
+  align-items: flex-start;
+  padding-top: $spacing-8;
+
+  &_avatar {
+    &_wrapper {
+      width: calc(var(--grid-column-4) - $spacing-4);
+
+      margin-right: $spacing-4;
+      margin-bottom: $spacing-0;
+
+      @include placeholderGrid($borderLeft: false);
+    }
+    &_image {
+      @include aspectRatio(1, 1);
+      overflow: hidden;
+      min-width: 80px;
+      width: calc(var(--grid-column-4) - $spacing-4);
+      border-radius: 100%;
+      border: 1px solid $color-gray-light;
+      flex-shrink: 0;
+    }
+  }
+  &_text {
+    border-left: 1px dashed $color-gray-light;
+  }
+}
+
+.name {
+  color: $color-primary;
+}
+
+// :global([data-is-root-path="true"]) .bio {
+//   margin-bottom: $spacing-20;
+// }

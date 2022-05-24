@@ -1,0 +1,123 @@
+@mixin globalUl {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: $spacing-2 * 3;
+
+  li {
+    margin-bottom: $spacing-2 * 1.5;
+    padding-left: $spacing-2 * 3;
+    position: relative;
+
+    &::before {
+      background-image: url("/images/icon_bullet.svg");
+      content: "";
+      height: $spacing-2 * 2.25;
+      left: 0;
+      position: absolute;
+      top: 6px;
+      width: 12px;
+    }
+  }
+}
+
+@mixin globalOl {
+  counter-reset: list;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: $spacing-2 * 3;
+
+  /* ——————————————————————————————————————————————————————————————
+  //      COMMON LIST ITEM STYLES
+  // —————————————————————————————————————————————————————————————— */
+
+  li {
+    margin-bottom: $spacing-2 * 1.5;
+    padding-left: $spacing-2 * 3;
+    position: relative;
+
+    &::before {
+      counter-increment: list;
+      content: counter(list) ".";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-weight: $font-weight-semibold;
+      color: $color-light-blue;
+    }
+
+    /* ——————————————————————————————————————————————————————————————
+    //      LEVEL 1 NESTING                                         
+    // —————————————————————————————————————————————————————————————— */
+
+    > ol {
+      list-style-type: none;
+      counter-reset: list;
+      > li {
+        &::before {
+          counter-increment: list;
+          content: counter(list, lower-alpha) ".";
+        }
+      }
+    }
+
+    /* ——————————————————————————————————————————————————————————————
+    //      LEVEL 2 NESTING                                         
+    // —————————————————————————————————————————————————————————————— */
+
+    ol > li > ol {
+      list-style-type: none;
+      counter-reset: list;
+      > li {
+        &::before {
+          counter-increment: list;
+          content: counter(list, lower-roman) ".";
+        }
+      }
+    }
+
+    /* ——————————————————————————————————————————————————————————————
+    //      LEVEL 3 NESTING                                         
+    // —————————————————————————————————————————————————————————————— */
+
+    ol > li > ol > li > ol {
+      list-style-type: none;
+      counter-reset: list;
+      > li {
+        &::before {
+          counter-increment: list;
+          content: counter(list, lower-alpha) ".";
+        }
+      }
+    }
+    /* ——————————————————————————————————————————————————————————————
+    //      LEVEL 4 NESTING                                         
+    // —————————————————————————————————————————————————————————————— */
+
+    ol > li > ol > li > ol > li > ol {
+      list-style-type: none;
+      counter-reset: list;
+      > li {
+        &::before {
+          counter-increment: list;
+          content: counter(list, lower-roman) ".";
+        }
+      }
+    }
+    /* ——————————————————————————————————————————————————————————————
+    //      LEVEL 5 NESTING (Includes all children)                                         
+    // —————————————————————————————————————————————————————————————— */
+
+    ol > li > ol > li > ol > li > ol > li > ol {
+      list-style-type: none;
+      counter-reset: list;
+      li {
+        &::before {
+          counter-increment: list;
+          content: counter(list, lower-alpha) ".";
+        }
+      }
+    }
+  }
+}

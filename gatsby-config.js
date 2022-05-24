@@ -1,18 +1,66 @@
+const TARGET_LANGUAGE_LIST = ["en", "fr", "de", "es"];
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Hi, I'm Alex`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Alex McGovern`,
+      summary: `who lives and works in London building beautiful things.`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `lxmcgvrnsmth`,
     },
   },
   plugins: [
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      CUSTOM PLUGINS                                                          
+    // —————————————————————————————————————————————————————————————————————————————— */
+    {
+      resolve: "gatsby-source-pokeapi",
+      options: {
+        numberOfPokemonToSource: 151,
+        targetLanguageList: TARGET_LANGUAGE_LIST,
+        targetGameVersion: "x", // "fr", "de", "es" languages not available in earlier versions
+      },
+    },
+    {
+      resolve: "gatsby-plugin-pokemon-pages",
+      options: {
+        targetLanguageList: TARGET_LANGUAGE_LIST,
+      },
+    },
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      GATSBY PLUGINS                                                          
+    // —————————————————————————————————————————————————————————————————————————————— */
     `gatsby-plugin-image`,
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        cssLoaderOptions: {
+          esModule: true,
+          modules: {
+            namedExport: true,
+          },
+        },
+        additionalData: `@import "${__dirname}/src/styles/sass_global_scope/index";`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Dinish"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -25,6 +73,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: process.env.API_KEY_INSTAGRAM,
       },
     },
     {
@@ -75,15 +129,16 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
+              return allMarkdownRemark.nodes.map((node) => {
+                return {
+                  ...node.frontmatter,
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                };
+              });
             },
             query: `
               {
@@ -129,4 +184,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

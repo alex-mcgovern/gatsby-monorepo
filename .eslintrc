@@ -1,0 +1,121 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "prettier",
+    "plugin:cypress/recommended",
+    "plugin:react-perf/recommended"
+  ],
+  "globals": {
+    "cy": true,
+    "Cypress": true,
+    "fs": true
+  },
+  "ignorePatterns": [
+    "*.mock.*",
+    "*.snap",
+    "*.scss",
+    "*.svg",
+    "*.svg",
+    "*.md",
+    "*.json",
+    // These are external plugins, some of which aren't even used in production
+    // These are taken on an "as-is" basis
+    "plugins/storyblok-colorpicker/**",
+    "plugins/gatsby-plugin-tl-hubspot/**",
+    "plugins/storyblok-gradient-editor/**",
+    "plugins/storyblok-responsive-input/**",
+    "plugins/truelayer-responsive-input/**"
+  ],
+  "overrides": [
+    {
+      "env": {
+        "jest": true
+      },
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx",
+        "**/*.test.js",
+        "**/*.test.jsx"
+      ]
+    }
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
+    "requireConfigFile": false
+  },
+  "plugins": ["react-perf"],
+  "rules": {
+    "arrow-body-style": ["error", "always"],
+    "import/no-cycle": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "gatsby-node.js",
+          "gatsby-config.js",
+          ".storybook/**",
+          "**/*.stories.*",
+          "**/tests/*.js",
+          "**/*.test.js",
+          "**/*.test.jsx",
+          "cypress/**/*",
+          "tests/global_test_helpers/**/*"
+        ],
+        "packageDir": "."
+      }
+    ],
+    "no-console": "warn",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_uid"]
+      }
+    ],
+    "react-perf/jsx-no-jsx-as-prop": [
+      "warn",
+      {
+        "nativeAllowList": "all"
+      }
+    ],
+    "react-perf/jsx-no-new-array-as-prop": [
+      "warn",
+      {
+        "nativeAllowList": "all"
+      }
+    ],
+    "react-perf/jsx-no-new-function-as-prop": [
+      "warn",
+      {
+        "nativeAllowList": "all"
+      }
+    ],
+    "react-perf/jsx-no-new-object-as-prop": [
+      "warn",
+      {
+        "nativeAllowList": "all"
+      }
+    ],
+    "react/destructuring-assignment": 0,
+    "react/jsx-props-no-spreading": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [".ts", ".js", ".jsx", ".json"],
+        "map": [
+          ["~utils", "./src/utils"],
+          ["~hooks", "./src/hooks"],
+          ["~components", "./src/components"]
+        ]
+      }
+    }
+  }
+}

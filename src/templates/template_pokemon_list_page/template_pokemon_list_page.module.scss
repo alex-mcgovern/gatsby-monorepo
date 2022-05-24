@@ -1,0 +1,37 @@
+.page_wrapper {
+}
+
+.pokemon {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  &_search_wrapper {
+    // width: calc(var(--grid-column-8) - $spacing-4);
+    margin: $spacing-8 auto;
+
+    display: flex;
+    gap: $spacing-4;
+    align-items: center;
+    border-top: 1px dashed $color-gray-light;
+    border-bottom: 1px dashed $color-gray-light;
+    h3 {
+      margin: 0 0 $spacing-2;
+    }
+  }
+  &_inner {
+    width: calc(var(--grid-column-8) - $spacing-4);
+    border-right: 1px dashed $color-gray-light;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &_image {
+    @include placeholderGrid($borderRight: false);
+
+    width: var(--grid-column-4);
+  }
+}

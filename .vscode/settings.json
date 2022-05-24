@@ -1,0 +1,79 @@
+{
+  "git.ignoreLimitWarning": true,
+  "cSpell.words": [
+    "algoliasearch",
+    "bloks",
+    "capitalise",
+    "chargeback",
+    "chargebacks",
+    "deduped",
+    "deduplicated",
+    "ecommerce",
+    "fintech",
+    "frontmatter",
+    "gtag",
+    "hubspot",
+    "hypergrowth",
+    "igaming",
+    "instantsearch",
+    "jank",
+    "janky",
+    "localised",
+    "logomark",
+    "midground",
+    "pokedex",
+    "sanitised",
+    "specialised",
+    "startpage",
+    "stylelint",
+    "testid",
+    "truelayer",
+    "wealthtech"
+  ],
+  "conventionalCommits.scopes": ["CodebaseStructure"],
+  "stylelint.configFile": ".stylelintrc.json",
+  "commentBox.styles": {
+    "h1": {
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "topEdgeToken": "—",
+      "bottomEdgeToken": "—",
+
+      "commentStartToken": "/* ",
+      "topRightToken": "—",
+      "bottomLeftToken": "// ",
+      "commentEndToken": "— */",
+
+      "textAlignment": "left",
+      "boxWidth": 80
+    },
+    "h2": {
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "topEdgeToken": "—",
+      "bottomEdgeToken": "—",
+
+      "commentStartToken": "/* ",
+      "topRightToken": "—",
+      "bottomLeftToken": "// ",
+      "commentEndToken": "— */",
+
+      "textAlignment": "left",
+      "boxWidth": 64
+    },
+    "h3": {
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "topEdgeToken": "—",
+      "bottomEdgeToken": "—",
+
+      "commentStartToken": "/* ",
+      "topRightToken": "—",
+      "bottomLeftToken": "// ",
+      "commentEndToken": "— */",
+
+      "textAlignment": "left",
+      "boxWidth": 48
+    }
+  }
+}

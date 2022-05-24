@@ -1,0 +1,24 @@
+.button {
+  @include resetButton;
+  @include buttonBaseStyles;
+
+  @include buttonSizeMd;
+
+  &_size {
+    &_sm {
+      @include buttonSizeSm;
+    }
+    &_lg {
+      @include buttonSizeLg;
+    }
+  }
+
+  &_variant {
+    &_primary {
+      @include buttonColorSolid;
+    }
+    &_secondary {
+      @include buttonColorHollow;
+    }
+  }
+}

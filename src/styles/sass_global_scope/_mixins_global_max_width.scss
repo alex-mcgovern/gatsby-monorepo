@@ -1,0 +1,43 @@
+// ——————————————————————————————————————————————————————————————————————————————
+//      DEFAULT MAX WIDTH MIXIN
+// ——————————————————————————————————————————————————————————————————————————————
+@mixin globalMaxWidth {
+  max-width: $maxWidth-wrapper;
+  margin: 0 auto;
+
+  @media screen and (max-width: ($maxWidth-wrapper + ($spacing-2 * 8))) {
+    max-width: calc(100vw - ($spacing-2 * 8));
+  }
+
+  @include XS-screens-down {
+    max-width: calc(100vw - ($spacing-2 * 4));
+  }
+}
+// // ——————————————————————————————————————————————————————————————————————————————
+// //      SMALL WIDTH MIXIN
+// // ——————————————————————————————————————————————————————————————————————————————
+
+// @mixin globalMaxWidthSmall {
+//   max-width: $grid-column-8;
+
+//   @include M-screens-down {
+//     max-width: $grid-column-10;
+//   }
+//   @include S-screens-down {
+//     max-width: $grid-column-12;
+//   }
+// }
+// // ——————————————————————————————————————————————————————————————————————————————
+// //      EXTRA SMALL WIDTH MIXIN
+// // ——————————————————————————————————————————————————————————————————————————————
+
+// @mixin globalMaxWidthExtraSmall {
+//   max-width: $grid-column-6;
+
+//   @include M-screens-down {
+//     max-width: $grid-column-8;
+//   }
+//   @include S-screens-down {
+//     max-width: $grid-column-10;
+//   }
+// }

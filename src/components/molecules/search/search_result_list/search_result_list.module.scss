@@ -1,0 +1,29 @@
+.list {
+  &_wrapper {
+    margin: $spacing-4 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+
+    width: var(--grid-column-4);
+
+    border-radius: $spacing-4;
+
+    background: $color-white;
+
+    border: 1px solid $color-gray-light;
+
+    display: block;
+  }
+  &_inner {
+    margin: $spacing-4 0;
+
+    width: 100%;
+
+    display: block;
+    max-height: $spacing-64;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}

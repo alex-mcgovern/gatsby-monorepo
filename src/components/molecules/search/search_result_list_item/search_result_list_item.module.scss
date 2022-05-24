@@ -1,0 +1,17 @@
+.result {
+  &_wrapper {
+    @include resetList;
+  }
+  &_is_highlighted,
+  &_is_selected {
+    background-color: $color-gray-light;
+  }
+  &_is_selected {
+    font-weight: $fontWeight-semibold;
+  }
+  &_link {
+    @include resetLink;
+    display: block;
+    padding: $spacing-3 $spacing-6;
+  }
+}

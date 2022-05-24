@@ -1,231 +1,65 @@
 ---
 title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+cover: ./pexels-cottonbro-4629634.jpg
+category: "About me"
+date: "2022-04-01T22:12:03.284Z"
+description:
+  "A little about me, my career to date and some of my interests and hobbies.
+  (Warning, contains nerdiness 🤓)"
 ---
 
-This is my first post on my new fake blog! How exciting!
-
-I'm sure I'll write a lot more interesting things in the future.
-
-Oh, and here's a great quote from this Wikipedia on
-[salted duck eggs](https://en.wikipedia.org/wiki/Salted_duck_egg).
-
-> A salted duck egg is a Chinese preserved food product made by soaking duck
-> eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-> supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-> charcoal paste. The eggs may also be sold with the salted paste removed,
-> wrapped in plastic, and vacuum packed. From the salt curing process, the
-> salted duck eggs have a briny aroma, a gelatin-like egg white and a
-> firm-textured, round yolk that is bright orange-red in color.
-
-![Chinese Salty Egg](./salty_egg.jpg)
-
-You can also write code blocks here!
-
-```js
-const saltyDuckEgg = "chinese preserved food product"
-```
-
-| Number | Title                                    | Year |
-| :----- | :--------------------------------------- | ---: |
-| 1      | Harry Potter and the Philosopher’s Stone | 2001 |
-| 2      | Harry Potter and the Chamber of Secrets  | 2002 |
-| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
-
-[View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
-
-This is a paragraph.
-
-    This is a paragraph.
-
-# Header 1
-
-## Header 2
-
-    Header 1
-    ========
-
-    Header 2
-    --------
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> ## This is a header.
->
-> 1. This is the first list item.
-> 2. This is the second list item.
->
-> Here's some example code:
->
->     Markdown.generate();
-
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     Markdown.generate();
-
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
-
-```markdown
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
-```
-
-- `code goes` here in this line
-- **bold** goes here
-
-```markdown
-- `code goes` here in this line
-- **bold** goes here
-```
-
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-
-```markdown
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-```
-
-1. `code goes` here in this line
-1. **bold** goes here
-
-```markdown
-1. `code goes` here in this line
-1. **bold** goes here
-```
-
-Paragraph:
-
-    Code
-
-<!-- -->
-
-    Paragraph:
-
-        Code
-
----
-
----
-
----
-
----
-
----
-
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-
-This is [an example](http://example.com "Example") link.
-
-[This link](http://example.com) has no title attr.
-
-This is [an example][id] reference-style link.
-
-[id]: http://example.com "Optional Title"
-
-    This is [an example](http://example.com "Example") link.
-
-    [This link](http://example.com) has no title attr.
-
-    This is [an example] [id] reference-style link.
-
-    [id]: http://example.com "Optional Title"
-
-_single asterisks_
-
-_single underscores_
-
-**double asterisks**
-
-**double underscores**
-
-    *single asterisks*
-
-    _single underscores_
-
-    **double asterisks**
-
-    __double underscores__
-
-This paragraph has some `code` in it.
-
-    This paragraph has some `code` in it.
-
-![Alt Text](https://placehold.it/200x50 "Image Title")
-
-    ![Alt Text](https://placehold.it/200x50 "Image Title")
+# Hello. My name is Alex McGovern.
+
+I'm a frontend engineering manager and generalist, with a weird and eclectic mix
+of experience.
+
+I'm currently a frontend engineering manager for a B2B marketing site at
+hyper-growth fintech startup. It's a really cool job. I've grown to believe that
+B2B marketing sites don't have to be boring, and they should be easy to scale,
+maintain and localise. I haven't got all the answers yet, but I'm tackling all
+the problems that go with the territory and sharing some of my learnings along
+the way.
+
+## Background
+
+Originally educated in music technology and multimedia, I have a a weird and
+eclectic mix of experience, and have worn many hats throughout my career, here
+are some of the highlights:
+
+- 🎥 interning as a cameraman & video editor
+- 👨🏻‍🎨 interning at small-time brand agencies and print-shops
+- 💃 embroidery designer for Irish dance dresses
+- 🧴 cosmetics packaging designer
+- 🧑‍🔧 developer support
+- 🧑‍💻 frontend engineer
+- 📲 UX/UI designer
+- 👨‍🏫 engineering manager
+
+## Nowadays
+
+Nowadays, when I'm at work, I am obsessed with building a building a high
+performance engineering team using a blend of lean software development, agile
+and clean code. I'm also obsessed with bringing the best parts of these concepts
+into all parts of the product design lifecycle to create a truly collaborative
+"full-cycle team" — a high throughput and high impact team where proper
+prioritization and planning means _everyone_ on the team is working at a
+sustainable pace. By creating a mutually beneficial mission (like building an
+award winning website) everyone is empowered to do their best work, and put
+forward the best ideas to help reach a common goal.
+
+## Outside work
+
+When I'm not at work, I love playing and recording guitar, producing and mixing
+electronic music, drawing, painting and tinkering with and upgrading things... I
+have even been known to dabble in 3D modelling video game development. In the
+past I've also helped run open mic nights, club nights and DJ societies, and
+even done quite a bit a of busking. In short, I love playing music and creating
+things.
+
+Now that you've read all about me, enjoy a few blog posts that I've put together
+on some of my thoughts on building products and processes for scale with an
+intentional first approach.
+
+Disclaimer: I am still at the beginning of my journey and my career. I don't
+have it all figured out, but maybe something in here is useful to someone, or
+interesting to someone else.

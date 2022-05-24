@@ -1,0 +1,123 @@
+{
+  "Helper function": {
+    "scope": "javascript,typescript",
+    "prefix": "fn",
+    "body": [
+      "export default function functionName({ argument }) {",
+      "\treturn argument;",
+      "}"
+    ]
+  },
+  "jest suite boilerplate": {
+    "scope": "javascript,typescript",
+    "prefix": "test: function",
+    "body": [
+      "describe(\"Test suite title\", () => {",
+      "  test(\"Unit test description\", () => {",
+      "",
+      "  });",
+      "});",
+      ""
+    ]
+  },
+
+  "useEffect": {
+    "scope": "javascriptreact",
+    "prefix": "useEffect",
+    "body": ["  useEffect(()=> {", "", "  }, [])", ""]
+  },
+  "testing-library boilerplate": {
+    "scope": "javascript,typescript,javascriptreact",
+    "prefix": "test: component ",
+    "body": [
+      "/**",
+      " * @jest-environment jsdom",
+      " */",
+      "import React from \"react\";",
+      "import { render } from \"@testing-library/react\";",
+      "import { XXX_MOCK } from \"../path_to_mock\";",
+      "import XXX from \"../xxx\";",
+      "",
+      "const COMPONENT_NAME = \"[xxx-xxx]\";",
+      "",
+      "const renderComponent = ({ ...props }) => {",
+      "  return render(<XXX {...props} />);",
+      "};",
+      "",
+      "let component = null;",
+      "",
+      "describe(`\\$\\{COMPONENT_NAME\\} Renders correctly`, () => {",
+      "  describe(`Renders correctly`, () => {",
+      "\tbeforeEach(() => {",
+      "\t  component = renderComponent({",
+      "\t\t...XXX_MOCK,",
+      "\t  });",
+      "\t});",
+      "\tit(\"Renders title correctly\", () => {",
+      "\t  expect(",
+      "\t\tcomponent.getByText(\"Lorem ipsum\", { exact: false })",
+      "\t  ).toBeInTheDocument();",
+      "\t});",
+      "\tit(\"Matches snapshot\", () => {",
+      "\t  expect(component).toMatchSnapshot();",
+      "\t});",
+      "  });",
+      "});",
+      ""
+    ],
+    "description": "testing library boilerplate"
+  },
+  "Dev component": {
+    "scope": "javascript,typescript,javascriptreact",
+    "prefix": "comp: dev",
+    "description": "",
+    "body": [
+      "import React from \"react\";",
+      "import PropTypes from \"prop-types\"",
+      "import * as classes from \"./file.module.scss\"",
+      "",
+      "export default function Component({ placeholderProp }) {",
+      "    return (",
+      "",
+      "    )",
+      "}",
+      "",
+      "Component.propTypes = {",
+      "    placeholderProp: PropTypes.string",
+      "}",
+      "",
+      "Component.defaultProps = {",
+      "    placeholderProp: null",
+      "}"
+    ]
+  },
+  "Storyblok component (old)": {
+    "scope": "javascript,typescript,javascriptreact",
+    "prefix": "comp: storyblok",
+    "description": "",
+    "body": [
+      "// Might have to fix imports",
+      "",
+      "import React from \"react\";",
+      "import PropTypes from \"prop-types\";",
+      "import {BLOK_ARRAY} from \"../../../prop_types\";",
+      "import withStoryblok from \"../storyblok\";",
+      "import {renderDynamicComponent} from \"../components\";",
+      "",
+      "export function Component({placeholder}) {",
+      "    return <>{placeholder && children.map(renderDynamicComponent)}</>;",
+      "}",
+      "",
+      "Component.defaultProps = {",
+      "    placeholder: null,",
+      "};",
+      "",
+      "Component.propTypes = {",
+      "    placeholder: BLOK_ARRAY,",
+      "};",
+      "",
+      "export default withStoryblok(\"component\", Component); // export Storyblok component as lowercase",
+      ""
+    ]
+  }
+}

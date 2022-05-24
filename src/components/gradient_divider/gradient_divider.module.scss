@@ -1,0 +1,9 @@
+.hero {
+  @include backgroundGradient;
+  content: "";
+
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-8;
+
+  overflow: hidden;
+}

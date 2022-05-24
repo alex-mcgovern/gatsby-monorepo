@@ -1,0 +1,93 @@
+@mixin inputBaseStyle {
+  // transition: border-color $transition-time-hover;
+}
+
+@mixin inputBorder {
+  border-radius: $spacing-2 * 0.5;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $color-navy-50;
+  box-shadow: none;
+  // transition: border-color $transition-time-hover;
+  &:hover {
+    border-color: $color-yellow;
+  }
+}
+
+@mixin inputBorderFocus {
+  outline: none !important;
+  box-shadow: 0px 0px 0px 2px $color-orange-50 !important;
+  border-color: $color-magenta !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+}
+@mixin inputBorderFocusRightBottomLeftOnly {
+  outline: none !important;
+  box-shadow: -1px 0px 0px 1px $color-orange-50,
+    0px 1px 0px 1px $color-orange-50, 1px 0px 0px 1px $color-orange-50 !important;
+  border-color: $color-magenta !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+  border-top: 0 !important;
+}
+@mixin inputBorderFocusTopRightLeftOnly {
+  outline: none;
+  box-shadow: -1px 0px 0px 1px $color-orange-50,
+    0px -1px 0px 1px $color-orange-50, 1px 0px 0px 1px $color-orange-50 !important;
+  border-color: $color-magenta !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+}
+@mixin inputLabel {
+  font-size: $font-size-body-sm;
+  @include rfs($line-height-heading-5, line-height);
+  display: block;
+  color: $color-navy-80;
+}
+
+@mixin inputFontSizeSm {
+  @include font-size($font-size-body-xs);
+  line-height: $line-height-body-xs;
+}
+@mixin inputFontSizeMd {
+  font-size: $font-size-body-sm;
+  line-height: $line-height-body-sm;
+}
+@mixin inputFontSizeLg {
+  font-size: $font-size-body-md;
+  line-height: $line-height-body-md;
+}
+
+@mixin inputHeightSm {
+  max-height: $spacing-2 * 4;
+  min-height: $spacing-2 * 4;
+  height: $spacing-2 * 4;
+}
+
+@mixin inputHeightMd {
+  max-height: $spacing-2 * 5;
+  min-height: $spacing-2 * 5;
+  height: $spacing-2 * 5;
+}
+
+@mixin inputHeightLg {
+  max-height: $spacing-2 * 6;
+  min-height: $spacing-2 * 6;
+  height: $spacing-2 * 6;
+}
+
+@mixin inputBorderError {
+  border-color: $semantic-red !important;
+  box-shadow: 0px 0px 0px 2px $semantic-pink;
+  &:hover {
+    box-shadow: 0px 0px 0px 2px $color-orange-50 !important;
+  }
+}
+
+@mixin inputErrorMessageText {
+  @include font-size($font-size-body-xs);
+  line-height: $line-height-body-xs;
+  font-weight: $font-weight-semibold;
+
+  color: $semantic-red;
+}

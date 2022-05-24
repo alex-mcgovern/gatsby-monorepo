@@ -1,0 +1,5 @@
+.reading_list {
+  &_wrapper {
+    @include globalMaxWidth;
+  }
+}

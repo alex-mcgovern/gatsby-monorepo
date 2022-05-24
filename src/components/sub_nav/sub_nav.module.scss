@@ -1,0 +1,53 @@
+.sub_nav {
+  background-color: $color-white;
+
+  border-bottom: 1px dashed $color-gray-light;
+
+  &_heading {
+    font-size: $fontSize-2;
+    margin: $spacing-2 0;
+  }
+
+  &_logo {
+    @include resetLink;
+    font-weight: $fontWeight-semibold;
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-3;
+    background: $color-magenta;
+    color: $color-white;
+
+    border-radius: 50%;
+    width: $spacing-10;
+    height: $spacing-10;
+
+    // transition: background 300ms;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus-visible,
+    &:focus,
+    &:hover {
+      background: $color-purple;
+      box-shadow: $shadow-extra-light;
+    }
+
+    &:active {
+      background: $color-purple;
+      box-shadow: inset 0 0 0 2px $color-purple;
+    }
+  }
+
+  &_inner {
+    margin: $spacing-0 auto;
+    max-width: $maxWidth-wrapper;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_menu {
+    margin: 0;
+  }
+}

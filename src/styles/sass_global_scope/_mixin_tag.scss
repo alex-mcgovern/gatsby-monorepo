@@ -1,0 +1,77 @@
+@mixin tagWrapperStyle {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  text-transform: capitalize;
+
+  border-radius: $spacing-2 * 0.5;
+  margin-left: $spacing-2 * 0.5;
+  margin-right: $spacing-2 * 0.5;
+
+  flex-shrink: 0;
+}
+
+@mixin tagGrayStyle {
+  // border: 1px solid $color-navy-10;
+  background-color: $light-gray;
+  color: $color-navy-80;
+  &.isInteractiveStyle {
+    &:not(.isActiveTab):hover {
+      background-color: rgba($light-gray, 0.5);
+    }
+  }
+}
+@mixin tagAzureStyle {
+  // border: 1px solid $color-navy-10;
+  background-color: $azure-5;
+  color: $azure;
+  &.isInteractiveStyle {
+    &:not(.isActiveTab):hover {
+      background-color: rgba($azure-10, 0.5);
+    }
+  }
+}
+
+@mixin tagWhiteTransparentStyle {
+  background-color: rgba($white, 0.3);
+  color: $white;
+  &.isInteractiveStyle {
+    &:not(.isActiveTab):hover {
+      background-color: rgba($color-navy-50, 0.3);
+    }
+  }
+}
+
+@mixin tagFontStyle {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+@mixin tagMdSize {
+  padding: $spacing-2;
+  font-size: $font-size-body-xs;
+  line-height: $line-height-body-xs;
+
+  max-height: $spacing-2 * 4;
+  min-height: $spacing-2 * 4;
+  height: $spacing-2 * 4;
+}
+@mixin tagSmSize {
+  padding: ($spacing-2 * 0.75) $spacing-2;
+  font-size: $font-size-body-xxs;
+  line-height: $line-height-body-xxs;
+
+  max-height: $spacing-2 * 3;
+  min-height: $spacing-2 * 3;
+  height: $spacing-2 * 3;
+}
+@mixin tagXsSize {
+  padding: ($spacing-2 * 0.75) $spacing-2;
+  font-size: $font-size-body-xxs;
+  line-height: $line-height-body-xxs;
+
+  max-height: $spacing-2 * 2.5;
+  min-height: $spacing-2 * 2.5;
+  height: $spacing-2 * 2.5;
+}

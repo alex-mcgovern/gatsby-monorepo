@@ -1,0 +1,12 @@
+@use "sass:math";
+
+$rfs-factor: 5;
+$rfs-breakpoint: 1080px;
+
+@import "../../../node_modules/rfs/scss";
+@import "function_tint", "mixins", "base_units", "vars_fonts", "vars_colors",
+  "vars_shadows", "vars_transitions", "vars_spacing", "media_queries",
+  "mixins_global_max_width", "mixin_button", "mixin_scrollbars",
+  "mixin_aspect_ratio", "mixin_input", "mixin_background_positioning",
+  "mixin_background_gradient", "mixin_heading", "mixin_tag", "mixin_list",
+  "mixin_patterns", "mixin_placeholder_grid", "config";

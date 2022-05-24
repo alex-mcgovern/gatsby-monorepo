@@ -1,0 +1,47 @@
+.input {
+  &_icon {
+    color: $color-gray-light;
+    margin-right: $spacing-2;
+  }
+  &_wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: $fontWeight-semibold;
+
+    border-radius: $spacing-16;
+    margin-right: $spacing-2;
+    // margin-top: $spacing-6;
+    // margin-bottom: $spacing-6;
+
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: $fontSize-1;
+    height: $spacing-8;
+    max-height: $spacing-8;
+    padding: $spacing-3;
+
+    background: $color-white;
+
+    border: 1px solid $color-gray-light;
+  }
+
+  &_inner {
+    @include resetInput;
+    width: 100%;
+  }
+
+  &:not([disabled]) {
+    &:focus-visible,
+    &:focus,
+    &:hover {
+      box-shadow: inset 0 0 0 2px $color-magenta;
+    }
+
+    &:active {
+      box-shadow: inset 0 0 0 2px $color-magenta;
+    }
+  }
+}
