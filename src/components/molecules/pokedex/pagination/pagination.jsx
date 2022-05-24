@@ -24,12 +24,14 @@ function Pagination({ basePath, currentPage, pageCount }) {
       <div className={buttonWrapperStyle}>
         <Button
           variant="secondary"
+          size="sm"
           leadingIcon="angles-left"
           to={firstPath}
           isDisabled={isFirstOrPrevDisabled}
         />
         <Button
           variant="secondary"
+          size="sm"
           leadingIcon="angle-left"
           to={previousPath}
           isDisabled={isFirstOrPrevDisabled}
@@ -38,16 +40,20 @@ function Pagination({ basePath, currentPage, pageCount }) {
           pageArray.map((page) => {
             const link = createUrlPathFromArray([basePath, page]);
             const variant = page === currentPage ? "primary" : "secondary";
-            return <Button variant={variant} to={link} title={page} />;
+            return (
+              <Button size="sm" variant={variant} to={link} title={page} />
+            );
           })}
         <Button
           variant="secondary"
+          size="sm"
           trailingIcon="angle-right"
           to={nextPath}
           isDisabled={isNextOrLastDisabled}
         />
         <Button
           variant="secondary"
+          size="sm"
           trailingIcon="angles-right"
           to={lastPath}
           isDisabled={isNextOrLastDisabled}
