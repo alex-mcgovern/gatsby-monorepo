@@ -11,6 +11,7 @@ import Pagination from "../../components/molecules/pokedex/pagination/pagination
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
 import Section from "../../components/section/section";
 import SubNav from "../../components/sub_nav/sub_nav";
+import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 import * as classes from "./template_pokemon_page.module.scss";
@@ -27,6 +28,14 @@ export default function TemplatePokemonPage({ data, pageContext }) {
     allPokemon: { nodes: allPokemon },
     allLanguagesISO: { distinct: allLanguagesISO },
   } = data;
+
+  const paddedPokedexId = padStart({
+    value: pokedexID,
+    desiredLength: 3,
+    padCharacter: 0,
+  });
+
+  const pokemonTitle = `${paddedPokedexId} ${name}`;
 
   const imageData = getImage(artwork);
 
@@ -63,7 +72,7 @@ export default function TemplatePokemonPage({ data, pageContext }) {
             <div className={classes.pokemon_inner}>
               <HorizontalDivider />
               <div>
-                <h2>{name}</h2>
+                <h2>{pokemonTitle}</h2>
                 <h3>{genus}</h3>
                 <p>{flavorText}</p>
               </div>

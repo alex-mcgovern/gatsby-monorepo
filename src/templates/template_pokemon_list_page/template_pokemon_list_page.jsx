@@ -10,6 +10,7 @@ import Pagination from "../../components/molecules/pokedex/pagination/pagination
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
 import Section from "../../components/section/section";
 import SubNav from "../../components/sub_nav/sub_nav";
+import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 
@@ -50,19 +51,20 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
           />
           <ResponsiveGrid split={3}>
             {allPokemon.map((pokemon) => {
-              const { artwork, pokedexID } = pokemon;
+              const { artwork, pokedexID, name } = pokemon;
+              const paddedPokedexId = padStart({
+                value: pokedexID,
+                desiredLength: 3,
+                padCharacter: 0,
+              });
               const link = createUrlPathFromArray([
                 languageISO,
                 "pokemon",
                 pokedexID,
               ]);
-
+              const title = `${paddedPokedexId} ${name}`;
               return (
-                <ListItemWithImage
-                  link={link}
-                  title={pokemon.name}
-                  image={artwork}
-                />
+                <ListItemWithImage link={link} title={title} image={artwork} />
               );
             })}
           </ResponsiveGrid>
