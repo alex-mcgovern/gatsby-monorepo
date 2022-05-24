@@ -4,6 +4,8 @@
 
   @include buttonSizeMd;
 
+  min-width: $spacing-14;
+
   &_size {
     &_sm {
       @include buttonSizeSm;
