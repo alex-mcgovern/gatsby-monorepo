@@ -26,21 +26,27 @@ export default function Button({
     [classes.button_is_disabled]: isDisabled,
   });
 
-  if (!isDisabled && to && isInternalLink) {
+  const InnerContent = () => {
     return (
-      <Link className={buttonClassNames} to={to} onClick={onClick}>
+      <>
         {leadingIcon && <FontAwesomeIcon icon={leadingIcon} />}
         {title}
         {trailingIcon && <FontAwesomeIcon icon={trailingIcon} />}
+      </>
+    );
+  };
+
+  if (!isDisabled && to && isInternalLink) {
+    return (
+      <Link className={buttonClassNames} to={to} onClick={onClick}>
+        <InnerContent />
       </Link>
     );
   }
   if (!isDisabled && to && !isInternalLink) {
     return (
       <a className={buttonClassNames} href={to} onClick={onClick}>
-        {leadingIcon && <FontAwesomeIcon icon={leadingIcon} />}
-        {title}
-        {trailingIcon && <FontAwesomeIcon icon={trailingIcon} />}
+        <InnerContent />
       </a>
     );
   }
@@ -52,9 +58,7 @@ export default function Button({
       href={to}
       onClick={onClick}
     >
-      {leadingIcon && <FontAwesomeIcon icon={leadingIcon} />}
-      {title}
-      {trailingIcon && <FontAwesomeIcon icon={trailingIcon} />}
+      <InnerContent />
     </button>
   );
 }

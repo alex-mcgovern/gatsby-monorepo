@@ -6,10 +6,12 @@ import {
   faAnglesLeft,
   faAnglesRight,
   faCaretDown,
+  faGrip,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
+  faGrip,
   faAngleLeft,
   faGithub,
   faAngleRight,

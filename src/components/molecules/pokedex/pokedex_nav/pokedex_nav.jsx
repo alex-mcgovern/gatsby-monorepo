@@ -22,8 +22,8 @@ export default function PokedexNav({
           <Button
             variant="secondary"
             leadingIcon="angle-left"
+            trailingIcon="grip"
             to={allPokemonLink}
-            title="All pokemon"
           />
         </div>
       )}
