@@ -16,9 +16,9 @@ export default function SingleSelect({ searchIndex, value }) {
       }}
     >
       {({
-        getInputProps,
+        // getInputProps,
         getItemProps,
-        getLabelProps,
+        // getLabelProps,
         getToggleButtonProps,
         getMenuProps,
         isOpen,

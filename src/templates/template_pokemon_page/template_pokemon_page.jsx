@@ -7,45 +7,41 @@ import Button from "../../components/atoms/button/button";
 import HorizontalDivider from "../../components/horizontal_divider/horizontal_divider";
 import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
 import Layout from "../../components/layout/layout";
+import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
-import PokedexNavigation from "../../components/molecules/pokedex/pokedex_navigation/pokedex_navigation";
-import Search from "../../components/molecules/search/search/search";
-import SingleSelect from "../../components/molecules/single_select/single_select/single_select";
 import Section from "../../components/section/section";
 import SubNav from "../../components/sub_nav/sub_nav";
+import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import getArtworkImageData from "./helper_functions/ get_artwork_image_data";
 import * as classes from "./template_pokemon_page.module.scss";
 
-export default function TemplatePokemonPage({ data, pageContext, location }) {
+export default function TemplatePokemonPage({ data, pageContext }) {
   const { pokedexID, languageISO } = pageContext;
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  const {
-    flavorText: flavorText,
-    name,
-    genus,
-    artwork,
-    languagePretty,
-  } = data.currentPokemon?.edges[0].node || {};
+  const { flavorText, name, genus, artwork } =
+    data.currentPokemon?.edges[0].node || {};
 
-  const { nodes: allPokemon } = data.allPokemon;
-  const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
+  const {
+    allPokemon: { nodes: allPokemon },
+    allLanguagesISO: { distinct: allLanguagesISO },
+  } = data;
 
   const imageData = getImage(artwork);
 
   const { totalCount } = data.allPokemon;
 
-  const languageIndex = [
-    { value: "English", link: `/en/pokedex/${pokedexID}` },
-    { value: "Spanish", link: `/es/pokedex/${pokedexID}` },
-    { value: "French", link: `/fr/pokedex/${pokedexID}` },
-    { value: "German", link: `/de/pokedex/${pokedexID}` },
-  ];
+  const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
+  const paginationBasePath = createUrlPathFromArray([languageISO, "pokemon"]);
 
+  const languageIndexBasePath = createUrlPathFromArray(["pokemon", pokedexID]);
+  const languageIndex = getLanguageSelectIndex({
+    allLanguagesISO,
+    basePath: languageIndexBasePath,
+  });
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <InnerWrapper>
         <SubNav title="Multilingual Pokedex">
           <Button
@@ -59,7 +55,7 @@ export default function TemplatePokemonPage({ data, pageContext, location }) {
         <Section>
           <PokedexNav
             searchIndex={searchIndex}
-            languagePretty={languagePretty}
+            languageISO={languageISO}
             languageIndex={languageIndex}
           />
 
@@ -78,20 +74,45 @@ export default function TemplatePokemonPage({ data, pageContext, location }) {
           </div>
         </Section>
 
-        <PokedexNavigation
-          currentLang={languageISO}
-          currentPage={pokedexID}
-          pageCount={Number(totalCount)}
-        />
+        <Section>
+          <Pagination
+            basePath={paginationBasePath}
+            currentPage={pokedexID}
+            pageCount={totalCount}
+          />
+        </Section>
       </InnerWrapper>
     </Layout>
   );
 }
 
 TemplatePokemonPage.propTypes = {
-  data: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({
+    allPokemon: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.shape({})),
+      totalCount: PropTypes.number,
+    }),
+    currentPokemon: PropTypes.shape({
+      edges: PropTypes.shape({
+        node: PropTypes.arrayOf(PropTypes.shape({})),
+      }),
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+    allLanguagesISO: PropTypes.arrayOf(
+      PropTypes.shape({
+        distinct: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+  }).isRequired,
   pageContext: PropTypes.shape({
-    subNavData: PropTypes.arrayOf(PropTypes.shape({})),
+    pokedexID: PropTypes.number,
+    languageISO: PropTypes.string,
+    currentPage: PropTypes.number,
+    pageCount: PropTypes.number,
   }),
 };
 
@@ -108,7 +129,12 @@ export const query = graphql`
         title
       }
     }
-    allPokemon: allPokemon(filter: { languageISO: { eq: $languageISO } }) {
+    allLanguagesISO: allPokemon {
+      distinct(field: language___languageISO)
+    }
+    allPokemon: allPokemon(
+      filter: { language: { languageISO: { eq: $languageISO } } }
+    ) {
       totalCount
       nodes {
         name

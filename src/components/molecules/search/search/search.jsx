@@ -8,9 +8,6 @@ import * as classes from "./search.module.scss";
 export default function Search({ searchIndex, placeholder }) {
   return (
     <Downshift
-      // onChange={(selection) => {
-      //   return alert(`You selected ${selection.value}`);
-      // }}
       itemToString={(item) => {
         return item ? item.value : "";
       }}
@@ -18,7 +15,7 @@ export default function Search({ searchIndex, placeholder }) {
       {({
         getInputProps,
         getItemProps,
-        getLabelProps,
+        // getLabelProps,
         getMenuProps,
         isOpen,
         inputValue,
@@ -27,7 +24,6 @@ export default function Search({ searchIndex, placeholder }) {
       }) => {
         return (
           <div className={classes.search_wrapper}>
-            {/* <label {...getLabelProps()}>Enter a fruit</label> */}
             <SearchInput
               getInputProps={getInputProps}
               placeholder={placeholder}

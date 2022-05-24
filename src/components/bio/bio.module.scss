@@ -19,6 +19,7 @@
       width: calc(var(--grid-column-4) - $spacing-4);
       border-radius: 100%;
       border: 1px solid $color-gray-light;
+
       flex-shrink: 0;
     }
   }

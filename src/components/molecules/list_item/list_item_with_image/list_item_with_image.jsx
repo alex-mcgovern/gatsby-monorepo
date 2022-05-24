@@ -31,19 +31,17 @@ export default function ListItemWithImage({
 }
 
 ListItemWithImage.propTypes = {
-  post: PropTypes.shape({
-    frontmatter: {
-      date: PropTypes.string,
-      description: PropTypes.string,
-      excerpt: PropTypes.string,
-      cover: PropTypes.shape({}),
-    },
-    fields: {
-      slug: PropTypes.string,
-    },
-  }),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  description: PropTypes.string,
+  link: PropTypes.string,
+  image: PropTypes.shape({}),
 };
 
 ListItemWithImage.defaultProps = {
-  post: null,
+  title: "",
+  subtitle: "",
+  description: "",
+  link: "",
+  image: {},
 };

@@ -51,7 +51,7 @@ h4,
 h5,
 h6 {
   font-family: $font-heading;
-  margin-top: $spacing-6;
+  margin-top: $spacing-0;
   margin-bottom: $spacing-6;
   line-height: $lineHeight-md;
   letter-spacing: -0.025em;
@@ -163,6 +163,7 @@ blockquote {
   margin-right: $spacing-8;
   padding: $spacing-0 $spacing-0 $spacing-0 $spacing-6;
   border-left: $spacing-1 solid $color-primary;
+
   font-size: $fontSize-2;
   font-style: italic;
   margin-bottom: $spacing-8;

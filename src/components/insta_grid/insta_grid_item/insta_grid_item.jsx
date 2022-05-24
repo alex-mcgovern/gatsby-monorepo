@@ -19,9 +19,14 @@ export default function InstaGridItem({ wrappedImage }) {
 InstaGridItem.propTypes = {
   wrappedImage: PropTypes.shape({
     localImage: PropTypes.shape({}),
+    permalink: PropTypes.string,
+    caption: PropTypes.string,
   }),
 };
 
 InstaGridItem.defaultProps = {
-  wrappedImage: null,
+  wrappedImage: {
+    permalink: null,
+    caption: null,
+  },
 };

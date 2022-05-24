@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Button from "../atoms/button/button";
 import * as classes from "./sticky_nav.module.scss";
 
-export default function StickyNav({ placeholderProp }) {
+export default function StickyNav() {
   return (
     <nav className={classes.sticky_nav}>
       <div className={classes.sticky_nav_inner}>
@@ -21,10 +21,10 @@ export default function StickyNav({ placeholderProp }) {
   );
 }
 
-StickyNav.propTypes = {
-  placeholderProp: PropTypes.string,
-};
+// StickyNav.propTypes = {
+//   placeholderProp: PropTypes.string,
+// };
 
-StickyNav.defaultProps = {
-  placeholderProp: null,
-};
+// StickyNav.defaultProps = {
+//   placeholderProp: null,
+// };

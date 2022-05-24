@@ -10,45 +10,43 @@ import Pagination from "../../components/molecules/pokedex/pagination/pagination
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
 import Section from "../../components/section/section";
 import SubNav from "../../components/sub_nav/sub_nav";
+import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 
-export default function TemplatePokemonListPage({
-  data,
-  pageContext,
-  location,
-}) {
-  const { languageISO, languagePretty, currentPage, pageCount } = pageContext;
+export default function TemplatePokemonListPage({ data, pageContext }) {
+  const { languageISO, currentPage, pageCount } = pageContext;
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   const {
     allPokemon: { nodes: allPokemon },
-    allLanguagesPretty: { distinct: allLanguagesPretty },
     allLanguagesISO: { distinct: allLanguagesISO },
   } = data;
 
-  console.log(allPokemon, allLanguages);
-
   const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
+  const paginationBasePath = createUrlPathFromArray([languageISO, "pokedex"]);
 
-  const languageIndex = [
-    { value: "English", link: `/en/pokedex/` },
-    { value: "Spanish", link: `/es/pokedex/` },
-    { value: "French", link: `/fr/pokedex/` },
-    { value: "German", link: `/de/pokedex/` },
-  ];
+  const languageIndexBasePath = createUrlPathFromArray([
+    "pokedex",
+    currentPage,
+  ]);
+  const languageIndex = getLanguageSelectIndex({
+    allLanguagesISO,
+    basePath: languageIndexBasePath,
+  });
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <InnerWrapper>
         <SubNav title="Multilingual Pokedex" />
 
         <Section>
           <PokedexNav
             searchIndex={searchIndex}
-            languagePretty={languagePretty}
+            languageISO={languageISO}
             languageIndex={languageIndex}
             placeholder="Search for a pokemon"
+            isTopLevel
           />
           <ResponsiveGrid split={3}>
             {allPokemon.map((pokemon) => {
@@ -71,7 +69,7 @@ export default function TemplatePokemonListPage({
         </Section>
         <Section>
           <Pagination
-            basePath="en/pokedex"
+            basePath={paginationBasePath}
             currentPage={currentPage}
             pageCount={pageCount}
           />
@@ -82,9 +80,25 @@ export default function TemplatePokemonListPage({
 }
 
 TemplatePokemonListPage.propTypes = {
-  data: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({
+    allPokemon: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+    allLanguagesISO: PropTypes.arrayOf(
+      PropTypes.shape({
+        distinct: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+  }).isRequired,
   pageContext: PropTypes.shape({
-    subNavData: PropTypes.arrayOf(PropTypes.shape({})),
+    languageISO: PropTypes.string,
+    currentPage: PropTypes.number,
+    pageCount: PropTypes.number,
   }),
 };
 
@@ -105,14 +119,12 @@ export const query = graphql`
         title
       }
     }
-    allLanguagesPretty: allPokemon {
-      distinct(field: languagePretty)
-    }
+
     allLanguagesISO: allPokemon {
-      distinct(field: languageISO)
+      distinct(field: language___languageISO)
     }
     allPokemon: allPokemon(
-      filter: { languageISO: { eq: $languageISO } }
+      filter: { language: { languageISO: { eq: $languageISO } } }
       limit: $pokemonPerPage
       skip: $pokemonToSkip
     ) {

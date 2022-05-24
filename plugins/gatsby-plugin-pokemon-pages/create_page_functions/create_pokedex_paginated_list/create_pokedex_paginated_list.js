@@ -8,12 +8,6 @@ async function createPokedexPaginatedList({
   targetLanguageList,
   actions,
 }) {
-  console.log({
-    pokemonListLength,
-    pokemonPerPage,
-    targetLanguageList,
-    actions,
-  });
   targetLanguageList.forEach((languageISO) => {
     const languageNames = new Intl.DisplayNames([languageISO], {
       type: "language",
@@ -25,18 +19,14 @@ async function createPokedexPaginatedList({
     Array(pageCount)
       .fill()
       .map(async (_, index) => {
-        const isFirstPage = index === 0;
         const pokemonToSkip = pokemonPerPage * index;
         const currentPage = index + 1;
 
-        const firstPagePath = createUrlPathFromArray([languageISO, "pokedex"]);
-        const nthPagePath = createUrlPathFromArray([
+        const pagePath = createUrlPathFromArray([
           languageISO,
           "pokedex",
           currentPage,
         ]);
-
-        const pagePath = isFirstPage ? firstPagePath : nthPagePath;
 
         const pageContext = {
           languageISO,

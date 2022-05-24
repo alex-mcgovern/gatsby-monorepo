@@ -7,12 +7,14 @@ import getPaginationArray from "./helper_functions/filter_page_array/filter_page
 import { buttonWrapperStyle } from "./pagination.module.scss";
 
 function Pagination({ basePath, currentPage, pageCount }) {
-  const firstPath = createUrlPathFromArray([basePath]);
-  const previousPath = `/${basePath}/${Number(currentPage) - 1}`;
+  const firstPath = createUrlPathFromArray([basePath, 1]);
+  const previousPath = createUrlPathFromArray([basePath, currentPage - 1]);
+
   const isFirstOrPrevDisabled = currentPage <= 1;
 
-  const nextPath = `/${basePath}/${Number(currentPage) + 1}`;
-  const lastPath = `/${basePath}/${pageCount}`;
+  const nextPath = createUrlPathFromArray([basePath, currentPage + 1]);
+  const lastPath = createUrlPathFromArray([basePath, pageCount]);
+
   const isNextOrLastDisabled = currentPage >= pageCount;
 
   const pageArray = getPaginationArray({ pageCount, currentPage });

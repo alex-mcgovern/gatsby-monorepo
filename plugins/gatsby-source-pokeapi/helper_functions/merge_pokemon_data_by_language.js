@@ -13,6 +13,10 @@ function mergePokemonDataByLanguage({
 
     return {
       pokedexID,
+      language: {
+        languageISO: targetLanguage,
+        languagePretty: prettyLanguageName,
+      },
       languageISO: targetLanguage,
       languagePretty: prettyLanguageName,
       name: pokemonNamesByLanguage[targetLanguage],

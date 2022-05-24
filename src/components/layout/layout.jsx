@@ -1,29 +1,32 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import StickyNav from "../sticky_nav/sticky_nav";
 import * as classes from "./layout.module.scss";
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const isRootPath = location.pathname === rootPath;
-
+const Layout = ({ children }) => {
   return (
     <div>
       <StickyNav />
       <div className={classes.global_wrapper_outer}>
-        <div
-          className={classes.global_wrapper_inner}
-          data-is-root-path={isRootPath}
-        >
+        <div className={classes.global_wrapper_inner}>
           <main>{children}</main>
-          <footer>
+          {/* <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
             <a href="https://www.gatsbyjs.com">Gatsby</a>
-          </footer>
+          </footer> */}
         </div>
       </div>
     </div>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};
+
+Layout.defaultProps = {
+  children: null,
 };
 
 export default Layout;

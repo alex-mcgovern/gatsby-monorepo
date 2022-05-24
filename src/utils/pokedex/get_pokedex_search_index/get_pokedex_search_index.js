@@ -2,7 +2,7 @@ import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_a
 
 export default function getPokedexSearchIndex({ allPokemon, languageISO }) {
   return allPokemon.map(({ pokedexID, name }) => {
-    const link = createUrlPathFromArray([languageISO, "pokedex", pokedexID]);
+    const link = createUrlPathFromArray([languageISO, "pokemon", pokedexID]);
     return { value: name, link };
   });
 }
