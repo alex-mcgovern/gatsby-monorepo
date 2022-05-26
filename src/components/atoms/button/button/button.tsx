@@ -13,7 +13,7 @@ interface ButtonProps {
   isDisabled?: boolean;
   trailingIcon?: IconProp;
   variant?: "primary" | "secondary";
-  size?: "sm" | "lg";
+  size?: "sm" | "md" | "lg";
   onClick?(...args: unknown[]): unknown;
 }
 
@@ -71,3 +71,6 @@ export default function Button({
     </button>
   );
 }
+Button.defaultProps = {
+  variant: "primary",
+};
