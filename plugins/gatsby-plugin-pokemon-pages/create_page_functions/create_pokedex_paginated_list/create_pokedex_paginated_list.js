@@ -39,7 +39,7 @@ async function createPokedexPaginatedList({
 
         return actions.createPage({
           component: require.resolve(
-            "../../../../src/templates/template_pokemon_list_page/template_pokemon_list_page.jsx"
+            "../../../../src/templates/template_pokemon_list_page/template_pokemon_list_page.tsx"
           ),
           context: pageContext,
           path: pagePath,

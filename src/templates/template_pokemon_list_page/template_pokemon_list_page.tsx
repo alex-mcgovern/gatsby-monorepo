@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
-import PropTypes from "prop-types";
+import { ImageDataLike } from "gatsby-plugin-image";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
-import Layout from "../../components/layout/layout/layout.tsx";
+import Layout from "../../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import HeaderProject from "../../components/molecules/header/header_project/header_project";
@@ -14,10 +14,46 @@ import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 
-export default function TemplatePokemonListPage({ data, pageContext }) {
-  const { languageISO, currentPage, pageCount } = pageContext;
+interface TemplatePokemonListPageProps {
+  data: {
+    allPokemon: {
+      nodes: {
+        artwork: ImageDataLike;
+        pokedexID: number;
+        name: string;
+      }[];
+    };
+    site: {
+      siteMetadata?: {
+        title?: string;
+      };
+    };
+    doc: {
+      nodes: {
+        excerpt: {
+          html: string;
+        };
+      }[];
+    };
+    allLanguagesISO: {
+      distinct: string[];
+    };
+  };
+  pageContext: {
+    languageISO: string;
+    currentPage: number;
+    pageCount: number;
+  };
+}
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
+export default function TemplatePokemonListPage({
+  data,
+  pageContext,
+}: TemplatePokemonListPageProps) {
+  const { languageISO, currentPage, pageCount } = pageContext;
+  const { site } = data;
+
+  const siteTitle = site.siteMetadata?.title || `Title`;
 
   const {
     allPokemon: { nodes: allPokemon },
@@ -41,7 +77,7 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <HeaderProject doc={doc} />
+        <HeaderProject doc={doc.html} />
 
         <LayoutSectionOuter>
           <PokedexNav
@@ -87,44 +123,6 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
     </Layout>
   );
 }
-
-TemplatePokemonListPage.propTypes = {
-  data: PropTypes.shape({
-    allPokemon: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    doc: PropTypes.shape({
-      nodes: PropTypes.arrayOf(
-        PropTypes.shape({
-          excerpt: PropTypes.shape({
-            html: PropTypes.string,
-          }),
-        })
-      ),
-    }),
-    allLanguagesISO: PropTypes.arrayOf(
-      PropTypes.shape({
-        distinct: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
-  }).isRequired,
-  pageContext: PropTypes.shape({
-    languageISO: PropTypes.string,
-    currentPage: PropTypes.number,
-    pageCount: PropTypes.number,
-  }),
-};
-
-TemplatePokemonListPage.defaultProps = {
-  pageContext: {
-    subNavData: [],
-  },
-};
 
 export const query = graphql`
   query TemplatePokemonListPageQuery(

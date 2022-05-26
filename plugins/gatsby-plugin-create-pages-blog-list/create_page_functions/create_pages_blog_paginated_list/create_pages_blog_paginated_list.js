@@ -29,7 +29,7 @@ async function createPagesBlogPaginatedList({
 
       return actions.createPage({
         component: require.resolve(
-          "../../../../src/templates/template_blog_list_page/template_blog_list_page.jsx"
+          "../../../../src/templates/template_blog_list_page/template_blog_list_page.tsx"
         ),
         context: pageContext,
         path: pagePath,
