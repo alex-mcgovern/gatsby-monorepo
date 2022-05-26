@@ -92,7 +92,7 @@ export const pageQuery = graphql`
 
     ) {
       nodes {
-        excerpt(pruneLength: 650, format: HTML, truncate: true)
+        excerpt(pruneLength: 170, format: HTML, truncate: true)
       }
     }
     allMarkdownRemark(
