@@ -4,7 +4,7 @@ const {
 
 async function createPokedexPaginatedList({
   pokemonListLength,
-  pokemonPerPage,
+  itemsPerPage,
   targetLanguageList,
   actions,
 }) {
@@ -14,12 +14,12 @@ async function createPokedexPaginatedList({
     });
     const languagePretty = languageNames.of(languageISO);
 
-    const pageCount = Math.ceil(pokemonListLength / pokemonPerPage);
+    const pageCount = Math.ceil(pokemonListLength / itemsPerPage);
 
     Array(pageCount)
       .fill()
       .map(async (_, index) => {
-        const pokemonToSkip = pokemonPerPage * index;
+        const itemsToSkip = itemsPerPage * index;
         const currentPage = index + 1;
 
         const pagePath = createUrlPathFromArray([
@@ -31,8 +31,8 @@ async function createPokedexPaginatedList({
         const pageContext = {
           languageISO,
           languagePretty,
-          pokemonPerPage,
-          pokemonToSkip,
+          itemsPerPage,
+          itemsToSkip,
           currentPage,
           pageCount,
         };

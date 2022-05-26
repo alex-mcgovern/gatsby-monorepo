@@ -1,15 +1,8 @@
 .hero {
-  @include aspectRatio(10, 3);
-  overflow: hidden;
+  // @include aspectRatio(16, 9);
+  // overflow: hidden;
   display: block;
 
-  &_inner {
-    display: flex;
-    align-items: center;
-
-    margin: $spacing-0 auto;
-    max-width: $maxWidth-wrapper;
-  }
   &_inner {
     display: flex;
     align-items: center;

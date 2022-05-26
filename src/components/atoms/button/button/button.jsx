@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import "../../../utils/font_awesome";
+import "../../../../utils/font_awesome";
 import * as classes from "./button.module.scss";
 
 export default function Button({

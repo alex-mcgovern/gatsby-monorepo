@@ -5,7 +5,7 @@ import SearchInput from "../search_input/search_input";
 import SearchResultList from "../search_result_list/search_result_list";
 import * as classes from "./search.module.scss";
 
-export default function Search({ searchIndex, placeholder }) {
+export default function Search({ searchIndex, placeholder, size }) {
   return (
     <Downshift
       itemToString={(item) => {
@@ -27,6 +27,7 @@ export default function Search({ searchIndex, placeholder }) {
             <SearchInput
               getInputProps={getInputProps}
               placeholder={placeholder}
+              size={size}
             />
             <SearchResultList
               getItemProps={getItemProps}

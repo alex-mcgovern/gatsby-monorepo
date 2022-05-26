@@ -3,13 +3,9 @@
   @include globalMaxWidth;
   width: 100%;
 
-  border-top: 1px dashed $color-gray-light;
+  border: none;
+
   height: 1px;
-
-  // margin-top: $spacing-8;
-  // margin-bottom: $spacing-8;
-
-  position: relative;
 
   &:after,
   &:before {
@@ -18,7 +14,7 @@
     width: 0px;
     height: 0px;
     border: 5px solid transparent;
-    top: -5px;
+    z-index: 1;
   }
   &:after {
     left: -6px;
@@ -27,5 +23,24 @@
   &:before {
     right: -6px;
     border-left: 16px solid $color-gray-light;
+  }
+
+  &.position {
+    &_top {
+      // position: absolute;
+      top: 0;
+      &:after,
+      &:before {
+        top: -5px;
+      }
+    }
+    &_bottom {
+      // position: absolute;
+      bottom: 0;
+      &:after,
+      &:before {
+        bottom: -5px;
+      }
+    }
   }
 }

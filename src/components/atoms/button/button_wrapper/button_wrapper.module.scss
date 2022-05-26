@@ -1,0 +1,11 @@
+.button_wrapper {
+  @include resetList;
+  display: flex;
+  gap: $spacing-2;
+  margin-top: $spacing-4;
+  margin-bottom: $spacing-4;
+  outline: 1px dashed $color-gray-light;
+  &.centered {
+    justify-content: center;
+  }
+}

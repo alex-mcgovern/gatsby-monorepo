@@ -6,19 +6,5 @@
 ) {
   @include diagonal-stripe-1;
 
-  @if $borderTop {
-    border-top: 1px dashed $color-gray-light;
-  }
-
-  @if $borderRight {
-    border-right: 1px dashed $color-gray-light;
-  }
-
-  @if $borderBottom {
-    border-bottom: 1px dashed $color-gray-light;
-  }
-
-  @if $borderLeft {
-    border-left: 1px dashed $color-gray-light;
-  }
+  outline: 1px solid $color-gray-light;
 }

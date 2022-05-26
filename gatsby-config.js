@@ -36,6 +36,9 @@ module.exports = {
         targetLanguageList: TARGET_LANGUAGE_LIST,
       },
     },
+    {
+      resolve: "gatsby-plugin-create-pages-blog-list",
+    },
     /* ——————————————————————————————————————————————————————————————————————————————
     //      GATSBY PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
@@ -53,19 +56,17 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        custom: {
-          families: ["Dinish"],
-          urls: ["/fonts/fonts.css"],
-        },
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/docs`,
+        name: `docs`,
       },
     },
     {

@@ -8,8 +8,10 @@ export default function BlogArticleListItem({ post }) {
   if (!post) {
     return null;
   }
+
   return (
     <ListItemWithImage
+      variant="wide"
       title={post.frontmatter.title || post.fields.slug}
       subtitle={post.frontmatter.date}
       description={post.frontmatter.description || post.excerpt}

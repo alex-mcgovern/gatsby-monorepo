@@ -1,10 +1,10 @@
-const PLUGIN_NAME = "[GATSBY-SOURCE-POKEAPI]";
+const PLUGIN_NAME = "[gatsby-source-pokeapi]";
 
 const FALLBACK_PLUGIN_OPTIONS = {
   numberOfPokemonToSource: 151,
   targetLanguageList: ["en", "fr", "de", "es"],
   targetGameVersion: "x",
-  pokemonPerPage: 12,
+  itemsPerPage: 12,
 };
 
 module.exports = {

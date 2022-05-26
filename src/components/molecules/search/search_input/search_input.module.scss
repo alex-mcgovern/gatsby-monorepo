@@ -26,6 +26,20 @@
     background: $color-white;
 
     border: 1px solid $color-gray-light;
+
+    @include inputBorder;
+
+    &.size {
+      &_sm {
+        @include inputFontSizeSm;
+      }
+      &_md {
+        @include inputFontSizeMd;
+      }
+      &_lg {
+        @include inputFontSizeLg;
+      }
+    }
   }
 
   &_inner {

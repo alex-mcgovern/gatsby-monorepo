@@ -5,7 +5,7 @@ import Bio from "../../components/bio/bio";
 import BlogHero from "../../components/blog_hero/blog_hero";
 import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
 import Layout from "../../components/layout/layout";
-import Section from "../../components/section/section";
+import SectionOuter from "../../components/section/section_outer/section_outer";
 import Seo from "../../components/seo";
 import * as classes from "./template_blog_post.module.scss";
 
@@ -21,18 +21,18 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <BlogHero
-        date={post.frontmatter.date}
-        image={image}
-        title={post.frontmatter.title}
-      />
       <InnerWrapper>
+        <BlogHero
+          date={post.frontmatter.date}
+          image={image}
+          title={post.frontmatter.title}
+        />
         <article
           className={classes.blog_post}
           itemScope
           itemType="http://schema.org/Article"
         >
-          <Section>
+          <SectionOuter>
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
@@ -41,7 +41,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <footer>
               <Bio />
             </footer>
-          </Section>
+          </SectionOuter>
         </article>
         <nav className={classes.blog_post_nav}>
           <ul

@@ -1,12 +1,9 @@
 /*——————————————————————————————————————————————————————————————
  |                          FONT FAMILIES
 ———————————————————————————————————————————————————————————————**/
-$fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", Times,
-  serif;
-$font-body: $fontFamily-serif;
+$fontFamily-sans: "Work Sans", sans-serif;
+$fontFamily-serif: serif;
+$font-body: $fontFamily-sans;
 $font-heading: $fontFamily-sans;
 
 /*——————————————————————————————————————————————————————————————
@@ -14,29 +11,25 @@ $font-heading: $fontFamily-sans;
 ———————————————————————————————————————————————————————————————**/
 $fontWeight-light: 300;
 $fontWeight-normal: 400;
-$fontWeight-medium: 500;
 $fontWeight-semibold: 600;
 $fontWeight-bold: 700;
 $fontWeight-extrabold: 800;
-$fontWeight-black: 900;
 
 /*——————————————————————————————————————————————————————————————
 |                          FONT SIZE
 ———————————————————————————————————————————————————————————————**/
-$fontSize-root: 20px;
+$fontSize-root: 16px;
 
 /* 1.200 Minor Third Type Scale */
-$fontSize-0: 0.833rem;
-$fontSize-1: 1rem;
-$fontSize-2: 1.2rem;
-$fontSize-3: 1.44rem;
-$fontSize-4: 1.728rem;
-$fontSize-5: 2.074rem;
-$fontSize-6: 2.488rem;
-$fontSize-7: 2.986rem;
-$fontSize-8: 3.583rem;
-$fontSize-9: 4.3rem;
-$fontSize-10: 5.16rem;
+$fontSize-0: 0.694rem;
+$fontSize-1: 0.833rem;
+$fontSize-2: 1rem;
+$fontSize-3: 1.2rem;
+$fontSize-4: 1.44rem;
+$fontSize-5: 1.728rem;
+$fontSize-6: 2.074rem;
+$fontSize-7: 2.488rem;
+$fontSize-8: 3.986rem;
 
 /*——————————————————————————————————————————————————————————————
  |                          LINE HEIGHT

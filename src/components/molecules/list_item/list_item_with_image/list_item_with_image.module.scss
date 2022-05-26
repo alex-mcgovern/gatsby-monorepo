@@ -13,16 +13,21 @@
     border-top: 1px solid $color-gray-light;
   }
 
-  &_image {
-    // overflow: hidden;
-    // transition: opacity 300ms, transform 300ms;
-
-    &_wrapper {
-      @include aspectRatio(2, 2);
-      width: 100%;
-      margin-bottom: $spacing-1;
-
-      @include placeholderGrid;
+  &.variant {
+    &_square {
+      &.image_wrapper {
+        @include aspectRatio(1, 1);
+      }
+    }
+    &_wide {
+      &.image_wrapper {
+        @include aspectRatio(16, 9);
+      }
+    }
+    &_tall {
+      &.image_wrapper {
+        @include aspectRatio(9, 16);
+      }
     }
   }
 
@@ -37,7 +42,7 @@
   }
 
   &_link:hover {
-    .list_item_image {
+    .image {
       transform: translateY($spacing-2 * -1);
     }
     .list_item_title {
@@ -47,5 +52,14 @@
 
   header {
     margin-bottom: $spacing-4;
+  }
+}
+.image {
+  &_wrapper {
+    width: 100%;
+    margin-bottom: $spacing-1;
+    color: red;
+
+    @include placeholderGrid;
   }
 }

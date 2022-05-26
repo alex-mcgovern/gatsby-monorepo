@@ -3,13 +3,13 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import Button from "../../components/atoms/button/button";
+import Button from "../../components/atoms/button/button/button";
 import HorizontalDivider from "../../components/horizontal_divider/horizontal_divider";
 import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
 import Layout from "../../components/layout/layout";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
-import Section from "../../components/section/section";
+import SectionOuter from "../../components/section/section_outer/section_outer";
 import SubNav from "../../components/sub_nav/sub_nav";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
@@ -61,7 +61,7 @@ export default function TemplatePokemonPage({ data, pageContext }) {
             title="Source code"
           />
         </SubNav>
-        <Section>
+        <SectionOuter>
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
@@ -81,15 +81,15 @@ export default function TemplatePokemonPage({ data, pageContext }) {
 
             <GatsbyImage image={imageData} className={classes.pokemon_image} />
           </div>
-        </Section>
+        </SectionOuter>
 
-        <Section>
+        <SectionOuter>
           <Pagination
             basePath={paginationBasePath}
             currentPage={pokedexID}
             pageCount={totalCount}
           />
-        </Section>
+        </SectionOuter>
       </InnerWrapper>
     </Layout>
   );

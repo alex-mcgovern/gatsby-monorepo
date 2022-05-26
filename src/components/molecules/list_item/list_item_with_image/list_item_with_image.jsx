@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
@@ -10,13 +11,20 @@ export default function ListItemWithImage({
   description,
   link,
   image,
+  variant,
 }) {
   const imageData = getImage(image);
 
+  const listItemClassNames = classNames(classes.list_item_link, {
+    [classes.variant_wide]: variant === "wide",
+    [classes.variant_square]: variant === "square",
+    [classes.variant_tall]: variant === "square",
+  });
+
   return (
-    <Link to={link} className={classes.list_item_link}>
-      <div className={classes.list_item_image_wrapper}>
-        <GatsbyImage className={classes.list_item_image} image={imageData} />
+    <Link to={link} className={listItemClassNames}>
+      <div className={classes.image_wrapper}>
+        <GatsbyImage className={classes.image} image={imageData} />
       </div>
       {title && (
         <header>
@@ -36,6 +44,7 @@ ListItemWithImage.propTypes = {
   description: PropTypes.string,
   link: PropTypes.string,
   image: PropTypes.shape({}),
+  variant: PropTypes.oneOf(["square", "wide", "tall"]),
 };
 
 ListItemWithImage.defaultProps = {
@@ -44,4 +53,5 @@ ListItemWithImage.defaultProps = {
   description: "",
   link: "",
   image: {},
+  variant: "wide",
 };

@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+  &.hasPadding {
+    padding: $spacing-section-inner 0;
+  }
+  &.background {
+    @include placeholderGrid($borderRight: false);
+  }
+  &.outline {
+    outline: 1px dashed $color-gray-light;
+  }
+  &.margin {
+    &_left {
+      margin-left: $spacing-4;
+    }
+    &_right {
+      margin-right: $spacing-4;
+    }
+  }
+}

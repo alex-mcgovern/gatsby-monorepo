@@ -6,8 +6,8 @@ import * as classes from "./blog_hero.module.scss";
 function BlogHero({ title, date, image }) {
   return (
     <header className={classes.hero}>
-      <GatsbyImage image={image} />
       <div className={classes.hero_inner}>
+        <GatsbyImage image={image} />
         <div className={classes.hero_text_wrapper}>
           <h1 className={classes.hero_h1}>{title}</h1>
           <h2 className={classes.hero_h2}>{date}</h2>

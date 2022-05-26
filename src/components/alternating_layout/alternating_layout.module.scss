@@ -1,0 +1,19 @@
+.alternating_layout {
+  display: grid;
+  gap: $spacing-6;
+  grid-template-columns: 1fr 1fr;
+  &.ratio {
+    &_2_1 {
+      grid-template-columns: 2fr 1fr;
+      @include S-screens-down {
+        grid-template-columns: 1fr;
+      }
+    }
+    &_1_2 {
+      grid-template-columns: 1fr 2fr;
+      @include S-screens-down {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

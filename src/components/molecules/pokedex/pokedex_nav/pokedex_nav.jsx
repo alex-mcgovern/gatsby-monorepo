@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button";
+import Button from "../../../atoms/button/button/button";
 import Search from "../../search/search/search";
 import SingleSelect from "../../single_select/single_select/single_select";
 import * as classes from "./pokedex_nav.module.scss";
@@ -20,6 +20,7 @@ export default function PokedexNav({
       {!isTopLevel && (
         <div className={classes.pokedex_nav_button}>
           <Button
+            size="lg"
             variant="secondary"
             leadingIcon="angle-left"
             trailingIcon="grip"
@@ -28,10 +29,11 @@ export default function PokedexNav({
         </div>
       )}
       <div className={classes.pokedex_nav_search}>
-        <Search searchIndex={searchIndex} placeholder={placeholder} />
+        <Search size="lg" searchIndex={searchIndex} placeholder={placeholder} />
       </div>
       <div className={classes.pokedex_nav_button}>
         <SingleSelect
+          size="lg"
           value={currentLanguageUpperCase}
           searchIndex={languageIndex}
         />

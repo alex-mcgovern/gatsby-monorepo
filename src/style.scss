@@ -1,4 +1,4 @@
-/* CSS Custom Properties Definitions */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,700;1,800&display=swap");
 
 :root {
 }
@@ -27,16 +27,9 @@ body {
   width: 100vw;
 
   font-family: $font-body;
-  font-size: $fontSize-1;
+  font-size: $fontSize-2;
   color: $color-text;
 }
-
-// .worklet-canvas {
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: #fff;
-//   background-image: paint(workletName);
-// }
 
 footer {
   padding: $spacing-6 $spacing-0;
@@ -52,48 +45,41 @@ h5,
 h6 {
   font-family: $font-heading;
   margin-top: $spacing-0;
-  margin-bottom: $spacing-6;
+  margin-bottom: $spacing-1;
   line-height: $lineHeight-md;
   letter-spacing: -0.025em;
-  // background-color: $white;
+
   display: block;
   hyphens: auto;
 
-  font-weight: $fontWeight-bold;
+  font-weight: $fontWeight-semibold;
   color: $color-heading;
-
-  // display: table;
-  // border: 1px dashed $color-gray-light;
-
-  // text-decoration-line: underline;
-  // text-decoration-color: $color-gray-light;
-  // text-decoration-thickness: 1px;
-
-  // text-decoration-style: dashed;
 }
 
 h1 {
-  font-size: $fontSize-6;
+  font-size: $fontSize-8;
 }
 
 h2 {
-  font-size: $fontSize-5;
+  font-size: $fontSize-7;
 }
 
 h3 {
-  font-size: $fontSize-4;
+  font-size: $fontSize-6;
 }
 
 h4 {
-  font-size: $fontSize-3;
+  font-size: $fontSize-5;
 }
 
 h5 {
-  font-size: $fontSize-2;
+  font-size: $fontSize-4;
+  color: $color-orange;
+  // text-transform: uppercase;
 }
 
 h6 {
-  font-size: $fontSize-1;
+  font-size: $fontSize-3;
 }
 
 h1 > a {
@@ -122,6 +108,7 @@ h6 > a:after {
 
 p {
   line-height: $lineHeight-xl;
+  font-size: $fontSize-2;
   $baseline-multiplier: 0.179;
   $x-height-multiplier: 0.35;
   margin: $spacing-0 $spacing-0 $spacing-4 $spacing-0;
@@ -141,7 +128,7 @@ ol {
 ul li,
 ol li {
   padding-left: $spacing-0;
-  margin-bottom: calc($spacing-8 / 2);
+  // margin-bottom: calc($spacing-8 / 2);
 }
 
 li > p {

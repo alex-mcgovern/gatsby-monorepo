@@ -13,7 +13,7 @@ const {
 
 exports.createPages = async (
   { actions, graphql },
-  { options: { targetLanguageList, pokemonPerPage } = FALLBACK_PLUGIN_OPTIONS }
+  { options: { targetLanguageList, itemsPerPage } = FALLBACK_PLUGIN_OPTIONS }
 ) => {
   const allPokemonQueryResponse = await graphql(`
     {
@@ -52,7 +52,7 @@ exports.createPages = async (
       targetLanguageList,
       actions,
       pokemonListLength,
-      pokemonPerPage,
+      itemsPerPage,
     })
   );
 };

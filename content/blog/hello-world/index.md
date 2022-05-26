@@ -2,13 +2,29 @@
 title: Hello World
 cover: ./pexels-cottonbro-4629634.jpg
 category: "About me"
+isBio: true
 date: "2022-04-01T22:12:03.284Z"
 description:
   "A little about me, my career to date and some of my interests and hobbies.
   (Warning, contains nerdiness 🤓)"
 ---
 
-# Hello. My name is Alex McGovern.
+I'm a frontend engineering manager at the start of my leadership career. I'm
+currently at TrueLayer where my team own the public website.
+
+My job is to:
+
+- hire and scale a shit-hot frontend team
+- contribute to a culture of craft and engineering excellence
+- optimize for conversion, performance and search
+- build for brand consistency and scale across 500+ pages
+- scale i18n into a growing number of languages
+- support and enable trans-continental content teams to self-create and
+  self-publish content
+
+In my spare time I play a lot of guitar, sketch, paint and make things. I also
+try to make time to work on this Gatsby, TypeScript and React site to keep my
+skills sharp.
 
 I'm a frontend engineering manager and generalist, with a weird and eclectic mix
 of experience.

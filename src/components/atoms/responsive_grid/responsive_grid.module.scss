@@ -1,10 +1,10 @@
 .grid {
   @include resetList;
   display: grid;
+  gap: $spacing-6;
 
   &_item {
-    margin-right: $spacing-4;
-    margin-bottom: $spacing-4;
+    outline: 1px dashed $color-gray-light;
   }
 
   &.split {

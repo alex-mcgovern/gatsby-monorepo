@@ -7,12 +7,22 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import Button from "../atoms/button/button";
-import HorizontalDivider from "../horizontal_divider/horizontal_divider";
-import Section from "../section/section";
+import AlternatingLayout from "../alternating_layout/alternating_layout";
+import Button from "../atoms/button/button/button";
+import ButtonWrapper from "../atoms/button/button_wrapper/button_wrapper";
+import SectionContent from "../section/section_content/section_content";
+import SectionOuter from "../section/section_outer/section_outer";
 import * as classes from "./bio.module.scss";
 
-const Bio = () => {
+const H1_OPTIONS = [
+  "Hello.",
+  "Yo.",
+  "Ciao.",
+  "Greetings.",
+  "Dia duit. (That means hello in Irish)",
+];
+
+const Bio = ({ bio }) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       site {
@@ -33,10 +43,41 @@ const Bio = () => {
   const author = data.site.siteMetadata?.author;
   // const social = data.site.siteMetadata?.social;
 
+  const heroText = H1_OPTIONS[Math.floor(Math.random() * H1_OPTIONS.length)];
+
   return (
-    <Section>
-      <div className={classes.bio}>
-        <div className={classes.bio_avatar_wrapper}>
+    <SectionOuter>
+      <AlternatingLayout ratio="2_1">
+        {author?.name && (
+          <SectionContent hasArrowsBottom hasArrowsTop hasOutline hasPadding>
+            <h5>INTRO</h5>
+            <h1>Hi, I'm Alex 👋</h1>
+            <section
+              dangerouslySetInnerHTML={{ __html: bio }}
+              itemProp="articleBody"
+            />
+            <ButtonWrapper>
+              <Button
+                to="/"
+                title="Download CV"
+                leadingIcon="file-arrow-down"
+              />
+              <Button
+                variant="secondary"
+                to="/"
+                title="More about me"
+                leadingIcon="user"
+              />
+              <Button
+                to="https://linkedin.com/in/alexmcgovernsmith"
+                variant="secondary"
+                title="Linkedin"
+                leadingIcon={["fab", "linkedin"]}
+              />
+            </ButtonWrapper>
+          </SectionContent>
+        )}
+        <SectionContent hasArrowsBottom hasArrowsTop hasOutline hasBackground>
           <StaticImage
             layout="full_width"
             formats={["auto", "webp", "avif"]}
@@ -44,28 +85,11 @@ const Bio = () => {
             quality={95}
             alt="Profile picture"
             className={classes.bio_avatar_image}
+            objectFit="cover"
           />
-        </div>
-        {author?.name && (
-          <div className={classes.bio_text}>
-            <HorizontalDivider />
-            <h2>Hello. My name is Alex.</h2>
-            <p>
-              I'm a frontend engineer at the start of a journey in engineering
-              management. 👶 I at TrueLayer. I look after the public website.
-            </p>
-
-            <Button to="/" title="More about me" />
-            <Button
-              to="https://linkedin.com/in/alexmcgovernsmith"
-              variant="secondary"
-              title="Connect on LinkedIn"
-            />
-            <HorizontalDivider />
-          </div>
-        )}
-      </div>
-    </Section>
+        </SectionContent>
+      </AlternatingLayout>
+    </SectionOuter>
   );
 };
 

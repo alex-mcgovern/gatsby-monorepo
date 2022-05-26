@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import * as classes from "./section.module.scss";
+import * as classes from "./section_outer.module.scss";
 
-export default function Section({ children }) {
+export default function SectionOuter({ children }) {
   return <section className={classes.section}>{children}</section>;
 }
 
-Section.propTypes = {
+SectionOuter.propTypes = {
   children: PropTypes.node,
 };
 
-Section.defaultProps = {
+SectionOuter.defaultProps = {
   children: null,
 };

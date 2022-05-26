@@ -3,13 +3,13 @@ import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
+import HeaderProject from "../../components/header/header_project/header_project";
 import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
 import Layout from "../../components/layout/layout";
 import ListItemWithImage from "../../components/molecules/list_item/list_item_with_image/list_item_with_image";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
-import Section from "../../components/section/section";
-import SubNav from "../../components/sub_nav/sub_nav";
+import SectionOuter from "../../components/section/section_outer/section_outer";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
@@ -23,6 +23,8 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
     allPokemon: { nodes: allPokemon },
     allLanguagesISO: { distinct: allLanguagesISO },
   } = data;
+
+  const doc = data.doc.nodes[0].excerpt;
 
   const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
   const paginationBasePath = createUrlPathFromArray([languageISO, "pokedex"]);
@@ -39,9 +41,9 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
   return (
     <Layout title={siteTitle}>
       <InnerWrapper>
-        <SubNav title="Multilingual Pokedex" />
+        <HeaderProject doc={doc} />
 
-        <Section>
+        <SectionOuter>
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
@@ -64,18 +66,23 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
               ]);
               const title = `${paddedPokedexId} ${name}`;
               return (
-                <ListItemWithImage link={link} title={title} image={artwork} />
+                <ListItemWithImage
+                  variant="square"
+                  link={link}
+                  title={title}
+                  image={artwork}
+                />
               );
             })}
           </ResponsiveGrid>
-        </Section>
-        <Section>
+        </SectionOuter>
+        <SectionOuter>
           <Pagination
             basePath={paginationBasePath}
             currentPage={currentPage}
             pageCount={pageCount}
           />
-        </Section>
+        </SectionOuter>
       </InnerWrapper>
     </Layout>
   );
@@ -113,8 +120,8 @@ TemplatePokemonListPage.defaultProps = {
 export const query = graphql`
   query TemplatePokemonListPageQuery(
     $languageISO: String
-    $pokemonPerPage: Int
-    $pokemonToSkip: Int
+    $itemsPerPage: Int
+    $itemsToSkip: Int
   ) {
     site {
       siteMetadata {
@@ -125,10 +132,17 @@ export const query = graphql`
     allLanguagesISO: allPokemon {
       distinct(field: language___languageISO)
     }
+    doc: allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "projects" } } }
+    ) {
+      nodes {
+        excerpt(pruneLength: 650, format: HTML, truncate: true)
+      }
+    }
     allPokemon: allPokemon(
       filter: { language: { languageISO: { eq: $languageISO } } }
-      limit: $pokemonPerPage
-      skip: $pokemonToSkip
+      limit: $itemsPerPage
+      skip: $itemsToSkip
     ) {
       nodes {
         artwork {

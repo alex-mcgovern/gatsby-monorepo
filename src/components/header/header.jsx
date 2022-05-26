@@ -7,11 +7,9 @@ const ROOT_TEXT_OPTIONS = [
   "Hello.",
   "Yo.",
   "Ciao.",
-  "Stylishly unstyled..? 🤔",
   "Greetings.",
   "Dia duit. (That means hello in Irish)",
   "// ToDo: Write greeting",
-  "greeting_v4_final-1_final.ai",
 ];
 
 const ALTERNATE_TEXT_OPTIONS = ["Hmmmm...", "A thought...", "Witty title."];
