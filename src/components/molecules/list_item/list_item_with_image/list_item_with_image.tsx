@@ -1,9 +1,17 @@
 import React from "react";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import PropTypes from "prop-types";
+import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import * as classes from "./list_item_with_image.module.scss";
+
+interface ListItemWithImageProps {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  link: string;
+  image: ImageDataLike;
+  variant?: "square" | "wide" | "tall";
+}
 
 export default function ListItemWithImage({
   title,
@@ -12,7 +20,7 @@ export default function ListItemWithImage({
   link,
   image,
   variant,
-}) {
+}: ListItemWithImageProps) {
   const imageData = getImage(image);
 
   const listItemClassNames = classNames(classes.list_item_link, {
@@ -24,7 +32,13 @@ export default function ListItemWithImage({
   return (
     <Link to={link} className={listItemClassNames}>
       <div className={classes.image_wrapper}>
-        <GatsbyImage className={classes.image} image={imageData} />
+        {imageData && (
+          <GatsbyImage
+            alt={title}
+            className={classes.image}
+            image={imageData}
+          />
+        )}
       </div>
       {title && (
         <header>
@@ -37,15 +51,6 @@ export default function ListItemWithImage({
     </Link>
   );
 }
-
-ListItemWithImage.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  description: PropTypes.string,
-  link: PropTypes.string,
-  image: PropTypes.shape({}),
-  variant: PropTypes.oneOf(["square", "wide", "tall"]),
-};
 
 ListItemWithImage.defaultProps = {
   title: "",
