@@ -1,26 +1,70 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
-import PropTypes from "prop-types";
-import Layout from "../../components/layout/layout/layout.tsx";
+import { ImageDataLike, getImage } from "gatsby-plugin-image";
+import Button from "../../components/atoms/button/button/button";
+import ButtonWrapper from "../../components/atoms/button/button_wrapper/button_wrapper";
+import Layout from "../../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import BlogHero from "../../components/molecules/blog/blog_hero/blog_hero";
-import Bio from "../../components/molecules/header/bio/bio.tsx";
+import Bio from "../../components/molecules/header/bio/bio";
 import Seo from "../../components/seo";
 import * as classes from "./template_blog_post.module.scss";
 
-const BlogPostTemplate = ({ data }) => {
-  const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const { previous, next } = data;
-  const image = getImage(post.frontmatter.cover);
+interface BlogPostTemplateProps {
+  data: {
+    markdownRemark: {
+      excerpt: string;
+      html: string;
+      frontmatter: {
+        cover?: ImageDataLike;
+        date?: string;
+        description?: string;
+        title: string;
+      };
+    };
+    next?: {
+      fields?: {
+        slug?: string;
+      };
+      frontmatter?: {
+        title?: string;
+      };
+    };
+    previous?: {
+      fields?: {
+        slug?: string;
+      };
+      frontmatter?: {
+        title?: string;
+      };
+    };
+    site?: {
+      siteMetadata: {
+        title?: string;
+      };
+    };
+  };
+}
+
+const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
+  console.log(data);
+  const { markdownRemark: post, site, previous, next } = data;
+  const {
+    excerpt,
+    frontmatter: { cover, description },
+    html,
+  } = post;
+
+  const siteTitle = site?.siteMetadata?.title || `Title`;
+  const {} = data;
+  const image = cover && getImage(cover);
 
   return (
     <Layout title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={description || excerpt}
       />
       <LayoutMaxWidthContainer>
         <BlogHero
@@ -35,16 +79,21 @@ const BlogPostTemplate = ({ data }) => {
         >
           <LayoutSectionOuter>
             <section
-              dangerouslySetInnerHTML={{ __html: post.html }}
+              dangerouslySetInnerHTML={{ __html: html }}
               itemProp="articleBody"
             />
             <hr />
-            <footer>
-              <Bio />
-            </footer>
+            <footer></footer>
           </LayoutSectionOuter>
         </article>
         <nav className={classes.blog_post_nav}>
+          <ButtonWrapper isSpaceBetween>
+            <Button
+              to={previous?.fields?.slug}
+              title={previous?.frontmatter?.title}
+            />
+            <Button to={next?.fields?.slug} title={next?.frontmatter?.title} />
+          </ButtonWrapper>
           <ul
             style={{
               display: `flex`,
@@ -53,62 +102,11 @@ const BlogPostTemplate = ({ data }) => {
               listStyle: `none`,
               padding: 0,
             }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
+          ></ul>
         </nav>
       </LayoutMaxWidthContainer>
     </Layout>
   );
-};
-
-BlogPostTemplate.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      excerpt: PropTypes.shape({}),
-      frontmatter: PropTypes.shape({
-        cover: PropTypes.shape({}),
-        date: PropTypes.string,
-        description: PropTypes.string,
-        title: PropTypes.string,
-      }),
-      html: PropTypes.string,
-    }),
-    next: PropTypes.shape({
-      fields: PropTypes.shape({
-        slug: PropTypes.string,
-      }),
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    previous: PropTypes.shape({
-      fields: PropTypes.shape({
-        slug: PropTypes.string,
-      }),
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
 };
 
 export default BlogPostTemplate;
