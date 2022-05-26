@@ -12,8 +12,9 @@ description:
 
 # Multilingual Pokedex
 
-This is a working example of the engineering task I created for my team. The
-brief is to create a multilingual Pokedex, using data from PokeAPI.
+This is a working example of the take-home challenge I use for frontend roles.
+The brief is to create a static Gatsby website containing a multilingual
+Pokedex, using data sourced from PokeAPI at build time.
 
 The focus is on how the candidate structures their data and how i18n is built
 into the design, as well as their approach to i18n functionality in the frontend
