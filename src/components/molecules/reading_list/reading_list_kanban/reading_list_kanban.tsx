@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ReadingListItem from "../reading_list_item/reading_list_item";
 import * as classes from "./reading_list_kanban.module.scss";
 
@@ -48,7 +47,9 @@ const READING_LIST_MOCK = {
   ],
 };
 
-export default function ReadingListKanban({ prop }) {
+interface ReadingListKanbanProps {}
+
+export default function ReadingListKanban({}: ReadingListKanbanProps) {
   return (
     <section className={classes.reading_list_wrapper}>
       <div>
@@ -70,10 +71,4 @@ export default function ReadingListKanban({ prop }) {
   );
 }
 
-ReadingListKanban.propTypes = {
-  prop: PropTypes.string,
-};
-
-ReadingListKanban.defaultProps = {
-  prop: null,
-};
+ReadingListKanban.defaultProps = {};
