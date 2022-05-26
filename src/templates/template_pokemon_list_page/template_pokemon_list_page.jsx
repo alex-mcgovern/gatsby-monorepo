@@ -3,13 +3,13 @@ import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
-import HeaderProject from "../../components/header/header_project/header_project";
-import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
-import Layout from "../../components/layout/layout";
+import Layout from "../../components/layout/layout/layout";
+import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
+import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
+import HeaderProject from "../../components/molecules/header/header_project/header_project";
 import ListItemWithImage from "../../components/molecules/list_item/list_item_with_image/list_item_with_image";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
-import SectionOuter from "../../components/section/section_outer/section_outer";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
@@ -40,10 +40,10 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
 
   return (
     <Layout title={siteTitle}>
-      <InnerWrapper>
+      <LayoutMaxWidthContainer>
         <HeaderProject doc={doc} />
 
-        <SectionOuter>
+        <LayoutSectionOuter>
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
@@ -75,15 +75,15 @@ export default function TemplatePokemonListPage({ data, pageContext }) {
               );
             })}
           </ResponsiveGrid>
-        </SectionOuter>
-        <SectionOuter>
+        </LayoutSectionOuter>
+        <LayoutSectionOuter>
           <Pagination
             basePath={paginationBasePath}
             currentPage={currentPage}
             pageCount={pageCount}
           />
-        </SectionOuter>
-      </InnerWrapper>
+        </LayoutSectionOuter>
+      </LayoutMaxWidthContainer>
     </Layout>
   );
 }
@@ -97,6 +97,15 @@ TemplatePokemonListPage.propTypes = {
       siteMetadata: PropTypes.shape({
         title: PropTypes.string,
       }),
+    }),
+    doc: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          excerpt: PropTypes.shape({
+            html: PropTypes.string,
+          }),
+        })
+      ),
     }),
     allLanguagesISO: PropTypes.arrayOf(
       PropTypes.shape({

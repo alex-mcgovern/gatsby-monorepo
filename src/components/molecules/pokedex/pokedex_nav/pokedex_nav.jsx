@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button/button";
+import Button from "../../../atoms/button/button/button.tsx";
 import Search from "../../search/search/search";
 import SingleSelect from "../../single_select/single_select/single_select";
 import * as classes from "./pokedex_nav.module.scss";

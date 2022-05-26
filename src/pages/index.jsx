@@ -1,33 +1,37 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Button from "../components/atoms/button/button/button";
-import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper";
-import Bio from "../components/bio/bio";
-import SectionBlogPostList from "../components/blog/section_blog_articles_list/section_blog_articles_list";
-import InnerWrapper from "../components/inner_wrapper/inner_wrapper";
-import InstaGridSmall from "../components/insta_grid/insta_grid_small/insta_grid_small";
-import Layout from "../components/layout/layout";
-import ReadingList from "../components/reading_list/reading_list_kanban/reading_list_kanban";
-import SectionContent from "../components/section/section_content/section_content";
-import SectionOuter from "../components/section/section_outer/section_outer";
+import PropTypes from "prop-types";
+import Button from "../components/atoms/button/button/button.tsx";
+import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper.tsx";
+import Layout from "../components/layout/layout/layout";
+import LayoutMaxWidthContainer from "../components/layout/layout_max_width_container/layout_max_width_container";
+import LayoutSectionInner from "../components/layout/layout_section_inner/layout_section_inner";
+import LayoutSectionOuter from "../components/layout/layout_section_outer/layout_section_outer";
+import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
+import Bio from "../components/molecules/header/bio/bio.tsx";
+import InstaGridSmall from "../components/molecules/insta_grid/insta_grid_small/insta_grid_small";
+import ReadingList from "../components/molecules/reading_list/reading_list_kanban/reading_list_kanban";
 import Seo from "../components/seo";
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const bio = data.bio.nodes[0].excerpt;
   const posts = data.allMarkdownRemark.nodes;
   const images = data.allInstagramContent.nodes;
 
-  console.log(data);
-
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <Seo title="All posts" />
 
-      <InnerWrapper>
+      <LayoutMaxWidthContainer>
         <Bio bio={bio} />
-        <SectionOuter>
-          <SectionContent hasArrowsBottom hasArrowsTop hasOutline hasPadding>
+        <LayoutSectionOuter>
+          <LayoutSectionInner
+            hasArrowsBottom
+            hasArrowsTop
+            hasOutline
+            hasPadding
+          >
             <h5>BLOG</h5>
             <h3>I'm trying to write more often...</h3>
             <SectionBlogPostList posts={posts} />
@@ -38,13 +42,36 @@ const BlogIndex = ({ data, location }) => {
                 title="Explore 11 more blog articles"
               />
             </ButtonWrapper>
-          </SectionContent>
-        </SectionOuter>
+          </LayoutSectionInner>
+        </LayoutSectionOuter>
         <InstaGridSmall images={images} />
         <ReadingList />
-      </InnerWrapper>
+      </LayoutMaxWidthContainer>
     </Layout>
   );
+};
+
+BlogIndex.propTypes = {
+  data: PropTypes.shape({
+    allInstagramContent: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    allMarkdownRemark: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.shape({})),
+    }),
+    bio: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          excerpt: PropTypes.shape({}),
+        })
+      ),
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default BlogIndex;

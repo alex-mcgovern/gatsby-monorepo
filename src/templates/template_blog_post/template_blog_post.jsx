@@ -1,27 +1,28 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import Bio from "../../components/bio/bio";
-import BlogHero from "../../components/blog_hero/blog_hero";
-import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
-import Layout from "../../components/layout/layout";
-import SectionOuter from "../../components/section/section_outer/section_outer";
+import PropTypes from "prop-types";
+import Layout from "../../components/layout/layout/layout";
+import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
+import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
+import BlogHero from "../../components/molecules/blog/blog_hero/blog_hero";
+import Bio from "../../components/molecules/header/bio/bio.tsx";
 import Seo from "../../components/seo";
 import * as classes from "./template_blog_post.module.scss";
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
   const image = getImage(post.frontmatter.cover);
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <InnerWrapper>
+      <LayoutMaxWidthContainer>
         <BlogHero
           date={post.frontmatter.date}
           image={image}
@@ -32,7 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
           itemScope
           itemType="http://schema.org/Article"
         >
-          <SectionOuter>
+          <LayoutSectionOuter>
             <section
               dangerouslySetInnerHTML={{ __html: post.html }}
               itemProp="articleBody"
@@ -41,7 +42,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <footer>
               <Bio />
             </footer>
-          </SectionOuter>
+          </LayoutSectionOuter>
         </article>
         <nav className={classes.blog_post_nav}>
           <ul
@@ -69,9 +70,45 @@ const BlogPostTemplate = ({ data, location }) => {
             </li>
           </ul>
         </nav>
-      </InnerWrapper>
+      </LayoutMaxWidthContainer>
     </Layout>
   );
+};
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      excerpt: PropTypes.shape({}),
+      frontmatter: PropTypes.shape({
+        cover: PropTypes.shape({}),
+        date: PropTypes.string,
+        description: PropTypes.string,
+        title: PropTypes.string,
+      }),
+      html: PropTypes.string,
+    }),
+    next: PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string,
+      }),
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+    previous: PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string,
+      }),
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 export default BlogPostTemplate;

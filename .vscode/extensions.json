@@ -10,6 +10,7 @@
     "wenfangdu.snippet-generator",
     "zengxingxin.sort-js-object-keys",
     "stylelint.vscode-stylelint",
-    "adamwalzer.string-converter"
+    "adamwalzer.string-converter",
+    "suming.react-proptypes-generate"
   ]
 }

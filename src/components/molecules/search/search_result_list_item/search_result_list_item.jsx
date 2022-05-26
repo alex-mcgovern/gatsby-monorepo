@@ -33,18 +33,19 @@ export default function SearchResultListItem({
 
 SearchResultListItem.propTypes = {
   getItemProps: PropTypes.func,
-
-  index: PropTypes.number,
   highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  item: PropTypes.shape({
+    link: PropTypes.string,
+    value: PropTypes.string,
+  }),
   selectedItem: PropTypes.shape({}),
-  item: PropTypes.shape({}),
 };
 
 SearchResultListItem.defaultProps = {
   getItemProps: () => {},
-
-  index: null,
   highlightedIndex: null,
-  selectedItem: null,
+  index: null,
   item: null,
+  selectedItem: null,
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import Downshift from "downshift";
 import PropTypes from "prop-types";
-import Button from "../../../atoms/button/button/button";
+import Button from "../../../atoms/button/button/button.tsx";
 import SingleSelectDropdownList from "../single_select_dropdown/single_select_dropdown";
 import * as classes from "./single_select.module.scss";
 

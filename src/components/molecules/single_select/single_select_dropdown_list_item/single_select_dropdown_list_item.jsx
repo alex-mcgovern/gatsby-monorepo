@@ -33,11 +33,13 @@ export default function SingleSelectDropdownListItem({
 
 SingleSelectDropdownListItem.propTypes = {
   getItemProps: PropTypes.func,
-
-  index: PropTypes.number,
   highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  item: PropTypes.shape({
+    link: PropTypes.string,
+    value: PropTypes.string,
+  }),
   selectedItem: PropTypes.shape({}),
-  item: PropTypes.shape({}),
 };
 
 SingleSelectDropdownListItem.defaultProps = {

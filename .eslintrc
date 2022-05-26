@@ -108,8 +108,10 @@
   },
   "settings": {
     "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".js", ".jsx", ".tsx", ".json"]
+      },
       "alias": {
-        "extensions": [".ts", ".js", ".jsx", ".json"],
         "map": [
           ["~utils", "./src/utils"],
           ["~hooks", "./src/hooks"],

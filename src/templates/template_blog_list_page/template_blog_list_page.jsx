@@ -1,12 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import SectionBlogPostList from "../../components/blog/section_blog_articles_list/section_blog_articles_list";
-import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
-import Layout from "../../components/layout/layout";
+import Layout from "../../components/layout/layout/layout";
+import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
+import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
+import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
-import SectionOuter from "../../components/section/section_outer/section_outer";
-import SubNav from "../../components/sub_nav/sub_nav";
 
 const PAGINATION_BASE_PATH = "blog";
 
@@ -19,46 +18,38 @@ export default function TemplateBlogListPage({ data, pageContext }) {
     allMarkdownRemark: { nodes: posts },
   } = data;
 
-  //   const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
-
-  //   const languageIndexBasePath = createUrlPathFromArray([
-  //     "pokedex",
-  //     currentPage,
-  //   ]);
-  //   const languageIndex = getLanguageSelectIndex({
-  //     allLanguagesISO,
-  //     basePath: languageIndexBasePath,
-  //   });
-
   return (
     <Layout title={siteTitle}>
-      <InnerWrapper>
-        <SubNav title="Multilingual Pokedex" />
-
-        <SectionOuter>
-          {/* <PokedexNav
-            searchIndex={searchIndex}
-            languageISO={languageISO}
-            languageIndex={languageIndex}
-            placeholder="Search for a pokemon"
-            isTopLevel
-          /> */}
+      <LayoutMaxWidthContainer>
+        <LayoutSectionOuter>
           <SectionBlogPostList posts={posts} />
-        </SectionOuter>
-        <SectionOuter>
+        </LayoutSectionOuter>
+        <LayoutSectionOuter>
           <Pagination
             basePath={PAGINATION_BASE_PATH}
             currentPage={currentPage}
             pageCount={pageCount}
           />
-        </SectionOuter>
-      </InnerWrapper>
+        </LayoutSectionOuter>
+      </LayoutMaxWidthContainer>
     </Layout>
   );
 }
 
 TemplateBlogListPage.propTypes = {
   data: PropTypes.shape({
+    allLanguagesISO: PropTypes.arrayOf(
+      PropTypes.shape({
+        distinct: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+    allMarkdownRemark: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          posts: PropTypes.arrayOf(PropTypes.shape({})),
+        })
+      ),
+    }),
     allPokemon: PropTypes.shape({
       nodes: PropTypes.arrayOf(PropTypes.shape({})),
     }),
@@ -67,23 +58,12 @@ TemplateBlogListPage.propTypes = {
         title: PropTypes.string,
       }),
     }),
-    allLanguagesISO: PropTypes.arrayOf(
-      PropTypes.shape({
-        distinct: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
   }).isRequired,
   pageContext: PropTypes.shape({
-    languageISO: PropTypes.string,
     currentPage: PropTypes.number,
+    languageISO: PropTypes.string,
     pageCount: PropTypes.number,
-  }),
-};
-
-TemplateBlogListPage.defaultProps = {
-  pageContext: {
-    subNavData: [],
-  },
+  }).isRequired,
 };
 
 export const query = graphql`

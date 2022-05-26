@@ -1,0 +1,6 @@
+.layout_max_width_container {
+  outline: 1px solid $color-gray-light;
+  // border-right: 1px dashed $color-gray-light;
+  margin: 0 auto $spacing-section;
+  max-width: $maxWidth-wrapper;
+}

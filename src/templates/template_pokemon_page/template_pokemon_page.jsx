@@ -3,14 +3,12 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import Button from "../../components/atoms/button/button/button";
-import HorizontalDivider from "../../components/horizontal_divider/horizontal_divider";
-import InnerWrapper from "../../components/inner_wrapper/inner_wrapper";
-import Layout from "../../components/layout/layout";
+import HorizontalDivider from "../../components/atoms/horizontal_divider/horizontal_divider";
+import Layout from "../../components/layout/layout/layout";
+import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
+import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
-import SectionOuter from "../../components/section/section_outer/section_outer";
-import SubNav from "../../components/sub_nav/sub_nav";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
@@ -51,17 +49,8 @@ export default function TemplatePokemonPage({ data, pageContext }) {
   });
   return (
     <Layout title={siteTitle}>
-      <InnerWrapper>
-        <SubNav title="Multilingual Pokedex">
-          <Button
-            trailingIcon={["fab", "github"]}
-            variant="secondary"
-            size="sm"
-            to="https://github.com"
-            title="Source code"
-          />
-        </SubNav>
-        <SectionOuter>
+      <LayoutMaxWidthContainer>
+        <LayoutSectionOuter>
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
@@ -81,16 +70,16 @@ export default function TemplatePokemonPage({ data, pageContext }) {
 
             <GatsbyImage image={imageData} className={classes.pokemon_image} />
           </div>
-        </SectionOuter>
+        </LayoutSectionOuter>
 
-        <SectionOuter>
+        <LayoutSectionOuter>
           <Pagination
             basePath={paginationBasePath}
             currentPage={pokedexID}
             pageCount={totalCount}
           />
-        </SectionOuter>
-      </InnerWrapper>
+        </LayoutSectionOuter>
+      </LayoutMaxWidthContainer>
     </Layout>
   );
 }

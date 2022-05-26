@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button/button";
-import SectionOuter from "../../../section/section_outer/section_outer";
+import Button from "../../../atoms/button/button/button.tsx";
+import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
 import getPaginationArray from "./helper_functions/filter_page_array/filter_page_array";
 import { buttonWrapperStyle } from "./pagination.module.scss";
 
@@ -20,7 +20,7 @@ function Pagination({ basePath, currentPage, pageCount }) {
   const pageArray = getPaginationArray({ pageCount, currentPage });
 
   return (
-    <SectionOuter>
+    <LayoutSectionOuter>
       <div className={buttonWrapperStyle}>
         <Button
           variant="secondary"
@@ -53,7 +53,7 @@ function Pagination({ basePath, currentPage, pageCount }) {
           isDisabled={isNextOrLastDisabled}
         />
       </div>
-    </SectionOuter>
+    </LayoutSectionOuter>
   );
 }
 

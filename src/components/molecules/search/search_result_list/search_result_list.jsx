@@ -42,12 +42,14 @@ export default function SearchResultList({
 }
 
 SearchResultList.propTypes = {
-  isOpen: PropTypes.bool,
-  getMenuProps: PropTypes.func,
   getItemProps: PropTypes.func,
-  inputValue: PropTypes.shape({}),
-  searchIndex: PropTypes.arrayOf(PropTypes.shape({})),
+  getMenuProps: PropTypes.func,
   highlightedIndex: PropTypes.number,
+  inputValue: PropTypes.shape({
+    toLowerCase: PropTypes.func,
+  }),
+  isOpen: PropTypes.bool,
+  searchIndex: PropTypes.arrayOf(PropTypes.shape({})),
   selectedItem: PropTypes.shape({}),
 };
 
