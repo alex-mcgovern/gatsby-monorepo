@@ -1,10 +1,6 @@
-.horizontal_divider {
-  @include resetHR;
+.layout_decorative_arrows {
   @include globalMaxWidth;
   width: 100%;
-
-  border: none;
-
   height: 1px;
 
   &:after,
@@ -27,7 +23,6 @@
 
   &.position {
     &_top {
-      // position: absolute;
       top: 0;
       &:after,
       &:before {
@@ -35,7 +30,6 @@
       }
     }
     &_bottom {
-      // position: absolute;
       bottom: 0;
       &:after,
       &:before {

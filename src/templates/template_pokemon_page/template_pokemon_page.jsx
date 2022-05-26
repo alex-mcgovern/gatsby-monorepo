@@ -3,8 +3,8 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import HorizontalDivider from "../../components/atoms/horizontal_divider/horizontal_divider";
 import Layout from "../../components/layout/layout/layout";
+import LayoutDecorativeArrows from "../../components/layout/layout_decorative_arrows/layout_decorative_arrows";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
@@ -59,13 +59,13 @@ export default function TemplatePokemonPage({ data, pageContext }) {
 
           <div className={classes.pokemon_wrapper}>
             <div className={classes.pokemon_inner}>
-              <HorizontalDivider />
+              <LayoutDecorativeArrows />
               <div>
                 <h2>{pokemonTitle}</h2>
                 <h3>{genus}</h3>
                 <p>{flavorText}</p>
               </div>
-              <HorizontalDivider />
+              <LayoutDecorativeArrows />
             </div>
 
             <GatsbyImage image={imageData} className={classes.pokemon_image} />

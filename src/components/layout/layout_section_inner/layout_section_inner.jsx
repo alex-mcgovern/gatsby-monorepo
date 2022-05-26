@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import HorizontalDivider from "../../atoms/horizontal_divider/horizontal_divider";
+import LayoutDecorativeArrows from "../layout_decorative_arrows/layout_decorative_arrows.tsx";
 import * as classes from "./layout_section_inner.module.scss";
 
 export default function LayoutSectionInner({
@@ -23,9 +23,9 @@ export default function LayoutSectionInner({
   });
   return (
     <div className={sectionContentClassNames}>
-      {hasArrowsTop && <HorizontalDivider position="top" />}
+      {hasArrowsTop && <LayoutDecorativeArrows position="top" />}
       {children}
-      {hasArrowsBottom && <HorizontalDivider position="bottom" />}
+      {hasArrowsBottom && <LayoutDecorativeArrows position="bottom" />}
     </div>
   );
 }

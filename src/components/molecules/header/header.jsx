@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HorizontalDivider from "../atoms/horizontal_divider/horizontal_divider";
+import LayoutDecorativeArrows from "../../layout/layout_decorative_arrows/layout_decorative_arrows.tsx";
 import * as classes from "./header.module.scss";
 
 const ROOT_TEXT_OPTIONS = [
@@ -22,12 +22,12 @@ function Header({ isRootPath }) {
   return (
     <header className={classes.hero}>
       <div className={classes.hero_inner}>
-        <HorizontalDivider />
+        <LayoutDecorativeArrows />
         <div className={classes.hero_inner_text}>
           <h1 className={classes.hero_inner_h1}>Alex McGovern Smith</h1>
           <h2 className={classes.hero_inner_h2}>{heroText}</h2>
         </div>
-        <HorizontalDivider />
+        <LayoutDecorativeArrows />
       </div>
       <div className={classes.hero_placeholder} />
     </header>
