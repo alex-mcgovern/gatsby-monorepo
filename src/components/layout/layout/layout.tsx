@@ -4,13 +4,12 @@ import * as classes from "./layout.module.scss";
 
 interface LayoutProps {
   children?: React.ReactNode;
+  title: string;
 }
 
-const Layout = ({
-  children
-}: LayoutProps) => {
+const Layout = ({ children, title }: LayoutProps) => {
   return (
-    <div>
+    <div id={title}>
       <StickyNav />
       <div className={classes.global_wrapper_outer}>
         <div className={classes.global_wrapper_inner}>
