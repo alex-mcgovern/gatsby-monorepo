@@ -12,6 +12,7 @@ html {
   font-size: $fontSize-root;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   // background-color: $color-midground;
 }
 
@@ -45,7 +46,7 @@ h5,
 h6 {
   font-family: $font-heading;
   margin-top: $spacing-0;
-  margin-bottom: $spacing-1;
+  margin-bottom: $spacing-4;
   line-height: $lineHeight-md;
   letter-spacing: -0.025em;
 
