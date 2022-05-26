@@ -1,8 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import * as classes from "./sub_nav.module.scss";
 
-export default function SubNav({ title, children }) {
+interface SubNavProps {
+  title?: string;
+  children?: React.ReactNode;
+}
+
+export default function SubNav({ title, children }: SubNavProps) {
   return (
     <nav className={classes.sub_nav}>
       <div className={classes.sub_nav_inner}>
@@ -12,11 +16,6 @@ export default function SubNav({ title, children }) {
     </nav>
   );
 }
-
-SubNav.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.node,
-};
 
 SubNav.defaultProps = {
   title: null,
