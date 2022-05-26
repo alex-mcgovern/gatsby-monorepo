@@ -1,7 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import SearchResultListItem from "../search_result_list_item/search_result_list_item";
 import * as classes from "./search_result_list.module.scss";
+
+type Item = {
+  value: string;
+} | null;
+
+interface SearchResultListProps {
+  getItemProps(...args: unknown[]): unknown;
+  getMenuProps(...args: unknown[]): unknown;
+  highlightedIndex?: number;
+  inputValue?: string;
+  isOpen?: boolean;
+  searchIndex: Item[];
+  selectedItem?: {};
+}
 
 export default function SearchResultList({
   getItemProps,
@@ -11,7 +24,7 @@ export default function SearchResultList({
   isOpen,
   searchIndex,
   selectedItem,
-}) {
+}: SearchResultListProps) {
   if (isOpen) {
     return (
       <div className={classes.list_wrapper}>
@@ -20,7 +33,7 @@ export default function SearchResultList({
             .filter((item) => {
               return (
                 !inputValue ||
-                item.value.toLowerCase().includes(inputValue.toLowerCase())
+                item?.value.toLowerCase().includes(inputValue.toLowerCase())
               );
             })
             .map((item, index) => {
@@ -41,23 +54,10 @@ export default function SearchResultList({
   return null;
 }
 
-SearchResultList.propTypes = {
-  getItemProps: PropTypes.func,
-  getMenuProps: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  inputValue: PropTypes.shape({
-    toLowerCase: PropTypes.func,
-  }),
-  isOpen: PropTypes.bool,
-  searchIndex: PropTypes.arrayOf(PropTypes.shape({})),
-  selectedItem: PropTypes.shape({}),
-};
-
 SearchResultList.defaultProps = {
   isOpen: null,
   getMenuProps: () => {},
   getItemProps: () => {},
-  inputValue: null,
   searchIndex: null,
   highlightedIndex: null,
   selectedItem: null,
