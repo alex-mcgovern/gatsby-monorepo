@@ -1,9 +1,16 @@
 import React from "react";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import * as classes from "./responsive_grid.module.scss";
 
-export default function ResponsiveGrid({ split, children }) {
+interface ResponsiveGridProps {
+  children: React.ReactNode[];
+  split?: number;
+}
+
+export default function ResponsiveGrid({
+  split,
+  children,
+}: ResponsiveGridProps) {
   const gridClassNames = classNames(classes.grid, {
     [classes.split_2]: split === 2,
     [classes.split_3]: split === 3,
@@ -17,13 +24,3 @@ export default function ResponsiveGrid({ split, children }) {
     </ul>
   );
 }
-
-ResponsiveGrid.propTypes = {
-  children: PropTypes.node,
-  split: PropTypes.number,
-};
-
-ResponsiveGrid.defaultProps = {
-  children: null,
-  split: null,
-};
