@@ -9,8 +9,9 @@ description:
   (Warning, contains nerdiness 🤓)"
 ---
 
-I'm a frontend engineering manager at the start of my leadership career. I'm
-currently at TrueLayer where my team own the public website.
+I'm a frontend engineering manager focused on building high-performing,
+craft-obsessed frontend teams, and building enterprise-scale, fully
+international B2B websites.
 
 My job is to:
 
