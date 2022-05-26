@@ -1,7 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
 import SingleSelectDropdownListItem from "../single_select_dropdown_list_item/single_select_dropdown_list_item";
 import * as classes from "./single_select_dropdown.module.scss";
+
+interface SingleSelectDropdownListProps {
+  isOpen?: boolean;
+  getMenuProps(...args: unknown[]): unknown;
+  getItemProps(...args: unknown[]): unknown;
+  inputValue?: string;
+  searchIndex: {
+    value: string;
+  }[];
+  highlightedIndex?: number;
+  selectedItem?: {};
+}
 
 export default function SingleSelectDropdownList({
   getItemProps,
@@ -11,7 +22,7 @@ export default function SingleSelectDropdownList({
   isOpen,
   searchIndex,
   selectedItem,
-}) {
+}: SingleSelectDropdownListProps) {
   if (isOpen) {
     return (
       <ul className={classes.list_wrapper} {...getMenuProps()}>
@@ -38,16 +49,6 @@ export default function SingleSelectDropdownList({
   }
   return null;
 }
-
-SingleSelectDropdownList.propTypes = {
-  isOpen: PropTypes.bool,
-  getMenuProps: PropTypes.func,
-  getItemProps: PropTypes.func,
-  inputValue: PropTypes.string,
-  searchIndex: PropTypes.arrayOf(PropTypes.shape({})),
-  highlightedIndex: PropTypes.number,
-  selectedItem: PropTypes.shape({}),
-};
 
 SingleSelectDropdownList.defaultProps = {
   isOpen: null,
