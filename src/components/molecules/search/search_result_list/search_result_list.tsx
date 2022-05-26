@@ -3,8 +3,9 @@ import SearchResultListItem from "../search_result_list_item/search_result_list_
 import * as classes from "./search_result_list.module.scss";
 
 type Item = {
+  link: string;
   value: string;
-} | null;
+};
 
 interface SearchResultListProps {
   getItemProps(...args: unknown[]): unknown;
