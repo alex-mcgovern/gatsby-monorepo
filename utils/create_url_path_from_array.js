@@ -24,7 +24,7 @@ function createUrlPathFromArray(array) {
 
     return `/${sanitisedArray.join("/")}`;
   }
-  return null;
+  return undefined;
 }
 
 module.exports = {

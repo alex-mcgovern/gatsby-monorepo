@@ -1,12 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button/button.tsx";
+import Button from "../../../atoms/button/button/button";
+import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
 import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
 import getPaginationArray from "./helper_functions/filter_page_array/filter_page_array";
-import { buttonWrapperStyle } from "./pagination.module.scss";
 
-function Pagination({ basePath, currentPage, pageCount }) {
+interface PaginationProps {
+  basePath: string;
+  currentPage: number;
+  pageCount: number;
+}
+
+function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
   const firstPath = createUrlPathFromArray([basePath, 1]);
   const previousPath = createUrlPathFromArray([basePath, currentPage - 1]);
 
@@ -21,7 +26,7 @@ function Pagination({ basePath, currentPage, pageCount }) {
 
   return (
     <LayoutSectionOuter>
-      <div className={buttonWrapperStyle}>
+      <ButtonWrapper isCentered>
         <Button
           variant="secondary"
           leadingIcon="angles-left"
@@ -52,16 +57,10 @@ function Pagination({ basePath, currentPage, pageCount }) {
           to={lastPath}
           isDisabled={isNextOrLastDisabled}
         />
-      </div>
+      </ButtonWrapper>
     </LayoutSectionOuter>
   );
 }
-
-Pagination.propTypes = {
-  basePath: PropTypes.string,
-  currentPage: PropTypes.number,
-  pageCount: PropTypes.number,
-};
 
 Pagination.defaultProps = {
   basePath: null,

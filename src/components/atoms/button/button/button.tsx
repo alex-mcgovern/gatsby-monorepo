@@ -7,8 +7,8 @@ import "../../../../utils/font_awesome";
 import * as classes from "./button.module.scss";
 
 interface ButtonProps {
-  to: string;
-  title?: string;
+  to?: string;
+  title?: string | number;
   leadingIcon?: IconProp;
   isDisabled?: boolean;
   trailingIcon?: IconProp;
@@ -27,7 +27,7 @@ export default function Button({
   onClick,
   isDisabled,
 }: ButtonProps) {
-  const isInternalLink = /^\/(?!\/)/.test(to);
+  const isInternalLink = to && /^\/(?!\/)/.test(to);
 
   const buttonClassNames = classNames(classes.button, {
     [classes.variant_primary]: variant === "primary",
@@ -71,14 +71,3 @@ export default function Button({
     </button>
   );
 }
-
-Button.defaultProps = {
-  leadingIcon: null,
-  trailingIcon: null,
-  to: null,
-  isDisabled: false,
-  title: null,
-  variant: "primary",
-  size: null,
-  onClick: () => {},
-};
