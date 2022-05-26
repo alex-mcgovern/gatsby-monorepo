@@ -1,12 +1,17 @@
 import React from "react";
+import { ImageDataLike } from "gatsby-plugin-image";
 import Button from "../../../atoms/button/button/button";
 import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
 import ResponsiveGrid from "../../../atoms/responsive_grid/responsive_grid";
 import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
-import InstaGridItem from "../insta_grid_item/insta_grid_item";
+import InstagramPostItem from "../instagram_post_item/instagram_post_item";
 
 interface InstagramPostListProps {
-  images: {}[];
+  images: {
+    localImage: ImageDataLike;
+    permalink: string;
+    caption: string;
+  }[];
 }
 
 export default function InstagramPostList({ images }: InstagramPostListProps) {
@@ -17,7 +22,7 @@ export default function InstagramPostList({ images }: InstagramPostListProps) {
         <ResponsiveGrid split={3}>
           {images?.length > 0 &&
             images.map((wrappedImage) => {
-              return <InstaGridItem wrappedImage={wrappedImage} />;
+              return <InstagramPostItem wrappedImage={wrappedImage} />;
             })}
         </ResponsiveGrid>
         <ButtonWrapper isCentered>
