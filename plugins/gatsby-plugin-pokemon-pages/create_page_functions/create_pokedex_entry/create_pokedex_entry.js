@@ -19,7 +19,7 @@ async function createPokedexEntry({
 
   return actions.createPage({
     component: require.resolve(
-      "../../../../src/templates/template_pokemon_page/template_pokemon_page.jsx"
+      "../../../../src/templates/template_pokemon_page/template_pokemon_page.tsx"
     ),
     context: pageContext,
     path: pagePath,

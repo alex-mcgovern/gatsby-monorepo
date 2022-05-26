@@ -1,10 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import PropTypes from "prop-types";
+import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import Layout from "../../components/layout/layout/layout.tsx";
-import LayoutDecorativeArrows from "../../components/layout/layout_decorative_arrows/layout_decorative_arrows.tsx";
+import Layout from "../../components/layout/layout/layout";
+import LayoutDecorativeArrows from "../../components/layout/layout_decorative_arrows/layout_decorative_arrows";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
@@ -14,18 +13,52 @@ import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_inde
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 import * as classes from "./template_pokemon_page.module.scss";
 
-export default function TemplatePokemonPage({ data, pageContext }) {
+interface TemplatePokemonPageProps {
+  data: {
+    allPokemon: {
+      nodes: {}[];
+      totalCount: number;
+    };
+    currentPokemon: {
+      edges: {
+        node: {
+          flavorText: string;
+          name: string;
+          genus: string;
+          artwork: ImageDataLike;
+        };
+      }[];
+    };
+    site?: {
+      siteMetadata?: {
+        title?: string;
+      };
+    };
+    allLanguagesISO: {
+      distinct: string[];
+    };
+  };
+  pageContext: {
+    pokedexID: number;
+    languageISO: string;
+    currentPage: number;
+    pageCount: number;
+  };
+}
+
+export default function TemplatePokemonPage({
+  data,
+  pageContext,
+}: TemplatePokemonPageProps) {
   const { pokedexID, languageISO } = pageContext;
-
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
-
-  const { flavorText, name, genus, artwork } =
-    data.currentPokemon?.edges[0].node || {};
-
+  const { allPokemon, allLanguagesISO, site, currentPokemon } = data;
+  const { nodes: allPokemonData, totalCount } = allPokemon;
   const {
-    allPokemon: { nodes: allPokemon },
-    allLanguagesISO: { distinct: allLanguagesISO },
-  } = data;
+    node: { flavorText, name, genus, artwork },
+  } = currentPokemon?.edges[0];
+  const siteTitle = site?.siteMetadata?.title || `Title`;
+
+  // allLanguagesISO: { distinct: allLanguagesISO },
 
   const paddedPokedexId = padStart({
     value: pokedexID,
@@ -37,14 +70,15 @@ export default function TemplatePokemonPage({ data, pageContext }) {
 
   const imageData = getImage(artwork);
 
-  const { totalCount } = data.allPokemon;
-
-  const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
+  const searchIndex = getPokedexSearchIndex({
+    allPokemon: allPokemonData,
+    languageISO,
+  });
   const paginationBasePath = createUrlPathFromArray([languageISO, "pokemon"]);
 
   const languageIndexBasePath = createUrlPathFromArray(["pokemon", pokedexID]);
   const languageIndex = getLanguageSelectIndex({
-    allLanguagesISO,
+    allLanguagesISO: allLanguagesISO.distinct,
     basePath: languageIndexBasePath,
   });
   return (
@@ -68,7 +102,13 @@ export default function TemplatePokemonPage({ data, pageContext }) {
               <LayoutDecorativeArrows />
             </div>
 
-            <GatsbyImage image={imageData} className={classes.pokemon_image} />
+            {imageData && (
+              <GatsbyImage
+                alt={name}
+                image={imageData}
+                className={classes.pokemon_image}
+              />
+            )}
           </div>
         </LayoutSectionOuter>
 
@@ -83,42 +123,6 @@ export default function TemplatePokemonPage({ data, pageContext }) {
     </Layout>
   );
 }
-
-TemplatePokemonPage.propTypes = {
-  data: PropTypes.shape({
-    allPokemon: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.shape({})),
-      totalCount: PropTypes.number,
-    }),
-    currentPokemon: PropTypes.shape({
-      edges: PropTypes.shape({
-        node: PropTypes.arrayOf(PropTypes.shape({})),
-      }),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-    allLanguagesISO: PropTypes.arrayOf(
-      PropTypes.shape({
-        distinct: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
-  }).isRequired,
-  pageContext: PropTypes.shape({
-    pokedexID: PropTypes.number,
-    languageISO: PropTypes.string,
-    currentPage: PropTypes.number,
-    pageCount: PropTypes.number,
-  }),
-};
-
-TemplatePokemonPage.defaultProps = {
-  pageContext: {
-    subNavData: [],
-  },
-};
 
 export const query = graphql`
   query TemplatePokemonPageQuery($pokedexID: Int, $languageISO: String) {
