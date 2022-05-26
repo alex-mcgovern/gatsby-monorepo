@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
-import Layout from "../../components/layout/layout/layout";
+import Layout from "../../components/layout/layout/layout.tsx";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import BlogHero from "../../components/molecules/blog/blog_hero/blog_hero";

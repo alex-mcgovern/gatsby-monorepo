@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import Layout from "../../components/layout/layout/layout";
+import Layout from "../../components/layout/layout/layout.tsx";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";

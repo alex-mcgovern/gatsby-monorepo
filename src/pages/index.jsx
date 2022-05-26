@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import Button from "../components/atoms/button/button/button.tsx";
 import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper.tsx";
-import Layout from "../components/layout/layout/layout";
+import Layout from "../components/layout/layout/layout.tsx";
 import LayoutMaxWidthContainer from "../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionInner from "../components/layout/layout_section_inner/layout_section_inner";
 import LayoutSectionOuter from "../components/layout/layout_section_outer/layout_section_outer";

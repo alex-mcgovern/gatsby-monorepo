@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
-import Layout from "../../components/layout/layout/layout";
+import Layout from "../../components/layout/layout/layout.tsx";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import HeaderProject from "../../components/molecules/header/header_project/header_project";

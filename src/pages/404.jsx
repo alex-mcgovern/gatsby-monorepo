@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import Layout from "../components/layout/layout/layout";
+import Layout from "../components/layout/layout/layout.tsx";
 import Seo from "../components/seo";
 
 const NotFoundPage = ({ data }) => {
