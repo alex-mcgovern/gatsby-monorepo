@@ -1,10 +1,13 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import AlternatingLayout from "../../../atoms/alternating_layout/alternating_layout.tsx";
+import AlternatingLayout from "../../../atoms/alternating_layout/alternating_layout";
 import LayoutSectionInner from "../../../layout/layout_section_inner/layout_section_inner";
 import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
 
-export default function HeaderProject({ doc }) {
+interface HeaderProjectProps {
+  doc: string;
+}
+
+export default function HeaderProject({ doc }: HeaderProjectProps) {
   return (
     <LayoutSectionOuter>
       <AlternatingLayout ratio="2_1">
@@ -25,9 +28,3 @@ export default function HeaderProject({ doc }) {
     </LayoutSectionOuter>
   );
 }
-
-HeaderProject.propTypes = {
-  doc: PropTypes.shape({
-    html: PropTypes.string,
-  }).isRequired,
-};
