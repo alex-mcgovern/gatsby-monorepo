@@ -1,15 +1,22 @@
 import React from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import * as classes from "./search_input.module.scss";
+
+interface SearchInputProps {
+  getInputProps(...args: unknown[]): unknown;
+  placeholder?: string;
+  leadingIcon?: IconProp;
+  size?: "lg" | "md" | "sm";
+}
 
 export default function SearchInput({
   getInputProps,
   placeholder,
   leadingIcon,
   size,
-}) {
+}: SearchInputProps) {
   const inputClassNames = classNames(classes.input_wrapper, {
     [classes.size_lg]: size === "lg",
     [classes.size_md]: size === "md",
@@ -29,13 +36,6 @@ export default function SearchInput({
     </div>
   );
 }
-
-SearchInput.propTypes = {
-  getInputProps: PropTypes.func,
-  placeholder: PropTypes.string,
-  leadingIcon: PropTypes.string,
-  size: PropTypes.oneOf(["lg", "md", "sm"]),
-};
 
 SearchInput.defaultProps = {
   getInputProps: () => {},
