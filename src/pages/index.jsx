@@ -9,7 +9,7 @@ import LayoutSectionInner from "../components/layout/layout_section_inner/layout
 import LayoutSectionOuter from "../components/layout/layout_section_outer/layout_section_outer";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Bio from "../components/molecules/header/bio/bio.tsx";
-import InstaGridSmall from "../components/molecules/insta_grid/insta_grid_small/insta_grid_small";
+import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list.tsx";
 import ReadingList from "../components/molecules/reading_list/reading_list_kanban/reading_list_kanban";
 import Seo from "../components/seo";
 
@@ -44,7 +44,7 @@ const BlogIndex = ({ data }) => {
             </ButtonWrapper>
           </LayoutSectionInner>
         </LayoutSectionOuter>
-        <InstaGridSmall images={images} />
+        <InstagramPostList images={images} />
         <ReadingList />
       </LayoutMaxWidthContainer>
     </Layout>

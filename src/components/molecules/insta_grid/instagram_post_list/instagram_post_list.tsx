@@ -1,12 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Button from "../../../atoms/button/button/button.tsx";
-import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper.tsx";
+import Button from "../../../atoms/button/button/button";
+import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
 import ResponsiveGrid from "../../../atoms/responsive_grid/responsive_grid";
 import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
 import InstaGridItem from "../insta_grid_item/insta_grid_item";
 
-function InstaGridSmall({ images }) {
+interface InstagramPostListProps {
+  images: {}[];
+}
+
+export default function InstagramPostList({ images }: InstagramPostListProps) {
   if (images.length > 0) {
     return (
       <LayoutSectionOuter>
@@ -25,13 +28,3 @@ function InstaGridSmall({ images }) {
   }
   return null;
 }
-
-InstaGridSmall.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({})),
-};
-
-InstaGridSmall.defaultProps = {
-  images: [],
-};
-
-export default InstaGridSmall;
