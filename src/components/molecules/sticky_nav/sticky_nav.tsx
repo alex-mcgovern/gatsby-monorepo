@@ -1,12 +1,13 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
-import Button from "../../atoms/button/button/button.tsx";
-import ButtonWrapper from "../../atoms/button/button_wrapper/button_wrapper.tsx";
+import Button from "../../atoms/button/button/button";
+import ButtonWrapper from "../../atoms/button/button_wrapper/button_wrapper";
 import SingleSelect from "../single_select/single_select/single_select";
 import * as classes from "./sticky_nav.module.scss";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
 const DROPDOWN_INDEX = [{ value: "Pokedex", link: POKEDEX_LINK }];
+
 export default function StickyNav() {
   return (
     <nav className={classes.sticky_nav}>
