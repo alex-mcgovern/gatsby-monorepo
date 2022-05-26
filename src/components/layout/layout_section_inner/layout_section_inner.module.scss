@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
   &.hasPadding {
-    padding: $spacing-section-inner 0;
+    padding: $spacing-section-inner;
   }
   &.background {
     @include placeholderGrid($borderRight: false);
