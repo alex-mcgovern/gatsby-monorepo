@@ -1,21 +1,26 @@
 import React from "react";
 import Downshift from "downshift";
-import PropTypes from "prop-types";
 import SearchInput from "../search_input/search_input";
 import SearchResultList from "../search_result_list/search_result_list";
+import getSearchIndexItemValue from "./helper_functions/get_search_index_item_value";
 import * as classes from "./search.module.scss";
 
-export default function Search({ searchIndex, placeholder, size }) {
+interface SearchProps {
+  placeholder?: string;
+  searchIndex?: {}[];
+  size?: "sm" | "md" | "lg";
+}
+
+export default function Search({
+  searchIndex,
+  placeholder,
+  size,
+}: SearchProps) {
   return (
-    <Downshift
-      itemToString={(item) => {
-        return item ? item.value : "";
-      }}
-    >
+    <Downshift itemToString={getSearchIndexItemValue}>
       {({
         getInputProps,
         getItemProps,
-        // getLabelProps,
         getMenuProps,
         isOpen,
         inputValue,
@@ -45,12 +50,8 @@ export default function Search({ searchIndex, placeholder, size }) {
   );
 }
 
-Search.propTypes = {
-  searchIndex: PropTypes.arrayOf(PropTypes.shape),
-  placeholder: PropTypes.string,
-};
-
 Search.defaultProps = {
   searchIndex: null,
   placeholder: null,
+  size: "md",
 };
