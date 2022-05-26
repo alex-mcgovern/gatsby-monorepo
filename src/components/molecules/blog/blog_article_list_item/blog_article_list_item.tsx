@@ -1,8 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { ImageDataLike } from "gatsby-plugin-image";
 import ListItemWithImage from "../../list_item/list_item_with_image/list_item_with_image";
 
-export default function BlogArticleListItem({ post }) {
+interface BlogArticleListItemProps {
+  post: {
+    excerpt: string;
+    frontmatter: {
+      title: string;
+      date: string;
+      subtitle: string;
+      slug: string;
+      description?: string;
+      cover: ImageDataLike;
+    };
+    fields: {
+      slug: string;
+    };
+  };
+}
+
+export default function BlogArticleListItem({
+  post,
+}: BlogArticleListItemProps) {
   if (!post) {
     return null;
   }
@@ -18,21 +37,3 @@ export default function BlogArticleListItem({ post }) {
     />
   );
 }
-
-BlogArticleListItem.propTypes = {
-  post: PropTypes.shape({
-    excerpt: PropTypes.string,
-    frontmatter: {
-      date: PropTypes.string,
-      description: PropTypes.string,
-      cover: PropTypes.shape({}),
-    },
-    fields: {
-      slug: PropTypes.string,
-    },
-  }),
-};
-
-BlogArticleListItem.defaultProps = {
-  post: null,
-};
