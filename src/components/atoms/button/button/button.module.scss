@@ -6,7 +6,7 @@
 
   min-width: $spacing-10;
 
-  &_size {
+  &.size {
     &_sm {
       @include buttonSizeSm;
     }
@@ -15,7 +15,7 @@
     }
   }
 
-  &_variant {
+  &.variant {
     &_primary {
       @include buttonColorSolid;
     }

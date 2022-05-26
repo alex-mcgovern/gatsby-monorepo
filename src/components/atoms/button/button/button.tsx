@@ -1,10 +1,21 @@
 import React from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
 import "../../../../utils/font_awesome";
 import * as classes from "./button.module.scss";
+
+interface ButtonProps {
+  to: string;
+  title?: string;
+  leadingIcon?: IconProp;
+  isDisabled?: boolean;
+  trailingIcon?: IconProp;
+  variant?: "primary" | "secondary";
+  size?: "sm" | "lg";
+  onClick?(...args: unknown[]): unknown;
+}
 
 export default function Button({
   to,
@@ -15,15 +26,14 @@ export default function Button({
   trailingIcon,
   onClick,
   isDisabled,
-}) {
+}: ButtonProps) {
   const isInternalLink = /^\/(?!\/)/.test(to);
 
   const buttonClassNames = classNames(classes.button, {
-    [classes.button_variant_primary]: variant === "primary",
-    [classes.button_variant_secondary]: variant === "secondary",
-    [classes.button_size_sm]: size === "sm",
-    [classes.button_size_lg]: size === "lg",
-    [classes.button_is_disabled]: isDisabled,
+    [classes.variant_primary]: variant === "primary",
+    [classes.variant_secondary]: variant === "secondary",
+    [classes.size_sm]: size === "sm",
+    [classes.size_lg]: size === "lg",
   });
 
   const InnerContent = () => {
@@ -55,24 +65,12 @@ export default function Button({
       type="button"
       className={buttonClassNames}
       disabled={isDisabled}
-      href={to}
       onClick={onClick}
     >
       <InnerContent />
     </button>
   );
 }
-
-Button.propTypes = {
-  to: PropTypes.string,
-  title: PropTypes.string,
-  leadingIcon: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  trailingIcon: PropTypes.string,
-  variant: PropTypes.oneOf(["primary", "secondary"]),
-  size: PropTypes.oneOf(["sm", "lg"]),
-  onClick: PropTypes.func,
-};
 
 Button.defaultProps = {
   leadingIcon: null,
