@@ -1,10 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button/button.tsx";
+import Button from "../../../atoms/button/button/button";
 import Search from "../../search/search/search";
 import SingleSelect from "../../single_select/single_select/single_select";
 import * as classes from "./pokedex_nav.module.scss";
+
+interface PokedexNavProps {
+  searchIndex?: {}[];
+  languageISO: string;
+  placeholder?: string;
+  languageIndex?: {}[];
+  isTopLevel?: boolean;
+}
 
 export default function PokedexNav({
   searchIndex,
@@ -12,7 +19,7 @@ export default function PokedexNav({
   placeholder,
   languageIndex,
   isTopLevel,
-}) {
+}: PokedexNavProps) {
   const currentLanguageUpperCase = languageISO.toUpperCase();
   const allPokemonLink = createUrlPathFromArray([languageISO, "pokedex", 1]);
   return (
@@ -41,14 +48,6 @@ export default function PokedexNav({
     </div>
   );
 }
-
-PokedexNav.propTypes = {
-  searchIndex: PropTypes.arrayOf(PropTypes.shape({})),
-  languageISO: PropTypes.string,
-  placeholder: PropTypes.string,
-  languageIndex: PropTypes.arrayOf(PropTypes.shape({})),
-  isTopLevel: PropTypes.bool,
-};
 
 PokedexNav.defaultProps = {
   searchIndex: [],
