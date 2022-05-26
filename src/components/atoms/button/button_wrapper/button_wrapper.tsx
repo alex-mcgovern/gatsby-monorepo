@@ -1,19 +1,21 @@
 import React from "react";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import * as classes from "./button_wrapper.module.scss";
 
-export default function ButtonWrapper({ children, isCentered }) {
+interface ButtonWrapperProps {
+  isCentered?: boolean;
+  children: React.ReactNode;
+}
+
+export default function ButtonWrapper({
+  children,
+  isCentered,
+}: ButtonWrapperProps) {
   const wrapperClassNames = classNames(classes.button_wrapper, {
-    [classes.centered]: isCentered,
+    [classes.isCentered]: isCentered,
   });
   return <menu className={wrapperClassNames}>{children}</menu>;
 }
-
-ButtonWrapper.propTypes = {
-  isCentered: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
 
 ButtonWrapper.defaultProps = {
   isCentered: false,
