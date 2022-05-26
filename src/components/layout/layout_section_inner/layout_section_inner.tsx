@@ -1,8 +1,18 @@
 import React from "react";
 import classNames from "classnames";
-import PropTypes from "prop-types";
-import LayoutDecorativeArrows from "../layout_decorative_arrows/layout_decorative_arrows.tsx";
+import LayoutDecorativeArrows from "../layout_decorative_arrows/layout_decorative_arrows";
 import * as classes from "./layout_section_inner.module.scss";
+
+interface LayoutSectionInnerProps {
+  hasBackground?: boolean;
+  hasArrowsTop?: boolean;
+  hasArrowsBottom?: boolean;
+  hasOutline?: boolean;
+  children?: React.ReactNode;
+  hasMarginRight?: boolean;
+  hasPadding?: boolean;
+  hasMarginLeft?: boolean;
+}
 
 export default function LayoutSectionInner({
   children,
@@ -13,7 +23,7 @@ export default function LayoutSectionInner({
   hasMarginLeft,
   hasBackground,
   hasPadding,
-}) {
+}: LayoutSectionInnerProps) {
   const sectionContentClassNames = classNames(classes.wrapper, {
     [classes.outline]: hasOutline,
     [classes.margin_left]: hasMarginLeft,
@@ -29,17 +39,6 @@ export default function LayoutSectionInner({
     </div>
   );
 }
-
-LayoutSectionInner.propTypes = {
-  hasBackground: PropTypes.bool,
-  hasArrowsTop: PropTypes.bool,
-  hasArrowsBottom: PropTypes.bool,
-  hasOutline: PropTypes.bool,
-  children: PropTypes.node,
-  hasMarginRight: PropTypes.bool,
-  hasPadding: PropTypes.bool,
-  hasMarginLeft: PropTypes.bool,
-};
 
 LayoutSectionInner.defaultProps = {
   hasBackground: false,
