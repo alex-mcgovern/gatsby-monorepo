@@ -54,7 +54,7 @@ const Bio = ({ bio }: BioProps) => {
           <StaticImage
             layout="fullWidth"
             formats={["auto", "webp", "avif"]}
-            src="../../images/profile-pic.jpeg"
+            src="../../../../images/profile-pic.jpeg"
             quality={95}
             alt="Profile picture"
             className={classes.bio_avatar_image}
