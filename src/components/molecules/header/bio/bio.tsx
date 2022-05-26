@@ -14,7 +14,7 @@ import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_sect
 import * as classes from "./bio.module.scss";
 
 interface BioProps {
-  bio: "";
+  bio: string;
 }
 
 const Bio = ({ bio }: BioProps) => {

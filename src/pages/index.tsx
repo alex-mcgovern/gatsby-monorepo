@@ -1,30 +1,56 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import PropTypes from "prop-types";
-import Button from "../components/atoms/button/button/button.tsx";
-import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper.tsx";
-import Layout from "../components/layout/layout/layout.tsx";
+import { ImageDataLike } from "gatsby-plugin-image";
+import Button from "../components/atoms/button/button/button";
+import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper";
+import Layout from "../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../components/layout/layout_max_width_container/layout_max_width_container";
 import LayoutSectionInner from "../components/layout/layout_section_inner/layout_section_inner";
 import LayoutSectionOuter from "../components/layout/layout_section_outer/layout_section_outer";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import Bio from "../components/molecules/header/bio/bio.tsx";
-import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list.tsx";
+import Bio from "../components/molecules/header/bio/bio";
+import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
 import ReadingList from "../components/molecules/reading_list/reading_list_kanban/reading_list_kanban";
 import Seo from "../components/seo";
 
-const BlogIndex = ({ data }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const bio = data.bio.nodes[0].excerpt;
-  const posts = data.allMarkdownRemark.nodes;
-  const images = data.allInstagramContent.nodes;
+interface BlogIndexProps {
+  data: {
+    allInstagramContent?: {
+      nodes?: {
+        localImage: ImageDataLike;
+        permalink: string;
+        caption: string;
+      }[];
+    };
+    allMarkdownRemark?: {
+      nodes?: {}[];
+    };
+    bio?: {
+      nodes: {
+        excerpt?: string;
+      }[];
+    };
+    site?: {
+      siteMetadata?: {
+        title?: string;
+      };
+    };
+  };
+}
+
+const BlogIndex = ({ data }: BlogIndexProps) => {
+  const { site, bio, allMarkdownRemark, allInstagramContent } = data;
+  const siteTitle = site?.siteMetadata?.title || "Title";
+  const bioExcerpt = bio?.nodes[0].excerpt;
+  const posts = allMarkdownRemark?.nodes;
+  const images = allInstagramContent?.nodes;
 
   return (
     <Layout title={siteTitle}>
       <Seo title="All posts" />
 
       <LayoutMaxWidthContainer>
-        <Bio bio={bio} />
+        {bioExcerpt && <Bio bio={bioExcerpt} />}
         <LayoutSectionOuter>
           <LayoutSectionInner
             hasArrowsBottom
@@ -44,34 +70,11 @@ const BlogIndex = ({ data }) => {
             </ButtonWrapper>
           </LayoutSectionInner>
         </LayoutSectionOuter>
-        <InstagramPostList images={images} />
+        {images && images.length > 0 && <InstagramPostList images={images} />}
         <ReadingList />
       </LayoutMaxWidthContainer>
     </Layout>
   );
-};
-
-BlogIndex.propTypes = {
-  data: PropTypes.shape({
-    allInstagramContent: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
-    bio: PropTypes.shape({
-      nodes: PropTypes.arrayOf(
-        PropTypes.shape({
-          excerpt: PropTypes.shape({}),
-        })
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
 };
 
 export default BlogIndex;
