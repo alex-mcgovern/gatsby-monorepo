@@ -3,18 +3,18 @@
   "cSpell.words": [
     "algoliasearch",
     "bloks",
+    "Bulbasaur",
+    "Bulbizarre",
     "capitalise",
-    "chargeback",
-    "chargebacks",
+
     "deduped",
     "deduplicated",
-    "ecommerce",
-    "fintech",
+
     "frontmatter",
     "gtag",
     "hubspot",
     "hypergrowth",
-    "igaming",
+
     "instantsearch",
     "jank",
     "janky",
@@ -27,8 +27,7 @@
     "startpage",
     "stylelint",
     "testid",
-    "truelayer",
-    "wealthtech"
+    "truelayer"
   ],
   "conventionalCommits.scopes": ["CodebaseStructure"],
   "stylelint.configFile": ".stylelintrc.json",
