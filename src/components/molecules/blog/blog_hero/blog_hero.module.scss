@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
 
-    margin: $spacing-0 auto;
+    margin: var(--scale-0) auto;
     max-width: $maxWidth-wrapper;
   }
 
@@ -21,7 +21,7 @@
     font-weight: $fontWeight-extrabold;
     font-family: $font-heading;
     line-height: $lineHeight-tight;
-    font-size: $fontSize-8;
+    @include font-size(var(--scale-8));
     // display: table-caption;
 
     margin: 0;
@@ -30,7 +30,7 @@
   }
   &_h2 {
     font-family: $font-heading;
-    font-size: $fontSize-4;
+    @include font-size(var(--scale-5));
     font-weight: $fontWeight-extrabold;
     color: $color-white;
 

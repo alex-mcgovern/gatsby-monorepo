@@ -4,7 +4,7 @@
 
   @include buttonSizeMd;
 
-  min-width: $spacing-10;
+  min-width: var(--scale-2);
 
   &.size {
     &_sm {

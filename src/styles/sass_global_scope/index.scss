@@ -3,6 +3,9 @@
 $rfs-factor: 5;
 $rfs-breakpoint: 1080px;
 
+@import "config";
+@import "function_power";
+@import "mixin_spacing";
 @import "../../../node_modules/rfs/scss";
 @import "function_tint", "mixins", "base_units", "vars_fonts", "vars_colors",
   "vars_shadows", "vars_transitions", "vars_spacing", "media_queries",

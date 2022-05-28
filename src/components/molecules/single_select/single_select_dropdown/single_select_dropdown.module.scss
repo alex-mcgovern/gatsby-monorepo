@@ -2,21 +2,21 @@
   &_wrapper {
     z-index: 9000;
 
-    margin: $spacing-4 0;
+    margin: var(--scale-3) 0;
     position: absolute;
     top: 100%;
     left: 0;
 
     width: var(--grid-column-4);
 
-    border-radius: $spacing-4;
+    border-radius: var(--scale-3);
 
     background: $color-white;
 
     border: 1px solid $color-gray-lightest;
 
     display: block;
-    max-height: $spacing-64;
+    max-height: var(--scale-8);
     overflow: hidden;
     overflow-y: scroll;
   }

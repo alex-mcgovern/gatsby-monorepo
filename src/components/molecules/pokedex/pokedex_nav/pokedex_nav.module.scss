@@ -1,7 +1,7 @@
 .pokedex_nav {
   display: flex;
-  margin: $spacing-8 0;
-  gap: $spacing-4;
+  margin: var(--scale-8) 0;
+  gap: var(--scale-3);
 
   &_search {
     width: 100%;

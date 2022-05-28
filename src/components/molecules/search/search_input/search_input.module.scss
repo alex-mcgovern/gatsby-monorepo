@@ -1,7 +1,7 @@
 .input {
   &_icon {
     color: $color-gray-lightest;
-    margin-right: $spacing-2;
+    margin-right: var(--scale-2);
   }
   &_wrapper {
     display: flex;
@@ -11,17 +11,17 @@
 
     font-weight: $fontWeight-semibold;
 
-    border-radius: $spacing-16;
-    margin-right: $spacing-2;
-    // margin-top: $spacing-6;
-    // margin-bottom: $spacing-6;
+    border-radius: var(--scale-8);
+    margin-right: var(--scale-2);
+    // margin-top: var(--scale-5);
+    // margin-bottom: var(--scale-5);
 
     text-decoration: none;
     white-space: nowrap;
-    font-size: $fontSize-1;
-    height: $spacing-8;
-    max-height: $spacing-8;
-    padding: $spacing-3;
+    @include font-size(var(--scale-2));
+    height: var(--scale-8);
+    max-height: var(--scale-8);
+    padding: var(--scale-3);
 
     background: $color-white;
 

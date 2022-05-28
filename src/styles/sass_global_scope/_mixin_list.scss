@@ -2,17 +2,17 @@
   list-style-type: none;
   padding: 0;
   margin-top: 0;
-  margin-bottom: $spacing-2 * 3;
+  margin-bottom: var(--scale-2) * 3;
 
   li {
-    margin-bottom: $spacing-2 * 1.5;
-    padding-left: $spacing-2 * 3;
+    margin-bottom: var(--scale-2) * 1.5;
+    padding-left: var(--scale-2) * 3;
     position: relative;
 
     &::before {
       background-image: url("/images/icon_bullet.svg");
       content: "";
-      height: $spacing-2 * 2.25;
+      height: var(--scale-2) * 2.25;
       left: 0;
       position: absolute;
       top: 6px;
@@ -26,15 +26,15 @@
   list-style-type: none;
   padding: 0;
   margin-top: 0;
-  margin-bottom: $spacing-2 * 3;
+  margin-bottom: var(--scale-2) * 3;
 
   /* ——————————————————————————————————————————————————————————————
   //      COMMON LIST ITEM STYLES
   // —————————————————————————————————————————————————————————————— */
 
   li {
-    margin-bottom: $spacing-2 * 1.5;
-    padding-left: $spacing-2 * 3;
+    margin-bottom: var(--scale-2) * 1.5;
+    padding-left: var(--scale-2) * 3;
     position: relative;
 
     &::before {

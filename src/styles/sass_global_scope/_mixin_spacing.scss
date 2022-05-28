@@ -1,0 +1,26 @@
+// https://type-scale.com/
+$scale-ratios: (
+  minor-second: 1.067,
+  major-second: 1.125,
+  minor-third: 1.2,
+  major-third: 1.25,
+  perfect-fourth: 1.333,
+  augmented-fourth: 1.414,
+  perfect-fifth: 1.5,
+  fibonacci-sequence: 1.618,
+);
+
+@mixin scale {
+  $working-scale-ratio-multiplier: map-get($scale-ratios, $config-scaleRatio);
+
+  // Calculate root font size and below
+  --scale-0: 0rem;
+  --scale-1: #{pow($working-scale-ratio-multiplier, -3)}rem;
+  --scale-2: #{pow($working-scale-ratio-multiplier, -2)}rem;
+  --scale-3: #{pow($working-scale-ratio-multiplier, -1)}rem;
+  --scale-4: 1rem;
+
+  @for $i from 1 through 12 {
+    --scale-#{$i + 4}: #{pow($working-scale-ratio-multiplier, $i)}rem;
+  }
+}

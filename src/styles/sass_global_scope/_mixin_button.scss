@@ -4,38 +4,29 @@
   justify-content: center;
   font-family: $fontFamily-sans;
   font-weight: $fontWeight-semibold;
-  gap: $spacing-1;
+  gap: var(--scale-1);
 
-  border-radius: $spacing-64;
+  border-radius: var(--scale-8);
 
   text-decoration: none;
   white-space: nowrap;
+  padding: var(--scale-1) var(--scale-4);
 }
 
 @mixin buttonSizeSm {
-  font-size: $fontSize-1;
-  height: $spacing-6;
-  max-height: $spacing-6;
-  padding: ($spacing-2) ($spacing-2 * 1.5);
+  @include font-size(var(--scale-4));
 }
 @mixin buttonSizeMd {
-  font-size: $fontSize-2;
-  height: $spacing-8;
-  max-height: $spacing-8;
-  padding: ($spacing-2) ($spacing-2 * 2);
+  @include font-size(var(--scale-4));
 }
 @mixin buttonSizeLg {
-  font-size: $fontSize-3;
-  height: $spacing-10;
-  max-height: $spacing-10;
-  padding: ($spacing-2 * 1.5) ($spacing-2 * 3);
+  @include font-size(var(--scale-5));
 }
 @mixin buttonSizeSq {
-  height: $spacing-2 * 5;
-  width: $spacing-2 * 5;
-  max-height: $spacing-2 * 5;
-  max-width: $spacing-2 * 5;
-  padding: $spacing-2 * 1.5 0;
+  height: var(--scale-1) * 5;
+  width: var(--scale-1) * 5;
+  max-height: var(--scale-1) * 5;
+  max-width: var(--scale-1) * 5;
 }
 
 @mixin buttonColorSolid(
@@ -54,7 +45,6 @@
   &:not([disabled]) {
     &:focus-visible,
     &:focus,
-    &.isActiveStyle,
     &:hover {
       background: $backgroundColorActive;
     }
@@ -84,7 +74,6 @@
   &:not([disabled]) {
     &:focus-visible,
     &:focus,
-    &.isActiveStyle,
     &:hover {
       color: $backgroundColorActive;
       background: rgba($backgroundColorActive, 0.2);

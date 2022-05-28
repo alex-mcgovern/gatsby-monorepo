@@ -1,3 +1,7 @@
+import type { GatsbyConfig } from "gatsby";
+
+const path = require("path");
+
 const TARGET_LANGUAGE_LIST = ["en", "fr", "de", "es"];
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -5,7 +9,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: `Hi, I'm Alex`,
     author: {
@@ -28,16 +32,22 @@ module.exports = {
         numberOfPokemonToSource: 151,
         targetLanguageList: TARGET_LANGUAGE_LIST,
         targetGameVersion: "x", // "fr", "de", "es" languages not available in earlier versions
+        enableDebugLogging: true,
       },
     },
     {
       resolve: "gatsby-plugin-pokemon-pages",
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
+        itemsPerPage: 12,
+        enableDebugLogging: true,
       },
     },
     {
       resolve: "gatsby-plugin-create-pages-blog-list",
+      options: {
+        itemsPerPage: 12,
+      },
     },
     /* ——————————————————————————————————————————————————————————————————————————————
     //      GATSBY PLUGINS                                                          
@@ -52,20 +62,30 @@ module.exports = {
             namedExport: true,
           },
         },
-        additionalData: `@import "${__dirname}/src/styles/sass_global_scope/index";`,
+        additionalData: `@import "${path.resolve(
+          `src/styles/sass_global_scope/index"`
+        )};`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images\/svg/,
+        },
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: path.resolve(`content/blog`),
         name: `blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/docs`,
+        path: path.resolve(`content/docs`),
         name: `docs`,
       },
     },
@@ -73,7 +93,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: path.resolve(`src/images`),
       },
     },
     {
@@ -186,3 +206,5 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 };
+
+export default config;

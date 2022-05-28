@@ -1,7 +1,7 @@
 .grid {
   @include resetList;
   display: grid;
-  gap: $spacing-6;
+  gap: var(--scale-2);
   justify-items: center;
   width: 100%;
 

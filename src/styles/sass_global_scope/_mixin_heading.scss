@@ -55,7 +55,7 @@
     @include font-size($font-size-heading-1 !important);
     @include rfs($line-height-heading-1 !important, line-height);
   }
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   &.isExtraBoldStyle {
     @include headingFontWeightExtraBold;
@@ -73,7 +73,7 @@
     @include font-size($font-size-heading-2 !important);
     @include rfs($line-height-heading-2 !important, line-height);
   }
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   &.isExtraBoldStyle {
     @include headingFontWeightExtraBold;
@@ -91,7 +91,7 @@
     @include font-size($font-size-heading-3 !important);
     @include rfs($line-height-heading-3 !important, line-height);
   }
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   &.isExtraBoldStyle {
     @include headingFontWeightExtraBold;
@@ -109,7 +109,7 @@
     @include rfs($line-height-heading-4 !important, line-height);
   }
 
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   &.isExtraBoldStyle {
     @include headingFontWeightExtraBold;
@@ -127,7 +127,7 @@
     @include rfs($line-height-heading-5 !important, line-height);
   }
 
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   // We deliberately use bold here as extra-bold is too heavy
   &.isExtraBoldStyle {
@@ -149,7 +149,7 @@
   }
   @include headingFontWeightSemibold;
 
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   // We deliberately use bold here as extra-bold is too heavy
   &.isExtraBoldStyle {
@@ -171,7 +171,7 @@
   }
   @include headingFontWeightSemibold;
 
-  margin-bottom: $spacing-2;
+  margin-bottom: var(--scale-2);
 
   // We deliberately use bold here as extra-bold is too heavy
   &.isExtraBoldStyle {

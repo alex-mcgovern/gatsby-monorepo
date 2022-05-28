@@ -8,21 +8,21 @@
     align-items: stretch;
   }
   &_search_wrapper {
-    // width: calc(var(--grid-column-8) - $spacing-4);
-    margin: $spacing-8 auto;
+    // width: calc(var(--grid-column-8) - var(--scale-3));
+    margin: var(--scale-8) auto;
 
     display: flex;
-    gap: $spacing-4;
+    gap: var(--scale-3);
     align-items: center;
-    border-top: 1px dashed $color-gray-light;
-    border-bottom: 1px dashed $color-gray-light;
+    border-top: 1px dashed $color-gray-lightest;
+    border-bottom: 1px dashed $color-gray-lightest;
     h3 {
-      margin: 0 0 $spacing-2;
+      margin: 0 0 var(--scale-2);
     }
   }
   &_inner {
-    width: calc(var(--grid-column-8) - $spacing-4);
-    border-right: 1px dashed $color-gray-light;
+    width: calc(var(--grid-column-8) - var(--scale-3));
+    border-right: 1px dashed $color-gray-lightest;
 
     display: flex;
 

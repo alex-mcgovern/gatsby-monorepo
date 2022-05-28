@@ -3,10 +3,10 @@
 }
 
 @mixin inputBorder {
-  border-radius: $spacing-64;
+  border-radius: var(--scale-8);
   border-style: solid;
   border-width: 1px;
-  border: 1px solid $color-gray-light;
+  border: 1px solid $color-gray-lightest;
   box-shadow: none;
   // transition: border-color $transition-time-hover;
   &:hover {
@@ -39,26 +39,20 @@
   border-width: 1px !important;
 }
 @mixin inputLabel {
-  font-size: $fontSize-2;
+  @include font-size(var(--scale-2));
   @include rfs($line-height-heading-5, line-height);
   display: block;
   color: $color-navy-80;
 }
 
 @mixin inputFontSizeSm {
-  font-size: $fontSize-1;
-  height: $spacing-6;
-  max-height: $spacing-6;
+  @include font-size(var(--scale-2));
 }
 @mixin inputFontSizeMd {
-  font-size: $fontSize-2;
-  height: $spacing-8;
-  max-height: $spacing-8;
+  @include font-size(var(--scale-2));
 }
 @mixin inputFontSizeLg {
-  font-size: $fontSize-3;
-  height: $spacing-10;
-  max-height: $spacing-10;
+  @include font-size(var(--scale-3));
 }
 
 @mixin inputBorderError {

@@ -9,12 +9,12 @@
 }
 .main_heading {
   font-weight: $fontWeight-extrabold;
-  font-size: $fontSize-7;
+  @include font-size(var(--scale-8));
   margin: 0;
 }
 
 .hero_link_home {
   font-family: $font-heading;
   text-decoration: none;
-  font-size: $fontSize-2;
+  @include font-size(var(--scale-2));
 }

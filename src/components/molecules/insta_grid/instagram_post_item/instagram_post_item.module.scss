@@ -16,7 +16,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    padding: $spacing-4;
+    padding: var(--scale-5);
     background-color: rgba($color-navy, 0.8);
     color: $white;
     opacity: 0;

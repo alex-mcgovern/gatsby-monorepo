@@ -20,16 +20,17 @@ $fontWeight-extrabold: 800;
 ———————————————————————————————————————————————————————————————**/
 $fontSize-root: 16px;
 
-/* 1.200 Minor Third Type Scale */
-$fontSize-0: 0.694rem;
-$fontSize-1: 0.833rem;
-$fontSize-2: 1rem;
-$fontSize-3: 1.2rem;
-$fontSize-4: 1.44rem;
-$fontSize-5: 1.728rem;
-$fontSize-6: 2.074rem;
-$fontSize-7: 2.488rem;
-$fontSize-8: 3.986rem;
+// 1.2 Minor third scale from
+// https://type-scale.com/
+
+// var(--scale-8): 2.986rem; // 47.78px
+// var(--scale-7): 2.488rem; // 39.81px
+// var(--scale-6): 2.074rem; // 33.18px
+// var(--scale-5): 1.728rem; // 27.65px
+// var(--scale-4): 1.44rem; // 23.04px
+// var(--scale-3): 1.2rem; // 19.20px
+// var(--scale-2): 1rem; // 16.00px
+// var(--scale-1): 0.833rem; // 13.33px
 
 /*——————————————————————————————————————————————————————————————
  |                          LINE HEIGHT

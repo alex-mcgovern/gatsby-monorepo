@@ -12,6 +12,6 @@
   &_link {
     @include resetLink;
     display: block;
-    padding: $spacing-3 $spacing-6;
+    padding: var(--scale-3) var(--scale-5);
   }
 }

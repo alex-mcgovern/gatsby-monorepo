@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,700;1,800&display=swap");
 
 :root {
+  @include scale;
 }
 
 /* HTML elements */
@@ -28,12 +29,13 @@ body {
   width: 100vw;
 
   font-family: $font-body;
-  font-size: $fontSize-2;
+  @include font-size(var(--scale-4));
+
   color: $color-text;
 }
 
 footer {
-  padding: $spacing-6 $spacing-0;
+  padding: var(--scale-5) var(--scale-0);
 }
 
 /* Heading */
@@ -45,10 +47,11 @@ h4,
 h5,
 h6 {
   font-family: $font-heading;
-  margin-top: $spacing-0;
-  margin-bottom: $spacing-4;
+  margin-top: var(--scale-0);
+  margin-bottom: var(--scale-3);
   line-height: $lineHeight-md;
   letter-spacing: -0.025em;
+  word-break: normal;
 
   display: block;
   hyphens: auto;
@@ -58,29 +61,29 @@ h6 {
 }
 
 h1 {
-  font-size: $fontSize-8;
+  @include font-size(var(--scale-9));
 }
 
 h2 {
-  font-size: $fontSize-7;
+  @include font-size(var(--scale-8));
 }
 
 h3 {
-  font-size: $fontSize-6;
+  @include font-size(var(--scale-7));
 }
-
 h4 {
-  font-size: $fontSize-5;
+  @include font-size(var(--scale-6));
 }
 
 h5 {
-  font-size: $fontSize-4;
+  @include font-size(var(--scale-5));
   color: $color-orange;
-  // text-transform: uppercase;
+  text-transform: uppercase;
 }
-
 h6 {
-  font-size: $fontSize-3;
+  @include font-size(var(--scale-4));
+  color: $color-orange;
+  text-transform: uppercase;
 }
 
 h1 > a {
@@ -109,56 +112,56 @@ h6 > a:after {
 
 p {
   line-height: $lineHeight-xl;
-  font-size: $fontSize-2;
+  @include font-size(var(--scale-4));
   $baseline-multiplier: 0.179;
   $x-height-multiplier: 0.35;
-  margin: $spacing-0 $spacing-0 $spacing-4 $spacing-0;
-  padding: $spacing-0;
+  margin: var(--scale-0) var(--scale-0) var(--scale-3) var(--scale-0);
+  padding: var(--scale-0);
 }
 
 ul,
 ol {
-  margin-left: $spacing-8;
-  margin-right: $spacing-0;
-  padding: $spacing-0;
-  margin-bottom: $spacing-8;
+  margin-left: var(--scale-8);
+  margin-right: var(--scale-0);
+  padding: var(--scale-0);
+  margin-bottom: var(--scale-8);
   list-style-position: outside;
   list-style-image: none;
 }
 
 ul li,
 ol li {
-  padding-left: $spacing-0;
-  // margin-bottom: calc($spacing-8 / 2);
+  padding-left: var(--scale-0);
+  // margin-bottom: calc(var(--scale-8) / 2);
 }
 
 li > p {
-  margin-bottom: calc($spacing-8 / 2);
+  margin-bottom: calc(var(--scale-8) / 2);
 }
 
 li *:last-child {
-  margin-bottom: $spacing-0;
+  margin-bottom: var(--scale-0);
 }
 
 li > ul {
-  margin-left: $spacing-8;
-  margin-top: calc($spacing-8 / 2);
+  margin-left: var(--scale-8);
+  margin-top: calc(var(--scale-8) / 2);
 }
 
 blockquote {
   color: $color-text-light;
-  margin-left: calc(-1 * $spacing-6);
-  margin-right: $spacing-8;
-  padding: $spacing-0 $spacing-0 $spacing-0 $spacing-6;
-  border-left: $spacing-1 solid $color-primary;
+  margin-left: calc(-1 * var(--scale-5));
+  margin-right: var(--scale-8);
+  padding: var(--scale-0) var(--scale-0) var(--scale-0) var(--scale-5);
+  border-left: var(--scale-1) solid $color-primary;
 
-  font-size: $fontSize-2;
+  @include font-size(var(--scale-2));
   font-style: italic;
-  margin-bottom: $spacing-8;
+  margin-bottom: var(--scale-8);
 }
 
 blockquote > :last-child {
-  margin-bottom: $spacing-0;
+  margin-bottom: var(--scale-0);
 }
 
 blockquote > ul,
@@ -168,7 +171,7 @@ blockquote > ol {
 
 table {
   width: 100%;
-  margin-bottom: $spacing-8;
+  margin-bottom: var(--scale-8);
   border-collapse: collapse;
   border-spacing: 0.25rem;
 }
@@ -191,15 +194,15 @@ a:focus {
 /* Custom classes */
 
 .gatsby-highlight {
-  margin-bottom: $spacing-8;
+  margin-bottom: var(--scale-8);
 }
 
 /* Media queries */
 
 @media (max-width: 42rem) {
   blockquote {
-    padding: $spacing-0 $spacing-0 $spacing-0 $spacing-4;
-    margin-left: $spacing-0;
+    padding: var(--scale-0) var(--scale-0) var(--scale-0) var(--scale-3);
+    margin-left: var(--scale-0);
   }
   ul,
   ol {

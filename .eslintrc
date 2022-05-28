@@ -6,9 +6,13 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
-    "prettier",
+    "airbnb-typescript",
+    "airbnb-typescript/base",
+
     "plugin:cypress/recommended",
-    "plugin:react-perf/recommended"
+    "plugin:react-perf/recommended",
+    "prettier",
+    "plugin:sonarjs/recommended"
   ],
   "globals": {
     "cy": true,
@@ -49,9 +53,10 @@
     "babelOptions": {
       "presets": ["@babel/preset-react"]
     },
-    "requireConfigFile": false
+    "project": "./tsconfig.json",
+    "requireConfigFile": true
   },
-  "plugins": ["react-perf"],
+  "plugins": ["react-perf", "sonarjs"],
   "rules": {
     "arrow-body-style": ["error", "always"],
     "import/no-cycle": 0,

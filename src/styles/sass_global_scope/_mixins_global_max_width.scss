@@ -5,12 +5,12 @@
   max-width: $maxWidth-wrapper;
   margin: 0 auto;
 
-  @media screen and (max-width: ($maxWidth-wrapper + ($spacing-2 * 8))) {
-    max-width: calc(100vw - ($spacing-2 * 8));
+  @media screen and (max-width: (calc($maxWidth-wrapper + (var(--scale-2) * 8)))) {
+    max-width: calc(100vw - (var(--scale-2) * 8));
   }
 
   @include XS-screens-down {
-    max-width: calc(100vw - ($spacing-2 * 4));
+    max-width: calc(100vw - (var(--scale-2) * 4));
   }
 }
 // // ——————————————————————————————————————————————————————————————————————————————

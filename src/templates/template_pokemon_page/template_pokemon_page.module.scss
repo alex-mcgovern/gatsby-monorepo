@@ -1,10 +1,10 @@
 .controls {
   display: flex;
-  margin: $spacing-8 0;
+  margin: var(--scale-8) 0;
 
   &_search {
-    width: calc(var(--grid-column-8) - $spacing-4);
-    margin-right: $spacing-4;
+    width: calc(var(--grid-column-8) - var(--scale-3));
+    margin-right: var(--scale-3);
 
     border-top: 1px dashed $color-gray-lightest;
     border-bottom: 1px dashed $color-gray-lightest;
@@ -20,7 +20,7 @@
     align-items: stretch;
   }
   &_inner {
-    width: calc(var(--grid-column-8) - $spacing-4);
+    width: calc(var(--grid-column-8) - var(--scale-3));
     border-right: 1px dashed $color-gray-lightest;
 
     display: flex;

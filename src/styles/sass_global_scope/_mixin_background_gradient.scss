@@ -3,7 +3,7 @@
 
 @mixin backgroundGradient {
   background: conic-gradient(
-    from 0deg at calc(50% + var(--grid-column-4)) calc(100% - $spacing-32),
+    from 0deg at calc(50% + var(--grid-column-4)) calc(100% - var(--scale-8)),
     $color-purple,
     $color-orange,
     $color-magenta

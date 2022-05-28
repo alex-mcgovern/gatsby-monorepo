@@ -9,13 +9,12 @@
     @include resetLink;
     font-weight: $fontWeight-semibold;
     font-family: $fontFamily-sans;
-    font-size: $fontSize-2;
+    @include font-size(var(--scale-2));
 
     color: $color-magenta;
 
     // border-radius: 50%;
-    // width: $spacing-10;
-    height: $spacing-10;
+    // width: var(--scale-8);
 
     // transition: background 300ms;
 
@@ -37,7 +36,7 @@
   }
 
   &_inner {
-    margin: $spacing-0 auto;
+    margin: var(--scale-2) auto;
     max-width: $maxWidth-wrapper;
 
     border-left: 1px dashed $color-gray-lightest;

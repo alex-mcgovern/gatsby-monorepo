@@ -17,10 +17,10 @@
   }
   &.margin {
     &_left {
-      margin-left: $spacing-4;
+      margin-left: var(--scale-3);
     }
     &_right {
-      margin-right: $spacing-4;
+      margin-right: var(--scale-3);
     }
   }
 }

@@ -23,7 +23,7 @@ const Bio = ({ bio }: BioProps) => {
       <AlternatingLayout ratio="3_1">
         <LayoutSectionInner hasArrowsBottom hasArrowsTop hasOutline hasPadding>
           <h5>INTRO</h5>
-          <h1>Hi, I'm Alex 👋</h1>
+          <h1>Hi, I'm Alex</h1>
           <section
             dangerouslySetInnerHTML={{ __html: bio }}
             itemProp="articleBody"

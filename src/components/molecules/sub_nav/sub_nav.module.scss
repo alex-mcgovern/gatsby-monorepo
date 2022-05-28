@@ -4,21 +4,21 @@
   border-bottom: 1px dashed $color-gray-lightest;
 
   &_heading {
-    font-size: $fontSize-2;
-    margin: $spacing-2 0;
+    @include font-size(var(--scale-2));
+    margin: var(--scale-2) 0;
   }
 
   &_logo {
     @include resetLink;
     font-weight: $fontWeight-semibold;
     font-family: $fontFamily-sans;
-    font-size: $fontSize-3;
+    @include font-size(var(--scale-3));
     background: $color-magenta;
     color: $color-white;
 
     border-radius: 50%;
-    width: $spacing-10;
-    height: $spacing-10;
+    width: var(--scale-8);
+    height: var(--scale-8);
 
     // transition: background 300ms;
 
@@ -40,7 +40,7 @@
   }
 
   &_inner {
-    margin: $spacing-0 auto;
+    margin: var(--scale-0) auto;
     max-width: $maxWidth-wrapper;
 
     display: flex;

@@ -1,6 +1,6 @@
 .list_item {
-  margin-right: $spacing-4;
-  margin-bottom: $spacing-8;
+  margin-right: var(--scale-3);
+  margin-bottom: var(--scale-8);
 
   &_outer {
     @include resetLink;
@@ -33,17 +33,17 @@
 
   &_title {
     color: $color-magenta;
-    margin-bottom: $spacing-2;
+    margin-bottom: var(--scale-2);
   }
 
   p {
-    margin-bottom: $spacing-0;
-    font-size: $fontSize-0;
+    margin-bottom: var(--scale-0);
+    @include font-size(var(--scale-2));
   }
 
   &_link:hover {
     .image {
-      transform: translateY($spacing-2 * -1);
+      transform: translateY(calc(var(--scale-2) * -1));
     }
     .list_item_title {
       text-decoration: underline;
@@ -51,13 +51,13 @@
   }
 
   header {
-    margin-bottom: $spacing-4;
+    margin-bottom: var(--scale-3);
   }
 }
 .image {
   &_wrapper {
     width: 100%;
-    margin-bottom: $spacing-1;
+    margin-bottom: var(--scale-1);
     color: red;
 
     @include placeholderGrid;

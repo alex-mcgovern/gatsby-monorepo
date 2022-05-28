@@ -3,13 +3,13 @@
     "scope": "postcss,css,scss,sass",
     "prefix": "calc",
     "description": "",
-    "body": ["\\$spacing-2 * 2"]
+    "body": ["\\var(--scale-2) * 2"]
   },
   "grid unit": {
     "scope": "postcss,css,scss,sass",
     "prefix": "grid unit",
     "description": "",
-    "body": ["\\$spacing-2"]
+    "body": ["\\var(--scale-2)"]
   },
   "screen-size-xxs": {
     "scope": "postcss,css,scss",

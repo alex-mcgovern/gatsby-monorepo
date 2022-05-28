@@ -1,6 +1,6 @@
 .list {
   &_wrapper {
-    margin: $spacing-4 0;
+    margin: var(--scale-3) 0;
     position: absolute;
     top: 100%;
     left: 0;
@@ -8,7 +8,7 @@
 
     width: var(--grid-column-4);
 
-    border-radius: $spacing-4;
+    border-radius: var(--scale-3);
 
     background: $color-white;
 
@@ -17,12 +17,12 @@
     display: block;
   }
   &_inner {
-    margin: $spacing-4 0;
+    margin: var(--scale-3) 0;
 
     width: 100%;
 
     display: block;
-    max-height: $spacing-64;
+    max-height: var(--scale-8);
     overflow: hidden;
     overflow-y: auto;
   }
