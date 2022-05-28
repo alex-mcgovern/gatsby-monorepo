@@ -20,7 +20,7 @@ interface BioProps {
 const Bio = ({ bio }: BioProps) => {
   return (
     <LayoutSectionOuter>
-      <AlternatingLayout ratio="2_1">
+      <AlternatingLayout ratio="3_1">
         <LayoutSectionInner hasArrowsBottom hasArrowsTop hasOutline hasPadding>
           <h5>INTRO</h5>
           <h1>Hi, I'm Alex 👋</h1>
@@ -45,12 +45,7 @@ const Bio = ({ bio }: BioProps) => {
           </ButtonWrapper>
         </LayoutSectionInner>
 
-        <LayoutSectionInner
-          hasArrowsBottom
-          hasArrowsTop
-          hasOutline
-          hasBackground
-        >
+        <LayoutSectionInner hasOutline hasBackground>
           <StaticImage
             layout="fullWidth"
             formats={["auto", "webp", "avif"]}
