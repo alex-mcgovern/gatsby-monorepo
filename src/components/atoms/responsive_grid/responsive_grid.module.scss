@@ -2,9 +2,11 @@
   @include resetList;
   display: grid;
   gap: $spacing-6;
+  justify-items: center;
+  width: 100%;
 
   &_item {
-    outline: 1px dashed $color-gray-light;
+    outline: 1px dashed $color-gray-lightest;
   }
 
   &.split {

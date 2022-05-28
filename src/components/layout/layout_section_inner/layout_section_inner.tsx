@@ -12,6 +12,7 @@ interface LayoutSectionInnerProps {
   hasMarginRight?: boolean;
   hasPadding?: boolean;
   hasMarginLeft?: boolean;
+  isVerticallyCentered?: boolean;
 }
 
 export default function LayoutSectionInner({
@@ -23,6 +24,7 @@ export default function LayoutSectionInner({
   hasMarginLeft,
   hasBackground,
   hasPadding,
+  isVerticallyCentered,
 }: LayoutSectionInnerProps) {
   const sectionContentClassNames = classNames(classes.wrapper, {
     [classes.outline]: hasOutline,
@@ -30,6 +32,7 @@ export default function LayoutSectionInner({
     [classes.margin_right]: hasMarginRight,
     [classes.background]: hasBackground,
     [classes.hasPadding]: hasPadding,
+    [classes.isVerticallyCentered]: isVerticallyCentered,
   });
   return (
     <div className={sectionContentClassNames}>
@@ -39,14 +42,3 @@ export default function LayoutSectionInner({
     </div>
   );
 }
-
-LayoutSectionInner.defaultProps = {
-  hasBackground: false,
-  hasArrowsTop: false,
-  hasArrowsBottom: false,
-  hasOutline: false,
-  children: null,
-  hasMarginRight: false,
-  hasPadding: false,
-  hasMarginLeft: false,
-};

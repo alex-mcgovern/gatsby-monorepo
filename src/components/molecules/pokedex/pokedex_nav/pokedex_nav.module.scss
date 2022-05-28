@@ -6,11 +6,11 @@
   &_search {
     width: 100%;
 
-    border-left: 1px dashed $color-gray-light;
-    border-top: 1px dashed $color-gray-light;
-    border-bottom: 1px dashed $color-gray-light;
+    border-left: 1px dashed $color-gray-lightest;
+    border-top: 1px dashed $color-gray-lightest;
+    border-bottom: 1px dashed $color-gray-lightest;
   }
   &_button {
-    border: 1px dashed $color-gray-light;
+    border: 1px dashed $color-gray-lightest;
   }
 }

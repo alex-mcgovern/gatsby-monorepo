@@ -2,7 +2,7 @@
   &_avatar {
     &_image {
       overflow: hidden;
-      outline: 1px solid $color-gray-light;
+      outline: 1px solid $color-gray-lightest;
 
       @include S-screens-down {
         flex-direction: column-reverse;

@@ -1,5 +1,11 @@
 .wrapper {
   position: relative;
+
+  &.isVerticallyCentered {
+    display: flex;
+    align-items: center;
+  }
+
   &.hasPadding {
     padding: $spacing-section-inner;
   }
@@ -7,7 +13,7 @@
     @include placeholderGrid($borderRight: false);
   }
   &.outline {
-    outline: 1px dashed $color-gray-light;
+    outline: 1px dashed $color-gray-lightest;
   }
   &.margin {
     &_left {

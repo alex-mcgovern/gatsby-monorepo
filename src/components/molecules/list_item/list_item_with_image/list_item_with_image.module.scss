@@ -5,12 +5,12 @@
   &_outer {
     @include resetLink;
     width: 100%;
-    border-top: 1px solid $color-gray-light;
+    border-top: 1px solid $color-gray-lightest;
   }
   &_link {
     @include resetLink;
     width: 100%;
-    border-top: 1px solid $color-gray-light;
+    border-top: 1px solid $color-gray-lightest;
   }
 
   &.variant {

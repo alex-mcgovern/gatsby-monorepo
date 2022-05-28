@@ -6,11 +6,11 @@
     width: calc(var(--grid-column-8) - $spacing-4);
     margin-right: $spacing-4;
 
-    border-top: 1px dashed $color-gray-light;
-    border-bottom: 1px dashed $color-gray-light;
+    border-top: 1px dashed $color-gray-lightest;
+    border-bottom: 1px dashed $color-gray-lightest;
   }
   &_language {
-    border: 1px dashed $color-gray-light;
+    border: 1px dashed $color-gray-lightest;
   }
 }
 .pokemon {
@@ -21,7 +21,7 @@
   }
   &_inner {
     width: calc(var(--grid-column-8) - $spacing-4);
-    border-right: 1px dashed $color-gray-light;
+    border-right: 1px dashed $color-gray-lightest;
 
     display: flex;
 

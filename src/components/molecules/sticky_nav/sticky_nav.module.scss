@@ -3,7 +3,7 @@
   top: 0;
   background-color: $color-white;
   z-index: 100;
-  border-bottom: 1px dashed $color-gray-light;
+  border-bottom: 1px dashed $color-gray-lightest;
 
   &_logo {
     @include resetLink;
@@ -40,8 +40,8 @@
     margin: $spacing-0 auto;
     max-width: $maxWidth-wrapper;
 
-    border-left: 1px dashed $color-gray-light;
-    border-right: 1px dashed $color-gray-light;
+    border-left: 1px dashed $color-gray-lightest;
+    border-right: 1px dashed $color-gray-lightest;
 
     display: flex;
     justify-content: space-between;

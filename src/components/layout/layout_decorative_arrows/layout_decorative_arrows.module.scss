@@ -14,11 +14,11 @@
   }
   &:after {
     left: -6px;
-    border-right: 16px solid $color-gray-light;
+    border-right: 16px solid $color-gray-lightest;
   }
   &:before {
     right: -6px;
-    border-left: 16px solid $color-gray-light;
+    border-left: 16px solid $color-gray-lightest;
   }
 
   &.position {

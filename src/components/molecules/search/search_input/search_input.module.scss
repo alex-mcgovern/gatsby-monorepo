@@ -1,6 +1,6 @@
 .input {
   &_icon {
-    color: $color-gray-light;
+    color: $color-gray-lightest;
     margin-right: $spacing-2;
   }
   &_wrapper {
@@ -25,7 +25,7 @@
 
     background: $color-white;
 
-    border: 1px solid $color-gray-light;
+    border: 1px solid $color-gray-lightest;
 
     @include inputBorder;
 
