@@ -1,10 +1,23 @@
-function parsePokemonGeneraByLanguage({
-  pokedexID,
+interface IParsePokemonGeneraByLanguage {
+  genera: {
+    language: {
+      name: string;
+    };
+    genus: string;
+  }[];
+  targetLanguageList: string[];
+}
+
+interface IPokemonGeneraByLanguage {
+  [key: string]: string;
+}
+
+export default function parsePokemonGeneraByLanguage({
   genera,
   targetLanguageList,
-}) {
+}: IParsePokemonGeneraByLanguage) {
   // empty object to hold result
-  const pokemonGeneraByLanguage = {};
+  const pokemonGeneraByLanguage: IPokemonGeneraByLanguage = {};
 
   // iterate over genera in response and pull out
   // only desired language versions
@@ -22,7 +35,3 @@ function parsePokemonGeneraByLanguage({
 
   return pokemonGeneraByLanguage;
 }
-
-module.exports = {
-  parsePokemonGeneraByLanguage,
-};

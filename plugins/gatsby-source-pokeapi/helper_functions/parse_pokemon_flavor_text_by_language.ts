@@ -1,10 +1,24 @@
-function parsePokemonFlavorTextByLanguage({
+interface ParsePokemonFlavorTextByLanguage {
+  flavorTextEntries: {
+    flavor_text: string;
+    language: { name: string };
+    version: { name: string };
+  }[];
+  targetLanguageList: string[];
+  targetGameVersion: {};
+}
+
+interface IValidFlavorText {
+  [key: string]: string;
+}
+
+export default function parsePokemonFlavorTextByLanguage({
   flavorTextEntries,
   targetLanguageList,
   targetGameVersion,
-}) {
+}: ParsePokemonFlavorTextByLanguage) {
   // empty object to hold result
-  const validFlavorText = {};
+  const validFlavorText: IValidFlavorText = {};
 
   // iterate over flavor text in response and pull out
   // only desired game version & language versions
@@ -31,7 +45,3 @@ function parsePokemonFlavorTextByLanguage({
 
   return validFlavorText;
 }
-
-module.exports = {
-  parsePokemonFlavorTextByLanguage,
-};

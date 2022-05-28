@@ -1,5 +1,22 @@
-function parsePokemonNameByLanguage({ names, targetLanguageList }) {
-  const pokemonNamesByLanguage = {};
+interface IParsePokemonNameByLanguage {
+  names: {
+    language: {
+      name: string;
+    };
+    name: string;
+  }[];
+  targetLanguageList: string[];
+}
+
+interface IPokemonNamesByLanguage {
+  [key: string]: string;
+}
+
+export default function parsePokemonNameByLanguage({
+  names,
+  targetLanguageList,
+}: IParsePokemonNameByLanguage) {
+  const pokemonNamesByLanguage: IPokemonNamesByLanguage = {};
 
   // iterate over names in response and pull out
   // only desired language versions
@@ -17,7 +34,3 @@ function parsePokemonNameByLanguage({ names, targetLanguageList }) {
 
   return pokemonNamesByLanguage;
 }
-
-module.exports = {
-  parsePokemonNameByLanguage,
-};

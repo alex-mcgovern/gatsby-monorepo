@@ -1,10 +1,26 @@
-function mergePokemonDataByLanguage({
+import { IMergedPokemon } from "../interfaces";
+
+interface IMergePokemonDataByLanguage {
+  pokedexID: number;
+  targetLanguageList: string[];
+  pokemonNamesByLanguage: {
+    [key: string]: string;
+  };
+  pokemonGeneraByLanguage: {
+    [key: string]: string;
+  };
+  pokemonFlavorTextByLanguage: {
+    [key: string]: string;
+  };
+}
+
+export default function mergePokemonDataByLanguage({
   pokedexID,
   pokemonNamesByLanguage,
   targetLanguageList,
   pokemonGeneraByLanguage,
   pokemonFlavorTextByLanguage,
-}) {
+}: IMergePokemonDataByLanguage): IMergedPokemon[] {
   return targetLanguageList.map((targetLanguage) => {
     const languageNames = new Intl.DisplayNames([targetLanguage], {
       type: "language",
@@ -26,7 +42,3 @@ function mergePokemonDataByLanguage({
     };
   });
 }
-
-module.exports = {
-  mergePokemonDataByLanguage,
-};
