@@ -3,7 +3,7 @@ import { createUrlPathFromArray } from "../../../../../utils/create_url_path_fro
 import Button from "../../../atoms/button/button/button";
 import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
 import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
-import getPaginationArray from "./helper_functions/filter_page_array/filter_page_array";
+import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
 interface PaginationProps {
   basePath: string;

@@ -1,4 +1,4 @@
-import getPaginationArray from "./filter_page_array";
+import getPaginationArray from "./get_pagination_array";
 
 describe("[Pagination] Filter page array", () => {
   test("Current page: 1, Page count: 1", () => {

@@ -1,4 +1,12 @@
-export default function getPaginationArray({ pageCount, currentPage }) {
+interface GetPaginationArrayParams {
+  pageCount: number;
+  currentPage: number;
+}
+
+export default function getPaginationArray({
+  pageCount,
+  currentPage,
+}: GetPaginationArrayParams) {
   let lowerBoundary = 1;
   let upperBoundary = currentPage + 2;
 
