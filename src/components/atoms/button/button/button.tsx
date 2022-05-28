@@ -1,9 +1,9 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import "../../../../utils/font_awesome";
+import ButtonInnerContent from "../button_inner_content/button_inner_content";
 import * as classes from "./button.module.scss";
 
 interface ButtonProps {
@@ -36,27 +36,25 @@ export default function Button({
     [classes.size_lg]: size === "lg",
   });
 
-  const InnerContent = () => {
-    return (
-      <>
-        {leadingIcon && <FontAwesomeIcon icon={leadingIcon} />}
-        {title}
-        {trailingIcon && <FontAwesomeIcon icon={trailingIcon} />}
-      </>
-    );
-  };
-
   if (!isDisabled && to && isInternalLink) {
     return (
       <Link className={buttonClassNames} to={to} onClick={onClick}>
-        <InnerContent />
+        <ButtonInnerContent
+          leadingIcon={leadingIcon}
+          trailingIcon={trailingIcon}
+          title={title}
+        />
       </Link>
     );
   }
   if (!isDisabled && to && !isInternalLink) {
     return (
       <a className={buttonClassNames} href={to} onClick={onClick}>
-        <InnerContent />
+        <ButtonInnerContent
+          leadingIcon={leadingIcon}
+          trailingIcon={trailingIcon}
+          title={title}
+        />
       </a>
     );
   }
@@ -67,10 +65,15 @@ export default function Button({
       disabled={isDisabled}
       onClick={onClick}
     >
-      <InnerContent />
+      <ButtonInnerContent
+        leadingIcon={leadingIcon}
+        trailingIcon={trailingIcon}
+        title={title}
+      />
     </button>
   );
 }
 Button.defaultProps = {
   variant: "primary",
+  size: "md",
 };
