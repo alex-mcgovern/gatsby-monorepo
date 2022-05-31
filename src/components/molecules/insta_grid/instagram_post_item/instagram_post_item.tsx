@@ -1,6 +1,7 @@
 import React from "react";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import * as classes from "./instagram_post_item.module.scss";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import * as styles from "./instagram_post_item.css";
 
 interface InstagramPostItemProps {
   wrappedImage: {
@@ -14,18 +15,21 @@ export default function InstagramPostItem({
   wrappedImage,
 }: InstagramPostItemProps) {
   const image = getImage(wrappedImage.localImage);
+  const imageClassNames = getFunctionalClassNames({
+    height: "100%",
+  });
   if (image) {
     return (
-      <a
-        className={classes.insta_post_link_wrapper}
-        href={wrappedImage.permalink}
-      >
+      <a className={styles.instagramPostLink} href={wrappedImage.permalink}>
         <GatsbyImage
-          className={classes.image}
+          className={imageClassNames}
+          objectFit="cover"
           image={image}
           alt={wrappedImage.caption}
         />
-        <div className={classes.caption_overlay}>{wrappedImage.caption}</div>
+        <div className={styles.instagramPostOverlay}>
+          {wrappedImage.caption}
+        </div>
       </a>
     );
   }

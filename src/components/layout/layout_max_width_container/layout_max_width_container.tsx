@@ -1,16 +1,14 @@
 import React from "react";
-import * as classes from "./layout_max_width_container.module.scss";
+import * as styles from "./layout_max_width_container.css";
 
 interface LayoutMaxWidthContainerProps {
   children?: React.ReactNode;
 }
 
 export default function LayoutMaxWidthContainer({
-  children
+  children,
 }: LayoutMaxWidthContainerProps) {
-  return (
-    <section className={classes.layout_max_width_container}>{children}</section>
-  );
+  return <section className={styles.maxWidthContainer}>{children}</section>;
 }
 
 LayoutMaxWidthContainer.defaultProps = {

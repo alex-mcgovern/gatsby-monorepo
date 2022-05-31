@@ -1,25 +1,28 @@
 import React from "react";
-import classNames from "classnames";
-import * as classes from "./responsive_grid.module.scss";
+import Box from "../../layout/box/box";
+import { responsiveGrid } from "./responsive_grid.css";
 
 interface ResponsiveGridProps {
   children: React.ReactNode[];
-  split?: number;
+  split?: 2 | 3 | 4;
 }
 
 export default function ResponsiveGrid({
   split,
   children,
 }: ResponsiveGridProps) {
-  const gridClassNames = classNames(classes.grid, {
-    [classes.split_2]: split === 2,
-    [classes.split_3]: split === 3,
+  const gridStyle = responsiveGrid({
+    split,
   });
 
   return (
-    <ul className={gridClassNames}>
+    <ul className={gridStyle}>
       {children.map((child) => {
-        return <li className={classes.grid_item}>{child}</li>;
+        return (
+          <Box outline="dashed" as="li">
+            {child}
+          </Box>
+        );
       })}
     </ul>
   );

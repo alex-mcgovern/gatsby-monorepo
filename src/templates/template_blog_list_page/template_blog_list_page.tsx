@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Box from "../../components/layout/box/box";
 import Layout from "../../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 
@@ -49,16 +49,17 @@ export default function TemplateBlogListPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <LayoutSectionOuter>
+        <Box as="section" margin="lg">
           <SectionBlogPostList posts={posts} />
-        </LayoutSectionOuter>
-        <LayoutSectionOuter>
+        </Box>
+
+        {pageCount && pageCount > 1 && (
           <Pagination
             basePath={PAGINATION_BASE_PATH}
             currentPage={currentPage}
             pageCount={pageCount}
           />
-        </LayoutSectionOuter>
+        )}
       </LayoutMaxWidthContainer>
     </Layout>
   );
@@ -77,7 +78,6 @@ export const query = graphql`
       skip: $itemsToSkip
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {fileAbsolutePath: {regex: "/(\/content\/blog)/.*\\.md$/"}}
-
     ) {
       nodes {
         excerpt

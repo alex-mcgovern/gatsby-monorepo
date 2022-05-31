@@ -8,6 +8,17 @@
       "}"
     ]
   },
+  "Vanilla Extract style": {
+    "scope": "typescript,css",
+    "prefix": "VE Style",
+    "body": [
+      "import { style } from \"@vanilla-extract/css\";",
+      "export const className = style({",
+      "\t",
+      "})"
+    ],
+    "description": "Vanilla Extract style"
+  },
   "jest suite boilerplate": {
     "scope": "javascript,typescript",
     "prefix": "test: function",
@@ -21,11 +32,6 @@
     ]
   },
 
-  "useEffect": {
-    "scope": "javascriptreact",
-    "prefix": "useEffect",
-    "body": ["  useEffect(()=> {", "", "  }, [])", ""]
-  },
   "testing-library boilerplate": {
     "scope": "javascript,typescript,javascriptreact",
     "prefix": "test: component ",
@@ -67,27 +73,28 @@
     ],
     "description": "testing library boilerplate"
   },
-  "Dev component": {
-    "scope": "javascript,typescript,javascriptreact",
-    "prefix": "comp: dev",
+  "React TypeScript Functional Component": {
+    "scope": "typescriptreact",
+    "prefix": "TS FC",
     "description": "",
     "body": [
       "import React from \"react\";",
       "import PropTypes from \"prop-types\"",
-      "import * as classes from \"./file.module.scss\"",
       "",
-      "export default function Component({ placeholderProp }) {",
-      "    return (",
       "",
-      "    )",
+      "interface IComponent {",
+      "\tplaceholderProp: undefined",
       "}",
       "",
-      "Component.propTypes = {",
-      "    placeholderProp: PropTypes.string",
+      "export default function Component({ placeholderProp }: IComponent) {",
+      "\treturn (",
+      "",
+      "\t)",
       "}",
+      "",
       "",
       "Component.defaultProps = {",
-      "    placeholderProp: null",
+      "\tplaceholderProp: null",
       "}"
     ]
   },

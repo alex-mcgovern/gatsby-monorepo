@@ -1,43 +1,45 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
-import * as classes from "./search_input.module.scss";
+import * as styles from "./search_input.css";
 
 interface SearchInputProps {
   getInputProps(...args: unknown[]): unknown;
+  getRootProps(...args: unknown[]): unknown;
   placeholder?: string;
   leadingIcon?: IconProp;
-  size?: "lg" | "md" | "sm";
+  size?: "sm" | "md" | "lg";
 }
 
 export default function SearchInput({
   getInputProps,
   placeholder,
   leadingIcon,
+  getRootProps,
   size,
 }: SearchInputProps) {
-  const inputClassNames = classNames(classes.input_wrapper, {
-    [classes.size_lg]: size === "lg",
-    [classes.size_md]: size === "md",
-    [classes.size_sm]: size === "sm",
+  const inputStyles = styles.getInputWrapperStyles({
+    size,
   });
+
   return (
-    <div className={inputClassNames}>
+    <div className={inputStyles}>
       {leadingIcon && (
-        <FontAwesomeIcon className={classes.input_icon} icon={leadingIcon} />
+        <FontAwesomeIcon className={styles.icon} icon={leadingIcon} />
       )}
 
       <input
-        className={classes.input_inner}
+        className={styles.inputElement}
         placeholder={placeholder}
         {...getInputProps()}
+        {...getRootProps()}
       />
     </div>
   );
 }
 
 SearchInput.defaultProps = {
+  getRootProps: () => {},
   getInputProps: () => {},
   placeholder: "Search",
   leadingIcon: "search",

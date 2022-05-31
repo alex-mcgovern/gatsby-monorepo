@@ -1,16 +1,18 @@
 import React from "react";
-import SingleSelectDropdownListItem from "../single_select_dropdown_list_item/single_select_dropdown_list_item";
-import * as classes from "./single_select_dropdown.module.scss";
+import DropdownListItem from "../dropdown_list_item/dropdown_list_item";
+import * as styles from "./single_select_dropdown.css";
 
 interface SingleSelectDropdownListProps {
   isOpen?: boolean;
   getMenuProps(...args: unknown[]): unknown;
   getItemProps(...args: unknown[]): unknown;
-  inputValue?: string;
+  size: "sm" | "md" | "lg";
+  inputValue: string | null;
   searchIndex: {
     value: string;
+    link: string;
   }[];
-  highlightedIndex?: number;
+  highlightedIndex: number | null;
   selectedItem?: {};
 }
 
@@ -20,12 +22,13 @@ export default function SingleSelectDropdownList({
   highlightedIndex,
   inputValue,
   isOpen,
+  size,
   searchIndex,
   selectedItem,
 }: SingleSelectDropdownListProps) {
   if (isOpen) {
     return (
-      <ul className={classes.list_wrapper} {...getMenuProps()}>
+      <ul className={styles.dropdownWrapper} {...getMenuProps()}>
         {searchIndex
           .filter((item) => {
             return (
@@ -35,8 +38,9 @@ export default function SingleSelectDropdownList({
           })
           .map((item, index) => {
             return (
-              <SingleSelectDropdownListItem
+              <DropdownListItem
                 getItemProps={getItemProps}
+                size={size}
                 highlightedIndex={highlightedIndex}
                 index={index}
                 item={item}

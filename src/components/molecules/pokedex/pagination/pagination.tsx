@@ -2,7 +2,7 @@ import React from "react";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
 import Button from "../../../atoms/button/button/button";
 import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
-import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
+import Box from "../../../layout/box/box";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
 interface PaginationProps {
@@ -25,40 +25,45 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
   const pageArray = getPaginationArray({ pageCount, currentPage });
 
   return (
-    <LayoutSectionOuter>
-      <ButtonWrapper isCentered>
-        <Button
-          variant="secondary"
-          leadingIcon="angles-left"
-          to={firstPath}
-          isDisabled={isFirstOrPrevDisabled}
-        />
-        <Button
-          variant="secondary"
-          leadingIcon="angle-left"
-          to={previousPath}
-          isDisabled={isFirstOrPrevDisabled}
-        />
-        {pageArray.length > 0 &&
-          pageArray.map((page) => {
-            const link = createUrlPathFromArray([basePath, page]);
-            const variant = page === currentPage ? "primary" : "secondary";
-            return <Button variant={variant} to={link} title={page} />;
-          })}
-        <Button
-          variant="secondary"
-          trailingIcon="angle-right"
-          to={nextPath}
-          isDisabled={isNextOrLastDisabled}
-        />
-        <Button
-          variant="secondary"
-          trailingIcon="angles-right"
-          to={lastPath}
-          isDisabled={isNextOrLastDisabled}
-        />
-      </ButtonWrapper>
-    </LayoutSectionOuter>
+    <Box
+      display="flex"
+      as="nav"
+      justifyContent={"center"}
+      margin="sm"
+      gap="small"
+      outline="dashed"
+    >
+      <Button
+        variant="secondary"
+        leadingIcon="angles-left"
+        to={firstPath}
+        isDisabled={isFirstOrPrevDisabled}
+      />
+      <Button
+        variant="secondary"
+        leadingIcon="angle-left"
+        to={previousPath}
+        isDisabled={isFirstOrPrevDisabled}
+      />
+      {pageArray.length > 0 &&
+        pageArray.map((page) => {
+          const link = createUrlPathFromArray([basePath, page]);
+          const variant = page === currentPage ? "primary" : "secondary";
+          return <Button variant={variant} to={link} title={page} />;
+        })}
+      <Button
+        variant="secondary"
+        trailingIcon="angle-right"
+        to={nextPath}
+        isDisabled={isNextOrLastDisabled}
+      />
+      <Button
+        variant="secondary"
+        trailingIcon="angles-right"
+        to={lastPath}
+        isDisabled={isNextOrLastDisabled}
+      />
+    </Box>
   );
 }
 

@@ -1,7 +1,6 @@
 import * as React from "react";
 import AlternatingLayout from "../../../atoms/alternating_layout/alternating_layout";
-import LayoutSectionInner from "../../../layout/layout_section_inner/layout_section_inner";
-import LayoutSectionOuter from "../../../layout/layout_section_outer/layout_section_outer";
+import Box from "../../../layout/box/box";
 
 interface HeaderProjectProps {
   doc: string;
@@ -9,22 +8,17 @@ interface HeaderProjectProps {
 
 export default function HeaderProject({ doc }: HeaderProjectProps) {
   return (
-    <LayoutSectionOuter>
+    <Box margin="lg">
       <AlternatingLayout ratio="2_1">
-        <LayoutSectionInner hasArrowsBottom hasArrowsTop hasOutline hasPadding>
+        <Box outline="dashed" padding="lg">
           <section
             dangerouslySetInnerHTML={{ __html: doc }}
             itemProp="articleBody"
           />
-        </LayoutSectionInner>
+        </Box>
 
-        <LayoutSectionInner
-          hasArrowsBottom
-          hasArrowsTop
-          hasOutline
-          hasBackground
-        />
+        <Box outline="dashed" background="crosshatch" />
       </AlternatingLayout>
-    </LayoutSectionOuter>
+    </Box>
   );
 }

@@ -36,6 +36,12 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-vanilla-extract`,
+      options: {
+        identifiers: `debug`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-pokemon-pages",
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
@@ -53,20 +59,6 @@ const config: GatsbyConfig = {
     //      GATSBY PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
     `gatsby-plugin-image`,
-    {
-      resolve: "gatsby-plugin-sass",
-      options: {
-        cssLoaderOptions: {
-          esModule: true,
-          modules: {
-            namedExport: true,
-          },
-        },
-        additionalData: `@import "${path.resolve(
-          `src/styles/sass_global_scope/index"`
-        )};`,
-      },
-    },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

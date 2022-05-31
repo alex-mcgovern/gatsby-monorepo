@@ -1,15 +1,12 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
-import { ImageDataLike, getImage } from "gatsby-plugin-image";
+import { graphql } from "gatsby";
+import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
+import AlternatingLayout from "../../components/atoms/alternating_layout/alternating_layout";
 import Button from "../../components/atoms/button/button/button";
-import ButtonWrapper from "../../components/atoms/button/button_wrapper/button_wrapper";
+import Box from "../../components/layout/box/box";
 import Layout from "../../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
-import BlogHero from "../../components/molecules/blog/blog_hero/blog_hero";
-import Bio from "../../components/molecules/header/bio/bio";
 import Seo from "../../components/seo";
-import * as classes from "./template_blog_post.module.scss";
 
 interface BlogPostTemplateProps {
   data: {
@@ -48,7 +45,6 @@ interface BlogPostTemplateProps {
 }
 
 const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
-  console.log(data);
   const { markdownRemark: post, site, previous, next } = data;
   const {
     excerpt,
@@ -67,33 +63,44 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         description={description || excerpt}
       />
       <LayoutMaxWidthContainer>
-        <BlogHero
-          date={post.frontmatter.date}
-          image={image}
-          title={post.frontmatter.title}
-        />
-        <article
-          className={classes.blog_post}
-          itemScope
-          itemType="http://schema.org/Article"
-        >
-          <LayoutSectionOuter>
+        <Box as="section" margin="lg">
+          <AlternatingLayout ratio="2_1">
+            <Box as="header" outline="dashed" padding="lg">
+              <h1>{post.frontmatter.title}</h1>
+              <p>{post.frontmatter.description}</p>
+              <h2>{post.frontmatter.date}</h2>
+            </Box>
+            <Box outline="dashed" background="crosshatch">
+              {image && (
+                <GatsbyImage alt={post.frontmatter.title} image={image} />
+              )}
+            </Box>
+          </AlternatingLayout>
+        </Box>
+        <article itemScope itemType="http://schema.org/Article">
+          <Box as="section" margin="sm" padding="lg" outline="dashed">
             <section
               dangerouslySetInnerHTML={{ __html: html }}
               itemProp="articleBody"
             />
             <hr />
             <footer></footer>
-          </LayoutSectionOuter>
+          </Box>
         </article>
-        <nav className={classes.blog_post_nav}>
-          <ButtonWrapper isSpaceBetween>
+        <nav>
+          <Box
+            margin="sm"
+            display="flex"
+            justifyContent={"space-between"}
+            gap="small"
+            outline="dashed"
+          >
             <Button
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
             <Button to={next?.fields?.slug} title={next?.frontmatter?.title} />
-          </ButtonWrapper>
+          </Box>
           <ul
             style={{
               display: `flex`,

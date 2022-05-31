@@ -1,6 +1,5 @@
 import React from "react";
 import ReadingListItem from "../reading_list_item/reading_list_item";
-import * as classes from "./reading_list_kanban.module.scss";
 
 const READING_LIST_MOCK = {
   toDo: [
@@ -51,7 +50,7 @@ interface ReadingListKanbanProps {}
 
 export default function ReadingListKanban({}: ReadingListKanbanProps) {
   return (
-    <section className={classes.reading_list_wrapper}>
+    <section>
       <div>
         {READING_LIST_MOCK.toDo.map((item) => {
           return <ReadingListItem title={item.title} />;

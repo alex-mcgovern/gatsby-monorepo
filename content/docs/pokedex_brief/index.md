@@ -8,11 +8,11 @@ description:
   (Warning, contains nerdiness 🤓)"
 ---
 
-##### Example project
-
 # Multilingual Pokedex
 
-This is a working example of the take-home challenge I use for frontend roles.
+This is a working example of the take-home challenge I ask candidates to
+complete when interviewing for frontend roles on my team.
+
 The brief is to create a static Gatsby website containing a multilingual
 Pokedex, using data sourced from PokeAPI at build time.
 

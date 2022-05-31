@@ -1,18 +1,20 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
+import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
 import AlternatingLayout from "../components/atoms/alternating_layout/alternating_layout";
 import Button from "../components/atoms/button/button/button";
 import ButtonWrapper from "../components/atoms/button/button_wrapper/button_wrapper";
 import ResponsiveGrid from "../components/atoms/responsive_grid/responsive_grid";
+import Typography from "../components/atoms/typography/typography";
+import Box from "../components/layout/box/box";
 import Layout from "../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../components/layout/layout_max_width_container/layout_max_width_container";
-import LayoutSectionInner from "../components/layout/layout_section_inner/layout_section_inner";
-import LayoutSectionOuter from "../components/layout/layout_section_outer/layout_section_outer";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Bio from "../components/molecules/header/bio/bio";
 import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
 import ReadingList from "../components/molecules/reading_list/reading_list_kanban/reading_list_kanban";
+import SingleSelect from "../components/molecules/single_select/single_select/single_select";
 import Seo from "../components/seo";
 import LogoGatsby from "../images/svg/logos/logo_gatsby.svg";
 import LogoReact from "../images/svg/logos/logo_react.svg";
@@ -20,6 +22,10 @@ import LogoReact from "../images/svg/logos/logo_react.svg";
 // import LogoSASS from "../images/svg/logos/logo_sass.svg";
 // import LogoTestingLibrary from "../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
+
+const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
+
+const DROPDOWN_INDEX = [{ value: "Multilingual Pokedex", link: POKEDEX_LINK }];
 
 interface BlogIndexProps {
   data: {
@@ -73,91 +79,9 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       <LayoutMaxWidthContainer>
         {bioExcerpt && <Bio bio={bioExcerpt} />}
 
-        {/* ——————————————————————————————————————————————————————————————————————————————
-        //      WHAT I DO 1
-        // —————————————————————————————————————————————————————————————————————————————— */}
-        <LayoutSectionOuter>
-          <AlternatingLayout>
-            <LayoutSectionInner
-              hasBackground
-              hasOutline
-              hasPadding
-              isVerticallyCentered
-            >
-              <ResponsiveGrid split={3}>
-                <h1>🤝</h1>
-                <h1>🚀</h1>
-                <h1>👨‍🏫</h1>
-              </ResponsiveGrid>
-            </LayoutSectionInner>
-            <LayoutSectionInner
-              hasOutline
-              hasArrowsTop
-              hasArrowsBottom
-              hasPadding
-            >
-              <h5>MY GOAL</h5>
-              <h3>Build a culture of web engineering excellence.</h3>
-              <h5>While I don't get to code as much anymore.</h5>
-            </LayoutSectionInner>
-          </AlternatingLayout>
-        </LayoutSectionOuter>
-
-        {/* ——————————————————————————————————————————————————————————————————————————————
-        //      WHAT I DO 2
-        // —————————————————————————————————————————————————————————————————————————————— */}
-        <LayoutSectionOuter>
-          <AlternatingLayout>
-            <LayoutSectionInner
-              hasOutline
-              hasArrowsTop
-              hasArrowsBottom
-              hasPadding
-            >
-              <h5>My passion</h5>
-              <h3>
-                Building enterprise B2B websites for scale and performance.
-              </h3>
-              <h5>
-                Using React, TypeScript, GatsbyJS, SASS, React Testing Library
-                and Cypress.
-              </h5>
-            </LayoutSectionInner>
-            <LayoutSectionInner
-              hasBackground
-              hasOutline
-              hasPadding
-              isVerticallyCentered
-            >
-              <ResponsiveGrid split={3}>
-                <h1>👨🏻‍💻</h1>
-                <h1>📈</h1>
-                <h1>🏎</h1>
-              </ResponsiveGrid>
-            </LayoutSectionInner>
-          </AlternatingLayout>
-        </LayoutSectionOuter>
-
-        {/* ——————————————————————————————————————————————————————————————————————————————
-        //      WHAT I DO 2
-        // —————————————————————————————————————————————————————————————————————————————— */}
-        <LayoutSectionOuter>
-          <AlternatingLayout>
-            <LayoutSectionInner
-              hasOutline
-              hasArrowsTop
-              hasArrowsBottom
-              hasPadding
-            >
-              <h3>
-                I build enterprise B2B websites for scale and performance.
-              </h3>
-              <h5>
-                Using React, TypeScript, GatsbyJS, SASS, React Testing Library
-                and Cypress.
-              </h5>
-            </LayoutSectionInner>
-            <LayoutSectionInner hasBackground hasOutline hasPadding>
+        <Box as="section" margin="md">
+          <AlternatingLayout ratio="7_5">
+            <Box outline="dashed" background="crosshatch" padding="lg">
               <ResponsiveGrid split={3}>
                 <LogoGatsby />
                 <LogoReact />
@@ -166,32 +90,65 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                 <LogoTestingLibrary />
                 <LogoCypress /> */}
               </ResponsiveGrid>
-            </LayoutSectionInner>
+            </Box>
+            <Box outline="dashed" padding="lg" isVerticallyCentered>
+              <h3>I love building for performance.</h3>
+              <p>
+                I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library
+                and Cypress.
+              </p>
+            </Box>
           </AlternatingLayout>
-        </LayoutSectionOuter>
+        </Box>
 
-        <LayoutSectionOuter>
-          <LayoutSectionInner
-            hasArrowsBottom
-            hasArrowsTop
-            hasOutline
-            hasPadding
-          >
-            <h6>BLOG</h6>
-            <h2>I am by no means an expert...</h2>
-            <h4>...but I have a blog</h4>
-            <p>Just a few things I've picked up along the way...</p>
+        {/* ——————————————————————————————————————————————————————————————————————————————
+        //      BLOG SECTION
+        // —————————————————————————————————————————————————————————————————————————————— */}
+        <Box as="section" outline="dashed" padding="lg" margin="lg">
+          <h3>I am by no means an expert...</h3>
+          <p>
+            ...but I have a blog. Just a few things I've picked up along the
+            way...
+          </p>
+          <Box margin="sm">
             <SectionBlogPostList posts={posts} />
-            <ButtonWrapper isCentered>
-              <Button
-                size="lg"
-                to="/blog"
-                title="Explore 11 more blog articles"
-              />
-            </ButtonWrapper>
-          </LayoutSectionInner>
-        </LayoutSectionOuter>
-        {images && images.length > 0 && <InstagramPostList images={images} />}
+          </Box>
+          <Box
+            margin="sm"
+            display="flex"
+            justifyContent="center"
+            gap="small"
+            outline="dashed"
+          >
+            <Button
+              size="md"
+              to="/blog"
+              title="Explore 11 more blog articles"
+            />
+          </Box>
+        </Box>
+
+        {/* ——————————————————————————————————————————————————————————————————————————————
+        //      INSTAGRAM SECTION
+        // —————————————————————————————————————————————————————————————————————————————— */}
+        <Box as="section" outline="dashed" padding="lg" margin="lg">
+          <h3>I've also been known to dabble in design, painting and 3D...</h3>
+          <Box margin="sm">
+            {images && images.length > 0 && (
+              <InstagramPostList images={images} />
+            )}
+          </Box>
+          <Box
+            margin="sm"
+            display="flex"
+            justifyContent="center"
+            gap="small"
+            outline="dashed"
+          >
+            <Button size="lg" to="/" title="Check me out on Instagram" />
+          </Box>
+        </Box>
+
         <ReadingList />
       </LayoutMaxWidthContainer>
     </Layout>
@@ -213,7 +170,7 @@ export const pageQuery = graphql`
 
     ) {
       nodes {
-        excerpt(pruneLength: 167, format: HTML, truncate: true)
+        excerpt(pruneLength: 150, format: HTML, truncate: true)
       }
     }
     allMarkdownRemark(

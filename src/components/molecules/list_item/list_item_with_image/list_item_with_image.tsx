@@ -2,7 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import * as classes from "./list_item_with_image.module.scss";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import Box from "../../../layout/box/box";
+import * as styles from "./list_item_with_image.css";
 
 interface ListItemWithImageProps {
   title: string;
@@ -10,7 +12,7 @@ interface ListItemWithImageProps {
   description?: string;
   link: string;
   image: ImageDataLike;
-  variant?: "square" | "wide" | "tall";
+  aspectRatio?: "square" | "wide" | "tall";
 }
 
 export default function ListItemWithImage({
@@ -19,35 +21,34 @@ export default function ListItemWithImage({
   description,
   link,
   image,
-  variant,
+  aspectRatio,
 }: ListItemWithImageProps) {
   const imageData = getImage(image);
 
-  const listItemClassNames = classNames(classes.list_item_link, {
-    [classes.variant_wide]: variant === "wide",
-    [classes.variant_square]: variant === "square",
-    [classes.variant_tall]: variant === "square",
-  });
+  const imageClassNames = classNames(
+    styles.image,
+    getFunctionalClassNames({
+      aspectRatio,
+    })
+  );
 
   return (
-    <Link to={link} className={listItemClassNames}>
-      <div className={classes.image_wrapper}>
+    <Link to={link} className={styles.listItemWrapper}>
+      <Box background="crosshatch" outline="solid">
         {imageData && (
           <GatsbyImage
             alt={title}
-            className={classes.image}
+            className={imageClassNames}
             image={imageData}
           />
         )}
-      </div>
-      {title && (
-        <header>
-          <h4 className={classes.list_item_title}>{title}</h4>
+      </Box>
 
-          {subtitle && <small className={classes.subtitle}>{subtitle}</small>}
-        </header>
-      )}
-      {description && <p>{description}</p>}
+      <Box as="header" padding="sm">
+        {title && <h4>{title}</h4>}
+        {subtitle && <small>{subtitle}</small>}
+        {description && <p>{description}</p>}
+      </Box>
     </Link>
   );
 }
@@ -58,5 +59,5 @@ ListItemWithImage.defaultProps = {
   description: "",
   link: "",
   image: {},
-  variant: "wide",
+  aspectRatio: "wide",
 };

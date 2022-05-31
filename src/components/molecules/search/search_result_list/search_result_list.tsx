@@ -1,6 +1,6 @@
 import React from "react";
-import SearchResultListItem from "../search_result_list_item/search_result_list_item";
-import * as classes from "./search_result_list.module.scss";
+import DropdownListItem from "../../single_select/dropdown_list_item/dropdown_list_item";
+import * as styles from "./search_result_list.css";
 
 type Item = {
   link: string;
@@ -28,8 +28,8 @@ export default function SearchResultList({
 }: SearchResultListProps) {
   if (isOpen) {
     return (
-      <div className={classes.list_wrapper}>
-        <ul className={classes.list_inner} {...getMenuProps()}>
+      <div className={styles.listWrapper}>
+        <ul className={styles.listInner} {...getMenuProps()}>
           {searchIndex
             .filter((item) => {
               return (
@@ -39,7 +39,7 @@ export default function SearchResultList({
             })
             .map((item, index) => {
               return (
-                <SearchResultListItem
+                <DropdownListItem
                   getItemProps={getItemProps}
                   highlightedIndex={highlightedIndex}
                   index={index}

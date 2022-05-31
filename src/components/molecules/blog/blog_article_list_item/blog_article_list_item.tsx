@@ -28,7 +28,7 @@ export default function BlogArticleListItem({
 
   return (
     <ListItemWithImage
-      variant="wide"
+      aspectRatio="wide"
       title={post.frontmatter.title || post.fields.slug}
       subtitle={post.frontmatter.date}
       description={post.frontmatter.description || post.excerpt}

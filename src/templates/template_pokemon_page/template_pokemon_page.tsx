@@ -2,16 +2,15 @@ import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
+import AlternatingLayout from "../../components/atoms/alternating_layout/alternating_layout";
+import Box from "../../components/layout/box/box";
 import Layout from "../../components/layout/layout/layout";
-import LayoutDecorativeArrows from "../../components/layout/layout_decorative_arrows/layout_decorative_arrows";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
 import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import * as classes from "./template_pokemon_page.module.scss";
 
 interface TemplatePokemonPageProps {
   data: {
@@ -63,7 +62,7 @@ export default function TemplatePokemonPage({
   const paddedPokedexId = padStart({
     value: pokedexID,
     desiredLength: 3,
-    padCharacter: 0,
+    padCharacter: "0",
   });
 
   const pokemonTitle = `${paddedPokedexId} ${name}`;
@@ -84,41 +83,34 @@ export default function TemplatePokemonPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <LayoutSectionOuter>
+        <Box as="section" margin="lg">
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
             languageIndex={languageIndex}
           />
 
-          <div className={classes.pokemon_wrapper}>
-            <div className={classes.pokemon_inner}>
-              <LayoutDecorativeArrows />
-              <div>
+          <Box as="section">
+            <AlternatingLayout ratio="2_1">
+              <Box as="header" outline="dashed" padding="lg">
                 <h2>{pokemonTitle}</h2>
                 <h3>{genus}</h3>
                 <p>{flavorText}</p>
-              </div>
-              <LayoutDecorativeArrows />
-            </div>
+              </Box>
+              <Box outline="solid" background="crosshatch">
+                {imageData && <GatsbyImage alt={name} image={imageData} />}
+              </Box>
+            </AlternatingLayout>
+          </Box>
+        </Box>
 
-            {imageData && (
-              <GatsbyImage
-                alt={name}
-                image={imageData}
-                className={classes.pokemon_image}
-              />
-            )}
-          </div>
-        </LayoutSectionOuter>
-
-        <LayoutSectionOuter>
+        <Box>
           <Pagination
             basePath={paginationBasePath}
             currentPage={pokedexID}
             pageCount={totalCount}
           />
-        </LayoutSectionOuter>
+        </Box>
       </LayoutMaxWidthContainer>
     </Layout>
   );

@@ -9,9 +9,11 @@ description:
   (Warning, contains nerdiness 🤓)"
 ---
 
-I'm a frontend engineering manager focused on building high-performing,
-craft-obsessed frontend teams, and building enterprise-scale, fully
-international B2B websites.
+## Hi, I'm Alex.
+
+I build enterprise B2B websites for performance and scale. I currently lead a
+team at a hypergrowth fintech where we are scaling a multi-language, 500+ page
+site.
 
 My job is to:
 

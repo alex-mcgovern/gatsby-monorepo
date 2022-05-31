@@ -3,11 +3,11 @@ import Downshift from "downshift";
 import Button from "../../../atoms/button/button/button";
 import SingleSelectDropdownList from "../single_select_dropdown/single_select_dropdown";
 import getSelectIndexItemValue from "./helper_functions/get_select_index_item_value";
-import * as classes from "./single_select.module.scss";
+import * as styles from "./single_select.css";
 
 interface SingleSelectProps {
   searchIndex: {}[];
-  size?: "lg" | "md" | "sm";
+  size?: TSizeProp;
   value?: string;
 }
 
@@ -28,7 +28,7 @@ export default function SingleSelect({
         selectedItem,
       }) => {
         return (
-          <div className={classes.search_wrapper}>
+          <div className={styles.wrapper}>
             <Button
               size={size}
               title={value}
@@ -37,6 +37,7 @@ export default function SingleSelect({
               {...getToggleButtonProps()}
             />
             <SingleSelectDropdownList
+              size={size}
               getItemProps={getItemProps}
               getMenuProps={getMenuProps}
               highlightedIndex={highlightedIndex}

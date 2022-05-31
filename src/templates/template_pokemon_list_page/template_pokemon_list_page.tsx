@@ -3,9 +3,9 @@ import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
+import Box from "../../components/layout/box/box";
 import Layout from "../../components/layout/layout/layout";
 import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import LayoutSectionOuter from "../../components/layout/layout_section_outer/layout_section_outer";
 import HeaderProject from "../../components/molecules/header/header_project/header_project";
 import ListItemWithImage from "../../components/molecules/list_item/list_item_with_image/list_item_with_image";
 import Pagination from "../../components/molecules/pokedex/pagination/pagination";
@@ -30,9 +30,7 @@ interface TemplatePokemonListPageProps {
     };
     doc: {
       nodes: {
-        excerpt: {
-          html: string;
-        };
+        excerpt: string;
       }[];
     };
     allLanguagesISO: {
@@ -77,23 +75,23 @@ export default function TemplatePokemonListPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <HeaderProject doc={doc.html} />
+        <HeaderProject doc={doc} />
 
-        <LayoutSectionOuter>
-          <PokedexNav
-            searchIndex={searchIndex}
-            languageISO={languageISO}
-            languageIndex={languageIndex}
-            placeholder="Search for a pokemon"
-            isTopLevel
-          />
+        <PokedexNav
+          searchIndex={searchIndex}
+          languageISO={languageISO}
+          languageIndex={languageIndex}
+          placeholder="Search for a pokemon"
+          isTopLevel
+        />
+        <Box as="section" margin="sm">
           <ResponsiveGrid split={3}>
             {allPokemon.map((pokemon) => {
               const { artwork, pokedexID, name } = pokemon;
               const paddedPokedexId = padStart({
                 value: pokedexID,
                 desiredLength: 3,
-                padCharacter: 0,
+                padCharacter: "0",
               });
               const link = createUrlPathFromArray([
                 languageISO,
@@ -103,7 +101,7 @@ export default function TemplatePokemonListPage({
               const title = `${paddedPokedexId} ${name}`;
               return (
                 <ListItemWithImage
-                  variant="square"
+                  aspectRatio="square"
                   link={link}
                   title={title}
                   image={artwork}
@@ -111,14 +109,12 @@ export default function TemplatePokemonListPage({
               );
             })}
           </ResponsiveGrid>
-        </LayoutSectionOuter>
-        <LayoutSectionOuter>
-          <Pagination
-            basePath={paginationBasePath}
-            currentPage={currentPage}
-            pageCount={pageCount}
-          />
-        </LayoutSectionOuter>
+        </Box>
+        <Pagination
+          basePath={paginationBasePath}
+          currentPage={currentPage}
+          pageCount={pageCount}
+        />
       </LayoutMaxWidthContainer>
     </Layout>
   );

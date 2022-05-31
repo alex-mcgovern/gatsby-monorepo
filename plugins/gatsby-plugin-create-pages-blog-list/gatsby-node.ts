@@ -33,7 +33,6 @@ export const createPages: GatsbyNode["createPages"] = async (
 
   if (markdownRemarkQueryResult.data?.allMarkdownRemark?.totalCount) {
     const { totalCount } = markdownRemarkQueryResult?.data.allMarkdownRemark;
-    console.log(totalCount);
 
     const pageCount = Math.ceil(totalCount / itemsPerPage);
     const firstPagePath = createUrlPathFromArray(["blog"]);
@@ -44,10 +43,6 @@ export const createPages: GatsbyNode["createPages"] = async (
         const currentPage = index + 1;
         const isFirstPage = index === 0;
         const itemsToSkip = itemsPerPage * index;
-
-        console.log("itemsToSkip", itemsToSkip);
-        console.log("isFirstPage", isFirstPage);
-        console.log("currentPage", currentPage);
 
         const nthPagePath = createUrlPathFromArray([
           "blog",

@@ -1,10 +1,9 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import classNames from "classnames";
 import { Link } from "gatsby";
 import "../../../../utils/font_awesome";
 import ButtonInnerContent from "../button_inner_content/button_inner_content";
-import * as classes from "./button.module.scss";
+import { button } from "./button.css";
 
 interface ButtonProps {
   to?: string;
@@ -13,7 +12,7 @@ interface ButtonProps {
   isDisabled?: boolean;
   trailingIcon?: IconProp;
   variant?: "primary" | "secondary";
-  size?: "sm" | "md" | "lg";
+  size?: TSizeProp;
   onClick?(...args: unknown[]): unknown;
 }
 
@@ -29,16 +28,15 @@ export default function Button({
 }: ButtonProps) {
   const isInternalLink = to && /^\/(?!\/)/.test(to);
 
-  const buttonClassNames = classNames(classes.button, {
-    [classes.variant_primary]: variant === "primary",
-    [classes.variant_secondary]: variant === "secondary",
-    [classes.size_sm]: size === "sm",
-    [classes.size_lg]: size === "lg",
+  const buttonStyle = button({
+    color: variant,
+    size: size,
+    rounded: true,
   });
 
   if (!isDisabled && to && isInternalLink) {
     return (
-      <Link className={buttonClassNames} to={to} onClick={onClick}>
+      <Link className={buttonStyle} to={to} onClick={onClick}>
         <ButtonInnerContent
           leadingIcon={leadingIcon}
           trailingIcon={trailingIcon}
@@ -49,7 +47,7 @@ export default function Button({
   }
   if (!isDisabled && to && !isInternalLink) {
     return (
-      <a className={buttonClassNames} href={to} onClick={onClick}>
+      <a className={buttonStyle} href={to} onClick={onClick}>
         <ButtonInnerContent
           leadingIcon={leadingIcon}
           trailingIcon={trailingIcon}
@@ -61,7 +59,7 @@ export default function Button({
   return (
     <button
       type="button"
-      className={buttonClassNames}
+      className={buttonStyle}
       disabled={isDisabled}
       onClick={onClick}
     >

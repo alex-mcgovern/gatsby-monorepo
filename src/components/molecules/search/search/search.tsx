@@ -28,7 +28,7 @@ export default function Search({
         selectedItem,
       }) => {
         return (
-          <div className={classes.search_wrapper}>
+          <form>
             <SearchInput
               getInputProps={getInputProps}
               placeholder={placeholder}
@@ -43,7 +43,7 @@ export default function Search({
               searchIndex={searchIndex}
               selectedItem={selectedItem}
             />
-          </div>
+          </form>
         );
       }}
     </Downshift>
