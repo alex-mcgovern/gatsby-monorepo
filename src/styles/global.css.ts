@@ -1,4 +1,6 @@
 import { globalStyle } from "@vanilla-extract/css";
+import "./global/global_button.css";
+import "./global/global_fieldset.css";
 import "./global/global_headings.css";
 import "./global/paragraph.css";
 import { varsFontSize } from "./vars/vars_font_size.css";

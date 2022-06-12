@@ -70,7 +70,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               <p>{post.frontmatter.description}</p>
               <h2>{post.frontmatter.date}</h2>
             </Box>
-            <Box outline="dashed" background="crosshatch">
+            <Box outline="dashed">
               {image && (
                 <GatsbyImage alt={post.frontmatter.title} image={image} />
               )}

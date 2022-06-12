@@ -25,6 +25,7 @@ export const getBoxClassNames = recipe({
         }),
       ],
     },
+
     background: {
       crosshatch: [
         {

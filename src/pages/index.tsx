@@ -1,20 +1,44 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
+import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
 import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
 import AlternatingLayout from "../components/atoms/alternating_layout/alternating_layout";
 import Button from "../components/atoms/button/button/button";
 import ResponsiveGrid from "../components/atoms/responsive_grid/responsive_grid";
+import Typography from "../components/atoms/typography/typography";
 import Box from "../components/layout/box/box";
 import Layout from "../components/layout/layout/layout";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Bio from "../components/molecules/header/bio/bio";
 import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
+import HomepageSectionPerformance from "../components/organisms/homepage_sections/homepage_section_performance";
 import Seo from "../components/seo";
+import LogoCypress from "../images/svg/logos/logo_cypress.svg";
+import LogoGatsby from "../images/svg/logos/logo_gatsby.svg";
+import LogoReact from "../images/svg/logos/logo_react.svg";
+import LogoSASS from "../images/svg/logos/logo_sass.svg";
+import LogoTestingLibrary from "../images/svg/logos/logo_testing_library.svg";
+import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
+import LogoVanillaExtract from "../images/svg/logos/logo_vanilla_extract.svg";
+import { getFunctionalClassNames } from "../styles/functional_classnames.css";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
 
-const DROPDOWN_INDEX = [{ value: "Multilingual Pokedex", link: POKEDEX_LINK }];
+const DROPDOWN_INDEX = [
+  {
+    value: "Multilingual Pokedex",
+    label: "Multilingual Pokedex",
+    link: POKEDEX_LINK,
+  },
+];
+
+const ICON_CLASSNAMES = getFunctionalClassNames({
+  padding: "spacing3",
+  borderRadius: "md",
+  boxShadow: "shadowDark",
+  aspectRatio: "square",
+});
 
 interface BlogIndexProps {
   data: {
@@ -61,27 +85,62 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
   const posts = allMarkdownRemark?.nodes;
   const images = allInstagramContent?.nodes;
 
+  const [CLS, setCLS] = useState();
+  const [FID, setFID] = useState();
+  const [LCP, setLCP] = useState();
+  const [FCP, setFCP] = useState();
+  const [TTFB, setTTFB] = useState();
+
+  useEffect(() => {
+    getCLS(setCLS);
+    getFID(setFID);
+    getLCP(setLCP);
+    getFCP(setFCP);
+    getTTFB(setTTFB);
+  }, []);
+
   return (
     <Layout title={siteTitle}>
       <Seo title="All posts" />
 
       {bioExcerpt && <Bio bio={bioExcerpt} />}
 
-      <Box as="section" marginY="spacing6">
-        <AlternatingLayout ratio="7_5">
-          <Box
-            outline="dashed"
-            background="crosshatch"
-            marginY="spacing9"
-          ></Box>
-          <Box outline="dashed" marginY="spacing9" isVerticallyCentered>
-            <h3>I love building for performance.</h3>
-            <p>
-              I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
-              Cypress.
-            </p>
-          </Box>
-        </AlternatingLayout>
+      <HomepageSectionPerformance />
+
+      <Box
+        as="section"
+        marginY="spacing6"
+        display="grid"
+        gap="spacing6"
+        alignItems="center"
+        gridTemplateColumns={{
+          desktop: "1_1",
+          tablet: "1",
+        }}
+      >
+        <Box marginY="spacing9">
+          <h3>These are a few of my favorite things...</h3>
+          <p>
+            I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
+            Cypress.
+          </p>
+          <p>My newest shiny toy is the excellent vanilla-extract library.</p>
+        </Box>
+
+        <Box
+          marginY="spacing3"
+          display="grid"
+          gridTemplateColumns="1_1_1_1"
+          gap="spacing3"
+        >
+          <LogoReact className={ICON_CLASSNAMES} />
+          <LogoTypescript className={ICON_CLASSNAMES} />
+          <LogoGatsby className={ICON_CLASSNAMES} />
+          <LogoTestingLibrary className={ICON_CLASSNAMES} />
+          <LogoCypress className={ICON_CLASSNAMES} />
+          <LogoSASS className={ICON_CLASSNAMES} />
+          <LogoVanillaExtract className={ICON_CLASSNAMES} />
+        </Box>
       </Box>
 
       {/* ——————————————————————————————————————————————————————————————————————————————
@@ -110,7 +169,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      INSTAGRAM SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" outline="dashed" marginY="spacing9" marginY="spacing9">
+      <Box as="section" outline="dashed" marginY="spacing9">
         <h3>I've also been known to dabble in design, painting and 3D...</h3>
         <Box marginY="spacing3">
           {images && images.length > 0 && <InstagramPostList images={images} />}

@@ -29,25 +29,18 @@ export default function SingleSelectDropdownList({
   if (isOpen) {
     return (
       <ul className={styles.dropdownWrapper} {...getMenuProps()}>
-        {searchIndex
-          .filter((item) => {
-            return (
-              !inputValue ||
-              item.value.toLowerCase().includes(inputValue.toLowerCase())
-            );
-          })
-          .map((item, index) => {
-            return (
-              <DropdownListItem
-                getItemProps={getItemProps}
-                size={size}
-                highlightedIndex={highlightedIndex}
-                index={index}
-                item={item}
-                selectedItem={selectedItem}
-              />
-            );
-          })}
+        {searchIndex.map((item, index) => {
+          return (
+            <DropdownListItem
+              getItemProps={getItemProps}
+              size={size}
+              highlightedIndex={highlightedIndex}
+              index={index}
+              item={item}
+              selectedItem={selectedItem}
+            />
+          );
+        })}
       </ul>
     );
   }

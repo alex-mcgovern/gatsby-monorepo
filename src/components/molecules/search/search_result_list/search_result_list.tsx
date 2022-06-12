@@ -2,18 +2,14 @@ import React from "react";
 import DropdownListItem from "../../single_select/dropdown_list_item/dropdown_list_item";
 import * as styles from "./search_result_list.css";
 
-type Item = {
-  link: string;
-  value: string;
-};
-
 interface SearchResultListProps {
+  selectItem(...args: unknown[]): unknown;
   getItemProps(...args: unknown[]): unknown;
   getMenuProps(...args: unknown[]): unknown;
   highlightedIndex?: number;
   inputValue?: string;
   isOpen?: boolean;
-  searchIndex: Item[];
+  searchIndex: IDownshiftItem[];
   selectedItem?: {};
 }
 
@@ -25,6 +21,7 @@ export default function SearchResultList({
   isOpen,
   searchIndex,
   selectedItem,
+  selectItem,
 }: SearchResultListProps) {
   if (isOpen) {
     return (
@@ -45,6 +42,7 @@ export default function SearchResultList({
                   index={index}
                   item={item}
                   selectedItem={selectedItem}
+                  selectItem={selectItem}
                 />
               );
             })}

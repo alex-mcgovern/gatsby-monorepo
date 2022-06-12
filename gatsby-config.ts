@@ -36,12 +36,6 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-vanilla-extract`,
-      options: {
-        identifiers: `debug`,
-      },
-    },
-    {
       resolve: "gatsby-plugin-pokemon-pages",
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
@@ -53,6 +47,16 @@ const config: GatsbyConfig = {
       resolve: "gatsby-plugin-create-pages-blog-list",
       options: {
         itemsPerPage: 12,
+      },
+    },
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      COMMUNITY PLUGINS
+    // —————————————————————————————————————————————————————————————————————————————— */
+
+    {
+      resolve: `gatsby-plugin-vanilla-extract`,
+      options: {
+        identifiers: `debug`,
       },
     },
     /* ——————————————————————————————————————————————————————————————————————————————
@@ -91,7 +95,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-instagram-all`,
       options: {
-        access_token: process.env.API_KEY_INSTAGRAM,
+        access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
     {

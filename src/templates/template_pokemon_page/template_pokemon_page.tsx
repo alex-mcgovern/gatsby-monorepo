@@ -97,7 +97,7 @@ export default function TemplatePokemonPage({
                 <h3>{genus}</h3>
                 <p>{flavorText}</p>
               </Box>
-              <Box outline="solid" background="crosshatch">
+              <Box outline="solid">
                 {imageData && <GatsbyImage alt={name} image={imageData} />}
               </Box>
             </AlternatingLayout>

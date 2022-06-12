@@ -17,7 +17,7 @@ export default function HeaderProject({ doc }: HeaderProjectProps) {
           />
         </Box>
 
-        <Box outline="dashed" background="crosshatch" />
+        <Box outline="dashed" />
       </AlternatingLayout>
     </Box>
   );

@@ -1,15 +1,9 @@
-// necessary to make scss module work. See https://github.com/gatsbyjs/gatsby/issues/8144#issuecomment-438206866
-declare module "*.scss" {
-  const content: { [className: string]: string };
-  export = content;
-}
-
-declare module "*.svg" {
+module "*.svg" {
   const content: any;
   export default content;
 }
 
-export type TSizeProp =
+type TSizeProp =
   | "xs"
   | "lg"
   | "sm"
@@ -24,3 +18,9 @@ export type TSizeProp =
   | "8x"
   | "9x"
   | "10x";
+
+interface IDownshiftItem {
+  label: string;
+  value: string;
+  link?: string;
+}

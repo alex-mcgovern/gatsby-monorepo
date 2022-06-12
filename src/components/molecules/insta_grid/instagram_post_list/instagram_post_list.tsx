@@ -17,9 +17,9 @@ export default function InstagramPostList({ images }: InstagramPostListProps) {
       <Box
         as="section"
         display="grid"
-        gridTemplateColumns={{ mobile: "1", tablet: "1_1" }}
+        gridTemplateColumns={{ mobile: "1", tablet: "1_1_1" }}
+        gap="spacing3"
       >
-        {" "}
         {images?.length > 0 &&
           images.map((wrappedImage) => {
             return <InstagramPostItem wrappedImage={wrappedImage} />;

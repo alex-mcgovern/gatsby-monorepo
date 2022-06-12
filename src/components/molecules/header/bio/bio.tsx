@@ -18,42 +18,47 @@ interface IBioProps {
 const Bio = ({ bio }: IBioProps) => {
   return (
     <Box
-      marginY="spacing9"
-      // boxShadow="shadowLight"
-      borderRadius="md"
+      alignItems="center"
       display="grid"
+      gap="spacing6"
       gridTemplateColumns={{
         mobile: "1",
         tablet: "2_1",
       }}
-      gap="spacing6"
-      overflow="hidden"
-      outline="dashed"
+      marginTop="spacing15"
+      marginBottom="spacing6"
     >
-      <Box paddingY="spacing6" paddingX="spacing3" outline="dashed">
+      <Box paddingY="spacing6">
         <section
           dangerouslySetInnerHTML={{ __html: bio }}
           itemProp="articleBody"
         />
         <Box marginY="spacing3" display="flex" gap="spacing3">
           <Button
-            variant="secondary"
-            size="sm"
-            to="/hello-world/"
-            title="More about me"
             leadingIcon="user"
+            size="sm"
+            title="More about me"
+            to="/hello-world/"
+            variant="secondary"
           />
         </Box>
       </Box>
 
-      <StaticImage
-        layout={"constrained"}
-        formats={["auto", "webp", "avif"]}
-        src="../../../../images/profile-pic.jpeg"
-        quality={95}
-        alt="Profile picture"
-        objectFit="cover"
-      />
+      <Box
+        borderRadius="md"
+        boxShadow="shadowLight"
+        outline="dashed"
+        overflow="hidden"
+      >
+        <StaticImage
+          alt="Profile picture"
+          formats={["auto", "webp", "avif"]}
+          layout={"constrained"}
+          objectFit="contain"
+          quality={95}
+          src="../../../../images/profile-pic.jpeg"
+        />
+      </Box>
     </Box>
   );
 };

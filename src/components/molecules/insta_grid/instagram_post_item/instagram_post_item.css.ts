@@ -1,7 +1,9 @@
 import { style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 
-export const instagramPostLink = style({});
+export const instagramPostLink = style({
+  position: "relative",
+});
 
 export const instagramPostOverlay = style([
   {

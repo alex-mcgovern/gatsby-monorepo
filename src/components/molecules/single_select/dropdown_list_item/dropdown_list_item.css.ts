@@ -12,7 +12,13 @@ export const getDropdownStyles = recipe({
       display: "block",
       color: varsColors.navy,
       textDecoration: "none",
+      textAlign: "left",
     },
+    getFunctionalClassNames({
+      paddingX: "spacing2",
+      paddingY: "spacing1",
+      width: "100%",
+    }),
   ],
   variants: {
     size: {
@@ -20,19 +26,16 @@ export const getDropdownStyles = recipe({
         {
           fontSize: varsFontSize.body_md,
         },
-        getFunctionalClassNames({ padding: "spacing4" }),
       ],
       md: [
         {
           fontSize: varsFontSize.body_lg,
         },
-        getFunctionalClassNames({ padding: "spacing5" }),
       ],
       lg: [
         {
           fontSize: varsFontSize.body_xl,
         },
-        getFunctionalClassNames({ padding: "spacing6" }),
       ],
     },
   },

@@ -7,8 +7,18 @@ import { getBoxClassNames } from "./box.css";
 
 interface IBox {
   alignItems?: TFunctionalClassNames["alignItems"];
-  as?: "menu" | "div" | "footer" | "header" | "li" | "nav" | "section" | "span";
-  background?: "crosshatch" | "solid";
+  as?:
+    | "menu"
+    | "div"
+    | "fieldset"
+    | "footer"
+    | "header"
+    | "li"
+    | "nav"
+    | "section"
+    | "span";
+  aspectRatio?: TFunctionalClassNames["aspectRatio"];
+  background?: TFunctionalClassNames["background"];
   borderRadius?: TFunctionalClassNames["borderRadius"];
   boxShadow?: TFunctionalClassNames["boxShadow"];
   children?: React.ReactNode;
@@ -53,6 +63,7 @@ interface IBox {
 export default function Box({
   alignItems,
   as,
+  aspectRatio,
   background,
   borderRadius,
   boxShadow,
@@ -97,11 +108,12 @@ export default function Box({
 }: IBox) {
   const boxClassNames = [
     getBoxClassNames({
-      background,
       outline,
     }),
     getFunctionalClassNames({
       alignItems,
+      aspectRatio,
+      background,
       borderRadius,
       boxShadow,
       color,

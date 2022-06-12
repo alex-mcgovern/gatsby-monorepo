@@ -34,7 +34,7 @@ export default function ListItemWithImage({
 
   return (
     <Link to={link} className={styles.listItemWrapper}>
-      <Box background="crosshatch" outline="solid">
+      <Box outline="solid">
         {imageData && (
           <GatsbyImage
             alt={title}

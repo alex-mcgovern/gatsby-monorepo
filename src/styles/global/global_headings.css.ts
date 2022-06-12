@@ -7,8 +7,7 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
   overflowWrap: `break-word`,
   fontWeight: varsFontWeight.bold,
   lineHeight: 1.2,
-  marginTop: varsSpacing.spacing5,
-  marginBottom: varsSpacing.spacing5,
+  margin: 0,
 });
 
 globalStyle(`h6`, {

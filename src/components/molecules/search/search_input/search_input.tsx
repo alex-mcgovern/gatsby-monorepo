@@ -1,6 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import Input from "../../../atoms/input/input";
 import * as styles from "./search_input.css";
 
 interface SearchInputProps {
@@ -8,33 +9,30 @@ interface SearchInputProps {
   getRootProps(...args: unknown[]): unknown;
   placeholder?: string;
   leadingIcon?: IconProp;
+  width?: TFunctionalClassNames["width"];
   size?: "sm" | "md" | "lg";
+  value?: string;
 }
 
 export default function SearchInput({
   getInputProps,
   placeholder,
   leadingIcon,
+  width,
+  value,
   getRootProps,
   size,
+  ...rest
 }: SearchInputProps) {
-  const inputStyles = styles.getInputWrapperStyles({
-    size,
-  });
-
   return (
-    <div className={inputStyles}>
-      {leadingIcon && (
-        <FontAwesomeIcon className={styles.icon} icon={leadingIcon} />
-      )}
-
-      <input
-        className={styles.inputElement}
-        placeholder={placeholder}
-        {...getInputProps()}
-        {...getRootProps()}
-      />
-    </div>
+    <Input
+      width={width}
+      value={value}
+      placeholder={placeholder}
+      {...getInputProps()}
+      {...getRootProps()}
+      {...rest}
+    />
   );
 }
 
