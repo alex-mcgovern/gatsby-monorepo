@@ -3,8 +3,11 @@ import { varsAspectRatio } from "./vars/vars_aspect_ratio.css";
 import { varsColors } from "./vars/vars_colors.css";
 import { varsFontSize } from "./vars/vars_font_size.css";
 import { varsFontWeight } from "./vars/vars_font_weight.css";
-import { varsWidth } from "./vars/vars_grid";
+import { varsGrid } from "./vars/vars_grid.css";
+import { varsLineHeight } from "./vars/vars_line_height.css";
+import { varsShadow } from "./vars/vars_shadow.css";
 import { varsSpacing } from "./vars/vars_spacing.css";
+import { varsZIndex } from "./vars/vars_z_index.css";
 
 const responsiveProperties = defineProperties({
   conditions: {
@@ -14,11 +17,24 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: "mobile",
   properties: {
-    display: ["none", "flex", "block", "inline", "grid"],
-    height: ["100%"],
-    fontWeight: varsFontWeight,
+    alignItems: ["stretch", "flex-start", "center", "flex-end"],
+    aspectRatio: varsAspectRatio,
+    borderRadius: {
+      "50%": "50%",
+      lg: 24,
+      md: 16,
+      sm: 4,
+    },
+    boxShadow: varsShadow,
+    display: ["none", "flex", "block", "inline", "inline-flex", "grid"],
+    flexDirection: ["row", "column", "row-reverse", "column-reverse"],
+    flexShrink: ["0"],
     fontSize: varsFontSize,
-    flexDirection: ["row", "column"],
+    fontWeight: varsFontWeight,
+    gap: varsSpacing,
+    gridTemplateColumns: varsGrid,
+    gridAutoFlow: ["dense"],
+    height: varsSpacing,
     justifyContent: [
       "stretch",
       "flex-start",
@@ -27,21 +43,27 @@ const responsiveProperties = defineProperties({
       "space-around",
       "space-between",
     ],
-    alignItems: ["stretch", "flex-start", "center", "flex-end"],
-    width: varsWidth,
-    aspectRatio: varsAspectRatio,
-    maxWidth: varsWidth,
-    gap: { small: varsSpacing[2] },
-    paddingTop: varsSpacing,
-    paddingBottom: varsSpacing,
-    paddingLeft: varsSpacing,
-    paddingRight: varsSpacing,
-    marginTop: varsSpacing,
+    lineHeight: varsLineHeight,
     marginBottom: varsSpacing,
     marginLeft: varsSpacing,
     marginRight: varsSpacing,
+    marginTop: varsSpacing,
+    maxWidth: varsSpacing,
+    maxHeight: varsSpacing,
+    minHeight: ["100vh"],
+    minWidth: varsSpacing,
+    overflow: ["hidden"],
+    overflowY: ["auto"],
+    paddingBottom: varsSpacing,
+    paddingLeft: varsSpacing,
+    paddingRight: varsSpacing,
+    paddingTop: varsSpacing,
+    position: ["relative", "absolute", "sticky"],
+    textAlign: ["center", "left", "right"],
     textTransform: ["capitalize", "uppercase", "lowercase"],
-    // etc.
+    whiteSpace: ["nowrap"],
+    width: varsSpacing,
+    zIndex: varsZIndex,
   },
   shorthands: {
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
