@@ -5,7 +5,7 @@ export const alternatingLayout = recipe({
   base: [
     {
       display: "grid",
-      gap: varsSpacing[6],
+      gap: varsSpacing.spacing6,
       gridTemplateColumns: `repeat(2, 1fr)`,
     },
   ],

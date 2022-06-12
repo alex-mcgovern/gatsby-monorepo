@@ -37,23 +37,23 @@ export const getInputWrapperStyles = recipe({
       sm: [
         {
           fontSize: varsFontSize.body_sm,
-          height: varsSpacing[8],
+          height: varsSpacing.spacing4,
         },
-        getFunctionalClassNames({ paddingX: 4, paddingY: 1 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       md: [
         {
           fontSize: varsFontSize.body_md,
-          height: varsSpacing[9],
+          height: varsSpacing.spacing5,
         },
-        getFunctionalClassNames({ paddingX: 5, paddingY: 2 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       lg: [
         {
           fontSize: varsFontSize.body_lg,
-          height: varsSpacing[10],
+          height: varsSpacing.spacing6,
         },
-        getFunctionalClassNames({ paddingX: 6, paddingY: 3 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
     },
 
@@ -70,5 +70,5 @@ export const getInputWrapperStyles = recipe({
 export const inputElement = style([resetInput]);
 export const icon = style({
   color: varsColors.gray30,
-  marginRight: varsSpacing[4],
+  marginRight: varsSpacing.spacing4,
 });

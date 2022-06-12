@@ -67,10 +67,14 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 
       {bioExcerpt && <Bio bio={bioExcerpt} />}
 
-      <Box as="section" margin="md">
+      <Box as="section" marginY="spacing6">
         <AlternatingLayout ratio="7_5">
-          <Box outline="dashed" background="crosshatch" padding="lg"></Box>
-          <Box outline="dashed" padding="lg" isVerticallyCentered>
+          <Box
+            outline="dashed"
+            background="crosshatch"
+            marginY="spacing9"
+          ></Box>
+          <Box outline="dashed" marginY="spacing9" isVerticallyCentered>
             <h3>I love building for performance.</h3>
             <p>
               I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
@@ -83,20 +87,20 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      BLOG SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" outline="dashed" padding="lg" margin="lg">
+      <Box as="section" outline="dashed" marginY="spacing9" marginY="spacing9">
         <h3>I am by no means an expert...</h3>
         <p>
           ...but I have a blog. Just a few things I've picked up along the
           way...
         </p>
-        <Box margin="sm">
+        <Box marginY="spacing3">
           <SectionBlogPostList posts={posts} />
         </Box>
         <Box
-          margin="sm"
+          marginY="spacing3"
           display="flex"
           justifyContent="center"
-          gap="small"
+          gap="spacing3"
           outline="dashed"
         >
           <Button size="md" to="/blog" title="Explore 11 more blog articles" />
@@ -106,16 +110,16 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      INSTAGRAM SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" outline="dashed" padding="lg" margin="lg">
+      <Box as="section" outline="dashed" marginY="spacing9" marginY="spacing9">
         <h3>I've also been known to dabble in design, painting and 3D...</h3>
-        <Box margin="sm">
+        <Box marginY="spacing3">
           {images && images.length > 0 && <InstagramPostList images={images} />}
         </Box>
         <Box
-          margin="sm"
+          marginY="spacing3"
           display="flex"
           justifyContent="center"
-          gap="small"
+          gap="spacing3"
           outline="dashed"
         >
           <Button size="lg" to="/" title="Check me out on Instagram" />

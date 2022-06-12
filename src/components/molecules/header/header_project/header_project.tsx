@@ -8,9 +8,9 @@ interface HeaderProjectProps {
 
 export default function HeaderProject({ doc }: HeaderProjectProps) {
   return (
-    <Box margin="lg">
+    <Box marginY="spacing9">
       <AlternatingLayout ratio="2_1">
-        <Box outline="dashed" padding="lg">
+        <Box outline="dashed" marginY="spacing9">
           <section
             dangerouslySetInnerHTML={{ __html: doc }}
             itemProp="articleBody"

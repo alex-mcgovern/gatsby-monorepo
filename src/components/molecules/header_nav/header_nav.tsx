@@ -12,14 +12,14 @@ export default function StickyNav() {
     <Box as="nav" display="flex" justifyContent="center" width="100%">
       <Box
         display="flex"
-        margin="xs"
+        marginY="spacing3"
         justifyContent="space-between"
         width="gridWidth"
       >
         <Box outline="dashed">
           <Button leadingIcon="house" size="sm" to="/" title="Home" />
         </Box>
-        <Box display="flex" gap="small">
+        <Box display="flex" gap="spacing3">
           <Button variant="secondary" size="sm" to="/blog" title="Blog" />
 
           <SingleSelect

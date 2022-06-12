@@ -29,8 +29,8 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       display="flex"
       as="nav"
       justifyContent={"center"}
-      margin="sm"
-      gap="small"
+      marginY="spacing3"
+      gap="spacing3"
       outline="dashed"
     >
       <Button

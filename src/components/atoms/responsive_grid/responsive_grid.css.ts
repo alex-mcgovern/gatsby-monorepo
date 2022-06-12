@@ -7,7 +7,7 @@ export const responsiveGrid = recipe({
     resetList,
     {
       display: "grid",
-      gap: varsSpacing[6],
+      gap: varsSpacing.spacing6,
       justifyItems: "center",
       width: "100%",
     },

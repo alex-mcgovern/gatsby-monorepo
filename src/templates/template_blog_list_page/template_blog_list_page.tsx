@@ -49,7 +49,7 @@ export default function TemplateBlogListPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <Box as="section" margin="lg">
+        <Box as="section" marginY="spacing9">
           <SectionBlogPostList posts={posts} />
         </Box>
 

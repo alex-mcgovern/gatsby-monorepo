@@ -44,7 +44,7 @@ export default function ListItemWithImage({
         )}
       </Box>
 
-      <Box as="header" padding="sm">
+      <Box as="header" marginY="spacing3">
         {title && <h4>{title}</h4>}
         {subtitle && <small>{subtitle}</small>}
         {description && <p>{description}</p>}

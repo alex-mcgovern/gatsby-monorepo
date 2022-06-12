@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDataLike } from "gatsby-plugin-image";
-import ResponsiveGrid from "../../../atoms/responsive_grid/responsive_grid";
+import Box from "../../../layout/box/box";
 import InstagramPostItem from "../instagram_post_item/instagram_post_item";
 
 interface InstagramPostListProps {
@@ -14,12 +14,17 @@ interface InstagramPostListProps {
 export default function InstagramPostList({ images }: InstagramPostListProps) {
   if (images.length > 0) {
     return (
-      <ResponsiveGrid split={3}>
+      <Box
+        as="section"
+        display="grid"
+        gridTemplateColumns={{ mobile: "1", tablet: "1_1" }}
+      >
+        {" "}
         {images?.length > 0 &&
           images.map((wrappedImage) => {
             return <InstagramPostItem wrappedImage={wrappedImage} />;
           })}
-      </ResponsiveGrid>
+      </Box>
     );
   }
   return null;

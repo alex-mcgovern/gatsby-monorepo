@@ -4,6 +4,6 @@ import { varsSpacing } from "../vars/vars_spacing.css";
 
 globalStyle(`p`, {
   overflowWrap: `break-word`,
-  marginTop: varsSpacing[5],
-  marginBottom: varsSpacing[5],
+  marginTop: varsSpacing.spacing5,
+  marginBottom: varsSpacing.spacing5,
 });

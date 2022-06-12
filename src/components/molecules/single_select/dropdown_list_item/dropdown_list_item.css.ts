@@ -20,19 +20,19 @@ export const getDropdownStyles = recipe({
         {
           fontSize: varsFontSize.body_md,
         },
-        getFunctionalClassNames({ padding: 4 }),
+        getFunctionalClassNames({ padding: "spacing4" }),
       ],
       md: [
         {
           fontSize: varsFontSize.body_lg,
         },
-        getFunctionalClassNames({ padding: 5 }),
+        getFunctionalClassNames({ padding: "spacing5" }),
       ],
       lg: [
         {
           fontSize: varsFontSize.body_xl,
         },
-        getFunctionalClassNames({ padding: 6 }),
+        getFunctionalClassNames({ padding: "spacing6" }),
       ],
     },
   },

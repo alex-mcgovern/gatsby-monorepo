@@ -84,31 +84,40 @@ export default function TemplatePokemonListPage({
           placeholder="Search for a pokemon"
           isTopLevel
         />
-        <Box as="section" margin="sm">
-          <ResponsiveGrid split={3}>
-            {allPokemon.map((pokemon) => {
-              const { artwork, pokedexID, name } = pokemon;
-              const paddedPokedexId = padStart({
-                value: pokedexID,
-                desiredLength: 3,
-                padCharacter: "0",
-              });
-              const link = createUrlPathFromArray([
-                languageISO,
-                "pokemon",
-                pokedexID,
-              ]);
-              const title = `${paddedPokedexId} ${name}`;
-              return (
-                <ListItemWithImage
-                  aspectRatio="square"
-                  link={link}
-                  title={title}
-                  image={artwork}
-                />
-              );
-            })}
-          </ResponsiveGrid>
+
+        <Box
+          as="section"
+          marginY="spacing3"
+          display="grid"
+          gap="spacing3"
+          gridTemplateColumns={{
+            desktop: "1_1_1_1",
+            tablet: "1_1",
+            mobile: "1",
+          }}
+        >
+          {allPokemon.map((pokemon) => {
+            const { artwork, pokedexID, name } = pokemon;
+            const paddedPokedexId = padStart({
+              value: pokedexID,
+              desiredLength: 3,
+              padCharacter: "0",
+            });
+            const link = createUrlPathFromArray([
+              languageISO,
+              "pokemon",
+              pokedexID,
+            ]);
+            const title = `${paddedPokedexId} ${name}`;
+            return (
+              <ListItemWithImage
+                aspectRatio="square"
+                link={link}
+                title={title}
+                image={artwork}
+              />
+            );
+          })}
         </Box>
         <Pagination
           basePath={paginationBasePath}

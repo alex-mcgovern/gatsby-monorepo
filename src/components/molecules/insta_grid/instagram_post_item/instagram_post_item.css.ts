@@ -22,6 +22,6 @@ export const instagramPostOverlay = style([
   getFunctionalClassNames({
     color: "white",
     background: "navy",
-    padding: 5,
+    padding: "spacing5",
   }),
 ]);

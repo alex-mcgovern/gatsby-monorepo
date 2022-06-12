@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDataLike } from "gatsby-plugin-image";
-import ResponsiveGrid from "../../../atoms/responsive_grid/responsive_grid";
+import Box from "../../../layout/box/box";
 import BlogArticleListItem from "../blog_article_list_item/blog_article_list_item";
 
 interface SectionBlogPostListProps {
@@ -22,11 +22,16 @@ interface SectionBlogPostListProps {
 
 function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
   return (
-    <ResponsiveGrid split={3}>
+    <Box
+      as="section"
+      gap="spacing3"
+      display="grid"
+      gridTemplateColumns={{ desktop: "1_1_1", tablet: "1_1", mobile: "1" }}
+    >
       {posts.map((post) => {
         return <BlogArticleListItem key={post.fields.slug} post={post} />;
       })}
-    </ResponsiveGrid>
+    </Box>
   );
 }
 

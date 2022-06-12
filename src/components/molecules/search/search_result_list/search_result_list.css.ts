@@ -11,24 +11,24 @@ export const listWrapper = style([
     right: 0,
     zIndex: 99,
     width: "100%",
-    borderRadius: varsSpacing[11],
+    borderRadius: varsSpacing.spacing11,
     background: varsColors.white,
     border: "1px solid",
     display: "block",
   },
   getFunctionalClassNames({
-    margin: 5,
+    margin: "spacing5",
   }),
 ]);
 export const listInner = style([
   {
     width: "100%",
     display: "block",
-    maxHeight: varsSpacing[16],
+    maxHeight: varsSpacing.spacing16,
     overflow: "hidden",
     overflowY: "auto",
   },
   getFunctionalClassNames({
-    marginY: 3,
+    marginY: "spacing3",
   }),
 ]);

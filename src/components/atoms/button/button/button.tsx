@@ -1,6 +1,8 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import classNames from "classnames";
 import { Link } from "gatsby";
+import { getButtonA11yStyles } from "../../../../styles/recipes/get_accessibility_styles.css";
 import "../../../../utils/font_awesome";
 import ButtonInnerContent from "../button_inner_content/button_inner_content";
 import { button } from "./button.css";
@@ -28,11 +30,14 @@ export default function Button({
 }: ButtonProps) {
   const isInternalLink = to && /^\/(?!\/)/.test(to);
 
-  const buttonStyle = button({
-    color: variant,
-    size: size,
-    rounded: true,
-  });
+  const buttonStyle = classNames([
+    button({
+      color: variant,
+      size: size,
+      rounded: true,
+    }),
+    getButtonA11yStyles({}),
+  ]);
 
   if (!isDisabled && to && isInternalLink) {
     return (

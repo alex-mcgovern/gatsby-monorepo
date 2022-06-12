@@ -13,9 +13,9 @@ export const dropdownWrapper = style([
     left: 0,
     width: "max-content",
 
-    marginTop: varsSpacing[5],
+    marginTop: varsSpacing.spacing5,
 
-    borderRadius: varsSpacing[6],
+    borderRadius: varsSpacing.spacing6,
     border: "1px solid",
     borderColor: varsColors.gray30,
 

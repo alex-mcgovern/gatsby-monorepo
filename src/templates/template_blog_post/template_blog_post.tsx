@@ -63,9 +63,9 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         description={description || excerpt}
       />
       <LayoutMaxWidthContainer>
-        <Box as="section" margin="lg">
+        <Box as="section" marginY="spacing9">
           <AlternatingLayout ratio="2_1">
-            <Box as="header" outline="dashed" padding="lg">
+            <Box as="header" outline="dashed" marginY="spacing9">
               <h1>{post.frontmatter.title}</h1>
               <p>{post.frontmatter.description}</p>
               <h2>{post.frontmatter.date}</h2>
@@ -78,7 +78,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           </AlternatingLayout>
         </Box>
         <article itemScope itemType="http://schema.org/Article">
-          <Box as="section" margin="sm" padding="lg" outline="dashed">
+          <Box
+            as="section"
+            marginY="spacing3"
+            marginY="spacing9"
+            outline="dashed"
+          >
             <section
               dangerouslySetInnerHTML={{ __html: html }}
               itemProp="articleBody"
@@ -89,10 +94,10 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         </article>
         <nav>
           <Box
-            margin="sm"
+            marginY="spacing3"
             display="flex"
             justifyContent={"space-between"}
-            gap="small"
+            gap="spacing3"
             outline="dashed"
           >
             <Button

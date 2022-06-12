@@ -13,20 +13,7 @@ export const button = recipe({
       textDecoration: "none",
       display: "flex",
       alignItems: "center",
-      selectors: {
-        "&:not([disabled]):hover": {
-          cursor: "pointer",
-        },
-        "&[disabled]": {
-          opacity: 0.3,
-        },
-        "&:focus": {
-          boxShadow: `0px 0px 0px 4px ${varsColors.magenta50}, 0px 0px 0px 4px ${varsColors.white}`,
-        },
-        "&[disabled]:hover": {
-          cursor: "not-allowed",
-        },
-      },
+      transition: "background 0.1s ease",
     },
   ],
 
@@ -57,26 +44,27 @@ export const button = recipe({
       sm: [
         {
           fontSize: varsFontSize.body_md,
-          height: varsSpacing[8],
-          minWidth: varsSpacing[8],
+          height: varsSpacing.spacing4,
+          minWidth: varsSpacing.spacing4,
         },
-        getFunctionalClassNames({ paddingX: 5, paddingY: 1 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
+
       md: [
         {
           fontSize: varsFontSize.body_lg,
-          height: varsSpacing[9],
-          minWidth: varsSpacing[9],
+          height: varsSpacing.spacing5,
+          minWidth: varsSpacing.spacing5,
         },
-        getFunctionalClassNames({ paddingX: 6, paddingY: 2 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       lg: [
         {
           fontSize: varsFontSize.body_xl,
-          height: varsSpacing[10],
-          minWidth: varsSpacing[10],
+          height: varsSpacing.spacing6,
+          minWidth: varsSpacing.spacing6,
         },
-        getFunctionalClassNames({ paddingX: 7, paddingY: 3 }),
+        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
     },
     rounded: {

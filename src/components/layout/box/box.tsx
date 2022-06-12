@@ -3,11 +3,12 @@ import {
   TFunctionalClassNames,
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
+import { getBoxClassNames } from "./box.css";
 
 interface IBox {
   alignItems?: TFunctionalClassNames["alignItems"];
   as?: "menu" | "div" | "footer" | "header" | "li" | "nav" | "section" | "span";
-  background?: TFunctionalClassNames["background"];
+  background?: "crosshatch" | "solid";
   borderRadius?: TFunctionalClassNames["borderRadius"];
   boxShadow?: TFunctionalClassNames["boxShadow"];
   children?: React.ReactNode;
@@ -34,6 +35,7 @@ interface IBox {
   minHeight?: TFunctionalClassNames["minHeight"];
   maxHeight?: TFunctionalClassNames["maxHeight"];
   minWidth?: TFunctionalClassNames["minWidth"];
+  outline?: "solid" | "dashed";
   overflow?: TFunctionalClassNames["overflow"];
   overflowY?: TFunctionalClassNames["overflowY"];
   padding?: TFunctionalClassNames["padding"];
@@ -65,6 +67,7 @@ export default function Box({
   gridAutoFlow,
   height,
   id,
+  outline,
 
   justifyContent,
   margin,
@@ -93,9 +96,12 @@ export default function Box({
   ...rest
 }: IBox) {
   const boxClassNames = [
+    getBoxClassNames({
+      background,
+      outline,
+    }),
     getFunctionalClassNames({
       alignItems,
-      background,
       borderRadius,
       boxShadow,
       color,
@@ -107,8 +113,8 @@ export default function Box({
       gridAutoFlow,
       flexDirection,
       height,
-      justifyContent,
       margin,
+      justifyContent,
       marginBottom,
       marginLeft,
       marginRight,

@@ -8,7 +8,7 @@
       "}"
     ]
   },
-  "Vanilla Extract style": {
+  "vanilla-extract style": {
     "scope": "typescript,css",
     "prefix": "VE Style",
     "body": [
@@ -18,6 +18,26 @@
       "})"
     ],
     "description": "Vanilla Extract style"
+  },
+  "vanilla-extract recipe": {
+    "scope": "typescript,css",
+    "prefix": "VE Recipe",
+    "body": [
+      "import { recipe } from \"@vanilla-extract/recipes\";",
+      "export const className = recipe({",
+      "\tbase: {",
+      "",
+      "\t},",
+      "\tvariants: {",
+      "\t\tvariantGroup: {",
+      "\t\t\tvariant1: {",
+      "\t\t\t\t",
+      "\t\t\t}",
+      "\t\t}",
+      "\t}",
+      "\t",
+      "})"
+    ]
   },
   "jest suite boilerplate": {
     "scope": "javascript,typescript",

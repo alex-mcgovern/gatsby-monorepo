@@ -2,17 +2,7 @@ import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const getBoxClassNames = recipe({
-  base: [
-    {
-      position: "relative",
-    },
-    getFunctionalClassNames({
-      color: {
-        lightMode: "navy",
-        darkMode: "navy",
-      },
-    }),
-  ],
+  base: [],
 
   variants: {
     outline: {
@@ -55,48 +45,48 @@ export const getBoxClassNames = recipe({
     padding: {
       sm: getFunctionalClassNames({
         paddingY: {
-          mobile: 8,
+          mobile: "spacing8",
         },
         paddingX: {
-          mobile: 7,
+          mobile: "spacing7",
         },
       }),
       md: getFunctionalClassNames({
         paddingY: {
-          mobile: 9,
+          mobile: "spacing9",
         },
         paddingX: {
-          mobile: 7,
+          mobile: "spacing7",
         },
       }),
       lg: getFunctionalClassNames({
         paddingY: {
-          mobile: 10,
+          mobile: "spacing10",
         },
         paddingX: {
-          mobile: 8,
+          mobile: "spacing8",
         },
       }),
     },
     margin: {
       xs: getFunctionalClassNames({
         marginY: {
-          mobile: 6,
+          mobile: "spacing6",
         },
       }),
       sm: getFunctionalClassNames({
         marginY: {
-          mobile: 8,
+          mobile: "spacing8",
         },
       }),
       md: getFunctionalClassNames({
         marginY: {
-          mobile: 10,
+          mobile: "spacing10",
         },
       }),
       lg: getFunctionalClassNames({
         marginY: {
-          mobile: 12,
+          mobile: "spacing12",
         },
       }),
     },
