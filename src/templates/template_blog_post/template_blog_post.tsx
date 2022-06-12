@@ -96,10 +96,15 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
             outline="dashed"
           >
             <Button
+              leadingIcon="angle-left"
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
-            <Button to={next?.fields?.slug} title={next?.frontmatter?.title} />
+            <Button
+              trailingIcon="angle-right"
+              to={next?.fields?.slug}
+              title={next?.frontmatter?.title}
+            />
           </Box>
           <ul
             style={{

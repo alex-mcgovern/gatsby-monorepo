@@ -9,76 +9,111 @@ description:
   (Warning, contains nerdiness 🤓)"
 ---
 
-## Hi, I'm Alex.
+# Hi, I'm Alex.
 
 I build enterprise B2B websites for performance and scale. I currently lead a
 team at a hypergrowth fintech where we are scaling a multi-language, 500+ page
 site.
 
-My job is to:
+Far far away, behind the word mountains, far from the countries Vokalia and
+Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+right at the coast of the Semantics, a large language ocean. A small river named
+Duden flows by their place and supplies it with the necessary regelialia.
 
-- hire and scale a shit-hot frontend team
-- contribute to a culture of craft and engineering excellence
-- optimize for conversion, performance and search
-- build for brand consistency and scale across 500+ pages
-- scale i18n into a growing number of languages
-- support and enable trans-continental content teams to self-create and
-  self-publish content
+## On deer horse aboard tritely yikes and much
 
-In my spare time I play a lot of guitar, sketch, paint and make things. I also
-try to make time to work on this Gatsby, TypeScript and React site to keep my
-skills sharp.
+The Big Oxmox advised her not to do so, because there were thousands of bad
+Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
+didn’t listen. She packed her seven versalia, put her initial into the belt and
+made herself on the way.
 
-I'm a frontend engineering manager and generalist, with a weird and eclectic mix
-of experience.
+- This however showed weasel
+- Well uncritical so misled
+  - this is very interesting
+- Goodness much until that fluid owl
 
-I'm currently a frontend engineering manager for a B2B marketing site at
-hyper-growth fintech startup. It's a really cool job. I've grown to believe that
-B2B marketing sites don't have to be boring, and they should be easy to scale,
-maintain and localise. I haven't got all the answers yet, but I'm tackling all
-the problems that go with the territory and sharing some of my learnings along
-the way.
+When she reached the first hills of the **Italic Mountains**, she had a last
+view back on the skyline of her hometown _Bookmarksgrove_, the headline of
+[Alphabet Village](http://google.com) and the subline of her own road, the Line
+Lane. Pityful a rhetoric question ran over her cheek, then she continued her
+way. On her way she met a copy.
 
-## Background
+### Overlaid the jeepers uselessly much excluding
 
-Originally educated in music technology and multimedia, I have a a weird and
-eclectic mix of experience, and have worn many hats throughout my career, here
-are some of the highlights:
+But nothing the copy said could convince her and so it didn’t take long until a
+few insidious Copy Writers ambushed her, made her drunk with
+[Longe and Parole](http://google.com) and dragged her into their agency, where
+they abused her for their projects again and again. And if she hasn’t been
+rewritten, then they are still using her.
 
-- 🎥 interning as a cameraman & video editor
-- 👨🏻‍🎨 interning at small-time brand agencies and print-shops
-- 💃 embroidery designer for Irish dance dresses
-- 🧴 cosmetics packaging designer
-- 🧑‍🔧 developer support
-- 🧑‍💻 frontend engineer
-- 📲 UX/UI designer
-- 👨‍🏫 engineering manager
+> Far far away, behind the word mountains, far from the countries Vokalia and
+> Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+> right at the coast of the Semantics, a large language ocean.
 
-## Nowadays
+It is a paradisematic country, in which roasted parts of sentences fly into your
+mouth. Even the all-powerful Pointing has no control about the blind texts it is
+an almost unorthographic life One day however a small line of blind text by the
+name of Lorem Ipsum decided to leave for the far World of Grammar.
 
-Nowadays, when I'm at work, I am obsessed with building a building a high
-performance engineering team using a blend of lean software development, agile
-and clean code. I'm also obsessed with bringing the best parts of these concepts
-into all parts of the product design lifecycle to create a truly collaborative
-"full-cycle team" — a high throughput and high impact team where proper
-prioritization and planning means _everyone_ on the team is working at a
-sustainable pace. By creating a mutually beneficial mission (like building an
-award winning website) everyone is empowered to do their best work, and put
-forward the best ideas to help reach a common goal.
+### According a funnily until pre-set or arrogant well cheerful
 
-## Outside work
+The Big Oxmox advised her not to do so, because there were thousands of bad
+Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
+didn’t listen. She packed her seven versalia, put her initial into the belt and
+made herself on the way.
 
-When I'm not at work, I love playing and recording guitar, producing and mixing
-electronic music, drawing, painting and tinkering with and upgrading things... I
-have even been known to dabble in 3D modelling video game development. In the
-past I've also helped run open mic nights, club nights and DJ societies, and
-even done quite a bit a of busking. In short, I love playing music and creating
-things.
+1.  So baboon this
+2.  Mounted militant weasel gregariously admonishingly straightly hey
+3.  Dear foresaw hungry and much some overhung
+4.  Rash opossum less because less some amid besides yikes jeepers frenetic
+    impassive fruitlessly shut
 
-Now that you've read all about me, enjoy a few blog posts that I've put together
-on some of my thoughts on building products and processes for scale with an
-intentional first approach.
+When she reached the first hills of the Italic Mountains, she had a last view
+back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
+Village and the subline of her own road, the Line Lane. Pityful a rhetoric
+question ran over her cheek, then she continued her way. On her way she met a
+copy.
 
-Disclaimer: I am still at the beginning of my journey and my career. I don't
-have it all figured out, but maybe something in here is useful to someone, or
-interesting to someone else.
+> The copy warned the Little Blind Text, that where it came from it would have
+> been rewritten a thousand times and everything that was left from its origin
+> would be the word "and" and the Little Blind Text should turn around and
+> return to its own, safe country.
+
+But nothing the copy said could convince her and so it didn’t take long until a
+few insidious Copy Writers ambushed her, made her drunk with Longe and Parole
+and dragged her into their agency, where they abused her for their projects
+again and again. And if she hasn’t been rewritten, then they are still using
+her. Far far away, behind the word mountains, far from the countries Vokalia and
+Consonantia, there live the blind texts.
+
+#### Silent delightfully including because before one up barring chameleon
+
+Separated they live in Bookmarksgrove right at the coast of the Semantics, a
+large language ocean. A small river named Duden flows by their place and
+supplies it with the necessary regelialia. It is a paradisematic country, in
+which roasted parts of sentences fly into your mouth.
+
+Even the all-powerful Pointing has no control about the blind texts it is an
+almost unorthographic life One day however a small line of blind text by the
+name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox
+advised her not to do so, because there were thousands of bad Commas, wild
+Question Marks and devious Semikoli, but the Little Blind Text didn’t listen.
+
+##### Wherever far wow thus a squirrel raccoon jeez jaguar this from along
+
+She packed her seven versalia, put her initial into the belt and made herself on
+the way. When she reached the first hills of the Italic Mountains, she had a
+last view back on the skyline of her hometown Bookmarksgrove, the headline of
+Alphabet Village and the subline of her own road, the Line Lane. Pityful a
+rhetoric question ran over her cheek, then she continued her way. On her way she
+met a copy.
+
+###### Slapped cozy a that lightheartedly and far
+
+The copy warned the Little Blind Text, that where it came from it would have
+been rewritten a thousand times and everything that was left from its origin
+would be the word "and" and the Little Blind Text should turn around and return
+to its own, safe country. But nothing the copy said could convince her and so it
+didn’t take long until a few insidious Copy Writers ambushed her, made her drunk
+with Longe and Parole and dragged her into their agency, where they abused her
+for their projects again and again.

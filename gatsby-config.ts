@@ -16,7 +16,7 @@ const config: GatsbyConfig = {
       name: `Alex McGovern`,
       summary: `who lives and works in London building beautiful things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Personal website.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
       twitter: `lxmcgvrnsmth`,

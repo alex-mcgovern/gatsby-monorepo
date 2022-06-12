@@ -5,31 +5,21 @@ import Box from "../../layout/box/box";
 import SingleSelect from "../single_select/single_select/single_select";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
-const DROPDOWN_INDEX = [
-  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
-  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
-  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
-];
+const DROPDOWN_INDEX = [{ value: "Multilingual Pokedex", link: POKEDEX_LINK }];
 
 export default function StickyNav() {
   return (
-    <Box
-      as="nav"
-      display="flex"
-      justifyContent="center"
-      width="100%"
-      outline="dashed"
-    >
+    <Box as="nav" display="flex" justifyContent="center" width="100%">
       <Box
         display="flex"
+        margin="xs"
         justifyContent="space-between"
         width="gridWidth"
-        margin="xs"
       >
         <Box outline="dashed">
           <Button leadingIcon="house" size="sm" to="/" title="Home" />
         </Box>
-        <Box display="flex" outline="dashed" gap="small">
+        <Box display="flex" gap="small">
           <Button variant="secondary" size="sm" to="/blog" title="Blog" />
 
           <SingleSelect

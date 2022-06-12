@@ -21,10 +21,7 @@ much from the design system wherever you needed it.
 
 My idea was to create a very granular SASS API that allowed functional composing
 of styles within a modular CSS approach. More on why I chose to use Vanilla
-Extract for my personal site instead.
-
-My experience with web engineering is that you are often faced with the
-unpleasant
+Extract for my personal site instead later.
 
 ### What is SASS?
 

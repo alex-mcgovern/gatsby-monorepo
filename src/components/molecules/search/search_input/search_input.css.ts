@@ -16,6 +16,15 @@ export const getInputWrapperStyles = recipe({
       border: "1px solid",
       color: varsColors.gray30,
       width: "100%",
+      selectors: {
+        "&:hover": {
+          borderColor: varsColors.magenta50,
+        },
+        "&:focus-within": {
+          borderColor: varsColors.magenta,
+          boxShadow: `0px 0px 0px 4px ${varsColors.orange50}, 0px 0px 0px 8px ${varsColors.white}`,
+        },
+      },
     },
     getFunctionalClassNames({
       display: "flex",
@@ -28,18 +37,21 @@ export const getInputWrapperStyles = recipe({
       sm: [
         {
           fontSize: varsFontSize.body_sm,
+          height: varsSpacing[8],
         },
         getFunctionalClassNames({ paddingX: 4, paddingY: 1 }),
       ],
       md: [
         {
           fontSize: varsFontSize.body_md,
+          height: varsSpacing[9],
         },
         getFunctionalClassNames({ paddingX: 5, paddingY: 2 }),
       ],
       lg: [
         {
           fontSize: varsFontSize.body_lg,
+          height: varsSpacing[10],
         },
         getFunctionalClassNames({ paddingX: 6, paddingY: 3 }),
       ],

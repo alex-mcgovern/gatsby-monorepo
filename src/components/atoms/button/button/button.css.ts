@@ -20,6 +20,9 @@ export const button = recipe({
         "&[disabled]": {
           opacity: 0.3,
         },
+        "&:focus": {
+          boxShadow: `0px 0px 0px 4px ${varsColors.magenta50}, 0px 0px 0px 4px ${varsColors.white}`,
+        },
         "&[disabled]:hover": {
           cursor: "not-allowed",
         },
