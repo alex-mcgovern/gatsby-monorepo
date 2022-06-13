@@ -1,13 +1,13 @@
 import { recipe } from "@vanilla-extract/recipes";
+import { vars } from "../../../styles/global_theme.css";
 import { resetList } from "../../../styles/resets/reset_list.css";
-import { varsSpacing } from "../../../styles/vars/vars_spacing.css";
 
 export const responsiveGrid = recipe({
   base: [
     resetList,
     {
       display: "grid",
-      gap: varsSpacing.spacing6,
+      gap: vars.spacing.spacing6,
       justifyItems: "center",
       width: "100%",
     },

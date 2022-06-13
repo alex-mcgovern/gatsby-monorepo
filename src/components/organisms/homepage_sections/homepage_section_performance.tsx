@@ -1,10 +1,34 @@
 import React from "react";
-import Typography from "../../atoms/typography/typography";
-import Box from "../../layout/box/box";
+import Typography, { ITypography } from "../../atoms/typography/typography";
+import Box, { IBox } from "../../layout/box/box";
 import reportHandler from "./components/report_handler";
 import useWebVitals from "./components/use_web_vitals";
 
 interface HomepageSectionPerformanceProps {}
+
+const BOX_PROPS: IBox = {
+  padding: "spacing3",
+  background: { lightMode: "white", darkMode: "gray3" },
+  borderRadius: "md",
+  boxShadow: "shadowDark",
+  aspectRatio: "square",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+};
+
+const METRIC_LABEL_PROPS: ITypography = {
+  fontSize: "body_sm",
+  textTransform: "uppercase",
+  display: "block",
+};
+
+const METRIC_PROPS: ITypography = {
+  fontSize: "h2",
+  fontWeight: "extrabold",
+  textTransform: "uppercase",
+  display: "block",
+};
 
 const HomepageSectionPerformance = ({}: HomepageSectionPerformanceProps) => {
   const { CLS, FCP, FID, LCP, TTFB } = useWebVitals() || {};
@@ -15,7 +39,7 @@ const HomepageSectionPerformance = ({}: HomepageSectionPerformanceProps) => {
       as="section"
       marginY="spacing6"
       display="grid"
-      gap="spacing3"
+      gap="spacing4"
       alignItems="center"
       gridTemplateColumns={{
         desktop: "1_1",
@@ -25,23 +49,12 @@ const HomepageSectionPerformance = ({}: HomepageSectionPerformanceProps) => {
       <Box
         marginY="spacing3"
         display="grid"
-        gridTemplateColumns="1_1_1"
+        gridTemplateColumns="1_1"
         gap="spacing3"
       >
         {CLS && (
-          <Box
-            padding="spacing3"
-            background="white"
-            borderRadius="md"
-            boxShadow="shadowDark"
-            aspectRatio="square"
-          >
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-            >
+          <Box {...BOX_PROPS}>
+            <Typography {...METRIC_LABEL_PROPS}>
               Cumulative layout shift
             </Typography>
             {CLS.toFixed(2)}
@@ -49,117 +62,32 @@ const HomepageSectionPerformance = ({}: HomepageSectionPerformanceProps) => {
         )}
 
         {FID && FID && (
-          <Box
-            padding="spacing3"
-            background="white"
-            borderRadius="md"
-            boxShadow="shadowDark"
-            aspectRatio="square"
-          >
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              display="block"
-            >
-              First input delay
-            </Typography>
-            <Typography
-              fontSize="h3"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-            >
-              {FID.toFixed(2)}
-            </Typography>
+          <Box {...BOX_PROPS}>
+            <Typography {...METRIC_LABEL_PROPS}>First input delay</Typography>
+            <Typography {...METRIC_PROPS}>{FID.toFixed(2)}</Typography>
           </Box>
         )}
         {LCP && (
-          <Box
-            padding="spacing3"
-            background="white"
-            borderRadius="md"
-            boxShadow="shadowDark"
-            aspectRatio="square"
-          >
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
+          <Box {...BOX_PROPS}>
+            <Typography {...METRIC_LABEL_PROPS}>
               Longest contentful paint
             </Typography>
-            <Typography
-              fontSize="h3"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
-              {LCP.toFixed(0)}
-            </Typography>
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
-              m/s
-            </Typography>
+            <Typography {...METRIC_PROPS}>{LCP.toFixed(0)}</Typography>
           </Box>
         )}
 
         {FCP && (
-          <Box
-            padding="spacing3"
-            background="white"
-            borderRadius="md"
-            boxShadow="shadowDark"
-            aspectRatio="square"
-          >
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
+          <Box {...BOX_PROPS}>
+            <Typography {...METRIC_LABEL_PROPS}>
               First contentful paint
             </Typography>
-            <Typography
-              fontSize="h3"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
-              {FCP.toFixed(0)}
-            </Typography>
-            <Typography
-              fontSize="h6"
-              textTransform="uppercase"
-              color="navy80"
-              whiteSpace="nowrap"
-              display="block"
-              textAlign="center"
-            >
-              m/s
-            </Typography>
+            <Typography {...METRIC_PROPS}>{FCP.toFixed(0)}</Typography>
           </Box>
         )}
       </Box>
 
-      <Box marginY="spacing9">
-        <h3>I love building for performance</h3>
+      <Box marginY="spacing10">
+        <h3>I love building performant web.</h3>
         <p>
           I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
           Cypress.

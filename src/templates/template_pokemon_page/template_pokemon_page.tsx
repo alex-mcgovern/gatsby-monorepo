@@ -83,7 +83,7 @@ export default function TemplatePokemonPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <Box as="section" marginY="spacing9">
+        <Box as="section" marginY="spacing10">
           <PokedexNav
             searchIndex={searchIndex}
             languageISO={languageISO}
@@ -92,7 +92,7 @@ export default function TemplatePokemonPage({
 
           <Box as="section">
             <AlternatingLayout ratio="2_1">
-              <Box as="header" outline="dashed" marginY="spacing9">
+              <Box as="header" outline="dashed" marginY="spacing10">
                 <h2>{pokemonTitle}</h2>
                 <h3>{genus}</h3>
                 <p>{flavorText}</p>

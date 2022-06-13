@@ -28,21 +28,22 @@ export default function ListItemWithImage({
   const imageClassNames = classNames(
     styles.image,
     getFunctionalClassNames({
+      padding: "spacing3",
+      borderRadius: "md",
+      boxShadow: "shadowDark",
       aspectRatio,
     })
   );
 
   return (
     <Link to={link} className={styles.listItemWrapper}>
-      <Box outline="solid">
-        {imageData && (
-          <GatsbyImage
-            alt={title}
-            className={imageClassNames}
-            image={imageData}
-          />
-        )}
-      </Box>
+      {imageData && (
+        <GatsbyImage
+          alt={title}
+          className={imageClassNames}
+          image={imageData}
+        />
+      )}
 
       <Box as="header" marginY="spacing3">
         {title && <h4>{title}</h4>}

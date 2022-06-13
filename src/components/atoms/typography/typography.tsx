@@ -4,7 +4,7 @@ import {
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
-interface ITypography {
+export interface ITypography {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "label";
   children?: React.ReactNode;
   color?: TFunctionalClassNames["color"];

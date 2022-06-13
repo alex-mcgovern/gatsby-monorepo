@@ -1,5 +1,5 @@
 import { recipe } from "@vanilla-extract/recipes";
-import { varsColors } from "../vars/vars_colors.css";
+import { vars } from "../global_theme.css";
 
 export const getButtonA11yStyles = recipe({
   base: {
@@ -17,17 +17,17 @@ export const getButtonA11yStyles = recipe({
         transition: "box-shadow 0.2s ease",
 
         outline: "none",
-        boxShadow: `0px 0px 0px 2px ${varsColors.white}, 0px 0px 0px 6px ${varsColors.orange}`,
+        boxShadow: `0px 0px 0px 2px ${vars.color.white}, 0px 0px 0px 6px ${vars.color.orange}`,
       },
       "&:focus-visible": {
         transition: "box-shadow 0.2s ease",
         outline: "none",
-        boxShadow: `0px 0px 0px 2px ${varsColors.white}, 0px 0px 0px 6px ${varsColors.orange}`,
+        boxShadow: `0px 0px 0px 2px ${vars.color.white}, 0px 0px 0px 6px ${vars.color.orange}`,
       },
       // "&[aria-current='page']": {
       //   transition: "box-shadow 0.2s ease",
       //   outline: "none",
-      //   boxShadow: `0px 0px 0px 2px ${varsColors.white}, 0px 0px 0px 6px ${varsColors.orange}`,
+      //   boxShadow: `0px 0px 0px 2px ${vars.color.white}, 0px 0px 0px 6px ${vars.color.orange}`,
       // },
     },
   },

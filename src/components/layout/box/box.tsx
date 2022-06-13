@@ -5,8 +5,9 @@ import {
 } from "../../../styles/functional_classnames.css";
 import { getBoxClassNames } from "./box.css";
 
-interface IBox {
+export interface IBox {
   alignItems?: TFunctionalClassNames["alignItems"];
+  dataSal?: TDataSal;
   as?:
     | "menu"
     | "div"
@@ -70,6 +71,7 @@ export default function Box({
   children,
   color,
   display,
+  dataSal,
   fontWeight,
   fontSize,
   flexDirection,
@@ -79,7 +81,6 @@ export default function Box({
   height,
   id,
   outline,
-
   justifyContent,
   margin,
   marginBottom,
@@ -155,7 +156,12 @@ export default function Box({
   const Element = as || "div";
 
   return (
-    <Element id={id} className={boxClassNames.join(" ")} {...rest}>
+    <Element
+      id={id}
+      className={boxClassNames.join(" ")}
+      data-sal={dataSal}
+      {...rest}
+    >
       {children}
     </Element>
   );

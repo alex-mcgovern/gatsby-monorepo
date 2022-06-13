@@ -80,7 +80,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
             return (
               <Box
                 marginY="spacing3"
-                background="gray10"
+                background="gray200"
                 paddingY="spacing3"
                 paddingX="spacing2"
                 borderRadius="md"

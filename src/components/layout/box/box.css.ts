@@ -10,8 +10,8 @@ export const getBoxClassNames = recipe({
         getFunctionalClassNames({
           outline: "1px solid",
           outlineColor: {
-            lightMode: "gray30",
-            darkMode: "gray30",
+            lightMode: "gray500",
+            darkMode: "gray500",
           },
         }),
       ],
@@ -19,8 +19,8 @@ export const getBoxClassNames = recipe({
         getFunctionalClassNames({
           outline: "1px dashed",
           outlineColor: {
-            lightMode: "gray30",
-            darkMode: "gray30",
+            lightMode: "gray500",
+            darkMode: "gray500",
           },
         }),
       ],
@@ -36,61 +36,13 @@ export const getBoxClassNames = recipe({
       solid: [
         getFunctionalClassNames({
           background: {
-            lightMode: "gray30",
-            darkMode: "gray30",
+            lightMode: "gray500",
+            darkMode: "gray500",
           },
         }),
       ],
     },
 
-    padding: {
-      sm: getFunctionalClassNames({
-        paddingY: {
-          mobile: "spacing8",
-        },
-        paddingX: {
-          mobile: "spacing7",
-        },
-      }),
-      md: getFunctionalClassNames({
-        paddingY: {
-          mobile: "spacing9",
-        },
-        paddingX: {
-          mobile: "spacing7",
-        },
-      }),
-      lg: getFunctionalClassNames({
-        paddingY: {
-          mobile: "spacing10",
-        },
-        paddingX: {
-          mobile: "spacing8",
-        },
-      }),
-    },
-    margin: {
-      xs: getFunctionalClassNames({
-        marginY: {
-          mobile: "spacing6",
-        },
-      }),
-      sm: getFunctionalClassNames({
-        marginY: {
-          mobile: "spacing8",
-        },
-      }),
-      md: getFunctionalClassNames({
-        marginY: {
-          mobile: "spacing10",
-        },
-      }),
-      lg: getFunctionalClassNames({
-        marginY: {
-          mobile: "spacing12",
-        },
-      }),
-    },
     display: {
       columnLeft: getFunctionalClassNames({
         display: "flex",

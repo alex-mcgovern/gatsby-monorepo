@@ -1,11 +1,11 @@
 import { recipe } from "@vanilla-extract/recipes";
-import { varsSpacing } from "../../../styles/vars/vars_spacing.css";
+import { vars } from "../../../styles/global_theme.css";
 
 export const alternatingLayout = recipe({
   base: [
     {
       display: "grid",
-      gap: varsSpacing.spacing6,
+      gap: vars.spacing.spacing6,
       gridTemplateColumns: `repeat(2, 1fr)`,
     },
   ],

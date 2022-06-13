@@ -24,3 +24,16 @@ interface IDownshiftItem {
   value: string;
   link?: string;
 }
+
+type TDataSal =
+  | "fade"
+  | "slide-up"
+  | "slide-down"
+  | "slide-left"
+  | "slide-right"
+  | "zoom-in"
+  | "zoom-out"
+  | "flip-up"
+  | "flip-down"
+  | "flip-left"
+  | "flip-right";

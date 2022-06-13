@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
-import { varsGrid } from "../../../styles/vars/vars_grid.css";
+import { vars } from "../../../styles/global_theme.css";
 
 export const maxWidthContainer = style({
   marginLeft: "auto",
   marginRight: "auto",
-  maxWidth: varsGrid.gridWidth,
+  maxWidth: vars.spacing.gridWidth,
 });

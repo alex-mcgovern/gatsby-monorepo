@@ -35,6 +35,7 @@ const DROPDOWN_INDEX = [
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   padding: "spacing3",
+  background: { lightMode: "white", darkMode: "gray900" },
   borderRadius: "md",
   boxShadow: "shadowDark",
   aspectRatio: "square",
@@ -117,20 +118,20 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           desktop: "1_1",
           tablet: "1",
         }}
+        dataSal="slide-up"
       >
-        <Box marginY="spacing9">
+        <Box marginY="spacing6">
           <h3>These are a few of my favorite things...</h3>
           <p>
             I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
             Cypress.
           </p>
-          <p>My newest shiny toy is the excellent vanilla-extract library.</p>
         </Box>
 
         <Box
           marginY="spacing3"
           display="grid"
-          gridTemplateColumns="1_1_1_1"
+          gridTemplateColumns="1_1_1"
           gap="spacing3"
         >
           <LogoReact className={ICON_CLASSNAMES} />
@@ -146,10 +147,10 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      BLOG SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" outline="dashed" marginY="spacing9" marginY="spacing9">
+      <Box as="section" marginY="spacing6" dataSal="slide-up">
         <h3>I am by no means an expert...</h3>
         <p>
-          ...but I have a blog. Just a few things I've picked up along the
+          ...but I have a blog. 😅 Just a few things I've picked up along the
           way...
         </p>
         <Box marginY="spacing3">
@@ -160,7 +161,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           display="flex"
           justifyContent="center"
           gap="spacing3"
-          outline="dashed"
         >
           <Button size="md" to="/blog" title="Explore 11 more blog articles" />
         </Box>
@@ -169,17 +169,16 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      INSTAGRAM SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" outline="dashed" marginY="spacing9">
+      <Box as="section" marginY="spacing6" dataSal="slide-up">
         <h3>I've also been known to dabble in design, painting and 3D...</h3>
         <Box marginY="spacing3">
           {images && images.length > 0 && <InstagramPostList images={images} />}
         </Box>
         <Box
-          marginY="spacing3"
+          marginY="spacing6"
           display="flex"
           justifyContent="center"
           gap="spacing3"
-          outline="dashed"
         >
           <Button size="lg" to="/" title="Check me out on Instagram" />
         </Box>

@@ -3,7 +3,7 @@ import "./global/global_button.css";
 import "./global/global_fieldset.css";
 import "./global/global_headings.css";
 import "./global/paragraph.css";
-import { varsFontSize } from "./vars/vars_font_size.css";
+import { vars } from "./global_theme.css";
 
 export const rootColors = {
   light: {
@@ -35,9 +35,15 @@ globalStyle(`*`, {
 });
 
 globalStyle(`html`, {
-  background: rootColors.light.bg,
   color: rootColors.light.color,
   fontSize: 16,
+  background: vars.color.white,
+  "@media": {
+    "(prefers-color-scheme: dark)": {
+      background: vars.color.gray1,
+      color: vars.color.white,
+    },
+  },
 });
 
 globalStyle(`html, body`, {
@@ -47,7 +53,7 @@ globalStyle(`html, body`, {
 
 globalStyle(`body`, {
   lineHeight: 1.4,
-  fontSize: varsFontSize.body_lg,
+  fontSize: vars.fontSize.body_lg,
   WebkitFontSmoothing: `antialiased`,
 });
 

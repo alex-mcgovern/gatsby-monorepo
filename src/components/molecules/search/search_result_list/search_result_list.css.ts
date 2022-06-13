@@ -1,7 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { varsColors } from "../../../../styles/vars/vars_colors.css";
-import { varsSpacing } from "../../../../styles/vars/vars_spacing.css";
+import { vars } from "../../../../styles/global_theme.css";
 
 export const listWrapper = style([
   {
@@ -11,20 +10,20 @@ export const listWrapper = style([
     right: 0,
     zIndex: 99,
     width: "100%",
-    borderRadius: varsSpacing.spacing11,
-    background: varsColors.white,
+    borderRadius: vars.spacing.spacing10,
+    background: vars.color.white,
     border: "1px solid",
     display: "block",
   },
   getFunctionalClassNames({
-    margin: "spacing5",
+    margin: "spacing6",
   }),
 ]);
 export const listInner = style([
   {
     width: "100%",
     display: "block",
-    maxHeight: varsSpacing.spacing16,
+    maxHeight: vars.spacing.spacing16,
     overflow: "hidden",
     overflowY: "auto",
   },

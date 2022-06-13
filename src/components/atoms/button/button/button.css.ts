@@ -1,14 +1,11 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { varsColors } from "../../../../styles/vars/vars_colors.css";
-import { varsFontSize } from "../../../../styles/vars/vars_font_size.css";
-import { varsFontWeight } from "../../../../styles/vars/vars_font_weight.css";
-import { varsSpacing } from "../../../../styles/vars/vars_spacing.css";
+import { vars } from "../../../../styles/global_theme.css";
 
 export const button = recipe({
   base: [
     {
-      fontWeight: varsFontWeight.semibold,
+      fontWeight: vars.fontWeight.semibold,
       textDecoration: "none",
       display: "flex",
       alignItems: "center",
@@ -18,56 +15,70 @@ export const button = recipe({
       whiteSpace: "nowrap",
     },
     getFunctionalClassNames({
-      paddingX: "spacing2",
+      fontSize: "body_md",
+      paddingX: "spacing3",
       paddingY: "spacing1",
-      borderRadius: "lg",
+      borderRadius: "sm",
     }),
   ],
 
   variants: {
     color: {
-      primary: {
-        backgroundColor: varsColors.magenta,
-        color: varsColors.white,
-        selectors: {
-          "&:not([disabled]):hover": {
-            backgroundColor: varsColors.magenta130,
+      primary: [
+        {
+          color: vars.color.violet12,
+          background: vars.color.violetA7,
+          selectors: {
+            "&:not([disabled]):hover": {
+              backgroundColor: vars.color.violet4,
+            },
           },
         },
-      },
-      secondary: {
-        backgroundColor: varsColors.white,
-        color: varsColors.magenta,
-        border: "1px solid",
-        borderColor: varsColors.magenta,
-        selectors: {
-          "&:not([disabled]):hover": {
-            backgroundColor: varsColors.magenta30,
+        getFunctionalClassNames({
+          paddingX: "spacing2",
+          paddingY: "spacing1",
+          borderColor: { lightMode: "white", darkMode: "violet3" },
+          // background: { lightMode: "white", darkMode: "violet3" },
+          borderRadius: "lg",
+        }),
+      ],
+      secondary: [
+        {
+          selectors: {
+            "&:not([disabled]):hover": {
+              backgroundColor: vars.color.magenta30,
+            },
           },
         },
-      },
+        getFunctionalClassNames({
+          paddingX: "spacing2",
+          paddingY: "spacing1",
+          border: "1px solid",
+          color: { lightMode: "black", darkMode: "white" },
+          borderColor: { lightMode: "black", darkMode: "white" },
+          // background: { lightMode: "white", darkMode: "violet3" },
+          borderRadius: "lg",
+        }),
+      ],
     },
     size: {
       sm: [
         {
-          fontSize: varsFontSize.body_sm,
-          height: varsSpacing.spacing4,
-          minWidth: varsSpacing.spacing4,
+          height: vars.spacing.spacing4,
+          minWidth: vars.spacing.spacing4,
         },
       ],
 
       md: [
         {
-          fontSize: varsFontSize.body_md,
-          height: varsSpacing.spacing5,
-          minWidth: varsSpacing.spacing5,
+          height: vars.spacing.spacing6,
+          minWidth: vars.spacing.spacing6,
         },
       ],
       lg: [
         {
-          fontSize: varsFontSize.body_lg,
-          height: varsSpacing.spacing6,
-          minWidth: varsSpacing.spacing6,
+          height: vars.spacing.spacing8,
+          minWidth: vars.spacing.spacing8,
         },
       ],
     },

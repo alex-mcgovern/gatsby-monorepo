@@ -6,6 +6,7 @@
  */
 import * as React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import AlternatingLayout from "../../../atoms/alternating_layout/alternating_layout";
 import Button from "../../../atoms/button/button/button";
 import Typography from "../../../atoms/typography/typography";
@@ -16,6 +17,13 @@ interface IBioProps {
 }
 
 const Bio = ({ bio }: IBioProps) => {
+  const imageClassnames = getFunctionalClassNames({
+    padding: "spacing3",
+    borderRadius: "md",
+    boxShadow: "shadowDark",
+    aspectRatio: "square",
+    overflow: "hidden",
+  });
   return (
     <Box
       alignItems="center"
@@ -23,11 +31,22 @@ const Bio = ({ bio }: IBioProps) => {
       gap="spacing6"
       gridTemplateColumns={{
         mobile: "1",
-        tablet: "2_1",
+        tablet: "1_2",
       }}
-      marginTop="spacing15"
+      marginTop="spacing16"
       marginBottom="spacing6"
+      dataSal="slide-up"
     >
+      <StaticImage
+        alt="Profile picture"
+        formats={["auto", "webp", "avif"]}
+        layout={"constrained"}
+        objectFit="contain"
+        quality={95}
+        className={imageClassnames}
+        src="../../../../images/profile-pic.jpeg"
+      />
+
       <Box paddingY="spacing6">
         <section
           dangerouslySetInnerHTML={{ __html: bio }}
@@ -35,29 +54,12 @@ const Bio = ({ bio }: IBioProps) => {
         />
         <Box marginY="spacing3" display="flex" gap="spacing3">
           <Button
-            leadingIcon="user"
-            size="sm"
-            title="More about me"
+            trailingIcon="angle-right"
+            title="Read an intro blog post"
             to="/hello-world/"
             variant="secondary"
           />
         </Box>
-      </Box>
-
-      <Box
-        borderRadius="md"
-        boxShadow="shadowLight"
-        outline="dashed"
-        overflow="hidden"
-      >
-        <StaticImage
-          alt="Profile picture"
-          formats={["auto", "webp", "avif"]}
-          layout={"constrained"}
-          objectFit="contain"
-          quality={95}
-          src="../../../../images/profile-pic.jpeg"
-        />
       </Box>
     </Box>
   );

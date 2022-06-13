@@ -63,9 +63,9 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         description={description || excerpt}
       />
       <LayoutMaxWidthContainer>
-        <Box as="section" marginY="spacing9">
+        <Box as="section" marginY="spacing10">
           <AlternatingLayout ratio="2_1">
-            <Box as="header" outline="dashed" marginY="spacing9">
+            <Box as="header" outline="dashed" marginY="spacing10">
               <h1>{post.frontmatter.title}</h1>
               <p>{post.frontmatter.description}</p>
               <h2>{post.frontmatter.date}</h2>
@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           <Box
             as="section"
             marginY="spacing3"
-            marginY="spacing9"
+            marginY="spacing10"
             outline="dashed"
           >
             <section

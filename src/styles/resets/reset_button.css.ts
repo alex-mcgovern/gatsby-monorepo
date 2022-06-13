@@ -2,6 +2,6 @@ import { style } from "@vanilla-extract/css";
 
 export const resetButton = style({
   // background: "none",
-  border: "none",
+  // border: "none",
   textDecoration: "none",
 });

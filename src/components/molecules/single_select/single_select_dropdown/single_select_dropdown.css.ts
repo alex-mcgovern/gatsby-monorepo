@@ -1,7 +1,6 @@
 import { style } from "@vanilla-extract/css";
+import { vars } from "../../../../styles/global_theme.css";
 import { resetList } from "../../../../styles/resets/reset_list.css";
-import { varsColors } from "../../../../styles/vars/vars_colors.css";
-import { varsSpacing } from "../../../../styles/vars/vars_spacing.css";
 
 export const dropdownWrapper = style([
   resetList,
@@ -13,15 +12,15 @@ export const dropdownWrapper = style([
     left: 0,
     width: "max-content",
 
-    marginTop: varsSpacing.spacing1,
+    marginTop: vars.spacing.spacing1,
 
-    borderRadius: varsSpacing.spacing2,
+    borderRadius: vars.spacing.spacing2,
     border: "1px solid",
-    borderColor: varsColors.gray30,
+    borderColor: vars.color.gray500,
 
     overflowY: "scroll",
     overflow: "hidden",
 
-    background: varsColors.white,
+    background: vars.color.white,
   },
 ]);
