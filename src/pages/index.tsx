@@ -3,10 +3,7 @@ import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
 import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
-import AlternatingLayout from "../components/atoms/alternating_layout/alternating_layout";
 import Button from "../components/atoms/button/button/button";
-import ResponsiveGrid from "../components/atoms/responsive_grid/responsive_grid";
-import Typography from "../components/atoms/typography/typography";
 import Box from "../components/layout/box/box";
 import Layout from "../components/layout/layout/layout";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
@@ -21,6 +18,7 @@ import LogoSASS from "../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../images/svg/logos/logo_vanilla_extract.svg";
+import LogoRadix from "../images/svg/logos/logo_radix.svg";
 import { getFunctionalClassNames } from "../styles/functional_classnames.css";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
@@ -106,7 +104,14 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 
       {bioExcerpt && <Bio bio={bioExcerpt} />}
 
+      {/* ——————————————————————————————————————————————————————————————————————————————
+      //      PERFORMANCE SECTION
+      // —————————————————————————————————————————————————————————————————————————————— */}
       <HomepageSectionPerformance />
+
+      {/* ——————————————————————————————————————————————————————————————————————————————
+      //      TECH STACK SECTION
+      // —————————————————————————————————————————————————————————————————————————————— */}
 
       <Box
         as="section"
@@ -120,14 +125,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
         }}
         dataSal="slide-up"
       >
-        <Box marginY="spacing6">
-          <h3>These are a few of my favorite things...</h3>
-          <p>
-            I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
-            Cypress.
-          </p>
-        </Box>
-
         <Box
           marginY="spacing3"
           display="grid"
@@ -141,6 +138,15 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           <LogoCypress className={ICON_CLASSNAMES} />
           <LogoSASS className={ICON_CLASSNAMES} />
           <LogoVanillaExtract className={ICON_CLASSNAMES} />
+          <LogoRadix className={ICON_CLASSNAMES} />
+        </Box>
+
+        <Box marginY="spacing6">
+          <h3>These are a few of my favorite things...</h3>
+          <p>
+            I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
+            Cypress.
+          </p>
         </Box>
       </Box>
 

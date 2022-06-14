@@ -1,36 +1,23 @@
-import { useEffect, useState } from "react";
-import { Metric, getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
-
-interface IWebVitalsState {
-  [key: string]: Metric;
-}
+import { useEffect, useRef } from "react";
+import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
 
 const useWebVitals = () => {
-  const [webVitalsState, setWebVitalsState] = useState();
+  const webVitalsRef = useRef({});
 
-  const updateState = ({ name, value }) => {
-    setWebVitalsState((currentState) => {
-      return { ...currentState, [name]: value };
-    });
+  const updateRef = ({ name, value }) => {
+    console.log("being called", { name, value });
+    webVitalsRef.current = { ...webVitalsRef.current, [name]: value };
+    console.log("being called", webVitalsRef);
   };
 
   useEffect(() => {
-    getCLS(updateState);
-  }, []);
-  useEffect(() => {
-    getFID(updateState);
-  }, []);
-  useEffect(() => {
-    getFCP(updateState);
-  }, []);
-  useEffect(() => {
-    getLCP(updateState);
-  }, []);
-  useEffect(() => {
-    getTTFB(updateState);
-  }, []);
-
-  return webVitalsState;
+    getCLS(updateRef);
+    getFID(updateRef);
+    getFCP(updateRef);
+    getLCP(updateRef);
+    getTTFB(updateRef);
+  });
+  return webVitalsRef.current;
 };
 
 export default useWebVitals;

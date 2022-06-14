@@ -18,7 +18,7 @@ export const button = recipe({
       fontSize: "body_md",
       paddingX: "spacing3",
       paddingY: "spacing1",
-      borderRadius: "sm",
+      borderRadius: "md",
     }),
   ],
 
@@ -39,7 +39,6 @@ export const button = recipe({
           paddingY: "spacing1",
           borderColor: { lightMode: "white", darkMode: "violet3" },
           // background: { lightMode: "white", darkMode: "violet3" },
-          borderRadius: "lg",
         }),
       ],
       secondary: [
@@ -57,7 +56,6 @@ export const button = recipe({
           color: { lightMode: "black", darkMode: "white" },
           borderColor: { lightMode: "black", darkMode: "white" },
           // background: { lightMode: "white", darkMode: "violet3" },
-          borderRadius: "lg",
         }),
       ],
     },
