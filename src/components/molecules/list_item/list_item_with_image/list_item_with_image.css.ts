@@ -10,14 +10,16 @@ export const listItemWrapper = style([
   },
   getButtonA11yStyles(),
   getFunctionalClassNames({
-    background: { lightMode: "white", darkMode: "gray3" },
+    background: { lightMode: "white", darkMode: "gray5" },
     borderRadius: "md",
+    overflow: "hidden",
   }),
 ]);
 export const image = style({
+  transition: "transform 2s ease",
   selectors: {
     [`${listItemWrapper}:hover &`]: {
-      transform: `translateY(${calc.multiply(vars.spacing.spacing1, -1)})`,
+      transform: `scale(1.05)`,
     },
   },
 });

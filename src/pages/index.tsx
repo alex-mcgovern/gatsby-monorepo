@@ -20,6 +20,7 @@ import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../images/svg/logos/logo_vanilla_extract.svg";
 import LogoRadix from "../images/svg/logos/logo_radix.svg";
 import { getFunctionalClassNames } from "../styles/functional_classnames.css";
+import { SECTION_PROPS } from "../utils/shared_props/box_props";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
 
@@ -114,8 +115,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       // —————————————————————————————————————————————————————————————————————————————— */}
 
       <Box
-        as="section"
-        marginY="spacing6"
+        {...SECTION_PROPS}
         display="grid"
         gap="spacing6"
         alignItems="center"
@@ -123,7 +123,6 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           desktop: "1_1",
           tablet: "1",
         }}
-        dataSal="slide-up"
       >
         <Box
           marginY="spacing3"
@@ -153,7 +152,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      BLOG SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" marginY="spacing6" dataSal="slide-up">
+      <Box {...SECTION_PROPS}>
         <h3>I am by no means an expert...</h3>
         <p>
           ...but I have a blog. 😅 Just a few things I've picked up along the
@@ -175,7 +174,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
         //      INSTAGRAM SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="section" marginY="spacing6" dataSal="slide-up">
+      <Box {...SECTION_PROPS}>
         <h3>I've also been known to dabble in design, painting and 3D...</h3>
         <Box marginY="spacing3">
           {images && images.length > 0 && <InstagramPostList images={images} />}

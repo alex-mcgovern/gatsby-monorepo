@@ -52,7 +52,7 @@ export const button = recipe({
         getFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
-          border: "1px solid",
+          border: "2px solid",
           color: { lightMode: "black", darkMode: "white" },
           borderColor: { lightMode: "black", darkMode: "white" },
           // background: { lightMode: "white", darkMode: "violet3" },

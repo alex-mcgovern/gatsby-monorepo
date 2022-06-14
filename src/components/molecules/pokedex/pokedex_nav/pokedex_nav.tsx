@@ -25,8 +25,8 @@ export default function PokedexNav({
   return (
     <Box
       display="flex"
-      justifyContent={"space-between"}
       marginY="spacing3"
+      justifyContent={"space-between"}
       outline="dashed"
     >
       {!isTopLevel && (

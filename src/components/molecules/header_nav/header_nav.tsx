@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
+import { ThemeContext } from "../../../context/theme_context";
 import Button from "../../atoms/button/button/button";
 import Box from "../../layout/box/box";
 import SingleSelect from "../single_select/single_select/single_select";
@@ -12,6 +13,14 @@ const DROPDOWN_INDEX = [
 ];
 
 export default function StickyNav() {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
+  const onClick = () => {
+    if (darkMode) theme.dispatch({ type: "LIGHTMODE" });
+    else theme.dispatch({ type: "DARKMODE" });
+  };
+
   return (
     <Box as="nav" display="flex" justifyContent="center" width="100%">
       <Box
@@ -31,6 +40,12 @@ export default function StickyNav() {
             searchIndex={DROPDOWN_INDEX}
           />
           <Button size="sm" to="/" title="Connect" />
+          <Button
+            size="sm"
+            to="/"
+            leadingIcon={"angle-right"}
+            // onClick={onClick}
+          />
         </Box>
       </Box>
     </Box>

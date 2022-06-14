@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../../context/theme_context";
 import "../../../styles/global.css";
 import Footer from "../../atoms/footer/footer";
 import StickyNav from "../../molecules/header_nav/header_nav";
@@ -11,14 +12,17 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, title }: LayoutProps) => {
+  const theme = React.useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
   return (
-    <div id={title}>
+    <Box id={title}>
       <LayoutMaxWidthContainer>
         <StickyNav />
         <main>{children}</main>
         <Footer />
       </LayoutMaxWidthContainer>
-    </div>
+    </Box>
   );
 };
 

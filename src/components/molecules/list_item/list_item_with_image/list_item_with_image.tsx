@@ -28,9 +28,6 @@ export default function ListItemWithImage({
   const imageClassNames = classNames(
     styles.image,
     getFunctionalClassNames({
-      padding: "spacing3",
-      borderRadius: "md",
-      boxShadow: "shadowDark",
       aspectRatio,
     })
   );
@@ -40,13 +37,13 @@ export default function ListItemWithImage({
       {imageData && (
         <GatsbyImage
           alt={title}
-          className={imageClassNames}
           image={imageData}
+          imgClassName={imageClassNames}
         />
       )}
 
-      <Box as="header" marginY="spacing3">
-        {title && <h4>{title}</h4>}
+      <Box as="header" marginY="spacing3" padding="spacing3">
+        {title && <h5>{title}</h5>}
         {subtitle && <small>{subtitle}</small>}
         {description && <p>{description}</p>}
       </Box>

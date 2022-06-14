@@ -13,6 +13,7 @@ import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_n
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import { SECTION_PROPS } from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonListPageProps {
   data: {
@@ -75,7 +76,12 @@ export default function TemplatePokemonListPage({
   return (
     <Layout title={siteTitle}>
       <LayoutMaxWidthContainer>
-        <HeaderProject doc={doc} />
+        <Box {...SECTION_PROPS}>
+          <section
+            dangerouslySetInnerHTML={{ __html: doc }}
+            itemProp="articleBody"
+          />
+        </Box>
 
         <PokedexNav
           searchIndex={searchIndex}
@@ -86,8 +92,7 @@ export default function TemplatePokemonListPage({
         />
 
         <Box
-          as="section"
-          marginY="spacing3"
+          {...SECTION_PROPS}
           display="grid"
           gap="spacing3"
           gridTemplateColumns={{

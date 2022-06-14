@@ -11,6 +11,7 @@ import AlternatingLayout from "../../../atoms/alternating_layout/alternating_lay
 import Button from "../../../atoms/button/button/button";
 import Typography from "../../../atoms/typography/typography";
 import Box from "../../../layout/box/box";
+import { SECTION_PROPS } from "../../../../utils/shared_props/box_props";
 
 interface IBioProps {
   bio: string;
@@ -26,6 +27,7 @@ const Bio = ({ bio }: IBioProps) => {
   });
   return (
     <Box
+      {...SECTION_PROPS}
       alignItems="center"
       display="grid"
       gap="spacing6"
@@ -33,9 +35,6 @@ const Bio = ({ bio }: IBioProps) => {
         mobile: "1",
         tablet: "1_2",
       }}
-      marginTop="spacing16"
-      marginBottom="spacing6"
-      dataSal="slide-up"
     >
       <StaticImage
         alt="Profile picture"

@@ -11,9 +11,12 @@ var firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-//firebase.analytics()
+if (typeof window !== "undefined") {
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  //firebase.analytics()
+}
 
 export default firebase;

@@ -17,7 +17,7 @@ const responsiveProperties = defineProperties({
       md: 16,
       sm: 4,
     },
-    border: ["1px solid"],
+    border: ["1px solid", "2px solid"],
     boxShadow: vars.shadow,
     display: ["none", "flex", "block", "inline", "inline-flex", "grid"],
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
