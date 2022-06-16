@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import Box from "../../../../../components/atoms/box/box";
 import Button from "../../../../../components/atoms/button/button/button";
 import Typography from "../../../../../components/atoms/typography/typography";
-import Box from "../../../../../components/layout/box/box";
 import SingleSelect from "../../../../../components/molecules/single_select/single_select/single_select";
 import firebase from "../../../../../utils/firebase/firebase";
 
@@ -46,10 +46,15 @@ export default function KanbanListItem({
   return (
     <Box
       padding="spacing3"
-      outline="solid"
-      // boxShadow="shadowLight"
+      boxShadow="shadowLight"
+      background="neutral_ui_base"
       marginBottom="spacing1"
       borderRadius="md"
+      border="1px solid"
+      borderColor={{
+        default: "neutral_ui_selected",
+        hover: "neutral_border_interactive",
+      }}
     >
       <Typography
         display="block"
@@ -62,11 +67,12 @@ export default function KanbanListItem({
 
       <Box
         display="grid"
+        alignItems="center"
         gridTemplateColumns="1_2"
         gap="spacing1"
         marginBottom="spacing1"
       >
-        <Typography>Status</Typography>
+        <Typography fontSize="body_sm">Status</Typography>
         <SingleSelect
           size="sm"
           width="100%"
@@ -76,7 +82,7 @@ export default function KanbanListItem({
             onSelect({ value, key: "status" });
           }}
         />
-        <Typography>Epic</Typography>
+        <Typography fontSize="body_sm">Epic</Typography>
         <SingleSelect
           width="100%"
           size="sm"

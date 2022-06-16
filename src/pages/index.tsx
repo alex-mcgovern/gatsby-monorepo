@@ -3,22 +3,22 @@ import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
 import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
+import Box from "../components/atoms/box/box";
 import Button from "../components/atoms/button/button/button";
-import Box from "../components/layout/box/box";
-import Layout from "../components/layout/layout/layout";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import Bio from "../components/molecules/header/bio/bio";
 import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
-import HomepageSectionPerformance from "../components/organisms/homepage_sections/homepage_section_performance";
+import Layout from "../components/organisms/layout/layout";
+import HomepageSectionBio from "../components/sections/homepage_section_bio/homepage_section_bio";
+import HomepageSectionPerformance from "../components/sections/homepage_section_performance/homepage_section_performance";
 import Seo from "../components/seo";
 import LogoCypress from "../images/svg/logos/logo_cypress.svg";
 import LogoGatsby from "../images/svg/logos/logo_gatsby.svg";
+import LogoRadix from "../images/svg/logos/logo_radix.svg";
 import LogoReact from "../images/svg/logos/logo_react.svg";
 import LogoSASS from "../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../images/svg/logos/logo_vanilla_extract.svg";
-import LogoRadix from "../images/svg/logos/logo_radix.svg";
 import { getFunctionalClassNames } from "../styles/functional_classnames.css";
 import { SECTION_PROPS } from "../utils/shared_props/box_props";
 
@@ -34,7 +34,7 @@ const DROPDOWN_INDEX = [
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   padding: "spacing3",
-  background: { lightMode: "white", darkMode: "gray900" },
+  background: "neutral_ui_base",
   borderRadius: "md",
   boxShadow: "shadowDark",
   aspectRatio: "square",
@@ -103,7 +103,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
     <Layout title={siteTitle}>
       <Seo title="All posts" />
 
-      {bioExcerpt && <Bio bio={bioExcerpt} />}
+      {bioExcerpt && <HomepageSectionBio bio={bioExcerpt} />}
 
       {/* ——————————————————————————————————————————————————————————————————————————————
       //      PERFORMANCE SECTION
@@ -167,7 +167,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           justifyContent="center"
           gap="spacing3"
         >
-          <Button size="md" to="/blog" title="Explore 11 more blog articles" />
+          <Button size="lg" to="/blog" title="Explore 11 more blog articles" />
         </Box>
       </Box>
 

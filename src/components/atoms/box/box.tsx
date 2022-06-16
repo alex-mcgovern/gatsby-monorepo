@@ -3,12 +3,12 @@ import {
   TFunctionalClassNames,
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
-import { getBoxClassNames } from "./box.css";
 
 export interface IBox {
   alignItems?: TFunctionalClassNames["alignItems"];
   dataSal?: TDataSal;
   as?:
+    | "article"
     | "menu"
     | "div"
     | "fieldset"
@@ -20,7 +20,9 @@ export interface IBox {
     | "span";
   aspectRatio?: TFunctionalClassNames["aspectRatio"];
   background?: TFunctionalClassNames["background"];
+  border?: TFunctionalClassNames["border"];
   borderRadius?: TFunctionalClassNames["borderRadius"];
+  borderColor?: TFunctionalClassNames["borderColor"];
   boxShadow?: TFunctionalClassNames["boxShadow"];
   children?: React.ReactNode;
   color?: TFunctionalClassNames["color"];
@@ -46,8 +48,8 @@ export interface IBox {
   minHeight?: TFunctionalClassNames["minHeight"];
   maxHeight?: TFunctionalClassNames["maxHeight"];
   minWidth?: TFunctionalClassNames["minWidth"];
-  outline?: "solid" | "dashed";
   overflow?: TFunctionalClassNames["overflow"];
+  outline?: TFunctionalClassNames["outline"];
   overflowY?: TFunctionalClassNames["overflowY"];
   padding?: TFunctionalClassNames["padding"];
   paddingBottom?: TFunctionalClassNames["paddingBottom"];
@@ -67,6 +69,8 @@ export default function Box({
   aspectRatio,
   background,
   borderRadius,
+  borderColor,
+  border,
   boxShadow,
   children,
   color,
@@ -108,14 +112,14 @@ export default function Box({
   ...rest
 }: IBox) {
   const boxClassNames = [
-    getBoxClassNames({
-      outline,
-    }),
     getFunctionalClassNames({
+      outline,
       alignItems,
       aspectRatio,
       background,
+      border,
       borderRadius,
+      borderColor,
       boxShadow,
       color,
       display,
@@ -147,6 +151,7 @@ export default function Box({
       paddingLeft,
       paddingRight,
       position,
+      transition: "background",
       width,
       zIndex,
     }),

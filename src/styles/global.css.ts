@@ -2,8 +2,8 @@ import { globalStyle } from "@vanilla-extract/css";
 import "./global/global_button.css";
 import "./global/global_fieldset.css";
 import "./global/global_headings.css";
-import "./global/paragraph.css";
-import { vars } from "./global_theme.css";
+import "./global/global_paragraph_styles.css";
+import { vars } from "./theme.css";
 
 export const rootColors = {
   light: {
@@ -35,15 +35,9 @@ globalStyle(`*`, {
 });
 
 globalStyle(`html`, {
-  color: rootColors.light.color,
+  color: vars.color.neutral_text_highContrast,
   fontSize: 16,
-  background: vars.color.white,
-  "@media": {
-    "(prefers-color-scheme: dark)": {
-      background: vars.color.gray1,
-      color: vars.color.white,
-    },
-  },
+  background: vars.color.neutral_background,
 });
 
 globalStyle(`html, body`, {
@@ -53,8 +47,9 @@ globalStyle(`html, body`, {
 
 globalStyle(`body`, {
   lineHeight: 1.4,
-  fontSize: vars.fontSize.body_lg,
+  fontSize: 16,
   WebkitFontSmoothing: `antialiased`,
+  width: "100vw",
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————

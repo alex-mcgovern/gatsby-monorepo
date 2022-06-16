@@ -2,10 +2,10 @@ import React, { useCallback } from "react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
+import Box from "../../../components/atoms/box/box";
 import Button from "../../../components/atoms/button/button/button";
 import Typography from "../../../components/atoms/typography/typography";
-import Box from "../../../components/layout/box/box";
-import Layout from "../../../components/layout/layout/layout";
+import Layout from "../../../components/organisms/layout/layout";
 import Seo from "../../../components/seo";
 import { useFirestoreCollection } from "../../../hooks/use_firestore_collection/use_firestore_collection";
 import firebase from "../../../utils/firebase/firebase";
@@ -56,7 +56,8 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
 
       <Box as="section" marginY="spacing6">
         {/* ——————————————————————————————————————————————————————————————————————————————
-        //      MAP OVER EPICS                                                          
+        //      MAP OVER EPICS    
+        //      Here we create a Kanban board for each epic that we find                                                      
         // ——————————————————————————————————————————————————————————————————————————————  */}
         {epics &&
           epics.length > 0 &&
@@ -80,35 +81,50 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
             return (
               <Box
                 marginY="spacing3"
-                background="gray200"
-                paddingY="spacing3"
-                paddingX="spacing2"
+                background="neutral_ui_base"
+                borderColor="neutral_ui_selected"
+                border="1px solid"
+                padding="spacing3"
                 borderRadius="md"
               >
-                <Box display="flex" justifyContent="space-between">
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  marginBottom="spacing3"
+                >
+                  {/* ——————————————————————————————————————————————
+                  //      EPIC BOARD TITLE & CONTROLS
+                  //      Here we add the epic title, delete epic button, and create new task button
+                  // —————————————————————————————————————————————— */}
                   <Typography
-                    fontSize="h4"
-                    fontWeight="medium"
+                    fontSize="body_lg"
+                    fontWeight="semibold"
                     display="block"
-                    marginBottom="spacing3"
                   >
                     {epicKey}
                   </Typography>
+
+                  {/* Epic buttons wrapper */}
                   <Box display="flex" gap="spacing1">
                     <CreateNewTaskDialog
                       statusesSearchIndex={statusesSearchIndex}
                       epicsSearchIndex={epicsSearchIndex}
                     />
                     <Button
-                      leadingIcon="times"
+                      trailingIcon="times"
                       size="sm"
-                      variant="secondary"
-                      title="Delete"
+                      variant="primary"
+                      title="Delete this epic"
                       // width="100%"
                       onClick={handleDelete}
                     />
                   </Box>
                 </Box>
+
+                {/* ——————————————————————————————————————————————————————————————————————————————
+                  //      MAP OVER STATUSES
+                  // ——————————————————————————————————————————————————————————————————————————————  */}
+                {/* Status column layout */}
                 <Box
                   display="grid"
                   gap="spacing3"
@@ -118,25 +134,16 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                     desktop: "1_1_1",
                   }}
                 >
-                  {/* ——————————————————————————————————————————————————————————————————————————————
-                    //      MAP OVER STATUSES
-                    // ——————————————————————————————————————————————————————————————————————————————  */}
                   {statusesSortedBySortIndex &&
                     statusesSortedBySortIndex.length > 0 &&
                     statusesSortedBySortIndex.map(({ title: statusKey }) => {
                       return (
-                        <Box
-                          // border="1px solid"
-                          background="white"
-                          paddingY="spacing3"
-                          paddingX="spacing2"
-                          borderRadius="md"
-                        >
+                        <Box background="neutral_ui_base" borderRadius="md">
                           <Typography
-                            fontSize="h6"
+                            fontSize="body_md"
                             textTransform="uppercase"
                             fontWeight="semibold"
-                            color="navy80"
+                            color="neutral_text_lowContrast"
                             display="block"
                             marginBottom="spacing3"
                           >

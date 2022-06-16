@@ -12,7 +12,7 @@ import "../../../../utils/font_awesome";
 import ButtonInnerContent from "../button_inner_content/button_inner_content";
 import { button } from "./button.css";
 
-interface ButtonProps {
+export interface IButton {
   to?: string;
   id?: string;
   title?: string | number;
@@ -20,7 +20,7 @@ interface ButtonProps {
   display?: TFunctionalClassNames["display"];
   isDisabled?: boolean;
   trailingIcon?: IconProp;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
   size?: TSizeProp;
   onClick?(...args: unknown[]): unknown;
   width?: TFunctionalClassNames["width"];
@@ -41,7 +41,7 @@ export default function Button({
   isDisabled,
   type,
   ...rest
-}: ButtonProps) {
+}: IButton) {
   const isInternalLink = to && /^\/(?!\/)/.test(to);
 
   const buttonStyle = classNames([

@@ -1,7 +1,7 @@
 import React from "react";
 import Downshift from "downshift";
 import { TFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import Button from "../../../atoms/button/button/button";
+import Button, { IButton } from "../../../atoms/button/button/button";
 import SingleSelectDropdownList from "../single_select_dropdown/single_select_dropdown";
 import getSelectIndexItemValue from "./helper_functions/get_select_index_item_value";
 import * as styles from "./single_select.css";
@@ -11,7 +11,8 @@ interface SingleSelectProps {
   display?: TFunctionalClassNames["display"];
   width?: TFunctionalClassNames["width"];
   size?: TSizeProp;
-  onSelect(...args: unknown[]): unknown;
+  variant?: IButton["variant"];
+  onSelect?(...args: unknown[]): unknown;
 
   id?: string;
   value?: string;
@@ -23,6 +24,7 @@ export default function SingleSelect({
   display,
   width,
   id,
+  variant,
   size,
   onSelect,
 }: SingleSelectProps) {
@@ -44,9 +46,9 @@ export default function SingleSelect({
               size={size}
               width={width}
               title={inputValue || value || "—"}
-              variant="secondary"
               trailingIcon="caret-down"
               display={display}
+              variant={variant}
               {...getToggleButtonProps()}
             />
             <SingleSelectDropdownList
@@ -70,4 +72,5 @@ SingleSelect.defaultProps = {
   searchIndex: null,
   size: "md",
   value: null,
+  variant: "secondary",
 };

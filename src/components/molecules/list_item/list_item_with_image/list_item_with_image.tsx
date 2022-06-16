@@ -3,7 +3,8 @@ import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import Box from "../../../layout/box/box";
+import Box from "../../../atoms/box/box";
+import Typography from "../../../atoms/typography/typography";
 import * as styles from "./list_item_with_image.css";
 
 interface ListItemWithImageProps {
@@ -42,10 +43,30 @@ export default function ListItemWithImage({
         />
       )}
 
-      <Box as="header" marginY="spacing3" padding="spacing3">
-        {title && <h5>{title}</h5>}
-        {subtitle && <small>{subtitle}</small>}
-        {description && <p>{description}</p>}
+      <Box as="header" padding="spacing3">
+        {title && (
+          <Typography
+            fontSize="body_lg"
+            fontWeight="semibold"
+            marginBottom="spacing2"
+          >
+            {title}
+          </Typography>
+        )}
+        {subtitle && (
+          <Typography
+            fontSize="body_md"
+            marginBottom="spacing2"
+            fontWeight="medium"
+            color="primary_text_lowContrast"
+          >
+            {" "}
+            {subtitle}
+          </Typography>
+        )}
+        {description && (
+          <Typography fontSize="body_md">{description}</Typography>
+        )}
       </Box>
     </Link>
   );

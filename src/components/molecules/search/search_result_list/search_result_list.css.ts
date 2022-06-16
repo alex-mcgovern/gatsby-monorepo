@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { vars } from "../../../../styles/global_theme.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const listWrapper = style([
   {
@@ -11,7 +11,7 @@ export const listWrapper = style([
     zIndex: 99,
     width: "100%",
     borderRadius: vars.spacing.spacing10,
-    background: vars.color.white,
+    background: vars.color.background,
     border: "1px solid",
     display: "block",
   },

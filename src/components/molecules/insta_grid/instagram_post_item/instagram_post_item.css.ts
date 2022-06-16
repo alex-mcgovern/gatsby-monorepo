@@ -1,9 +1,13 @@
 import { style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 
-export const instagramPostLink = style({
-  position: "relative",
-});
+export const instagramPostLink = style([
+  getFunctionalClassNames({
+    position: "relative",
+    borderRadius: "md",
+    overflow: "hidden",
+  }),
+]);
 
 export const instagramPostOverlay = style([
   {
@@ -22,8 +26,8 @@ export const instagramPostOverlay = style([
     },
   },
   getFunctionalClassNames({
-    color: "white",
-    background: "navy",
-    padding: "spacing6",
+    color: "neutral_text_highContrast",
+    background: "neutral_ui_base_hover",
+    padding: "spacing3",
   }),
 ]);

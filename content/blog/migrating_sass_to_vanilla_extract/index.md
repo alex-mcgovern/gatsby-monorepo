@@ -1,14 +1,14 @@
 ---
-title: Migrating SASS to Vanilla extract
+title: Migrating Javascript & SASS to TypeScript and Vanilla Extract
 date: "2015-05-06T23:46:37.121Z"
 cover: ./pexels-cottonbro-4629625.jpg
+categories: ["Frontend", "Design systems"]
 description:
-  Vanilla Extract offers a neat way to generate and compose re-usable functional
-  utility classes in your project. Pain points, learning curve and was it worth
-  it?
+  How my team and I refactored and upgraded 15,000 lines of code to type safe
+  components and type-safe styles.
 ---
 
-# An experiment in type-safe styles.
+# a.k.a how we removed 50% of our code
 
 A dream of mine is to develop a very modular, and minimal CSS-driven design
 system that does away with extraneous dependencies, heavy components and runtime

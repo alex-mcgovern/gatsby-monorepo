@@ -1,8 +1,7 @@
 import React from "react";
-import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
-import Button from "../../../atoms/button/button/button";
-import ButtonWrapper from "../../../atoms/button/button_wrapper/button_wrapper";
-import Box from "../../../layout/box/box";
+import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
+import Box from "../../atoms/box/box";
+import Button from "../../atoms/button/button/button";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
 interface PaginationProps {
@@ -31,7 +30,6 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       justifyContent={"center"}
       marginY="spacing3"
       gap="spacing3"
-      outline="dashed"
     >
       <Button
         variant="secondary"

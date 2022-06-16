@@ -20,7 +20,7 @@
     "janky",
     "localised",
     "logomark",
-    "midground",
+    "neutral_text_lowContrast",
     "pokedex",
     "sanitised",
     "specialised",
@@ -58,18 +58,32 @@
       "commentEndToken": "— */",
 
       "textAlignment": "left",
-      "boxWidth": 64
+      "boxWidth": 48
     },
-    "h3": {
+    "h1_JSX": {
       "leftEdgeToken": "//      ",
       "rightEdgeToken": "",
       "topEdgeToken": "—",
       "bottomEdgeToken": "—",
 
-      "commentStartToken": "/* ",
+      "commentStartToken": "{/* ",
       "topRightToken": "—",
       "bottomLeftToken": "// ",
-      "commentEndToken": "— */",
+      "commentEndToken": "— */}",
+
+      "textAlignment": "left",
+      "boxWidth": 80
+    },
+    "h2_JSX": {
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "topEdgeToken": "—",
+      "bottomEdgeToken": "—",
+
+      "commentStartToken": "{/* ",
+      "topRightToken": "—",
+      "bottomLeftToken": "// ",
+      "commentEndToken": "— */}",
 
       "textAlignment": "left",
       "boxWidth": 48

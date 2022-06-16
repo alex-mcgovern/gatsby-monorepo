@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDataLike } from "gatsby-plugin-image";
-import Box from "../../../layout/box/box";
+import Box from "../../../atoms/box/box";
 import BlogArticleListItem from "../blog_article_list_item/blog_article_list_item";
 
 interface SectionBlogPostListProps {

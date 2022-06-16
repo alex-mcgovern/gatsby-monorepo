@@ -1,6 +1,6 @@
 import React from "react";
-import { vars } from "../../../../styles/global_theme.css";
-import Box, { IBox } from "../../../layout/box/box";
+import { vars } from "../../../../styles/theme.css";
+import Box, { IBox } from "../../../atoms/box/box";
 
 interface IMetricGraphCard {
   value: number;
@@ -44,21 +44,21 @@ export default function MetricGraphCard({
   const diameter = Math.PI * 2 * radius;
 
   const greenStyle = {
-    stroke: vars.color.green9,
+    stroke: vars.color.semanticGreen,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - greenPercentage) / 100) * diameter}px`,
   };
 
   const amberStyle = {
-    stroke: vars.color.amber9,
+    stroke: vars.color.semanticYellow,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - amberPercentage) / 100) * diameter}px`,
   };
 
   const progressStyle = {
-    stroke: "#ffffff",
+    stroke: vars.color.neutral_text_highContrast,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
@@ -80,7 +80,7 @@ export default function MetricGraphCard({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: vars.color.red8,
+          stroke: vars.color.semanticRed,
         }}
       />
 
@@ -112,7 +112,7 @@ export default function MetricGraphCard({
         x={50}
         y={33}
         style={{
-          fill: "#ffffff",
+          fill: vars.color.neutral_text_highContrast,
           fontSize: "12px",
           dominantBaseline: "central",
           textAnchor: "middle",
@@ -125,7 +125,7 @@ export default function MetricGraphCard({
         x={50}
         y={50}
         style={{
-          fill: "#ffffff",
+          fill: vars.color.neutral_text_highContrast,
           fontSize: "24px",
           dominantBaseline: "central",
           textAnchor: "middle",
@@ -138,7 +138,7 @@ export default function MetricGraphCard({
         x={50}
         y={66}
         style={{
-          fill: "#ffffff",
+          fill: vars.color.neutral_text_highContrast,
           fontSize: "8px",
           dominantBaseline: "central",
           textAnchor: "middle",

@@ -43,11 +43,12 @@ export default function Typography({
       textAlign,
       textTransform,
       whiteSpace,
+      transition: "text",
     }),
   ];
 
   // allow polymorphism
-  const Element = as || "span";
+  const Element = as || "div";
 
   return (
     <Element className={buttonStyle.join(" ")} {...rest}>

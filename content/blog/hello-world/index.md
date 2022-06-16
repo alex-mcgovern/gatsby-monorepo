@@ -1,9 +1,9 @@
 ---
 title: Hello World
 cover: ./pexels-cottonbro-4629634.jpg
-category: "About me"
 isBio: true
 date: "2022-04-01T22:12:03.284Z"
+categories: ["Frontend", "Personal"]
 description:
   "A little about me, my career to date and some of my interests and hobbies.
   (Warning, contains nerdiness 🤓)"

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
 import { ThemeContext } from "../../../context/theme_context";
+import Box from "../../atoms/box/box";
 import Button from "../../atoms/button/button/button";
-import Box from "../../layout/box/box";
 import SingleSelect from "../single_select/single_select/single_select";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
@@ -14,6 +14,7 @@ const DROPDOWN_INDEX = [
 
 export default function StickyNav() {
   const theme = useContext(ThemeContext);
+
   const darkMode = theme.state.darkMode;
 
   const onClick = () => {
@@ -31,20 +32,21 @@ export default function StickyNav() {
       >
         <Button leadingIcon="house" size="sm" to="/" title="Home" />
 
-        <Box display="flex" gap="spacing1">
-          <Button variant="secondary" size="sm" to="/blog" title="Blog" />
+        <Box display="flex" alignItems="center">
+          <Button title="Blog" to="/blog" size="sm" variant="tertiary" />
 
           <SingleSelect
+            searchIndex={DROPDOWN_INDEX}
             size="sm"
             value="Projects"
-            searchIndex={DROPDOWN_INDEX}
+            variant="tertiary"
           />
-          <Button size="sm" to="/" title="Connect" />
+          <Button size="sm" to="/" title="Connect" variant="tertiary" />
           <Button
+            leadingIcon={darkMode ? "sun" : "moon"}
+            onClick={onClick}
             size="sm"
-            to="/"
-            leadingIcon={"angle-right"}
-            // onClick={onClick}
+            variant="tertiary"
           />
         </Box>
       </Box>

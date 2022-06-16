@@ -18,10 +18,11 @@ export default function InstagramPostItem({
   const imageClassNames = getFunctionalClassNames({
     height: "100%",
     padding: "spacing3",
-    borderRadius: "md",
+
     boxShadow: "shadowDark",
     aspectRatio: "square",
     width: "100%",
+    overflow: "hidden",
   });
   if (image) {
     return (

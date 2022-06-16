@@ -32,7 +32,7 @@ const config: GatsbyConfig = {
         numberOfPokemonToSource: 151,
         targetLanguageList: TARGET_LANGUAGE_LIST,
         targetGameVersion: "x", // "fr", "de", "es" languages not available in earlier versions
-        enableDebugLogging: true,
+        enableDebugLogging: false,
       },
     },
     {
@@ -40,7 +40,7 @@ const config: GatsbyConfig = {
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
         itemsPerPage: 12,
-        enableDebugLogging: true,
+        enableDebugLogging: false,
       },
     },
     {

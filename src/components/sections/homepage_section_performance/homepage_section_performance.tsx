@@ -1,5 +1,5 @@
 import React from "react";
-import Box, { IBox } from "../../layout/box/box";
+import Box, { IBox } from "../../atoms/box/box";
 import MetricGraphCard from "./components/metric_graph_card";
 import useWebVitals from "./components/use_web_vitals";
 
@@ -7,9 +7,9 @@ interface HomepageSectionPerformanceProps {}
 
 const BOX_PROPS: IBox = {
   padding: "spacing3",
-  background: { lightMode: "white", darkMode: "gray3" },
+  background: "neutral_ui_base",
   borderRadius: "md",
-  boxShadow: "shadowDark",
+  boxShadow: "shadowLight",
   aspectRatio: "square",
 };
 

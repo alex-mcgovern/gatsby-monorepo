@@ -1,6 +1,6 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { vars } from "../../../../styles/global_theme.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const button = recipe({
   base: [
@@ -15,69 +15,93 @@ export const button = recipe({
       whiteSpace: "nowrap",
     },
     getFunctionalClassNames({
-      fontSize: "body_md",
-      paddingX: "spacing3",
-      paddingY: "spacing1",
-      borderRadius: "md",
+      borderRadius: "lg",
+      // paddingY: "spacing0",
+      paddingX: "spacing1",
     }),
   ],
 
   variants: {
     color: {
       primary: [
-        {
-          color: vars.color.violet12,
-          background: vars.color.violetA7,
-          selectors: {
-            "&:not([disabled]):hover": {
-              backgroundColor: vars.color.violet4,
-            },
-          },
-        },
         getFunctionalClassNames({
-          paddingX: "spacing2",
-          paddingY: "spacing1",
-          borderColor: { lightMode: "white", darkMode: "violet3" },
-          // background: { lightMode: "white", darkMode: "violet3" },
+          color: "white",
+
+          background: {
+            default: "primary_solid_base",
+            hover: "primary_solid_hover",
+            focus: "primary_solid_hover",
+          },
+
+          textDecoration: {
+            default: "none",
+            hover: "underline",
+            focus: "underline",
+          },
         }),
       ],
       secondary: [
-        {
-          selectors: {
-            "&:not([disabled]):hover": {
-              backgroundColor: vars.color.magenta30,
-            },
-          },
-        },
         getFunctionalClassNames({
-          paddingX: "spacing2",
-          paddingY: "spacing1",
-          border: "2px solid",
-          color: { lightMode: "black", darkMode: "white" },
-          borderColor: { lightMode: "black", darkMode: "white" },
-          // background: { lightMode: "white", darkMode: "violet3" },
+          color: "primary_text_lowContrast",
+
+          background: {
+            default: "primary_ui_base",
+            hover: "primary_ui_hover",
+            focus: "primary_ui_hover",
+          },
+          border: "1px solid",
+
+          borderColor: {
+            default: "primary_border_interactive",
+            hover: "primary_border_interactive_focus",
+            focus: "primary_border_interactive_focus",
+          },
+
+          textDecoration: {
+            default: "none",
+            hover: "underline",
+            focus: "underline",
+          },
+        }),
+      ],
+      tertiary: [
+        getFunctionalClassNames({
+          color: {
+            default: "neutral_text_highContrast",
+            hover: "neutral_text_lowContrast",
+            focus: "neutral_text_lowContrast",
+          },
+
+          textDecoration: {
+            default: "none",
+            hover: "underline",
+            focus: "underline",
+          },
         }),
       ],
     },
     size: {
       sm: [
-        {
-          height: vars.spacing.spacing4,
-          minWidth: vars.spacing.spacing4,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_sm",
+          paddingY: "spacing0",
+          paddingX: "spacing2",
+        }),
       ],
 
       md: [
-        {
-          height: vars.spacing.spacing6,
-          minWidth: vars.spacing.spacing6,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_md",
+          paddingY: "spacing0",
+          paddingX: "spacing2",
+        }),
       ],
       lg: [
-        {
-          height: vars.spacing.spacing8,
-          minWidth: vars.spacing.spacing8,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_lg",
+          paddingY: "spacing1",
+          paddingX: "spacing2",
+        }),
       ],
     },
   },

@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { vars } from "../../../../styles/global_theme.css";
 import { resetInput } from "../../../../styles/resets/reset_input.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const getInputWrapperStyles = recipe({
   base: [
@@ -11,15 +11,15 @@ export const getInputWrapperStyles = recipe({
       fontWeight: vars.fontWeight.semibold,
       textDecoration: "none",
       border: "1px solid",
-      color: vars.color.gray500,
+      color: vars.color.neutral_text_lowContrast,
       width: "100%",
       selectors: {
         "&:hover": {
-          borderColor: vars.color.magenta50,
+          borderColor: vars.color.primary,
         },
         "&:focus-within": {
-          borderColor: vars.color.magenta,
-          boxShadow: `0px 0px 0px 4px ${vars.color.orange50}, 0px 0px 0px 8px ${vars.color.white}`,
+          borderColor: vars.color.primary,
+          boxShadow: `0px 0px 0px 4px ${vars.color.primary}, 0px 0px 0px 8px ${vars.color.background}`,
         },
       },
     },
@@ -66,6 +66,6 @@ export const getInputWrapperStyles = recipe({
 
 export const inputElement = style([resetInput]);
 export const icon = style({
-  color: vars.color.gray500,
+  color: vars.color.neutral_text_lowContrast,
   marginRight: vars.spacing.spacing4,
 });

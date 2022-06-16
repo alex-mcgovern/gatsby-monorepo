@@ -1,7 +1,7 @@
-import { IBox } from "../../components/layout/box/box";
+import { IBox } from "../../components/atoms/box/box";
 
 export const SECTION_PROPS: IBox = {
   as: "section",
-  marginY: "spacing10",
+  marginY: "spacing16",
   dataSal: "slide-up",
 };

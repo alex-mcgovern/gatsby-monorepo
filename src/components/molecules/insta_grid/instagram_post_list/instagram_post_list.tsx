@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDataLike } from "gatsby-plugin-image";
-import Box from "../../../layout/box/box";
+import Box from "../../../atoms/box/box";
 import InstagramPostItem from "../instagram_post_item/instagram_post_item";
 
 interface InstagramPostListProps {

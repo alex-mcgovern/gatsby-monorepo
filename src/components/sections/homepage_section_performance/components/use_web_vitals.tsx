@@ -5,9 +5,7 @@ const useWebVitals = () => {
   const webVitalsRef = useRef({});
 
   const updateRef = ({ name, value }) => {
-    console.log("being called", { name, value });
     webVitalsRef.current = { ...webVitalsRef.current, [name]: value };
-    console.log("being called", webVitalsRef);
   };
 
   useEffect(() => {

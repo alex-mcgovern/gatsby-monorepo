@@ -1,10 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Box from "../../components/layout/box/box";
-import Layout from "../../components/layout/layout/layout";
-import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
+import Box from "../../components/atoms/box/box";
+import Typography from "../../components/atoms/typography/typography";
+import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import Pagination from "../../components/molecules/pokedex/pagination/pagination";
+import Pagination from "../../components/molecules/pagination/pagination";
+import Layout from "../../components/organisms/layout/layout";
 
 const PAGINATION_BASE_PATH = "blog";
 
@@ -38,7 +39,7 @@ export default function TemplateBlogListPage({
   data,
   pageContext,
 }: TemplateBlogListPageProps) {
-  const { currentPage, pageCount } = pageContext;
+  const { currentPage, pageCount, allCategories } = pageContext;
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
@@ -48,8 +49,12 @@ export default function TemplateBlogListPage({
 
   return (
     <Layout title={siteTitle}>
-      <LayoutMaxWidthContainer>
+      <Box maxWidth="gridWidth" marginX="auto">
         <Box as="section" marginY="spacing10" dataSal="slide-up">
+          <Typography as="h1" fontSize="h2">
+            Blog
+          </Typography>
+          <BlogCategoriesList categories={allCategories} />
           <SectionBlogPostList posts={posts} />
         </Box>
 
@@ -60,7 +65,7 @@ export default function TemplateBlogListPage({
             pageCount={pageCount}
           />
         )}
-      </LayoutMaxWidthContainer>
+      </Box>
     </Layout>
   );
 }

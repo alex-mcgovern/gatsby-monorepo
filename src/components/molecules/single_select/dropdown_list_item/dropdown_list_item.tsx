@@ -39,22 +39,23 @@ export default function DropdownListItem({
 
   return (
     <li className={styles.resultWrapper}>
-      {item.link && (
+      {item.link ? (
         <Link className={linkClassNames} to={item.link}>
           {item.value}
         </Link>
+      ) : (
+        <button
+          type="button"
+          className={linkClassNames}
+          {...getItemProps({
+            key: item.value,
+            index,
+            item,
+          })}
+        >
+          {item.label}
+        </button>
       )}
-      <button
-        type="button"
-        className={linkClassNames}
-        {...getItemProps({
-          key: item.value,
-          index,
-          item,
-        })}
-      >
-        {item.label}
-      </button>
     </li>
   );
 }

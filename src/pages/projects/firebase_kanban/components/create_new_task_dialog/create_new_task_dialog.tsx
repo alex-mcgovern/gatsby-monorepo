@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
+import Box from "../../../../../components/atoms/box/box";
 import Button from "../../../../../components/atoms/button/button/button";
 import Input from "../../../../../components/atoms/input/input";
 import Typography from "../../../../../components/atoms/typography/typography";
-import Box from "../../../../../components/layout/box/box";
 import SearchCreatable from "../../../../../components/molecules/search/search_creatable/search_creatable";
 import firebase from "../../../../../utils/firebase/firebase";
 import { dialogContent, dialogOverlay } from "./create_new_task_dialog.css";

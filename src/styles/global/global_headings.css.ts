@@ -1,5 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
-import { vars } from "../global_theme.css";
+import { vars } from "../theme.css";
 
 globalStyle(`h1, h2, h3, h4, h5, h6`, {
   overflowWrap: `break-word`,

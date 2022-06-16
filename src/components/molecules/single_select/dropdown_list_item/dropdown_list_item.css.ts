@@ -1,20 +1,23 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { vars } from "../../../../styles/global_theme.css";
 import { resetList } from "../../../../styles/resets/reset_list.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const getDropdownStyles = recipe({
   base: [
     {
       display: "block",
-      color: vars.color.navy,
       textDecoration: "none",
       textAlign: "left",
     },
     getFunctionalClassNames({
-      paddingX: "spacing2",
-      paddingY: "spacing1",
+      color: "neutral_text_highContrast",
+      background: {
+        hover: "primary_ui_hover",
+        focus: "primary_ui_selected",
+      },
+      padding: "spacing2",
       width: "100%",
     }),
   ],
@@ -40,7 +43,7 @@ export const getDropdownStyles = recipe({
 });
 
 export const isHighlighted = style({
-  background: vars.color.gray200,
+  background: vars.color.surface,
 });
 export const isSelected = style({
   fontWeight: vars.fontWeight.semibold,

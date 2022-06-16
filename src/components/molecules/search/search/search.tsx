@@ -14,7 +14,7 @@ interface SearchProps {
   width?: TFunctionalClassNames["width"];
   searchIndex?: {}[];
   size?: "sm" | "md" | "lg";
-  onSelect(...args: unknown[]): unknown;
+  onSelect?(...args: unknown[]): unknown;
 }
 
 export default function Search({

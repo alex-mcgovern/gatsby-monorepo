@@ -47,6 +47,14 @@ export const createPages: GatsbyNode["createPages"] = async ({
     `
   );
 
+  const distinctCategories: markdownQueryResult = await graphql(`
+    {
+      allMarkdownRemark {
+        distinct(field: frontmatter___categories)
+      }
+    }
+  `);
+
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -71,6 +79,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         path: post.fields.slug,
         component: blogPost,
         context: {
+          distinctCategories,
           id: post.id,
           previousPostId,
           nextPostId,
