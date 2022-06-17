@@ -19,7 +19,10 @@ export function ThemeProvider(props) {
   const [state, dispatch] = useReducer(themeReducer, initialState);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
       dispatch({ type: "DARKMODE" });
     }
   }, []);
