@@ -43,6 +43,8 @@ export default function TemplateBlogListPage({
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
+  console.log("debug categories", allCategories);
+
   const {
     allMarkdownRemark: { nodes: posts },
   } = data;
@@ -52,7 +54,15 @@ export default function TemplateBlogListPage({
       <Box maxWidth="gridWidth" marginX="auto">
         <Box as="section" marginY="spacing10" dataSal="slide-up">
           <Typography as="h1" fontSize="h2">
-            Blog
+            Alex's blog
+          </Typography>
+
+          <Typography as="p" fontSize="body_lg">
+            My blog acts as a sort of "experience journal" from my journey
+            through the world of engineering and product. My hope is that by
+            writing I will a: compound my knowledge and learnings and b: perhaps
+            educate or inspire others, and offer some shortcuts to level up
+            their frontend craft.
           </Typography>
           <BlogCategoriesList categories={allCategories} />
           <SectionBlogPostList posts={posts} />

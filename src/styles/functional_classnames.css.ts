@@ -80,6 +80,7 @@ const colorProperties = defineProperties({
     default: {},
     hover: { selector: "&:not([disabled]):hover" },
     focus: { selector: "&:not([disabled]):focus" },
+    focusWithin: { selector: "&:not([disabled]):focus-within" },
   },
   defaultCondition: "default",
   properties: {

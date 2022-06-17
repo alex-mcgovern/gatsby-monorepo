@@ -6,7 +6,7 @@ import {
   TFunctionalClassNames,
   getFunctionalClassNames,
 } from "../../../../styles/functional_classnames.css";
-import { getButtonA11yStyles } from "../../../../styles/recipes/get_accessibility_styles.css";
+import { getFocusRingStyles } from "../../../../styles/recipes/get_accessibility_styles.css";
 import { resetButton } from "../../../../styles/resets/reset_button.css";
 import "../../../../utils/font_awesome";
 import ButtonInnerContent from "../button_inner_content/button_inner_content";
@@ -54,7 +54,7 @@ export default function Button({
       display,
       width,
     }),
-    getButtonA11yStyles({}),
+    getFocusRingStyles({}),
   ]);
 
   if (!isDisabled && to && isInternalLink) {

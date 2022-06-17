@@ -13,19 +13,17 @@ export const getInputWrapperStyles = recipe({
       border: "1px solid",
       color: vars.color.neutral_text_lowContrast,
       width: "100%",
-      selectors: {
-        "&:hover": {
-          borderColor: vars.color.primary,
-        },
-        "&:focus-within": {
-          borderColor: vars.color.primary,
-          boxShadow: `0px 0px 0px 4px ${vars.color.primary}, 0px 0px 0px 8px ${vars.color.background}`,
-        },
-      },
     },
     getFunctionalClassNames({
       display: "flex",
       alignItems: "center",
+      background: "neutral_background",
+      border: "1px solid",
+      borderColor: {
+        default: "neutral_border_interactive",
+        hover: "primary_border_interactive_focus",
+        focusWithin: "primary_border_interactive_focus",
+      },
     }),
   ],
 
@@ -36,21 +34,18 @@ export const getInputWrapperStyles = recipe({
           fontSize: vars.fontSize.body_sm,
           height: vars.spacing.spacing4,
         },
-        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       md: [
         {
           fontSize: vars.fontSize.body_md,
           height: vars.spacing.spacing6,
         },
-        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       lg: [
         {
           fontSize: vars.fontSize.body_lg,
           height: vars.spacing.spacing6,
         },
-        getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
     },
 
@@ -64,7 +59,10 @@ export const getInputWrapperStyles = recipe({
   },
 });
 
-export const inputElement = style([resetInput]);
+export const inputElement = style([
+  resetInput,
+  getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
+]);
 export const icon = style({
   color: vars.color.neutral_text_lowContrast,
   marginRight: vars.spacing.spacing4,

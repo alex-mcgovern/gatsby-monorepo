@@ -39,9 +39,10 @@ export default function TemplateBlogListCategoryPage({
   data,
   pageContext,
 }: TemplateBlogListCategoryPageProps) {
-  const { currentPage, pageCount, allCategories, categoryTitle } = pageContext;
+  const { currentPage, pageCount, allCategories, currentCategoryTitle } =
+    pageContext;
 
-  console.log(allCategories);
+  console.log("debug currentCategoryTitle", currentCategoryTitle);
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
@@ -52,13 +53,14 @@ export default function TemplateBlogListCategoryPage({
   return (
     <Layout title={siteTitle}>
       <Box maxWidth="gridWidth" marginX="auto">
-        <Box as="section" marginY="spacing10" dataSal="slide-up">
+        <Box as="section" marginY="spacing10">
           <Typography as="h1" fontSize="h2">
-            Blog / {categoryTitle}
+            Blog / {currentCategoryTitle}
           </Typography>
+
           <BlogCategoriesList
             categories={allCategories}
-            currentCategoryTitle={categoryTitle}
+            currentCategoryTitle={currentCategoryTitle}
           />
 
           <SectionBlogPostList posts={posts} />
@@ -77,7 +79,7 @@ export default function TemplateBlogListCategoryPage({
 }
 
 export const query = graphql`
-  query TemplateBlogListCategoryPageQuery($itemsPerPage: Int, $itemsToSkip: Int, $categoryTitle: String) {
+  query TemplateBlogListCategoryPageQuery($itemsPerPage: Int, $itemsToSkip: Int, $currentCategoryTitle: String) {
     site {
       siteMetadata {
         title
@@ -88,7 +90,10 @@ export const query = graphql`
       limit: $itemsPerPage
       skip: $itemsToSkip
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {fileAbsolutePath: {regex: "/(\/content\/blog)/.*\\.md$/"} frontmatter: {categories: {in: [$categoryTitle]}}}
+      filter: {
+        fileAbsolutePath: {regex: "/(\/content\/blog)/.*\\.md$/"}
+        frontmatter: {categories: {in: [$currentCategoryTitle]}}
+      }
     ) {
       nodes {
         excerpt

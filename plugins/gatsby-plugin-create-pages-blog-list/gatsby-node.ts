@@ -56,8 +56,6 @@ export const createPages: GatsbyNode["createPages"] = async (
       };
     });
 
-  console.log("debug first query", JSON.stringify(distinctCategories));
-
   /* ——————————————————————————————————————————————————————————————————————————————
   //      CREATE ALL POSTS PAGINATION                                              
   // —————————————————————————————————————————————————————————————————————————————— */
@@ -68,9 +66,9 @@ export const createPages: GatsbyNode["createPages"] = async (
     const pageCount = Math.ceil(totalCount / itemsPerPage);
     const firstPagePath = createUrlPathFromArray(["blog"]);
 
-    Array(pageCount)
+    await Array(pageCount)
       .fill(null)
-      .forEach((_, index) => {
+      .forEach(async (_, index) => {
         const currentPage = index + 1;
         const isFirstPage = index === 0;
         const itemsToSkip = itemsPerPage * index;
@@ -82,6 +80,7 @@ export const createPages: GatsbyNode["createPages"] = async (
         const pagePath = isFirstPage ? firstPagePath : nthPagePath;
 
         const pageContext = {
+          allCategories: transformedCategories,
           itemsPerPage,
           itemsToSkip,
           currentPage,
@@ -108,16 +107,19 @@ export const createPages: GatsbyNode["createPages"] = async (
       await transformedCategories.map(
         async ({ categoryTitle, categorySlug }) => {
           const postsInCategory: MarkdownRemarkQueryResult = await graphql(`
-        {
-          allMarkdownRemark(
-            filter: {fileAbsolutePath: {regex: "${REGEX_CONTENT_BLOG_MARKDOWN}"} frontmatter: {categories: {in: ["${[
-            categoryTitle,
-          ]}"]}}}
-          ) {
-            totalCount
-          }
-        }
-        `);
+            {
+              allMarkdownRemark(
+                filter: {
+                  fileAbsolutePath: {regex: "${REGEX_CONTENT_BLOG_MARKDOWN}"}
+                  frontmatter: {categories: {in: "${categoryTitle}"}}
+                }
+              ) {
+                totalCount
+              }
+            }
+          `);
+
+          console.log("debug posts", JSON.stringify(postsInCategory));
 
           if (postsInCategory.data?.allMarkdownRemark?.totalCount) {
             const { totalCount } = postsInCategory?.data.allMarkdownRemark;
@@ -128,9 +130,9 @@ export const createPages: GatsbyNode["createPages"] = async (
               categorySlug,
             ]);
 
-            Array(pageCount)
+            await Array(pageCount)
               .fill(null)
-              .forEach((_, index) => {
+              .forEach(async (_, index) => {
                 const currentPage = index + 1;
                 const isFirstPage = index === 0;
                 const itemsToSkip = itemsPerPage * index;

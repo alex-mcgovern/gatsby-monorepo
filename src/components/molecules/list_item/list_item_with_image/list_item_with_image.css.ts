@@ -1,12 +1,12 @@
 import { style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { getButtonA11yStyles } from "../../../../styles/recipes/get_accessibility_styles.css";
+import { getFocusRingStyles } from "../../../../styles/recipes/get_accessibility_styles.css";
 
 export const listItemWrapper = style([
   {
     display: "block",
   },
-  getButtonA11yStyles(),
+  getFocusRingStyles(),
   getFunctionalClassNames({
     background: {
       default: "neutral_ui_base",
@@ -22,8 +22,10 @@ export const listItemWrapper = style([
   }),
 ]);
 export const image = style({
-  transition: "transform 2s ease",
   selectors: {
+    [`${listItemWrapper} &`]: {
+      transition: "transform 0.2s ease",
+    },
     [`${listItemWrapper}:hover &`]: {
       transform: `scale(1.05)`,
     },

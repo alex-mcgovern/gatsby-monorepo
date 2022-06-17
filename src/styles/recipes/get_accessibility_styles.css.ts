@@ -1,7 +1,7 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { vars } from "../theme.css";
 
-export const getButtonA11yStyles = recipe({
+export const getFocusRingStyles = recipe({
   base: {
     selectors: {
       "&:not([disabled]):hover": {
@@ -18,6 +18,10 @@ export const getButtonA11yStyles = recipe({
         outlineOffset: "2px",
       },
       "&:focus-visible": {
+        outline: `2px solid ${vars.color.primary_border_interactive}`,
+        outlineOffset: "2px",
+      },
+      "&:focus-within": {
         outline: `2px solid ${vars.color.primary_border_interactive}`,
         outlineOffset: "2px",
       },

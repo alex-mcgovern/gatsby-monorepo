@@ -17,7 +17,12 @@ export default function BlogCategoriesList({
 }: IBlogCategoriesList) {
   if (categories && categories.length > 0)
     return (
-      <Box display="flex" gap="spacing1" marginY="spacing3">
+      <Box
+        display="flex"
+        gap="spacing1"
+        marginTop="spacing3"
+        marginBottom="spacing6"
+      >
         {categories.map((category) => {
           const isActive = category.categoryTitle === currentCategoryTitle;
           const categorySlug = createUrlPathFromArray([

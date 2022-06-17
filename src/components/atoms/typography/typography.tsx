@@ -12,6 +12,7 @@ export interface ITypography {
   fontSize?: TFunctionalClassNames["fontSize"];
   fontWeight?: TFunctionalClassNames["fontWeight"];
   marginBottom?: TFunctionalClassNames["marginBottom"];
+  marginY?: TFunctionalClassNames["marginY"];
   marginTop?: TFunctionalClassNames["marginTop"];
   textAlign?: TFunctionalClassNames["textAlign"];
   textTransform?: TFunctionalClassNames["textTransform"];
@@ -27,6 +28,7 @@ export default function Typography({
   fontWeight,
   marginBottom,
   marginTop,
+  marginY,
   textAlign,
   textTransform,
   whiteSpace,
@@ -40,6 +42,7 @@ export default function Typography({
       fontWeight,
       marginBottom,
       marginTop,
+      marginY,
       textAlign,
       textTransform,
       whiteSpace,

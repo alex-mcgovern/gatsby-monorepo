@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 
 export const ThemeContext = createContext({});
 
@@ -17,6 +17,12 @@ const themeReducer = (state, action) => {
 
 export function ThemeProvider(props) {
   const [state, dispatch] = useReducer(themeReducer, initialState);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      dispatch({ type: "DARKMODE" });
+    }
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ state: state, dispatch: dispatch }}>

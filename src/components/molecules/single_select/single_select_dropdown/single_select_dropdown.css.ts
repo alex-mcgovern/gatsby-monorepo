@@ -18,7 +18,7 @@ export const dropdownWrapper = style([
     overflowY: "scroll",
     overflow: "hidden",
 
-    background: vars.color.neutral_ui_base,
+    background: vars.color.neutral_background,
   },
   getFunctionalClassNames({
     color: "neutral_text_highContrast",

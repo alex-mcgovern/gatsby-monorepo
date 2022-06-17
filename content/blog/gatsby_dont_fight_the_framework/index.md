@@ -1,11 +1,12 @@
 ---
-title: Building your own styling framework with Vanilla Extract
-cover: ./vanilla-extract-image.png
+title: "Gatsby: Don't fight the framework"
+cover: ./gatsby_dont_fight_the_framework_cover_image.png
 date: "2022-04-01T22:12:03.284Z"
 categories: ["Frontend", "Design systems"]
 description:
-  "How to build your own utility-first, type-safe styling framework with an
-  emerging CSS frameworks"
+  "Using Gatsby for dynamically composed, CMS-backed, multilingual
+  enterprise-scale websites requires some care & consideration — but is totally
+  do-able. Here are the learnings from scaling a site from 8 -> 500 pages."
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia and

@@ -5,6 +5,7 @@ import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
 import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
 import Box from "../components/atoms/box/box";
 import Button from "../components/atoms/button/button/button";
+import Typography from "../components/atoms/typography/typography";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
 import Layout from "../components/organisms/layout/layout";
@@ -103,7 +104,37 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
     <Layout title={siteTitle}>
       <Seo title="All posts" />
 
+      {/* ——————————————————————————————————————————————————————————————————————————————
+        //      SECTION BIO
+        // —————————————————————————————————————————————————————————————————————————————— */}
       {bioExcerpt && <HomepageSectionBio bio={bioExcerpt} />}
+
+      {/* ——————————————————————————————————————————————————————————————————————————————
+        //      SECTION BLOG
+        // —————————————————————————————————————————————————————————————————————————————— */}
+      <Box {...SECTION_PROPS}>
+        <Typography fontSize="h3" as="h3">
+          I am by no means an expert..{"   "} ...but I have a blog 😅
+        </Typography>
+        <p>
+          My blog acts as a sort of "experience journal" from my journey through
+          the world of engineering and product. My hope is that by writing I
+          will a: compound my knowledge and learnings and b: perhaps educate or
+          inspire others, and offer some shortcuts to level up their frontend
+          craft.
+        </p>
+        <Box marginY="spacing3">
+          <SectionBlogPostList posts={posts} />
+        </Box>
+        <Box
+          marginY="spacing3"
+          display="flex"
+          justifyContent="center"
+          gap="spacing3"
+        >
+          <Button size="lg" to="/blog" title="Explore 11 more blog articles" />
+        </Box>
+      </Box>
 
       {/* ——————————————————————————————————————————————————————————————————————————————
       //      PERFORMANCE SECTION
@@ -144,30 +175,13 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
           <h3>These are a few of my favorite things...</h3>
           <p>
             I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
-            Cypress.
+            Cypress. I prioritize building highly reusable, highly customizable,
+            under-engineered components — with the aim of optimizing,
+            simplifying and shortening the time to create to business value from
+            building any project or feature. I don't want to waste time
+            re-building generic UI for specific business logic — and neither do
+            you.
           </p>
-        </Box>
-      </Box>
-
-      {/* ——————————————————————————————————————————————————————————————————————————————
-        //      BLOG SECTION
-        // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box {...SECTION_PROPS}>
-        <h3>I am by no means an expert...</h3>
-        <p>
-          ...but I have a blog. 😅 Just a few things I've picked up along the
-          way...
-        </p>
-        <Box marginY="spacing3">
-          <SectionBlogPostList posts={posts} />
-        </Box>
-        <Box
-          marginY="spacing3"
-          display="flex"
-          justifyContent="center"
-          gap="spacing3"
-        >
-          <Button size="lg" to="/blog" title="Explore 11 more blog articles" />
         </Box>
       </Box>
 
@@ -207,7 +221,7 @@ export const pageQuery = graphql`
 
     ) {
       nodes {
-        excerpt(pruneLength: 150, format: HTML, truncate: true)
+        excerpt(pruneLength: 320, format: HTML, truncate: true)
       }
     }
     allMarkdownRemark(

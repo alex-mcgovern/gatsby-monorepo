@@ -26,7 +26,6 @@ const HomepageSectionBio = ({ bio }: IBioProps) => {
         mobile: "1",
         tablet: "1_2",
       }}
-      alignItems="center"
     >
       <StaticImage
         alt="Profile picture"

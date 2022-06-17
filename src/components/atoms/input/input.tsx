@@ -5,6 +5,7 @@ import {
   TFunctionalClassNames,
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
+import { getFocusRingStyles } from "../../../styles/recipes/get_accessibility_styles.css";
 import * as styles from "./input.css";
 
 interface InputProps {
@@ -31,6 +32,7 @@ export default function Input({
     styles.getInputWrapperStyles({
       size,
     }),
+    getFocusRingStyles(),
     getFunctionalClassNames({ width }),
   ];
 

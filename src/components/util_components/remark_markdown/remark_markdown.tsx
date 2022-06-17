@@ -11,21 +11,21 @@ const rehypeOptions: Options = {
   components: {
     h1: ({ children }) => {
       return (
-        <Typography fontSize="h1" as="h1">
+        <Typography fontSize="h1" as="h1" marginBottom="spacing6">
           {children}
         </Typography>
       );
     },
     h2: ({ children }) => {
       return (
-        <Typography fontSize="h2" as="h2">
+        <Typography fontSize="h2" as="h2" marginY="spacing6">
           {children}
         </Typography>
       );
     },
     h3: ({ children }) => {
       return (
-        <Typography fontSize="h3" as="h3">
+        <Typography fontSize="h3" as="h3" marginY="spacing6">
           {children}
         </Typography>
       );
