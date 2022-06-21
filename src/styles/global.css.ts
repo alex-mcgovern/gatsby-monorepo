@@ -21,7 +21,7 @@ export const rootColors = {
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`.dark`, {
-  background: rootColors.dark.bg,
+  backgroundColor: rootColors.dark.bg,
   color: rootColors.dark.color,
 });
 
@@ -35,9 +35,9 @@ globalStyle(`*`, {
 });
 
 globalStyle(`html`, {
-  color: vars.color.neutral_text_highContrast,
+  color: vars.color.primary_text_highContrast,
   fontSize: 16,
-  background: vars.color.neutral_background,
+  backgroundColor: vars.color.neutral_background,
 });
 
 globalStyle(`html, body`, {

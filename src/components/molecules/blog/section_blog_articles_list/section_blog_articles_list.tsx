@@ -26,7 +26,7 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
       as="section"
       gap="spacing3"
       display="grid"
-      gridTemplateColumns={{ desktop: "1_1_1", tablet: "1_1", mobile: "1" }}
+      gridTemplateColumns={{ desktop: "3x", tablet: "2x", mobile: "1x" }}
     >
       {posts.map((post) => {
         return <BlogArticleListItem key={post.fields.slug} post={post} />;

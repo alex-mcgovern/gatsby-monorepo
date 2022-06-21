@@ -2,12 +2,13 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import Box from "../../components/atoms/box/box";
-import Button from "../../components/atoms/button/button/button";
+import Button from "../../components/atoms/button/button";
 import Typography from "../../components/atoms/typography/typography";
 import Layout from "../../components/organisms/layout/layout";
 import Seo from "../../components/seo";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
 import { getFunctionalClassNames } from "../../styles/functional_classnames.css";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 interface BlogPostTemplateProps {
   data: {
@@ -72,10 +73,11 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
       />
       <Box
         display="grid"
+        {...RESPONSIVE_MAX_WIDTH_PROPS}
         gap="spacing3"
         alignItems="flex-start"
-        gridTemplateColumns={{ mobile: "1", tablet: "2_1", desktop: "3_1" }}
-        marginY="spacing10"
+        gridTemplateColumns={{ mobile: "1x", tablet: "2_1", desktop: "3_1" }}
+        marginY="spacing20"
       >
         {/* —————————————————————————————————————————————————————————————————————————————
         //      ARTICLE BODY                                                            
@@ -83,6 +85,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         <Box as="article" itemScope itemType="http://schema.org/Article">
           <Box as="section">
             <Box as="header" marginBottom="spacing10">
+              <Button
+                variant="tertiary"
+                leadingIcon="arrow-left"
+                title="Back to blog"
+                to="/blog"
+              />
               {/* Blog title */}
               <Typography as="h1" fontSize="h2" marginBottom="spacing1">
                 {post.frontmatter.title}
@@ -128,12 +136,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
             as="nav"
           >
             <Button
-              leadingIcon="angle-left"
+              leadingIcon="arrow-left"
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
             <Button
-              trailingIcon="angle-right"
+              trailingIcon="arrow-right"
               to={next?.fields?.slug}
               title={next?.frontmatter?.title}
             />
@@ -142,7 +150,11 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         {/* —————————————————————————————————————————————
         //      CATEGORIES NAV                          
         // —————————————————————————————————————————————— */}
-        <Box background="neutral_ui_base" padding="spacing3" borderRadius="sm">
+        <Box
+          backgroundColor="neutral_ui_base"
+          padding="spacing3"
+          borderRadius="sm"
+        >
           <Button variant="secondary" to="/" title="Back to home" />
           <Button variant="secondary" to="/" title="Back to home" />
         </Box>

@@ -1,7 +1,7 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../../../utils/create_url_path_from_array";
 import Box from "../../../atoms/box/box";
-import Button from "../../../atoms/button/button/button";
+import Button from "../../../atoms/button/button";
 
 interface IBlogCategoriesList {
   categories: {
@@ -10,6 +10,8 @@ interface IBlogCategoriesList {
   };
   currentCategoryTitle?: string;
 }
+
+const BLOG_SLUG = createUrlPathFromArray(["blog"]);
 
 export default function BlogCategoriesList({
   categories,
@@ -32,8 +34,10 @@ export default function BlogCategoriesList({
           return (
             <Button
               variant={isActive ? "primary" : "secondary"}
+              size="sm"
               title={category.categoryTitle}
-              to={categorySlug}
+              to={isActive ? BLOG_SLUG : categorySlug}
+              trailingIcon={isActive ? "times" : undefined}
             />
           );
         })}

@@ -1,7 +1,7 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
 import Box from "../../atoms/box/box";
-import Button from "../../atoms/button/button/button";
+import Button from "../../atoms/button/button";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
 interface PaginationProps {
@@ -39,7 +39,7 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       />
       <Button
         variant="secondary"
-        leadingIcon="angle-left"
+        leadingIcon="arrow-left"
         to={previousPath}
         isDisabled={isFirstOrPrevDisabled}
       />
@@ -51,7 +51,7 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
         })}
       <Button
         variant="secondary"
-        trailingIcon="angle-right"
+        trailingIcon="arrow-right"
         to={nextPath}
         isDisabled={isNextOrLastDisabled}
       />

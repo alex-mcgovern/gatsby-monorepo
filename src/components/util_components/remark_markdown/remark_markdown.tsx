@@ -11,7 +11,7 @@ const rehypeOptions: Options = {
   components: {
     h1: ({ children }) => {
       return (
-        <Typography fontSize="h1" as="h1" marginBottom="spacing6">
+        <Typography fontSize="h1" as="h1" marginBottom="spacing3">
           {children}
         </Typography>
       );

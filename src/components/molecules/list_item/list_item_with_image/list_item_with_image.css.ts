@@ -8,10 +8,18 @@ export const listItemWrapper = style([
   },
   getFocusRingStyles(),
   getFunctionalClassNames({
-    background: {
-      default: "neutral_ui_base",
-      hover: "neutral_ui_base_hover",
+    isolation: "isolate",
+    backgroundColor: {
+      default: "neutral_background_dark",
+      hover: "neutral_background",
+      focus: "neutral_background",
     },
+    // border: "1px solid",
+    // borderColor: {
+    //   default: "neutral_border_interactive",
+    //   hover: "neutral_border_interactive_focus",
+    //   focus: "neutral_border_interactive_focus",
+    // },
     borderRadius: "md",
     overflow: "hidden",
     boxShadow: {
@@ -24,7 +32,7 @@ export const listItemWrapper = style([
 export const image = style({
   selectors: {
     [`${listItemWrapper} &`]: {
-      transition: "transform 0.2s ease",
+      // transition: "transform 0.2s ease",
     },
     [`${listItemWrapper}:hover &`]: {
       transform: `scale(1.05)`,

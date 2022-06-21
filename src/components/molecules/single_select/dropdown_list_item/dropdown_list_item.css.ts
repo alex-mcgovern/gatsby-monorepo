@@ -12,8 +12,8 @@ export const getDropdownStyles = recipe({
       textAlign: "left",
     },
     getFunctionalClassNames({
-      color: "neutral_text_highContrast",
-      background: {
+      color: "primary_text_highContrast",
+      backgroundColor: {
         hover: "primary_ui_hover",
         focus: "primary_ui_selected",
       },
@@ -43,7 +43,7 @@ export const getDropdownStyles = recipe({
 });
 
 export const isHighlighted = style({
-  background: vars.color.surface,
+  backgroundColor: vars.color.surface,
 });
 export const isSelected = style({
   fontWeight: vars.fontWeight.semibold,

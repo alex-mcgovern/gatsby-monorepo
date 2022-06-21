@@ -1,5 +1,7 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { vars } from "./theme.css";
+import { varsBackgroundImage } from "./vars/vars_background_image.css";
+import { varsShadow } from "./vars/vars_shadow.css";
 import { varsTransition } from "./vars/vars_transition.css";
 
 const responsiveProperties = defineProperties({
@@ -14,6 +16,7 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: "mobile",
   properties: {
+    isolation: ["isolate"],
     alignItems: ["stretch", "flex-start", "center", "flex-end"],
     aspectRatio: vars.aspectRatio,
     border: ["1px solid", "2px solid"],
@@ -32,6 +35,7 @@ const responsiveProperties = defineProperties({
     gap: vars.spacing,
     gridAutoFlow: ["dense"],
     gridTemplateColumns: vars.gridTemplateColumns,
+    gridTemplateRows: vars.gridTemplateColumns,
     height: vars.spacing,
     justifyContent: [
       "stretch",
@@ -84,9 +88,10 @@ const colorProperties = defineProperties({
   },
   defaultCondition: "default",
   properties: {
-    background: vars.color,
+    backgroundColor: vars.color,
+    backgroundImage: varsBackgroundImage,
     borderColor: vars.color,
-    boxShadow: vars.shadow,
+    boxShadow: varsShadow,
     color: vars.color,
     outline: ["1px solid", "1px dashed"],
     outlineColor: vars.color,

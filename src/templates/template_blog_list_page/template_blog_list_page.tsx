@@ -6,6 +6,7 @@ import BlogCategoriesList from "../../components/molecules/blog/blog_categories_
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Layout from "../../components/organisms/layout/layout";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
 
@@ -51,10 +52,10 @@ export default function TemplateBlogListPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box maxWidth="gridWidth" marginX="auto">
-        <Box as="section" marginY="spacing10" dataSal="slide-up">
-          <Typography as="h1" fontSize="h2">
-            Alex's blog
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+        <Box as="section" marginY="spacing20">
+          <Typography as="h1" fontSize="h2" dataSal="slide-up">
+            Things I think are cool or are worth sharing.
           </Typography>
 
           <Typography as="p" fontSize="body_lg">

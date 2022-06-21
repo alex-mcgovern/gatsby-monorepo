@@ -3,12 +3,12 @@ import {
   greenDark,
   mauve,
   mauveDark,
-  orange,
-  orangeDark,
-  pink,
-  pinkDark,
+  plum,
+  plumDark,
   red,
   redDark,
+  violet,
+  violetDark,
   yellow,
   yellowDark,
 } from "@radix-ui/colors";
@@ -19,7 +19,6 @@ import { varsFontSize } from "./vars/vars_font_size.css";
 import { varsFontWeight } from "./vars/vars_font_weight.css";
 import { varsGridTemplateColumns } from "./vars/vars_grid_template_columns.css";
 import { varsLineHeight } from "./vars/vars_line_height.css";
-import { varsShadow } from "./vars/vars_shadow.css";
 import { varsSpacing } from "./vars/vars_spacing.css";
 
 export const root = createGlobalTheme(":root", {
@@ -31,7 +30,6 @@ export const root = createGlobalTheme(":root", {
   fontWeight: varsFontWeight,
   gridTemplateColumns: varsGridTemplateColumns,
   lineHeight: varsLineHeight,
-  shadow: varsShadow,
   spacing: varsSpacing,
 });
 
@@ -82,40 +80,40 @@ const color = createThemeContract({
   white: null,
 });
 
-const lightPrimaryPalette = pink;
-const lightAccentPalette = orange;
-const darkPrimaryPalette = pinkDark;
-const darkAccentPalette = orangeDark;
+const lightPrimaryPalette = plum;
+const lightAccentPalette = violet;
+const darkPrimaryPalette = plumDark;
+const darkAccentPalette = violetDark;
 
 const lightGrayPalette = mauve;
 const darkGrayPalette = mauveDark;
 
 export const lightTheme = createTheme(color, {
-  primary_background: lightPrimaryPalette.pink1,
-  primary_background_dark: lightPrimaryPalette.pink2,
-  primary_ui_base: lightPrimaryPalette.pink3,
-  primary_ui_hover: lightPrimaryPalette.pink4,
-  primary_ui_selected: lightPrimaryPalette.pink5,
-  primary_border_nonInteractive: lightPrimaryPalette.pink6,
-  primary_border_interactive: lightPrimaryPalette.pink7,
-  primary_border_interactive_focus: lightPrimaryPalette.pink8,
-  primary_solid_base: lightPrimaryPalette.pink9,
-  primary_solid_hover: lightPrimaryPalette.pink10,
-  primary_text_lowContrast: lightPrimaryPalette.pink11,
-  primary_text_highContrast: lightPrimaryPalette.pink12,
+  primary_background: lightPrimaryPalette.plum1,
+  primary_background_dark: lightPrimaryPalette.plum2,
+  primary_ui_base: lightPrimaryPalette.plum3,
+  primary_ui_hover: lightPrimaryPalette.plum4,
+  primary_ui_selected: lightPrimaryPalette.plum5,
+  primary_border_nonInteractive: lightPrimaryPalette.plum6,
+  primary_border_interactive: lightPrimaryPalette.plum7,
+  primary_border_interactive_focus: lightPrimaryPalette.plum8,
+  primary_solid_base: lightPrimaryPalette.plum9,
+  primary_solid_hover: lightPrimaryPalette.plum10,
+  primary_text_lowContrast: lightPrimaryPalette.plum11,
+  primary_text_highContrast: lightPrimaryPalette.plum12,
 
-  accent_background: lightAccentPalette.orange1,
-  accent_background_dark: lightAccentPalette.orange2,
-  accent_ui_base: lightAccentPalette.orange3,
-  accent_ui_hover: lightAccentPalette.orange4,
-  accent_ui_selected: lightAccentPalette.orange5,
-  accent_border_nonInteractive: lightAccentPalette.orange6,
-  accent_border_interactive: lightAccentPalette.orange7,
-  accent_border_interactive_focus: lightAccentPalette.orange8,
-  accent_solid_base: lightAccentPalette.orange9,
-  accent_solid_hover: lightAccentPalette.orange10,
-  accent_text_lowContrast: lightAccentPalette.orange11,
-  accent_text_highContrast: lightAccentPalette.orange12,
+  accent_background: lightAccentPalette.violet1,
+  accent_background_dark: lightAccentPalette.violet2,
+  accent_ui_base: lightAccentPalette.violet3,
+  accent_ui_hover: lightAccentPalette.violet4,
+  accent_ui_selected: lightAccentPalette.violet5,
+  accent_border_nonInteractive: lightAccentPalette.violet6,
+  accent_border_interactive: lightAccentPalette.violet7,
+  accent_border_interactive_focus: lightAccentPalette.violet8,
+  accent_solid_base: lightAccentPalette.violet9,
+  accent_solid_hover: lightAccentPalette.violet10,
+  accent_text_lowContrast: lightAccentPalette.violet11,
+  accent_text_highContrast: lightAccentPalette.violet12,
 
   neutral_background: lightGrayPalette.mauve1,
   neutral_background_dark: lightGrayPalette.mauve2,
@@ -134,35 +132,35 @@ export const lightTheme = createTheme(color, {
   semanticRed: red.red10,
   semanticYellow: yellow.yellow10,
 
-  white: lightPrimaryPalette.pink1,
+  white: lightPrimaryPalette.plum1,
 });
 
 export const darkTheme = createTheme(color, {
-  primary_background: darkPrimaryPalette.pink1,
-  primary_background_dark: darkPrimaryPalette.pink2,
-  primary_ui_base: darkPrimaryPalette.pink3,
-  primary_ui_hover: darkPrimaryPalette.pink4,
-  primary_ui_selected: darkPrimaryPalette.pink5,
-  primary_border_nonInteractive: darkPrimaryPalette.pink6,
-  primary_border_interactive: darkPrimaryPalette.pink7,
-  primary_border_interactive_focus: darkPrimaryPalette.pink8,
-  primary_solid_base: darkPrimaryPalette.pink9,
-  primary_solid_hover: darkPrimaryPalette.pink10,
-  primary_text_lowContrast: darkPrimaryPalette.pink11,
-  primary_text_highContrast: darkPrimaryPalette.pink12,
+  primary_background: darkPrimaryPalette.plum1,
+  primary_background_dark: darkPrimaryPalette.plum2,
+  primary_ui_base: darkPrimaryPalette.plum3,
+  primary_ui_hover: darkPrimaryPalette.plum4,
+  primary_ui_selected: darkPrimaryPalette.plum5,
+  primary_border_nonInteractive: darkPrimaryPalette.plum6,
+  primary_border_interactive: darkPrimaryPalette.plum7,
+  primary_border_interactive_focus: darkPrimaryPalette.plum8,
+  primary_solid_base: darkPrimaryPalette.plum9,
+  primary_solid_hover: darkPrimaryPalette.plum10,
+  primary_text_lowContrast: darkPrimaryPalette.plum11,
+  primary_text_highContrast: darkPrimaryPalette.plum12,
 
-  accent_background: darkAccentPalette.orange1,
-  accent_background_dark: darkAccentPalette.orange2,
-  accent_ui_base: darkAccentPalette.orange3,
-  accent_ui_hover: darkAccentPalette.orange4,
-  accent_ui_selected: darkAccentPalette.orange5,
-  accent_border_nonInteractive: darkAccentPalette.orange6,
-  accent_border_interactive: darkAccentPalette.orange7,
-  accent_border_interactive_focus: darkAccentPalette.orange8,
-  accent_solid_base: darkAccentPalette.orange9,
-  accent_solid_hover: darkAccentPalette.orange10,
-  accent_text_lowContrast: darkAccentPalette.orange11,
-  accent_text_highContrast: darkAccentPalette.orange12,
+  accent_background: darkAccentPalette.violet1,
+  accent_background_dark: darkAccentPalette.violet2,
+  accent_ui_base: darkAccentPalette.violet3,
+  accent_ui_hover: darkAccentPalette.violet4,
+  accent_ui_selected: darkAccentPalette.violet5,
+  accent_border_nonInteractive: darkAccentPalette.violet6,
+  accent_border_interactive: darkAccentPalette.violet7,
+  accent_border_interactive_focus: darkAccentPalette.violet8,
+  accent_solid_base: darkAccentPalette.violet9,
+  accent_solid_hover: darkAccentPalette.violet10,
+  accent_text_lowContrast: darkAccentPalette.violet11,
+  accent_text_highContrast: darkAccentPalette.violet12,
 
   neutral_background: darkGrayPalette.mauve1,
   neutral_background_dark: darkGrayPalette.mauve2,
@@ -181,7 +179,7 @@ export const darkTheme = createTheme(color, {
   semanticRed: redDark.red10,
   semanticYellow: yellowDark.yellow10,
 
-  white: darkPrimaryPalette.pink12,
+  white: darkPrimaryPalette.plum12,
 });
 
 export const vars = { ...root, color };

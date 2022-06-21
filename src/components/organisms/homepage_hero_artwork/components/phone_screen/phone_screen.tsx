@@ -1,0 +1,62 @@
+import React from "react";
+import { vars } from "../../../../../styles/theme.css";
+import Box, { IBox } from "../../../../atoms/box/box";
+import { tracedLine } from "./phone_screen.css";
+
+interface IHomepageArtworkPhoneScreen {
+  value: number;
+  min: number;
+  max: number;
+
+  unit?: string;
+  label: string;
+  thresholds: {
+    green: number;
+    amber: number;
+  };
+}
+
+const getPercentageInRange = (value: number, min: number, max: number) => {
+  const range = max - min;
+  const percentage = (value - min) / range;
+  return percentage * 100;
+};
+
+export default function HomepageArtworkPhoneScreen({
+  value,
+  label,
+  max,
+  unit,
+  min,
+  thresholds,
+}: IHomepageArtworkPhoneScreen) {
+  return (
+    <svg
+      viewBox="0 0 299 646"
+      xmlns="http://www.w3.org/2000/svg"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-miterlimit="1.5"
+    >
+      <path fill={vars.color.primary_ui_base} d="M0 0h297.931v48H0z" />
+      <path fill={vars.color.primary_ui_base} d="M0 48h298.08v48H0z" />
+      <path
+        fill="none"
+        className={tracedLine}
+        stroke={vars.color.accent_border_interactive}
+        stroke-dasharray="5 5 0 0"
+        d="M18.018 124.8h260.317v146.435H18.018zM18.018 57.6h76.8v28.8h-76.8zM278.335 541.524c0-11.921-9.679-21.6-21.6-21.6H39.618c-11.922 0-21.6 9.679-21.6 21.6 0 11.921 9.678 21.6 21.6 21.6h217.117c11.921 0 21.6-9.679 21.6-21.6zM279.199 603.924c0-11.921-9.679-21.6-21.6-21.6H40.481c-11.921 0-21.6 9.679-21.6 21.6 0 11.921 9.679 21.6 21.6 21.6h217.118c11.921 0 21.6-9.679 21.6-21.6z"
+      />
+      <path
+        fill={vars.color.primary_text_highContrast}
+        d="M18.018 11.552h44.027v13.183H18.018zM18.018 300.035h221.597v28.8H18.018zM18.018 338.435h179.668v28.8H18.018zM18.018 386.435h260.317v14.4H18.018zM18.018 410.435h260.317v14.4H18.018zM18.018 434.435h241.173v14.4H18.018zM230.137 11.552h48.198v13.183h-48.198zM249.535 57.6h28.8v4.92h-28.8zM249.535 69.767h28.8v4.92h-28.8zM249.535 81.48h28.8v4.92h-28.8zM216.24 0H81.84v8.4c0 4.636 3.764 8.4 8.4 8.4h117.6c4.636 0 8.4-3.764 8.4-8.4V0z"
+      />
+    </svg>
+  );
+}
+
+HomepageArtworkPhoneScreen.defaultProps = {
+  value: null,
+};

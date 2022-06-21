@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
 import Box from "../../components/atoms/box/box";
-import Button from "../../components/atoms/button/button/button";
+import Button from "../../components/atoms/button/button";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Search from "../../components/molecules/search/search/search";
 import SingleSelect from "../../components/molecules/single_select/single_select/single_select";
@@ -11,6 +11,7 @@ import Layout from "../../components/organisms/layout/layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonPageProps {
   data: {
@@ -85,7 +86,7 @@ export default function TemplatePokemonPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box maxWidth="gridWidth" marginX="auto">
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
         <Box as="section" marginY="spacing10">
           <Box
             display="flex"
@@ -93,7 +94,7 @@ export default function TemplatePokemonPage({
             justifyContent={"space-between"}
           >
             <Button
-              leadingIcon="angle-left"
+              leadingIcon="arrow-left"
               size="lg"
               to={allPokemonLink}
               trailingIcon="grip"

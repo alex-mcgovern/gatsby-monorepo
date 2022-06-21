@@ -3,6 +3,8 @@ import { vars } from "../theme.css";
 
 export const getFocusRingStyles = recipe({
   base: {
+    transition: "outline 0.2s",
+
     selectors: {
       "&:not([disabled]):hover": {
         cursor: "pointer",

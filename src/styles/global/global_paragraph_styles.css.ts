@@ -3,6 +3,7 @@ import { vars } from "../theme.css";
 
 globalStyle(`p`, {
   overflowWrap: `break-word`,
-  marginTop: vars.spacing.spacing3,
-  marginBottom: vars.spacing.spacing3,
+  fontSize: vars.fontSize.body_lg,
+  marginTop: vars.spacing.spacing1,
+  marginBottom: vars.spacing.spacing1,
 });

@@ -17,7 +17,7 @@ export const getInputWrapperStyles = recipe({
     getFunctionalClassNames({
       display: "flex",
       alignItems: "center",
-      background: "neutral_background",
+      backgroundColor: "neutral_background",
       border: "1px solid",
       borderColor: {
         default: "neutral_border_interactive",

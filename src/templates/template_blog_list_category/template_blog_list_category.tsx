@@ -1,11 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Box from "../../components/atoms/box/box";
+import Button from "../../components/atoms/button/button";
 import Typography from "../../components/atoms/typography/typography";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Layout from "../../components/organisms/layout/layout";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
 
@@ -52,8 +54,14 @@ export default function TemplateBlogListCategoryPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box maxWidth="gridWidth" marginX="auto">
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
         <Box as="section" marginY="spacing10">
+          <Button
+            variant="tertiary"
+            leadingIcon="arrow-left"
+            title="Back to blog"
+            to="/blog"
+          />
           <Typography as="h1" fontSize="h2">
             Blog / {currentCategoryTitle}
           </Typography>

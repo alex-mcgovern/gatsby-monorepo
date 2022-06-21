@@ -3,6 +3,7 @@ import { ThemeContext } from "../../../context/theme_context";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import "../../../styles/global.css";
 import { darkTheme, lightTheme } from "../../../styles/theme.css";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../utils/shared_props/box_props";
 import Box from "../../atoms/box/box";
 import Footer from "../../atoms/footer/footer";
 import StickyNav from "../../molecules/header_nav/header_nav";
@@ -21,11 +22,18 @@ const Layout = ({ children, title }: LayoutProps) => {
   const date = new Date().getFullYear();
 
   return (
-    <Box maxWidth="gridWidth" marginX="auto">
+    <Box position="relative">
       <StickyNav />
       <main>{children}</main>
-      <Box marginY="spacing10" paddingBottom="spacing10">
+      <Box
+        {...RESPONSIVE_MAX_WIDTH_PROPS}
+        marginY="spacing10"
+        paddingBottom="spacing10"
+      >
         © {date} Alex McGovern.
+        <a href="https://www.freepik.com/vectors/ux">
+          Ux vector created by upklyak - www.freepik.com
+        </a>
       </Box>
     </Box>
   );

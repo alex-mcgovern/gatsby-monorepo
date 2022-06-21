@@ -11,16 +11,13 @@ description:
 
 # Hi, I'm Alex.
 
-I'm a fullstack engineer and engineering manager working in B2B web for
-TrueLayer, an open banking & payments Fintech.
+I'm a **web engineer** and **engineering manager**. I build beautiful, branded
+experiences for performance and scale.
 
-My team and I look after the public website, which is now available in 5
-languages, 8 regional variants, and has contained 500+ pages at it's peak.
-
-I love building beautiful, branded experiences for performance and scale. Coming
+<!-- I love building beautiful, branded experiences for performance and scale. Coming
 from a `design => development` background, my working style is deeply rooted in
 creating the simplest, most performant UX _and_ DevX, and optimizing for that at
-scale.
+scale. -->
 
 I currently lead a cross-functional team at TrueLayer where we have been scaling
 the multilingual, multi-market brand.

@@ -3,4 +3,5 @@ export const varsAspectRatio = {
   extraWide: "10 / 3",
   wide: "16 / 9",
   tall: "9 / 16",
+  phone: "9 / 19.5",
 };

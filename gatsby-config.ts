@@ -26,6 +26,11 @@ const config: GatsbyConfig = {
     /* ——————————————————————————————————————————————————————————————————————————————
     //      CUSTOM PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
+
+    /* ——————————————————————————————————————————————
+    //      MULTILINGUAL POKEDEX PROJECT DATA SOURCE
+    // —————————————————————————————————————————————— */
+
     {
       resolve: "gatsby-source-pokeapi",
       options: {
@@ -36,19 +41,31 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: "gatsby-plugin-pokemon-pages",
+      resolve: "gatsby-plugin-create-pokedex",
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
         itemsPerPage: 12,
         enableDebugLogging: false,
       },
     },
+
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      DESIGN SYSTEM DOCUMENTATION                                             
+    // —————————————————————————————————————————————————————————————————————————————— */
+
+    `gatsby-plugin-create-design-docs`,
+
+    /* ——————————————————————————————————————————————
+    //      BLOG PAGINATION PAGE CREATION           
+    // —————————————————————————————————————————————— */
+
     {
-      resolve: "gatsby-plugin-create-pages-blog-list",
+      resolve: "gatsby-plugin-create-blog-pagination",
       options: {
         itemsPerPage: 12,
       },
     },
+
     /* ——————————————————————————————————————————————————————————————————————————————
     //      COMMUNITY PLUGINS
     // —————————————————————————————————————————————————————————————————————————————— */
@@ -79,7 +96,9 @@ const config: GatsbyConfig = {
     /* ——————————————————————————————————————————————————————————————————————————————
     //      GATSBY PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
+
     `gatsby-plugin-image`,
+
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
@@ -88,20 +107,7 @@ const config: GatsbyConfig = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`content/blog`),
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`content/docs`),
-        name: `docs`,
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -109,12 +115,54 @@ const config: GatsbyConfig = {
         path: path.resolve(`src/images`),
       },
     },
+    /* ——————————————————————————————————————————————
+    //      BLOG POSTS
+    //      .md files processed with `gatsby-transformer-remark`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.resolve(`content/blog`),
+        name: `blog`,
+      },
+    },
+    /* ——————————————————————————————————————————————
+    //      PROJECT DOCUMENTATION                 
+    //      .md files processed with `gatsby-transformer-remark`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.resolve(`content/docs`),
+        name: `docs`,
+      },
+    },
+
+    /* ——————————————————————————————————————————————
+    //      COMPONENT DOCUMENTATION                 
+    //      .mdx files processed with `gatsby-plugin-mdx`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `documentation`,
+        path: path.resolve(`src/components`),
+      },
+    },
+    `gatsby-plugin-mdx`,
+
+    /* ——————————————————————————————————————————————
+    //      INSTAGRAM GALLERY DATA SOURCE
+    // —————————————————————————————————————————————— */
     {
       resolve: `gatsby-source-instagram-all`,
       options: {
         access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      TRANSFORMER PLUGINS                                                     
+    // —————————————————————————————————————————————————————————————————————————————— */
     {
       resolve: `gatsby-transformer-remark`,
       options: {

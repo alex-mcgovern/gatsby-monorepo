@@ -1,7 +1,7 @@
 import React from "react";
 import Downshift from "downshift";
 import { TFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import Button, { IButton } from "../../../atoms/button/button/button";
+import Button, { IButton } from "../../../atoms/button/button";
 import SingleSelectDropdownList from "../single_select_dropdown/single_select_dropdown";
 import getSelectIndexItemValue from "./helper_functions/get_select_index_item_value";
 import * as styles from "./single_select.css";

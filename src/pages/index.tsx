@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
-import { getCLS, getFCP, getFID, getLCP, getTTFB } from "web-vitals";
-import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
 import Box from "../components/atoms/box/box";
-import Button from "../components/atoms/button/button/button";
+import Button from "../components/atoms/button/button";
 import Typography from "../components/atoms/typography/typography";
+import Wave from "../components/atoms/wave/wave";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import InstagramPostList from "../components/molecules/insta_grid/instagram_post_list/instagram_post_list";
 import Layout from "../components/organisms/layout/layout";
-import HomepageSectionBio from "../components/sections/homepage_section_bio/homepage_section_bio";
-import HomepageSectionPerformance from "../components/sections/homepage_section_performance/homepage_section_performance";
+import SectionHomepageBrandedUserExperiences from "../components/sections/section_homepage_branded_user_experiences/section_homepage_branded_user_experiences";
+import SectionHomepageDesignSystems from "../components/sections/section_homepage_design_systems/section_homepage_design_systems";
+import SectionHomepageBio from "../components/sections/section_homepage_hero/section_homepage";
+import SectionHomepagePerformance from "../components/sections/section_homepage_performance/section_homepage_performance";
+import SectionHomepagePrinciples from "../components/sections/section_homepage_principles/section_homepage_principles";
+import SectionHomepageTechStack from "../components/sections/section_homepage_tech_stack/section_homepage_tech_stack";
 import Seo from "../components/seo";
-import LogoCypress from "../images/svg/logos/logo_cypress.svg";
-import LogoGatsby from "../images/svg/logos/logo_gatsby.svg";
-import LogoRadix from "../images/svg/logos/logo_radix.svg";
-import LogoReact from "../images/svg/logos/logo_react.svg";
-import LogoSASS from "../images/svg/logos/logo_sass.svg";
-import LogoTestingLibrary from "../images/svg/logos/logo_testing_library.svg";
-import LogoTypescript from "../images/svg/logos/logo_typescript.svg";
-import LogoVanillaExtract from "../images/svg/logos/logo_vanilla_extract.svg";
-import { getFunctionalClassNames } from "../styles/functional_classnames.css";
-import { SECTION_PROPS } from "../utils/shared_props/box_props";
-
-const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
-
-const DROPDOWN_INDEX = [
-  {
-    value: "Multilingual Pokedex",
-    label: "Multilingual Pokedex",
-    link: POKEDEX_LINK,
-  },
-];
-
-const ICON_CLASSNAMES = getFunctionalClassNames({
-  padding: "spacing3",
-  background: "neutral_ui_base",
-  borderRadius: "md",
-  boxShadow: "shadowDark",
-  aspectRatio: "square",
-});
+import {
+  RESPONSIVE_MAX_WIDTH_PROPS,
+  SECTION_PROPS,
+} from "../utils/shared_props/box_props";
 
 interface BlogIndexProps {
   data: {
@@ -68,7 +47,7 @@ interface BlogIndexProps {
     };
     bio?: {
       nodes: {
-        excerpt?: string;
+        excerptAst?: string;
       }[];
     };
     site?: {
@@ -82,37 +61,31 @@ interface BlogIndexProps {
 const BlogIndex = ({ data }: BlogIndexProps) => {
   const { site, bio, allMarkdownRemark, allInstagramContent } = data;
   const siteTitle = site?.siteMetadata?.title || "Title";
-  const bioExcerpt = bio?.nodes[0].excerpt;
+  const bioExcerpt = bio?.nodes[0].excerptAst;
   const posts = allMarkdownRemark?.nodes;
   const images = allInstagramContent?.nodes;
 
-  const [CLS, setCLS] = useState();
-  const [FID, setFID] = useState();
-  const [LCP, setLCP] = useState();
-  const [FCP, setFCP] = useState();
-  const [TTFB, setTTFB] = useState();
-
-  useEffect(() => {
-    getCLS(setCLS);
-    getFID(setFID);
-    getLCP(setLCP);
-    getFCP(setFCP);
-    getTTFB(setTTFB);
-  }, []);
+  console.log(bioExcerpt);
 
   return (
     <Layout title={siteTitle}>
       <Seo title="All posts" />
+      <Box as="section" overflow="hidden" backgroundImage="gradient_primary">
+        {bioExcerpt && <SectionHomepageBio bio={bioExcerpt} />}
+        <Wave color="neutral_background" waveVariant="bottom" />
+      </Box>
+
+      <SectionHomepageBrandedUserExperiences />
+      <SectionHomepageDesignSystems />
+      <SectionHomepagePerformance />
+      <SectionHomepageTechStack />
+
+      <SectionHomepagePrinciples />
 
       {/* ——————————————————————————————————————————————————————————————————————————————
-        //      SECTION BIO
-        // —————————————————————————————————————————————————————————————————————————————— */}
-      {bioExcerpt && <HomepageSectionBio bio={bioExcerpt} />}
-
-      {/* ——————————————————————————————————————————————————————————————————————————————
-        //      SECTION BLOG
-        // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box {...SECTION_PROPS}>
+      //      SECTION BLOG
+      // —————————————————————————————————————————————————————————————————————————————— */}
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS} marginY="spacing10">
         <Typography fontSize="h3" as="h3">
           I am by no means an expert..{"   "} ...but I have a blog 😅
         </Typography>
@@ -137,58 +110,9 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
       </Box>
 
       {/* ——————————————————————————————————————————————————————————————————————————————
-      //      PERFORMANCE SECTION
-      // —————————————————————————————————————————————————————————————————————————————— */}
-      <HomepageSectionPerformance />
-
-      {/* ——————————————————————————————————————————————————————————————————————————————
-      //      TECH STACK SECTION
-      // —————————————————————————————————————————————————————————————————————————————— */}
-
-      <Box
-        {...SECTION_PROPS}
-        display="grid"
-        gap="spacing6"
-        alignItems="center"
-        gridTemplateColumns={{
-          desktop: "1_1",
-          tablet: "1",
-        }}
-      >
-        <Box
-          marginY="spacing3"
-          display="grid"
-          gridTemplateColumns="1_1_1"
-          gap="spacing3"
-        >
-          <LogoReact className={ICON_CLASSNAMES} />
-          <LogoTypescript className={ICON_CLASSNAMES} />
-          <LogoGatsby className={ICON_CLASSNAMES} />
-          <LogoTestingLibrary className={ICON_CLASSNAMES} />
-          <LogoCypress className={ICON_CLASSNAMES} />
-          <LogoSASS className={ICON_CLASSNAMES} />
-          <LogoVanillaExtract className={ICON_CLASSNAMES} />
-          <LogoRadix className={ICON_CLASSNAMES} />
-        </Box>
-
-        <Box marginY="spacing6">
-          <h3>These are a few of my favorite things...</h3>
-          <p>
-            I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
-            Cypress. I prioritize building highly reusable, highly customizable,
-            under-engineered components — with the aim of optimizing,
-            simplifying and shortening the time to create to business value from
-            building any project or feature. I don't want to waste time
-            re-building generic UI for specific business logic — and neither do
-            you.
-          </p>
-        </Box>
-      </Box>
-
-      {/* ——————————————————————————————————————————————————————————————————————————————
         //      INSTAGRAM SECTION
         // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box {...SECTION_PROPS}>
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
         <h3>I've also been known to dabble in design, painting and 3D...</h3>
         <Box marginY="spacing3">
           {images && images.length > 0 && <InstagramPostList images={images} />}
@@ -221,7 +145,7 @@ export const pageQuery = graphql`
 
     ) {
       nodes {
-        excerpt(pruneLength: 320, format: HTML, truncate: true)
+        excerptAst(truncate: true, pruneLength: 120)
       }
     }
     allMarkdownRemark(

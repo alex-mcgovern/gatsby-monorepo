@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 export const resetInput = style({
   border: "none",
   backgroundImage: "none",
-  background: "transparent",
+  backgroundColor: "transparent",
   boxShadow: "none",
   selectors: {
     "&:focus": {

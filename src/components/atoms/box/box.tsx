@@ -7,6 +7,7 @@ import {
 export interface IBox {
   alignItems?: TFunctionalClassNames["alignItems"];
   dataSal?: TDataSal;
+  dataSalDelay?: number;
   as?:
     | "article"
     | "menu"
@@ -14,12 +15,15 @@ export interface IBox {
     | "fieldset"
     | "footer"
     | "header"
+    | "ul"
     | "li"
     | "nav"
+    | "main"
     | "section"
     | "span";
   aspectRatio?: TFunctionalClassNames["aspectRatio"];
-  background?: TFunctionalClassNames["background"];
+  backgroundColor?: TFunctionalClassNames["backgroundColor"];
+  backgroundImage?: TFunctionalClassNames["backgroundImage"];
   border?: TFunctionalClassNames["border"];
   borderRadius?: TFunctionalClassNames["borderRadius"];
   borderColor?: TFunctionalClassNames["borderColor"];
@@ -32,6 +36,7 @@ export interface IBox {
   fontWeight?: TFunctionalClassNames["fontWeight"];
   gap?: TFunctionalClassNames["gap"];
   gridTemplateColumns?: TFunctionalClassNames["gridTemplateColumns"];
+  gridTemplateRows?: TFunctionalClassNames["gridTemplateRows"];
   gridAutoFlow?: TFunctionalClassNames["gridAutoFlow"];
   height?: TFunctionalClassNames["height"];
   id?: string;
@@ -67,7 +72,8 @@ export default function Box({
   alignItems,
   as,
   aspectRatio,
-  background,
+  backgroundColor,
+  backgroundImage,
   borderRadius,
   borderColor,
   border,
@@ -76,11 +82,13 @@ export default function Box({
   color,
   display,
   dataSal,
+  dataSalDelay,
   fontWeight,
   fontSize,
   flexDirection,
   gap,
   gridTemplateColumns,
+  gridTemplateRows,
   gridAutoFlow,
   height,
   id,
@@ -116,7 +124,8 @@ export default function Box({
       outline,
       alignItems,
       aspectRatio,
-      background,
+      backgroundColor,
+      backgroundImage,
       border,
       borderRadius,
       borderColor,
@@ -127,6 +136,7 @@ export default function Box({
       fontSize,
       gap,
       gridTemplateColumns,
+      gridTemplateRows,
       gridAutoFlow,
       flexDirection,
       height,
@@ -151,7 +161,7 @@ export default function Box({
       paddingLeft,
       paddingRight,
       position,
-      transition: "background",
+      // transition: "background",
       width,
       zIndex,
     }),
@@ -165,6 +175,7 @@ export default function Box({
       id={id}
       className={boxClassNames.join(" ")}
       data-sal={dataSal}
+      data-sal-delay={dataSalDelay}
       {...rest}
     >
       {children}

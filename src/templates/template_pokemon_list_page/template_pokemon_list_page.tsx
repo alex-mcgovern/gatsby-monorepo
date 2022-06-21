@@ -11,7 +11,10 @@ import Layout from "../../components/organisms/layout/layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import { SECTION_PROPS } from "../../utils/shared_props/box_props";
+import {
+  RESPONSIVE_MAX_WIDTH_PROPS,
+  SECTION_PROPS,
+} from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonListPageProps {
   data: {
@@ -75,15 +78,19 @@ export default function TemplatePokemonListPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box maxWidth="gridWidth" marginX="auto">
-        <Box {...SECTION_PROPS}>
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+        <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
           <section
             dangerouslySetInnerHTML={{ __html: doc }}
             itemProp="articleBody"
           />
         </Box>
 
-        <Box background="neutral_ui_base" padding="spacing3" borderRadius="sm">
+        <Box
+          backgroundColor="neutral_ui_base"
+          padding="spacing3"
+          borderRadius="sm"
+        >
           <Box
             display="flex"
             marginY="spacing3"
@@ -107,9 +114,9 @@ export default function TemplatePokemonListPage({
             display="grid"
             gap="spacing3"
             gridTemplateColumns={{
-              desktop: "1_1_1_1",
-              tablet: "1_1",
-              mobile: "1",
+              desktop: "4x",
+              tablet: "2x",
+              mobile: "1x",
             }}
           >
             {allPokemon.map((pokemon) => {

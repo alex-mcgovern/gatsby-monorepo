@@ -1,0 +1,108 @@
+import React from "react";
+import { graphql } from "gatsby";
+import Box from "../../components/atoms/box/box";
+import Typography from "../../components/atoms/typography/typography";
+import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
+import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
+import Pagination from "../../components/molecules/pagination/pagination";
+import Layout from "../../components/organisms/layout/layout";
+import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+
+const PAGINATION_BASE_PATH = "blog";
+
+interface TemplateDesignDocPageProps {
+  data: {
+    allLanguagesISO: {
+      distinct?: string[];
+    }[];
+    allMdx: {
+      nodes?: {
+        posts?: {}[];
+      }[];
+    };
+    allPokemon: {
+      nodes?: {}[];
+    };
+    site: {
+      siteMetadata?: {
+        title?: string;
+      };
+    };
+  };
+  pageContext: {
+    currentPage?: number;
+    languageISO?: string;
+    pageCount?: number;
+  };
+}
+
+export default function TemplateDesignDocPage({
+  data,
+  pageContext,
+}: TemplateDesignDocPageProps) {
+  const { currentPage, pageCount, allCategories } = pageContext;
+
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
+  console.log("debug categories", allCategories);
+
+  const {
+    allMdx: { nodes: posts },
+  } = data;
+
+  return (
+    <Layout title={siteTitle}>
+      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+        <Box as="section" marginY="spacing20">
+          <Typography as="h1" fontSize="h2" dataSal="slide-up">
+            Things I think are cool or are worth sharing.
+          </Typography>
+
+          <Typography as="p" fontSize="body_lg">
+            My blog acts as a sort of "experience journal" from my journey
+            through the world of engineering and product. My hope is that by
+            writing I will a: compound my knowledge and learnings and b: perhaps
+            educate or inspire others, and offer some shortcuts to level up
+            their frontend craft.
+          </Typography>
+          <BlogCategoriesList categories={allCategories} />
+          {/* <SectionBlogPostList posts={posts} /> */}
+        </Box>
+
+        {pageCount && pageCount > 1 && (
+          <Pagination
+            basePath={PAGINATION_BASE_PATH}
+            currentPage={currentPage}
+            pageCount={pageCount}
+          />
+        )}
+      </Box>
+    </Layout>
+  );
+}
+
+export const query = graphql`
+  query TemplateDesignDocPageQuery($itemsPerPage: Int, $itemsToSkip: Int) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
+    allMdx(
+      limit: $itemsPerPage
+      skip: $itemsToSkip
+      sort: { fields: frontmatter___title }
+    ) {
+      nodes {
+        excerpt
+        frontmatter {
+          title
+          atomicLevel
+          categories
+          description
+        }
+      }
+    }
+  }
+`;
