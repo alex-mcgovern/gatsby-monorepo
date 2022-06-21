@@ -7,7 +7,7 @@ import Button from "../../components/atoms/button/button";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Search from "../../components/molecules/search/search/search";
 import SingleSelect from "../../components/molecules/single_select/single_select/single_select";
-import Layout from "../../components/organisms/layout/layout";
+import Layout from "../../components/organisms/global_layout/global_layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";

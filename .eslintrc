@@ -8,11 +8,11 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "airbnb-typescript/base",
-
     "plugin:cypress/recommended",
     "plugin:react-perf/recommended",
     "prettier",
-    "plugin:sonarjs/recommended"
+    "plugin:sonarjs/recommended",
+    "plugin:mdx/recommended"
   ],
   "globals": {
     "cy": true,
@@ -26,14 +26,7 @@
     "*.svg",
     "*.svg",
     "*.md",
-    "*.json",
-    // These are external plugins, some of which aren't even used in production
-    // These are taken on an "as-is" basis
-    "plugins/storyblok-colorpicker/**",
-    "plugins/gatsby-plugin-tl-hubspot/**",
-    "plugins/storyblok-gradient-editor/**",
-    "plugins/storyblok-responsive-input/**",
-    "plugins/truelayer-responsive-input/**"
+    "*.json"
   ],
   "overrides": [
     {
@@ -58,6 +51,7 @@
   },
   "plugins": ["react-perf", "sonarjs"],
   "rules": {
+    "@typescript-eslint/prefer-optional-chain": "warn",
     "arrow-body-style": ["error", "always"],
     "import/no-cycle": 0,
     "import/no-extraneous-dependencies": [
@@ -113,15 +107,15 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [".ts", ".js", ".jsx", ".tsx", ".json"]
-      },
       "alias": {
         "map": [
           ["~utils", "./src/utils"],
           ["~hooks", "./src/hooks"],
           ["~components", "./src/components"]
         ]
+      },
+      "node": {
+        "extensions": [".ts", ".js", ".jsx", ".tsx", ".json"]
       }
     }
   }

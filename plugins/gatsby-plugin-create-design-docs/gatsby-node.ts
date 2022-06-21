@@ -6,16 +6,11 @@ import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
 
 const { FALLBACK_PLUGIN_OPTIONS, PLUGIN_NAME } = require("./constants");
 
-interface MdxQueryResult {
+interface IMdxQueryResult {
   data?: {
     allMdx?: {
+      nodes: {}[];
       totalCount?: number;
-    };
-  };
-}
-interface MdxDistinctAtomicLevelQueryResult {
-  data?: {
-    allMdx?: {
       distinct?: string[];
     };
   };
@@ -25,106 +20,119 @@ export const onPreInit: GatsbyNode["onPreInit"] = () => {
   console.info(`${PLUGIN_NAME} plugin initializing`);
 };
 
-export const createPages: GatsbyNode["createPages"] = async (
-  { actions, graphql },
-  { options: { itemsPerPage } = FALLBACK_PLUGIN_OPTIONS }
-) => {
-  const mdxQueryResult: MdxQueryResult = await graphql(`
-    allMdx(sort: {fields: frontmatter___title}) {
-      edges {
-        node {
+/* ——————————————————————————————————————————————————————————————————————————————
+//      ADD HUMAN FRIENDLY SLUG TO .DOC MDX NODES
+// —————————————————————————————————————————————————————————————————————————————— */
+
+export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
+  actions: { createNodeField },
+  node,
+}) => {
+  if (node.internal.type === "Mdx") {
+    console.log("debug create node", node);
+    const { atomicLevel, title } = node.frontmatter;
+
+    const atomicLevelSlug = slugify(atomicLevel, { lower: true });
+    const titleSlug = slugify(title, { lower: true });
+
+    const linkSlug = createUrlPathFromArray([
+      "projects",
+      "design-system",
+      "components",
+      atomicLevelSlug,
+      titleSlug,
+    ]);
+
+    createNodeField({ node, name: "linkSlug", value: linkSlug });
+  }
+};
+
+/* ——————————————————————————————————————————————————————————————————————————————
+//      CREATE DESIGN SYSTEM DOCS PAGES                                         
+// —————————————————————————————————————————————————————————————————————————————— */
+
+export const createPages: GatsbyNode["createPages"] = async ({
+  actions,
+  graphql,
+}) => {
+  const mdxQueryResult: IMdxQueryResult = await graphql(`
+    {
+      allMdx {
+        nodes {
           id
-          slug
-          frontmatter {
-            title
-            atomicLevel
-            categories
+          fields {
+            linkSlug
           }
         }
-        next {
-          id
-        }
-        previous {
-          id
-        }
+        totalCount
+        distinct(field: frontmatter___atomicLevel)
       }
     }
   `);
 
-  const distinctAtomicLevels: MdxDistinctAtomicLevelQueryResult =
-    await graphql(`
-      {
-        allMdx {
-          distinct(field: frontmatter___atomicLevel)
-        }
-      }
-    `);
+  console.log("debug big query", JSON.stringify(mdxQueryResult));
 
-  const transformedAtomicLevel =
-    distinctAtomicLevels?.data.allMdx?.distinct.map((atomicLevel) => {
-      return {
-        atomicLevelTitle: atomicLevel,
-        atomicLevelSlug: slugify(atomicLevel, { lower: true }),
-      };
-    });
+  const { nodes: allMdx, distinct } = mdxQueryResult?.data?.allMdx;
+
+  const transformedAtomicLevels = distinct.map((atomicLevel) => {
+    return {
+      atomicLevelTitle: atomicLevel,
+      atomicLevelSlug: slugify(atomicLevel, { lower: true }),
+    };
+  });
 
   /* ——————————————————————————————————————————————————————————————————————————————
-  //      CREATE ALL COMPONENTS PAGINATION                                              
+  //      CREATE INDIVIDUAL COMPONENT PAGES
+  // —————————————————————————————————————————————————————————————————————————————— */
+
+  allMdx.map(async ({ id, fields: { linkSlug } }) => {
+    const pageContext = {
+      mdxId: id,
+    };
+
+    return actions.createPage({
+      component: path.resolve(
+        `src/templates/template_design_docs_component_page/template_design_docs_component_page.tsx`
+      ),
+      context: pageContext,
+      path: linkSlug,
+    });
+  });
+
+  /* ——————————————————————————————————————————————————————————————————————————————
+  //      CREATE ALL COMPONENTS PAGE                                              
   // —————————————————————————————————————————————————————————————————————————————— */
 
   if (mdxQueryResult.data?.allMdx?.totalCount) {
-    const { totalCount } = mdxQueryResult?.data.allMdx;
-
-    const pageCount = Math.ceil(totalCount / itemsPerPage);
-    const firstPagePath = createUrlPathFromArray([
+    const pagePath = createUrlPathFromArray([
       "projects",
       "design-system",
       "components",
     ]);
 
-    await Array(pageCount)
-      .fill(null)
-      .forEach(async (_, index) => {
-        const currentPage = index + 1;
-        const isFirstPage = index === 0;
-        const itemsToSkip = itemsPerPage * index;
+    const pageContext = {
+      allAtomicLevels: transformedAtomicLevels,
+    };
 
-        const nthPagePath = createUrlPathFromArray([
-          "projects",
-          "design-system",
-          "components",
-          currentPage.toString(),
-        ]);
-        const pagePath = isFirstPage ? firstPagePath : nthPagePath;
+    return actions.createPage({
+      component: path.resolve(
+        `src/templates/template_design_doc_list_page/template_design_doc_list_page.tsx`
+      ),
 
-        const pageContext = {
-          allAtomicLevel: transformedAtomicLevel,
-          itemsPerPage,
-          itemsToSkip,
-          currentPage,
-          pageCount,
-        };
-
-        return actions.createPage({
-          component: path.resolve(
-            `src/templates/template_design_doc_list_page/template_design_doc_list_page.tsx`
-          ),
-
-          context: pageContext,
-          path: pagePath,
-        });
-      });
+      context: pageContext,
+      path: pagePath,
+    });
   }
 
   /* ——————————————————————————————————————————————————————————————————————————————
-  //      CREATE CATEGORY PAGINATION                                              
+  //      CREATE ATOMIC LEVEL PAGES
   // —————————————————————————————————————————————————————————————————————————————— */
 
-  if (distinctAtomicLevels.data?.allMdx?.distinct) {
-    if (transformedAtomicLevel && transformedAtomicLevel.length > 0) {
-      await transformedAtomicLevel.map(
+  if (distinct && distinct.length > 0) {
+    if (transformedAtomicLevels && transformedAtomicLevels.length > 0) {
+      await transformedAtomicLevels.map(
         async ({ atomicLevelTitle, atomicLevelSlug }) => {
-          const componentsInAtomicLevel: MdxQueryResult = await graphql(`
+          const componentsInAtomicLevel: IMdxQueryResult = await graphql(`
             {
               allMdx(
                 filter: {
@@ -143,50 +151,25 @@ export const createPages: GatsbyNode["createPages"] = async (
           );
 
           if (componentsInAtomicLevel.data?.allMdx?.totalCount) {
-            const { totalCount } = componentsInAtomicLevel?.data.allMdx;
-
-            const pageCount = Math.ceil(totalCount / itemsPerPage);
-            const firstPagePath = createUrlPathFromArray([
+            const pagePath = createUrlPathFromArray([
               "projects",
               "design-system",
               "components",
               atomicLevelSlug,
             ]);
 
-            await Array(pageCount)
-              .fill(null)
-              .forEach(async (_, index) => {
-                const currentPage = index + 1;
-                const isFirstPage = index === 0;
-                const itemsToSkip = itemsPerPage * index;
+            const pageContext = {
+              currentAtomicLevelTitle: atomicLevelTitle,
+              allAtomicLevels: transformedAtomicLevels,
+            };
 
-                const nthPagePath = createUrlPathFromArray([
-                  "projects",
-                  "design-system",
-                  "components",
-                  atomicLevelSlug,
-                  currentPage.toString(),
-                ]);
-                const pagePath = isFirstPage ? firstPagePath : nthPagePath;
-
-                const pageContext = {
-                  currentAtomicLevelTitle: atomicLevelTitle,
-                  allAtomicLevel: transformedAtomicLevel,
-                  itemsPerPage,
-                  itemsToSkip,
-                  currentPage,
-                  pageCount,
-                };
-
-                return actions.createPage({
-                  component: path.resolve(
-                    `src/templates/template_design_doc_list_page/template_design_doc_list_page.tsx`
-                  ),
-
-                  context: pageContext,
-                  path: pagePath,
-                });
-              });
+            return actions.createPage({
+              component: path.resolve(
+                `src/templates/template_design_doc_list_page/template_design_doc_list_page.tsx`
+              ),
+              context: pageContext,
+              path: pagePath,
+            });
           }
         }
       );

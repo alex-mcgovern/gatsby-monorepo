@@ -5,7 +5,7 @@ import Typography from "../../components/atoms/typography/typography";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pagination/pagination";
-import Layout from "../../components/organisms/layout/layout";
+import Layout from "../../components/organisms/global_layout/global_layout";
 import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";

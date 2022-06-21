@@ -5,7 +5,7 @@ import groupBy from "lodash.groupby";
 import Box from "../../../components/atoms/box/box";
 import Button from "../../../components/atoms/button/button";
 import Typography from "../../../components/atoms/typography/typography";
-import Layout from "../../../components/organisms/layout/layout";
+import Layout from "../../../components/organisms/global_layout/global_layout";
 import Seo from "../../../components/seo";
 import { useFirestoreCollection } from "../../../hooks/use_firestore_collection/use_firestore_collection";
 import firebase from "../../../utils/firebase/firebase";

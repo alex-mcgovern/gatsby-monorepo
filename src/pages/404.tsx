@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/organisms/layout/layout";
+import Layout from "../components/organisms/global_layout/global_layout";
 import Seo from "../components/seo";
 
 interface NotFoundPageProps {

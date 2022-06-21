@@ -1,20 +1,67 @@
 {
-  "git.ignoreLimitWarning": true,
+  "commentBox.styles": {
+    "h1": {
+      "bottomEdgeToken": "—",
+      "bottomLeftToken": "// ",
+      "boxWidth": 80,
+      "commentEndToken": "— */",
+      "commentStartToken": "/* ",
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "textAlignment": "left",
+      "topEdgeToken": "—",
+      "topRightToken": "—"
+    },
+    "h1_JSX": {
+      "bottomEdgeToken": "—",
+      "bottomLeftToken": "// ",
+      "boxWidth": 80,
+      "commentEndToken": "— */}",
+      "commentStartToken": "{/* ",
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "textAlignment": "left",
+      "topEdgeToken": "—",
+      "topRightToken": "—"
+    },
+    "h2": {
+      "bottomEdgeToken": "—",
+      "bottomLeftToken": "// ",
+      "boxWidth": 48,
+      "commentEndToken": "— */",
+      "commentStartToken": "/* ",
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "textAlignment": "left",
+      "topEdgeToken": "—",
+      "topRightToken": "—"
+    },
+    "h2_JSX": {
+      "bottomEdgeToken": "—",
+      "bottomLeftToken": "// ",
+      "boxWidth": 48,
+      "commentEndToken": "— */}",
+      "commentStartToken": "{/* ",
+      "leftEdgeToken": "//      ",
+      "rightEdgeToken": "",
+      "textAlignment": "left",
+      "topEdgeToken": "—",
+      "topRightToken": "—"
+    }
+  },
+  "cSpell.language": "en-GB",
   "cSpell.words": [
     "algoliasearch",
     "bloks",
     "Bulbasaur",
     "Bulbizarre",
     "capitalise",
-
     "deduped",
     "deduplicated",
-
     "frontmatter",
     "gtag",
     "hubspot",
     "hypergrowth",
-
     "instantsearch",
     "jank",
     "janky",
@@ -29,64 +76,6 @@
     "testid",
     "truelayer"
   ],
-  "conventionalCommits.scopes": ["CodebaseStructure"],
-  "stylelint.configFile": ".stylelintrc.json",
-  "commentBox.styles": {
-    "h1": {
-      "leftEdgeToken": "//      ",
-      "rightEdgeToken": "",
-      "topEdgeToken": "—",
-      "bottomEdgeToken": "—",
-
-      "commentStartToken": "/* ",
-      "topRightToken": "—",
-      "bottomLeftToken": "// ",
-      "commentEndToken": "— */",
-
-      "textAlignment": "left",
-      "boxWidth": 80
-    },
-    "h2": {
-      "leftEdgeToken": "//      ",
-      "rightEdgeToken": "",
-      "topEdgeToken": "—",
-      "bottomEdgeToken": "—",
-
-      "commentStartToken": "/* ",
-      "topRightToken": "—",
-      "bottomLeftToken": "// ",
-      "commentEndToken": "— */",
-
-      "textAlignment": "left",
-      "boxWidth": 48
-    },
-    "h1_JSX": {
-      "leftEdgeToken": "//      ",
-      "rightEdgeToken": "",
-      "topEdgeToken": "—",
-      "bottomEdgeToken": "—",
-
-      "commentStartToken": "{/* ",
-      "topRightToken": "—",
-      "bottomLeftToken": "// ",
-      "commentEndToken": "— */}",
-
-      "textAlignment": "left",
-      "boxWidth": 80
-    },
-    "h2_JSX": {
-      "leftEdgeToken": "//      ",
-      "rightEdgeToken": "",
-      "topEdgeToken": "—",
-      "bottomEdgeToken": "—",
-
-      "commentStartToken": "{/* ",
-      "topRightToken": "—",
-      "bottomLeftToken": "// ",
-      "commentEndToken": "— */}",
-
-      "textAlignment": "left",
-      "boxWidth": 48
-    }
-  }
+  "git.ignoreLimitWarning": true,
+  "stylelint.configFile": ".stylelintrc.json"
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDataLike } from "gatsby-plugin-image";
-import ListItemWithImage from "../../list_item/list_item_with_image/list_item_with_image";
+import ListItem from "../../list_item/list_item";
 
 interface BlogArticleListItemProps {
   post: {
@@ -27,7 +27,7 @@ export default function BlogArticleListItem({
   }
 
   return (
-    <ListItemWithImage
+    <ListItem
       aspectRatio="wide"
       title={post.frontmatter.title || post.fields.slug}
       subtitle={post.frontmatter.date}

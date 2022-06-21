@@ -4,7 +4,7 @@ import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import Box from "../../components/atoms/box/box";
 import Button from "../../components/atoms/button/button";
 import Typography from "../../components/atoms/typography/typography";
-import Layout from "../../components/organisms/layout/layout";
+import Layout from "../../components/organisms/global_layout/global_layout";
 import Seo from "../../components/seo";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
 import { getFunctionalClassNames } from "../../styles/functional_classnames.css";

@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../../../components/organisms/layout/layout";
-import SectionDesignSystemFeatures from "../../../components/sections/section_design_system_features/section_design_system_features";
-import SectionDesignSystemHero from "../../../components/sections/section_design_system_hero/section_design_system_hero";
+import Layout from "../../../components/organisms/global_layout/global_layout";
+import SectionDesignSystemFeatures from "../../../components/sections/design_system/section_design_system_features/section_design_system_features";
+import SectionDesignSystemHero from "../../../components/sections/design_system/section_design_system_hero/section_design_system_hero";
 import Seo from "../../../components/seo";
 
 interface BlogIndexProps {

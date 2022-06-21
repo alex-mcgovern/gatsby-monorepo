@@ -1,11 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
+import groupBy from "lodash.groupby";
 import Box from "../../components/atoms/box/box";
 import Typography from "../../components/atoms/typography/typography";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
-import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
+import ListItem from "../../components/molecules/list_item/list_item";
 import Pagination from "../../components/molecules/pagination/pagination";
-import Layout from "../../components/organisms/layout/layout";
+import Layout from "../../components/organisms/global_layout/global_layout";
 import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
@@ -43,8 +44,19 @@ export default function TemplateDesignDocPage({
   const { currentPage, pageCount, allCategories } = pageContext;
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const components = data.allMdx.nodes;
 
-  console.log("debug categories", allCategories);
+  const componentsGroupedByAtomicLevel = groupBy(
+    components,
+    "frontmatter.atomicLevel"
+  );
+
+  console.log(components);
+
+  console.log(
+    "debug componentsGroupedByAtomicLevel",
+    componentsGroupedByAtomicLevel
+  );
 
   const {
     allMdx: { nodes: posts },
@@ -55,18 +67,60 @@ export default function TemplateDesignDocPage({
       <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
         <Box as="section" marginY="spacing20">
           <Typography as="h1" fontSize="h2" dataSal="slide-up">
-            Things I think are cool or are worth sharing.
+            BobUI component library documentation
           </Typography>
 
           <Typography as="p" fontSize="body_lg">
-            My blog acts as a sort of "experience journal" from my journey
-            through the world of engineering and product. My hope is that by
-            writing I will a: compound my knowledge and learnings and b: perhaps
-            educate or inspire others, and offer some shortcuts to level up
-            their frontend craft.
+            BobUI is a proof-of-concept for a lightweight, modern design system
+            and component library built on top of Vanilla Extract and RadixUI.
           </Typography>
           <BlogCategoriesList categories={allCategories} />
-          {/* <SectionBlogPostList posts={posts} /> */}
+
+          <Box marginY="spacing6" as="section">
+            {Object.keys(componentsGroupedByAtomicLevel) &&
+              Object.keys(componentsGroupedByAtomicLevel).length > 0 &&
+              Object.keys(componentsGroupedByAtomicLevel).map((atomicLevel) => {
+                const componentsInLevel =
+                  componentsGroupedByAtomicLevel[atomicLevel];
+                return (
+                  <Box marginY="spacing6" as="section">
+                    <Typography
+                      fontSize="body_lg"
+                      color="neutral_text_lowContrast"
+                      textTransform="uppercase"
+                      marginBottom="spacing3"
+                    >
+                      {atomicLevel}
+                    </Typography>
+                    <Box
+                      gap="spacing3"
+                      display="grid"
+                      gridTemplateColumns={{
+                        desktop: "3x",
+                        tablet: "2x",
+                        mobile: "1x",
+                      }}
+                    >
+                      {componentsInLevel &&
+                        componentsInLevel.length > 0 &&
+                        componentsInLevel.map((component) => {
+                          return (
+                            <ListItem
+                              key={component.frontmatter.title}
+                              title={component.frontmatter.title}
+                              link={component.fields.linkSlug}
+                              subtitle={component.frontmatter.categories.join(
+                                " • "
+                              )}
+                              description={component.frontmatter.description}
+                            />
+                          );
+                        })}
+                    </Box>
+                  </Box>
+                );
+              })}
+          </Box>
         </Box>
 
         {pageCount && pageCount > 1 && (
@@ -95,7 +149,11 @@ export const query = graphql`
       sort: { fields: frontmatter___title }
     ) {
       nodes {
-        excerpt
+        id
+        slug
+        fields {
+          linkSlug
+        }
         frontmatter {
           title
           atomicLevel
