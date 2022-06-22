@@ -65,29 +65,19 @@ export default function TemplateDesignDocsComponentPage({
   return (
     <Layout title={siteTitle}>
       <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
-        <Box as="section" marginY="spacing10">
-          <Box
-            display="flex"
-            marginY="spacing3"
-            justifyContent={"space-between"}
-          >
+        <Box as="section" marginY="spacing20">
+          <Box as="header" marginY="spacing10">
             <Button
+              appearance="tertiary"
               leadingIcon="arrow-left"
               title="All components"
-              size="lg"
               to={"/projects/design-system/components"}
-              variant="secondary"
             />
-          </Box>
+            <h1>{title}</h1>
+            <h2>{atomicLevel}</h2>
+            <h2>{categories}</h2>
 
-          <Box as="section" display="grid" gridTemplateColumns="2_1">
-            <Box as="header" marginY="spacing10">
-              <h1>{title}</h1>
-              <h2>{atomicLevel}</h2>
-              <h2>{categories}</h2>
-
-              <MDXRenderer>{body}</MDXRenderer>
-            </Box>
+            <MDXRenderer>{body}</MDXRenderer>
           </Box>
         </Box>
       </Box>

@@ -5,9 +5,39 @@ categories: ["Decorative"]
 description: "Simple diagonal SVG wave component"
 ---
 
-# Button
+import Box from "../box/box.tsx";
+import Typography from "../typography/typography.tsx";
+import Wave from "./wave.tsx";
 
-Lorem ipsum
+<Box
+  backgroundColor="neutral_background_dark"
+  border="1px solid"
+  borderColor="neutral_border_nonInteractive"
+  borderRadius="md"
+  marginY="spacing3"
+  overflow="hidden"
+>
+
+<Wave waveVariant="top" color="neutral_background" />
+<Typography fontSize="h5" marginY="spacing6" textAlign="center">
+  This component has 2 waves, top and bottom
+</Typography>
+
+  <Wave waveVariant="bottom"  color="neutral_background" />
+</Box>
+
+```
+<Box
+margin="spacing3"
+borderColor="accent_border_nonInteractive"
+border="1px solid"
+>
+
+  <Wave waveVariant="bottom" />
+  <Box padding="spacing3">This component has 2 waves top and bottom</Box>
+  <Wave waveVariant="top" />
+</Box>
+```
 
 ## Variants
 

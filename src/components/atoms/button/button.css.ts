@@ -17,7 +17,7 @@ export const button = recipe({
   ],
 
   variants: {
-    color: {
+    appearance: {
       primary: [
         getFunctionalClassNames({
           color: "white",
@@ -105,7 +105,7 @@ export const button = recipe({
   compoundVariants: [
     {
       variants: {
-        color: "primary",
+        appearance: "primary",
         size: "sm",
       },
       style: getFunctionalClassNames({
@@ -115,7 +115,7 @@ export const button = recipe({
     },
     {
       variants: {
-        color: "primary",
+        appearance: "primary",
         size: "md",
       },
       style: getFunctionalClassNames({
@@ -125,7 +125,7 @@ export const button = recipe({
     },
     {
       variants: {
-        color: "primary",
+        appearance: "primary",
         size: "lg",
       },
       style: getFunctionalClassNames({
@@ -135,7 +135,7 @@ export const button = recipe({
     },
     {
       variants: {
-        color: "secondary",
+        appearance: "secondary",
         size: "sm",
       },
       style: getFunctionalClassNames({
@@ -145,7 +145,7 @@ export const button = recipe({
     },
     {
       variants: {
-        color: "secondary",
+        appearance: "secondary",
         size: "md",
       },
       style: getFunctionalClassNames({
@@ -155,7 +155,7 @@ export const button = recipe({
     },
     {
       variants: {
-        color: "secondary",
+        appearance: "secondary",
         size: "lg",
       },
       style: getFunctionalClassNames({
@@ -166,7 +166,7 @@ export const button = recipe({
   ],
 
   defaultVariants: {
-    color: "secondary",
+    appearance: "secondary",
     size: "md",
   },
 });

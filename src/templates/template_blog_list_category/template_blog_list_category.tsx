@@ -57,7 +57,7 @@ export default function TemplateBlogListCategoryPage({
       <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
         <Box as="section" marginY="spacing10">
           <Button
-            variant="tertiary"
+            appearance="tertiary"
             leadingIcon="arrow-left"
             title="Back to blog"
             to="/blog"

@@ -6,7 +6,21 @@ description:
   "Accessible input component, designed for use with for DownShift.js"
 ---
 
-# Button
+import Box from "../box/box.tsx";
+import Input from "./input.tsx";
+
+<Box
+  leadingIcon="search"
+  backgroundColor="neutral_background_dark"
+  border="1px solid"
+  borderColor="neutral_border_nonInteractive"
+  borderRadius="md"
+  marginY="spacing3"
+  overflow="hidden"
+  padding="spacing3"
+>
+  <Input placeholder="Type in me" />
+</Box>
 
 Lorem ipsum
 

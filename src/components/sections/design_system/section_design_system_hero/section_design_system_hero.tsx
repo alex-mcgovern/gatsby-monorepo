@@ -64,7 +64,7 @@ const SectionDesignSystemHero = ({ bio }: ISectionDesignSystemHero) => {
               title="Read the blog post"
               size="lg"
               to="/hello-world/"
-              variant="secondary"
+              appearance="secondary"
             />
           </Box>
         </Box>

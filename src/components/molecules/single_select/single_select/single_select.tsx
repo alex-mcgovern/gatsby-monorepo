@@ -11,7 +11,7 @@ interface SingleSelectProps {
   display?: TFunctionalClassNames["display"];
   width?: TFunctionalClassNames["width"];
   size?: TSizeProp;
-  variant?: IButton["variant"];
+  appearance?: IButton["appearance"];
   onSelect?(...args: unknown[]): unknown;
 
   id?: string;
@@ -24,7 +24,7 @@ export default function SingleSelect({
   display,
   width,
   id,
-  variant,
+  appearance,
   size,
   onSelect,
 }: SingleSelectProps) {
@@ -48,7 +48,7 @@ export default function SingleSelect({
               title={inputValue || value || "—"}
               trailingIcon="caret-down"
               display={display}
-              variant={variant}
+              appearance={appearance}
               {...getToggleButtonProps()}
             />
             <SingleSelectDropdownList
@@ -72,5 +72,5 @@ SingleSelect.defaultProps = {
   searchIndex: null,
   size: "md",
   value: null,
-  variant: "secondary",
+  appearance: "secondary",
 };

@@ -9,25 +9,25 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
 });
 
 globalStyle(`h6`, {
-  fontSize: vars.fontSize.h6,
+  fontSize: vars.fontSize.body_md,
 });
 
 globalStyle(`h5`, {
-  fontSize: vars.fontSize.h5,
+  fontSize: vars.fontSize.body_lg,
 });
 
 globalStyle(`h4`, {
-  fontSize: vars.fontSize.h4,
+  fontSize: vars.fontSize.h6,
 });
 
 globalStyle(`h3`, {
-  fontSize: vars.fontSize.h3,
+  fontSize: vars.fontSize.h5,
 });
 
 globalStyle(`h2`, {
-  fontSize: vars.fontSize.h2,
+  fontSize: vars.fontSize.h4,
 });
 
 globalStyle(`h1`, {
-  fontSize: vars.fontSize.h1,
+  fontSize: vars.fontSize.h3,
 });

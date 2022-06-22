@@ -8,11 +8,10 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "airbnb-typescript/base",
-    "plugin:cypress/recommended",
     "plugin:react-perf/recommended",
     "prettier",
-    "plugin:sonarjs/recommended",
-    "plugin:mdx/recommended"
+    "plugin:mdx/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "cy": true,
@@ -41,7 +40,7 @@
       ]
     }
   ],
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "babelOptions": {
       "presets": ["@babel/preset-react"]
@@ -49,7 +48,7 @@
     "project": "./tsconfig.json",
     "requireConfigFile": true
   },
-  "plugins": ["react-perf", "sonarjs"],
+  "plugins": ["react-perf", "sonarjs", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/prefer-optional-chain": "warn",
     "arrow-body-style": ["error", "always"],

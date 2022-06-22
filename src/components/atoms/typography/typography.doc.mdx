@@ -5,7 +5,39 @@ categories: ["Polymorphic"]
 description: "Polymorphic Typography component"
 ---
 
-# Button
+import { COMPONENT_DEMO_PROPS } from "../../../utils/shared_props/box_props";
+import Box from "../box/box.tsx";
+import Typography from "./typography.tsx";
+
+### `fontSize`
+
+`"h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body_lg" | "body_md" | "body_sm"`
+
+<Box {...COMPONENT_DEMO_PROPS}>
+  <Typography fontSize="h1" fontWeight="bold">
+    Lorem ipsum dolor sit amet
+  </Typography>
+  <Typography fontSize="h2" fontWeight="bold">
+    Consectetur adipiscing elit
+  </Typography>
+  <Typography fontSize="h3" fontWeight="bold">
+    Sed do eiusmod tempor incididunt
+  </Typography>
+  <Typography fontSize="h4" fontWeight="semibold">
+    Ut labore et dolore magna aliqua
+  </Typography>
+  <Typography fontSize="h5" fontWeight="semibold">
+    Ut enim ad minim veniam
+  </Typography>
+  <Typography fontSize="h6" fontWeight="semibold">
+    Ut enim ad minim veniam
+  </Typography>
+  <Typography fontSize="body_lg">Ut enim ad minim veniam</Typography>
+  <Typography fontSize="body_md">Quis nostrud exercitation ullamco</Typography>
+  <Typography fontSize="body_sm">
+    Laboris nisi ut aliquip ex ea commodo consequat
+  </Typography>
+</Box>
 
 Lorem ipsum
 

@@ -38,7 +38,7 @@ const SectionHomepageBio = ({ bio }: IBioProps) => {
             // trailingIcon="arrow-right"
             title="Read an intro blog post"
             to="/hello-world/"
-            variant="secondary"
+            appearance="secondary"
           />
         </Box>
       </Box>

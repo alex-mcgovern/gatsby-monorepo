@@ -33,7 +33,7 @@ export default function BlogCategoriesList({
           ]);
           return (
             <Button
-              variant={isActive ? "primary" : "secondary"}
+              appearance={isActive ? "primary" : "secondary"}
               size="sm"
               title={category.categoryTitle}
               to={isActive ? BLOG_SLUG : categorySlug}

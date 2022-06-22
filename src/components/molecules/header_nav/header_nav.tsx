@@ -13,9 +13,9 @@ const DESIGN_SYSTEM_LINK = createUrlPathFromArray([
   "design-system",
 ]);
 const DROPDOWN_INDEX = [
-  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
+  { value: "BobUI Design system", link: DESIGN_SYSTEM_LINK },
   { value: "Firebase Kanban", link: KANBAN_LINK },
-  { value: "Design system", link: DESIGN_SYSTEM_LINK },
+  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
 ];
 
 export default function StickyNav() {
@@ -47,20 +47,20 @@ export default function StickyNav() {
         <Button leadingIcon="house" size="md" to="/" title="Home" />
 
         <Box display="flex" alignItems="center" gap="spacing2">
-          <Button title="Blog" to="/blog" size="md" variant="tertiary" />
+          <Button title="Blog" to="/blog" size="md" appearance="tertiary" />
 
           <SingleSelect
             searchIndex={DROPDOWN_INDEX}
             size="md"
             value="Projects"
-            variant="tertiary"
+            appearance="tertiary"
           />
-          <Button size="md" to="/" title="Connect" variant="tertiary" />
+          <Button size="md" to="/" title="Connect" appearance="tertiary" />
           <Button
             leadingIcon={darkMode ? "sun" : "moon"}
             onClick={onClick}
             size="md"
-            variant="tertiary"
+            appearance="tertiary"
           />
         </Box>
       </Box>

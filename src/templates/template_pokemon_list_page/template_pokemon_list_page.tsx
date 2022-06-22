@@ -86,69 +86,59 @@ export default function TemplatePokemonListPage({
           />
         </Box>
 
-        <Box
-          backgroundColor="neutral_ui_base"
-          padding="spacing3"
-          borderRadius="sm"
-        >
-          <Box
-            display="flex"
-            marginY="spacing3"
-            justifyContent={"space-between"}
-          >
-            <Search
-              size="lg"
-              searchIndex={searchIndex}
-              placeholder={"Search for a Pokemon"}
-            />
+        <Box display="flex" marginY="spacing3" justifyContent={"space-between"}>
+          <Search
+            size="lg"
+            searchIndex={searchIndex}
+            placeholder={"Search for a Pokemon"}
+          />
 
-            <SingleSelect
-              searchIndex={languageIndex}
-              size="lg"
-              value={currentLanguageUpperCase}
-            />
-          </Box>
-          <Box
-            as="section"
-            marginY="spacing3"
-            display="grid"
-            gap="spacing3"
-            gridTemplateColumns={{
-              desktop: "4x",
-              tablet: "2x",
-              mobile: "1x",
-            }}
-          >
-            {allPokemon.map((pokemon) => {
-              const { artwork, pokedexID, name } = pokemon;
-              const paddedPokedexId = padStart({
-                value: pokedexID,
-                desiredLength: 3,
-                padCharacter: "0",
-              });
-              const link = createUrlPathFromArray([
-                languageISO,
-                "pokemon",
-                pokedexID,
-              ]);
-              const title = `${paddedPokedexId} ${name}`;
-              return (
-                <ListItem
-                  aspectRatio="square"
-                  link={link}
-                  title={title}
-                  image={artwork}
-                />
-              );
-            })}
-          </Box>
+          <SingleSelect
+            searchIndex={languageIndex}
+            size="lg"
+            value={currentLanguageUpperCase}
+          />
         </Box>
-        <Pagination
-          basePath={paginationBasePath}
-          currentPage={currentPage}
-          pageCount={pageCount}
-        />
+        <Box
+          as="section"
+          marginY="spacing3"
+          display="grid"
+          gap="spacing3"
+          gridTemplateColumns={{
+            desktop: "4x",
+            tablet: "2x",
+            mobile: "1x",
+          }}
+        >
+          {allPokemon.map((pokemon) => {
+            const { artwork, pokedexID, name } = pokemon;
+            const paddedPokedexId = padStart({
+              value: pokedexID,
+              desiredLength: 3,
+              padCharacter: "0",
+            });
+            const link = createUrlPathFromArray([
+              languageISO,
+              "pokemon",
+              pokedexID,
+            ]);
+            const title = `${paddedPokedexId} ${name}`;
+            return (
+              <ListItem
+                aspectRatio="square"
+                link={link}
+                title={title}
+                image={artwork}
+              />
+            );
+          })}
+        </Box>
       </Box>
+      <Pagination
+        basePath={paginationBasePath}
+        currentPage={currentPage}
+        pageCount={pageCount}
+      />
     </Layout>
   );
 }

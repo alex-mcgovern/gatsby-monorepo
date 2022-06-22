@@ -86,9 +86,9 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           <Box as="section">
             <Box as="header" marginBottom="spacing10">
               <Button
-                variant="tertiary"
+                appearance="tertiary"
                 leadingIcon="arrow-left"
-                title="Back to blog"
+                title="All blog posts"
                 to="/blog"
               />
               {/* Blog title */}
@@ -155,8 +155,8 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           padding="spacing3"
           borderRadius="sm"
         >
-          <Button variant="secondary" to="/" title="Back to home" />
-          <Button variant="secondary" to="/" title="Back to home" />
+          <Button appearance="secondary" to="/" title="Back to home" />
+          <Button appearance="secondary" to="/" title="Back to home" />
         </Box>
       </Box>
     </Layout>

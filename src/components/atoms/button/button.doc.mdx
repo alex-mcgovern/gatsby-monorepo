@@ -1,22 +1,162 @@
-title: Button atomicLevel: Atoms categories: ["Interactive"] description:
-"Simple button component currently built around Gatsby `Link` component. Soon to
+---
+title: Button
+atomicLevel: Atoms
+categories: ["Interactive"]
+description: "Simple button component currently built around Gatsby `Link` component. Soon to
 be framework-agnostic"
-
 ---
 
+import { COMPONENT_DEMO_PROPS } from "../../../utils/shared_props/box_props";
+import Box from "../box/box.tsx";
+import Typography from "../typography/typography.tsx";
 import Button from "./button.tsx";
 
-# Button
-
-<Button title="test" />
+<Box paddingY="spacing6">
+  <Button trailingIcon="arrow-right" title="Click me" size="lg"></Button>
+</Box>
 
 Lorem ipsum
 
-## Variants
+## Props
 
-Lorem ipsm
+### Appearance
 
-### Color
+<Box
+  {...COMPONENT_DEMO_PROPS}
+  display="grid"
+  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
+  gap="spacing3"
+>
+
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Primary
+    </Typography>
+    <Button trailingIcon="arrow-right" title="Click me"></Button>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Secondary
+    </Typography>
+    <Button
+      appearance="secondary"
+      trailingIcon="arrow-right"
+      title="Click me"
+    ></Button>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Tertiary
+    </Typography>
+    <Button
+      appearance="tertiary"
+      trailingIcon="arrow-right"
+      title="Click me"
+    ></Button>
+  </Box>
+</Box>
+
+### `size`
+
+`"sm" | "md" | "lg"`
+
+<Box
+  {...COMPONENT_DEMO_PROPS}
+  display="grid"
+  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
+  gap="spacing3"
+>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Sm
+    </Typography>
+    <Button trailingIcon="arrow-right" title="Click me" size="sm"></Button>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Md
+    </Typography>
+    <Button size="md" trailingIcon="arrow-right" title="Click me"></Button>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Lg
+    </Typography>
+    <Button size="lg" trailingIcon="arrow-right" title="Click me"></Button>
+  </Box>
+  <Box>
+    <Button
+      trailingIcon="arrow-right"
+      title="Click me"
+      size="sm"
+      appearance="secondary"
+    ></Button>
+  </Box>
+  <Box>
+    <Button
+      size="md"
+      trailingIcon="arrow-right"
+      title="Click me"
+      appearance="secondary"
+    ></Button>
+  </Box>
+  <Box>
+    <Button
+      size="lg"
+      trailingIcon="arrow-right"
+      title="Click me"
+      appearance="secondary"
+    ></Button>
+  </Box>
+  <Box>
+    <Button
+      trailingIcon="arrow-right"
+      title="Click me"
+      size="sm"
+      appearance="tertiary"
+    ></Button>
+  </Box>
+  <Box>
+    <Button
+      size="md"
+      trailingIcon="arrow-right"
+      title="Click me"
+      appearance="tertiary"
+    ></Button>
+  </Box>
+  <Box>
+    <Button
+      size="lg"
+      trailingIcon="arrow-right"
+      title="Click me"
+      appearance="tertiary"
+    ></Button>
+  </Box>
+</Box>
 
 Lorem ipsum
 

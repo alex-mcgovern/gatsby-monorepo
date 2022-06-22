@@ -115,7 +115,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                     <Button
                       trailingIcon="times"
                       size="sm"
-                      variant="primary"
+                      appearance="primary"
                       title="Delete this epic"
                       // width="100%"
                       onClick={handleDelete}

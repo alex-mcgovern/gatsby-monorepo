@@ -32,13 +32,13 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       gap="spacing3"
     >
       <Button
-        variant="secondary"
+        appearance="secondary"
         leadingIcon="angles-left"
         to={firstPath}
         isDisabled={isFirstOrPrevDisabled}
       />
       <Button
-        variant="secondary"
+        appearance="secondary"
         leadingIcon="arrow-left"
         to={previousPath}
         isDisabled={isFirstOrPrevDisabled}
@@ -47,16 +47,16 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
         pageArray.map((page) => {
           const link = createUrlPathFromArray([basePath, page]);
           const variant = page === currentPage ? "primary" : "secondary";
-          return <Button variant={variant} to={link} title={page} />;
+          return <Button appearance={variant} to={link} title={page} />;
         })}
       <Button
-        variant="secondary"
+        appearance="secondary"
         trailingIcon="arrow-right"
         to={nextPath}
         isDisabled={isNextOrLastDisabled}
       />
       <Button
-        variant="secondary"
+        appearance="secondary"
         trailingIcon="angles-right"
         to={lastPath}
         isDisabled={isNextOrLastDisabled}

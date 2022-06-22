@@ -19,7 +19,7 @@ export interface IButton {
   display?: TFunctionalClassNames["display"];
   isDisabled?: boolean;
   trailingIcon?: IconProp;
-  variant?: "primary" | "secondary" | "tertiary";
+  appearance?: "primary" | "secondary" | "tertiary";
   size?: TSizeProp;
   onClick?(...args: unknown[]): unknown;
   width?: TFunctionalClassNames["width"];
@@ -29,7 +29,7 @@ export interface IButton {
 export default function Button({
   to,
   title,
-  variant,
+  appearance,
   id,
   display,
   width,
@@ -46,7 +46,7 @@ export default function Button({
   const buttonStyle = classNames([
     resetButton,
     button({
-      color: variant,
+      appearance,
       size,
     }),
     getFunctionalClassNames({
@@ -96,7 +96,7 @@ export default function Button({
   );
 }
 Button.defaultProps = {
-  variant: "primary",
+  appearance: "primary",
   size: "md",
   type: "button",
 };

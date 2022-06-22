@@ -98,7 +98,7 @@ export default function TemplatePokemonPage({
               size="lg"
               to={allPokemonLink}
               trailingIcon="grip"
-              variant="secondary"
+              appearance="secondary"
             />
 
             <Search
