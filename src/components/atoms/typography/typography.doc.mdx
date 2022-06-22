@@ -5,15 +5,15 @@ categories: ["Polymorphic"]
 description: "Polymorphic Typography component"
 ---
 
-import { COMPONENT_DEMO_PROPS } from "../../../utils/shared_props/box_props";
+import { BOX_PROPS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
 import Box from "../box/box.tsx";
 import Typography from "./typography.tsx";
 
 ### `fontSize`
 
-`"h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body_lg" | "body_md" | "body_sm"`
+`"h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body_lg" | "body_sm" | "body_xs"`
 
-<Box {...COMPONENT_DEMO_PROPS}>
+<Box {...BOX_PROPS_COMPONENT_DEMO}>
   <Typography fontSize="h1" fontWeight="bold">
     Lorem ipsum dolor sit amet
   </Typography>
@@ -33,8 +33,8 @@ import Typography from "./typography.tsx";
     Ut enim ad minim veniam
   </Typography>
   <Typography fontSize="body_lg">Ut enim ad minim veniam</Typography>
-  <Typography fontSize="body_md">Quis nostrud exercitation ullamco</Typography>
-  <Typography fontSize="body_sm">
+  <Typography fontSize="body_sm">Quis nostrud exercitation ullamco</Typography>
+  <Typography fontSize="body_xs">
     Laboris nisi ut aliquip ex ea commodo consequat
   </Typography>
 </Box>

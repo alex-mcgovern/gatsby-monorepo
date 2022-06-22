@@ -119,8 +119,6 @@ export const createPages: GatsbyNode["createPages"] = async (
             }
           `);
 
-          console.log("debug posts", JSON.stringify(postsInCategory));
-
           if (postsInCategory.data?.allMarkdownRemark?.totalCount) {
             const { totalCount } = postsInCategory?.data.allMarkdownRemark;
 

@@ -56,6 +56,27 @@ const config: GatsbyConfig = {
     `gatsby-plugin-create-design-docs`,
 
     /* ——————————————————————————————————————————————
+    //      AUTOGENERATE TYPES & INTERFACE DOCUMENTATION
+    // —————————————————————————————————————————————— */
+    {
+      resolve: "gatsby-source-typedoc",
+      options: {
+        // Array of Typescript files to
+        // include
+        src: [path.resolve(`src/components`), path.resolve(`src/global.d.ts`)],
+
+        // Options passed to Typedoc Application
+        // Usually corresponds to CLI args directly
+        // See: https://typedoc.org/guides/options/
+        typedoc: {
+          entryPointStrategy: "expand",
+          json: "./docs/docs.json",
+          tsconfig: path.resolve(`tsconfig.json`),
+        },
+      },
+    },
+
+    /* ——————————————————————————————————————————————
     //      BLOG PAGINATION PAGE CREATION           
     // —————————————————————————————————————————————— */
 
@@ -193,60 +214,7 @@ const config: GatsbyConfig = {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
-                return {
-                  ...node.frontmatter,
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                };
-              });
-            },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
-          },
-        ],
-      },
-    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

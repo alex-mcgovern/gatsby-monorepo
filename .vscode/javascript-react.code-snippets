@@ -1,7 +1,7 @@
 {
   "Helper function": {
     "scope": "javascript,typescript",
-    "prefix": "fn",
+    "prefix": "JS Fn",
     "body": [
       "export default function functionName({ argument }) {",
       "\treturn argument;",
@@ -41,7 +41,7 @@
   },
   "jest suite boilerplate": {
     "scope": "javascript,typescript",
-    "prefix": "test: function",
+    "prefix": "Jest",
     "body": [
       "describe(\"Test suite title\", () => {",
       "  test(\"Unit test description\", () => {",
@@ -54,7 +54,7 @@
 
   "testing-library boilerplate": {
     "scope": "javascript,typescript,javascriptreact",
-    "prefix": "test: component ",
+    "prefix": "React testing library",
     "body": [
       "/**",
       " * @jest-environment jsdom",
@@ -99,7 +99,6 @@
     "description": "",
     "body": [
       "import React from \"react\";",
-      "import PropTypes from \"prop-types\"",
       "",
       "",
       "interface IComponent {",
@@ -116,35 +115,6 @@
       "Component.defaultProps = {",
       "\tplaceholderProp: null",
       "}"
-    ]
-  },
-  "Storyblok component (old)": {
-    "scope": "javascript,typescript,javascriptreact",
-    "prefix": "comp: storyblok",
-    "description": "",
-    "body": [
-      "// Might have to fix imports",
-      "",
-      "import React from \"react\";",
-      "import PropTypes from \"prop-types\";",
-      "import {BLOK_ARRAY} from \"../../../prop_types\";",
-      "import withStoryblok from \"../storyblok\";",
-      "import {renderDynamicComponent} from \"../components\";",
-      "",
-      "export function Component({placeholder}) {",
-      "    return <>{placeholder && children.map(renderDynamicComponent)}</>;",
-      "}",
-      "",
-      "Component.defaultProps = {",
-      "    placeholder: null,",
-      "};",
-      "",
-      "Component.propTypes = {",
-      "    placeholder: BLOK_ARRAY,",
-      "};",
-      "",
-      "export default withStoryblok(\"component\", Component); // export Storyblok component as lowercase",
-      ""
     ]
   }
 }

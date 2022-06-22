@@ -2,7 +2,7 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
 import Wave from "../../../atoms/wave/wave";
@@ -44,11 +44,11 @@ export default function SectionDesignSystemFeatures({
   placeholderProp,
 }: ISectionDesignSystemFeatures) {
   return (
-    <Box {...RESPONSIVE_MAX_WIDTH_PROPS} paddingY="spacing10">
+    <Box {...BOX_PROPS_CONTAINED} paddingY="spacing10">
       <Typography
         fontSize="h6"
         fontWeight="medium"
-        color="primary_text_lowContrast"
+        color="accent_text_lowContrast"
         // marginBottom="spacing6"
       >
         What is BobUI?
@@ -87,7 +87,7 @@ export default function SectionDesignSystemFeatures({
               >
                 {content.title}
               </Typography>
-              <Typography fontSize="body_md">{content.body}</Typography>
+              <Typography fontSize="body_sm">{content.body}</Typography>
             </Box>
           );
         })}

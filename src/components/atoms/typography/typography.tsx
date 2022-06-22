@@ -6,7 +6,7 @@ import {
 
 export interface ITypography {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "label";
-  children?: React.ReactNode;
+  children?: React.ReactNode | HTMLCollection;
   color?: TFunctionalClassNames["color"];
   dataSal?: TDataSal;
   dataSalDelay?: number;

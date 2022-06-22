@@ -29,7 +29,6 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
   node,
 }) => {
   if (node.internal.type === "Mdx") {
-    console.log("debug create node", node);
     const { atomicLevel, title } = node.frontmatter;
 
     const atomicLevelSlug = slugify(atomicLevel, { lower: true });
@@ -69,8 +68,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
       }
     }
   `);
-
-  console.log("debug big query", JSON.stringify(mdxQueryResult));
 
   const { nodes: allMdx, distinct } = mdxQueryResult?.data?.allMdx;
 
@@ -144,11 +141,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
               }
             }
           `);
-
-          console.log(
-            "debug components",
-            JSON.stringify(componentsInAtomicLevel)
-          );
 
           if (componentsInAtomicLevel.data?.allMdx?.totalCount) {
             const pagePath = createUrlPathFromArray([

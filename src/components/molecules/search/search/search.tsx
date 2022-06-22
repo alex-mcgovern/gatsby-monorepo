@@ -6,19 +6,19 @@ import {
 } from "../../../../styles/functional_classnames.css";
 import SearchInput from "../search_input/search_input";
 import SearchResultList from "../search_result_list/search_result_list";
-import getSearchIndexItemValue from "./helper_functions/get_search_index_item_value";
+import getDropdownItemsItemValue from "./helper_functions/get_search_index_item_value";
 
 interface SearchProps {
   placeholder?: string;
   id?: string;
   width?: TFunctionalClassNames["width"];
-  searchIndex?: {}[];
-  size?: "sm" | "md" | "lg";
+  dropdownItems?: {}[];
+  size?: "sm" | "sm" | "lg";
   onSelect?(...args: unknown[]): unknown;
 }
 
 export default function Search({
-  searchIndex,
+  dropdownItems,
   placeholder,
   id,
   width,
@@ -27,7 +27,7 @@ export default function Search({
 }: SearchProps) {
   const formStyles = getFunctionalClassNames({ position: "relative" });
   return (
-    <Downshift itemToString={getSearchIndexItemValue} onChange={onSelect}>
+    <Downshift itemToString={getDropdownItemsItemValue} onChange={onSelect}>
       {({
         getInputProps,
         getItemProps,
@@ -51,7 +51,7 @@ export default function Search({
               highlightedIndex={highlightedIndex}
               inputValue={inputValue}
               isOpen={isOpen}
-              searchIndex={searchIndex}
+              dropdownItems={dropdownItems}
               selectedItem={selectedItem}
             />
           </form>
@@ -62,7 +62,7 @@ export default function Search({
 }
 
 Search.defaultProps = {
-  searchIndex: null,
+  dropdownItems: null,
   placeholder: null,
-  size: "md",
+  size: "sm",
 };

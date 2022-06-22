@@ -1,35 +1,47 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 
-export const ThemeContext = createContext({});
+interface IThemeProviderProps {
+  children: React.ReactNode;
+}
 
-const initialState = { darkMode: false };
+interface IThemeContext {
+  dark: boolean;
+  toggleDark?: () => void;
+}
 
-const themeReducer = (state, action) => {
-  switch (action.type) {
-    case "LIGHTMODE":
-      return { darkMode: false };
-    case "DARKMODE":
-      return { darkMode: true };
-    default:
-      return state;
-  }
+const defaultState = {
+  dark: true,
 };
 
-export function ThemeProvider(props) {
-  const [state, dispatch] = useReducer(themeReducer, initialState);
+export const ThemeContext = React.createContext<IThemeContext>(defaultState);
+
+export function ThemeProvider({ children }: IThemeProviderProps) {
+  const [dark, setDark] = useState(defaultState.dark);
+  const toggleDark = () => {
+    setDark(!dark);
+  };
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      dispatch({ type: "DARKMODE" });
-    }
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setDark(mediaQuery.matches);
+
+    const handleToggle = (e: MediaQueryListEvent) => {
+      setDark(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleToggle);
+
+    return () => mediaQuery.removeEventListener("change", handleToggle);
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ state: state, dispatch: dispatch }}>
-      {props.children}
+    <ThemeContext.Provider
+      value={{
+        dark,
+        toggleDark,
+      }}
+    >
+      {children}
     </ThemeContext.Provider>
   );
 }

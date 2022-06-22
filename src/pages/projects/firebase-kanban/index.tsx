@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
@@ -7,44 +7,48 @@ import Button from "../../../components/atoms/button/button";
 import Typography from "../../../components/atoms/typography/typography";
 import Layout from "../../../components/organisms/global_layout/global_layout";
 import Seo from "../../../components/seo";
-import { useFirestoreCollection } from "../../../hooks/use_firestore_collection/use_firestore_collection";
+import {
+  IFirestoreDocument,
+  useFirestoreCollection,
+} from "../../../hooks/use_firestore_collection/use_firestore_collection";
 import firebase from "../../../utils/firebase/firebase";
 import sortAlphabeticallyByKey from "../../../utils/helper_functions/sort_alphabetically_by_key/sort_alphabetically_by_key";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../utils/shared_props/box_props";
+import {
+  BOX_PROPS_CONTAINED,
+  BOX_PROPS_SECTION,
+} from "../../../utils/shared_props/box_props";
 import CreateNewTaskDialog from "./components/create_new_task_dialog/create_new_task_dialog";
 import KanbanListItem from "./components/kanban_list_item/kanban_list_item";
+import { IFirebaseKanbanPageProps } from "./firebase_kanban";
 
-interface BlogIndexProps {
-  data: {
-    site?: {
-      siteMetadata?: {
-        title?: string;
-      };
-    };
-  };
-}
-
-const BlogIndex = ({ data }: BlogIndexProps) => {
+const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
   const { site } = data;
   const siteTitle = site?.siteMetadata?.title || "Title";
 
-  const items = useFirestoreCollection({ collection: "tasks" });
+  const items: IFirestoreDocument[] = useFirestoreCollection({
+    collection: "tasks",
+  });
+  console.log(items);
   const itemsGroupedByEpic = groupBy(items, "epic");
 
-  const statuses = useFirestoreCollection({ collection: "statuses" });
+  const statuses: IFirestoreDocument[] = useFirestoreCollection({
+    collection: "statuses",
+  });
   const statusesSortedBySortIndex = sortAlphabeticallyByKey({
     objects: statuses,
     key: "sortIndex",
   });
-  const statusesSearchIndex = statusesSortedBySortIndex.map((status) => {
+  const statusesDropdownItems = statusesSortedBySortIndex.map((status) => {
     return {
       value: status.title,
       label: status.title,
     };
   });
 
-  const epics = useFirestoreCollection({ collection: "epics" });
-  const epicsSearchIndex = epics.map((epic) => {
+  const epics: IFirestoreDocument[] = useFirestoreCollection({
+    collection: "epics",
+  });
+  const epicsDropdownItems = epics.map((epic) => {
     return {
       value: epic.title,
       label: epic.title,
@@ -55,7 +59,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
     <Layout title={siteTitle}>
       <Seo title="All posts" />
 
-      <Box as="section" marginY="spacing6">
+      <Box {...BOX_PROPS_SECTION}>
         {/* ——————————————————————————————————————————————————————————————————————————————
         //      MAP OVER EPICS    
         //      Here we create a Kanban board for each epic that we find                                                      
@@ -82,12 +86,12 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
             return (
               <Box
                 marginY="spacing10"
-                {...RESPONSIVE_MAX_WIDTH_PROPS}
+                {...BOX_PROPS_CONTAINED}
                 backgroundColor="neutral_background_dark"
                 borderColor="neutral_ui_selected"
                 border="1px solid"
                 padding="spacing3"
-                borderRadius="md"
+                borderRadius="sm"
               >
                 <Box
                   display="flex"
@@ -109,11 +113,11 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                   {/* Epic buttons wrapper */}
                   <Box display="flex" gap="spacing1">
                     <CreateNewTaskDialog
-                      statusesSearchIndex={statusesSearchIndex}
-                      epicsSearchIndex={epicsSearchIndex}
+                      statusesDropdownItems={statusesDropdownItems}
+                      epicsDropdownItems={epicsDropdownItems}
                     />
                     <Button
-                      trailingIcon="times"
+                      iconTrailing="times"
                       size="sm"
                       appearance="primary"
                       title="Delete this epic"
@@ -142,7 +146,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                       return (
                         <Box>
                           <Typography
-                            fontSize="body_md"
+                            fontSize="body_sm"
                             textTransform="uppercase"
                             fontWeight="semibold"
                             color="neutral_text_lowContrast"
@@ -152,9 +156,9 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                             {statusKey}
                           </Typography>
 
-                          {/* ——————————————————————————————————————————————————————————————————————————————
-                          //      MAP OVER ITEMS
-                          // ——————————————————————————————————————————————————————————————————————————————  */}
+                          {/* —————————————————————————————————————————————
+                            //      MAP OVER ITEMS WITHIN STATUS            
+                            // —————————————————————————————————————————————— */}
                           {itemsInEpicGroupedByStatus[statusKey] &&
                             itemsInEpicGroupedByStatus[statusKey].length > 0 &&
                             itemsInEpicGroupedByStatus[statusKey].map(
@@ -166,8 +170,10 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
                                     title={item.title}
                                     status={item.status}
                                     epic={item.epic}
-                                    statusesSearchIndex={statusesSearchIndex}
-                                    epicsSearchIndex={epicsSearchIndex}
+                                    statusesDropdownItems={
+                                      statusesDropdownItems
+                                    }
+                                    epicsDropdownItems={epicsDropdownItems}
                                   />
                                 );
                               }
@@ -184,7 +190,7 @@ const BlogIndex = ({ data }: BlogIndexProps) => {
   );
 };
 
-export default BlogIndex;
+export default FirebaseKanbanPage;
 
 export const pageQuery = graphql`
   query {

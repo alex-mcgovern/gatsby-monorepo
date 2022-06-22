@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../../../context/theme_context";
 import "../../../styles/global.css";
 import { darkTheme, lightTheme } from "../../../styles/theme.css";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../utils/shared_props/box_props";
 import Box from "../../atoms/box/box";
 import StickyNav from "../../molecules/header_nav/header_nav";
 
@@ -12,10 +12,9 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, title }: LayoutProps) => {
-  const theme = useContext(ThemeContext);
-  const { darkMode } = theme.state;
+  const { dark } = useContext(ThemeContext);
 
-  document.documentElement.className = darkMode ? darkTheme : lightTheme;
+  document.documentElement.className = dark ? darkTheme : lightTheme;
   const date = new Date().getFullYear();
 
   return (
@@ -25,7 +24,7 @@ const Layout = ({ children, title }: LayoutProps) => {
       <Box
         marginY="spacing10"
         paddingBottom="spacing10"
-        {...RESPONSIVE_MAX_WIDTH_PROPS}
+        {...BOX_PROPS_CONTAINED}
       >
         © {date} Alex McGovern.
       </Box>

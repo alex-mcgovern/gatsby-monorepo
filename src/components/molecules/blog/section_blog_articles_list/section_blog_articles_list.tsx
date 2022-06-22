@@ -1,23 +1,9 @@
 import React from "react";
-import { ImageDataLike } from "gatsby-plugin-image";
 import Box from "../../../atoms/box/box";
-import BlogArticleListItem from "../blog_article_list_item/blog_article_list_item";
+import ListItem from "../../list_item/list_item";
 
 interface SectionBlogPostListProps {
-  posts: {
-    fields: {
-      slug: string;
-    };
-    excerpt: string;
-    frontmatter: {
-      title: string;
-      date: string;
-      subtitle: string;
-      slug: string;
-      description?: string;
-      cover: ImageDataLike;
-    };
-  }[];
+  posts: IMarkdownRemarkBlogPost[];
 }
 
 function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
@@ -29,7 +15,16 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
       gridTemplateColumns={{ desktop: "3x", tablet: "2x", mobile: "1x" }}
     >
       {posts.map((post) => {
-        return <BlogArticleListItem key={post.fields.slug} post={post} />;
+        return (
+          <ListItem
+            aspectRatio="wide"
+            title={post.frontmatter.title || post.fields.slug}
+            subtitle={post.frontmatter.date}
+            description={post.frontmatter.description || post.excerpt}
+            link={post.fields.slug}
+            image={post.frontmatter.cover}
+          />
+        );
       })}
     </Box>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  RESPONSIVE_MAX_WIDTH_PROPS,
-  SECTION_PROPS,
+  BOX_PROPS_CONTAINED,
+  BOX_PROPS_SECTION,
 } from "../../../../utils/shared_props/box_props";
 import Box, { IBox } from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
@@ -13,7 +13,7 @@ interface SectionHomepagePerformanceProps {}
 const BOX_PROPS: IBox = {
   padding: "spacing2",
   backgroundColor: "neutral_ui_base",
-  borderRadius: "md",
+  borderRadius: "sm",
   boxShadow: "shadowLight",
   aspectRatio: "square",
 };
@@ -23,7 +23,7 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
 
   return (
     <Box
-      {...RESPONSIVE_MAX_WIDTH_PROPS}
+      {...BOX_PROPS_CONTAINED}
       margin="spacing10"
       display="grid"
       gap="spacing3"
@@ -37,7 +37,7 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         <Typography
           fontSize="h6"
           fontWeight="medium"
-          color="primary_text_lowContrast"
+          color="accent_text_lowContrast"
           // marginBottom="spacing6"
         >
           Lightweight & fast

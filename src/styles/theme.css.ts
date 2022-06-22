@@ -3,8 +3,8 @@ import {
   greenDark,
   mauve,
   mauveDark,
-  plum,
-  plumDark,
+  purple,
+  purpleDark,
   red,
   redDark,
   violet,
@@ -80,40 +80,60 @@ const color = createThemeContract({
   white: null,
 });
 
-const lightPrimaryPalette = plum;
+const lightPrimaryPalette = purple;
 const lightAccentPalette = violet;
-const darkPrimaryPalette = plumDark;
+const darkPrimaryPalette = purpleDark;
 const darkAccentPalette = violetDark;
 
 const lightGrayPalette = mauve;
 const darkGrayPalette = mauveDark;
 
 export const lightTheme = createTheme(color, {
-  primary_background: lightPrimaryPalette.plum1,
-  primary_background_dark: lightPrimaryPalette.plum2,
-  primary_ui_base: lightPrimaryPalette.plum3,
-  primary_ui_hover: lightPrimaryPalette.plum4,
-  primary_ui_selected: lightPrimaryPalette.plum5,
-  primary_border_nonInteractive: lightPrimaryPalette.plum6,
-  primary_border_interactive: lightPrimaryPalette.plum7,
-  primary_border_interactive_focus: lightPrimaryPalette.plum8,
-  primary_solid_base: lightPrimaryPalette.plum9,
-  primary_solid_hover: lightPrimaryPalette.plum10,
-  primary_text_lowContrast: lightPrimaryPalette.plum11,
-  primary_text_highContrast: lightPrimaryPalette.plum12,
+  /* ——————————————————————————————————————————————————————————————————————————————
+  //      PRIMARY SHADES                                                           
+  // —————————————————————————————————————————————————————————————————————————————— */
+
+  primary_background: lightPrimaryPalette.purple1,
+  primary_background_dark: lightPrimaryPalette.purple2,
+
+  primary_ui_base: lightPrimaryPalette.purple2,
+  primary_ui_hover: lightPrimaryPalette.purple4,
+  primary_ui_selected: lightPrimaryPalette.purple5,
+
+  primary_border_nonInteractive: lightPrimaryPalette.purple6,
+  primary_border_interactive: lightPrimaryPalette.purple7,
+  primary_border_interactive_focus: lightPrimaryPalette.purple8,
+
+  primary_solid_base: lightPrimaryPalette.purple9,
+  primary_solid_hover: lightPrimaryPalette.purple10,
+
+  primary_text_lowContrast: lightPrimaryPalette.purple11,
+  primary_text_highContrast: lightPrimaryPalette.purple12,
+
+  /* ——————————————————————————————————————————————————————————————————————————————
+  //      ACCENT SHADES                                                           
+  // —————————————————————————————————————————————————————————————————————————————— */
 
   accent_background: lightAccentPalette.violet1,
   accent_background_dark: lightAccentPalette.violet2,
+
   accent_ui_base: lightAccentPalette.violet3,
   accent_ui_hover: lightAccentPalette.violet4,
   accent_ui_selected: lightAccentPalette.violet5,
+
   accent_border_nonInteractive: lightAccentPalette.violet6,
   accent_border_interactive: lightAccentPalette.violet7,
   accent_border_interactive_focus: lightAccentPalette.violet8,
+
   accent_solid_base: lightAccentPalette.violet9,
   accent_solid_hover: lightAccentPalette.violet10,
+
   accent_text_lowContrast: lightAccentPalette.violet11,
   accent_text_highContrast: lightAccentPalette.violet12,
+
+  /* ——————————————————————————————————————————————————————————————————————————————
+  //      NEUTRAL SHADES                                                           
+  // —————————————————————————————————————————————————————————————————————————————— */
 
   neutral_background: lightGrayPalette.mauve1,
   neutral_background_dark: lightGrayPalette.mauve2,
@@ -132,22 +152,30 @@ export const lightTheme = createTheme(color, {
   semanticRed: red.red10,
   semanticYellow: yellow.yellow10,
 
-  white: lightPrimaryPalette.plum1,
+  white: lightPrimaryPalette.purple1,
 });
 
 export const darkTheme = createTheme(color, {
-  primary_background: darkPrimaryPalette.plum1,
-  primary_background_dark: darkPrimaryPalette.plum2,
-  primary_ui_base: darkPrimaryPalette.plum3,
-  primary_ui_hover: darkPrimaryPalette.plum4,
-  primary_ui_selected: darkPrimaryPalette.plum5,
-  primary_border_nonInteractive: darkPrimaryPalette.plum6,
-  primary_border_interactive: darkPrimaryPalette.plum7,
-  primary_border_interactive_focus: darkPrimaryPalette.plum8,
-  primary_solid_base: darkPrimaryPalette.plum9,
-  primary_solid_hover: darkPrimaryPalette.plum10,
-  primary_text_lowContrast: darkPrimaryPalette.plum11,
-  primary_text_highContrast: darkPrimaryPalette.plum12,
+  /* ——————————————————————————————————————————————————————————————————————————————
+  //      PRIMARY SHADES                                                           
+  // —————————————————————————————————————————————————————————————————————————————— */
+
+  primary_background: darkPrimaryPalette.purple1,
+  primary_background_dark: darkPrimaryPalette.purple2,
+
+  primary_ui_base: darkPrimaryPalette.purple3,
+  primary_ui_hover: darkPrimaryPalette.purple4,
+  primary_ui_selected: darkPrimaryPalette.purple5,
+
+  primary_border_nonInteractive: darkPrimaryPalette.purple6,
+  primary_border_interactive: darkPrimaryPalette.purple7,
+  primary_border_interactive_focus: darkPrimaryPalette.purple8,
+
+  primary_solid_base: darkPrimaryPalette.purple9,
+  primary_solid_hover: darkPrimaryPalette.purple10,
+
+  primary_text_lowContrast: darkPrimaryPalette.purple11,
+  primary_text_highContrast: darkPrimaryPalette.purple12,
 
   accent_background: darkAccentPalette.violet1,
   accent_background_dark: darkAccentPalette.violet2,
@@ -179,7 +207,7 @@ export const darkTheme = createTheme(color, {
   semanticRed: redDark.red10,
   semanticYellow: yellowDark.yellow10,
 
-  white: darkPrimaryPalette.plum12,
+  white: darkPrimaryPalette.purple12,
 });
 
 export const vars = { ...root, color };

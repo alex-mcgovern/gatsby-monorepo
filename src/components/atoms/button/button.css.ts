@@ -1,97 +1,116 @@
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
-import { vars } from "../../../styles/theme.css";
 
 export const button = recipe({
   base: [
-    {
-      fontWeight: vars.fontWeight.semibold,
-      textDecoration: "none",
+    getFunctionalClassNames({
+      fontWeight: "medium",
+      textDecoration: {
+        default: "none",
+        hover: "underline",
+        focus: "underline",
+      },
+      borderRadius: "sm",
+      whiteSpace: "nowrap",
       display: "inline-flex",
       alignItems: "center",
       textAlign: "center",
       justifyContent: "center",
-      // transition: "background 0.1s ease",
-      whiteSpace: "nowrap",
-    },
+    }),
   ],
 
   variants: {
     appearance: {
       primary: [
         getFunctionalClassNames({
+          paddingX: "spacing2",
+          paddingY: "spacing1",
+
           color: "white",
-          paddingX: "spacing1",
-          borderRadius: "lg",
 
           backgroundColor: {
             default: "primary_solid_base",
             hover: "primary_solid_hover",
             focus: "primary_solid_hover",
           },
+        }),
+      ],
+      primaryAccent: [
+        getFunctionalClassNames({
+          paddingX: "spacing2",
+          paddingY: "spacing1",
 
-          textDecoration: {
-            default: "none",
-            hover: "underline",
-            focus: "underline",
+          color: "white",
+
+          backgroundColor: {
+            default: "accent_solid_base",
+            hover: "accent_solid_hover",
+            focus: "accent_solid_hover",
           },
         }),
       ],
+
       secondary: [
         getFunctionalClassNames({
-          color: "primary_text_lowContrast",
-          paddingX: "spacing1",
-          borderRadius: "lg",
+          paddingX: "spacing2",
+          paddingY: "spacing1",
 
+          color: "accent_text_lowContrast",
           backgroundColor: {
             default: "primary_ui_base",
             hover: "primary_ui_hover",
             focus: "primary_ui_hover",
           },
-          border: "1px solid",
 
+          border: "1px solid",
           borderColor: {
             default: "primary_border_interactive",
             hover: "primary_border_interactive_focus",
             focus: "primary_border_interactive_focus",
           },
+        }),
+      ],
+      secondaryAccent: [
+        getFunctionalClassNames({
+          paddingX: "spacing2",
+          paddingY: "spacing1",
 
-          textDecoration: {
-            default: "none",
-            hover: "underline",
-            focus: "underline",
+          color: "accent_text_lowContrast",
+          backgroundColor: {
+            default: "accent_ui_base",
+            hover: "accent_ui_hover",
+            focus: "accent_ui_hover",
+          },
+
+          border: "1px solid",
+          borderColor: {
+            default: "accent_border_interactive",
+            hover: "accent_border_interactive_focus",
+            focus: "accent_border_interactive_focus",
           },
         }),
       ],
-      tertiary: [
-        { background: "none" },
-        getFunctionalClassNames({
-          borderRadius: "sm",
 
+      tertiary: [
+        getFunctionalClassNames({
           color: {
             default: "primary_text_highContrast",
-            hover: "primary_text_lowContrast",
-            focus: "primary_text_lowContrast",
-          },
-
-          textDecoration: {
-            default: "none",
-            hover: "underline",
-            focus: "underline",
+            hover: "accent_text_lowContrast",
+            focus: "accent_text_lowContrast",
           },
         }),
       ],
     },
     size: {
-      sm: [
+      xs: [
         getFunctionalClassNames({
-          fontSize: "body_sm",
+          fontSize: "body_xs",
         }),
       ],
 
-      md: [
+      sm: [
         getFunctionalClassNames({
-          fontSize: "body_md",
+          fontSize: "body_sm",
         }),
       ],
       lg: [
@@ -102,71 +121,8 @@ export const button = recipe({
     },
   },
 
-  compoundVariants: [
-    {
-      variants: {
-        appearance: "primary",
-        size: "sm",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing0",
-        paddingX: "spacing2",
-      }),
-    },
-    {
-      variants: {
-        appearance: "primary",
-        size: "md",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing0",
-        paddingX: "spacing2",
-      }),
-    },
-    {
-      variants: {
-        appearance: "primary",
-        size: "lg",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing1",
-        paddingX: "spacing2",
-      }),
-    },
-    {
-      variants: {
-        appearance: "secondary",
-        size: "sm",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing0",
-        paddingX: "spacing2",
-      }),
-    },
-    {
-      variants: {
-        appearance: "secondary",
-        size: "md",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing0",
-        paddingX: "spacing2",
-      }),
-    },
-    {
-      variants: {
-        appearance: "secondary",
-        size: "lg",
-      },
-      style: getFunctionalClassNames({
-        paddingY: "spacing1",
-        paddingX: "spacing2",
-      }),
-    },
-  ],
-
   defaultVariants: {
     appearance: "secondary",
-    size: "md",
+    size: "sm",
   },
 });

@@ -1,35 +1,31 @@
 import React from "react";
 import DropdownListItem from "../dropdown_list_item/dropdown_list_item";
-import * as styles from "./single_select_dropdown.css";
+import * as styles from "./dropdown_list.css";
 
-interface SingleSelectDropdownListProps {
+interface DropdownListProps {
   isOpen?: boolean;
-  getMenuProps(...args: unknown[]): unknown;
-  getItemProps(...args: unknown[]): unknown;
-  size: "sm" | "md" | "lg";
+  getMenuProps?(...args: unknown[]): unknown;
+  getItemProps?(...args: unknown[]): unknown;
+  size?: TSizeProp;
   inputValue: string | null;
-  searchIndex: {
-    value: string;
-    link: string;
-  }[];
+  dropdownItems: IDownshiftItem[];
   highlightedIndex: number | null;
-  selectedItem?: {};
+  selectedItem?: IDownshiftItem | null;
 }
 
-export default function SingleSelectDropdownList({
+export default function DropdownList({
   getItemProps,
   getMenuProps,
   highlightedIndex,
-  inputValue,
   isOpen,
   size,
-  searchIndex,
+  dropdownItems,
   selectedItem,
-}: SingleSelectDropdownListProps) {
+}: DropdownListProps) {
   if (isOpen) {
     return (
       <ul className={styles.dropdownWrapper} {...getMenuProps()}>
-        {searchIndex.map((item, index) => {
+        {dropdownItems.map((item, index) => {
           return (
             <DropdownListItem
               getItemProps={getItemProps}
@@ -47,12 +43,10 @@ export default function SingleSelectDropdownList({
   return null;
 }
 
-SingleSelectDropdownList.defaultProps = {
+DropdownList.defaultProps = {
   isOpen: null,
-  getMenuProps: () => {},
-  getItemProps: () => {},
   inputValue: "",
-  searchIndex: null,
+  dropdownItems: null,
   highlightedIndex: null,
   selectedItem: null,
 };

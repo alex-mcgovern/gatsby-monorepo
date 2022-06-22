@@ -54,8 +54,9 @@ const rehypeOptions: Options = {
   },
 };
 
+const renderAst = new rehypeReact(rehypeOptions).Compiler;
+
 export default function RemarkMarkdown({ htmlAst }: IRemarkMarkdown) {
-  const renderAst = new rehypeReact(rehypeOptions).Compiler;
   return <>{renderAst(htmlAst)}</>;
 }
 

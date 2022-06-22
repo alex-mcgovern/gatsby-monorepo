@@ -7,16 +7,16 @@ import { vars } from "../../../styles/theme.css";
 export const getInputWrapperStyles = recipe({
   base: [
     {
-      borderRadius: 999,
       fontWeight: vars.fontWeight.semibold,
       textDecoration: "none",
       border: "1px solid",
-      color: vars.color.neutral_text_lowContrast,
-      width: "100%",
     },
     getFunctionalClassNames({
+      width: "100%",
+      borderRadius: "sm",
       display: "flex",
       alignItems: "center",
+      color: "neutral_text_lowContrast",
       backgroundColor: "neutral_background",
       border: "1px solid",
       borderColor: {
@@ -31,37 +31,44 @@ export const getInputWrapperStyles = recipe({
     size: {
       sm: [
         {
-          fontSize: vars.fontSize.body_sm,
-          height: vars.spacing.spacing4,
+          fontSize: vars.fontSize.body_xs,
         },
       ],
       md: [
         {
-          fontSize: vars.fontSize.body_md,
-          height: vars.spacing.spacing6,
+          fontSize: vars.fontSize.body_sm,
         },
       ],
       lg: [
         {
           fontSize: vars.fontSize.body_lg,
-          height: vars.spacing.spacing6,
         },
       ],
-    },
-
-    rounded: {
-      true: { borderRadius: 999 },
     },
   },
 
   defaultVariants: {
-    size: "md",
+    size: "sm",
   },
 });
 
 export const inputElement = style([
   resetInput,
-  getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
+  getFunctionalClassNames({
+    paddingX: "spacing2",
+    paddingY: "spacing1",
+    width: "100%",
+    color: "neutral_text_highContrast",
+  }),
+]);
+export const inputLabel = style([
+  resetInput,
+  getFunctionalClassNames({
+    color: "neutral_text_lowContrast",
+    display: "block",
+    fontWeight: "medium",
+    marginBottom: "spacing1",
+  }),
 ]);
 export const icon = style({
   color: vars.color.neutral_text_lowContrast,

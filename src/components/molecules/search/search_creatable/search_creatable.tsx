@@ -1,107 +1,74 @@
-import * as React from "react";
-import { UseComboboxProps, useCombobox } from "downshift";
-import { matchSorter } from "match-sorter";
-import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
-} from "../../../../styles/functional_classnames.css";
+import React from "react";
+import { TFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { Box } from "../../../atoms";
 import SearchInput from "../search_input/search_input";
 import SearchResultList from "../search_result_list/search_result_list";
+import useComboboxWithCreate from "./hooks/use_combobox_with_create";
 
-export interface SearchCreatableProps<T> extends UseComboboxProps<T> {
-  placeholder?: string;
+export interface ISearchCreatableProps {
+  id: string;
+  isLabelVisible?: boolean;
   items: IDownshiftItem[];
-  id?: string;
-  width?: TFunctionalClassNames["width"];
-  size?: "sm" | "md" | "lg";
+  label: string;
+  margin?: TFunctionalClassNames["margin"];
+  marginBottom?: TFunctionalClassNames["marginBottom"];
+  marginLeft?: TFunctionalClassNames["marginLeft"];
+  marginRight?: TFunctionalClassNames["marginRight"];
+  marginTop?: TFunctionalClassNames["marginTop"];
+  marginX?: TFunctionalClassNames["marginY"];
+  marginY?: TFunctionalClassNames["marginX"];
   onSelect(...args: unknown[]): unknown;
+  placeholder?: string;
+  size?: "sm" | "sm" | "lg";
+  width?: TFunctionalClassNames["width"];
 }
 
-export const SearchCreatable = <T extends IDownshiftItem>({
-  items,
-  placeholder,
+export const SearchCreatable = ({
   id,
-  width,
-  size,
+  isLabelVisible,
+  items,
+  label,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  marginX,
+  marginY,
   onSelect,
-  ...downshiftProps
-}: SearchCreatableProps<T>): React.ReactElement<SearchCreatableProps<T>> => {
-  const formStyles = getFunctionalClassNames({ position: "relative" });
-  const [localItems, setLocalItems] = React.useState(items);
-  const [selected, setSelected] = React.useState<IDownshiftItem | null>(
-    localItems[0]
-  );
-
-  const handleItemCreate = (item: IDownshiftItem) => {
-    const newItem = { label: item.value, value: item.value };
-    setLocalItems((currItems) => [...currItems, newItem]);
-    setSelected(newItem);
-  };
-
-  const handleItemChange = (item?: IDownshiftItem) => {
-    setSelected(item || null);
-  };
-  const [isCreating, setIsCreating] = React.useState(false);
-  const [inputItems, setInputItems] = React.useState(items);
+  placeholder,
+  size,
+  width,
+}: ISearchCreatableProps) => {
   const {
-    isOpen,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    getInputProps,
     getComboboxProps,
-    highlightedIndex,
+    getInputProps,
     getItemProps,
-    setHighlightedIndex,
+    getMenuProps,
+    highlightedIndex,
     inputValue,
+    isOpen,
+    inputItems,
     selectedItem,
-  } = useCombobox({
-    ...downshiftProps,
-    items: inputItems,
-    onInputValueChange: ({ inputValue }) => {
-      const filteredItems = matchSorter(items, inputValue || "", {
-        keys: ["value", "label"],
-      });
-
-      if (isCreating && filteredItems.length > 0) {
-        setIsCreating(false);
-      }
-
-      setInputItems(filteredItems);
-    },
-    itemToString: (item) => {
-      return item ? item.value : "";
-    },
-    onStateChange: (changes) => {
-      if (
-        changes.selectedItem?.value === inputValue &&
-        !items.includes(changes.selectedItem)
-      ) {
-        // @ts-ignore
-        handleItemCreate(changes.selectedItem);
-        onSelect(changes.selectedItem);
-        setInputItems(items);
-        setIsCreating(false);
-      }
-    },
-  });
-
-  React.useEffect(() => {
-    if (inputItems.length === 0) {
-      setIsCreating(true);
-      // @ts-ignore (not sure how to fix this LOL)
-      setInputItems([{ label: `Create ${inputValue}`, value: inputValue }]);
-      setHighlightedIndex(0);
-    }
-  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue]);
+  } = useComboboxWithCreate({ items, onSelect });
 
   return (
-    <form className={formStyles} {...getComboboxProps()}>
+    <Box position="relative" {...getComboboxProps()}>
       <SearchInput
         getInputProps={getInputProps}
         placeholder={placeholder}
         size={size}
+        isLabelVisible={isLabelVisible}
         width={width}
+        label={label}
+        id={id}
+        margin={margin}
+        marginBottom={marginBottom}
+        marginLeft={marginLeft}
+        marginRight={marginRight}
+        marginTop={marginTop}
+        marginX={marginX}
+        marginY={marginY}
       />
       <SearchResultList
         getItemProps={getItemProps}
@@ -109,10 +76,10 @@ export const SearchCreatable = <T extends IDownshiftItem>({
         highlightedIndex={highlightedIndex}
         inputValue={inputValue}
         isOpen={isOpen}
-        searchIndex={inputItems}
+        dropdownItems={inputItems}
         selectedItem={selectedItem}
       />
-    </form>
+    </Box>
   );
 };
 

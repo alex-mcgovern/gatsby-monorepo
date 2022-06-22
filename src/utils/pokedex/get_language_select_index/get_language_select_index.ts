@@ -12,6 +12,6 @@ export default function getLanguageSelectIndex({
   return allLanguagesISO.map((language) => {
     const value = language.toUpperCase();
     const link = createUrlPathFromArray([language, basePath]);
-    return { value, link };
+    return { value, label: value, link };
   });
 }

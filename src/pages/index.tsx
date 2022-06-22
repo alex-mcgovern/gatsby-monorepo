@@ -6,16 +6,17 @@ import Button from "../components/atoms/button/button";
 import Typography from "../components/atoms/typography/typography";
 import Wave from "../components/atoms/wave/wave";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import InstagramPostItem from "../components/molecules/instagram_post_item/instagram_post_item";
+import { image } from "../components/molecules/list_item/list_item.css";
 import Layout from "../components/organisms/global_layout/global_layout";
 import SectionHomepageBrandedUserExperiences from "../components/sections/homepage/section_homepage_branded_user_experiences/section_homepage_branded_user_experiences";
 import SectionHomepageDesignSystems from "../components/sections/homepage/section_homepage_design_systems/section_homepage_design_systems";
-import SectionHomepageBio from "../components/sections/homepage/section_homepage_hero/section_homepage";
+import SectionHomepageBio from "../components/sections/homepage/section_homepage_hero/section_homepage_hero";
+import SectionHomepageInstagram from "../components/sections/homepage/section_homepage_instagram/section_homepage_instagram";
 import SectionHomepagePerformance from "../components/sections/homepage/section_homepage_performance/section_homepage_performance";
 import SectionHomepagePrinciples from "../components/sections/homepage/section_homepage_principles/section_homepage_principles";
 import SectionHomepageTechStack from "../components/sections/homepage/section_homepage_tech_stack/section_homepage_tech_stack";
 import Seo from "../components/seo";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../utils/shared_props/box_props";
 
 interface IHomepageProps {
   data: {
@@ -80,7 +81,7 @@ const Homepage = ({ data }: IHomepageProps) => {
       {/* ——————————————————————————————————————————————————————————————————————————————
       //      SECTION BLOG
       // —————————————————————————————————————————————————————————————————————————————— */}
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS} marginY="spacing10">
+      <Box {...BOX_PROPS_CONTAINED} marginY="spacing10">
         <Typography fontSize="h3" as="h3">
           I am by no means an expert..{"   "} ...but I have a blog 😅
         </Typography>
@@ -104,9 +105,9 @@ const Homepage = ({ data }: IHomepageProps) => {
         </Box>
       </Box>
 
-      {/* ——————————————————————————————————————————————————————————————————————————————
-        //      INSTAGRAM SECTION
-        // —————————————————————————————————————————————————————————————————————————————— */}
+      {images && images.length > 0 && (
+        <SectionHomepageInstagram images={images} />
+      )}
     </Layout>
   );
 };

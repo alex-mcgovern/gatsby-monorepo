@@ -10,10 +10,10 @@ import SingleSelect from "../../components/molecules/single_select/single_select
 import Layout from "../../components/organisms/global_layout/global_layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
-import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 import {
-  RESPONSIVE_MAX_WIDTH_PROPS,
-  SECTION_PROPS,
+  BOX_PROPS_CONTAINED,
+  BOX_PROPS_SECTION,
 } from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonListPageProps {
@@ -21,7 +21,7 @@ interface TemplatePokemonListPageProps {
     allPokemon: {
       nodes: {
         artwork: ImageDataLike;
-        pokedexID: number;
+        pokedexID: string;
         name: string;
       }[];
     };
@@ -62,7 +62,7 @@ export default function TemplatePokemonListPage({
 
   const doc = data.doc.nodes[0].excerpt;
 
-  const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
+  const dropdownItems = getPokedexDropdownItems({ allPokemon, languageISO });
   const paginationBasePath = createUrlPathFromArray([languageISO, "pokedex"]);
 
   const languageIndexBasePath = createUrlPathFromArray([
@@ -78,23 +78,21 @@ export default function TemplatePokemonListPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
-        <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
-          <section
-            dangerouslySetInnerHTML={{ __html: doc }}
-            itemProp="articleBody"
-          />
-        </Box>
+      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
+        <section
+          dangerouslySetInnerHTML={{ __html: doc }}
+          itemProp="articleBody"
+        />
 
         <Box display="flex" marginY="spacing3" justifyContent={"space-between"}>
           <Search
             size="lg"
-            searchIndex={searchIndex}
+            dropdownItems={dropdownItems}
             placeholder={"Search for a Pokemon"}
           />
 
           <SingleSelect
-            searchIndex={languageIndex}
+            dropdownItems={languageIndex}
             size="lg"
             value={currentLanguageUpperCase}
           />

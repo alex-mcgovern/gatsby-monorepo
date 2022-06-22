@@ -23,14 +23,14 @@ export const getDropdownStyles = recipe({
   ],
   variants: {
     size: {
+      xs: [
+        {
+          fontSize: vars.fontSize.body_xs,
+        },
+      ],
       sm: [
         {
           fontSize: vars.fontSize.body_sm,
-        },
-      ],
-      md: [
-        {
-          fontSize: vars.fontSize.body_md,
         },
       ],
       lg: [

@@ -15,7 +15,12 @@ interface SeoProps {
   title: string;
 }
 
-const Seo = ({ description, lang, meta, title }: SeoProps) => {
+const Seo = ({
+  description,
+  lang,
+  //  meta,
+  title,
+}: SeoProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {

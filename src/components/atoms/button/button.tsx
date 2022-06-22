@@ -1,30 +1,12 @@
 import React from "react";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
-} from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_accessibility_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
 import { button } from "./button.css";
 import ButtonInnerContent from "./components/button_inner_content/button_inner_content";
-
-export interface IButton {
-  to?: string;
-  id?: string;
-  title?: string | number;
-  leadingIcon?: IconProp;
-  display?: TFunctionalClassNames["display"];
-  isDisabled?: boolean;
-  trailingIcon?: IconProp;
-  appearance?: "primary" | "secondary" | "tertiary";
-  size?: TSizeProp;
-  onClick?(...args: unknown[]): unknown;
-  width?: TFunctionalClassNames["width"];
-  type?: "submit" | "button";
-}
+import { IButton } from "./i_button";
 
 export default function Button({
   to,
@@ -34,8 +16,8 @@ export default function Button({
   display,
   width,
   size,
-  leadingIcon,
-  trailingIcon,
+  iconLeading,
+  iconTrailing,
   onClick,
   isDisabled,
   type,
@@ -60,8 +42,8 @@ export default function Button({
     return (
       <Link className={buttonStyle} to={to} onClick={onClick} id={id} {...rest}>
         <ButtonInnerContent
-          leadingIcon={leadingIcon}
-          trailingIcon={trailingIcon}
+          iconLeading={iconLeading}
+          iconTrailing={iconTrailing}
           title={title}
         />
       </Link>
@@ -71,8 +53,8 @@ export default function Button({
     return (
       <a className={buttonStyle} href={to} onClick={onClick} id={id} {...rest}>
         <ButtonInnerContent
-          leadingIcon={leadingIcon}
-          trailingIcon={trailingIcon}
+          iconLeading={iconLeading}
+          iconTrailing={iconTrailing}
           title={title}
         />
       </a>
@@ -88,8 +70,8 @@ export default function Button({
       {...rest}
     >
       <ButtonInnerContent
-        leadingIcon={leadingIcon}
-        trailingIcon={trailingIcon}
+        iconLeading={iconLeading}
+        iconTrailing={iconTrailing}
         title={title}
       />
     </button>
@@ -97,6 +79,6 @@ export default function Button({
 }
 Button.defaultProps = {
   appearance: "primary",
-  size: "md",
+  size: "sm",
   type: "button",
 };

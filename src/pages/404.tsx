@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/organisms/global_layout/global_layout";
 import Seo from "../components/seo";
 
-interface NotFoundPageProps {
+interface INotFoundPageProps {
   data: {
     site: {
       siteMetadata: {
@@ -13,7 +13,7 @@ interface NotFoundPageProps {
   };
 }
 
-const NotFoundPage = ({ data }: NotFoundPageProps) => {
+const NotFoundPage = ({ data }: INotFoundPageProps) => {
   const siteTitle = data.site.siteMetadata.title;
   if (siteTitle) {
     return (
@@ -24,6 +24,7 @@ const NotFoundPage = ({ data }: NotFoundPageProps) => {
       </Layout>
     );
   }
+  return null;
 };
 
 export default NotFoundPage;

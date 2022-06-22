@@ -4,14 +4,11 @@ import Box from "../../../atoms/box/box";
 import Button from "../../../atoms/button/button";
 
 interface IBlogCategoriesList {
-  categories: {
-    categoryTitle: string;
-    categoryLink: string;
-  };
+  categories: IBlogCategory[];
   currentCategoryTitle?: string;
 }
 
-const BLOG_SLUG = createUrlPathFromArray(["blog"]);
+const BLOG_LINK = createUrlPathFromArray(["blog"]);
 
 export default function BlogCategoriesList({
   categories,
@@ -27,17 +24,18 @@ export default function BlogCategoriesList({
       >
         {categories.map((category) => {
           const isActive = category.categoryTitle === currentCategoryTitle;
-          const categorySlug = createUrlPathFromArray([
+          const categoryLink = createUrlPathFromArray([
             "blog",
             category.categorySlug,
           ]);
+
           return (
             <Button
               appearance={isActive ? "primary" : "secondary"}
               size="sm"
               title={category.categoryTitle}
-              to={isActive ? BLOG_SLUG : categorySlug}
-              trailingIcon={isActive ? "times" : undefined}
+              to={isActive ? BLOG_LINK : categoryLink}
+              iconTrailing={isActive ? "times" : undefined}
             />
           );
         })}

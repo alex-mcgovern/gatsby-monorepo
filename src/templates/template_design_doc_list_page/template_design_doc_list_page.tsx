@@ -7,21 +7,27 @@ import BlogCategoriesList from "../../components/molecules/blog/blog_categories_
 import ListItem from "../../components/molecules/list_item/list_item";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Layout from "../../components/organisms/global_layout/global_layout";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
 
 interface TemplateDesignDocPageProps {
   data: {
-    allLanguagesISO: {
-      distinct?: string[];
-    }[];
     allMdx: {
       nodes?: {
-        posts?: {}[];
+        frontmatter: {
+          title: string;
+          description: string;
+          atomicLevel: string;
+          categories: string[];
+        };
+        fields: {
+          linkSlug: string;
+        };
+        body: string;
       }[];
     };
-    allPokemon: {
+    allCategories: {
       nodes?: {}[];
     };
     site: {
@@ -31,6 +37,7 @@ interface TemplateDesignDocPageProps {
     };
   };
   pageContext: {
+    allCategories: IBlogCategory[];
     currentPage?: number;
     languageISO?: string;
     pageCount?: number;
@@ -51,20 +58,9 @@ export default function TemplateDesignDocPage({
     "frontmatter.atomicLevel"
   );
 
-  console.log(components);
-
-  console.log(
-    "debug componentsGroupedByAtomicLevel",
-    componentsGroupedByAtomicLevel
-  );
-
-  const {
-    allMdx: { nodes: posts },
-  } = data;
-
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+      <Box {...BOX_PROPS_CONTAINED}>
         <Box as="section" marginY="spacing20">
           <Typography as="h1" fontSize="h2" dataSal="slide-up">
             BobUI component library documentation
@@ -75,7 +71,9 @@ export default function TemplateDesignDocPage({
             and component library built on top of Vanilla Extract and RadixUI.
           </Typography>
           <BlogCategoriesList categories={allCategories} />
-
+          {/* —————————————————————————————————————————————
+          //      RENDER ATOMIC LEVEL SECTIONS
+          // —————————————————————————————————————————————— */}
           <Box marginY="spacing6" as="section">
             {Object.keys(componentsGroupedByAtomicLevel) &&
               Object.keys(componentsGroupedByAtomicLevel).length > 0 &&
@@ -101,6 +99,9 @@ export default function TemplateDesignDocPage({
                         mobile: "1x",
                       }}
                     >
+                      {/* —————————————————————————————————————————————
+                      //      RENDER INDIVIDUAL COMPONENTS            
+                      // —————————————————————————————————————————————— */}
                       {componentsInLevel &&
                         componentsInLevel.length > 0 &&
                         componentsInLevel.map((component) => {

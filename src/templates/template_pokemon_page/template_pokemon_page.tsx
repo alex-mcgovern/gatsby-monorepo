@@ -10,13 +10,19 @@ import SingleSelect from "../../components/molecules/single_select/single_select
 import Layout from "../../components/organisms/global_layout/global_layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
-import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import {
+  BOX_PROPS_CONTAINED,
+  BOX_PROPS_SECTION,
+} from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonPageProps {
   data: {
     allPokemon: {
-      nodes: {}[];
+      nodes: {
+        pokedexID: string;
+        name: string;
+      }[];
       totalCount: number;
     };
     currentPokemon: {
@@ -70,7 +76,7 @@ export default function TemplatePokemonPage({
 
   const imageData = getImage(artwork);
 
-  const searchIndex = getPokedexSearchIndex({
+  const dropdownItems = getPokedexDropdownItems({
     allPokemon: allPokemonData,
     languageISO,
   });
@@ -86,53 +92,43 @@ export default function TemplatePokemonPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
-        <Box as="section" marginY="spacing10">
-          <Box
-            display="flex"
-            marginY="spacing3"
-            justifyContent={"space-between"}
-          >
-            <Button
-              leadingIcon="arrow-left"
-              size="lg"
-              to={allPokemonLink}
-              trailingIcon="grip"
-              appearance="secondary"
-            />
+      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
+        <Box display="flex" marginY="spacing3" justifyContent={"space-between"}>
+          <Button
+            iconLeading="arrow-left"
+            size="lg"
+            to={allPokemonLink}
+            iconTrailing="grip"
+            appearance="secondary"
+          />
 
-            <Search
-              size="lg"
-              searchIndex={searchIndex}
-              placeholder={"Search for a Pokemon"}
-            />
+          <Search
+            size="lg"
+            dropdownItems={dropdownItems}
+            placeholder={"Search for a Pokemon"}
+          />
 
-            <SingleSelect
-              searchIndex={languageIndex}
-              size="lg"
-              value={currentLanguageUpperCase}
-            />
-          </Box>
-
-          <Box as="section" display="grid" gridTemplateColumns="2_1">
-            <Box as="header" marginY="spacing10">
-              <h2>{pokemonTitle}</h2>
-              <h3>{genus}</h3>
-              <p>{flavorText}</p>
-            </Box>
-            <Box>
-              {imageData && <GatsbyImage alt={name} image={imageData} />}
-            </Box>
-          </Box>
-        </Box>
-
-        <Box>
-          <Pagination
-            basePath={paginationBasePath}
-            currentPage={pokedexID}
-            pageCount={totalCount}
+          <SingleSelect
+            dropdownItems={languageIndex}
+            size="lg"
+            value={currentLanguageUpperCase}
           />
         </Box>
+
+        <Box as="section" display="grid" gridTemplateColumns="2_1">
+          <Box as="header" marginY="spacing10">
+            <h2>{pokemonTitle}</h2>
+            <h3>{genus}</h3>
+            <p>{flavorText}</p>
+          </Box>
+          <Box>{imageData && <GatsbyImage alt={name} image={imageData} />}</Box>
+        </Box>
+
+        <Pagination
+          basePath={paginationBasePath}
+          currentPage={pokedexID}
+          pageCount={totalCount}
+        />
       </Box>
     </Layout>
   );

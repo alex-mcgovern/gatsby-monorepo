@@ -7,24 +7,20 @@ export const dropdownWrapper = style([
   resetList,
   {
     zIndex: 9000,
-    display: "block",
-    position: "absolute",
-    top: "100%",
     left: 0,
+    top: "100%",
     width: "max-content",
-
-    marginTop: vars.spacing.spacing1,
-
     overflowY: "scroll",
-    overflow: "hidden",
-
-    backgroundColor: vars.color.neutral_background,
+    marginTop: vars.spacing.spacing2,
   },
   getFunctionalClassNames({
+    display: "block",
+    position: "absolute",
     color: "primary_text_highContrast",
-    backgroundColor: "neutral_ui_base",
+    backgroundColor: "neutral_background",
     border: "1px solid",
     borderRadius: "sm",
+    overflow: "hidden",
 
     borderColor: {
       default: "neutral_border_interactive",

@@ -4,7 +4,7 @@ import { getFunctionalClassNames } from "../../../styles/functional_classnames.c
 export const instagramPostLink = style([
   getFunctionalClassNames({
     position: "relative",
-    borderRadius: "md",
+    borderRadius: "sm",
     overflow: "hidden",
   }),
 ]);

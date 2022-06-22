@@ -6,33 +6,33 @@ import * as styles from "./button_inner_content.css";
 
 interface ButtonInnerContentProps {
   title?: string | number;
-  leadingIcon?: IconProp;
-  trailingIcon?: IconProp;
+  iconLeading?: IconProp;
+  iconTrailing?: IconProp;
   size?: IconProp & TSizeProp;
   onClick?(...args: unknown[]): unknown;
 }
 
 export default function ButtonInnerContent({
   title,
-  leadingIcon,
-  trailingIcon,
+  iconLeading,
+  iconTrailing,
   size,
 }: ButtonInnerContentProps) {
   return (
     <>
-      {leadingIcon && (
+      {iconLeading && (
         <FontAwesomeIcon
-          className={styles.leadingIcon}
+          className={styles.iconLeading}
           size={size}
-          icon={leadingIcon}
+          icon={iconLeading}
         />
       )}
       {title && <span>{title}</span>}
-      {trailingIcon && (
+      {iconTrailing && (
         <FontAwesomeIcon
-          className={styles.trailingIcon}
+          className={styles.iconTrailing}
           size={size}
-          icon={trailingIcon}
+          icon={iconTrailing}
         />
       )}
     </>

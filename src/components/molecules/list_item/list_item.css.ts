@@ -20,7 +20,7 @@ export const listItemWrapper = style([
     //   hover: "neutral_border_interactive_focus",
     //   focus: "neutral_border_interactive_focus",
     // },
-    borderRadius: "md",
+    borderRadius: "sm",
     overflow: "hidden",
     boxShadow: {
       default: "shadowLight",

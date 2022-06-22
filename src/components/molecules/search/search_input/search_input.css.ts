@@ -33,14 +33,14 @@ export const getInputWrapperStyles = recipe({
     size: {
       sm: [
         {
-          fontSize: vars.fontSize.body_sm,
+          fontSize: vars.fontSize.body_xs,
           height: vars.spacing.spacing4,
         },
         getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
       ],
       md: [
         {
-          fontSize: vars.fontSize.body_md,
+          fontSize: vars.fontSize.body_sm,
           height: vars.spacing.spacing6,
         },
         getFunctionalClassNames({ paddingX: "spacing2", paddingY: "spacing1" }),
@@ -60,7 +60,7 @@ export const getInputWrapperStyles = recipe({
   },
 
   defaultVariants: {
-    size: "md",
+    size: "sm",
   },
 });
 

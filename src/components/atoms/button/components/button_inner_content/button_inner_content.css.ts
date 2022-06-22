@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../../../../styles/theme.css";
 
-export const leadingIcon = style({
+export const iconLeading = style({
   flexShrink: 0,
   justifySelf: "flex-start",
   selectors: {
@@ -10,7 +10,7 @@ export const leadingIcon = style({
     },
   },
 });
-export const trailingIcon = style({
+export const iconTrailing = style({
   flexShrink: 0,
   justifySelf: "flex-end",
   selectors: {

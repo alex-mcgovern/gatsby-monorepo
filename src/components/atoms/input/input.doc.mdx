@@ -7,14 +7,15 @@ description:
 ---
 
 import Box from "../box/box.tsx";
+import Typography from "../typography/typography.tsx";
 import Input from "./input.tsx";
 
 <Box
-  leadingIcon="search"
+  iconLeading="search"
   backgroundColor="neutral_background_dark"
   border="1px solid"
   borderColor="neutral_border_nonInteractive"
-  borderRadius="md"
+  borderRadius="sm"
   marginY="spacing3"
   overflow="hidden"
   padding="spacing3"
@@ -22,16 +23,91 @@ import Input from "./input.tsx";
   <Input placeholder="Type in me" />
 </Box>
 
-Lorem ipsum
-
 ## Variants
 
-Lorem ipsm
+## Show label
 
-### Color
+<Box
+  {...BOX_PROPS_COMPONENT_DEMO}
+  display="grid"
+  gridTemplateColumns={{ mobile: "1x", tablet: "2x" }}
+  gap="spacing3"
+  alignItems="flex-end"
+>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      true
+    </Typography>
+    <Input
+      iconTrailing="arrow-right"
+      placeholder="Look at my label"
+      size="sm"
+      isLabelVisible
+      id="input-label-visible"
+      label="Input with visible label"
+    ></Input>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      false
+    </Typography>
+    <Input
+      iconTrailing="arrow-right"
+      placeholder="No label here"
+      size="sm"
+      id="input-label-hidden"
+      label="Input with hidden label"
+    ></Input>
+  </Box>
+</Box>
 
-Lorem ipsum
+### `size`
 
-### Size
+`"sm" | "sm" | "lg"`
 
-Lorem ipsum
+<Box
+  {...BOX_PROPS_COMPONENT_DEMO}
+  display="grid"
+  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
+  gap="spacing3"
+>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Sm
+    </Typography>
+    <Input iconTrailing="arrow-right" placeholder="Type in me" size="sm"></Input>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Md
+    </Typography>
+    <Input size="sm" iconTrailing="arrow-right" placeholder="Type in me"></Input>
+  </Box>
+  <Box>
+    <Typography
+      fontSize="body_lg"
+      color="neutral_text_lowContrast"
+      marginBottom="spacing3"
+    >
+      Lg
+    </Typography>
+    <Input size="lg" iconTrailing="arrow-right" placeholder="Type in me"></Input>
+  </Box>
+
+</Box>

@@ -8,31 +8,22 @@ import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_librar
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import {
-  RESPONSIVE_MAX_WIDTH_PROPS,
-  SECTION_PROPS,
-} from "../../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
-
-interface ISectionHomepageTechStack {
-  placeholderProp?: undefined;
-}
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   padding: "spacing3",
   backgroundColor: "neutral_ui_base",
-  borderRadius: "md",
+  borderRadius: "sm",
   boxShadow: "shadowDark",
   aspectRatio: "square",
 });
 
-export default function SectionHomepageTechStack({
-  placeholderProp,
-}: ISectionHomepageTechStack) {
+export default function SectionHomepageTechStack() {
   return (
     <Box
-      {...RESPONSIVE_MAX_WIDTH_PROPS}
+      {...BOX_PROPS_CONTAINED}
       margin="spacing10"
       display="grid"
       gap="spacing6"
@@ -57,7 +48,7 @@ export default function SectionHomepageTechStack({
         <Typography
           fontSize="h6"
           fontWeight="medium"
-          color="primary_text_lowContrast"
+          color="accent_text_lowContrast"
           // marginBottom="spacing6"
         >
           Modern tech stack

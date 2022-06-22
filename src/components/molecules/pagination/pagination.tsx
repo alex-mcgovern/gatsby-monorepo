@@ -29,17 +29,17 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       as="nav"
       justifyContent={"center"}
       marginY="spacing3"
-      gap="spacing3"
+      gap="spacing1"
     >
       <Button
         appearance="secondary"
-        leadingIcon="angles-left"
+        iconLeading="angles-left"
         to={firstPath}
         isDisabled={isFirstOrPrevDisabled}
       />
       <Button
         appearance="secondary"
-        leadingIcon="arrow-left"
+        iconLeading="arrow-left"
         to={previousPath}
         isDisabled={isFirstOrPrevDisabled}
       />
@@ -51,13 +51,13 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
         })}
       <Button
         appearance="secondary"
-        trailingIcon="arrow-right"
+        iconTrailing="arrow-right"
         to={nextPath}
         isDisabled={isNextOrLastDisabled}
       />
       <Button
         appearance="secondary"
-        trailingIcon="angles-right"
+        iconTrailing="angles-right"
         to={lastPath}
         isDisabled={isNextOrLastDisabled}
       />

@@ -55,16 +55,16 @@ export default function ListItem({
         )}
         {subtitle && (
           <Typography
-            fontSize="body_md"
+            fontSize="body_sm"
             marginBottom="spacing2"
             fontWeight="medium"
-            color="primary_text_lowContrast"
+            color="accent_text_lowContrast"
           >
             {subtitle}
           </Typography>
         )}
         {description && (
-          <Typography fontSize="body_md">{description}</Typography>
+          <Typography fontSize="body_sm">{description}</Typography>
         )}
       </Box>
     </Link>

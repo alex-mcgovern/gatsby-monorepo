@@ -55,9 +55,11 @@
     "bloks",
     "Bulbasaur",
     "Bulbizarre",
-    "capitalise",
+    "codepaths",
+    "Combobox",
     "deduped",
     "deduplicated",
+    "flavor",
     "frontmatter",
     "gtag",
     "hubspot",
@@ -67,15 +69,13 @@
     "janky",
     "localised",
     "logomark",
-    "neutral_text_lowContrast",
+    "plugins",
     "pokedex",
-    "sanitised",
-    "specialised",
     "startpage",
     "stylelint",
     "testid",
-    "truelayer"
+    "truelayer",
+    "tsbuildinfo"
   ],
-  "git.ignoreLimitWarning": true,
-  "stylelint.configFile": ".stylelintrc.json"
+  "git.ignoreLimitWarning": true
 }

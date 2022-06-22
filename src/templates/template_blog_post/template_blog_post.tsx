@@ -8,7 +8,7 @@ import Layout from "../../components/organisms/global_layout/global_layout";
 import Seo from "../../components/seo";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
 import { getFunctionalClassNames } from "../../styles/functional_classnames.css";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
 
 interface BlogPostTemplateProps {
   data: {
@@ -58,7 +58,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   const {} = data;
   const image = cover && getImage(cover);
   const imageClassNames = getFunctionalClassNames({
-    borderRadius: "md",
+    borderRadius: "sm",
     overflow: "hidden",
     boxShadow: "shadowLight",
     aspectRatio: "wide",
@@ -73,7 +73,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
       />
       <Box
         display="grid"
-        {...RESPONSIVE_MAX_WIDTH_PROPS}
+        {...BOX_PROPS_CONTAINED}
         gap="spacing3"
         alignItems="flex-start"
         gridTemplateColumns={{ mobile: "1x", tablet: "2_1", desktop: "3_1" }}
@@ -82,12 +82,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
         {/* —————————————————————————————————————————————————————————————————————————————
         //      ARTICLE BODY                                                            
         // —————————————————————————————————————————————————————————————————————————————— */}
-        <Box as="article" itemScope itemType="http://schema.org/Article">
+        <Box as="article">
           <Box as="section">
             <Box as="header" marginBottom="spacing10">
               <Button
                 appearance="tertiary"
-                leadingIcon="arrow-left"
+                iconLeading="arrow-left"
                 title="All blog posts"
                 to="/blog"
               />
@@ -101,7 +101,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
                 fontSize="h6"
                 marginBottom="spacing6"
                 fontWeight="medium"
-                color="primary_text_lowContrast"
+                color="accent_text_lowContrast"
               >
                 {post.frontmatter.date}
               </Typography>
@@ -136,12 +136,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
             as="nav"
           >
             <Button
-              leadingIcon="arrow-left"
+              iconLeading="arrow-left"
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
             <Button
-              trailingIcon="arrow-right"
+              iconTrailing="arrow-right"
               to={next?.fields?.slug}
               title={next?.frontmatter?.title}
             />

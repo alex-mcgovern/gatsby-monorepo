@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import Box from "../../../../../components/atoms/box/box";
@@ -10,30 +10,31 @@ import firebase from "../../../../../utils/firebase/firebase";
 import { dialogContent, dialogOverlay } from "./create_new_task_dialog.css";
 
 interface ICreateNewTaskDialog {
-  statusesSearchIndex: {
-    value: string;
+  statusesDropdownItems: {
+    value: string | number;
+    label: string | number;
   }[];
-  epicsSearchIndex: {
-    value: string;
+  epicsDropdownItems: {
+    value: string | number;
+    label: string | number;
   }[];
 }
 
 export default function CreateNewTaskDialog({
-  statusesSearchIndex,
-  epicsSearchIndex,
+  statusesDropdownItems,
+  epicsDropdownItems,
 }: ICreateNewTaskDialog) {
   const [title, setTitle] = useState("");
   const [epic, setEpic] = useState("");
   const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       // allow creating new epics on the fly as you create tasks
       if (
         epic &&
         epic !== "" &&
-        !epicsSearchIndex.find((item) => item.value === epic)
+        !epicsDropdownItems.find((item) => item.value === epic)
       ) {
         await addDoc(collection(firebase.firestore(), "epics"), {
           title: epic,
@@ -44,7 +45,7 @@ export default function CreateNewTaskDialog({
       if (
         status &&
         status !== "" &&
-        !statusesSearchIndex.find((item) => item.value === status)
+        !statusesDropdownItems.find((item) => item.value === status)
       ) {
         await addDoc(collection(firebase.firestore(), "statuses"), {
           title: status,
@@ -87,67 +88,42 @@ export default function CreateNewTaskDialog({
             // —————————————————————————————————————————————— */}
           <form onSubmit={handleSubmit} name="addTask">
             {/* Task title input */}
-            <Box
-              as="fieldset"
-              display="grid"
-              gridTemplateColumns="1_3"
-              gap="spacing1"
-              marginBottom="spacing2"
-              alignItems="center"
-            >
-              <Typography as="label" htmlFor="title">
-                Title
-              </Typography>
+            <Box as="fieldset" marginY="spacing3">
               <Input
                 id="title"
+                isLabelVisible
+                size="lg"
+                label="Task"
+                marginBottom="spacing2"
                 placeholder="Give this task a name"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setTitle(e.target.value as string)
+                }
               />
-            </Box>
-            {/* Task epic creatable search combobox  */}
-            <Box
-              as="fieldset"
-              display="grid"
-              gridTemplateColumns="1_3"
-              gap="spacing1"
-              marginBottom="spacing2"
-              alignItems="center"
-            >
-              <Typography as="label" htmlFor="epic">
-                Epic
-              </Typography>
 
               <SearchCreatable
                 id="epic"
-                size="md"
+                isLabelVisible
+                size="lg"
+                items={epicsDropdownItems}
+                label="Epic"
+                marginBottom="spacing2"
                 placeholder="Select an epic or create a new one"
                 width="100%"
-                items={epicsSearchIndex}
                 onSelect={({ value }) => {
                   setEpic(value);
                 }}
               />
-            </Box>
 
-            {/* Task status creatable search combobox  */}
-
-            <Box
-              as="fieldset"
-              display="grid"
-              gridTemplateColumns="1_3"
-              gap="spacing1"
-              marginBottom="spacing2"
-              alignItems="center"
-            >
-              <Typography as="label" htmlFor="status">
-                Status
-              </Typography>
               <SearchCreatable
                 id="status"
-                size="md"
+                isLabelVisible
+                size="lg"
+                items={statusesDropdownItems}
+                label="Status"
+                marginBottom="spacing2"
                 placeholder="Select a status or create a new one"
                 width="100%"
-                items={statusesSearchIndex}
                 onSelect={({ value }) => {
                   setStatus(value);
                 }}
@@ -159,9 +135,11 @@ export default function CreateNewTaskDialog({
             <Box display="flex" justifyContent="flex-start">
               <DialogPrimitive.Close asChild>
                 <Button
-                  title="Save changes"
                   aria-label="Close"
+                  size="lg"
+                  title="Save changes"
                   type="submit"
+                  width="100%"
                   onClick={handleSubmit}
                 />
               </DialogPrimitive.Close>

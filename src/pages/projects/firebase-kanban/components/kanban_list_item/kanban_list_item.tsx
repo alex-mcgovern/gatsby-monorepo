@@ -6,13 +6,18 @@ import Typography from "../../../../../components/atoms/typography/typography";
 import SingleSelect from "../../../../../components/molecules/single_select/single_select/single_select";
 import firebase from "../../../../../utils/firebase/firebase";
 
-interface IKanbanListItem {
+interface IKanbanListItemProps {
   id: string;
   title: string;
   epic?: string;
   status?: string;
-  statusesSearchIndex: IDownshiftItem[];
-  epicsSearchIndex: IDownshiftItem[];
+  statusesDropdownItems: IDownshiftItem[];
+  epicsDropdownItems: IDownshiftItem[];
+}
+
+interface IOnSelectArgs {
+  value: string;
+  key: string;
 }
 
 export default function KanbanListItem({
@@ -20,12 +25,14 @@ export default function KanbanListItem({
   title,
   status,
   epic,
-  statusesSearchIndex,
-  epicsSearchIndex,
-}: IKanbanListItem) {
+  statusesDropdownItems,
+  epicsDropdownItems,
+}: IKanbanListItemProps) {
+  // Get a ref to the current task
+
   const taskDocRef = doc(firebase.firestore(), "tasks", id);
 
-  const onSelect = useCallback(async ({ value, key }) => {
+  const onSelect = useCallback(async ({ value, key }: IOnSelectArgs) => {
     try {
       await updateDoc(taskDocRef, {
         [key]: value,
@@ -49,7 +56,7 @@ export default function KanbanListItem({
       boxShadow="shadowLight"
       backgroundColor="neutral_ui_base"
       marginBottom="spacing1"
-      borderRadius="md"
+      borderRadius="sm"
       border="1px solid"
       borderColor={{
         default: "neutral_ui_selected",
@@ -72,22 +79,22 @@ export default function KanbanListItem({
         gap="spacing1"
         marginBottom="spacing1"
       >
-        <Typography fontSize="body_sm">Status</Typography>
+        <Typography fontSize="body_xs">Status</Typography>
         <SingleSelect
           size="sm"
           width="100%"
           value={status}
-          searchIndex={statusesSearchIndex}
+          dropdownItems={statusesDropdownItems}
           onSelect={({ value }) => {
             onSelect({ value, key: "status" });
           }}
         />
-        <Typography fontSize="body_sm">Epic</Typography>
+        <Typography fontSize="body_xs">Epic</Typography>
         <SingleSelect
           width="100%"
           size="sm"
           value={epic}
-          searchIndex={epicsSearchIndex}
+          dropdownItems={epicsDropdownItems}
           onSelect={({ value }) => {
             onSelect({ value, key: "epic" });
           }}

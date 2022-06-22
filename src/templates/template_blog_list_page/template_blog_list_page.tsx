@@ -6,22 +6,14 @@ import BlogCategoriesList from "../../components/molecules/blog/blog_categories_
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Layout from "../../components/organisms/global_layout/global_layout";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
 
 interface TemplateBlogListPageProps {
   data: {
-    allLanguagesISO: {
-      distinct?: string[];
-    }[];
     allMarkdownRemark: {
-      nodes?: {
-        posts?: {}[];
-      }[];
-    };
-    allPokemon: {
-      nodes?: {}[];
+      nodes?: IMarkdownRemarkBlogPost[];
     };
     site: {
       siteMetadata?: {
@@ -30,6 +22,7 @@ interface TemplateBlogListPageProps {
     };
   };
   pageContext: {
+    allCategories: IBlogCategory[];
     currentPage?: number;
     languageISO?: string;
     pageCount?: number;
@@ -44,15 +37,13 @@ export default function TemplateBlogListPage({
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  console.log("debug categories", allCategories);
-
   const {
     allMarkdownRemark: { nodes: posts },
   } = data;
 
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+      <Box {...BOX_PROPS_CONTAINED}>
         <Box as="section" marginY="spacing20">
           <Typography as="h1" fontSize="h2" dataSal="slide-up">
             Things I think are cool or are worth sharing.

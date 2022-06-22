@@ -7,22 +7,14 @@ import BlogCategoriesList from "../../components/molecules/blog/blog_categories_
 import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import Pagination from "../../components/molecules/pagination/pagination";
 import Layout from "../../components/organisms/global_layout/global_layout";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
 
 const PAGINATION_BASE_PATH = "blog";
 
 interface TemplateBlogListCategoryPageProps {
   data: {
-    allLanguagesISO: {
-      distinct?: string[];
-    }[];
     allMarkdownRemark: {
-      nodes?: {
-        posts?: {}[];
-      }[];
-    };
-    allPokemon: {
-      nodes?: {}[];
+      nodes?: IMarkdownRemarkBlogPost[];
     };
     site: {
       siteMetadata?: {
@@ -31,6 +23,8 @@ interface TemplateBlogListCategoryPageProps {
     };
   };
   pageContext: {
+    currentCategoryTitle: string;
+    allCategories: IBlogCategory[];
     currentPage?: number;
     languageISO?: string;
     pageCount?: number;
@@ -44,8 +38,6 @@ export default function TemplateBlogListCategoryPage({
   const { currentPage, pageCount, allCategories, currentCategoryTitle } =
     pageContext;
 
-  console.log("debug currentCategoryTitle", currentCategoryTitle);
-
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   const {
@@ -54,11 +46,11 @@ export default function TemplateBlogListCategoryPage({
 
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
+      <Box {...BOX_PROPS_CONTAINED}>
         <Box as="section" marginY="spacing10">
           <Button
             appearance="tertiary"
-            leadingIcon="arrow-left"
+            iconLeading="arrow-left"
             title="Back to blog"
             to="/blog"
           />

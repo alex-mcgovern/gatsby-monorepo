@@ -9,9 +9,9 @@ interface DropdownListItemProps {
   getItemProps(...args: unknown[]): unknown;
   highlightedIndex: number | null;
   index: number;
-  size?: "sm" | "md" | "lg";
+  size?: TSizeProp;
   item: IDownshiftItem;
-  selectedItem?: {};
+  selectedItem?: IDownshiftItem | null;
 }
 
 export default function DropdownListItem({
@@ -21,7 +21,6 @@ export default function DropdownListItem({
   item,
   size,
   selectedItem,
-  selectItem,
 }: DropdownListItemProps) {
   const dropdownStyles = styles.getDropdownStyles({
     size,
@@ -31,11 +30,6 @@ export default function DropdownListItem({
     [styles.isHighlighted]: highlightedIndex === index,
     [styles.isSelected]: selectedItem === item,
   });
-
-  // const onClick = () => {
-  //   alert("yas");
-  //   return selectItem(item);
-  // };
 
   return (
     <li className={styles.resultWrapper}>

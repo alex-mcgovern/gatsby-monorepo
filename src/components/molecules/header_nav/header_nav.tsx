@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
 import { ThemeContext } from "../../../context/theme_context";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../utils/shared_props/box_props";
 import Box from "../../atoms/box/box";
 import Button from "../../atoms/button/button";
 import SingleSelect from "../single_select/single_select/single_select";
@@ -13,20 +13,21 @@ const DESIGN_SYSTEM_LINK = createUrlPathFromArray([
   "design-system",
 ]);
 const DROPDOWN_INDEX = [
-  { value: "BobUI Design system", link: DESIGN_SYSTEM_LINK },
-  { value: "Firebase Kanban", link: KANBAN_LINK },
-  { value: "Multilingual Pokedex", link: POKEDEX_LINK },
+  {
+    value: "BobUI Design system",
+    label: "BobUI Design system",
+    link: DESIGN_SYSTEM_LINK,
+  },
+  { value: "Firebase Kanban", label: "Firebase Kanban", link: KANBAN_LINK },
+  {
+    value: "Multilingual Pokedex",
+    label: "Multilingual Pokedex",
+    link: POKEDEX_LINK,
+  },
 ];
 
 export default function StickyNav() {
-  const theme = useContext(ThemeContext);
-
-  const darkMode = theme.state.darkMode;
-
-  const onClick = () => {
-    if (darkMode) theme.dispatch({ type: "LIGHTMODE" });
-    else theme.dispatch({ type: "DARKMODE" });
-  };
+  const { dark, toggleDark } = useContext(ThemeContext);
 
   return (
     <Box
@@ -42,24 +43,24 @@ export default function StickyNav() {
         marginY="spacing3"
         justifyContent="space-between"
         width="gridWidth"
-        {...RESPONSIVE_MAX_WIDTH_PROPS}
+        {...BOX_PROPS_CONTAINED}
       >
-        <Button leadingIcon="house" size="md" to="/" title="Home" />
+        <Button iconLeading="house" size="sm" to="/" title="Home" />
 
         <Box display="flex" alignItems="center" gap="spacing2">
-          <Button title="Blog" to="/blog" size="md" appearance="tertiary" />
+          <Button title="Blog" to="/blog" size="sm" appearance="tertiary" />
 
           <SingleSelect
-            searchIndex={DROPDOWN_INDEX}
-            size="md"
+            dropdownItems={DROPDOWN_INDEX}
+            size="sm"
             value="Projects"
             appearance="tertiary"
           />
-          <Button size="md" to="/" title="Connect" appearance="tertiary" />
+          <Button size="sm" to="/" title="Connect" appearance="tertiary" />
           <Button
-            leadingIcon={darkMode ? "sun" : "moon"}
-            onClick={onClick}
-            size="md"
+            iconLeading={dark ? "sun" : "moon"}
+            onClick={toggleDark}
+            size="sm"
             appearance="tertiary"
           />
         </Box>

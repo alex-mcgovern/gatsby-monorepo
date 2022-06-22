@@ -2,6 +2,7 @@ import { globalStyle } from "@vanilla-extract/css";
 import "./global/global_button.css";
 import "./global/global_fieldset.css";
 import "./global/global_headings.css";
+import "./global/global_input.css";
 import "./global/global_paragraph_styles.css";
 import { vars } from "./theme.css";
 

@@ -54,13 +54,13 @@ const SectionDesignSystemHero = ({ bio }: ISectionDesignSystemHero) => {
             justifyContent="center"
           >
             <Button
-              trailingIcon="arrow-right"
+              iconTrailing="arrow-right"
               title="Documentation"
               size="lg"
               to="/projects/design-system/components"
             />
             <Button
-              // trailingIcon="arrow-right"
+              // iconTrailing="arrow-right"
               title="Read the blog post"
               size="lg"
               to="/hello-world/"

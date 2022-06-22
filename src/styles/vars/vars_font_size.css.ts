@@ -9,6 +9,6 @@ export const varsFontSize = {
   h6: "1.44rem",
 
   body_lg: "1.2rem",
-  body_md: "1rem",
-  body_sm: "0.833rem",
+  body_sm: "1rem",
+  body_xs: "0.833rem",
 };

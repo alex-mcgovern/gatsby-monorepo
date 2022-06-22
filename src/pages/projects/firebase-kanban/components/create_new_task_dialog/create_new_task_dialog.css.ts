@@ -1,6 +1,5 @@
 import { keyframes, style } from "@vanilla-extract/css";
 import { getFunctionalClassNames } from "../../../../../styles/functional_classnames.css";
-import { vars } from "../../../../../styles/theme.css";
 
 const overlayShow = keyframes({
   "0%": { opacity: 0 },
@@ -45,7 +44,7 @@ export const dialogContent = style([
   },
   getFunctionalClassNames({
     backgroundColor: "neutral_ui_base",
-    borderRadius: "md",
+    borderRadius: "sm",
     boxShadow: "shadowDark",
     width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan6" },
     maxHeight: "75vh",

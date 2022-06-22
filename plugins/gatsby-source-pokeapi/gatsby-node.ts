@@ -18,10 +18,6 @@ interface ISourcePokeApiPluginOptions extends PluginOptions {
   };
 }
 
-interface IOnCreatePokedexNode extends Node {
-  artworkUrl: string;
-}
-
 export const onPreInit: GatsbyNode["onPreInit"] = () => {
   console.info(`${PLUGIN_NAME} plugin initializing`);
 };

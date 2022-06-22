@@ -4,5 +4,5 @@ globalStyle(`button`, {
   WebkitAppearance: "none",
   border: "none",
   textDecoration: "none",
-  backgroundColor: "none",
+  background: "none",
 });

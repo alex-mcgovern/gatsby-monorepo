@@ -1,11 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { ImageDataLike } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import Box from "../../components/atoms/box/box";
 import Button from "../../components/atoms/button/button";
 import Layout from "../../components/organisms/global_layout/global_layout";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../utils/shared_props/box_props";
+import {
+  BOX_PROPS_CONTAINED,
+  BOX_PROPS_SECTION,
+} from "../../utils/shared_props/box_props";
 
 interface ITemplateDesignDocsComponentPageProps {
   data: {
@@ -16,10 +18,12 @@ interface ITemplateDesignDocsComponentPageProps {
     currentComponent: {
       edges: {
         node: {
-          flavorText: string;
-          name: string;
-          genus: string;
-          artwork: ImageDataLike;
+          frontmatter: {
+            title: string;
+            atomicLevel: string;
+            categories: string[];
+          };
+          body: string;
         };
       }[];
     };
@@ -42,11 +46,15 @@ interface ITemplateDesignDocsComponentPageProps {
 
 export default function TemplateDesignDocsComponentPage({
   data,
-  pageContext,
-}: ITemplateDesignDocsComponentPageProps) {
-  const { allComponents, allLanguagesISO, site, currentComponent } = data;
-  const { nodes: allComponentData, totalCount } = allComponents;
-  console.log("debug allComponents", allComponents);
+}: // pageContext,
+ITemplateDesignDocsComponentPageProps) {
+  const {
+    // allComponents,
+    site,
+    currentComponent,
+  } = data;
+  // const { nodes: allComponentData, totalCount } = allComponents;
+
   const {
     node: {
       frontmatter: { title, atomicLevel, categories },
@@ -57,28 +65,26 @@ export default function TemplateDesignDocsComponentPage({
 
   // allLanguagesISO: { distinct: allLanguagesISO },
 
-  //   const searchIndex = getPokedexSearchIndex({
+  //   const dropdownItems = getPokedexDropdownItems({
   //     allComponents: allComponentData,
   //     languageISO,
   //   });
 
   return (
     <Layout title={siteTitle}>
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS}>
-        <Box as="section" marginY="spacing20">
-          <Box as="header" marginY="spacing10">
-            <Button
-              appearance="tertiary"
-              leadingIcon="arrow-left"
-              title="All components"
-              to={"/projects/design-system/components"}
-            />
-            <h1>{title}</h1>
-            <h2>{atomicLevel}</h2>
-            <h2>{categories}</h2>
+      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
+        <Box as="header" marginY="spacing10">
+          <Button
+            appearance="tertiary"
+            iconLeading="arrow-left"
+            title="All components"
+            to={"/projects/design-system/components"}
+          />
+          <h1>{title}</h1>
+          <h2>{atomicLevel}</h2>
+          <h2>{categories}</h2>
 
-            <MDXRenderer>{body}</MDXRenderer>
-          </Box>
+          <MDXRenderer>{body}</MDXRenderer>
         </Box>
       </Box>
     </Layout>

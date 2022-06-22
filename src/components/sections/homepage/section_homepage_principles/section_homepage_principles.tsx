@@ -2,14 +2,12 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { RESPONSIVE_MAX_WIDTH_PROPS } from "../../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
 import Wave from "../../../atoms/wave/wave";
 
-interface ISectionHomepagePrinciples {
-  placeholderProp?: undefined;
-}
+interface ISectionHomepagePrinciples {}
 
 type TGridContent = {
   icon: IconProp;
@@ -50,9 +48,7 @@ const GRID_CONTENT: TGridContent = [
   },
 ];
 
-export default function SectionHomepagePrinciples({
-  placeholderProp,
-}: ISectionHomepagePrinciples) {
+export default function SectionHomepagePrinciples({}: ISectionHomepagePrinciples) {
   return (
     <Box
       as="section"
@@ -61,11 +57,11 @@ export default function SectionHomepagePrinciples({
     >
       <Wave color="neutral_background" waveVariant="top" />
 
-      <Box {...RESPONSIVE_MAX_WIDTH_PROPS} paddingY="spacing10">
+      <Box {...BOX_PROPS_CONTAINED} paddingY="spacing10">
         <Typography
           fontSize="h6"
           fontWeight="medium"
-          color="primary_text_lowContrast"
+          color="accent_text_lowContrast"
           // marginBottom="spacing6"
         >
           What I believe in
@@ -89,7 +85,7 @@ export default function SectionHomepagePrinciples({
         >
           {GRID_CONTENT.map((content, index) => {
             return (
-              <Box>
+              <Box dataSal="slide-up" dataSalDelay={index * 100}>
                 <FontAwesomeIcon
                   className={ICON_CLASSNAMES}
                   size="3x"
@@ -103,7 +99,7 @@ export default function SectionHomepagePrinciples({
                 >
                   {content.title}
                 </Typography>
-                <Typography fontSize="body_md">{content.body}</Typography>
+                <Typography fontSize="body_sm">{content.body}</Typography>
               </Box>
             );
           })}

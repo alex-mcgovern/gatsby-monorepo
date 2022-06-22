@@ -2,33 +2,64 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { TFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import Input from "../../../atoms/input/input";
-import * as styles from "./search_input.css";
 
 interface SearchInputProps {
   getInputProps(...args: unknown[]): unknown;
   getRootProps(...args: unknown[]): unknown;
+  iconLeading?: IconProp;
+  id: string;
+  isLabelVisible?: boolean;
+  label: string;
+  margin?: TFunctionalClassNames["margin"];
+  marginBottom?: TFunctionalClassNames["marginBottom"];
+  marginLeft?: TFunctionalClassNames["marginLeft"];
+  marginRight?: TFunctionalClassNames["marginRight"];
+  marginTop?: TFunctionalClassNames["marginTop"];
+  marginX?: TFunctionalClassNames["marginY"];
+  marginY?: TFunctionalClassNames["marginX"];
   placeholder?: string;
-  leadingIcon?: IconProp;
-  width?: TFunctionalClassNames["width"];
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "sm" | "lg";
   value?: string;
+  width?: TFunctionalClassNames["width"];
 }
 
 export default function SearchInput({
   getInputProps,
-  placeholder,
-  leadingIcon,
-  width,
-  value,
   getRootProps,
+  iconLeading,
+  id,
+  isLabelVisible,
+  label,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  marginX,
+  marginY,
+  placeholder,
   size,
+  value,
+  width,
   ...rest
 }: SearchInputProps) {
   return (
     <Input
-      width={width}
-      value={value}
+      id={id}
+      size={size}
+      isLabelVisible={isLabelVisible}
+      label={label}
+      margin={margin}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      marginTop={marginTop}
+      marginX={marginX}
+      marginY={marginY}
       placeholder={placeholder}
+      role="search"
+      value={value}
+      width={width}
       {...getInputProps()}
       {...getRootProps()}
       {...rest}
@@ -40,6 +71,6 @@ SearchInput.defaultProps = {
   getRootProps: () => {},
   getInputProps: () => {},
   placeholder: "Search",
-  leadingIcon: "search",
-  size: "md",
+  iconLeading: "search",
+  size: "sm",
 };

@@ -1,23 +1,9 @@
-module "*.svg" {
+declare module "*.svg" {
   const content: any;
   export default content;
 }
 
-type TSizeProp =
-  | "xs"
-  | "lg"
-  | "sm"
-  | "md"
-  | "1x"
-  | "2x"
-  | "3x"
-  | "4x"
-  | "5x"
-  | "6x"
-  | "7x"
-  | "8x"
-  | "9x"
-  | "10x";
+type TSizeProp = "lg" | "sm" | "sm";
 
 interface IDownshiftItem {
   label: string;
@@ -37,3 +23,20 @@ type TDataSal =
   | "flip-down"
   | "flip-left"
   | "flip-right";
+
+interface IMarkdownRemarkBlogPost {
+  fields: { slug: string };
+  excerpt: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    subtitle: string;
+    slug: string;
+    description?: string | undefined;
+    cover: ImageDataLike;
+  };
+}
+interface IBlogCategory {
+  categoryTitle: string;
+  categorySlug: string;
+}
