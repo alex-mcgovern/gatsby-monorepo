@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../../../context/theme_context";
 import "../../../styles/global.css";
 import { darkTheme, lightTheme } from "../../../styles/theme.css";
+import { checkIsClient } from "../../../utils/helper_functions/check_is_client/check_is_client";
 import { BOX_PROPS_CONTAINED } from "../../../utils/shared_props/box_props";
 import Box from "../../atoms/box/box";
 import StickyNav from "../../molecules/header_nav/header_nav";
@@ -16,7 +17,9 @@ interface LayoutProps {
 const Layout = ({ children, title, description }: LayoutProps) => {
   const { dark } = useContext(ThemeContext);
 
-  document.documentElement.className = dark ? darkTheme : lightTheme;
+  if (checkIsClient()) {
+    document.documentElement.className = dark ? darkTheme : lightTheme;
+  }
   const date = new Date().getFullYear();
 
   return (
