@@ -1,8 +1,8 @@
 export interface IFirebaseKanbanPageProps {
   data: {
-    site?: {
-      siteMetadata?: {
-        title?: string;
+    site: {
+      siteMetadata: {
+        title: string;
       };
     };
   };

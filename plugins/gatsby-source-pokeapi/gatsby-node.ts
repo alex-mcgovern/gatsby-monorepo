@@ -1,4 +1,4 @@
-import type { GatsbyNode, Node, NodeInput, PluginOptions } from "gatsby";
+import type { GatsbyNode, PluginOptions } from "gatsby";
 import { createRemoteFileNode } from "gatsby-source-filesystem";
 import { FALLBACK_PLUGIN_OPTIONS, PLUGIN_NAME } from "./constants";
 import fetchAllPokemonList from "./helper_functions/fetch_all_pokemon_list";
@@ -146,6 +146,8 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
 }) => {
   if (node.internal.type === "pokemon" && node.artworkUrl) {
     const artworkNode = await createRemoteFileNode({
+      // @ts-ignore
+      // ToDo: Fix type issue in  gatsby-source-poke-api
       url: node.artworkUrl,
       parentNodeId: node.id,
       getCache,

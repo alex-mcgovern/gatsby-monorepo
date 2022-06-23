@@ -8,9 +8,6 @@ interface IFetchAllPokemonSpeciesData {
     [key: string]: any;
   }[];
 }
-interface IFetchAllPokemonSpeciesAxiosResponse {
-  data: IDetailedPokeAPIResponsePokemonSingle;
-}
 
 export default async function fetchDetailedPokeAPIPokedexList({
   basicPokeAPIPokedexList,

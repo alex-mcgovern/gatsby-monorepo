@@ -54,6 +54,7 @@ const rehypeOptions: Options = {
   },
 };
 
+// @ts-ignore this will be refactored into MDX anyway
 const renderAst = new rehypeReact(rehypeOptions).Compiler;
 
 export default function RemarkMarkdown({ htmlAst }: IRemarkMarkdown) {

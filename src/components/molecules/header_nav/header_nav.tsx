@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../../../utils/create_url_from_path_array/create_url_path_from_array";
 import { ThemeContext } from "../../../context/theme_context";
 import { BOX_PROPS_CONTAINED } from "../../../utils/shared_props/box_props";
 import Box from "../../atoms/box/box";
 import Button from "../../atoms/button/button";
-import SingleSelect from "../single_select/single_select/single_select";
+import DropdownCombobox from "../dropdown_combobox/dropdown_combobox";
 
 const POKEDEX_LINK = createUrlPathFromArray(["en", "pokedex", "1"]);
 const KANBAN_LINK = createUrlPathFromArray(["projects", "firebase-kanban"]);
@@ -14,8 +14,8 @@ const DESIGN_SYSTEM_LINK = createUrlPathFromArray([
 ]);
 const DROPDOWN_INDEX = [
   {
-    value: "BobUI Design system",
-    label: "BobUI Design system",
+    value: "BoonDoggle.design",
+    label: "BoonDoggle.design",
     link: DESIGN_SYSTEM_LINK,
   },
   { value: "Firebase Kanban", label: "Firebase Kanban", link: KANBAN_LINK },
@@ -50,11 +50,13 @@ export default function StickyNav() {
         <Box display="flex" alignItems="center" gap="spacing2">
           <Button title="Blog" to="/blog" size="sm" appearance="tertiary" />
 
-          <SingleSelect
-            dropdownItems={DROPDOWN_INDEX}
+          <DropdownCombobox
+            items={DROPDOWN_INDEX}
             size="sm"
-            value="Projects"
-            appearance="tertiary"
+            id="projects-dropdown"
+            label="Projects"
+            buttonTitle="Projects"
+            buttonAppearance="tertiary"
           />
           <Button size="sm" to="/" title="Connect" appearance="tertiary" />
           <Button

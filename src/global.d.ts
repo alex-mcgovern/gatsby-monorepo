@@ -6,7 +6,7 @@ declare module "*.svg" {
 type TSizeProp = "lg" | "sm" | "sm";
 
 interface IDownshiftItem {
-  label: string;
+  label?: string;
   value: string;
   link?: string;
 }

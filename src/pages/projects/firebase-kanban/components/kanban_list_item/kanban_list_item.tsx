@@ -3,7 +3,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Box from "../../../../../components/atoms/box/box";
 import Button from "../../../../../components/atoms/button/button";
 import Typography from "../../../../../components/atoms/typography/typography";
-import SingleSelect from "../../../../../components/molecules/single_select/single_select/single_select";
+import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
 import firebase from "../../../../../utils/firebase/firebase";
 
 interface IKanbanListItemProps {
@@ -80,21 +80,31 @@ export default function KanbanListItem({
         marginBottom="spacing1"
       >
         <Typography fontSize="body_xs">Status</Typography>
-        <SingleSelect
+        <DropdownCombobox
+          items={statusesDropdownItems}
           size="sm"
           width="100%"
-          value={status}
-          dropdownItems={statusesDropdownItems}
+          id="status-dropdown"
+          marginBottom="spacing3"
+          justifyContent="space-between"
+          label="Status"
+          buttonTitle={status}
+          buttonAppearance="secondary"
           onSelect={({ value }) => {
             onSelect({ value, key: "status" });
           }}
         />
+
         <Typography fontSize="body_xs">Epic</Typography>
-        <SingleSelect
-          width="100%"
+        <DropdownCombobox
           size="sm"
-          value={epic}
-          dropdownItems={epicsDropdownItems}
+          width="100%"
+          id="epic-dropdown"
+          label="Epic"
+          marginBottom="spacing3"
+          buttonAppearance="secondary"
+          buttonTitle={epic}
+          items={epicsDropdownItems}
           onSelect={({ value }) => {
             onSelect({ value, key: "epic" });
           }}

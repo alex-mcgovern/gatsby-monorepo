@@ -6,7 +6,6 @@ import Button from "../components/atoms/button/button";
 import Typography from "../components/atoms/typography/typography";
 import Wave from "../components/atoms/wave/wave";
 import SectionBlogPostList from "../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import { image } from "../components/molecules/list_item/list_item.css";
 import Layout from "../components/organisms/global_layout/global_layout";
 import SectionHomepageBrandedUserExperiences from "../components/sections/homepage/section_homepage_branded_user_experiences/section_homepage_branded_user_experiences";
 import SectionHomepageDesignSystems from "../components/sections/homepage/section_homepage_design_systems/section_homepage_design_systems";
@@ -15,7 +14,6 @@ import SectionHomepageInstagram from "../components/sections/homepage/section_ho
 import SectionHomepagePerformance from "../components/sections/homepage/section_homepage_performance/section_homepage_performance";
 import SectionHomepagePrinciples from "../components/sections/homepage/section_homepage_principles/section_homepage_principles";
 import SectionHomepageTechStack from "../components/sections/homepage/section_homepage_tech_stack/section_homepage_tech_stack";
-import Seo from "../components/seo";
 import { BOX_PROPS_CONTAINED } from "../utils/shared_props/box_props";
 
 interface IHomepageProps {
@@ -48,9 +46,9 @@ interface IHomepageProps {
         excerptAst?: string;
       }[];
     };
-    site?: {
-      siteMetadata?: {
-        title?: string;
+    site: {
+      siteMetadata: {
+        title: string;
       };
     };
   };
@@ -58,14 +56,13 @@ interface IHomepageProps {
 
 const Homepage = ({ data }: IHomepageProps) => {
   const { site, bio, allMarkdownRemark, allInstagramContent } = data;
-  const siteTitle = site?.siteMetadata?.title || "Title";
+  const siteTitle = site.siteMetadata.title || "Title";
   const bioExcerpt = bio?.nodes[0].excerptAst;
   const posts = allMarkdownRemark?.nodes;
   const images = allInstagramContent?.nodes;
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="All posts" />
       <Box as="section" overflow="hidden" backgroundImage="gradient_primary">
         {bioExcerpt && <SectionHomepageBio bio={bioExcerpt} />}
         <Wave color="neutral_background" waveVariant="bottom" />

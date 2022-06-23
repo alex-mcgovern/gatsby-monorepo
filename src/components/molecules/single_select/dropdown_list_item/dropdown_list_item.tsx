@@ -6,7 +6,7 @@ import * as styles from "./dropdown_list_item.css";
 
 interface DropdownListItemProps {
   selectItem(...args: unknown[]): unknown;
-  getItemProps(...args: unknown[]): unknown;
+  getItemProps(...args: unknown[]): {};
   highlightedIndex: number | null;
   index: number;
   size?: TSizeProp;

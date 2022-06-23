@@ -12,9 +12,7 @@ import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
 
-interface ISectionHomepageDesignSystems {
-  placeholderProp?: undefined;
-}
+interface ISectionHomepageDesignSystems {}
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   padding: "spacing3",
@@ -24,9 +22,7 @@ const ICON_CLASSNAMES = getFunctionalClassNames({
   aspectRatio: "square",
 });
 
-export default function SectionHomepageDesignSystems({
-  placeholderProp,
-}: ISectionHomepageDesignSystems) {
+export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignSystems) {
   return (
     <Box
       as="section"

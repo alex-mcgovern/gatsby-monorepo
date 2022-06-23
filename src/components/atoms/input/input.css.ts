@@ -29,12 +29,12 @@ export const getInputWrapperStyles = recipe({
 
   variants: {
     size: {
-      sm: [
+      xs: [
         {
           fontSize: vars.fontSize.body_xs,
         },
       ],
-      md: [
+      sm: [
         {
           fontSize: vars.fontSize.body_sm,
         },
@@ -70,7 +70,9 @@ export const inputLabel = style([
     marginBottom: "spacing1",
   }),
 ]);
-export const icon = style({
-  color: vars.color.neutral_text_lowContrast,
-  marginRight: vars.spacing.spacing4,
-});
+export const icon = style([
+  getFunctionalClassNames({
+    color: "neutral_text_lowContrast",
+    marginLeft: "spacing2",
+  }),
+]);

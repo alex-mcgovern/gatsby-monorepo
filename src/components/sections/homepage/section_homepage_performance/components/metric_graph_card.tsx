@@ -1,14 +1,14 @@
 import React from "react";
+import { Metric } from "web-vitals";
+import getDuration from "../../../../../../utils/get_duration/get_duration";
 import { vars } from "../../../../../styles/theme.css";
-import Box, { IBox } from "../../../../atoms/box/box";
+import Box from "../../../../atoms/box/box";
 
 interface IMetricGraphCard {
-  value: number;
+  metric?: Metric;
   min: number;
   max: number;
-
-  unit?: string;
-  label: string;
+  displayUnit?: "seconds" | "ms" | "numeric";
   thresholds: {
     green: number;
     amber: number;
@@ -22,17 +22,28 @@ const getPercentageInRange = (value: number, min: number, max: number) => {
 };
 
 export default function MetricGraphCard({
-  value,
-  label,
+  metric,
   max,
-  unit,
+  displayUnit,
   min,
   thresholds,
 }: IMetricGraphCard) {
+  if (!metric || !metric.value) {
+    return <Box>Is loading</Box>;
+  }
   const strokeWidth = 12;
-  const percentage = getPercentageInRange(value, min, max);
+  const percentage = getPercentageInRange(metric.value, min, max);
   const greenPercentage = getPercentageInRange(thresholds.green, min, max);
   const amberPercentage = getPercentageInRange(thresholds.amber, min, max);
+
+  let displayValue: string = metric.value.toString();
+
+  if (displayUnit === "ms" || displayUnit === "seconds") {
+    displayValue = getDuration({ inputDuration: metric.value, displayUnit });
+  }
+  if (displayUnit === "numeric") {
+    displayValue = metric.value.toFixed(2);
+  }
 
   const radius = 50 - strokeWidth / 2;
   const pathDescription = `
@@ -63,9 +74,6 @@ export default function MetricGraphCard({
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
   };
-  if (!value) {
-    return <Box>Is loading</Box>;
-  }
 
   return (
     <svg
@@ -118,7 +126,7 @@ export default function MetricGraphCard({
           textAnchor: "middle",
         }}
       >
-        {label}
+        {metric.name}
       </text>
       <text
         className="CircularProgressbar-text"
@@ -131,7 +139,7 @@ export default function MetricGraphCard({
           textAnchor: "middle",
         }}
       >
-        {value}
+        {displayValue}
       </text>
       <text
         className="CircularProgressbar-text"
@@ -144,7 +152,7 @@ export default function MetricGraphCard({
           textAnchor: "middle",
         }}
       >
-        {unit}
+        {displayUnit}
       </text>
     </svg>
   );

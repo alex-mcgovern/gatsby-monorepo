@@ -96,7 +96,7 @@ export const lightTheme = createTheme(color, {
   primary_background: lightPrimaryPalette.purple1,
   primary_background_dark: lightPrimaryPalette.purple2,
 
-  primary_ui_base: lightPrimaryPalette.purple2,
+  primary_ui_base: lightPrimaryPalette.purple3,
   primary_ui_hover: lightPrimaryPalette.purple4,
   primary_ui_selected: lightPrimaryPalette.purple5,
 

@@ -32,12 +32,14 @@ const SectionHomepageBio = ({ bio }: IBioProps) => {
             iconTrailing="arrow-right"
             title="Get in touch"
             to="/contact/"
+            size="lg"
           />
           <Button
             // iconTrailing="arrow-right"
             title="Read an intro blog post"
             to="/hello-world/"
             appearance="secondary"
+            size="lg"
           />
         </Box>
       </Box>

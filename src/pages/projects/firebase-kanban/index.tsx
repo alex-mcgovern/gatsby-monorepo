@@ -6,7 +6,6 @@ import Box from "../../../components/atoms/box/box";
 import Button from "../../../components/atoms/button/button";
 import Typography from "../../../components/atoms/typography/typography";
 import Layout from "../../../components/organisms/global_layout/global_layout";
-import Seo from "../../../components/seo";
 import {
   IFirestoreDocument,
   useFirestoreCollection,
@@ -23,12 +22,11 @@ import { IFirebaseKanbanPageProps } from "./firebase_kanban";
 
 const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
   const { site } = data;
-  const siteTitle = site?.siteMetadata?.title || "Title";
+  const siteTitle = site.siteMetadata.title || "Title";
 
   const items: IFirestoreDocument[] = useFirestoreCollection({
     collection: "tasks",
   });
-  console.log(items);
   const itemsGroupedByEpic = groupBy(items, "epic");
 
   const statuses: IFirestoreDocument[] = useFirestoreCollection({
@@ -57,9 +55,7 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="All posts" />
-
-      <Box {...BOX_PROPS_SECTION}>
+      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
         {/* ——————————————————————————————————————————————————————————————————————————————
         //      MAP OVER EPICS    
         //      Here we create a Kanban board for each epic that we find                                                      
@@ -86,7 +82,6 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
             return (
               <Box
                 marginY="spacing10"
-                {...BOX_PROPS_CONTAINED}
                 backgroundColor="neutral_background_dark"
                 borderColor="neutral_ui_selected"
                 border="1px solid"
@@ -119,7 +114,7 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
                     <Button
                       iconTrailing="times"
                       size="sm"
-                      appearance="primary"
+                      appearance="tertiary"
                       title="Delete this epic"
                       // width="100%"
                       onClick={handleDelete}

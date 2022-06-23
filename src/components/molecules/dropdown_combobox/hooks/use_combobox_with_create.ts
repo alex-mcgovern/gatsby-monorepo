@@ -10,12 +10,14 @@ interface IDownshiftChanges {
 }
 
 interface IUseComboboxWithCreateArgs {
+  isCreatable?: boolean;
   items: IDownshiftItem[];
-  onSelect(...args: unknown[]): unknown;
+  onSelect?(...args: unknown[]): unknown;
 }
 
 export default function useComboboxWithCreate({
   items,
+  isCreatable,
   onSelect,
 }: IUseComboboxWithCreateArgs) {
   const [isCreating, setIsCreating] = useState(false);
@@ -31,8 +33,8 @@ export default function useComboboxWithCreate({
     setHighlightedIndex,
     inputValue,
     selectedItem,
+    getToggleButtonProps,
   } = useCombobox({
-    // ...downshiftProps,
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
       const filteredItems = matchSorter(items, inputValue || "", {
@@ -53,7 +55,10 @@ export default function useComboboxWithCreate({
         changes.selectedItem?.value === inputValue &&
         !items.includes(changes.selectedItem)
       ) {
-        onSelect(changes.selectedItem);
+        // Can receive an optional callback
+        if (onSelect) {
+          onSelect(changes.selectedItem);
+        }
         setInputItems(items);
         setIsCreating(false);
       }
@@ -61,10 +66,9 @@ export default function useComboboxWithCreate({
   });
 
   useEffect(() => {
-    if (inputItems.length === 0) {
+    if (inputItems.length === 0 && isCreatable) {
       setIsCreating(true);
-
-      setInputItems([{ label: `Create ${inputValue}`, value: inputValue }]);
+      setInputItems([{ label: `+ Create ${inputValue}`, value: inputValue }]);
       setHighlightedIndex(0);
     }
   }, [inputItems, setIsCreating, setHighlightedIndex, inputValue]);
@@ -74,6 +78,7 @@ export default function useComboboxWithCreate({
     getInputProps,
     getItemProps,
     getMenuProps,
+    getToggleButtonProps,
     highlightedIndex,
     inputValue,
     isOpen,

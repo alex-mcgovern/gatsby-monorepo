@@ -1,22 +1,22 @@
-import React, { FormEventHandler, useState } from "react";
+import React, { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import Box from "../../../../../components/atoms/box/box";
 import Button from "../../../../../components/atoms/button/button";
 import Input from "../../../../../components/atoms/input/input";
 import Typography from "../../../../../components/atoms/typography/typography";
-import SearchCreatable from "../../../../../components/molecules/search/search_creatable/search_creatable";
+import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
 import firebase from "../../../../../utils/firebase/firebase";
 import { dialogContent, dialogOverlay } from "./create_new_task_dialog.css";
 
 interface ICreateNewTaskDialog {
   statusesDropdownItems: {
-    value: string | number;
-    label: string | number;
+    value: string;
+    label: string;
   }[];
   epicsDropdownItems: {
-    value: string | number;
-    label: string | number;
+    value: string;
+    label: string;
   }[];
 }
 
@@ -67,7 +67,7 @@ export default function CreateNewTaskDialog({
   return (
     <DialogPrimitive.Root>
       <DialogPrimitive.Trigger asChild>
-        <Button size="sm" title="Add a task" />
+        <Button appearance="tertiary" size="sm" title="Add a task" />
       </DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className={dialogOverlay} />
@@ -101,32 +101,36 @@ export default function CreateNewTaskDialog({
                 }
               />
 
-              <SearchCreatable
+              <DropdownCombobox
                 id="epic"
                 isLabelVisible
-                size="lg"
+                isSearchable
+                isCreatable
                 items={epicsDropdownItems}
                 label="Epic"
                 marginBottom="spacing2"
-                placeholder="Select an epic or create a new one"
-                width="100%"
                 onSelect={({ value }) => {
                   setEpic(value);
                 }}
+                placeholder="Select an epic or create a new one"
+                size="lg"
+                width="100%"
               />
 
-              <SearchCreatable
+              <DropdownCombobox
                 id="status"
                 isLabelVisible
-                size="lg"
+                isSearchable
+                isCreatable
                 items={statusesDropdownItems}
                 label="Status"
                 marginBottom="spacing2"
-                placeholder="Select a status or create a new one"
-                width="100%"
                 onSelect={({ value }) => {
                   setStatus(value);
                 }}
+                placeholder="Select a status or create a new one"
+                size="lg"
+                width="100%"
               />
             </Box>
             {/* ——————————————————————————————————————————————
@@ -137,7 +141,7 @@ export default function CreateNewTaskDialog({
                 <Button
                   aria-label="Close"
                   size="lg"
-                  title="Save changes"
+                  title="Create task"
                   type="submit"
                   width="100%"
                   onClick={handleSubmit}

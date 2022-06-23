@@ -3,12 +3,7 @@ import { TFunctionalClassNames } from "../../../styles/functional_classnames.css
 
 export interface IButton {
   /** Variant prop controlling button appearance. */
-  appearance?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "primaryAccent"
-    | "secondaryAccent";
+  appearance?: "primary" | "secondary" | "tertiary";
   /** Utility-first style prop controlling css display property. */
   display?: TFunctionalClassNames["display"];
   /** Icon show on the left side of button. */

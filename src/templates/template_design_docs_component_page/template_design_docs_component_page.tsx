@@ -27,9 +27,9 @@ interface ITemplateDesignDocsComponentPageProps {
         };
       }[];
     };
-    site?: {
-      siteMetadata?: {
-        title?: string;
+    site: {
+      siteMetadata: {
+        title: string;
       };
     };
     allLanguagesISO: {
@@ -61,7 +61,7 @@ ITemplateDesignDocsComponentPageProps) {
       body,
     },
   } = currentComponent?.edges[0];
-  const siteTitle = site?.siteMetadata?.title || `Title`;
+  const siteTitle = site.siteMetadata.title || `Title`;
 
   // allLanguagesISO: { distinct: allLanguagesISO },
 
@@ -77,6 +77,7 @@ ITemplateDesignDocsComponentPageProps) {
           <Button
             appearance="tertiary"
             iconLeading="arrow-left"
+            size="lg"
             title="All components"
             to={"/projects/design-system/components"}
           />

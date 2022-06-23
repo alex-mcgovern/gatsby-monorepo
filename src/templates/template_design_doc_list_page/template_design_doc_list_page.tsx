@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
+import { Button } from "../../components/atoms";
 import Box from "../../components/atoms/box/box";
 import Typography from "../../components/atoms/typography/typography";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
@@ -62,13 +63,21 @@ export default function TemplateDesignDocPage({
     <Layout title={siteTitle}>
       <Box {...BOX_PROPS_CONTAINED}>
         <Box as="section" marginY="spacing20">
+          <Button
+            appearance="tertiary"
+            iconLeading="arrow-left"
+            size="lg"
+            title="BoonDoggle landing page"
+            to="/projects/design-system"
+          />
           <Typography as="h1" fontSize="h2" dataSal="slide-up">
-            BobUI component library documentation
+            BoonDoggle component library documentation
           </Typography>
 
           <Typography as="p" fontSize="body_lg">
-            BobUI is a proof-of-concept for a lightweight, modern design system
-            and component library built on top of Vanilla Extract and RadixUI.
+            BoonDoggle is a proof-of-concept for a lightweight, modern design
+            system and component library built on top of Vanilla Extract and
+            RadixUI.
           </Typography>
           <BlogCategoriesList categories={allCategories} />
           {/* —————————————————————————————————————————————

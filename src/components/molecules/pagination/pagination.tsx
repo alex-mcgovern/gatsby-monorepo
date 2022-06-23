@@ -1,5 +1,5 @@
 import React from "react";
-import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../../../utils/create_url_from_path_array/create_url_path_from_array";
 import Box from "../../atoms/box/box";
 import Button from "../../atoms/button/button";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";

@@ -51,6 +51,7 @@ export default function TemplateBlogListCategoryPage({
           <Button
             appearance="tertiary"
             iconLeading="arrow-left"
+            size="lg"
             title="Back to blog"
             to="/blog"
           />

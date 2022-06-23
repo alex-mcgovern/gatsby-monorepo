@@ -5,11 +5,8 @@ import { getFunctionalClassNames } from "../../../../styles/functional_classname
 import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
-import Wave from "../../../atoms/wave/wave";
 
-interface ISectionDesignSystemFeatures {
-  placeholderProp?: undefined;
-}
+interface ISectionDesignSystemFeatures {}
 
 type TGridContent = {
   icon: IconProp;
@@ -40,9 +37,7 @@ const GRID_CONTENT: TGridContent = [
   },
 ];
 
-export default function SectionDesignSystemFeatures({
-  placeholderProp,
-}: ISectionDesignSystemFeatures) {
+export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeatures) {
   return (
     <Box {...BOX_PROPS_CONTAINED} paddingY="spacing10">
       <Typography
@@ -51,7 +46,7 @@ export default function SectionDesignSystemFeatures({
         color="accent_text_lowContrast"
         // marginBottom="spacing6"
       >
-        What is BobUI?
+        What is BoonDoggle?
       </Typography>
       <Typography
         as="h2"
@@ -73,7 +68,7 @@ export default function SectionDesignSystemFeatures({
       >
         {GRID_CONTENT.map((content, index) => {
           return (
-            <Box>
+            <Box dataSal="slide-up" dataSalDelay={index * 100}>
               <FontAwesomeIcon
                 className={ICON_CLASSNAMES}
                 size="3x"

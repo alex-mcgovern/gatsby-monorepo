@@ -1,12 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../../utils/create_url_from_path_array/create_url_path_from_array";
 import Box from "../../components/atoms/box/box";
 import Button from "../../components/atoms/button/button";
+import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
 import Pagination from "../../components/molecules/pagination/pagination";
-import Search from "../../components/molecules/search/search/search";
-import SingleSelect from "../../components/molecules/single_select/single_select/single_select";
 import Layout from "../../components/organisms/global_layout/global_layout";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
@@ -35,9 +34,9 @@ interface TemplatePokemonPageProps {
         };
       }[];
     };
-    site?: {
-      siteMetadata?: {
-        title?: string;
+    site: {
+      siteMetadata: {
+        title: string;
       };
     };
     allLanguagesISO: {
@@ -57,12 +56,14 @@ export default function TemplatePokemonPage({
   pageContext,
 }: TemplatePokemonPageProps) {
   const { pokedexID, languageISO } = pageContext;
-  const { allPokemon, allLanguagesISO, site, currentPokemon } = data;
+  const { allPokemon, allLanguagesISO, currentPokemon } = data;
+
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
   const { nodes: allPokemonData, totalCount } = allPokemon;
   const {
     node: { flavorText, name, genus, artwork },
   } = currentPokemon?.edges[0];
-  const siteTitle = site?.siteMetadata?.title || `Title`;
 
   // allLanguagesISO: { distinct: allLanguagesISO },
 
@@ -102,16 +103,23 @@ export default function TemplatePokemonPage({
             appearance="secondary"
           />
 
-          <Search
+          <DropdownCombobox
+            items={dropdownItems}
+            isSearchable
             size="lg"
-            dropdownItems={dropdownItems}
-            placeholder={"Search for a Pokemon"}
+            iconLeading="search"
+            id="pokedex-search"
+            label="Search"
+            placeholder="Search for a Pokemon"
+            buttonTitle={currentLanguageUpperCase}
           />
 
-          <SingleSelect
-            dropdownItems={languageIndex}
+          <DropdownCombobox
+            items={languageIndex}
             size="lg"
-            value={currentLanguageUpperCase}
+            id="language-dropdown"
+            label="Status"
+            buttonTitle={currentLanguageUpperCase}
           />
         </Box>
 

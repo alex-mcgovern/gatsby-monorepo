@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  BOX_PROPS_CONTAINED,
-  BOX_PROPS_SECTION,
-} from "../../../../utils/shared_props/box_props";
-import Box, { IBox } from "../../../atoms/box/box";
+import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
+import Box from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
 
 interface SectionHomepageBrandedUserExperiencesProps {}

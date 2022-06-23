@@ -4,6 +4,7 @@ import { getFunctionalClassNames } from "../../../styles/functional_classnames.c
 export const button = recipe({
   base: [
     getFunctionalClassNames({
+      flexShrink: "0",
       fontWeight: "medium",
       textDecoration: {
         default: "none",
@@ -26,26 +27,18 @@ export const button = recipe({
           paddingX: "spacing2",
           paddingY: "spacing1",
 
-          color: "white",
-
+          color: "primary_text_lowContrast",
           backgroundColor: {
-            default: "primary_solid_base",
-            hover: "primary_solid_hover",
-            focus: "primary_solid_hover",
+            default: "accent_ui_base",
+            hover: "primary_ui_hover",
+            focus: "primary_ui_hover",
           },
-        }),
-      ],
-      primaryAccent: [
-        getFunctionalClassNames({
-          paddingX: "spacing2",
-          paddingY: "spacing1",
 
-          color: "white",
-
-          backgroundColor: {
-            default: "accent_solid_base",
-            hover: "accent_solid_hover",
-            focus: "accent_solid_hover",
+          border: "1px solid",
+          borderColor: {
+            default: "accent_border_interactive",
+            hover: "accent_border_interactive_focus",
+            focus: "accent_border_interactive_focus",
           },
         }),
       ],
@@ -55,31 +48,11 @@ export const button = recipe({
           paddingX: "spacing2",
           paddingY: "spacing1",
 
-          color: "accent_text_lowContrast",
+          color: "primary_text_lowContrast",
           backgroundColor: {
-            default: "primary_ui_base",
+            default: "neutral_background_dark",
             hover: "primary_ui_hover",
             focus: "primary_ui_hover",
-          },
-
-          border: "1px solid",
-          borderColor: {
-            default: "primary_border_interactive",
-            hover: "primary_border_interactive_focus",
-            focus: "primary_border_interactive_focus",
-          },
-        }),
-      ],
-      secondaryAccent: [
-        getFunctionalClassNames({
-          paddingX: "spacing2",
-          paddingY: "spacing1",
-
-          color: "accent_text_lowContrast",
-          backgroundColor: {
-            default: "accent_ui_base",
-            hover: "accent_ui_hover",
-            focus: "accent_ui_hover",
           },
 
           border: "1px solid",
@@ -95,8 +68,8 @@ export const button = recipe({
         getFunctionalClassNames({
           color: {
             default: "primary_text_highContrast",
-            hover: "accent_text_lowContrast",
-            focus: "accent_text_lowContrast",
+            hover: "primary_text_lowContrast",
+            focus: "primary_text_lowContrast",
           },
         }),
       ],

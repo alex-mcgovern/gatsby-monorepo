@@ -4,8 +4,8 @@ import * as styles from "./dropdown_list.css";
 
 interface DropdownListProps {
   isOpen?: boolean;
-  getMenuProps?(...args: unknown[]): unknown;
-  getItemProps?(...args: unknown[]): unknown;
+  getMenuProps?(...args: unknown[]): {};
+  getItemProps?(...args: unknown[]): {};
   size?: TSizeProp;
   inputValue: string | null;
   dropdownItems: IDownshiftItem[];
@@ -24,7 +24,10 @@ export default function DropdownList({
 }: DropdownListProps) {
   if (isOpen) {
     return (
-      <ul className={styles.dropdownWrapper} {...getMenuProps()}>
+      <ul
+        className={styles.dropdownWrapper}
+        {...(getMenuProps && getMenuProps())}
+      >
         {dropdownItems.map((item, index) => {
           return (
             <DropdownListItem

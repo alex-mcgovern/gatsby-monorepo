@@ -4,11 +4,9 @@ import Button from "../../../atoms/button/button";
 import Typography from "../../../atoms/typography/typography";
 import Wave from "../../../atoms/wave/wave";
 
-interface ISectionDesignSystemHero {
-  bio?: string;
-}
+interface ISectionDesignSystemHero {}
 
-const SectionDesignSystemHero = ({ bio }: ISectionDesignSystemHero) => {
+const SectionDesignSystemHero = ({}: ISectionDesignSystemHero) => {
   return (
     <Box as="section" backgroundImage="gradient_secondary">
       <Box
@@ -21,28 +19,14 @@ const SectionDesignSystemHero = ({ bio }: ISectionDesignSystemHero) => {
         <Box dataSal="slide-up">
           <Typography
             as="h1"
-            fontSize="h1"
+            fontSize="h2"
             fontWeight="bold"
             textAlign="center"
-            // marginBottom="spacing0"
-          >
-            BobUI
-          </Typography>
-          <Typography
-            as="p"
-            fontSize="body_lg"
-            textAlign="center"
-            marginTop="none"
             marginBottom="spacing3"
           >
-            (I couldn't think of a better name)
+            BoonDoggle.design
           </Typography>
-          <Typography
-            as="h2"
-            fontSize="h6"
-            fontWeight="bold"
-            textAlign="center"
-          >
+          <Typography as="p" fontSize="body_lg" textAlign="center">
             Proof-of-concept for a lightweight, modern design system and
             component library built on top of Vanilla Extract and RadixUI.
           </Typography>

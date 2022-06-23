@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  BOX_PROPS_CONTAINED,
-  BOX_PROPS_SECTION,
-} from "../../../../utils/shared_props/box_props";
+import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
 import Box, { IBox } from "../../../atoms/box/box";
 import Typography from "../../../atoms/typography/typography";
 import MetricGraphCard from "./components/metric_graph_card";
-import useWebVitals from "./components/use_web_vitals";
+import useWebVitals from "./hooks/use_web_vitals";
 
 interface SectionHomepagePerformanceProps {}
 
@@ -57,16 +54,38 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         gap="spacing3"
       >
         {/* ——————————————————————————————————————————————
+        //      TTFB: Time to first byte
+        // —————————————————————————————————————————————— */}
+        <Box {...BOX_PROPS}>
+          <MetricGraphCard
+            thresholds={{ green: 200, amber: 500 }}
+            min={0}
+            displayUnit={"ms"}
+            max={1000}
+            metric={TTFB}
+          />
+        </Box>
+        {/* ——————————————————————————————————————————————
+        //      CLS: CUMULATIVE LAYOUT SHIFT
+        // —————————————————————————————————————————————— */}
+        <Box {...BOX_PROPS}>
+          <MetricGraphCard
+            thresholds={{ green: 2500, amber: 400 }}
+            min={0}
+            max={8000}
+            metric={CLS}
+          />
+        </Box>
+        {/* ——————————————————————————————————————————————
         //      FCP: FIRST CONTENTFUL PAINT             
         // —————————————————————————————————————————————— */}
         <Box {...BOX_PROPS}>
           <MetricGraphCard
-            thresholds={{ green: 2.5, amber: 4 }}
-            label="FCP"
-            unit={"seconds"}
+            thresholds={{ green: 2500, amber: 400 }}
+            displayUnit={"seconds"}
             min={0}
-            max={8}
-            value={FCP && (FCP / 1000).toFixed(2)}
+            max={8000}
+            metric={FCP}
           />
         </Box>
 
@@ -76,11 +95,10 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         <Box {...BOX_PROPS}>
           <MetricGraphCard
             thresholds={{ green: 100, amber: 300 }}
-            label="FID"
-            unit={"ms"}
+            displayUnit="ms"
             min={0}
             max={500}
-            value={FID && FID.toFixed(2)}
+            metric={FID}
           />
         </Box>
 
@@ -89,12 +107,11 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         // —————————————————————————————————————————————— */}
         <Box {...BOX_PROPS}>
           <MetricGraphCard
-            thresholds={{ green: 2.5, amber: 4 }}
-            label="LCP"
-            unit={"seconds"}
+            thresholds={{ green: 2500, amber: 400 }}
+            displayUnit="seconds"
             min={0}
-            max={8}
-            value={LCP && (LCP / 1000).toFixed(2)}
+            max={8000}
+            metric={LCP}
           />
         </Box>
 

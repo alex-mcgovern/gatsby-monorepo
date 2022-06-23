@@ -75,7 +75,9 @@
     "stylelint",
     "testid",
     "truelayer",
-    "tsbuildinfo"
+    "tsbuildinfo",
+    "TTFB",
+    "vars"
   ],
   "git.ignoreLimitWarning": true
 }

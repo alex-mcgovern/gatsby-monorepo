@@ -14,12 +14,7 @@ export const listItemWrapper = style([
       hover: "neutral_background",
       focus: "neutral_background",
     },
-    // border: "1px solid",
-    // borderColor: {
-    //   default: "neutral_border_interactive",
-    //   hover: "neutral_border_interactive_focus",
-    //   focus: "neutral_border_interactive_focus",
-    // },
+
     borderRadius: "sm",
     overflow: "hidden",
     boxShadow: {

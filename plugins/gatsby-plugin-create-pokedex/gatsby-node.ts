@@ -1,7 +1,6 @@
 import type { GatsbyNode, PluginOptions } from "gatsby";
 import path from "path";
-import { createUrlPathFromArray } from "../../utils/create_url_path_from_array";
-import { FALLBACK_PLUGIN_OPTIONS } from "../gatsby-source-pokeapi/constants";
+import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 
 interface IPluginOptions extends PluginOptions {
   itemsPerPage: number;

@@ -5,7 +5,6 @@ import Box from "../../components/atoms/box/box";
 import Button from "../../components/atoms/button/button";
 import Typography from "../../components/atoms/typography/typography";
 import Layout from "../../components/organisms/global_layout/global_layout";
-import Seo from "../../components/seo";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
 import { getFunctionalClassNames } from "../../styles/functional_classnames.css";
 import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
@@ -38,9 +37,9 @@ interface BlogPostTemplateProps {
         title?: string;
       };
     };
-    site?: {
+    site: {
       siteMetadata: {
-        title?: string;
+        title: string;
       };
     };
   };
@@ -54,7 +53,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
     htmlAst,
   } = post;
 
-  const siteTitle = site?.siteMetadata?.title || `Title`;
+  const siteTitle = site.siteMetadata.title || `Title`;
   const {} = data;
   const image = cover && getImage(cover);
   const imageClassNames = getFunctionalClassNames({
@@ -66,11 +65,10 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   });
 
   return (
-    <Layout title={siteTitle}>
-      <Seo
-        title={post.frontmatter.title}
-        description={description || excerpt}
-      />
+    <Layout
+      title={post.frontmatter.title || siteTitle}
+      description={description || excerpt}
+    >
       <Box
         display="grid"
         {...BOX_PROPS_CONTAINED}
@@ -88,6 +86,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               <Button
                 appearance="tertiary"
                 iconLeading="arrow-left"
+                size="lg"
                 title="All blog posts"
                 to="/blog"
               />
@@ -137,6 +136,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           >
             <Button
               iconLeading="arrow-left"
+              size="lg"
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />

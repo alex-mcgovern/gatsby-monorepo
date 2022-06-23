@@ -2,7 +2,6 @@ import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import { resetList } from "../../../../styles/resets/reset_list.css";
-import { vars } from "../../../../styles/theme.css";
 
 export const getDropdownStyles = recipe({
   base: [
@@ -12,6 +11,7 @@ export const getDropdownStyles = recipe({
       textAlign: "left",
     },
     getFunctionalClassNames({
+      whiteSpace: "nowrap",
       color: "primary_text_highContrast",
       backgroundColor: {
         hover: "primary_ui_hover",
@@ -24,28 +24,32 @@ export const getDropdownStyles = recipe({
   variants: {
     size: {
       xs: [
-        {
-          fontSize: vars.fontSize.body_xs,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_xs",
+        }),
       ],
       sm: [
-        {
-          fontSize: vars.fontSize.body_sm,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_sm",
+        }),
       ],
       lg: [
-        {
-          fontSize: vars.fontSize.body_lg,
-        },
+        getFunctionalClassNames({
+          fontSize: "body_lg",
+        }),
       ],
     },
   },
 });
 
-export const isHighlighted = style({
-  backgroundColor: vars.color.surface,
-});
-export const isSelected = style({
-  fontWeight: vars.fontWeight.semibold,
-});
+export const isHighlighted = style([
+  getFunctionalClassNames({
+    backgroundColor: "primary_ui_hover",
+  }),
+]);
+export const isSelected = style([
+  getFunctionalClassNames({
+    backgroundColor: "primary_ui_selected",
+  }),
+]);
 export const resultWrapper = style([resetList]);
