@@ -5,15 +5,11 @@ import {
   TFunctionalClassNames,
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
-import { getFocusRingStyles } from "../../../styles/recipes/get_accessibility_styles.css";
-import Box from "../box/box";
+import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
+import { Box } from "../box/box";
 import * as styles from "./input.css";
 
-interface InputProps {
-  iconLeading?: IconProp;
-  id: string;
-  isLabelVisible?: boolean;
-  label: string;
+export interface IInputCustomisation {
   margin?: TFunctionalClassNames["margin"];
   marginBottom?: TFunctionalClassNames["marginBottom"];
   marginLeft?: TFunctionalClassNames["marginLeft"];
@@ -21,52 +17,58 @@ interface InputProps {
   marginTop?: TFunctionalClassNames["marginTop"];
   marginX?: TFunctionalClassNames["marginY"];
   marginY?: TFunctionalClassNames["marginX"];
-  onChange(...args: unknown[]): unknown;
-  placeholder?: string;
-  role?: AriaRole;
-  size?: "sm" | "sm" | "lg";
-  value?: string;
   width?: TFunctionalClassNames["width"];
 }
 
-export default function Input({
+export interface IInputProps {
+  /** Customisation exposes utility-first styles as props. */
+  customisation?: IInputCustomisation;
+  /** FontAwesome icon shown on the left side of input. */
+  iconLeading?: IconProp;
+  /** FontAwesome icon shown on the right side of input. */
+  iconTrailing?: IconProp;
+  /** Used as the html ID. */
+  id: string;
+  /** Whether to show the label. (Label value will also be used as accessible `title` on the input element.) */
+  isLabelVisible?: boolean;
+  /** Label text. (Will also be used as accessible `title` on the input element.) */
+  label: string;
+  /** Callback on input change. */
+  onChange?(...args: unknown[]): unknown;
+  /** Text shown before user has interacted with the input. */
+  placeholder?: string;
+  /** Aria role to use for the input (e.g. `search`). */
+  role?: AriaRole;
+  /** Variant prop controlling input appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
+  variant?: styles.TInputVariants;
+  /** Allows directly assigning a value when the input is acting as a controlled element. */
+  value?: string;
+}
+
+export const Input = ({
   placeholder,
   iconLeading,
+  iconTrailing,
   id,
   onChange,
-  margin,
-  marginBottom,
-  marginLeft,
-  marginRight,
-  marginTop,
-  marginX,
-  marginY,
-  width,
+  customisation,
   value,
   isLabelVisible,
   label,
-  size,
+  variant,
   role,
   ...rest
-}: InputProps) {
+}: IInputProps) => {
   const inputWrapperStyles = [
     styles.getInputWrapperStyles({
-      size,
+      ...variant,
     }),
     getFocusRingStyles(),
-    getFunctionalClassNames({ width }),
+    getFunctionalClassNames({ ...customisation }),
   ];
 
   return (
-    <Box
-      margin={margin}
-      marginBottom={marginBottom}
-      marginLeft={marginLeft}
-      marginRight={marginRight}
-      marginTop={marginTop}
-      marginX={marginX}
-      marginY={marginY}
-    >
+    <Box customisation={customisation}>
       {isLabelVisible && (
         <label className={styles.inputLabel} htmlFor={id}>
           {label}
@@ -85,10 +87,13 @@ export default function Input({
           id={id}
           {...rest}
         />
+        {iconTrailing && (
+          <FontAwesomeIcon className={styles.icon} icon={iconTrailing} />
+        )}
       </div>
     </Box>
   );
-}
+};
 
 Input.defaultProps = {
   placeholder: "",

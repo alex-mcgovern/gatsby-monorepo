@@ -4,23 +4,8 @@ import {
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
-export interface IBox {
+export interface IBoxCustomisation {
   alignItems?: TFunctionalClassNames["alignItems"];
-  dataSal?: TDataSal;
-  dataSalDelay?: number;
-  as?:
-    | "article"
-    | "menu"
-    | "div"
-    | "fieldset"
-    | "footer"
-    | "header"
-    | "ul"
-    | "li"
-    | "nav"
-    | "main"
-    | "section"
-    | "span";
   aspectRatio?: TFunctionalClassNames["aspectRatio"];
   backgroundColor?: TFunctionalClassNames["backgroundColor"];
   backgroundImage?: TFunctionalClassNames["backgroundImage"];
@@ -28,10 +13,10 @@ export interface IBox {
   borderRadius?: TFunctionalClassNames["borderRadius"];
   borderColor?: TFunctionalClassNames["borderColor"];
   boxShadow?: TFunctionalClassNames["boxShadow"];
-  children?: React.ReactNode;
   color?: TFunctionalClassNames["color"];
   display?: TFunctionalClassNames["display"];
   flexDirection?: TFunctionalClassNames["flexDirection"];
+  flexWrap?: TFunctionalClassNames["flexWrap"];
   fontSize?: TFunctionalClassNames["fontSize"];
   fontWeight?: TFunctionalClassNames["fontWeight"];
   gap?: TFunctionalClassNames["gap"];
@@ -39,8 +24,6 @@ export interface IBox {
   gridTemplateRows?: TFunctionalClassNames["gridTemplateRows"];
   gridAutoFlow?: TFunctionalClassNames["gridAutoFlow"];
   height?: TFunctionalClassNames["height"];
-  id?: string;
-  isVerticallyCentered?: boolean;
   justifyContent?: TFunctionalClassNames["justifyContent"];
   margin?: TFunctionalClassNames["margin"];
   marginBottom?: TFunctionalClassNames["marginBottom"];
@@ -53,6 +36,7 @@ export interface IBox {
   minHeight?: TFunctionalClassNames["minHeight"];
   maxHeight?: TFunctionalClassNames["maxHeight"];
   minWidth?: TFunctionalClassNames["minWidth"];
+  textAlign?: TFunctionalClassNames["textAlign"];
   overflow?: TFunctionalClassNames["overflow"];
   outline?: TFunctionalClassNames["outline"];
   overflowY?: TFunctionalClassNames["overflowY"];
@@ -68,117 +52,43 @@ export interface IBox {
   zIndex?: TFunctionalClassNames["zIndex"];
 }
 
-export default function Box({
-  alignItems,
-  as,
-  aspectRatio,
-  backgroundColor,
-  backgroundImage,
-  borderRadius,
-  borderColor,
-  border,
-  boxShadow,
-  children,
-  color,
-  display,
-  dataSal,
-  dataSalDelay,
-  fontWeight,
-  fontSize,
-  flexDirection,
-  gap,
-  gridTemplateColumns,
-  gridTemplateRows,
-  gridAutoFlow,
-  height,
-  id,
-  outline,
-  justifyContent,
-  margin,
-  marginBottom,
-  marginLeft,
-  marginRight,
-  marginTop,
-  marginX,
-  marginY,
-  maxWidth,
-  minHeight,
-  maxHeight,
-  minWidth,
-  overflow,
-  overflowY,
-  padding,
-  paddingX,
-  paddingY,
-  paddingTop,
-  paddingBottom,
-  paddingLeft,
-  paddingRight,
-  position,
-  width,
-  zIndex,
-  ...rest
-}: IBox) {
-  const boxClassNames = [
-    getFunctionalClassNames({
-      outline,
-      alignItems,
-      aspectRatio,
-      backgroundColor,
-      backgroundImage,
-      border,
-      borderRadius,
-      borderColor,
-      boxShadow,
-      color,
-      display,
-      fontWeight,
-      fontSize,
-      gap,
-      gridTemplateColumns,
-      gridTemplateRows,
-      gridAutoFlow,
-      flexDirection,
-      height,
-      margin,
-      justifyContent,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginTop,
-      marginX,
-      marginY,
-      maxWidth,
-      maxHeight,
-      minHeight,
-      overflow,
-      overflowY,
-      padding,
-      paddingX,
-      paddingY,
-      paddingTop,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      position,
-      // transition: "background",
-      width,
-      zIndex,
-    }),
-  ];
+export interface IBox {
+  /** Used as the html ID. */
+  id?: string;
+  /** Customisation exposes utility-first styles as props. */
+  customisation?: IBoxCustomisation;
+  children?: React.ReactNode;
+  /** Polymorphic prop allowing `Box` to return a wide range of HTML Element types. */
+  as?:
+    | "article"
+    | "menu"
+    | "div"
+    | "fieldset"
+    | "footer"
+    | "table"
+    | "thead"
+    | "tr"
+    | "th"
+    | "td"
+    | "tbody"
+    | "header"
+    | "ul"
+    | "li"
+    | "nav"
+    | "main"
+    | "section"
+    | "span";
+}
+
+export const Box = ({ customisation, as, children, id, ...rest }: IBox) => {
+  const boxClassNames = [getFunctionalClassNames({ ...customisation })];
 
   // allow polymorphism
   const Element = as || "div";
 
   return (
-    <Element
-      id={id}
-      className={boxClassNames.join(" ")}
-      data-sal={dataSal}
-      data-sal-delay={dataSalDelay}
-      {...rest}
-    >
+    <Element id={id} className={boxClassNames.join(" ")} {...rest}>
       {children}
     </Element>
   );
-}
+};

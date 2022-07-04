@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
-import Box from "../../../../../components/atoms/box/box";
-import Button from "../../../../../components/atoms/button/button";
-import Input from "../../../../../components/atoms/input/input";
-import Typography from "../../../../../components/atoms/typography/typography";
+import { Box } from "../../../../../components/atoms/box/box";
+import { Button } from "../../../../../components/atoms/button/button";
+import { Input } from "../../../../../components/atoms/input/input";
+import { Typography } from "../../../../../components/atoms/typography/typography";
 import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
-import firebase from "../../../../../utils/firebase/firebase";
+import firebase from "../../../../../utils/firebase/firebase_old";
 import { dialogContent, dialogOverlay } from "./create_new_task_dialog.css";
 
 interface ICreateNewTaskDialog {
@@ -67,7 +67,10 @@ export default function CreateNewTaskDialog({
   return (
     <DialogPrimitive.Root>
       <DialogPrimitive.Trigger asChild>
-        <Button appearance="tertiary" size="sm" title="Add a task" />
+        <Button
+          variant={{ size: "xs", appearance: "tertiary" }}
+          title="Add a task"
+        />
       </DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className={dialogOverlay} />
@@ -76,7 +79,13 @@ export default function CreateNewTaskDialog({
             //      DIALOG HEADER                                  
             // —————————————————————————————————————————————— */}
           <DialogPrimitive.Title>
-            <Typography as="h3" fontSize="h3">
+            <Typography
+              customisation={{
+                fontSize: "h3",
+                fontWeight: "bold",
+              }}
+              as="h3"
+            >
               Create a new task
             </Typography>
           </DialogPrimitive.Title>
@@ -88,13 +97,20 @@ export default function CreateNewTaskDialog({
             // —————————————————————————————————————————————— */}
           <form onSubmit={handleSubmit} name="addTask">
             {/* Task title input */}
-            <Box as="fieldset" marginY="spacing3">
+            <Box
+              as="fieldset"
+              customisation={{
+                marginY: "spacing3",
+              }}
+            >
               <Input
                 id="title"
                 isLabelVisible
                 size="lg"
                 label="Task"
-                marginBottom="spacing2"
+                customisation={{
+                  marginBottom: "spacing2",
+                }}
                 placeholder="Give this task a name"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setTitle(e.target.value as string)
@@ -108,13 +124,15 @@ export default function CreateNewTaskDialog({
                 isCreatable
                 items={epicsDropdownItems}
                 label="Epic"
-                marginBottom="spacing2"
+                customisation={{
+                  marginBottom: "spacing2",
+                  width: "100%",
+                }}
+                variant={{ size: "lg" }}
                 onSelect={({ value }) => {
                   setEpic(value);
                 }}
                 placeholder="Select an epic or create a new one"
-                size="lg"
-                width="100%"
               />
 
               <DropdownCombobox
@@ -124,30 +142,33 @@ export default function CreateNewTaskDialog({
                 isCreatable
                 items={statusesDropdownItems}
                 label="Status"
-                marginBottom="spacing2"
+                customisation={{
+                  marginBottom: "spacing2",
+                  width: "100%",
+                }}
                 onSelect={({ value }) => {
                   setStatus(value);
                 }}
                 placeholder="Select a status or create a new one"
-                size="lg"
-                width="100%"
+                variant={{ size: "lg" }}
               />
             </Box>
             {/* ——————————————————————————————————————————————
-                //      DIALOG SUBMIT
-                // —————————————————————————————————————————————— */}
-            <Box display="flex" justifyContent="flex-start">
-              <DialogPrimitive.Close asChild>
-                <Button
-                  aria-label="Close"
-                  size="lg"
-                  title="Create task"
-                  type="submit"
-                  width="100%"
-                  onClick={handleSubmit}
-                />
-              </DialogPrimitive.Close>
-            </Box>
+            //      DIALOG SUBMIT
+            // —————————————————————————————————————————————— */}
+
+            <DialogPrimitive.Close asChild>
+              <Button
+                aria-label="Close"
+                variant={{ size: "lg" }}
+                title="Create task"
+                type="submit"
+                customisation={{
+                  width: "100%",
+                }}
+                onClick={handleSubmit}
+              />
+            </DialogPrimitive.Close>
           </form>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>

@@ -1,35 +1,43 @@
 ---
 title: Wave
+mdxType: Component
 atomicLevel: Atoms
 categories: ["Decorative"]
 description: "Simple diagonal SVG wave component"
 ---
 
-import Box from "../box/box.tsx";
-import Typography from "../typography/typography.tsx";
-import Wave from "./wave.tsx";
+import { Box } from "../box/box.tsx";
+import { Typography } from "../typography/typography.tsx";
+import { Wave } from "./wave.tsx";
 
 <Box
-  backgroundColor="neutral_background_dark"
+  backgroundColor="neutral_bg_2"
   border="1px solid"
-  borderColor="neutral_border_nonInteractive"
+  borderColor="neutral_ui_3"
   borderRadius="sm"
   marginY="spacing3"
   overflow="hidden"
 >
 
-<Wave waveVariant="top" color="neutral_background" />
-<Typography fontSize="h5" marginY="spacing6" textAlign="center">
-  This component has 2 waves, top and bottom
+<Wave waveVariant="top" color="neutral_bg_1" />
+<Typography
+  customisation={{
+    fontSize: "h5",
+    marginY: "spacing6",
+    textAlign: "center",
+  }}
+
+> This component has 2 waves, top and bottom
+
 </Typography>
 
-  <Wave waveVariant="bottom"  color="neutral_background" />
+  <Wave waveVariant="bottom"  color="neutral_bg_1" />
 </Box>
 
 ```
 <Box
 margin="spacing3"
-borderColor="accent_border_nonInteractive"
+borderColor="accent_ui_3"
 border="1px solid"
 >
 

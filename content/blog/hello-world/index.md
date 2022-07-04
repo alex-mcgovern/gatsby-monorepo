@@ -1,12 +1,9 @@
 ---
 title: Hello World
-cover: ./pexels-cottonbro-4629634.jpg
 isBio: true
 date: "2022-04-01T22:12:03.284Z"
 categories: ["Personal"]
-description:
-  "A little about me, my career to date and some of my interests and hobbies.
-  (Warning, contains nerdiness 🤓)"
+description: "A little intro to me and my way of working."
 ---
 
 # Hi, I'm Alex.

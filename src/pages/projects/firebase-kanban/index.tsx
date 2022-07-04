@@ -2,19 +2,19 @@ import React from "react";
 import { deleteDoc, doc } from "firebase/firestore";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
-import Box from "../../../components/atoms/box/box";
-import Button from "../../../components/atoms/button/button";
-import Typography from "../../../components/atoms/typography/typography";
-import Layout from "../../../components/organisms/global_layout/global_layout";
+import { Box } from "../../../components/atoms/box/box";
+import { Button } from "../../../components/atoms/button/button";
+import { Typography } from "../../../components/atoms/typography/typography";
+import Page from "../../../components/organisms/page/page";
 import {
   IFirestoreDocument,
   useFirestoreCollection,
 } from "../../../hooks/use_firestore_collection/use_firestore_collection";
-import firebase from "../../../utils/firebase/firebase";
+import firebase from "../../../utils/firebase/firebase_old";
 import sortAlphabeticallyByKey from "../../../utils/helper_functions/sort_alphabetically_by_key/sort_alphabetically_by_key";
 import {
-  BOX_PROPS_CONTAINED,
-  BOX_PROPS_SECTION,
+  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
+  BOX_CUSTOMISATION_SECTION_SPACING,
 } from "../../../utils/shared_props/box_props";
 import CreateNewTaskDialog from "./components/create_new_task_dialog/create_new_task_dialog";
 import KanbanListItem from "./components/kanban_list_item/kanban_list_item";
@@ -54,8 +54,36 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
   });
 
   return (
-    <Layout title={siteTitle}>
-      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
+    <Page title={siteTitle} maxWidth="gridSpan16">
+      <Box
+        as="section"
+        customisation={{
+          ...BOX_CUSTOMISATION_SECTION_SPACING,
+        }}
+      >
+        {/** —————————————————————————————————————————————————————————————————————————————
+         *      PAGE HEADER
+         * ——————————————————————————————————————————————————————————————————————————————— */}
+        <Box
+          as="header"
+          customisation={{
+            maxWidth: "gridSpan8",
+            marginX: "auto",
+          }}
+        >
+          <Typography as="h1">Firebase kanban</Typography>
+
+          <Typography
+            as="h2"
+            customisation={{
+              fontSize: "body_md",
+              fontWeight: "normal",
+            }}
+          >
+            Example full-stack app backed by Firestore.
+          </Typography>
+        </Box>
+
         {/* ——————————————————————————————————————————————————————————————————————————————
         //      MAP OVER EPICS    
         //      Here we create a Kanban board for each epic that we find                                                      
@@ -81,40 +109,50 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
 
             return (
               <Box
-                marginY="spacing10"
-                backgroundColor="neutral_background_dark"
-                borderColor="neutral_ui_selected"
-                border="1px solid"
-                padding="spacing3"
-                borderRadius="sm"
+                customisation={{
+                  marginY: "spacing6",
+                  backgroundColor: "neutral_bg_2",
+                  borderColor: "neutral_ui_2",
+                  border: "1px solid",
+                  padding: "spacing3",
+                  borderRadius: "sm",
+                }}
               >
                 <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  marginBottom="spacing3"
+                  customisation={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "spacing3",
+                  }}
                 >
                   {/* ——————————————————————————————————————————————
                   //      EPIC BOARD TITLE & CONTROLS
                   //      Here we add the epic title, delete epic button, and create new task button
                   // —————————————————————————————————————————————— */}
                   <Typography
-                    fontSize="body_lg"
-                    fontWeight="semibold"
-                    display="block"
+                    customisation={{
+                      fontWeight: "semibold",
+                      color: "accent_fg_2",
+                      marginBottom: "spacing1",
+                    }}
                   >
                     {epicKey}
                   </Typography>
 
                   {/* Epic buttons wrapper */}
-                  <Box display="flex" gap="spacing1">
+                  <Box
+                    customisation={{
+                      display: "flex",
+                      marginBottom: "spacing1",
+                    }}
+                  >
                     <CreateNewTaskDialog
                       statusesDropdownItems={statusesDropdownItems}
                       epicsDropdownItems={epicsDropdownItems}
                     />
                     <Button
                       iconTrailing="times"
-                      size="sm"
-                      appearance="tertiary"
+                      variant={{ size: "xs", appearance: "tertiary" }}
                       title="Delete this epic"
                       // width="100%"
                       onClick={handleDelete}
@@ -127,12 +165,14 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
                   // ——————————————————————————————————————————————————————————————————————————————  */}
                 {/* Status column layout */}
                 <Box
-                  display="grid"
-                  gap="spacing3"
-                  gridTemplateColumns={{
-                    mobile: "1x",
-                    tablet: "3x",
-                    desktop: "3x",
+                  customisation={{
+                    display: "grid",
+                    gridTemplateColumns: {
+                      mobile: "1x",
+                      tablet: "3x",
+                      desktop: "3x",
+                    },
+                    gap: "spacing3",
                   }}
                 >
                   {statusesSortedBySortIndex &&
@@ -141,12 +181,13 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
                       return (
                         <Box>
                           <Typography
-                            fontSize="body_sm"
-                            textTransform="uppercase"
-                            fontWeight="semibold"
-                            color="neutral_text_lowContrast"
-                            display="block"
-                            marginBottom="spacing3"
+                            customisation={{
+                              fontSize: "body_md",
+                              textTransform: "uppercase",
+                              fontWeight: "semibold",
+                              color: "neutral_fg_1",
+                              marginBottom: "spacing3",
+                            }}
                           >
                             {statusKey}
                           </Typography>
@@ -181,7 +222,7 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
             );
           })}
       </Box>
-    </Layout>
+    </Page>
   );
 };
 

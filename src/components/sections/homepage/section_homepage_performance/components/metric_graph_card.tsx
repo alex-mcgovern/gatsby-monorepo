@@ -1,8 +1,8 @@
 import React from "react";
 import { Metric } from "web-vitals";
-import getDuration from "../../../../../../utils/get_duration/get_duration";
 import { vars } from "../../../../../styles/theme.css";
-import Box from "../../../../atoms/box/box";
+import getDuration from "../../../../../utils/get_duration/get_duration";
+import { Box } from "../../../../atoms/box/box";
 
 interface IMetricGraphCard {
   metric?: Metric;
@@ -55,21 +55,21 @@ export default function MetricGraphCard({
   const diameter = Math.PI * 2 * radius;
 
   const greenStyle = {
-    stroke: vars.color.semanticGreen,
+    stroke: vars.color.semantic_green,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - greenPercentage) / 100) * diameter}px`,
   };
 
   const amberStyle = {
-    stroke: vars.color.semanticYellow,
+    stroke: vars.color.semantic_yellow,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - amberPercentage) / 100) * diameter}px`,
   };
 
   const progressStyle = {
-    stroke: vars.color.primary_text_highContrast,
+    stroke: vars.color.accent_fg_2,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
@@ -88,7 +88,7 @@ export default function MetricGraphCard({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: vars.color.semanticRed,
+          stroke: vars.color.semantic_red,
         }}
       />
 
@@ -120,7 +120,7 @@ export default function MetricGraphCard({
         x={50}
         y={33}
         style={{
-          fill: vars.color.primary_text_highContrast,
+          fill: vars.color.accent_fg_2,
           fontSize: "12px",
           dominantBaseline: "central",
           textAnchor: "middle",
@@ -133,7 +133,7 @@ export default function MetricGraphCard({
         x={50}
         y={50}
         style={{
-          fill: vars.color.primary_text_highContrast,
+          fill: vars.color.accent_fg_2,
           fontSize: "24px",
           dominantBaseline: "central",
           textAnchor: "middle",
@@ -146,7 +146,7 @@ export default function MetricGraphCard({
         x={50}
         y={66}
         style={{
-          fill: vars.color.primary_text_highContrast,
+          fill: vars.color.accent_fg_2,
           fontSize: "8px",
           dominantBaseline: "central",
           textAnchor: "middle",

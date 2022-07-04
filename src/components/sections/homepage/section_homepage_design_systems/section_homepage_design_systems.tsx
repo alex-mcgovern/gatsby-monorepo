@@ -8,15 +8,15 @@ import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_librar
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
-import Box from "../../../atoms/box/box";
-import Typography from "../../../atoms/typography/typography";
+import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../../../utils/shared_props/box_props";
+import { Box } from "../../../atoms/box/box";
+import { Typography } from "../../../atoms/typography/typography";
 
 interface ISectionHomepageDesignSystems {}
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   padding: "spacing3",
-  backgroundColor: "neutral_ui_base",
+  backgroundColor: "neutral_bg_3",
   borderRadius: "sm",
   boxShadow: "shadowDark",
   aspectRatio: "square",
@@ -26,17 +26,24 @@ export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignS
   return (
     <Box
       as="section"
-      margin="spacing10"
-      display="grid"
-      gap="spacing6"
-      alignItems="center"
-      gridTemplateColumns={{
-        desktop: "7_5",
-        tablet: "1x",
+      customisation={{
+        display: "grid",
+        marginY: "spacing10",
+        gap: "spacing6",
+        alignItems: "center",
+        gridTemplateColumns: {
+          desktop: "7_5",
+          tablet: "1x",
+        },
       }}
-      {...BOX_PROPS_CONTAINED}
     >
-      <Box display="grid" gridTemplateColumns="4x" gap="spacing3">
+      <Box
+        customisation={{
+          display: "grid",
+          gridTemplateColumns: "4x",
+          gap: "spacing3",
+        }}
+      >
         <LogoReact className={ICON_CLASSNAMES} />
         <LogoTypescript className={ICON_CLASSNAMES} />
         <LogoGatsby className={ICON_CLASSNAMES} />
@@ -49,9 +56,12 @@ export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignS
 
       <Box>
         <Typography
-          fontSize="h6"
-          fontWeight="medium"
-          color="accent_text_lowContrast"
+          customisation={{
+            fontSize: "h6",
+            fontWeight: "semibold",
+            color: "accent_fg_1",
+          }}
+
           // marginBottom="spacing6"
         >
           Less CSS is best

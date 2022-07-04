@@ -1,6 +1,6 @@
 import React from "react";
-import Box from "../../../atoms/box/box";
-import ListItem from "../../list_item/list_item";
+import { Box } from "../../../atoms/box/box";
+import { ListItem } from "../../list_item/list_item";
 
 interface SectionBlogPostListProps {
   posts: IMarkdownRemarkBlogPost[];
@@ -10,9 +10,11 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
   return (
     <Box
       as="section"
-      gap="spacing3"
-      display="grid"
-      gridTemplateColumns={{ desktop: "3x", tablet: "2x", mobile: "1x" }}
+      customisation={{
+        display: "grid",
+        gap: "spacing3",
+        gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
+      }}
     >
       {posts.map((post) => {
         return (
@@ -22,7 +24,7 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
             subtitle={post.frontmatter.date}
             description={post.frontmatter.description || post.excerpt}
             link={post.fields.slug}
-            image={post.frontmatter.cover}
+            // image={post.frontmatter.cover}
           />
         );
       })}

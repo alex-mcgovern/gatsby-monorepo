@@ -3,26 +3,13 @@ declare module "*.svg" {
   export default content;
 }
 
-type TSizeProp = "lg" | "sm" | "sm";
+type TSizeProp = "lg" | "sm" | "xs";
 
 interface IDownshiftItem {
   label?: string;
   value: string;
   link?: string;
 }
-
-type TDataSal =
-  | "fade"
-  | "slide-up"
-  | "slide-down"
-  | "slide-left"
-  | "slide-right"
-  | "zoom-in"
-  | "zoom-out"
-  | "flip-up"
-  | "flip-down"
-  | "flip-left"
-  | "flip-right";
 
 interface IMarkdownRemarkBlogPost {
   fields: { slug: string };
@@ -33,7 +20,6 @@ interface IMarkdownRemarkBlogPost {
     subtitle: string;
     slug: string;
     description?: string | undefined;
-    cover: ImageDataLike;
   };
 }
 interface IBlogCategory {

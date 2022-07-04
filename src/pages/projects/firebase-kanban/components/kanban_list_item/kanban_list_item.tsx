@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-import Box from "../../../../../components/atoms/box/box";
-import Button from "../../../../../components/atoms/button/button";
-import Typography from "../../../../../components/atoms/typography/typography";
+import { Box } from "../../../../../components/atoms/box/box";
+import { Button } from "../../../../../components/atoms/button/button";
+import { Typography } from "../../../../../components/atoms/typography/typography";
 import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
-import firebase from "../../../../../utils/firebase/firebase";
+import firebase from "../../../../../utils/firebase/firebase_old";
 
 interface IKanbanListItemProps {
   id: string;
@@ -52,57 +52,76 @@ export default function KanbanListItem({
 
   return (
     <Box
-      padding="spacing3"
-      boxShadow="shadowLight"
-      backgroundColor="neutral_ui_base"
-      marginBottom="spacing1"
-      borderRadius="sm"
-      border="1px solid"
-      borderColor={{
-        default: "neutral_ui_selected",
-        hover: "neutral_border_interactive",
+      customisation={{
+        padding: "spacing3",
+        boxShadow: "shadowLight",
+        backgroundColor: "neutral_bg_3",
+        marginBottom: "spacing1",
+        borderRadius: "sm",
+        border: "1px solid",
+        borderColor: {
+          default: "neutral_ui_2",
+          hover: "neutral_border_1",
+        },
       }}
     >
       <Typography
-        display="block"
-        fontSize="body_lg"
-        fontWeight="medium"
-        marginBottom="spacing3"
+        customisation={{
+          fontWeight: "medium",
+          marginBottom: "spacing3",
+        }}
       >
         {title}
       </Typography>
 
       <Box
-        display="grid"
-        alignItems="center"
-        gridTemplateColumns="1_2"
-        gap="spacing1"
-        marginBottom="spacing1"
+        customisation={{
+          display: "grid",
+          alignItems: "center",
+          gridTemplateColumns: "1_2",
+          gap: "spacing1",
+          marginBottom: "spacing1",
+        }}
       >
-        <Typography fontSize="body_xs">Status</Typography>
+        <Typography
+          customisation={{
+            fontSize: "body_sm",
+          }}
+        >
+          Status
+        </Typography>
         <DropdownCombobox
-          items={statusesDropdownItems}
-          size="sm"
-          width="100%"
-          id="status-dropdown"
-          marginBottom="spacing3"
-          justifyContent="space-between"
-          label="Status"
           buttonTitle={status}
-          buttonAppearance="secondary"
+          id="kanban-status-dropdown"
+          customisation={{
+            justifyContent: "space-between",
+            marginBottom: "spacing3",
+            width: "100%",
+          }}
+          items={statusesDropdownItems}
+          label="Status"
           onSelect={({ value }) => {
             onSelect({ value, key: "status" });
           }}
+          variant={{ appearance: "secondary", size: "sm" }}
         />
 
-        <Typography fontSize="body_xs">Epic</Typography>
+        <Typography
+          customisation={{
+            fontSize: "body_sm",
+          }}
+        >
+          Epic
+        </Typography>
         <DropdownCombobox
-          size="sm"
-          width="100%"
-          id="epic-dropdown"
+          id="kanban-epic-dropdown"
           label="Epic"
-          marginBottom="spacing3"
-          buttonAppearance="secondary"
+          customisation={{
+            justifyContent: "space-between",
+            marginBottom: "spacing3",
+            width: "100%",
+          }}
+          variant={{ appearance: "secondary", size: "sm" }}
           buttonTitle={epic}
           items={epicsDropdownItems}
           onSelect={({ value }) => {
@@ -110,7 +129,16 @@ export default function KanbanListItem({
           }}
         />
       </Box>
-      <Button size="sm" title="Delete" width="100%" onClick={handleDelete} />
+      <Button
+        id="kanban-delete-button"
+        variant={{ size: "xs" }}
+        customisation={{
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+        title="Delete"
+        onClick={handleDelete}
+      />
     </Box>
   );
 }

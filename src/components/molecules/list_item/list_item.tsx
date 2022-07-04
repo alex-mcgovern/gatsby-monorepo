@@ -3,29 +3,37 @@ import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
-import Box from "../../atoms/box/box";
-import Typography from "../../atoms/typography/typography";
+import { Box, IBoxCustomisation } from "../../atoms/box/box";
+import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
 
 interface ListItemProps {
-  title: string;
-  subtitle?: string;
-  description?: string;
-  link: string;
-  image: ImageDataLike;
   aspectRatio?: "square" | "wide" | "tall";
+  customisation?: IBoxCustomisation;
+  description?: string;
+  image: ImageDataLike;
+  link: string;
+  subtitle?: string;
+  title: string;
 }
 
-export default function ListItem({
-  title,
-  subtitle,
-  description,
-  link,
-  image,
+export const ListItem = ({
   aspectRatio,
-}: ListItemProps) {
+  customisation,
+  description,
+  image,
+  link,
+  subtitle,
+  title,
+}: ListItemProps) => {
   const imageData = getImage(image);
 
+  const listItemClassNames = classNames(
+    styles.listItemWrapper,
+    getFunctionalClassNames({
+      ...customisation,
+    })
+  );
   const imageClassNames = classNames(
     styles.image,
     getFunctionalClassNames({
@@ -34,7 +42,7 @@ export default function ListItem({
   );
 
   return (
-    <Link to={link} className={styles.listItemWrapper}>
+    <Link to={link} className={listItemClassNames}>
       {imageData && (
         <GatsbyImage
           alt={title}
@@ -43,33 +51,55 @@ export default function ListItem({
         />
       )}
 
-      <Box as="header" padding="spacing3">
-        {title && (
-          <Typography
-            fontSize="body_lg"
-            fontWeight="semibold"
-            marginBottom="spacing2"
-          >
-            {title}
-          </Typography>
-        )}
+      <Box
+        customisation={{
+          padding: "spacing3",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: "spacing3",
+          height: "100%",
+        }}
+      >
+        <Box as="header">
+          {title && (
+            <Typography
+              customisation={{
+                fontSize: "body_md",
+                fontWeight: "semibold",
+              }}
+              className={styles.listItemTitle}
+            >
+              {title}
+            </Typography>
+          )}
+          {description && (
+            <Typography
+              customisation={{
+                marginTop: "spacing2",
+                fontSize: "body_md",
+              }}
+            >
+              {description}
+            </Typography>
+          )}
+        </Box>
+
         {subtitle && (
           <Typography
-            fontSize="body_sm"
-            marginBottom="spacing2"
-            fontWeight="medium"
-            color="accent_text_lowContrast"
+            customisation={{
+              fontSize: "body_md",
+              fontWeight: "medium",
+              color: "accent_fg_1",
+            }}
           >
             {subtitle}
           </Typography>
         )}
-        {description && (
-          <Typography fontSize="body_sm">{description}</Typography>
-        )}
       </Box>
     </Link>
   );
-}
+};
 
 ListItem.defaultProps = {
   title: "",

@@ -1,7 +1,7 @@
 import React from "react";
-import { createUrlPathFromArray } from "../../../../../utils/create_url_from_path_array/create_url_path_from_array";
-import Box from "../../../atoms/box/box";
-import Button from "../../../atoms/button/button";
+import { createUrlPathFromArray } from "../../../../utils/create_url_from_path_array/create_url_path_from_array";
+import { Box } from "../../../atoms/box/box";
+import { Tag } from "../../../atoms/tag/tag";
 
 interface IBlogCategoriesList {
   categories: IBlogCategory[];
@@ -17,10 +17,11 @@ export default function BlogCategoriesList({
   if (categories && categories.length > 0)
     return (
       <Box
-        display="flex"
-        gap="spacing1"
-        marginTop="spacing3"
-        marginBottom="spacing6"
+        customisation={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "spacing1",
+        }}
       >
         {categories.map((category) => {
           const isActive = category.categoryTitle === currentCategoryTitle;
@@ -30,9 +31,12 @@ export default function BlogCategoriesList({
           ]);
 
           return (
-            <Button
-              appearance={isActive ? "primary" : "secondary"}
-              size="sm"
+            <Tag
+              id={category.categorySlug}
+              key={category.categorySlug}
+              variant={{
+                state: isActive ? "active" : "inactive",
+              }}
               title={category.categoryTitle}
               to={isActive ? BLOG_LINK : categoryLink}
               iconTrailing={isActive ? "times" : undefined}

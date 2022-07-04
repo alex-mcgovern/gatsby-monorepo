@@ -1,13 +1,15 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import Box from "../../components/atoms/box/box";
-import Button from "../../components/atoms/button/button";
-import Typography from "../../components/atoms/typography/typography";
-import Layout from "../../components/organisms/global_layout/global_layout";
+import { ImageDataLike } from "gatsby-plugin-image";
+import slugify from "slugify";
+import { Box } from "../../components/atoms/box/box";
+import { Button } from "../../components/atoms/button/button";
+import { Typography } from "../../components/atoms/typography/typography";
+import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
+import { ListItem } from "../../components/molecules/list_item/list_item";
+import Page from "../../components/organisms/page/page";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
-import { getFunctionalClassNames } from "../../styles/functional_classnames.css";
-import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 interface BlogPostTemplateProps {
   data: {
@@ -49,74 +51,109 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   const { markdownRemark: post, site, previous, next } = data;
   const {
     excerpt,
-    frontmatter: { cover, description },
+    frontmatter: { description, categories },
     htmlAst,
   } = post;
 
   const siteTitle = site.siteMetadata.title || `Title`;
-  const {} = data;
-  const image = cover && getImage(cover);
-  const imageClassNames = getFunctionalClassNames({
-    borderRadius: "sm",
-    overflow: "hidden",
-    boxShadow: "shadowLight",
-    aspectRatio: "wide",
-    marginBottom: "spacing3",
-  });
+
+  console.log("debug categories", categories);
+  const categoryLinks =
+    categories?.length > 0 &&
+    categories.map((categoryTitle) => {
+      const categorySlug = slugify(categoryTitle, {
+        lower: true,
+        strict: true,
+      });
+      return {
+        categoryTitle,
+        categorySlug,
+      };
+    });
 
   return (
-    <Layout
+    <Page
       title={post.frontmatter.title || siteTitle}
       description={description || excerpt}
     >
       <Box
-        display="grid"
-        {...BOX_PROPS_CONTAINED}
-        gap="spacing3"
-        alignItems="flex-start"
-        gridTemplateColumns={{ mobile: "1x", tablet: "2_1", desktop: "3_1" }}
-        marginY="spacing20"
+        customisation={{
+          ...BOX_CUSTOMISATION_SECTION_SPACING,
+          maxWidth: "gridSpan7",
+          marginX: "auto",
+        }}
       >
-        {/* —————————————————————————————————————————————————————————————————————————————
-        //      ARTICLE BODY                                                            
-        // —————————————————————————————————————————————————————————————————————————————— */}
         <Box as="article">
-          <Box as="section">
-            <Box as="header" marginBottom="spacing10">
-              <Button
-                appearance="tertiary"
-                iconLeading="arrow-left"
-                size="lg"
-                title="All blog posts"
-                to="/blog"
-              />
-              {/* Blog title */}
-              <Typography as="h1" fontSize="h2" marginBottom="spacing1">
-                {post.frontmatter.title}
-              </Typography>
+          {/** ————————————————————————————————————————————————————————————————————————————
+           *      POST HEADER
+           * ——————————————————————————————————————————————————————————————————————————————— */}
+          <Box as="header" customisation={{}}>
+            {/** ————————————————————
+             *      TITLE
+             * ——————————————————————— */}
+            <Typography
+              as="h1"
+              customisation={{
+                marginTop: "none",
+                marginBottom: "spacing2",
+              }}
+            >
+              {post.frontmatter.title}
+            </Typography>
 
-              {/* Date */}
+            {/** ————————————————————
+             *      DESCRIPTION
+             * ——————————————————————— */}
+            <Typography
+              as="h2"
+              customisation={{
+                fontSize: "body_lg",
+                fontWeight: "normal",
+                marginTop: "none",
+                marginBottom: "spacing3",
+              }}
+            >
+              {post.frontmatter.description}
+            </Typography>
+
+            <Box
+              customisation={{
+                display: "flex",
+                alignItems: "center",
+                gap: "spacing3",
+              }}
+            >
+              {/** ————————————————————
+               *      DATE
+               * ——————————————————————— */}
               <Typography
-                fontSize="h6"
-                marginBottom="spacing6"
-                fontWeight="medium"
-                color="accent_text_lowContrast"
+                customisation={{
+                  marginY: "none",
+                  color: "accent_fg_1",
+                }}
               >
                 {post.frontmatter.date}
               </Typography>
 
-              {/* Image */}
-              {image && (
-                <GatsbyImage
-                  className={imageClassNames}
-                  alt={post.frontmatter.title}
-                  image={image}
-                />
-              )}
+              {/** ————————————————————
+               *      CATEGORIES
+               * ——————————————————————— */}
+              <BlogCategoriesList categories={categoryLinks} />
             </Box>
+            <hr />
           </Box>
 
-          <Box as="section" marginY="spacing3">
+          {/** ————————————————————————————————————————————————————————————————————————————
+           *      POST BODY
+           * ——————————————————————————————————————————————————————————————————————————————— */}
+
+          <Box
+            as="section"
+            customisation={{
+              marginY: "spacing3",
+              // marginX: "auto",
+            }}
+          >
             {/* <section
               dangerouslySetInnerHTML={{ __html: html }}
               itemProp="articleBody"
@@ -128,15 +165,33 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           </Box>
 
           <Box
-            marginY="spacing3"
-            display="flex"
-            justifyContent={"space-between"}
-            gap="spacing3"
+            customisation={{
+              marginY: "spacing3",
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "spacing3",
+              maxWidth: "gridSpan6",
+              marginX: "auto",
+            }}
             as="nav"
           >
-            <Button
+            <ListItem
+              description={previous?.frontmatter?.title}
+              link={previous?.fields?.slug}
+              title="Previous"
+              customisation={{ width: "100%" }}
+            />
+            <ListItem
+              description={next?.frontmatter?.title}
+              link={next?.fields?.slug}
+              title="Next"
+              customisation={{ width: "100%", textAlign: "right" }}
+            />
+            {/* <Button
               iconLeading="arrow-left"
-              size="lg"
+              variant={{
+                size: "lg",
+              }}
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
@@ -144,22 +199,11 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               iconTrailing="arrow-right"
               to={next?.fields?.slug}
               title={next?.frontmatter?.title}
-            />
+            /> */}
           </Box>
         </Box>
-        {/* —————————————————————————————————————————————
-        //      CATEGORIES NAV                          
-        // —————————————————————————————————————————————— */}
-        <Box
-          backgroundColor="neutral_ui_base"
-          padding="spacing3"
-          borderRadius="sm"
-        >
-          <Button appearance="secondary" to="/" title="Back to home" />
-          <Button appearance="secondary" to="/" title="Back to home" />
-        </Box>
       </Box>
-    </Layout>
+    </Page>
   );
 };
 
@@ -184,11 +228,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        cover {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
+        categories
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

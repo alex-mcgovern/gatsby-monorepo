@@ -1,11 +1,8 @@
 ---
-title: Building your own styling framework with Vanilla Extract
-cover: ./vanilla-extract-image.png
+title: DIY Tailwind with Vanilla Extract
 date: "2022-04-01T22:12:03.284Z"
 categories: ["Frontend", "Design systems"]
-description:
-  "How to build your own utility-first, type-safe styling framework with an
-  emerging CSS frameworks"
+description: "Utility-first, type-safe styling with a shiny new CSS framework."
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia and

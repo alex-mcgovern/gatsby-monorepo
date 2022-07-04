@@ -1,11 +1,11 @@
-import { recipe } from "@vanilla-extract/recipes";
+import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
-export const button = recipe({
+export const getButtonStyle = recipe({
   base: [
+    { width: "auto", display: "table" },
     getFunctionalClassNames({
       flexShrink: "0",
-      fontWeight: "medium",
       textDecoration: {
         default: "none",
         hover: "underline",
@@ -13,10 +13,9 @@ export const button = recipe({
       },
       borderRadius: "sm",
       whiteSpace: "nowrap",
-      display: "inline-flex",
       alignItems: "center",
-      textAlign: "center",
-      justifyContent: "center",
+      // textAlign: "center",
+      // justifyContent: "center",
     }),
   ],
 
@@ -26,19 +25,20 @@ export const button = recipe({
         getFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
+          fontWeight: "medium",
 
-          color: "primary_text_lowContrast",
+          color: "accent_fg_1",
           backgroundColor: {
-            default: "accent_ui_base",
-            hover: "primary_ui_hover",
-            focus: "primary_ui_hover",
+            default: "accent_bg_3",
+            hover: "accent_ui_1",
+            focus: "accent_ui_1",
           },
 
           border: "1px solid",
           borderColor: {
-            default: "accent_border_interactive",
-            hover: "accent_border_interactive_focus",
-            focus: "accent_border_interactive_focus",
+            default: "accent_border_1",
+            hover: "accent_border_2",
+            focus: "accent_border_2",
           },
         }),
       ],
@@ -47,19 +47,20 @@ export const button = recipe({
         getFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
+          fontWeight: "medium",
 
-          color: "primary_text_lowContrast",
+          color: "accent_fg_1",
           backgroundColor: {
-            default: "neutral_background_dark",
-            hover: "primary_ui_hover",
-            focus: "primary_ui_hover",
+            default: "neutral_bg_2",
+            hover: "accent_ui_1",
+            focus: "accent_ui_1",
           },
 
           border: "1px solid",
           borderColor: {
-            default: "accent_border_interactive",
-            hover: "accent_border_interactive_focus",
-            focus: "accent_border_interactive_focus",
+            default: "accent_border_1",
+            hover: "accent_border_2",
+            focus: "accent_border_2",
           },
         }),
       ],
@@ -67,9 +68,13 @@ export const button = recipe({
       tertiary: [
         getFunctionalClassNames({
           color: {
-            default: "primary_text_highContrast",
-            hover: "primary_text_lowContrast",
-            focus: "primary_text_lowContrast",
+            default: "neutral_fg_1",
+            hover: "neutral_fg_2",
+            focus: "neutral_fg_2",
+          },
+          backgroundColor: {
+            hover: "accent_ui_1",
+            focus: "accent_ui_1",
           },
         }),
       ],
@@ -77,13 +82,13 @@ export const button = recipe({
     size: {
       xs: [
         getFunctionalClassNames({
-          fontSize: "body_xs",
+          fontSize: "body_sm",
         }),
       ],
 
       sm: [
         getFunctionalClassNames({
-          fontSize: "body_sm",
+          fontSize: "body_md",
         }),
       ],
       lg: [
@@ -93,9 +98,10 @@ export const button = recipe({
       ],
     },
   },
-
   defaultVariants: {
-    appearance: "secondary",
+    appearance: "primary",
     size: "sm",
   },
 });
+
+export type TButtonVariants = RecipeVariants<typeof getButtonStyle>;

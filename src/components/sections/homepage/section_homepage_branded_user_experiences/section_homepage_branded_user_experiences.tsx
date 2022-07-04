@@ -1,38 +1,54 @@
 import React from "react";
-import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
-import Box from "../../../atoms/box/box";
-import Typography from "../../../atoms/typography/typography";
+import {
+  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
+  BOX_CUSTOMISATION_SECTION_SPACING,
+} from "../../../../utils/shared_props/box_props";
+import { Box } from "../../../atoms/box/box";
+import { Typography } from "../../../atoms/typography/typography";
 
 interface SectionHomepageBrandedUserExperiencesProps {}
 
 const SectionHomepageBrandedUserExperiences =
   ({}: SectionHomepageBrandedUserExperiencesProps) => {
     return (
-      <Box {...BOX_PROPS_CONTAINED} gap="spacing3" marginY="spacing10">
+      <Box
+        customisation={{
+          ...BOX_CUSTOMISATION_SECTION_SPACING,
+        }}
+      >
         <Typography
-          fontSize="h6"
-          fontWeight="medium"
-          color="accent_text_lowContrast"
-          textAlign="center"
-          // marginBottom="spacing6"
+          customisation={{
+            fontSize: "h6",
+            fontWeight: "semibold",
+            color: "accent_fg_1",
+            textAlign: "center",
+          }}
         >
           My mission
         </Typography>
+
         <Typography
-          fontSize="h2"
           as="h2"
-          fontWeight="bold"
-          color="primary_text_highContrast"
-          textAlign="center"
-          // marginBottom="spacing6"
+          customisation={{
+            fontSize: "h2",
+            fontWeight: "bold",
+            color: "accent_fg_2",
+            textAlign: "center",
+          }}
         >
           Build great online experiences.
         </Typography>
-        <p>
+
+        <Typography
+          as="p"
+          customisation={{
+            textAlign: "center",
+          }}
+        >
           Coming from a design to development background, my working style is
           deeply rooted in creating the simplest, most performant UX and DevX,
           and optimizing for that at scale.
-        </p>
+        </Typography>
       </Box>
     );
   };

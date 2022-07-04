@@ -1,51 +1,45 @@
 import * as React from "react";
-import DesktopAnimation from "../../../../images/svg/animations/animation_v5.svg";
-import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
-import Box from "../../../atoms/box/box";
-import Button from "../../../atoms/button/button";
-import RemarkMarkdown from "../../../util_components/remark_markdown/remark_markdown";
-import { animationWrapper } from "./section_homepage_hero.css";
+import { Link } from "gatsby";
+import {
+  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
+  BOX_CUSTOMISATION_SECTION_SPACING,
+} from "../../../../utils/shared_props/box_props";
+import { Box } from "../../../atoms/box/box";
+import { Typography } from "../../../atoms/typography/typography";
 
-interface IBioProps {
-  bio: string;
-}
+interface IBioProps {}
 
-const SectionHomepageBio = ({ bio }: IBioProps) => {
+const SectionHomepageBio = ({}: IBioProps) => {
   return (
     <Box
-      paddingTop="spacing24"
-      paddingBottom="spacing16"
-      display="grid"
-      gap="spacing3"
-      alignItems="center"
-      gridTemplateColumns={{
-        mobile: "1x",
-        tablet: "1_2",
+      as="section"
+      customisation={{
+        maxWidth: "gridSpan6",
+        marginX: "auto",
+        ...BOX_CUSTOMISATION_SECTION_SPACING,
       }}
-      {...BOX_PROPS_CONTAINED}
     >
-      <Box dataSal="slide-up">
-        <RemarkMarkdown htmlAst={bio} />
-
-        <Box marginY="spacing3" display="flex" gap="spacing1">
-          <Button
-            iconTrailing="arrow-right"
-            title="Get in touch"
-            to="/contact/"
-            size="lg"
-          />
-          <Button
-            // iconTrailing="arrow-right"
-            title="Read an intro blog post"
-            to="/hello-world/"
-            appearance="secondary"
-            size="lg"
-          />
-        </Box>
-      </Box>
-      <Box color="primary_ui_base" dataSal="zoom-in" dataSalDelay={400}>
-        <DesktopAnimation className={animationWrapper} />
-      </Box>
+      <Typography as="h1" customisation={{ textAlign: "center" }}>
+        Alex McGovern
+      </Typography>
+      <Typography
+        as="h2"
+        customisation={{
+          fontSize: "body_md",
+          fontWeight: "normal",
+          textAlign: "center",
+        }}
+      >
+        I'm a web engineer working and living in London. I love{" "}
+        <Link to="/projects/boondoggle-design-system">design systems</Link>, UX,
+        DevX and <i>fast</i> frontend.
+      </Typography>
+      <Typography as="p">
+        I currently work at <a href="https://truelayer.com/">TrueLayer</a> as an
+        engineering manager in the web team, building and maintaining an
+        enterprise-scale site across 7 countries in 4 languages.
+      </Typography>
+      <hr />
     </Box>
   );
 };

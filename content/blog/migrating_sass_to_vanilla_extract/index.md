@@ -1,7 +1,6 @@
 ---
-title: Migrating Javascript & SASS to TypeScript and Vanilla Extract
+title: Migrating 15K LOC from JS to TS
 date: "2015-05-06T23:46:37.121Z"
-cover: ./pexels-cottonbro-4629625.jpg
 categories: ["Frontend", "Design systems"]
 description:
   How my team and I refactored and upgraded 15,000 lines of code to type safe
@@ -46,6 +45,12 @@ Extract for my personal site instead later.
 - no implicit, unsafe parent/descendant selectors — you must reference the
   object you wish to target directly, and can safely import it between modules
   with intellisense
+
+### Things I don't like
+
+- the type that is returned from a recipe variant doesn't afford easy
+  auto-scraping
+- use of helpers in the css.ts environment seriously slows down rebuilds
 
 ### The unintuitive:
 

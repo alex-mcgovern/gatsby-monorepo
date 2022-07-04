@@ -1,16 +1,20 @@
 import React from "react";
-import { createUrlPathFromArray } from "../../../../utils/create_url_from_path_array/create_url_path_from_array";
-import Box from "../../atoms/box/box";
-import Button from "../../atoms/button/button";
+import { createUrlPathFromArray } from "../../../utils/create_url_from_path_array/create_url_path_from_array";
+import { Box } from "../../atoms/box/box";
+import { Button } from "../../atoms/button/button";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
-interface PaginationProps {
+export interface PaginationProps {
   basePath: string;
   currentPage: number;
   pageCount: number;
 }
 
-function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
+export const Pagination = ({
+  basePath,
+  currentPage,
+  pageCount,
+}: PaginationProps) => {
   const firstPath = createUrlPathFromArray([basePath, 1]);
   const previousPath = createUrlPathFromArray([basePath, currentPage - 1]);
 
@@ -25,20 +29,24 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
 
   return (
     <Box
-      display="flex"
+      customisation={{
+        display: "flex",
+        justifyContent: "center",
+        marginY: "spacing3",
+        gap: "spacing1",
+      }}
       as="nav"
-      justifyContent={"center"}
-      marginY="spacing3"
-      gap="spacing1"
     >
       <Button
-        appearance="secondary"
+        id="pagination-button-first"
+        variant={{ appearance: "secondary" }}
         iconLeading="angles-left"
         to={firstPath}
         isDisabled={isFirstOrPrevDisabled}
       />
       <Button
-        appearance="secondary"
+        id="pagination-button-previous"
+        variant={{ appearance: "secondary" }}
         iconLeading="arrow-left"
         to={previousPath}
         isDisabled={isFirstOrPrevDisabled}
@@ -46,24 +54,34 @@ function Pagination({ basePath, currentPage, pageCount }: PaginationProps) {
       {pageArray.length > 0 &&
         pageArray.map((page) => {
           const link = createUrlPathFromArray([basePath, page]);
-          const variant = page === currentPage ? "primary" : "secondary";
-          return <Button appearance={variant} to={link} title={page} />;
+          const appearance = page === currentPage ? "primary" : "secondary";
+          const id = `pagination-button-${currentPage}`;
+          return (
+            <Button
+              id={id}
+              variant={{ appearance }}
+              to={link}
+              title={page.toString()}
+            />
+          );
         })}
       <Button
-        appearance="secondary"
+        id="pagination-button-next"
+        variant={{ appearance: "secondary" }}
         iconTrailing="arrow-right"
         to={nextPath}
         isDisabled={isNextOrLastDisabled}
       />
       <Button
-        appearance="secondary"
+        id="pagination-button-last"
+        variant={{ appearance: "secondary" }}
         iconTrailing="angles-right"
         to={lastPath}
         isDisabled={isNextOrLastDisabled}
       />
     </Box>
   );
-}
+};
 
 Pagination.defaultProps = {
   basePath: null,

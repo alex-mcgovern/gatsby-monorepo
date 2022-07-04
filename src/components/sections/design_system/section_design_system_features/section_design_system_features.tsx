@@ -2,9 +2,12 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import { BOX_PROPS_CONTAINED } from "../../../../utils/shared_props/box_props";
-import Box from "../../../atoms/box/box";
-import Typography from "../../../atoms/typography/typography";
+import {
+  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
+  BOX_CUSTOMISATION_SECTION_SPACING,
+} from "../../../../utils/shared_props/box_props";
+import { Box } from "../../../atoms/box/box";
+import { Typography } from "../../../atoms/typography/typography";
 
 interface ISectionDesignSystemFeatures {}
 
@@ -16,73 +19,98 @@ type TGridContent = {
 
 const ICON_CLASSNAMES = getFunctionalClassNames({
   marginBottom: "spacing1",
-  color: "primary_solid_base",
+  color: "accent_solid_1",
 });
 
 const GRID_CONTENT: TGridContent = [
   {
-    title: "Type-safe styles",
-    icon: "file-shield",
-    body: "Frontend performance directly impacts UX and SEO — yet is often poorly optimized. I build systems for performance from the ground up.",
+    title: "Low overhead",
+    icon: "weight-scale",
+    body: "Zero-runtime styles & a few, very re-usable components.",
   },
+
   {
     title: "Simple customisation",
     icon: "paint-roller",
-    body: "Accessible systems make the web better for everyone. I believe in standardised, unified approaches to managing a11y, and automated accessibility testing at scale.",
+    body: "Most components share a dead-simple customisation API based on semantic CSS.",
   },
   {
     title: "Highly accessible",
     icon: "universal-access",
-    body: "Accessible systems make the web better for everyone. I believe in standardised, unified approaches to managing a11y, and automated accessibility testing at scale.",
+    body: "Fully ARIA and WCAG compliant, with consistent focus handling and keyboard navigation.",
+  },
+  {
+    title: "Highly extensible",
+    icon: "plug-circle-plus",
+    body: "Built with UI libraries like Downshift.js and React Hook Form in mind — or add your own solution.",
+  },
+  {
+    title: "Type-safe styles",
+    icon: "file-shield",
+    body: "Styling and customisations are type-safe, thanks to Vanilla Extract.",
+  },
+  {
+    title: "Self documenting",
+    icon: "book",
+    body: "Documentation is extracted from TS typings, therefore always up to date.",
   },
 ];
 
 export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeatures) {
   return (
-    <Box {...BOX_PROPS_CONTAINED} paddingY="spacing10">
+    <Box
+      customisation={{
+        ...BOX_CUSTOMISATION_SECTION_SPACING,
+      }}
+    >
       <Typography
-        fontSize="h6"
-        fontWeight="medium"
-        color="accent_text_lowContrast"
-        // marginBottom="spacing6"
+        as="h3"
+        customisation={
+          {
+            // fontWeight: "semibold",
+          }
+        }
       >
-        What is BoonDoggle?
-      </Typography>
-      <Typography
-        as="h2"
-        fontSize="h4"
-        fontWeight="bold"
-        marginBottom="spacing6"
-        maxWidth="gridWidthSmall"
-      >
-        An example of my approach to building scalable, theme-able components
+        What's it all about?
       </Typography>
       <Box
-        display="grid"
-        gap="spacing3"
-        gridTemplateColumns={{
-          mobile: "1x",
-          tablet: "2x",
-          desktop: "3x",
+        customisation={{
+          display: "grid",
+          marginTop: "spacing3",
+          gap: "spacing3",
+          gridTemplateColumns: {
+            mobile: "1x",
+            tablet: "2x",
+            desktop: "3x",
+          },
         }}
       >
         {GRID_CONTENT.map((content, index) => {
           return (
-            <Box dataSal="slide-up" dataSalDelay={index * 100}>
+            <Box>
               <FontAwesomeIcon
                 className={ICON_CLASSNAMES}
-                size="3x"
+                size="2x"
                 icon={content.icon}
               />
               <Typography
-                fontSize="h6"
-                color="primary_text_highContrast"
-                fontWeight="semibold"
-                marginBottom="spacing1"
+                customisation={{
+                  fontSize: "body_md",
+                  fontWeight: "semibold",
+                  color: "accent_fg_2",
+                  marginTop: "spacing1",
+                }}
               >
                 {content.title}
               </Typography>
-              <Typography fontSize="body_sm">{content.body}</Typography>
+              <Typography
+                customisation={{
+                  marginTop: "spacing1",
+                  fontSize: "body_md",
+                }}
+              >
+                {content.body}
+              </Typography>
             </Box>
           );
         })}

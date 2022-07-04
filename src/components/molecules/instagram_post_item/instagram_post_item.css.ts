@@ -26,8 +26,8 @@ export const instagramPostOverlay = style([
     },
   },
   getFunctionalClassNames({
-    color: "primary_text_highContrast",
-    backgroundColor: "neutral_ui_base_hover",
+    color: "accent_fg_2",
+    backgroundColor: "neutral_ui_1",
     padding: "spacing3",
   }),
 ]);

@@ -118,7 +118,6 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
             id: nodeId,
             internal: {
               type: `pokemon`,
-              content: JSON.stringify(pokemonData),
               contentDigest: createContentDigest(pokemonData),
             },
           });

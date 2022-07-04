@@ -4,12 +4,9 @@ import {
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
-export interface ITypography {
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "label";
-  children?: React.ReactNode;
+export interface ITypographyCustomisation {
+  backgroundColor?: TFunctionalClassNames["backgroundColor"];
   color?: TFunctionalClassNames["color"];
-  dataSal?: TDataSal;
-  dataSalDelay?: number;
   display?: TFunctionalClassNames["display"];
   fontSize?: TFunctionalClassNames["fontSize"];
   fontWeight?: TFunctionalClassNames["fontWeight"];
@@ -22,45 +19,46 @@ export interface ITypography {
   whiteSpace?: TFunctionalClassNames["whiteSpace"];
 }
 
-export default function Typography({
+export interface ITypographyProps {
+  /** Polymorphic prop allowing `Typography` to return a wide range of HTML Element types. */
+  as?:
+    | "code"
+    | "div"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "label"
+    | "p"
+    | "span";
+  children?: React.ReactNode;
+  /** Customisation exposes utility-first styles as props. */
+  customisation?: ITypographyCustomisation;
+  /** Allow additional classnames to be applied for more advanced customisation*/
+  className?: string;
+}
+
+export const Typography = ({
   as,
   children,
-  color,
-  dataSal,
-  display,
-  fontSize,
-  fontWeight,
-  marginBottom,
-  marginTop,
-  marginY,
-  maxWidth,
-  textAlign,
-  textTransform,
-  whiteSpace,
+  customisation,
+  className,
   ...rest
-}: ITypography) {
+}: ITypographyProps) => {
   const buttonStyle = [
     getFunctionalClassNames({
-      color,
-      display,
-      fontSize,
-      fontWeight,
-      marginBottom,
-      marginTop,
-      maxWidth,
-      marginY,
-      textAlign,
-      textTransform,
-      whiteSpace,
+      ...customisation,
     }),
+    className,
   ];
 
-  // allow polymorphism
   const Element = as || "div";
 
   return (
-    <Element className={buttonStyle.join(" ")} data-sal={dataSal} {...rest}>
+    <Element className={buttonStyle.join(" ")} {...rest}>
       {children}
     </Element>
   );
-}
+};

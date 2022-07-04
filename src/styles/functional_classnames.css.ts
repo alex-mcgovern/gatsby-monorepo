@@ -1,5 +1,5 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
-import { vars } from "./theme.css";
+import { darkTheme, vars } from "./theme.css";
 import { varsBackgroundImage } from "./vars/vars_background_image.css";
 import { varsShadow } from "./vars/vars_shadow.css";
 import { varsTransition } from "./vars/vars_transition.css";
@@ -8,10 +8,10 @@ const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
     tablet: {
-      "@media": "screen and (min-width: 768px)",
+      "@media": "screen and (min-width: 376px)",
     },
     desktop: {
-      "@media": "screen and (min-width: 960px)",
+      "@media": "screen and (min-width: 768px)",
     },
   },
   defaultCondition: "mobile",
@@ -21,15 +21,24 @@ const responsiveProperties = defineProperties({
     aspectRatio: vars.aspectRatio,
     border: ["1px solid", "2px solid"],
     borderRadius: {
+      pill: 999,
       "50%": "50%",
       lg: 24,
       md: 16,
-
       sm: 8,
     },
-    display: ["none", "flex", "block", "inline", "inline-flex", "grid"],
+    display: [
+      "block",
+      "flex",
+      "grid",
+      "inline-block",
+      "inline-flex",
+      "inline",
+      "none",
+    ],
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
     flexShrink: ["0"],
+    flexWrap: ["wrap", "nowrap"],
     fontSize: vars.fontSize,
     fontWeight: vars.fontWeight,
     gap: vars.spacing,
@@ -51,9 +60,9 @@ const responsiveProperties = defineProperties({
     marginRight: vars.spacing,
     marginTop: vars.spacing,
     maxHeight: vars.spacing,
-    maxWidth: vars.spacing,
+    maxWidth: vars.width,
     minHeight: ["100vh"],
-    minWidth: vars.spacing,
+    minWidth: vars.width,
     overflow: ["hidden"],
     overflowY: ["auto"],
     paddingBottom: vars.spacing,
@@ -65,7 +74,7 @@ const responsiveProperties = defineProperties({
     textTransform: ["capitalize", "uppercase", "lowercase"],
     transition: varsTransition,
     whiteSpace: ["nowrap"],
-    width: vars.spacing,
+    width: vars.width,
     zIndex: ["-1", "1"],
   },
   shorthands: {
@@ -84,7 +93,9 @@ const colorProperties = defineProperties({
     default: {},
     hover: { selector: "&:not([disabled]):hover" },
     focus: { selector: "&:not([disabled]):focus" },
-    focusWithin: { selector: "&:not([disabled]):focus-within" },
+    darkMode: { selector: `${darkTheme} &` },
+    darkMode_hover: { selector: `${darkTheme} &:not([disabled]):hover` },
+    darkMode_focus: { selector: `${darkTheme} &:not([disabled]):focus` },
   },
   defaultCondition: "default",
   properties: {

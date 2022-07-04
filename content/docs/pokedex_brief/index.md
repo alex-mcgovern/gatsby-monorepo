@@ -10,9 +10,6 @@ description:
 
 # Multilingual Pokedex
 
-This is a working example of the take-home challenge I ask candidates to
-complete when interviewing for frontend roles on my team. The brief is to create
-a static Gatsby website containing a multilingual Pokedex, using data sourced
-from PokeAPI at build time. The focus is on how the candidate structures their
-data and how i18n is built into the design, as well as their approach to i18n
-functionality in the frontend and how they render large volumes of data.
+This is a demo for the take-home challenge I use for my team. The brief is to
+create a static Gatsby website containing a multilingual Pokedex, using data
+sourced from PokeAPI at build time.

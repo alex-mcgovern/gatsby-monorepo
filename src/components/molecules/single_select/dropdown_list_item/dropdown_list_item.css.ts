@@ -12,10 +12,10 @@ export const getDropdownStyles = recipe({
     },
     getFunctionalClassNames({
       whiteSpace: "nowrap",
-      color: "primary_text_highContrast",
+      color: "accent_fg_2",
       backgroundColor: {
-        hover: "primary_ui_hover",
-        focus: "primary_ui_selected",
+        hover: "accent_ui_1",
+        focus: "accent_ui_2",
       },
       padding: "spacing2",
       width: "100%",
@@ -35,7 +35,7 @@ export const getDropdownStyles = recipe({
       ],
       lg: [
         getFunctionalClassNames({
-          fontSize: "body_lg",
+          fontSize: "body_md",
         }),
       ],
     },
@@ -44,12 +44,12 @@ export const getDropdownStyles = recipe({
 
 export const isHighlighted = style([
   getFunctionalClassNames({
-    backgroundColor: "primary_ui_hover",
+    backgroundColor: "accent_ui_1",
   }),
 ]);
 export const isSelected = style([
   getFunctionalClassNames({
-    backgroundColor: "primary_ui_selected",
+    backgroundColor: "accent_ui_2",
   }),
 ]);
 export const resultWrapper = style([resetList]);

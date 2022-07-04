@@ -53,28 +53,34 @@ const config: GatsbyConfig = {
     //      DESIGN SYSTEM DOCUMENTATION                                             
     // —————————————————————————————————————————————————————————————————————————————— */
 
-    `gatsby-plugin-create-design-docs`,
-
     /* ——————————————————————————————————————————————
     //      AUTOGENERATE TYPES & INTERFACE DOCUMENTATION
     // —————————————————————————————————————————————— */
-    {
-      resolve: "gatsby-source-typedoc",
-      options: {
-        // Array of Typescript files to
-        // include
-        src: [path.resolve(`src/components`), path.resolve(`src/global.d.ts`)],
 
-        // Options passed to Typedoc Application
-        // Usually corresponds to CLI args directly
-        // See: https://typedoc.org/guides/options/
-        typedoc: {
-          entryPointStrategy: "expand",
-          json: "./docs/docs.json",
-          tsconfig: path.resolve(`tsconfig.json`),
-        },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `global-types`,
+        path: path.resolve(`src/global.d.ts`),
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `styles`,
+        path: path.resolve(`src/styles`),
+      },
+    },
+
+    {
+      resolve: "gatsby-transformer-react-docgen-typescript-v2",
+    },
+
+    /* ——————————————————————————————————————————————
+    //      CREATE DOCUMENTATION PAGES
+    // —————————————————————————————————————————————— */
+
+    `gatsby-plugin-create-design-docs`,
 
     /* ——————————————————————————————————————————————
     //      BLOG PAGINATION PAGE CREATION           
@@ -83,7 +89,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-create-blog-pagination",
       options: {
-        itemsPerPage: 12,
+        itemsPerPage: 3,
       },
     },
 
@@ -97,20 +103,11 @@ const config: GatsbyConfig = {
         identifiers: `debug`,
       },
     },
-    {
-      resolve: `gatsby-plugin-scroll-reveal-fixed`,
-      options: {
-        threshold: 0.001, // Percentage of an element's area that needs to be visible to launch animation
-        once: true, // Defines if animation needs to be launched once
-        disable: false, // Flag for disabling animations
 
-        // Advanced Options
-        selector: "[data-sal]", // Selector of the elements to be animated
-        animateClassName: "sal-animate", // Class name which triggers animation
-        disabledClassName: "sal-disabled", // Class name which defines the disabled state
-        rootMargin: "-80px 50%", // Corresponds to root's bounding box margin
-        enterEventName: "sal:in", // Enter event name
-        exitEventName: "sal:out", // Exit event name
+    {
+      resolve: "gatsby-source-hubspot-forms",
+      options: {
+        apiKey: process.env.HUBSPOT_API_KEY,
       },
     },
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import firebase from "../../utils/firebase/firebase";
+import firebase from "../../utils/firebase/firebase_old";
 
 export interface IFirestoreDocument {
   id: string;

@@ -1,12 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Box from "../../components/atoms/box/box";
-import Typography from "../../components/atoms/typography/typography";
-import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
-import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import Pagination from "../../components/molecules/pagination/pagination";
-import Layout from "../../components/organisms/global_layout/global_layout";
-import { BOX_PROPS_CONTAINED } from "../../utils/shared_props/box_props";
+import BlogListLayout from "../../components/organisms/blog_list_page/blog_list_layout";
 
 const PAGINATION_BASE_PATH = "blog";
 
@@ -23,9 +17,8 @@ interface TemplateBlogListPageProps {
   };
   pageContext: {
     allCategories: IBlogCategory[];
-    currentPage?: number;
-    languageISO?: string;
-    pageCount?: number;
+    currentPage: number;
+    pageCount: number;
   };
 }
 
@@ -42,33 +35,13 @@ export default function TemplateBlogListPage({
   } = data;
 
   return (
-    <Layout title={siteTitle}>
-      <Box {...BOX_PROPS_CONTAINED}>
-        <Box as="section" marginY="spacing20">
-          <Typography as="h1" fontSize="h2" dataSal="slide-up">
-            Things I think are cool or are worth sharing.
-          </Typography>
-
-          <Typography as="p" fontSize="body_lg">
-            My blog acts as a sort of "experience journal" from my journey
-            through the world of engineering and product. My hope is that by
-            writing I will a: compound my knowledge and learnings and b: perhaps
-            educate or inspire others, and offer some shortcuts to level up
-            their frontend craft.
-          </Typography>
-          <BlogCategoriesList categories={allCategories} />
-          <SectionBlogPostList posts={posts} />
-        </Box>
-
-        {pageCount && pageCount > 1 && (
-          <Pagination
-            basePath={PAGINATION_BASE_PATH}
-            currentPage={currentPage}
-            pageCount={pageCount}
-          />
-        )}
-      </Box>
-    </Layout>
+    <BlogListLayout
+      currentPage={currentPage}
+      pageCount={pageCount}
+      posts={posts}
+      siteTitle={siteTitle}
+      allCategories={allCategories}
+    />
   );
 }
 
@@ -94,11 +67,6 @@ export const query = graphql`
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
-          cover {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED)
-            }
-          }
           category
           description
         }

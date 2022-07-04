@@ -1,10 +1,14 @@
 import { globalStyle } from "@vanilla-extract/css";
 import "./global/global_button.css";
+import "./global/global_code.css";
 import "./global/global_fieldset.css";
 import "./global/global_headings.css";
+import "./global/global_hr.css";
 import "./global/global_input.css";
 import "./global/global_paragraph_styles.css";
+import "./global/global_tables.css";
 import { vars } from "./theme.css";
+import { varsBackgroundImage } from "./vars/vars_background_image.css";
 
 export const rootColors = {
   light: {
@@ -33,22 +37,25 @@ globalStyle(`.dark`, {
 globalStyle(`*`, {
   boxSizing: `border-box`,
   margin: 0,
+  // outline: "1px solid red",
 });
 
 globalStyle(`html`, {
-  color: vars.color.primary_text_highContrast,
+  color: vars.color.neutral_fg_2,
   fontSize: 16,
-  backgroundColor: vars.color.neutral_background,
+  backgroundColor: vars.color.neutral_bg_2,
+  backgroundImage: varsBackgroundImage.noise,
 });
 
 globalStyle(`html, body`, {
   height: `100%`,
+  fontSize: 16,
   fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
 });
 
 globalStyle(`body`, {
-  lineHeight: 1.4,
-  fontSize: 16,
+  fontSize: vars.fontSize.body_lg,
+  lineHeight: 1.8,
   WebkitFontSmoothing: `antialiased`,
   width: "100vw",
 });
@@ -61,8 +68,8 @@ globalStyle(`a`, {
   padding: 0,
   margin: 0,
   listStyleType: "none",
-  textDecoration: "none",
-  color: "inherit",
+  // textDecoration: "none",
+  color: vars.color.accent_fg_1,
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————

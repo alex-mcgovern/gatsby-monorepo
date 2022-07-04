@@ -1,28 +1,13 @@
-import { calc } from "@vanilla-extract/css-utils";
-
 export const varsSpacing = {
   "": "0",
   "100%": "100%",
   "100vh": "100vh",
   "50%": "50%",
+  "25%": "25%",
   "50vh": "50vh",
   "75vh": "75vh",
   auto: "auto",
-  gridSpan1: calc.divide("960px", 12),
-  gridSpan10: calc.multiply(calc.divide("960px", 12), 10),
-  gridSpan11: calc.multiply(calc.divide("960px", 12), 11),
-  gridSpan2: calc.multiply(calc.divide("960px", 12), 2),
-  gridSpan3: calc.multiply(calc.divide("960px", 12), 3),
-  gridSpan4: calc.multiply(calc.divide("960px", 12), 4),
-  gridSpan5: calc.multiply(calc.divide("960px", 12), 5),
-  gridSpan6: calc.multiply(calc.divide("960px", 12), 6),
-  gridSpan7: calc.multiply(calc.divide("960px", 12), 7),
-  gridSpan8: calc.multiply(calc.divide("960px", 12), 8),
-  gridSpan9: calc.multiply(calc.divide("960px", 12), 9),
-  gridWidth: "960px",
-  gridWidthMobile: calc.subtract("100vw", "32px"),
-  gridWidthSmall: calc.multiply(calc.divide("960px", 12), 8),
-  gridWidthTablet: calc.subtract("100vw", "64px"),
+
   none: "0",
   spacing0: "4px",
   spacing1: "8px",
@@ -39,5 +24,4 @@ export const varsSpacing = {
   spacing24: "192px",
   spacing28: "224px",
   spacing32: "256px",
-  offSetHeader: "-80px",
 };

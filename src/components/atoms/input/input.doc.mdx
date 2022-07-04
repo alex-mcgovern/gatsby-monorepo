@@ -1,113 +1,40 @@
 ---
 title: Input
+mdxType: Component
 atomicLevel: Atoms
 categories: ["Interactive", "Inputs"]
 description:
-  "Accessible input component, designed for use with for DownShift.js"
+  "Customisable & accessible input, designed to play nice with UI libraries."
 ---
 
-import Box from "../box/box.tsx";
-import Typography from "../typography/typography.tsx";
-import Input from "./input.tsx";
+import { Box } from "../box/box.tsx";
+import { Typography } from "../typography/typography.tsx";
+import { INPUT_SIZE_VARIANTS_MOCK } from "./__mocks__/input_size_variants.mock";
+import { Input } from "./input.tsx";
 
-<Box
-  iconLeading="search"
-  backgroundColor="neutral_background_dark"
-  border="1px solid"
-  borderColor="neutral_border_nonInteractive"
-  borderRadius="sm"
-  marginY="spacing3"
-  overflow="hidden"
-  padding="spacing3"
->
-  <Input placeholder="Type in me" />
-</Box>
+The current implementation of the `Button` component is tied to Gatsby's `Link`
+routing component. There are plans to decouple this, and allow passing in a
+custom routing component (e.g. Reach Router's `Link`) and add an `asChild` prop
+to dynamically merge button attrs, styles and children onto any HTML element.
+
+---
 
 ## Variants
 
-## Show label
-
 <Box
-  {...BOX_PROPS_COMPONENT_DEMO}
-  display="grid"
-  gridTemplateColumns={{ mobile: "1x", tablet: "2x" }}
-  gap="spacing3"
-  alignItems="flex-end"
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "3x" },
+    gap: "spacing3",
+    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+  }}
 >
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      true
-    </Typography>
-    <Input
-      iconTrailing="arrow-right"
-      placeholder="Look at my label"
-      size="sm"
-      isLabelVisible
-      id="input-label-visible"
-      label="Input with visible label"
-    ></Input>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      false
-    </Typography>
-    <Input
-      iconTrailing="arrow-right"
-      placeholder="No label here"
-      size="sm"
-      id="input-label-hidden"
-      label="Input with hidden label"
-    ></Input>
-  </Box>
-</Box>
-
-### `size`
-
-`"sm" | "sm" | "lg"`
-
-<Box
-  {...BOX_PROPS_COMPONENT_DEMO}
-  display="grid"
-  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
-  gap="spacing3"
->
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      Sm
-    </Typography>
-    <Input iconTrailing="arrow-right" placeholder="Type in me" size="xs"></Input>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      Md
-    </Typography>
-    <Input size="sm" iconTrailing="arrow-right" placeholder="Type in me"></Input>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      Lg
-    </Typography>
-    <Input size="lg" iconTrailing="arrow-right" placeholder="Type in me"></Input>
-  </Box>
-
+  {INPUT_SIZE_VARIANTS_MOCK?.length > 0 &&
+    INPUT_SIZE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+          <Input {...mock}></Input>
+        </Box>
+      );
+    })}
 </Box>

@@ -22,7 +22,7 @@ export const dialogOverlay = style([
     },
   },
   getFunctionalClassNames({
-    backgroundColor: "neutral_background",
+    backgroundColor: "neutral_bg_1",
   }),
 ]);
 export const dialogContent = style([
@@ -43,7 +43,7 @@ export const dialogContent = style([
     },
   },
   getFunctionalClassNames({
-    backgroundColor: "neutral_ui_base",
+    backgroundColor: "neutral_bg_3",
     borderRadius: "sm",
     boxShadow: "shadowDark",
     width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan6" },

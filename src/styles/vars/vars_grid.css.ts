@@ -1,6 +1,6 @@
 export const varsGrid = {
-  gridWidth: 1080,
-  gridWidthSmall: 768,
+  gridSpan8: "1080px",
+  gridWidthText: 768,
   auto: "auto",
   "100%": "100%",
 };

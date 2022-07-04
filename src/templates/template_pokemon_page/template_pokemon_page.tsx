@@ -1,19 +1,16 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { createUrlPathFromArray } from "../../../utils/create_url_from_path_array/create_url_path_from_array";
-import Box from "../../components/atoms/box/box";
-import Button from "../../components/atoms/button/button";
+import { Box } from "../../components/atoms/box/box";
+import { Button } from "../../components/atoms/button/button";
 import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
-import Pagination from "../../components/molecules/pagination/pagination";
-import Layout from "../../components/organisms/global_layout/global_layout";
+import { Pagination } from "../../components/molecules/pagination/pagination";
+import Page from "../../components/organisms/page/page";
+import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import {
-  BOX_PROPS_CONTAINED,
-  BOX_PROPS_SECTION,
-} from "../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../utils/shared_props/box_props";
 
 interface TemplatePokemonPageProps {
   data: {
@@ -92,21 +89,32 @@ export default function TemplatePokemonPage({
   const allPokemonLink = createUrlPathFromArray([languageISO, "pokedex", 1]);
 
   return (
-    <Layout title={siteTitle}>
-      <Box {...BOX_PROPS_SECTION} {...BOX_PROPS_CONTAINED}>
-        <Box display="flex" marginY="spacing3" justifyContent={"space-between"}>
+    <Page title={siteTitle}>
+      <Box customisation={BOX_CUSTOMISATION_MAX_WIDTH_FULL}>
+        <Box
+          customisation={{
+            display: "flex",
+            marginY: "spacing3",
+            justifyContent: "space-between",
+          }}
+        >
           <Button
             iconLeading="arrow-left"
-            size="lg"
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
             to={allPokemonLink}
             iconTrailing="grip"
-            appearance="secondary"
           />
 
           <DropdownCombobox
             items={dropdownItems}
             isSearchable
-            size="lg"
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
             iconLeading="search"
             id="pokedex-search"
             label="Search"
@@ -116,15 +124,24 @@ export default function TemplatePokemonPage({
 
           <DropdownCombobox
             items={languageIndex}
-            size="lg"
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
             id="language-dropdown"
             label="Status"
             buttonTitle={currentLanguageUpperCase}
           />
         </Box>
 
-        <Box as="section" display="grid" gridTemplateColumns="2_1">
-          <Box as="header" marginY="spacing10">
+        <Box
+          as="section"
+          customisation={{
+            display: "grid",
+            gridTemplateColumns: "2_1",
+          }}
+        >
+          <Box as="header" customisation={{ marginY: "spacing10" }}>
             <h2>{pokemonTitle}</h2>
             <h3>{genus}</h3>
             <p>{flavorText}</p>
@@ -138,7 +155,7 @@ export default function TemplatePokemonPage({
           pageCount={totalCount}
         />
       </Box>
-    </Layout>
+    </Page>
   );
 }
 

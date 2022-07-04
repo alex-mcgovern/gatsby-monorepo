@@ -11,21 +11,23 @@ export const dropdownWrapper = style([
     top: "100%",
     width: "auto",
     minWidth: "100%",
-    overflowY: "scroll",
+    overflowY: "auto",
     marginTop: vars.spacing.spacing2,
   },
   getFunctionalClassNames({
+    maxHeight: "spacing32",
+    boxShadow: "shadowLight",
     display: "block",
     position: "absolute",
-    color: "primary_text_highContrast",
-    backgroundColor: "neutral_background",
+    color: "accent_fg_2",
+    backgroundColor: "neutral_bg_2",
     border: "1px solid",
     borderRadius: "sm",
     overflow: "hidden",
 
     borderColor: {
-      default: "neutral_border_interactive",
-      hover: "primary_border_interactive_focus",
+      default: "neutral_border_1",
+      hover: "accent_border_2",
     },
   }),
 ]);

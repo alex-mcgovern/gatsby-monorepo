@@ -15,7 +15,7 @@ const defaultState = {
 
 export const ThemeContext = React.createContext<IThemeContext>(defaultState);
 
-export function ThemeProvider({ children }: IThemeProviderProps) {
+export const ThemeProvider = ({ children }: IThemeProviderProps) => {
   const [dark, setDark] = useState(defaultState.dark);
   const toggleDark = () => {
     setDark(!dark);
@@ -44,4 +44,4 @@ export function ThemeProvider({ children }: IThemeProviderProps) {
       {children}
     </ThemeContext.Provider>
   );
-}
+};

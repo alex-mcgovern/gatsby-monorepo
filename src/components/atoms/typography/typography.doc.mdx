@@ -1,54 +1,26 @@
 ---
 title: Typography
+mdxType: Component
 atomicLevel: Atoms
 categories: ["Polymorphic"]
 description: "Polymorphic Typography component"
 ---
 
-import { BOX_PROPS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
-import Box from "../box/box.tsx";
-import Typography from "./typography.tsx";
+import { BOX_CUSTOMISATIONS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
+import { Box } from "../box/box.tsx";
+import { TYPOGRAPHY_SIZE_VARIANTS_MOCK } from "./__mocks__/typography_size_variants.mock.ts";
+import { Typography } from "./typography.tsx";
 
 ### `fontSize`
 
-`"h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body_lg" | "body_sm" | "body_xs"`
-
-<Box {...BOX_PROPS_COMPONENT_DEMO}>
-  <Typography fontSize="h1" fontWeight="bold">
-    Lorem ipsum dolor sit amet
-  </Typography>
-  <Typography fontSize="h2" fontWeight="bold">
-    Consectetur adipiscing elit
-  </Typography>
-  <Typography fontSize="h3" fontWeight="bold">
-    Sed do eiusmod tempor incididunt
-  </Typography>
-  <Typography fontSize="h4" fontWeight="semibold">
-    Ut labore et dolore magna aliqua
-  </Typography>
-  <Typography fontSize="h5" fontWeight="semibold">
-    Ut enim ad minim veniam
-  </Typography>
-  <Typography fontSize="h6" fontWeight="semibold">
-    Ut enim ad minim veniam
-  </Typography>
-  <Typography fontSize="body_lg">Ut enim ad minim veniam</Typography>
-  <Typography fontSize="body_sm">Quis nostrud exercitation ullamco</Typography>
-  <Typography fontSize="body_xs">
-    Laboris nisi ut aliquip ex ea commodo consequat
-  </Typography>
+<Box customisation={{ ...BOX_CUSTOMISATIONS_COMPONENT_DEMO }}>
+  {TYPOGRAPHY_SIZE_VARIANTS_MOCK?.length > 0 &&
+    TYPOGRAPHY_SIZE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+          <Typography as="code">{mock.fontSize}</Typography>
+          <Typography {...mock}></Typography>
+        </Box>
+      );
+    })}
 </Box>
-
-Lorem ipsum
-
-## Variants
-
-Lorem ipsm
-
-### Color
-
-Lorem ipsum
-
-### Size
-
-Lorem ipsum

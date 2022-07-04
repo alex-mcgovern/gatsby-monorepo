@@ -1,218 +1,119 @@
 ---
 title: Button
+mdxType: Component
 atomicLevel: Atoms
 categories: ["Interactive"]
-description: "Simple button component currently built around Gatsby `Link` component. Soon to
-be framework-agnostic"
+description: "A simple, customisable, and accessible button component."
 ---
 
-import { BOX_PROPS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
-import Box from "../box/box.tsx";
-import Typography from "../typography/typography.tsx";
-import Button from "./button.tsx";
+import { BOX_CUSTOMISATIONS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
+import { Box } from "../box/box.tsx";
+import { Typography } from "../typography/typography.tsx";
+import { BUTTON_APPEARANCE_VARIANTS_MOCK } from "./__mocks__/button_appearance_variants.mock.ts";
+import { BUTTON_ICON_VARIANTS_MOCK } from "./__mocks__/button_icon_variants.mock.ts";
+import { BUTTON_SIZE_VARIANTS_MOCK } from "./__mocks__/button_size_variants.mock.ts";
+import { Button } from "./button.tsx";
 
-<Box paddingY="spacing6">
-  <Button iconTrailing="arrow-right" title="Click me" size="lg"></Button>
-</Box>
+<Button
+  title="Click me friend"
+  size="lg"
+  onClick={() => alert("Hello friend")}
+  customisation={{
+    marginTop: "spacing3",
+  }}
+></Button>
 
-## Variants
+The `Button` includes everything you would expect; handling internal & external
+links as well as onClick handlers.
 
-### Appearance
+Customising the button is easy using the `customisation` prop. This exposes a
+large set of CSS properties for quick, inline adaptation without the need to
+create custom CSS classes, or add unnecessary wrapper DOM elements.
 
-<Box
-  {...BOX_PROPS_COMPONENT_DEMO}
-  display="grid"
-  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
-  gap="spacing6"
->
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      primary
-    </Typography>
-    <Button iconTrailing="arrow-right" title="Click me"></Button>
-  </Box>
+**Note:** The current implementation of the `Button` component is tied to
+Gatsby's `Link` routing component. There are plans to decouple this, and allow
+passing in a custom routing component (e.g. Reach Router's `Link`) and add an
+`asChild` prop to dynamically merge button attrs, styles and children onto any
+HTML element.
 
-<Box>
-  <Typography
-    fontSize="body_lg"
-    color="neutral_text_lowContrast"
-    marginBottom="spacing3"
-  >
-    secondary
-  </Typography>
-  <Button
-    appearance="secondary"
-    iconTrailing="arrow-right"
-    title="Click me"
-  ></Button>
-</Box>
+---
 
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      tertiary
-    </Typography>
-    <Button
-      appearance="tertiary"
-      iconTrailing="arrow-right"
-      title="Click me"
-    ></Button>
-  </Box>
-</Box>
+### Usage examples
 
-### Size
+#### Variants
+
+Variants are configurable via the `variant` prop.
+
+##### Appearance
 
 <Box
-  {...BOX_PROPS_COMPONENT_DEMO}
-  display="grid"
-  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
-  gap="spacing3"
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
+    gap: "spacing3",
+    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+  }}
 >
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      sm
-    </Typography>
-    <Button iconTrailing="arrow-right" title="Extra small" size="xs"></Button>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      md
-    </Typography>
-    <Button
-      size="sm"
-      iconTrailing="arrow-right"
-      title="Small"
-      size="sm"
-    ></Button>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      lg
-    </Typography>
-    <Button
-      size="lg"
-      iconTrailing="arrow-right"
-      title="Large"
-      size="lg"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      iconTrailing="arrow-right"
-      title="Click me"
-      size="sm"
-      appearance="secondary"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      size="sm"
-      iconTrailing="arrow-right"
-      title="Click me"
-      appearance="secondary"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      size="lg"
-      iconTrailing="arrow-right"
-      title="Click me"
-      appearance="secondary"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      iconTrailing="arrow-right"
-      title="Click me"
-      size="sm"
-      appearance="tertiary"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      size="sm"
-      iconTrailing="arrow-right"
-      title="Click me"
-      appearance="tertiary"
-    ></Button>
-  </Box>
-  <Box>
-    <Button
-      size="lg"
-      iconTrailing="arrow-right"
-      title="Click me"
-      appearance="tertiary"
-    ></Button>
-  </Box>
+  {BUTTON_APPEARANCE_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_APPEARANCE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+            <Typography
+              as="code"
+              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+            >
+              {mock?.variant?.appearance}
+            </Typography>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
+
 </Box>
 
-## Customisation
-
-The button exposes quite a few utility first styles as props.
+##### Size
 
 <Box
-  {...BOX_PROPS_COMPONENT_DEMO}
-  display="grid"
-  gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
-  gap="spacing3"
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
+    gap: "spacing3",
+    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+  }}
 >
+  {BUTTON_SIZE_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_SIZE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+            <Typography
+              as="code"
+              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+            >
+              {mock?.variant?.size}
+            </Typography>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
 
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      width="100%"
-    </Typography>
-    <Button iconTrailing="arrow-right" width="100%" title="Click me"></Button>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      width="100%"
-    </Typography>
-    <Button
-      appearance="secondary"
-      iconTrailing="arrow-right"
-      title="Click me"
-      display="block"
-    ></Button>
-  </Box>
-  <Box>
-    <Typography
-      fontSize="body_lg"
-      color="neutral_text_lowContrast"
-      marginBottom="spacing3"
-    >
-      tertiary
-    </Typography>
-    <Button
-      appearance="tertiary"
-      iconTrailing="arrow-right"
-      title="Click me"
-    ></Button>
-  </Box>
+</Box>
+
+##### Icon
+
+<Box
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "3x" },
+    gap: "spacing3",
+    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+  }}
+>
+  {BUTTON_ICON_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_ICON_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
 </Box>

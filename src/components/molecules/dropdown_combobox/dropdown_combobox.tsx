@@ -1,10 +1,14 @@
 import React from "react";
-import { TFunctionalClassNames } from "../../../styles/functional_classnames.css";
-import { Box, Button } from "../../atoms";
-import { IButton } from "../../atoms/button/i_button";
-import Input from "../../atoms/input/input";
+import { Box } from "../../atoms/box/box";
+import { Button, IButtonCustomisation } from "../../atoms/button/button";
+import { TButtonVariants } from "../../atoms/button/button.css";
+import { IInputCustomisation, Input } from "../../atoms/input/input";
 import DropdownList from "../single_select/dropdown_list/dropdown_list";
 import useComboboxWithCreate from "./hooks/use_combobox_with_create";
+
+interface IDropdownComboboxCustomisation
+  extends IButtonCustomisation,
+    IInputCustomisation {}
 
 export interface IDropdownComboboxProps {
   id: string;
@@ -12,26 +16,16 @@ export interface IDropdownComboboxProps {
   isSearchable?: boolean;
   isCreatable?: boolean;
   items: IDownshiftItem[];
-  buttonAppearance?: IButton["appearance"];
+  customisation?: IDropdownComboboxCustomisation;
   label: string;
   buttonTitle?: string;
   iconLeading?: string;
-  margin?: TFunctionalClassNames["margin"];
-  justifyContent?: TFunctionalClassNames["justifyContent"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  marginLeft?: TFunctionalClassNames["marginLeft"];
-  marginRight?: TFunctionalClassNames["marginRight"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  marginX?: TFunctionalClassNames["marginY"];
-  marginY?: TFunctionalClassNames["marginX"];
   onSelect?(...args: unknown[]): unknown;
   placeholder?: string;
-  size?: "sm" | "sm" | "lg";
-  width?: TFunctionalClassNames["width"];
+  variant?: TButtonVariants;
 }
 
 export const DropdownCombobox = ({
-  buttonAppearance,
   buttonTitle,
   id,
   isLabelVisible,
@@ -40,18 +34,10 @@ export const DropdownCombobox = ({
   iconLeading,
   items,
   label,
-  margin,
-  marginBottom,
-  marginLeft,
-  marginRight,
-  justifyContent,
-  marginTop,
-  marginX,
-  marginY,
+  customisation,
   onSelect,
   placeholder,
-  size,
-  width,
+  variant,
 }: IDropdownComboboxProps) => {
   const {
     getComboboxProps,
@@ -67,47 +53,29 @@ export const DropdownCombobox = ({
   } = useComboboxWithCreate({ items, onSelect, isCreatable });
 
   return (
-    <Box position="relative" {...getComboboxProps()}>
+    <Box customisation={{ position: "relative" }} {...getComboboxProps()}>
       {isSearchable ? (
         <Input
           placeholder={placeholder}
-          size={size}
           isLabelVisible={isLabelVisible}
-          width={width}
           label={label}
           iconLeading={iconLeading}
           id={id}
-          margin={margin}
-          marginBottom={marginBottom}
-          marginLeft={marginLeft}
-          marginRight={marginRight}
-          marginTop={marginTop}
-          marginX={marginX}
-          marginY={marginY}
+          customisation={customisation}
           {...getInputProps()}
         />
       ) : (
         <Button
           id={id}
-          size={size}
-          width={width}
           title={inputValue || buttonTitle || "—"}
           iconTrailing="caret-down"
-          appearance={buttonAppearance}
-          justifyContent={justifyContent}
+          variant={variant}
           iconLeading={iconLeading}
-          margin={margin}
-          marginBottom={marginBottom}
-          marginLeft={marginLeft}
-          marginRight={marginRight}
-          marginTop={marginTop}
-          marginX={marginX}
-          marginY={marginY}
+          customisation={customisation}
           {...getToggleButtonProps()}
         />
       )}
       <DropdownList
-        size={size}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
