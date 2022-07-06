@@ -98,7 +98,7 @@ export default function SectionHomepagePrinciples({}: ISectionHomepagePrinciples
               </Typography>
               <Typography
                 customisation={{
-                  fontSize: "body_md",
+                  fontSize: "body_lg",
                 }}
               >
                 {content.body}

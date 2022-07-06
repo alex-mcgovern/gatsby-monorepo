@@ -1,11 +1,16 @@
+import { calc } from "@vanilla-extract/css-utils";
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { vars } from "../../../styles/theme.css";
 
 export const getButtonStyle = recipe({
   base: [
     { width: "auto", display: "table" },
     getFunctionalClassNames({
+      position: "relative",
+      lineHeight: "md",
       flexShrink: "0",
+      marginY: "spacing2",
       textDecoration: {
         default: "none",
         hover: "underline",
@@ -72,23 +77,17 @@ export const getButtonStyle = recipe({
             hover: "neutral_fg_2",
             focus: "neutral_fg_2",
           },
-          backgroundColor: {
-            hover: "accent_ui_1",
-            focus: "accent_ui_1",
-          },
+          // backgroundColor: {
+          //   hover: "accent_ui_1",
+          //   focus: "accent_ui_1",
+          // },
         }),
       ],
     },
     size: {
-      xs: [
-        getFunctionalClassNames({
-          fontSize: "body_sm",
-        }),
-      ],
-
       sm: [
         getFunctionalClassNames({
-          fontSize: "body_md",
+          fontSize: "body_sm",
         }),
       ],
       lg: [

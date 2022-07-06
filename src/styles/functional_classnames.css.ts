@@ -20,13 +20,7 @@ const responsiveProperties = defineProperties({
     alignItems: ["stretch", "flex-start", "center", "flex-end"],
     aspectRatio: vars.aspectRatio,
     border: ["1px solid", "2px solid"],
-    borderRadius: {
-      pill: 999,
-      "50%": "50%",
-      lg: 24,
-      md: 16,
-      sm: 8,
-    },
+    borderRadius: vars.borderRadius,
     display: [
       "block",
       "flex",

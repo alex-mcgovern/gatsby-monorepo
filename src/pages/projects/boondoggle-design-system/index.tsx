@@ -62,7 +62,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
         <Typography
           as="h2"
           customisation={{
-            fontSize: "body_md",
+            fontSize: "body_lg",
             fontWeight: "normal",
           }}
         >

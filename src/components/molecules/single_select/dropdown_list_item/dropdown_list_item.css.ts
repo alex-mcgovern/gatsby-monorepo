@@ -25,7 +25,7 @@ export const getDropdownStyles = recipe({
     size: {
       xs: [
         getFunctionalClassNames({
-          fontSize: "body_xs",
+          fontSize: "body_sm",
         }),
       ],
       sm: [
@@ -35,7 +35,7 @@ export const getDropdownStyles = recipe({
       ],
       lg: [
         getFunctionalClassNames({
-          fontSize: "body_md",
+          fontSize: "body_lg",
         }),
       ],
     },

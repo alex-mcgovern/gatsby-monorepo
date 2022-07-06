@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import slugify from "slugify";
 import { Box } from "../../components/atoms/box/box";
-import { Button } from "../../components/atoms/button/button";
 import { Typography } from "../../components/atoms/typography/typography";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
 import { ListItem } from "../../components/molecules/list_item/list_item";
@@ -79,8 +78,6 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
       <Box
         customisation={{
           ...BOX_CUSTOMISATION_SECTION_SPACING,
-          maxWidth: "gridSpan7",
-          marginX: "auto",
         }}
       >
         <Box as="article">

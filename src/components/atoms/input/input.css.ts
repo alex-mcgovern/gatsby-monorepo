@@ -41,7 +41,7 @@ export const getInputWrapperStyles = recipe({
       ],
       sm: [
         {
-          fontSize: vars.fontSize.body_md,
+          fontSize: vars.fontSize.body_lg,
         },
       ],
       lg: [

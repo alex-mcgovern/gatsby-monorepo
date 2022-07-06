@@ -12,10 +12,7 @@ import {
 } from "../../../hooks/use_firestore_collection/use_firestore_collection";
 import firebase from "../../../utils/firebase/firebase_old";
 import sortAlphabeticallyByKey from "../../../utils/helper_functions/sort_alphabetically_by_key/sort_alphabetically_by_key";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 import CreateNewTaskDialog from "./components/create_new_task_dialog/create_new_task_dialog";
 import KanbanListItem from "./components/kanban_list_item/kanban_list_item";
 import { IFirebaseKanbanPageProps } from "./firebase_kanban";
@@ -76,7 +73,7 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
           <Typography
             as="h2"
             customisation={{
-              fontSize: "body_md",
+              fontSize: "body_lg",
               fontWeight: "normal",
             }}
           >
@@ -182,7 +179,7 @@ const FirebaseKanbanPage = ({ data }: IFirebaseKanbanPageProps) => {
                         <Box>
                           <Typography
                             customisation={{
-                              fontSize: "body_md",
+                              fontSize: "body_lg",
                               textTransform: "uppercase",
                               fontWeight: "semibold",
                               color: "neutral_fg_1",

@@ -15,6 +15,7 @@ import {
 import { createGlobalTheme } from "@vanilla-extract/css";
 import { createTheme, createThemeContract } from "@vanilla-extract/css";
 import { varsAspectRatio } from "./vars/vars_aspect_ratio.css";
+import { varsBorderRadius } from "./vars/vars_border_radius.css";
 import { varsFontSize } from "./vars/vars_font_size.css";
 import { varsFontWeight } from "./vars/vars_font_weight.css";
 import { varsGridTemplateColumns } from "./vars/vars_grid_template_columns.css";
@@ -33,6 +34,7 @@ export const root = createGlobalTheme(":root", {
   lineHeight: varsLineHeight,
   spacing: varsSpacing,
   width: varsWidth,
+  borderRadius: varsBorderRadius,
 });
 
 const color = createThemeContract({

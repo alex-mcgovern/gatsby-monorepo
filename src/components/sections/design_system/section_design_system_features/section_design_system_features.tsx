@@ -95,7 +95,7 @@ export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeat
               />
               <Typography
                 customisation={{
-                  fontSize: "body_md",
+                  fontSize: "body_lg",
                   fontWeight: "semibold",
                   color: "accent_fg_2",
                   marginTop: "spacing1",
@@ -106,7 +106,7 @@ export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeat
               <Typography
                 customisation={{
                   marginTop: "spacing1",
-                  fontSize: "body_md",
+                  fontSize: "body_lg",
                 }}
               >
                 {content.body}

@@ -65,7 +65,7 @@ export const ListItem = ({
           {title && (
             <Typography
               customisation={{
-                fontSize: "body_md",
+                fontSize: "body_lg",
                 fontWeight: "semibold",
               }}
               className={styles.listItemTitle}
@@ -77,7 +77,7 @@ export const ListItem = ({
             <Typography
               customisation={{
                 marginTop: "spacing2",
-                fontSize: "body_md",
+                fontSize: "body_lg",
               }}
             >
               {description}
@@ -88,7 +88,7 @@ export const ListItem = ({
         {subtitle && (
           <Typography
             customisation={{
-              fontSize: "body_md",
+              fontSize: "body_lg",
               fontWeight: "medium",
               color: "accent_fg_1",
             }}

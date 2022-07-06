@@ -26,17 +26,23 @@ const Page = ({ children, title, description, maxWidth }: IPageProps) => {
   return (
     <Box
       customisation={{
-        position: "relative",
         marginX: "auto",
         maxWidth: "gridSpan12",
         paddingX: "spacing2",
-        paddingY: "spacing3",
+        position: "relative",
       }}
     >
       <Seo title={title} description={description} />
       <Nav />
 
-      <Box as="main">{children}</Box>
+      <Box
+        customisation={{
+          paddingY: "spacing5",
+        }}
+        as="main"
+      >
+        {children}
+      </Box>
       <Footer />
     </Box>
   );

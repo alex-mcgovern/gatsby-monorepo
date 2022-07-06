@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 import { Box } from "../../atoms/box/box";
-import { Button } from "../../atoms/button/button";
 import { Typography } from "../../atoms/typography/typography";
 import BlogCategoriesList from "../../molecules/blog/blog_categories_list/blog_categories_list";
-import SectionBlogPostList from "../../molecules/blog/section_blog_articles_list/section_blog_articles_list";
 import { ListItem } from "../../molecules/list_item/list_item";
 import { Pagination } from "../../molecules/pagination/pagination";
 import Page from "../page/page";
@@ -41,12 +36,7 @@ export default function BlogListLayout({
       >
         <Typography as="h1">Blog</Typography>
 
-        <Box
-          as="header"
-          customisation={{
-            maxWidth: "gridSpan7",
-          }}
-        >
+        <Box as="header">
           <Typography as="p">
             Stuff that I've done, or am interested in. Part brain-dump, part
             tutorial, part experience journal.
@@ -63,7 +53,7 @@ export default function BlogListLayout({
             marginTop: "spacing6",
             display: "grid",
             gap: "spacing3",
-            gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
+            gridTemplateColumns: { desktop: "2x", tablet: "2x", mobile: "1x" },
           }}
         >
           {posts &&

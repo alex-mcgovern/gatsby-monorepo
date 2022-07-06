@@ -68,7 +68,7 @@ export const DropdownCombobox = ({
         <Button
           id={id}
           title={inputValue || buttonTitle || "—"}
-          iconTrailing="caret-down"
+          // iconTrailing="caret-down"
           variant={variant}
           iconLeading={iconLeading}
           customisation={customisation}
