@@ -127,7 +127,7 @@ export default function TemplatePokemonListPage({
           customisation={{
             marginY: "spacing3",
             display: "grid",
-            gap: "spacing3",
+            gap: "spacing2",
             gridTemplateColumns: {
               desktop: "4x",
               tablet: "2x",

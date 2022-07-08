@@ -70,10 +70,7 @@ export default function CreateNewTaskDialog({
   return (
     <DialogPrimitive.Root>
       <DialogPrimitive.Trigger asChild>
-        <Button
-          variant={{ size: "md", appearance: "tertiary" }}
-          title="Add a task"
-        />
+        <Button variant={{ size: "md" }} title="Add a task" />
       </DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className={dialogOverlay} />

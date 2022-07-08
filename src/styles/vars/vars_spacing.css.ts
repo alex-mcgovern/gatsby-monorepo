@@ -1,3 +1,7 @@
+import { createModularScale } from "../css_preprocessing_utils/create_modular_scale";
+
+const spacingScale = createModularScale(2, 8);
+
 export const varsSpacing = {
   "": "0",
   "100%": "100%",
@@ -9,19 +13,9 @@ export const varsSpacing = {
   auto: "auto",
 
   none: "0",
-  spacing0: "4px",
-  spacing1: "8px",
-  spacing2: "16px",
-  spacing3: "24px",
-  spacing4: "32px",
-  spacing5: "40px",
-  spacing6: "48px",
-  spacing8: "64px",
-  spacing10: "80px",
-  spacing12: "96px",
-  spacing16: "128px",
-  spacing20: "160px",
-  spacing24: "192px",
-  spacing28: "224px",
-  spacing32: "256px",
+  spacing0: spacingScale(-1),
+  spacing1: spacingScale(0),
+  spacing2: spacingScale(1),
+  spacing3: spacingScale(2),
+  spacing4: spacingScale(3),
 };

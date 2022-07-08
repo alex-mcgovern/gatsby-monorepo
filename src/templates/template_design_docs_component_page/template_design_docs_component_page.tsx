@@ -69,7 +69,7 @@ TemplateDesignDocsComponentPageProps) {
         <Box
           as="section"
           customisation={{
-            marginY: "spacing10",
+            marginY: "spacing4",
           }}
         >
           {/** ————————————————————————————————————————————————————————————————————————————

@@ -5,8 +5,8 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
   display: "block",
   overflowWrap: `break-word`,
   lineHeight: 1.4,
-  marginTop: vars.spacing.spacing3,
-  marginBottom: vars.spacing.spacing3,
+  marginTop: vars.spacing.spacing2,
+  marginBottom: vars.spacing.spacing2,
   maxWidth: vars.width.gridSpan8,
 });
 

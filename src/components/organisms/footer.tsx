@@ -122,7 +122,7 @@ export default function Footer({}: IFooter) {
         customisation={{
           display: "grid",
           gridTemplateColumns: "3x",
-          alignItems: "flex-start",
+          alignItems: "start",
           ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
         }}
       >
@@ -223,7 +223,7 @@ export default function Footer({}: IFooter) {
         as="section"
         customisation={{
           ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
-          paddingBottom: "spacing6",
+          paddingBottom: "spacing4",
         }}
       >
         © {date} Alex McGovern.

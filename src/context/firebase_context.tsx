@@ -38,14 +38,6 @@ export const FirebaseProvider = ({ children }: IFirebaseProviderProps) => {
   const [user, firebaseAuthLoading, firebaseAuthError] =
     useAuthState(firebaseAuth);
 
-  // console.log("debug context", {
-  //   user,
-  //   firebaseApp,
-  //   firebaseAuthLoading,
-  //   firebaseAuthError,
-  //   firebaseAuth,
-  // });
-
   return (
     <FirebaseAuthContext.Provider
       value={{

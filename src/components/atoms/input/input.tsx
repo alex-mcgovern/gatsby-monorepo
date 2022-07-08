@@ -3,7 +3,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FunctionalClassNames,
-  geFunctionalClassNames,
+  getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { Box } from "../box/box";
@@ -74,7 +74,7 @@ export const Input = ({
       ...variant,
     }),
     getFocusRingStyles(),
-    geFunctionalClassNames({ ...customisation }),
+    getFunctionalClassNames({ ...customisation }),
   ];
 
   return (

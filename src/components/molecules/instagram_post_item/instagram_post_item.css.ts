@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const instagramPostLink = style([
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     position: "relative",
     borderRadius: "sm",
     overflow: "hidden",
@@ -25,9 +25,9 @@ export const instagramPostOverlay = style([
       },
     },
   },
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     color: "accent_fg_2",
     backgroundColor: "neutral_ui_1",
-    padding: "spacing3",
+    padding: "spacing2",
   }),
 ]);

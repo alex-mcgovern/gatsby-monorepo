@@ -19,11 +19,11 @@
       return (
         <Box
           customisation={{
-            marginY: "spacing6",
+            marginY: "spacing4",
             backgroundColor: "neutral_bg_2",
             borderColor: "neutral_ui_2",
             border: "1px solid",
-            padding: "spacing3",
+            padding: "spacing2",
             borderRadius: "sm",
           }}
         >
@@ -79,7 +79,7 @@
                 tablet: "3x",
                 desktop: "3x",
               },
-              gap: "spacing3",
+              gap: "spacing2",
             }}
           >
             {statusesSortedBySortIndex &&

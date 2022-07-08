@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -8,18 +8,13 @@ export const listItemWrapper = style([
     display: "block",
     textDecoration: "none",
     color: "inherit",
+    isolation: "isolate",
   },
   getFocusRingStyles(),
-  geFunctionalClassNames({
-    isolation: "isolate",
-
+  getFunctionalClassNames({
     backgroundColor: {
       default: "neutral_bg_2",
       hover: "neutral_bg_1",
-      focus: "neutral_bg_3",
-      darkMode: "neutral_bg_3",
-      darkMode_hover: "neutral_ui_1",
-      darkMode_focus: "neutral_ui_2",
     },
 
     borderRadius: "sm",
@@ -29,7 +24,6 @@ export const listItemWrapper = style([
     boxShadow: {
       default: "shadowLight",
       hover: "shadowDark",
-      focus: "shadowDark",
     },
   }),
 ]);

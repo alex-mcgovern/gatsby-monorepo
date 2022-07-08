@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { Box, BoxCustomisation } from "../../atoms/box/box";
 import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
@@ -30,12 +30,12 @@ export const ListItem = ({
 
   const listItemClassNames = classNames(
     styles.listItemWrapper,
-    geFunctionalClassNames({
+    getFunctionalClassNames({
       ...customisation,
     })
   );
   const imageClassNames = classNames(
-    geFunctionalClassNames({
+    getFunctionalClassNames({
       aspectRatio,
     })
   );
@@ -52,11 +52,11 @@ export const ListItem = ({
 
       <Box
         customisation={{
-          padding: "spacing3",
+          padding: "spacing2",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          gap: "spacing3",
+          gap: "spacing2",
           height: "100%",
         }}
       >
@@ -75,7 +75,7 @@ export const ListItem = ({
           {description && (
             <Typography
               customisation={{
-                marginTop: "spacing2",
+                marginTop: "spacing1",
                 fontSize: "body_lg",
               }}
             >

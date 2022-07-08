@@ -7,7 +7,7 @@ import LogoSASS from "../../../../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
-import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import {
   BOX_CUSTOMISATION_MAX_WIDTH_FULL,
   BOX_CUSTOMISATION_SECTION_SPACING,
@@ -15,8 +15,8 @@ import {
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
 
-const ICON_CLASSNAMES = geFunctionalClassNames({
-  padding: "spacing3",
+const ICON_CLASSNAMES = getFunctionalClassNames({
+  padding: "spacing2",
   backgroundColor: "neutral_bg_3",
   borderRadius: "sm",
   boxShadow: "shadowDark",
@@ -29,7 +29,7 @@ export default function SectionHomepageTechStack() {
       as="section"
       customisation={{
         display: "grid",
-        gap: "spacing6",
+        gap: "spacing4",
         alignItems: "center",
         gridTemplateColumns: {
           desktop: "7_5",
@@ -43,7 +43,7 @@ export default function SectionHomepageTechStack() {
         customisation={{
           display: "grid",
           gridTemplateColumns: "4x",
-          gap: "spacing3",
+          gap: "spacing2",
         }}
       >
         <LogoReact className={ICON_CLASSNAMES} />

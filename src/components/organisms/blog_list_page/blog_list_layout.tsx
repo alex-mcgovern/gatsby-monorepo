@@ -48,9 +48,9 @@ export default function BlogListLayout({
       <Box
         as="section"
         customisation={{
-          marginTop: "spacing6",
+          marginTop: "spacing4",
           display: "grid",
-          gap: "spacing3",
+          gap: "spacing2",
           gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
         }}
       >

@@ -29,7 +29,7 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         marginTop: "spacing3",
         display: "grid",
         gridTemplateColumns: "5x",
-        gap: "spacing3",
+        gap: "spacing2",
       }}
     >
       {/* ——————————————————————————————————————————————

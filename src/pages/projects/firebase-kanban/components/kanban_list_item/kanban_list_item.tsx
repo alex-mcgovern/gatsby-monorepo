@@ -61,7 +61,7 @@ export default function KanbanListItem({
   return (
     <Box
       customisation={{
-        padding: "spacing3",
+        padding: "spacing2",
         boxShadow: "shadowLight",
         backgroundColor: "neutral_bg_3",
         marginBottom: "spacing1",
@@ -76,7 +76,7 @@ export default function KanbanListItem({
       <Typography
         customisation={{
           fontWeight: "medium",
-          marginBottom: "spacing3",
+          marginBottom: "spacing1",
         }}
       >
         {title}
@@ -103,7 +103,6 @@ export default function KanbanListItem({
           id="kanban-status-dropdown"
           customisation={{
             justifyContent: "space-between",
-            marginBottom: "spacing3",
             width: "100%",
           }}
           items={statusesDropdownItems}
@@ -127,7 +126,6 @@ export default function KanbanListItem({
           label="Epic"
           customisation={{
             justifyContent: "space-between",
-            marginBottom: "spacing3",
             width: "100%",
           }}
           variant={{ appearance: "secondary", size: "sm" }}

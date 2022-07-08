@@ -7,15 +7,15 @@ import LogoSASS from "../../../../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
-import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../../../utils/shared_props/box_props";
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
 
 interface ISectionHomepageDesignSystems {}
 
-const ICON_CLASSNAMES = geFunctionalClassNames({
-  padding: "spacing3",
+const ICON_CLASSNAMES = getFunctionalClassNames({
+  padding: "spacing2",
   backgroundColor: "neutral_bg_3",
   borderRadius: "sm",
   boxShadow: "shadowDark",
@@ -28,8 +28,8 @@ export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignS
       as="section"
       customisation={{
         display: "grid",
-        marginY: "spacing10",
-        gap: "spacing6",
+        marginY: "spacing4",
+        gap: "spacing4",
         alignItems: "center",
         gridTemplateColumns: {
           desktop: "7_5",
@@ -41,7 +41,7 @@ export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignS
         customisation={{
           display: "grid",
           gridTemplateColumns: "4x",
-          gap: "spacing3",
+          gap: "spacing2",
         }}
       >
         <LogoReact className={ICON_CLASSNAMES} />
@@ -62,7 +62,7 @@ export default function SectionHomepageDesignSystems({}: ISectionHomepageDesignS
             color: "accent_fg_1",
           }}
 
-          // marginBottom="spacing6"
+          // marginBottom="spacing4"
         >
           Less CSS is best
         </Typography>

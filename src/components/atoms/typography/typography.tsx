@@ -1,7 +1,7 @@
 import React from "react";
 import {
   FunctionalClassNames,
-  geFunctionalClassNames,
+  getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
 export interface TypographyCustomisation {
@@ -48,7 +48,7 @@ export const Typography = ({
   ...rest
 }: TypographyProps) => {
   const buttonStyle = [
-    geFunctionalClassNames({
+    getFunctionalClassNames({
       ...customisation,
     }),
     className,

@@ -12,7 +12,7 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
       as="section"
       customisation={{
         display: "grid",
-        gap: "spacing3",
+        gap: "spacing2",
         gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
       }}
     >

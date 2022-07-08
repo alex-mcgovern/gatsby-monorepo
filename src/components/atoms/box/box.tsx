@@ -1,7 +1,7 @@
 import React from "react";
 import {
   FunctionalClassNames,
-  geFunctionalClassNames,
+  getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
 export interface BoxCustomisation {
@@ -90,7 +90,7 @@ export const Box = ({
   ...rest
 }: IBox) => {
   const boxClassNames = [
-    geFunctionalClassNames({ ...customisation }),
+    getFunctionalClassNames({ ...customisation }),
     className,
   ];
 

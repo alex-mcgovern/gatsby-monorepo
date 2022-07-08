@@ -1,21 +1,21 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const getTagStyle = recipe({
   base: [
-    geFunctionalClassNames({
-      flexShrink: "0",
+    { flexShrink: 0 },
+
+    getFunctionalClassNames({
       fontSize: "body_sm",
       lineHeight: "lg",
       textDecoration: {
         default: "none",
         hover: "underline",
-        focus: "underline",
       },
       borderRadius: "pill",
       whiteSpace: "nowrap",
       display: "block",
-      alignItems: "flex-end",
+      alignItems: "end",
       paddingX: "spacing2",
       paddingY: "spacing0",
     }),
@@ -24,23 +24,21 @@ export const getTagStyle = recipe({
   variants: {
     state: {
       inactive: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           color: "neutral_fg_1",
           backgroundColor: {
             default: "neutral_ui_1",
             hover: "neutral_ui_2",
-            focus: "neutral_ui_3",
           },
         }),
       ],
 
       active: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           color: "accent_fg_1",
           backgroundColor: {
             default: "accent_ui_1",
             hover: "accent_ui_2",
-            focus: "accent_ui_3",
           },
         }),
       ],

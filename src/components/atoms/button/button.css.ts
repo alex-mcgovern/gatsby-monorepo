@@ -1,19 +1,18 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const getButtonStyle = recipe({
   base: [
-    geFunctionalClassNames({
+    { flexShrink: 0 },
+    getFunctionalClassNames({
       // width: "auto",
       display: "table",
       position: "relative",
       lineHeight: "md",
-      flexShrink: "0",
-      marginY: "spacing2",
+      marginY: "spacing1",
       textDecoration: {
         default: "none",
         hover: "underline",
-        focus: "underline",
       },
       borderRadius: "sm",
       whiteSpace: "nowrap",
@@ -26,7 +25,7 @@ export const getButtonStyle = recipe({
   variants: {
     appearance: {
       primary: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
           fontWeight: "medium",
@@ -35,20 +34,18 @@ export const getButtonStyle = recipe({
           backgroundColor: {
             default: "accent_bg_3",
             hover: "accent_ui_1",
-            focus: "accent_ui_1",
           },
 
           border: "1px solid",
           borderColor: {
             default: "accent_border_1",
             hover: "accent_border_2",
-            focus: "accent_border_2",
           },
         }),
       ],
 
       secondary: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
           fontWeight: "medium",
@@ -57,24 +54,21 @@ export const getButtonStyle = recipe({
           backgroundColor: {
             default: "neutral_bg_2",
             hover: "accent_ui_1",
-            focus: "accent_ui_1",
           },
 
           border: "1px solid",
           borderColor: {
             default: "accent_border_1",
             hover: "accent_border_2",
-            focus: "accent_border_2",
           },
         }),
       ],
 
       tertiary: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           color: {
             default: "neutral_fg_1",
             hover: "neutral_fg_2",
-            focus: "neutral_fg_2",
           },
           // backgroundColor: {
           //   hover: "accent_ui_1",
@@ -85,17 +79,17 @@ export const getButtonStyle = recipe({
     },
     size: {
       sm: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           fontSize: "body_sm",
         }),
       ],
       md: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           fontSize: "body_md",
         }),
       ],
       lg: [
-        geFunctionalClassNames({
+        getFunctionalClassNames({
           fontSize: "body_lg",
         }),
       ],

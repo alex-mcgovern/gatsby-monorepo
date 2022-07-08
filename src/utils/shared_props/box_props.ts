@@ -7,16 +7,16 @@ export const BOX_CUSTOMISATION_MAX_WIDTH_FULL: BoxCustomisation = {
 };
 
 export const BOX_CUSTOMISATION_SECTION_SPACING: BoxCustomisation = {
-  marginTop: "spacing10",
+  marginTop: "spacing4",
 };
 export const BOX_CUSTOMISATION_SUBSECTION_SPACING: BoxCustomisation = {
-  marginTop: "spacing5",
+  marginTop: "spacing4",
 };
 export const BOX_CUSTOMISATIONS_COMPONENT_DEMO: BoxCustomisation = {
   border: "1px solid",
   borderColor: "neutral_ui_3",
   borderRadius: "sm",
-  padding: "spacing3",
+  padding: "spacing2",
   marginY: "spacing3",
   overflow: "hidden",
   backgroundColor: "neutral_bg_2",

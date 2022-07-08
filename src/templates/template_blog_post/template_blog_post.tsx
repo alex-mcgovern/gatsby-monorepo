@@ -113,7 +113,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               customisation={{
                 display: "flex",
                 alignItems: "center",
-                gap: "spacing3",
+                gap: "spacing2",
               }}
             >
               {/** ————————————————————
@@ -162,7 +162,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               marginY: "spacing3",
               display: "flex",
               justifyContent: "space-between",
-              gap: "spacing3",
+              gap: "spacing2",
             }}
             as="nav"
           >

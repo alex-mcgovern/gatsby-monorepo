@@ -24,7 +24,7 @@ export const DocumentationParametersTable = ({
             return (
               <Box
                 as="section"
-                customisation={{ marginY: "spacing6" }}
+                customisation={{ marginY: "spacing4" }}
                 key={parameter.type}
               >
                 {/* —————————————————————————————————————————————————————————————————————————————

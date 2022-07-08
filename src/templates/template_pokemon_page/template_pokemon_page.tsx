@@ -166,7 +166,7 @@ export default function TemplatePokemonPage({
             gridTemplateColumns: "2_1",
           }}
         >
-          <Box as="header" customisation={{ marginY: "spacing10" }}>
+          <Box as="header" customisation={{ marginY: "spacing4" }}>
             <h2>{pokemonTitle}</h2>
             <h3>{genus}</h3>
             <p>{flavorText}</p>

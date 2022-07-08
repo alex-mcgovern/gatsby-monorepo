@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Link } from "gatsby";
 import {
   FunctionalClassNames,
-  geFunctionalClassNames,
+  getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -57,7 +57,7 @@ export const Tag = ({
   const tagStyle = classNames([
     resetButton,
     getTagStyle(variant),
-    geFunctionalClassNames({
+    getFunctionalClassNames({
       ...customisation,
     }),
     getFocusRingStyles({}),

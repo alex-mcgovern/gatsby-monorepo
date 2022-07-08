@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import { resetList } from "../../../../styles/resets/reset_list.css";
 import { vars } from "../../../../styles/theme.css";
 
@@ -14,7 +14,7 @@ export const dropdownWrapper = style([
     overflowY: "auto",
     marginTop: vars.spacing.spacing2,
   },
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     maxHeight: "50vh",
     boxShadow: "shadowLight",
     display: "block",

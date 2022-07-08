@@ -3,7 +3,7 @@ import { vars } from "../../../../../styles/theme.css";
 
 export const iconLeading = style({
   flexShrink: 0,
-  justifySelf: "flex-start",
+  justifySelf: "start",
   selectors: {
     "&:not(:last-child)": {
       marginRight: vars.spacing.spacing1,
@@ -12,7 +12,7 @@ export const iconLeading = style({
 });
 export const iconTrailing = style({
   flexShrink: 0,
-  justifySelf: "flex-end",
+  justifySelf: "end",
   selectors: {
     "&:not(:first-child)": {
       marginLeft: vars.spacing.spacing1,

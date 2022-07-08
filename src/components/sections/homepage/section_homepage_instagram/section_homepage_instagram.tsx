@@ -66,7 +66,7 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
             fontWeight: "semibold",
             color: "accent_fg_1",
           }}
-          // marginBottom="spacing6"
+          // marginBottom="spacing4"
         >
           When I'm not coding...
         </Typography>
@@ -91,7 +91,7 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
             marginY: "spacing3",
             display: "grid",
             gridTemplateColumns: { desktop: "4x", tablet: "2x", mobile: "1x" },
-            gap: "spacing3",
+            gap: "spacing2",
           }}
         >
           {images &&
@@ -107,10 +107,10 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
 
         <Box
           customisation={{
-            marginY: "spacing6",
+            marginY: "spacing4",
             display: "flex",
             justifyContent: "center",
-            gap: "spacing3",
+            gap: "spacing2",
           }}
         >
           <Button

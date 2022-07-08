@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { resetInput } from "../../../styles/resets/reset_input.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -19,7 +19,7 @@ export const getInputWrapperStyles = recipe({
         },
       },
     },
-    geFunctionalClassNames({
+    getFunctionalClassNames({
       overflow: "hidden",
       width: "100%",
       borderRadius: "sm",
@@ -63,7 +63,7 @@ export const getInputWrapperStyles = recipe({
 
 export const inputElement = style([
   resetInput,
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     paddingX: "spacing2",
     paddingY: "spacing1",
     width: "100%",
@@ -72,7 +72,7 @@ export const inputElement = style([
 ]);
 export const inputLabel = style([
   resetInput,
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     color: "neutral_fg_1",
     display: "block",
     fontWeight: "medium",
@@ -80,13 +80,13 @@ export const inputLabel = style([
   }),
 ]);
 export const leadingIcon = style([
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     color: "neutral_fg_1",
     marginLeft: "spacing2",
   }),
 ]);
 export const trailingIcon = style([
-  geFunctionalClassNames({
+  getFunctionalClassNames({
     color: "neutral_fg_1",
     marginRight: "spacing2",
   }),

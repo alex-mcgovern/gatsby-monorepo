@@ -5,6 +5,6 @@ globalStyle(`hr`, {
   borderBottom: "none",
   borderTop: "1px solid",
   borderColor: vars.color.neutral_fg_1,
-  marginTop: vars.spacing.spacing5,
-  marginBottom: vars.spacing.spacing10,
+  marginTop: vars.spacing.spacing4,
+  marginBottom: vars.spacing.spacing4,
 });

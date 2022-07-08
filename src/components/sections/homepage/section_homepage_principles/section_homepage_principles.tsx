@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import {
   BOX_CUSTOMISATION_MAX_WIDTH_FULL,
   BOX_CUSTOMISATION_SECTION_SPACING,
@@ -18,7 +18,7 @@ type TGridContent = {
   body: string;
 }[];
 
-const ICON_CLASSNAMES = geFunctionalClassNames({
+const ICON_CLASSNAMES = getFunctionalClassNames({
   marginBottom: "spacing1",
   color: "accent_solid_1",
 });
@@ -68,9 +68,9 @@ export default function SectionHomepagePrinciples({}: ISectionHomepagePrinciples
       </Typography>
       <Box
         customisation={{
-          marginY: "spacing6",
+          marginY: "spacing4",
           display: "grid",
-          gap: "spacing3",
+          gap: "spacing2",
           gridTemplateColumns: {
             mobile: "1x",
             tablet: "2x",

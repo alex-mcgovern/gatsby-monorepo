@@ -102,7 +102,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
             return (
               <Box
                 customisation={{
-                  marginY: "spacing6",
+                  marginY: "spacing4",
                 }}
                 as="section"
               >
@@ -116,7 +116,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
                 </Typography>
                 <Box
                   customisation={{
-                    gap: "spacing3",
+                    gap: "spacing2",
                     display: "grid",
                     gridTemplateColumns: {
                       desktop: "3x",

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { collection, deleteDoc, doc, getFirestore } from "firebase/firestore";
+import { collection, deleteDoc, getFirestore } from "firebase/firestore";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -7,11 +7,6 @@ import { Box } from "../../../components/atoms/box/box";
 import { Button } from "../../../components/atoms/button/button";
 import { Typography } from "../../../components/atoms/typography/typography";
 import { FirebaseAuthContext } from "../../../context/firebase_context";
-// import {
-//   IFirestoreDocument,
-//   useFirestoreCollection,
-// } from "../../../hooks/use_firestore_collection/use_firestore_collection";
-// import firebase from "../../../utils/firebase/firebase_old";
 import sortAlphabeticallyByKey from "../../../utils/helper_functions/sort_alphabetically_by_key/sort_alphabetically_by_key";
 import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 import CreateNewTaskDialog from "./components/create_new_task_dialog/create_new_task_dialog";
@@ -45,6 +40,8 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+
+  const isLoading = !!tasksLoading || !!statusesLoading || !!epicsLoading;
 
   const transformedTasks =
     tasks &&
@@ -83,6 +80,10 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
         label: epic.title,
       };
     });
+
+    if (isLoading) {
+      return "Is loading";
+    }
 
     return (
       <>
@@ -140,11 +141,11 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
                 return (
                   <Box
                     customisation={{
-                      marginY: "spacing6",
+                      marginY: "spacing4",
                       backgroundColor: "neutral_bg_2",
                       borderColor: "neutral_ui_2",
                       border: "1px solid",
-                      padding: "spacing3",
+                      padding: "spacing2",
                       borderRadius: "sm",
                     }}
                   >
@@ -169,20 +170,14 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
                         {epicKey}
                       </Typography>
                       {/* Epic buttons wrapper */}
-                      <Box
-                        customisation={{
-                          display: "flex",
-                          marginBottom: "spacing1",
-                        }}
-                      >
-                        <Button
-                          iconTrailing="times"
-                          variant={{ size: "md", appearance: "tertiary" }}
-                          title="Delete this epic"
-                          // width="100%"
-                          onClick={handleDelete}
-                        />
-                      </Box>
+
+                      <Button
+                        iconTrailing="times"
+                        variant={{ size: "md", appearance: "tertiary" }}
+                        title="Delete this epic"
+                        // width="100%"
+                        onClick={handleDelete}
+                      />
                     </Box>
                     {/** ————————————————————————————————————————————————————————————————————————————
                      *      COLUMNS FOR STATUSES
@@ -195,7 +190,7 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
                           tablet: "3x",
                           desktop: "3x",
                         },
-                        gap: "spacing3",
+                        gap: "spacing2",
                       }}
                     >
                       {statusesSortedBySortIndex &&

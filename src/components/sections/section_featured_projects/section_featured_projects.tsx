@@ -58,7 +58,7 @@ export const SectionFeaturedProjects = ({}: ISectionFeaturedProjects) => {
         customisation={{
           marginY: "spacing3",
           display: "grid",
-          gap: "spacing3",
+          gap: "spacing2",
           gridTemplateColumns: { desktop: "2x", tablet: "2x", mobile: "1x" },
         }}
       >
