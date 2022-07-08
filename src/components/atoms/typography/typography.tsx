@@ -19,7 +19,7 @@ export interface TypographyCustomisation {
   whiteSpace?: TFunctionalClassNames["whiteSpace"];
 }
 
-export interface ITypographyProps {
+export interface TypographyProps {
   /** Polymorphic prop allowing `Typography` to return a wide range of HTML Element types. */
   as?:
     | "code"
@@ -46,7 +46,7 @@ export const Typography = ({
   customisation,
   className,
   ...rest
-}: ITypographyProps) => {
+}: TypographyProps) => {
   const buttonStyle = [
     getFunctionalClassNames({
       ...customisation,

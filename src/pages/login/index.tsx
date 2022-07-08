@@ -1,8 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { collection, getFirestore } from "firebase/firestore";
-import { navigate } from "gatsby";
+import React, { useContext, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { Box } from "../../components/atoms/box/box";
 import { Button } from "../../components/atoms/button/button";
 import { Input } from "../../components/atoms/input/input";
@@ -11,7 +8,7 @@ import { FirebaseAuthContext } from "../../context/firebase_context";
 import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 const Login = () => {
-  const { firebaseAuth, user, firebaseAuthLoading, firebaseApp } =
+  const { firebaseAuth, user, firebaseAuthLoading } =
     useContext(FirebaseAuthContext);
   const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(firebaseAuth);

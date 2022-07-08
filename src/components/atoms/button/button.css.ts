@@ -3,8 +3,9 @@ import { getFunctionalClassNames } from "../../../styles/functional_classnames.c
 
 export const getButtonStyle = recipe({
   base: [
-    { width: "auto", display: "table" },
     getFunctionalClassNames({
+      // width: "auto",
+      display: "table",
       position: "relative",
       lineHeight: "md",
       flexShrink: "0",

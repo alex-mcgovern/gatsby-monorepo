@@ -83,24 +83,32 @@ export default function TemplatePokemonPage({
   const isEnglish = languageISO === "en";
 
   const basePagePathArray = [...SHARED_BASE_PATH];
+  const paginationPathArray = [...SHARED_BASE_PATH];
 
   if (!isEnglish) {
-    basePagePathArray.push(languageISO);
+    paginationPathArray.push(languageISO);
   }
 
-  const paginationBasePath = createUrlPathFromArray([
-    ...basePagePathArray,
-    "pokemon",
-  ]);
+  paginationPathArray.push("pokemon");
 
-  const languageIndexBasePath = createUrlPathFromArray([
-    ...basePagePathArray,
-    "pokemon",
-    pokedexID,
-  ]);
-  const languageIndex = getLanguageSelectIndex({
-    allLanguagesISO: allLanguagesISO.distinct,
-    basePath: languageIndexBasePath,
+  const paginationBasePath = createUrlPathFromArray(paginationPathArray);
+
+  const languageIndex = allLanguagesISO.distinct.map((language) => {
+    const pagePathArray = [...basePagePathArray];
+    const isEnglish = language === "en";
+
+    if (!isEnglish) {
+      pagePathArray.push(language);
+    }
+
+    pagePathArray.push("pokemon");
+
+    if (pokedexID) {
+      pagePathArray.push(pokedexID.toString());
+    }
+    const value = language.toUpperCase();
+    const link = createUrlPathFromArray(pagePathArray);
+    return { value, label: value, link };
   });
   const currentLanguageUpperCase = languageISO.toUpperCase();
   const allPokemonLink = createUrlPathFromArray([...basePagePathArray]);

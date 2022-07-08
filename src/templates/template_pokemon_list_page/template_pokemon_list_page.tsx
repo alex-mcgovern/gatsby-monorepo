@@ -11,6 +11,8 @@ import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_inde
 import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
+const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
+
 interface TemplatePokemonListPageProps {
   data: {
     allPokemon: {
@@ -56,16 +58,22 @@ export default function TemplatePokemonListPage({
 
   const doc = data.doc.nodes[0].excerpt;
 
-  const dropdownItems = getPokedexDropdownItems({ allPokemon, languageISO });
-  const paginationBasePath = createUrlPathFromArray([languageISO, "pokedex"]);
+  const isEnglish = languageISO === "en";
 
-  const languageIndexBasePath = createUrlPathFromArray([
-    "pokedex",
-    currentPage,
-  ]);
+  const basePagePathArray = [...SHARED_BASE_PATH];
+
+  const dropdownItems = getPokedexDropdownItems({ allPokemon, languageISO });
+
+  if (!isEnglish) {
+    basePagePathArray.push(languageISO);
+  }
+
+  const paginationBasePath = createUrlPathFromArray([...basePagePathArray]);
+
   const languageIndex = getLanguageSelectIndex({
     allLanguagesISO,
-    basePath: languageIndexBasePath,
+    basePathArray: SHARED_BASE_PATH,
+    currentPage,
   });
 
   const currentLanguageUpperCase = languageISO.toUpperCase();
@@ -135,9 +143,7 @@ export default function TemplatePokemonListPage({
               padCharacter: "0",
             });
             const link = createUrlPathFromArray([
-              "projects",
-              "multilingual-pokedex",
-              languageISO,
+              ...basePagePathArray,
               "pokemon",
               pokedexID,
             ]);

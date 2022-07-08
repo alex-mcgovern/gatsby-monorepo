@@ -6,4 +6,5 @@ export const varsDisplay = [
   "inline-flex",
   "inline",
   "none",
+  "table",
 ];

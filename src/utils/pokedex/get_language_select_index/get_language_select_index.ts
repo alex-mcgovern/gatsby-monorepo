@@ -2,16 +2,27 @@ import { createUrlPathFromArray } from "../../create_url_from_path_array/create_
 
 interface GetLanguageSelectIndexArgs {
   allLanguagesISO: string[];
-  basePath: string;
+  basePathArray: string[];
+  currentPage: number;
 }
 
 export default function getLanguageSelectIndex({
   allLanguagesISO,
-  basePath,
+  basePathArray,
+  currentPage,
 }: GetLanguageSelectIndexArgs) {
   return allLanguagesISO.map((language) => {
+    const pagePathArray = [...basePathArray];
+    const isEnglish = language === "en";
+
+    if (!isEnglish) {
+      pagePathArray.push(language);
+    }
+    if (currentPage) {
+      pagePathArray.push(currentPage.toString());
+    }
     const value = language.toUpperCase();
-    const link = createUrlPathFromArray([language, basePath]);
+    const link = createUrlPathFromArray(pagePathArray);
     return { value, label: value, link };
   });
 }

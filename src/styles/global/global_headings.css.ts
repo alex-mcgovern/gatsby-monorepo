@@ -5,29 +5,29 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
   display: "block",
   overflowWrap: `break-word`,
   lineHeight: 1.4,
-  marginTop: 0,
+  marginTop: vars.spacing.spacing3,
   marginBottom: vars.spacing.spacing3,
   maxWidth: vars.width.gridSpan8,
 });
 
 globalStyle(`h1`, {
   fontSize: vars.fontSize.h1,
-  fontWeight: vars.fontWeight.light,
+  fontWeight: vars.fontWeight.semibold,
 });
 
 globalStyle(`h2`, {
   fontSize: vars.fontSize.h2,
-  fontWeight: vars.fontWeight.light,
+  fontWeight: vars.fontWeight.semibold,
 });
 
 globalStyle(`h3`, {
   fontSize: vars.fontSize.h3,
-  fontWeight: vars.fontWeight.normal,
+  fontWeight: vars.fontWeight.semibold,
 });
 
 globalStyle(`h4`, {
   fontSize: vars.fontSize.h4,
-  fontWeight: vars.fontWeight.normal,
+  fontWeight: vars.fontWeight.semibold,
 });
 
 globalStyle(`h5`, {

@@ -1,20 +1,31 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { Box } from "../../components/atoms/box/box";
-import { Typography } from "../../components/atoms/typography/typography";
+import { Button } from "../../components/atoms/button/button";
+import {
+  Typography,
+  TypographyProps,
+} from "../../components/atoms/typography/typography";
 
-interface ExampleProps {
-  placeholderProp: undefined;
-}
+const SUBHEADING_PROPS: TypographyProps = {
+  as: "h3",
+  customisation: {
+    fontSize: "body_lg",
+    fontWeight: "medium",
+    marginBottom: "spacing1",
+    textTransform: "uppercase",
+  },
+};
 
-export default function Example({ placeholderProp }: ExampleProps) {
+export default function Example() {
   return (
     <Box
       as="section"
       customisation={{
         marginY: "spacing10",
         display: "grid",
-        gridTemplateColumns: { tablet: "1_3", mobile: "1x" },
+        gridTemplateColumns: { tablet: "1_2", mobile: "1x" },
+        gap: "spacing6",
       }}
     >
       <Box>
@@ -22,6 +33,16 @@ export default function Example({ placeholderProp }: ExampleProps) {
         <StaticImage
           alt="Charlie Kelly"
           src="../../images/charlie_kelly.jpeg"
+        />
+        <Button
+          title="Contact charlie"
+          variant={{ appearance: "primary" }}
+          customisation={{ width: "100%" }}
+        />
+        <Button
+          title="Report charlie"
+          variant={{ appearance: "secondary" }}
+          customisation={{ width: "100%" }}
         />
       </Box>
       <Box>
@@ -31,32 +52,24 @@ export default function Example({ placeholderProp }: ExampleProps) {
 
         {/* Favourite food */}
 
-        <Typography as="h3" customisation={{ textTransform: "uppercase" }}>
-          Favourite food
-        </Typography>
+        <Typography {...SUBHEADING_PROPS}>Favourite food</Typography>
         <Typography as="p">
           Milk steak. You should know what that means.
         </Typography>
 
         {/* Favourite hobby */}
 
-        <Typography as="h3" customisation={{ textTransform: "uppercase" }}>
-          Favourite hobby
-        </Typography>
+        <Typography {...SUBHEADING_PROPS}>Favourite hobby</Typography>
         <Typography as="p">Magnets. Just magnets.</Typography>
 
         {/* Likes */}
 
-        <Typography as="h3" customisation={{ textTransform: "uppercase" }}>
-          Likes
-        </Typography>
+        <Typography {...SUBHEADING_PROPS}>Likes</Typography>
         <Typography as="p">Ghouls. Funny little green ghouls.</Typography>
 
         {/* Dislikes */}
 
-        <Typography as="h3" customisation={{ textTransform: "uppercase" }}>
-          Dislikes
-        </Typography>
+        <Typography {...SUBHEADING_PROPS}>Dislikes</Typography>
         <Typography as="p">
           People's knees. Cover your knees up if you;re going to be walking
           around anywhere.
@@ -65,7 +78,3 @@ export default function Example({ placeholderProp }: ExampleProps) {
     </Box>
   );
 }
-
-Example.defaultProps = {
-  placeholderProp: null,
-};

@@ -1,6 +1,6 @@
-import { ITypographyProps } from "../typography";
+import { TypographyProps } from "../typography";
 
-export const TYPOGRAPHY_SIZE_VARIANTS_MOCK: ITypographyProps[] = [
+export const TYPOGRAPHY_SIZE_VARIANTS_MOCK: TypographyProps[] = [
   {
     children: "Lorem ipsum dolor sit amet",
     as: "h1",
