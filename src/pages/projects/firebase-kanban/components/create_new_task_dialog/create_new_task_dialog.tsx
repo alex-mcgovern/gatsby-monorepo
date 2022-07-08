@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { getFirestore } from "firebase/firestore";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { Box } from "../../../../../components/atoms/box/box";
 import { Button } from "../../../../../components/atoms/button/button";
 import { Input } from "../../../../../components/atoms/input/input";
 import { Typography } from "../../../../../components/atoms/typography/typography";
 import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
-import firebase from "../../../../../utils/firebase/firebase_old";
+import { FirebaseAuthContext } from "../../../../../context/firebase_context";
 import { dialogContent, dialogOverlay } from "./create_new_task_dialog.css";
 
-interface ICreateNewTaskDialog {
+interface CreateNewTaskDialogProps {
   statusesDropdownItems: {
     value: string;
     label: string;
@@ -23,10 +24,12 @@ interface ICreateNewTaskDialog {
 export default function CreateNewTaskDialog({
   statusesDropdownItems,
   epicsDropdownItems,
-}: ICreateNewTaskDialog) {
+}: CreateNewTaskDialogProps) {
   const [title, setTitle] = useState("");
   const [epic, setEpic] = useState("");
   const [status, setStatus] = useState("");
+
+  const { firebaseApp } = useContext(FirebaseAuthContext);
 
   const handleSubmit = async () => {
     try {
@@ -36,7 +39,7 @@ export default function CreateNewTaskDialog({
         epic !== "" &&
         !epicsDropdownItems.find((item) => item.value === epic)
       ) {
-        await addDoc(collection(firebase.firestore(), "epics"), {
+        await addDoc(collection(getFirestore(firebaseApp), "epics"), {
           title: epic,
           created: Timestamp.now(),
         });
@@ -47,13 +50,13 @@ export default function CreateNewTaskDialog({
         status !== "" &&
         !statusesDropdownItems.find((item) => item.value === status)
       ) {
-        await addDoc(collection(firebase.firestore(), "statuses"), {
+        await addDoc(collection(getFirestore(firebaseApp), "statuses"), {
           title: status,
           created: Timestamp.now(),
         });
       }
       // create task
-      await addDoc(collection(firebase.firestore(), "tasks"), {
+      await addDoc(collection(getFirestore(firebaseApp), "tasks"), {
         title,
         epic,
         status: "To-do",
@@ -68,7 +71,7 @@ export default function CreateNewTaskDialog({
     <DialogPrimitive.Root>
       <DialogPrimitive.Trigger asChild>
         <Button
-          variant={{ size: "xs", appearance: "tertiary" }}
+          variant={{ size: "md", appearance: "tertiary" }}
           title="Add a task"
         />
       </DialogPrimitive.Trigger>
@@ -95,7 +98,10 @@ export default function CreateNewTaskDialog({
           {/* ——————————————————————————————————————————————
             //      DIALOG FIELDS                                  
             // —————————————————————————————————————————————— */}
-          <form onSubmit={handleSubmit} name="addTask">
+          <form
+            // onSubmit={handleSubmit}
+            name="addTask"
+          >
             {/* Task title input */}
             <Box
               as="fieldset"
@@ -105,6 +111,8 @@ export default function CreateNewTaskDialog({
             >
               <Input
                 id="title"
+                name="title"
+                type="text"
                 isLabelVisible
                 size="lg"
                 label="Task"

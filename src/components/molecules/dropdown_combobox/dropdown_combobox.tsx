@@ -1,19 +1,20 @@
 import React from "react";
 import { Box } from "../../atoms/box/box";
-import { Button, IButtonCustomisation } from "../../atoms/button/button";
+import { Button, ButtonCustomisation } from "../../atoms/button/button";
 import { TButtonVariants } from "../../atoms/button/button.css";
-import { IInputCustomisation, Input } from "../../atoms/input/input";
+import { Input, InputCustomisation } from "../../atoms/input/input";
 import DropdownList from "../single_select/dropdown_list/dropdown_list";
 import useComboboxWithCreate from "./hooks/use_combobox_with_create";
 
 interface IDropdownComboboxCustomisation
-  extends IButtonCustomisation,
-    IInputCustomisation {}
+  extends ButtonCustomisation,
+    InputCustomisation {}
 
 export interface IDropdownComboboxProps {
   id: string;
   isLabelVisible?: boolean;
   isSearchable?: boolean;
+  isDisabled?: boolean;
   isCreatable?: boolean;
   items: IDownshiftItem[];
   customisation?: IDropdownComboboxCustomisation;
@@ -32,6 +33,7 @@ export const DropdownCombobox = ({
   isSearchable,
   isCreatable,
   iconLeading,
+  isDisabled,
   items,
   label,
   customisation,
@@ -59,6 +61,7 @@ export const DropdownCombobox = ({
           placeholder={placeholder}
           isLabelVisible={isLabelVisible}
           label={label}
+          name={label}
           iconLeading={iconLeading}
           id={id}
           customisation={customisation}
@@ -67,8 +70,9 @@ export const DropdownCombobox = ({
       ) : (
         <Button
           id={id}
+          isDisabled={isDisabled}
           title={inputValue || buttonTitle || "—"}
-          // iconTrailing="caret-down"
+          iconTrailing="caret-down"
           variant={variant}
           iconLeading={iconLeading}
           customisation={customisation}

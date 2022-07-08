@@ -5,7 +5,6 @@ import { Box } from "../../components/atoms/box/box";
 import { Button } from "../../components/atoms/button/button";
 import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
 import { Pagination } from "../../components/molecules/pagination/pagination";
-import Page from "../../components/organisms/page/page";
 import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
@@ -86,10 +85,15 @@ export default function TemplatePokemonPage({
     basePath: languageIndexBasePath,
   });
   const currentLanguageUpperCase = languageISO.toUpperCase();
-  const allPokemonLink = createUrlPathFromArray([languageISO, "pokedex", 1]);
+  const allPokemonLink = createUrlPathFromArray([
+    "projects",
+    "multilingual-pokedex",
+    languageISO,
+    "pokedex",
+  ]);
 
   return (
-    <Page title={siteTitle}>
+    <>
       <Box customisation={BOX_CUSTOMISATION_MAX_WIDTH_FULL}>
         <Box
           customisation={{
@@ -155,7 +159,7 @@ export default function TemplatePokemonPage({
           pageCount={totalCount}
         />
       </Box>
-    </Page>
+    </>
   );
 }
 

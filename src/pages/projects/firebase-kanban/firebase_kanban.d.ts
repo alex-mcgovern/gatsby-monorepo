@@ -1,4 +1,4 @@
-export interface IFirebaseKanbanPageProps {
+export interface FirebaseKanbanPageProps {
   data: {
     site: {
       siteMetadata: {
@@ -7,19 +7,19 @@ export interface IFirebaseKanbanPageProps {
     };
   };
 }
-export interface IKanbanTaskDocument extends IFirestoreDocument {
+export interface KanbanTaskDocument extends IFirestoreDocument {
   id: string;
   title: string;
   status: string;
   epic: string;
 }
-export interface IKanbanStatusDocument extends IFirestoreDocument {
+export interface KanbanStatusDocument extends IFirestoreDocument {
   id: string;
   title: string;
   sortIndex: string;
   [key: string]: string;
 }
-export interface IKanbanEpicDocument extends IFirestoreDocument {
+export interface KanbanEpicDocument extends IFirestoreDocument {
   id: string;
   title: string;
 }

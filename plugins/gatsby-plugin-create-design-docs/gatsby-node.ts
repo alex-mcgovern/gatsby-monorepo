@@ -1,11 +1,11 @@
 import type { GatsbyNode } from "gatsby";
 import path from "path";
 import slugify from "slugify";
-import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../src/utils/create_url_from_path_array/create_url_path_from_array";
 
 const { PLUGIN_NAME } = require("./constants");
 
-interface IAllComponentDocs {
+interface AllComponentDocsQueryResponse {
   errors?: any;
   data?: {
     allMdx: {
@@ -66,7 +66,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   actions,
   graphql,
 }) => {
-  const allComponentDocs: IAllComponentDocs = await graphql(`
+  const allComponentDocs: AllComponentDocsQueryResponse = await graphql(`
     {
       allMdx(filter: { frontmatter: { mdxType: { eq: "Component" } } }) {
         nodes {

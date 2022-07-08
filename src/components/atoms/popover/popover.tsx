@@ -19,7 +19,7 @@ export default function Popover({ popoverText }: IPopover) {
 
       <RadixPopover.Content
         sideOffset={1}
-        side="right"
+        side="top"
         // className={styles.popoverContent}
       >
         <Box
@@ -28,7 +28,7 @@ export default function Popover({ popoverText }: IPopover) {
             backgroundColor: "neutral_bg_3",
             borderRadius: "sm",
             boxShadow: "shadowLight",
-            maxWidth: "spacing32",
+            maxWidth: "gridSpan5",
             border: "1px solid",
             borderColor: "neutral_ui_3",
           }}

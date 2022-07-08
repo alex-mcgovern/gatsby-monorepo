@@ -1,4 +1,4 @@
-interface ISortAlphabeticallyByKey {
+interface SortAlphabeticallyByKeyArgs {
   objects: {
     [key: string]: string;
   }[];
@@ -8,7 +8,7 @@ interface ISortAlphabeticallyByKey {
 export default function sortAlphabeticallyByKey({
   objects,
   key,
-}: ISortAlphabeticallyByKey) {
+}: SortAlphabeticallyByKeyArgs) {
   return objects.sort((a, b) => {
     if (a[key] < b[key]) return -1;
     if (a[key] > b[key]) return 1;

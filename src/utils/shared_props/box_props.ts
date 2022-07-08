@@ -1,18 +1,18 @@
-import { IBoxCustomisation } from "../../components/atoms/box/box";
+import { BoxCustomisation } from "../../components/atoms/box/box";
 
-export const BOX_CUSTOMISATION_MAX_WIDTH_FULL: IBoxCustomisation = {
+export const BOX_CUSTOMISATION_MAX_WIDTH_FULL: BoxCustomisation = {
   marginX: "auto",
-  maxWidth: "gridSpan8",
+
   paddingX: "spacing2",
 };
 
-export const BOX_CUSTOMISATION_SECTION_SPACING: IBoxCustomisation = {
-  marginTop: "spacing6",
+export const BOX_CUSTOMISATION_SECTION_SPACING: BoxCustomisation = {
+  marginTop: "spacing10",
 };
-export const BOX_CUSTOMISATION_SUBSECTION_SPACING: IBoxCustomisation = {
-  marginTop: "spacing3",
+export const BOX_CUSTOMISATION_SUBSECTION_SPACING: BoxCustomisation = {
+  marginTop: "spacing5",
 };
-export const BOX_CUSTOMISATIONS_COMPONENT_DEMO: IBoxCustomisation = {
+export const BOX_CUSTOMISATIONS_COMPONENT_DEMO: BoxCustomisation = {
   border: "1px solid",
   borderColor: "neutral_ui_3",
   borderRadius: "sm",

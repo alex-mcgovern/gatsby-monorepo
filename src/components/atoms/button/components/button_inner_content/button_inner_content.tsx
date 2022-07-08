@@ -1,6 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
 import "../../../../../utils/font_awesome";
 import * as styles from "./button_inner_content.css";
 
@@ -9,6 +10,7 @@ interface ButtonInnerContentProps {
   iconLeading?: IconProp;
   iconTrailing?: IconProp;
   size?: IconProp & TSizeProp;
+  isIconSpinning?: boolean;
   onClick?(...args: unknown[]): unknown;
 }
 
@@ -17,7 +19,11 @@ export default function ButtonInnerContent({
   iconLeading,
   iconTrailing,
   size,
+  isIconSpinning,
 }: ButtonInnerContentProps) {
+  const trailingIconClassnames = classNames(styles.iconTrailing, {
+    [styles.iconSpin]: isIconSpinning,
+  });
   return (
     <>
       {iconLeading && (
@@ -30,7 +36,7 @@ export default function ButtonInnerContent({
       {title && <span>{title}</span>}
       {iconTrailing && (
         <FontAwesomeIcon
-          className={styles.iconTrailing}
+          className={trailingIconClassnames}
           size={size}
           icon={iconTrailing}
         />

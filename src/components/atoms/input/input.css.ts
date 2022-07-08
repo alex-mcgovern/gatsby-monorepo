@@ -14,6 +14,9 @@ export const getInputWrapperStyles = recipe({
         "&:not([disabled]):focus-within": {
           borderColor: "accent_border_2",
         },
+        "&[disabled]": {
+          borderColor: "accent_border_2",
+        },
       },
     },
     getFunctionalClassNames({
@@ -22,6 +25,7 @@ export const getInputWrapperStyles = recipe({
       borderRadius: "sm",
       display: "flex",
       alignItems: "center",
+      marginBottom: "spacing2",
       color: "neutral_fg_1",
       backgroundColor: "neutral_bg_1",
       border: "1px solid",
@@ -75,10 +79,16 @@ export const inputLabel = style([
     marginBottom: "spacing1",
   }),
 ]);
-export const icon = style([
+export const leadingIcon = style([
   getFunctionalClassNames({
     color: "neutral_fg_1",
     marginLeft: "spacing2",
+  }),
+]);
+export const trailingIcon = style([
+  getFunctionalClassNames({
+    color: "neutral_fg_1",
+    marginRight: "spacing2",
   }),
 ]);
 

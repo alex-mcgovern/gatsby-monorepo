@@ -4,12 +4,8 @@ import groupBy from "lodash.groupby";
 import { Box } from "../../../components/atoms/box/box";
 import { Typography } from "../../../components/atoms/typography/typography";
 import { ListItem } from "../../../components/molecules/list_item/list_item";
-import Page from "../../../components/organisms/page/page";
 import SectionDesignSystemFeatures from "../../../components/sections/design_system/section_design_system_features/section_design_system_features";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 
 interface DesignSystemIndexProps {
   data: {
@@ -47,7 +43,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
   );
 
   return (
-    <Page title={siteTitle} maxWidth="gridSpan10">
+    <>
       {/** —————————————————————————————————————————————————————————————————————————————
        *      PAGE HEADER
        * ——————————————————————————————————————————————————————————————————————————————— */}
@@ -78,12 +74,13 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
           to be published on NPM as a full-blown package.
         </Typography>
       </Box>
+      <hr />
 
       {/** ————————————————————————————————————————————————————————————————————————————
        *      BOONDOGGLE FEATURES SECTION
        * ——————————————————————————————————————————————————————————————————————————————— */}
 
-      <SectionDesignSystemFeatures />
+      {/* <SectionDesignSystemFeatures /> */}
 
       {/** ————————————————————————————————————————————————————————————————————————————
        *      COMPONENT LIST SECTION
@@ -151,7 +148,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
             );
           })}
       </Box>
-    </Page>
+    </>
   );
 };
 

@@ -16,5 +16,6 @@ export const varsFontSize = {
   h6: fontSizeScale(3),
 
   body_lg: fontSizeScale(2),
-  body_sm: fontSizeScale(1),
+  body_md: fontSizeScale(1),
+  body_sm: fontSizeScale(0),
 };

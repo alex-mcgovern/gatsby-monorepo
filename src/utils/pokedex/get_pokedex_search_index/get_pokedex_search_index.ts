@@ -1,6 +1,6 @@
 import { createUrlPathFromArray } from "../../create_url_from_path_array/create_url_path_from_array";
 
-interface IGetPokedexDropdownItems {
+interface GetPokedexDropdownItemsArgs {
   allPokemon: {
     pokedexID: string;
     name: string;
@@ -11,7 +11,7 @@ interface IGetPokedexDropdownItems {
 export default function getPokedexDropdownItems({
   allPokemon,
   languageISO,
-}: IGetPokedexDropdownItems) {
+}: GetPokedexDropdownItemsArgs) {
   return allPokemon.map(({ pokedexID, name }) => {
     const link = createUrlPathFromArray([languageISO, "pokemon", pokedexID]);
     return { label: name, value: name, link };

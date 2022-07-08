@@ -5,13 +5,9 @@ import { Box } from "../../components/atoms/box/box";
 import { Button } from "../../components/atoms/button/button";
 import { Typography } from "../../components/atoms/typography/typography";
 import { DocumentationParametersTable } from "../../components/molecules/documentation_parameters_table/documentation_parameters_table";
-import Page from "../../components/organisms/page/page";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../utils/shared_props/box_props";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
-interface ITemplateDesignDocsComponentPageProps {
+interface TemplateDesignDocsComponentPageProps {
   data: {
     allComponents: {
       nodes: {}[];
@@ -45,7 +41,7 @@ interface ITemplateDesignDocsComponentPageProps {
 export default function TemplateDesignDocsComponentPage({
   data,
 }: // pageContext,
-ITemplateDesignDocsComponentPageProps) {
+TemplateDesignDocsComponentPageProps) {
   const {
     // allComponents,
     site,
@@ -64,7 +60,7 @@ ITemplateDesignDocsComponentPageProps) {
   const siteTitle = site.siteMetadata.title || `Title`;
 
   return (
-    <Page title={siteTitle}>
+    <>
       <Box
         customisation={{
           ...BOX_CUSTOMISATION_SECTION_SPACING,
@@ -94,6 +90,7 @@ ITemplateDesignDocsComponentPageProps) {
             <Typography
               as="h2"
               customisation={{
+                fontSize: "body_lg",
                 fontWeight: "normal",
                 marginTop: "spacing3",
               }}
@@ -101,19 +98,20 @@ ITemplateDesignDocsComponentPageProps) {
               {description}
             </Typography>
           </Box>
+          <hr />
 
           {/** ————————————————————————————————————————————————————————————————————————————
            *      COMPONENT PAGE BODY
            * ——————————————————————————————————————————————————————————————————————————————— */}
 
-          {/* Render MDX content from local `*.doc.mdx` */}
-          <MDXRenderer>{body}</MDXRenderer>
-
           {/* Render props table which is auto generated from typings by `gatsby-transformer-react-docgen-typescript-v2`  */}
           <DocumentationParametersTable parameters={parameters} />
+
+          {/* Render MDX content from local `*.doc.mdx` */}
+          <MDXRenderer>{body}</MDXRenderer>
         </Box>
       </Box>
-    </Page>
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ import {
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
-export interface ITypographyCustomisation {
+export interface TypographyCustomisation {
   backgroundColor?: TFunctionalClassNames["backgroundColor"];
   color?: TFunctionalClassNames["color"];
   display?: TFunctionalClassNames["display"];
@@ -35,7 +35,7 @@ export interface ITypographyProps {
     | "span";
   children?: React.ReactNode;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: ITypographyCustomisation;
+  customisation?: TypographyCustomisation;
   /** Allow additional classnames to be applied for more advanced customisation*/
   className?: string;
 }

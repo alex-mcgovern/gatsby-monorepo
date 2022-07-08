@@ -1,10 +1,10 @@
 import type { GatsbyNode, PluginOptions } from "gatsby";
 import path from "path";
-import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../src/utils/create_url_from_path_array/create_url_path_from_array";
 
 const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
 
-interface IPluginOptions extends PluginOptions {
+interface CreatePokedexPagesPluginOptions extends PluginOptions {
   itemsPerPage: number;
   targetLanguageList: string[];
   enableDebugLogging?: boolean;
@@ -25,7 +25,11 @@ interface AllPokemonQueryResponse {
 
 export const createPages: GatsbyNode["createPages"] = async (
   { actions, graphql },
-  { targetLanguageList, itemsPerPage, enableDebugLogging }: IPluginOptions
+  {
+    targetLanguageList,
+    itemsPerPage,
+    enableDebugLogging,
+  }: CreatePokedexPagesPluginOptions
 ) => {
   const allPokemonQueryResponse: AllPokemonQueryResponse = await graphql(`
     {
@@ -61,8 +65,7 @@ export const createPages: GatsbyNode["createPages"] = async (
      * ——————————————————————————————————————————————————————————————————————————————— */
     allPokemon.map(async ({ pokedexID, languageISO }) => {
       const pagePath = createUrlPathFromArray([
-        "projects",
-        "pokedex",
+        ...SHARED_BASE_PATH,
         languageISO,
         "pokemon",
         pokedexID.toString(),
@@ -100,17 +103,13 @@ export const createPages: GatsbyNode["createPages"] = async (
           const itemsToSkip = itemsPerPage * index;
           const currentPage = index + 1;
           const isFirstPage = index === 0;
-          const isEnglish = languageISO === "en";
 
           /** —————————————————————————————————————————————
            *      CREATE PAGE PATH
            * ——————————————————————————————————————————————— */
 
-          const pagePathArray = [...SHARED_BASE_PATH];
+          const pagePathArray = [...SHARED_BASE_PATH, languageISO];
 
-          if (!isEnglish) {
-            pagePathArray.push(languageISO);
-          }
           if (!isFirstPage) {
             pagePathArray.push(currentPage.toString());
           }

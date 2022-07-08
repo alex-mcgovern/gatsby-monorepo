@@ -18,6 +18,7 @@ globalStyle(`table`, {
   emptyCells: "show",
   marginBottom: vars.spacing.spacing3,
   marginTop: vars.spacing.spacing3,
+  fontSize: vars.fontSize.body_md,
 });
 
 globalStyle(`thead`, {
@@ -36,14 +37,20 @@ globalStyle(`tbody tr:nth-of-type(odd)`, {
 
 globalStyle(`th`, {
   textAlign: "left",
-  padding: vars.spacing.spacing2,
+  paddingTop: vars.spacing.spacing1,
+  paddingBottom: vars.spacing.spacing1,
+  paddingRight: vars.spacing.spacing2,
+  paddingLeft: vars.spacing.spacing2,
 });
 
 globalStyle(`td`, {
   verticalAlign: "top",
   border: "none",
 
-  padding: vars.spacing.spacing2,
+  paddingTop: vars.spacing.spacing1,
+  paddingBottom: vars.spacing.spacing1,
+  paddingRight: vars.spacing.spacing2,
+  paddingLeft: vars.spacing.spacing2,
 
   fontSize: "inherit",
   margin: 0,

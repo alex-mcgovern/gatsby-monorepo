@@ -1,8 +1,28 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { darkTheme, vars } from "./theme.css";
 import { varsBackgroundImage } from "./vars/vars_background_image.css";
+import { varsDisplay } from "./vars/vars_display.css";
 import { varsShadow } from "./vars/vars_shadow.css";
-import { varsTransition } from "./vars/vars_transition.css";
+
+const properties = defineProperties({
+  properties: {
+    aspectRatio: vars.aspectRatio,
+    border: ["1px solid", "2px solid"],
+    borderRadius: vars.borderRadius,
+    flexShrink: ["0"],
+    fontSize: vars.fontSize,
+    fontWeight: vars.fontWeight,
+    gap: vars.spacing,
+    isolation: ["isolate"],
+    lineHeight: vars.lineHeight,
+    overflow: ["hidden"],
+    overflowY: ["auto"],
+    position: ["relative", "absolute", "sticky"],
+    textTransform: ["capitalize", "uppercase", "lowercase"],
+    whiteSpace: ["nowrap"],
+    zIndex: ["-1", "1"],
+  },
+});
 
 const responsiveProperties = defineProperties({
   conditions: {
@@ -16,27 +36,10 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: "mobile",
   properties: {
-    isolation: ["isolate"],
     alignItems: ["stretch", "flex-start", "center", "flex-end"],
-    aspectRatio: vars.aspectRatio,
-    border: ["1px solid", "2px solid"],
-    borderRadius: vars.borderRadius,
-    display: [
-      "block",
-      "flex",
-      "grid",
-      "inline-block",
-      "inline-flex",
-      "inline",
-      "none",
-    ],
+    display: varsDisplay,
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
-    flexShrink: ["0"],
     flexWrap: ["wrap", "nowrap"],
-    fontSize: vars.fontSize,
-    fontWeight: vars.fontWeight,
-    gap: vars.spacing,
-    gridAutoFlow: ["dense"],
     gridTemplateColumns: vars.gridTemplateColumns,
     gridTemplateRows: vars.gridTemplateColumns,
     height: vars.spacing,
@@ -48,7 +51,6 @@ const responsiveProperties = defineProperties({
       "space-around",
       "space-between",
     ],
-    lineHeight: vars.lineHeight,
     marginBottom: vars.spacing,
     marginLeft: vars.spacing,
     marginRight: vars.spacing,
@@ -57,19 +59,12 @@ const responsiveProperties = defineProperties({
     maxWidth: vars.width,
     minHeight: ["100vh"],
     minWidth: vars.width,
-    overflow: ["hidden"],
-    overflowY: ["auto"],
     paddingBottom: vars.spacing,
     paddingLeft: vars.spacing,
     paddingRight: vars.spacing,
     paddingTop: vars.spacing,
-    position: ["relative", "absolute", "sticky"],
     textAlign: ["center", "left", "right"],
-    textTransform: ["capitalize", "uppercase", "lowercase"],
-    transition: varsTransition,
-    whiteSpace: ["nowrap"],
     width: vars.width,
-    zIndex: ["-1", "1"],
   },
   shorthands: {
     margin: ["marginTop", "marginBottom", "marginLeft", "marginRight"],
@@ -78,7 +73,6 @@ const responsiveProperties = defineProperties({
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
     paddingX: ["paddingLeft", "paddingRight"],
     paddingY: ["paddingTop", "paddingBottom"],
-    placeItems: ["justifyContent", "alignItems"],
   },
 });
 
@@ -105,11 +99,11 @@ const colorProperties = defineProperties({
 });
 
 export const getFunctionalClassNames = createSprinkles(
+  properties,
   responsiveProperties,
   colorProperties
 );
 
-// It's a good idea to export the TFunctionalClassNames type too
 export type TFunctionalClassNames = Parameters<
   typeof getFunctionalClassNames
 >[0];

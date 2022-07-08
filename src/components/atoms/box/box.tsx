@@ -4,7 +4,7 @@ import {
   getFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
-export interface IBoxCustomisation {
+export interface BoxCustomisation {
   alignItems?: TFunctionalClassNames["alignItems"];
   aspectRatio?: TFunctionalClassNames["aspectRatio"];
   backgroundColor?: TFunctionalClassNames["backgroundColor"];
@@ -22,7 +22,6 @@ export interface IBoxCustomisation {
   gap?: TFunctionalClassNames["gap"];
   gridTemplateColumns?: TFunctionalClassNames["gridTemplateColumns"];
   gridTemplateRows?: TFunctionalClassNames["gridTemplateRows"];
-  gridAutoFlow?: TFunctionalClassNames["gridAutoFlow"];
   height?: TFunctionalClassNames["height"];
   justifyContent?: TFunctionalClassNames["justifyContent"];
   margin?: TFunctionalClassNames["margin"];
@@ -55,8 +54,10 @@ export interface IBoxCustomisation {
 export interface IBox {
   /** Used as the html ID. */
   id?: string;
+  /** Option to add additional style overrides via class name. */
+  className?: string;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: IBoxCustomisation;
+  customisation?: BoxCustomisation;
   children?: React.ReactNode;
   /** Polymorphic prop allowing `Box` to return a wide range of HTML Element types. */
   as?:
@@ -80,8 +81,18 @@ export interface IBox {
     | "span";
 }
 
-export const Box = ({ customisation, as, children, id, ...rest }: IBox) => {
-  const boxClassNames = [getFunctionalClassNames({ ...customisation })];
+export const Box = ({
+  customisation,
+  as,
+  children,
+  id,
+  className,
+  ...rest
+}: IBox) => {
+  const boxClassNames = [
+    getFunctionalClassNames({ ...customisation }),
+    className,
+  ];
 
   // allow polymorphism
   const Element = as || "div";

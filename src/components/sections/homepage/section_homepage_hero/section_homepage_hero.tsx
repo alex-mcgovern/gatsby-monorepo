@@ -18,7 +18,6 @@ const SectionHomepageBio = ({}: IBioProps) => {
         as="header"
         customisation={{
           ...BOX_CUSTOMISATION_SECTION_SPACING,
-          maxWidth: "gridSpan8",
         }}
       >
         <Typography as="h1">Alex McGovern</Typography>
@@ -38,8 +37,6 @@ const SectionHomepageBio = ({}: IBioProps) => {
           an engineering manager in the web team, building and maintaining an
           enterprise-scale site across 7 countries in 4 languages.
         </Typography>
-
-        <hr />
       </Box>
     </>
   );

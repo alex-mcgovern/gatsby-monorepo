@@ -10,6 +10,7 @@ export const getFocusRingStyles = recipe({
       "&[disabled]:hover": {
         cursor: "not-allowed",
       },
+
       "&[disabled]": {
         opacity: 0.3,
       },

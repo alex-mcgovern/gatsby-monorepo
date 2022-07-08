@@ -11,7 +11,7 @@ import { resetButton } from "../../../styles/resets/reset_button.css";
 import { TButtonVariants, getButtonStyle } from "./button.css";
 import ButtonInnerContent from "./components/button_inner_content/button_inner_content";
 
-export interface IButtonCustomisation {
+export interface ButtonCustomisation {
   display?: TFunctionalClassNames["display"];
   width?: TFunctionalClassNames["width"];
   marginTop?: TFunctionalClassNames["marginTop"];
@@ -27,11 +27,13 @@ export interface IButton {
   /** Variant prop controlling button appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
   variant?: TButtonVariants;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: IButtonCustomisation;
+  customisation?: ButtonCustomisation;
   /** FontAwesome icon shown on the left side of button. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of button. */
   iconTrailing?: IconProp;
+  /** Controls whether to show an animated Fontawesome spinner in the trailing icon slot. Only works with buttons with onClick handlers */
+  isLoading?: boolean;
   /** Used as the html ID. */
   id?: string;
   /** If `true`, the component is disabled. */
@@ -53,6 +55,7 @@ export const Button = ({
   customisation,
   iconLeading,
   iconTrailing,
+  isLoading,
   onClick,
   isDisabled,
   type,
@@ -103,8 +106,9 @@ export const Button = ({
     >
       <ButtonInnerContent
         iconLeading={iconLeading}
-        iconTrailing={iconTrailing}
+        iconTrailing={isLoading ? "spinner" : iconTrailing}
         title={title}
+        isIconSpinning={isLoading}
       />
     </button>
   );

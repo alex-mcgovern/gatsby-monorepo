@@ -1,4 +1,4 @@
-interface IGetDurationArgs {
+interface GetDurationArgs {
   inputDuration: number;
   displayUnit: "ms" | "seconds" | "minutes";
 }
@@ -6,7 +6,7 @@ interface IGetDurationArgs {
 export default function getDuration({
   inputDuration,
   displayUnit,
-}: IGetDurationArgs) {
+}: GetDurationArgs) {
   if (displayUnit === "ms") {
     return inputDuration.toPrecision(3);
   }

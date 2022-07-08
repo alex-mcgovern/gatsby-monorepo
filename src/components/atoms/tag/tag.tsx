@@ -11,7 +11,7 @@ import { resetButton } from "../../../styles/resets/reset_button.css";
 import TagInnerContent from "./components/tag_inner_content/tag_inner_content";
 import { TTagVariants, getTagStyle } from "./tag.css";
 
-export interface ITagCustomisation {
+export interface TagCustomisation {
   display?: TFunctionalClassNames["display"];
   width?: TFunctionalClassNames["width"];
   marginTop?: TFunctionalClassNames["marginTop"];
@@ -23,7 +23,7 @@ export interface ITag {
   /** Variant prop controlling tag appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
   variant?: TTagVariants;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: ITagCustomisation;
+  customisation?: TagCustomisation;
   /** FontAwesome icon shown on the left side of tag. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of tag. */

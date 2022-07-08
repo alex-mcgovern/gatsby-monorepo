@@ -9,7 +9,7 @@ import parsePokemonGeneraByLanguage from "./helper_functions/parse_pokemon_gener
 import parsePokemonNameByLanguage from "./helper_functions/parse_pokemon_name_by_language";
 import validateAndFilterPokemonData from "./helper_functions/validate_and_filter_pokemon_data";
 
-interface ISourcePokeApiPluginOptions extends PluginOptions {
+interface SourcePokeApiPluginOptions extends PluginOptions {
   options: {
     numberOfPokemonToSource: number;
     targetLanguageList: string[];
@@ -33,7 +33,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
       targetGameVersion,
       enableDebugLogging,
     } = FALLBACK_PLUGIN_OPTIONS,
-  }: ISourcePokeApiPluginOptions
+  }: SourcePokeApiPluginOptions
 ) => {
   /* ——————————————————————————————————————————————————————————————————————————————
   //      PokeAPI NETWORK REQUESTS                                               

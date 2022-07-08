@@ -1,7 +1,5 @@
-import { calc } from "@vanilla-extract/css-utils";
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
-import { vars } from "../../../styles/theme.css";
 
 export const getButtonStyle = recipe({
   base: [
@@ -90,6 +88,11 @@ export const getButtonStyle = recipe({
           fontSize: "body_sm",
         }),
       ],
+      md: [
+        getFunctionalClassNames({
+          fontSize: "body_md",
+        }),
+      ],
       lg: [
         getFunctionalClassNames({
           fontSize: "body_lg",
@@ -99,7 +102,7 @@ export const getButtonStyle = recipe({
   },
   defaultVariants: {
     appearance: "primary",
-    size: "sm",
+    size: "md",
   },
 });
 

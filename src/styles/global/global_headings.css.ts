@@ -7,6 +7,7 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
   lineHeight: 1.4,
   marginTop: 0,
   marginBottom: vars.spacing.spacing3,
+  maxWidth: vars.width.gridSpan8,
 });
 
 globalStyle(`h1`, {

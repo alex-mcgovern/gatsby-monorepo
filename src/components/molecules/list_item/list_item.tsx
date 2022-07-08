@@ -3,13 +3,13 @@ import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
-import { Box, IBoxCustomisation } from "../../atoms/box/box";
+import { Box, BoxCustomisation } from "../../atoms/box/box";
 import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
 
-interface ListItemProps {
+export interface ListItemProps {
   aspectRatio?: "square" | "wide" | "tall";
-  customisation?: IBoxCustomisation;
+  customisation?: BoxCustomisation;
   description?: string;
   image: ImageDataLike;
   link: string;
@@ -35,7 +35,6 @@ export const ListItem = ({
     })
   );
   const imageClassNames = classNames(
-    styles.image,
     getFunctionalClassNames({
       aspectRatio,
     })

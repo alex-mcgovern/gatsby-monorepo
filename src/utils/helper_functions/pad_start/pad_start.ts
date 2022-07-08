@@ -1,4 +1,4 @@
-interface IPadStart {
+interface PadStartArgs {
   value: string | number;
   desiredLength: number;
   padCharacter: string;
@@ -8,6 +8,6 @@ export default function padStart({
   value,
   desiredLength,
   padCharacter,
-}: IPadStart) {
+}: PadStartArgs) {
   return value.toString().padStart(desiredLength, padCharacter);
 }

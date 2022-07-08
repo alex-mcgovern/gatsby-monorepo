@@ -1,4 +1,4 @@
-import React, { AriaRole } from "react";
+import React, { AriaRole, HTMLInputTypeAttribute } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,7 +9,7 @@ import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_style
 import { Box } from "../box/box";
 import * as styles from "./input.css";
 
-export interface IInputCustomisation {
+export interface InputCustomisation {
   margin?: TFunctionalClassNames["margin"];
   marginBottom?: TFunctionalClassNames["marginBottom"];
   marginLeft?: TFunctionalClassNames["marginLeft"];
@@ -22,16 +22,20 @@ export interface IInputCustomisation {
 
 export interface IInputProps {
   /** Customisation exposes utility-first styles as props. */
-  customisation?: IInputCustomisation;
+  customisation?: InputCustomisation;
   /** FontAwesome icon shown on the left side of input. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of input. */
   iconTrailing?: IconProp;
   /** Used as the html ID. */
   id: string;
-  /** Whether to show the label. (Label value will also be used as accessible `title` on the input element.) */
+  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
   isLabelVisible?: boolean;
-  /** Label text. (Will also be used as accessible `title` on the input element.) */
+  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
+  isDisabled?: boolean;
+  /** Name of the form control. Submitted with the form as part of a name/value pair*/
+  name: string;
+  /** Label text. (Will also be used as accessible `name` on the input element.) */
   label: string;
   /** Callback on input change. */
   onChange?(...args: unknown[]): unknown;
@@ -43,6 +47,9 @@ export interface IInputProps {
   variant?: styles.TInputVariants;
   /** Allows directly assigning a value when the input is acting as a controlled element. */
   value?: string;
+  // Whether the field is required.
+  required?: boolean;
+  type: HTMLInputTypeAttribute;
 }
 
 export const Input = ({
@@ -50,10 +57,13 @@ export const Input = ({
   iconLeading,
   iconTrailing,
   id,
+  name,
+  type,
   onChange,
   customisation,
   value,
   isLabelVisible,
+  isDisabled,
   label,
   variant,
   role,
@@ -74,23 +84,32 @@ export const Input = ({
           {label}
         </label>
       )}
-      <div className={inputWrapperStyles.join(" ")} role={role}>
+      <fieldset
+        className={inputWrapperStyles.join(" ")}
+        role={role}
+        disabled={isDisabled}
+      >
         {iconLeading && (
-          <FontAwesomeIcon className={styles.icon} icon={iconLeading} />
+          <FontAwesomeIcon className={styles.leadingIcon} icon={iconLeading} />
         )}
         <input
           value={value}
+          type={type}
+          disabled={isDisabled}
           className={styles.inputElement}
           placeholder={placeholder}
           onChange={onChange}
-          title={label}
+          name={name}
           id={id}
           {...rest}
         />
         {iconTrailing && (
-          <FontAwesomeIcon className={styles.icon} icon={iconTrailing} />
+          <FontAwesomeIcon
+            className={styles.trailingIcon}
+            icon={iconTrailing}
+          />
         )}
-      </div>
+      </fieldset>
     </Box>
   );
 };

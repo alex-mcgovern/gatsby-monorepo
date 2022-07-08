@@ -1,21 +1,27 @@
 import React, { useCallback } from "react";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  DocumentData,
+  DocumentReference,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { Box } from "../../../../../components/atoms/box/box";
 import { Button } from "../../../../../components/atoms/button/button";
 import { Typography } from "../../../../../components/atoms/typography/typography";
 import DropdownCombobox from "../../../../../components/molecules/dropdown_combobox/dropdown_combobox";
-import firebase from "../../../../../utils/firebase/firebase_old";
 
-interface IKanbanListItemProps {
+interface KanbanListItemProps {
   id: string;
+  docRef: DocumentReference<DocumentData>;
   title: string;
   epic?: string;
   status?: string;
+  isSignedIn?: boolean;
   statusesDropdownItems: IDownshiftItem[];
   epicsDropdownItems: IDownshiftItem[];
 }
 
-interface IOnSelectArgs {
+interface OnSelectArgs {
   value: string;
   key: string;
 }
@@ -24,17 +30,19 @@ export default function KanbanListItem({
   id,
   title,
   status,
+  isSignedIn,
   epic,
+  docRef,
   statusesDropdownItems,
   epicsDropdownItems,
-}: IKanbanListItemProps) {
+}: KanbanListItemProps) {
   // Get a ref to the current task
 
-  const taskDocRef = doc(firebase.firestore(), "tasks", id);
+  // const taskDocRef = doc(firebase.firestore(), "tasks", id);
 
-  const onSelect = useCallback(async ({ value, key }: IOnSelectArgs) => {
+  const onSelect = useCallback(async ({ value, key }: OnSelectArgs) => {
     try {
-      await updateDoc(taskDocRef, {
+      await updateDoc(docRef, {
         [key]: value,
       });
     } catch (err) {
@@ -44,7 +52,7 @@ export default function KanbanListItem({
 
   const handleDelete = useCallback(async () => {
     try {
-      await deleteDoc(taskDocRef);
+      await deleteDoc(docRef);
     } catch (err) {
       alert(err);
     }
@@ -99,6 +107,7 @@ export default function KanbanListItem({
             width: "100%",
           }}
           items={statusesDropdownItems}
+          isDisabled={!isSignedIn}
           label="Status"
           onSelect={({ value }) => {
             onSelect({ value, key: "status" });
@@ -123,6 +132,7 @@ export default function KanbanListItem({
           }}
           variant={{ appearance: "secondary", size: "sm" }}
           buttonTitle={epic}
+          isDisabled={!isSignedIn}
           items={epicsDropdownItems}
           onSelect={({ value }) => {
             onSelect({ value, key: "epic" });
@@ -131,12 +141,13 @@ export default function KanbanListItem({
       </Box>
       <Button
         id="kanban-delete-button"
-        variant={{ size: "xs" }}
+        variant={{ size: "md" }}
         customisation={{
           justifyContent: "space-between",
           width: "100%",
         }}
         title="Delete"
+        isDisabled={!isSignedIn}
         onClick={handleDelete}
       />
     </Box>

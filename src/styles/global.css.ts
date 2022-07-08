@@ -10,26 +10,6 @@ import "./global/global_tables.css";
 import { vars } from "./theme.css";
 import { varsBackgroundImage } from "./vars/vars_background_image.css";
 
-export const rootColors = {
-  light: {
-    bg: `white`,
-    color: `black`,
-  },
-  dark: {
-    bg: `#0B1222`,
-    color: `#CBD5E1`,
-  },
-};
-
-/* ——————————————————————————————————————————————————————————————————————————————
-//      DARK MODE SELECTORS
-// —————————————————————————————————————————————————————————————————————————————— */
-
-globalStyle(`.dark`, {
-  backgroundColor: rootColors.dark.bg,
-  color: rootColors.dark.color,
-});
-
 /* ——————————————————————————————————————————————————————————————————————————————
 //      GLOBAL SELECTORS                                                        
 // —————————————————————————————————————————————————————————————————————————————— */
@@ -43,13 +23,12 @@ globalStyle(`*`, {
 globalStyle(`html`, {
   color: vars.color.neutral_fg_2,
   fontSize: 16,
-  backgroundColor: vars.color.neutral_bg_2,
+  backgroundColor: vars.color.neutral_bg_1,
   backgroundImage: varsBackgroundImage.noise,
 });
 
 globalStyle(`html, body`, {
   height: `100%`,
-  fontSize: 16,
   fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
 });
 

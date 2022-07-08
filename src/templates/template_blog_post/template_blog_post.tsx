@@ -71,10 +71,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
     });
 
   return (
-    <Page
-      title={post.frontmatter.title || siteTitle}
-      description={description || excerpt}
-    >
+    <>
       <Box
         customisation={{
           ...BOX_CUSTOMISATION_SECTION_SPACING,
@@ -167,8 +164,6 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               display: "flex",
               justifyContent: "space-between",
               gap: "spacing3",
-              maxWidth: "gridSpan6",
-              marginX: "auto",
             }}
             as="nav"
           >
@@ -200,7 +195,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
           </Box>
         </Box>
       </Box>
-    </Page>
+    </>
   );
 };
 

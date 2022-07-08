@@ -31,15 +31,7 @@ export const DocumentationParametersTable = ({
                  *      SECTION HEADING
                  * ——————————————————————————————————————————————————————————————————————————————— */}
 
-                <Typography
-                  as="h3"
-                  customisation={{
-                    fontSize: "h4",
-                    fontWeight: "semibold",
-                  }}
-                >
-                  Props
-                </Typography>
+                <Typography as="h3">Props</Typography>
 
                 {/* —————————————————————————————————————————————
                  *      TABLE

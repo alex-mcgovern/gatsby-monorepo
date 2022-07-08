@@ -1,8 +1,8 @@
 import type { GatsbyNode } from "gatsby";
 import path from "path";
 import slugify from "slugify";
+import { createUrlPathFromArray } from "../../src/utils/create_url_from_path_array/create_url_path_from_array";
 import { REGEX_CONTENT_BLOG_MARKDOWN } from "../../src/utils/regex/regex_content_blog_markdown";
-import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 
 const { FALLBACK_PLUGIN_OPTIONS, PLUGIN_NAME } = require("./constants");
 

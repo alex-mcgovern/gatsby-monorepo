@@ -5,7 +5,6 @@ import { Box } from "../../components/atoms/box/box";
 import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
 import { ListItem } from "../../components/molecules/list_item/list_item";
 import { Pagination } from "../../components/molecules/pagination/pagination";
-import Page from "../../components/organisms/page/page";
 import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
@@ -72,16 +71,18 @@ export default function TemplatePokemonListPage({
   const currentLanguageUpperCase = languageISO.toUpperCase();
 
   return (
-    <Page title={siteTitle} maxWidth="gridSpan12">
+    <>
       <Box
         customisation={{
           ...BOX_CUSTOMISATION_SECTION_SPACING,
         }}
       >
-        <section
-          dangerouslySetInnerHTML={{ __html: doc }}
-          itemProp="articleBody"
-        />
+        <Box as="header" customisation={{}}>
+          <section
+            dangerouslySetInnerHTML={{ __html: doc }}
+            itemProp="articleBody"
+          />
+        </Box>
 
         <Box
           customisation={{
@@ -120,7 +121,7 @@ export default function TemplatePokemonListPage({
             display: "grid",
             gap: "spacing3",
             gridTemplateColumns: {
-              desktop: "3x",
+              desktop: "4x",
               tablet: "2x",
               mobile: "1x",
             },
@@ -134,6 +135,8 @@ export default function TemplatePokemonListPage({
               padCharacter: "0",
             });
             const link = createUrlPathFromArray([
+              "projects",
+              "multilingual-pokedex",
               languageISO,
               "pokemon",
               pokedexID,
@@ -155,7 +158,7 @@ export default function TemplatePokemonListPage({
         currentPage={currentPage}
         pageCount={pageCount}
       />
-    </Page>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
 import { vars } from "../../../../../styles/theme.css";
 
 export const iconLeading = style({
@@ -18,4 +18,13 @@ export const iconTrailing = style({
       marginLeft: vars.spacing.spacing1,
     },
   },
+});
+
+const spinAnimation = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
+export const iconSpin = style({
+  animation: `${spinAnimation} infinite 5s linear`,
 });

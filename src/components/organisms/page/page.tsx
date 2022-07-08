@@ -1,22 +1,20 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../../context/theme_context";
-import { TFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import "../../../styles/global.css";
 import { darkTheme, lightTheme } from "../../../styles/theme.css";
 import { checkIsClient } from "../../../utils/helper_functions/check_is_client/check_is_client";
 import { Box } from "../../atoms/box/box";
-import Nav from "../../molecules/nav/nav";
-import Seo from "../../seo";
+import Header from "../../molecules/header/header";
+// import Seo from "../../seo";
 import Footer from "../footer";
 
 interface IPageProps {
   children?: React.ReactNode;
-  title: string;
+  // title: string;
   description?: string;
-  maxWidth: TFunctionalClassNames["maxWidth"];
 }
 
-const Page = ({ children, title, description, maxWidth }: IPageProps) => {
+const Page = ({ children, description }: IPageProps) => {
   const { dark } = useContext(ThemeContext);
 
   if (checkIsClient()) {
@@ -32,24 +30,14 @@ const Page = ({ children, title, description, maxWidth }: IPageProps) => {
         position: "relative",
       }}
     >
-      <Seo title={title} description={description} />
-      <Nav />
-
-      <Box
-        customisation={{
-          paddingY: "spacing5",
-        }}
-        as="main"
-      >
-        {children}
-      </Box>
+      {/* <Seo title={title} description={description} /> */}
+      <Header />
+      <Box as="main">{children}</Box>
       <Footer />
     </Box>
   );
 };
 
-Page.defaultProps = {
-  maxWidth: "gridSpan8",
-};
+Page.defaultProps = {};
 
 export default Page;
