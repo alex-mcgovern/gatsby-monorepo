@@ -9,66 +9,69 @@ import {
 
 const SUBHEADING_PROPS: TypographyProps = {
   as: "h3",
-  customisation: {
-    fontSize: "body_lg",
-    fontWeight: "medium",
-    marginBottom: "spacing1",
-    textTransform: "uppercase",
-  },
+  customisation: { fontSize: "body_lg", marginBottom: "spacing1" },
 };
-
 export default function Example() {
   return (
     <Box
       as="section"
       customisation={{
-        marginY: "spacing10",
         display: "grid",
-        gridTemplateColumns: { tablet: "1_2", mobile: "1x" },
         gap: "spacing6",
+        gridTemplateColumns: "1_2",
+        alignItems: "start",
       }}
     >
-      <Box>
-        <Typography as="h1">Charlie kelly</Typography>
+      <Box
+        customisation={{
+          backgroundColor: "neutral_bg_2",
+          borderRadius: "sm",
+          padding: "spacing3",
+          borderColor: "neutral_border_1",
+        }}
+      >
+        <Typography
+          as="h1"
+          customisation={{
+            marginTop: "none",
+          }}
+        >
+          Charlie kelly
+        </Typography>
         <StaticImage
           alt="Charlie Kelly"
           src="../../images/charlie_kelly.jpeg"
         />
+        {/* Button 1 */}
         <Button
-          title="Contact charlie"
-          variant={{ appearance: "primary" }}
-          customisation={{ width: "100%" }}
+          title="Contact Charlie"
+          customisation={{
+            width: "100%",
+          }}
         />
+        {/* Button 2 */}
         <Button
-          title="Report charlie"
-          variant={{ appearance: "secondary" }}
-          customisation={{ width: "100%" }}
+          title="Report Charlie"
+          customisation={{
+            width: "100%",
+          }}
         />
       </Box>
+
       <Box>
-        <Typography as="h2" customisation={{ textTransform: "uppercase" }}>
-          About Charlie
-        </Typography>
-
+        <Typography as="h2">About Charlie</Typography>
         {/* Favourite food */}
-
         <Typography {...SUBHEADING_PROPS}>Favourite food</Typography>
         <Typography as="p">
           Milk steak. You should know what that means.
         </Typography>
-
         {/* Favourite hobby */}
-
         <Typography {...SUBHEADING_PROPS}>Favourite hobby</Typography>
         <Typography as="p">Magnets. Just magnets.</Typography>
-
         {/* Likes */}
-
-        <Typography {...SUBHEADING_PROPS}>Likes</Typography>
-        <Typography as="p">Ghouls. Funny little green ghouls.</Typography>
-
+        <Typography {...SUBHEADING_PROPS}>Likes Ghouls.</Typography>
+        <Typography as="p">Funny little green ghouls.</Typography>
         {/* Dislikes */}
-
         <Typography {...SUBHEADING_PROPS}>Dislikes</Typography>
         <Typography as="p">
           People's knees. Cover your knees up if you;re going to be walking

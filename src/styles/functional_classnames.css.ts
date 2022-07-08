@@ -36,7 +36,7 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: "mobile",
   properties: {
-    alignItems: ["stretch", "flex-start", "center", "flex-end"],
+    alignItems: ["stretch", "flex-start", "center", "flex-end", "start", "end"],
     display: varsDisplay,
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
     flexWrap: ["wrap", "nowrap"],
