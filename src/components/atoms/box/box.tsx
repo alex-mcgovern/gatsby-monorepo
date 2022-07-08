@@ -1,54 +1,54 @@
 import React from "react";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  FunctionalClassNames,
+  geFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
 export interface BoxCustomisation {
-  alignItems?: TFunctionalClassNames["alignItems"];
-  aspectRatio?: TFunctionalClassNames["aspectRatio"];
-  backgroundColor?: TFunctionalClassNames["backgroundColor"];
-  backgroundImage?: TFunctionalClassNames["backgroundImage"];
-  border?: TFunctionalClassNames["border"];
-  borderRadius?: TFunctionalClassNames["borderRadius"];
-  borderColor?: TFunctionalClassNames["borderColor"];
-  boxShadow?: TFunctionalClassNames["boxShadow"];
-  color?: TFunctionalClassNames["color"];
-  display?: TFunctionalClassNames["display"];
-  flexDirection?: TFunctionalClassNames["flexDirection"];
-  flexWrap?: TFunctionalClassNames["flexWrap"];
-  fontSize?: TFunctionalClassNames["fontSize"];
-  fontWeight?: TFunctionalClassNames["fontWeight"];
-  gap?: TFunctionalClassNames["gap"];
-  gridTemplateColumns?: TFunctionalClassNames["gridTemplateColumns"];
-  gridTemplateRows?: TFunctionalClassNames["gridTemplateRows"];
-  height?: TFunctionalClassNames["height"];
-  justifyContent?: TFunctionalClassNames["justifyContent"];
-  margin?: TFunctionalClassNames["margin"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  marginLeft?: TFunctionalClassNames["marginLeft"];
-  marginRight?: TFunctionalClassNames["marginRight"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  marginX?: TFunctionalClassNames["marginY"];
-  marginY?: TFunctionalClassNames["marginX"];
-  maxWidth?: TFunctionalClassNames["maxWidth"];
-  minHeight?: TFunctionalClassNames["minHeight"];
-  maxHeight?: TFunctionalClassNames["maxHeight"];
-  minWidth?: TFunctionalClassNames["minWidth"];
-  textAlign?: TFunctionalClassNames["textAlign"];
-  overflow?: TFunctionalClassNames["overflow"];
-  outline?: TFunctionalClassNames["outline"];
-  overflowY?: TFunctionalClassNames["overflowY"];
-  padding?: TFunctionalClassNames["padding"];
-  paddingBottom?: TFunctionalClassNames["paddingBottom"];
-  paddingLeft?: TFunctionalClassNames["paddingLeft"];
-  paddingRight?: TFunctionalClassNames["paddingRight"];
-  paddingTop?: TFunctionalClassNames["paddingTop"];
-  paddingX?: TFunctionalClassNames["paddingX"];
-  paddingY?: TFunctionalClassNames["paddingY"];
-  position?: TFunctionalClassNames["position"];
-  width?: TFunctionalClassNames["width"];
-  zIndex?: TFunctionalClassNames["zIndex"];
+  alignItems?: FunctionalClassNames["alignItems"];
+  aspectRatio?: FunctionalClassNames["aspectRatio"];
+  backgroundColor?: FunctionalClassNames["backgroundColor"];
+  backgroundImage?: FunctionalClassNames["backgroundImage"];
+  border?: FunctionalClassNames["border"];
+  borderRadius?: FunctionalClassNames["borderRadius"];
+  borderColor?: FunctionalClassNames["borderColor"];
+  boxShadow?: FunctionalClassNames["boxShadow"];
+  color?: FunctionalClassNames["color"];
+  display?: FunctionalClassNames["display"];
+  flexDirection?: FunctionalClassNames["flexDirection"];
+  flexWrap?: FunctionalClassNames["flexWrap"];
+  fontSize?: FunctionalClassNames["fontSize"];
+  fontWeight?: FunctionalClassNames["fontWeight"];
+  gap?: FunctionalClassNames["gap"];
+  gridTemplateColumns?: FunctionalClassNames["gridTemplateColumns"];
+  gridTemplateRows?: FunctionalClassNames["gridTemplateRows"];
+  height?: FunctionalClassNames["height"];
+  justifyContent?: FunctionalClassNames["justifyContent"];
+  margin?: FunctionalClassNames["margin"];
+  marginBottom?: FunctionalClassNames["marginBottom"];
+  marginLeft?: FunctionalClassNames["marginLeft"];
+  marginRight?: FunctionalClassNames["marginRight"];
+  marginTop?: FunctionalClassNames["marginTop"];
+  marginX?: FunctionalClassNames["marginY"];
+  marginY?: FunctionalClassNames["marginX"];
+  maxWidth?: FunctionalClassNames["maxWidth"];
+  minHeight?: FunctionalClassNames["minHeight"];
+  maxHeight?: FunctionalClassNames["maxHeight"];
+  minWidth?: FunctionalClassNames["minWidth"];
+  textAlign?: FunctionalClassNames["textAlign"];
+  overflow?: FunctionalClassNames["overflow"];
+  outline?: FunctionalClassNames["outline"];
+  overflowY?: FunctionalClassNames["overflowY"];
+  padding?: FunctionalClassNames["padding"];
+  paddingBottom?: FunctionalClassNames["paddingBottom"];
+  paddingLeft?: FunctionalClassNames["paddingLeft"];
+  paddingRight?: FunctionalClassNames["paddingRight"];
+  paddingTop?: FunctionalClassNames["paddingTop"];
+  paddingX?: FunctionalClassNames["paddingX"];
+  paddingY?: FunctionalClassNames["paddingY"];
+  position?: FunctionalClassNames["position"];
+  width?: FunctionalClassNames["width"];
+  zIndex?: FunctionalClassNames["zIndex"];
 }
 
 export interface IBox {
@@ -90,7 +90,7 @@ export const Box = ({
   ...rest
 }: IBox) => {
   const boxClassNames = [
-    getFunctionalClassNames({ ...customisation }),
+    geFunctionalClassNames({ ...customisation }),
     className,
   ];
 

@@ -1,9 +1,9 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const getButtonStyle = recipe({
   base: [
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       // width: "auto",
       display: "table",
       position: "relative",
@@ -26,7 +26,7 @@ export const getButtonStyle = recipe({
   variants: {
     appearance: {
       primary: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
           fontWeight: "medium",
@@ -48,7 +48,7 @@ export const getButtonStyle = recipe({
       ],
 
       secondary: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           paddingX: "spacing2",
           paddingY: "spacing1",
           fontWeight: "medium",
@@ -70,7 +70,7 @@ export const getButtonStyle = recipe({
       ],
 
       tertiary: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           color: {
             default: "neutral_fg_1",
             hover: "neutral_fg_2",
@@ -85,17 +85,17 @@ export const getButtonStyle = recipe({
     },
     size: {
       sm: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_sm",
         }),
       ],
       md: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_md",
         }),
       ],
       lg: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_lg",
         }),
       ],

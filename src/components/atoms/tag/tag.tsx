@@ -3,8 +3,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  FunctionalClassNames,
+  geFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -12,11 +12,11 @@ import TagInnerContent from "./components/tag_inner_content/tag_inner_content";
 import { TTagVariants, getTagStyle } from "./tag.css";
 
 export interface TagCustomisation {
-  display?: TFunctionalClassNames["display"];
-  width?: TFunctionalClassNames["width"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  justifyContent?: TFunctionalClassNames["justifyContent"];
+  display?: FunctionalClassNames["display"];
+  width?: FunctionalClassNames["width"];
+  marginTop?: FunctionalClassNames["marginTop"];
+  marginBottom?: FunctionalClassNames["marginBottom"];
+  justifyContent?: FunctionalClassNames["justifyContent"];
 }
 
 export interface ITag {
@@ -57,7 +57,7 @@ export const Tag = ({
   const tagStyle = classNames([
     resetButton,
     getTagStyle(variant),
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       ...customisation,
     }),
     getFocusRingStyles({}),

@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import {
   BOX_CUSTOMISATION_MAX_WIDTH_FULL,
   BOX_CUSTOMISATION_SECTION_SPACING,
@@ -17,7 +17,7 @@ type TGridContent = {
   body: string;
 }[];
 
-const ICON_CLASSNAMES = getFunctionalClassNames({
+const ICON_CLASSNAMES = geFunctionalClassNames({
   marginBottom: "spacing1",
   color: "accent_solid_1",
 });

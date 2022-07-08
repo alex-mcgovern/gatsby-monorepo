@@ -1,8 +1,9 @@
 import React from "react";
+import { Box } from "../../components/atoms/box/box";
 
 export default function WorkingExample() {
   return (
-    <div>
+    <Box as="section">
       <div>
         Charlie kelly
         {/* "../../images/charlie_kelly.jpeg"  */}
@@ -24,6 +25,6 @@ export default function WorkingExample() {
         Dislikes People's knees. Cover your knees up if you;re going to be
         walking around anywhere.
       </div>
-    </div>
+    </Box>
   );
 }

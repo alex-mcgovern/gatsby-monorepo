@@ -2,22 +2,22 @@ import React, { AriaRole, HTMLInputTypeAttribute } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  FunctionalClassNames,
+  geFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { Box } from "../box/box";
 import * as styles from "./input.css";
 
 export interface InputCustomisation {
-  margin?: TFunctionalClassNames["margin"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  marginLeft?: TFunctionalClassNames["marginLeft"];
-  marginRight?: TFunctionalClassNames["marginRight"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  marginX?: TFunctionalClassNames["marginY"];
-  marginY?: TFunctionalClassNames["marginX"];
-  width?: TFunctionalClassNames["width"];
+  margin?: FunctionalClassNames["margin"];
+  marginBottom?: FunctionalClassNames["marginBottom"];
+  marginLeft?: FunctionalClassNames["marginLeft"];
+  marginRight?: FunctionalClassNames["marginRight"];
+  marginTop?: FunctionalClassNames["marginTop"];
+  marginX?: FunctionalClassNames["marginY"];
+  marginY?: FunctionalClassNames["marginX"];
+  width?: FunctionalClassNames["width"];
 }
 
 export interface IInputProps {
@@ -74,7 +74,7 @@ export const Input = ({
       ...variant,
     }),
     getFocusRingStyles(),
-    getFunctionalClassNames({ ...customisation }),
+    geFunctionalClassNames({ ...customisation }),
   ];
 
   return (

@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 
 // const slideUpAndFade = keyframes({
@@ -23,7 +23,7 @@ import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_style
 // });
 
 export const popoverTrigger = style([
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     marginX: "spacing0",
 
     color: {

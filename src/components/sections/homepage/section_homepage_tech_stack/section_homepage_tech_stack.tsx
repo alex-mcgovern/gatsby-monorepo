@@ -7,7 +7,7 @@ import LogoSASS from "../../../../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import {
   BOX_CUSTOMISATION_MAX_WIDTH_FULL,
   BOX_CUSTOMISATION_SECTION_SPACING,
@@ -15,7 +15,7 @@ import {
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
 
-const ICON_CLASSNAMES = getFunctionalClassNames({
+const ICON_CLASSNAMES = geFunctionalClassNames({
   padding: "spacing3",
   backgroundColor: "neutral_bg_3",
   borderRadius: "sm",

@@ -1,9 +1,9 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 
 export const getTagStyle = recipe({
   base: [
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       flexShrink: "0",
       fontSize: "body_sm",
       lineHeight: "lg",
@@ -24,7 +24,7 @@ export const getTagStyle = recipe({
   variants: {
     state: {
       inactive: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           color: "neutral_fg_1",
           backgroundColor: {
             default: "neutral_ui_1",
@@ -35,7 +35,7 @@ export const getTagStyle = recipe({
       ],
 
       active: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           color: "accent_fg_1",
           backgroundColor: {
             default: "accent_ui_1",

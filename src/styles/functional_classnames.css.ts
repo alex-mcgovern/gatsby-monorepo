@@ -98,12 +98,10 @@ const colorProperties = defineProperties({
   },
 });
 
-export const getFunctionalClassNames = createSprinkles(
+export const geFunctionalClassNames = createSprinkles(
   properties,
   responsiveProperties,
   colorProperties
 );
 
-export type TFunctionalClassNames = Parameters<
-  typeof getFunctionalClassNames
->[0];
+export type FunctionalClassNames = Parameters<typeof geFunctionalClassNames>[0];

@@ -1,6 +1,6 @@
 import React from "react";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import * as styles from "./instagram_post_item.css";
 
 interface InstagramPostItemProps {
@@ -16,7 +16,7 @@ export default function InstagramPostItem({
 }: InstagramPostItemProps) {
   const image = getImage(wrappedImage.localImage);
 
-  const imageClassNames = getFunctionalClassNames({
+  const imageClassNames = geFunctionalClassNames({
     height: "100%",
     padding: "spacing3",
     boxShadow: "shadowDark",

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../../utils/shared_props/box_props";
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
@@ -9,7 +9,7 @@ import { Typography } from "../../../atoms/typography/typography";
 interface IBioProps {}
 
 const SectionHomepageBio = ({}: IBioProps) => {
-  const imageClassNames = getFunctionalClassNames({
+  const imageClassNames = geFunctionalClassNames({
     borderRadius: "50%",
   });
   return (

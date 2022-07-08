@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -10,7 +10,7 @@ export const listItemWrapper = style([
     color: "inherit",
   },
   getFocusRingStyles(),
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     isolation: "isolate",
 
     backgroundColor: {

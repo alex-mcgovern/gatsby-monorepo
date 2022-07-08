@@ -1,22 +1,22 @@
 import React from "react";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  FunctionalClassNames,
+  geFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 
 export interface TypographyCustomisation {
-  backgroundColor?: TFunctionalClassNames["backgroundColor"];
-  color?: TFunctionalClassNames["color"];
-  display?: TFunctionalClassNames["display"];
-  fontSize?: TFunctionalClassNames["fontSize"];
-  fontWeight?: TFunctionalClassNames["fontWeight"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  maxWidth?: TFunctionalClassNames["maxWidth"];
-  marginY?: TFunctionalClassNames["marginY"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  textAlign?: TFunctionalClassNames["textAlign"];
-  textTransform?: TFunctionalClassNames["textTransform"];
-  whiteSpace?: TFunctionalClassNames["whiteSpace"];
+  backgroundColor?: FunctionalClassNames["backgroundColor"];
+  color?: FunctionalClassNames["color"];
+  display?: FunctionalClassNames["display"];
+  fontSize?: FunctionalClassNames["fontSize"];
+  fontWeight?: FunctionalClassNames["fontWeight"];
+  marginBottom?: FunctionalClassNames["marginBottom"];
+  maxWidth?: FunctionalClassNames["maxWidth"];
+  marginY?: FunctionalClassNames["marginY"];
+  marginTop?: FunctionalClassNames["marginTop"];
+  textAlign?: FunctionalClassNames["textAlign"];
+  textTransform?: FunctionalClassNames["textTransform"];
+  whiteSpace?: FunctionalClassNames["whiteSpace"];
 }
 
 export interface TypographyProps {
@@ -48,7 +48,7 @@ export const Typography = ({
   ...rest
 }: TypographyProps) => {
   const buttonStyle = [
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       ...customisation,
     }),
     className,

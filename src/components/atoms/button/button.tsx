@@ -3,8 +3,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  FunctionalClassNames,
+  geFunctionalClassNames,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -12,11 +12,11 @@ import { TButtonVariants, getButtonStyle } from "./button.css";
 import ButtonInnerContent from "./components/button_inner_content/button_inner_content";
 
 export interface ButtonCustomisation {
-  display?: TFunctionalClassNames["display"];
-  width?: TFunctionalClassNames["width"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  justifyContent?: TFunctionalClassNames["justifyContent"];
+  display?: FunctionalClassNames["display"];
+  width?: FunctionalClassNames["width"];
+  marginTop?: FunctionalClassNames["marginTop"];
+  marginBottom?: FunctionalClassNames["marginBottom"];
+  justifyContent?: FunctionalClassNames["justifyContent"];
 }
 
 export type ButtonVariants = {
@@ -67,7 +67,7 @@ export const Button = ({
   const buttonStyle = classNames([
     resetButton,
     getButtonStyle(variant),
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       ...customisation,
     }),
     getFocusRingStyles({}),

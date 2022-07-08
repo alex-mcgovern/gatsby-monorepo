@@ -1,5 +1,5 @@
 import { keyframes, style } from "@vanilla-extract/css";
-import { getFunctionalClassNames } from "../../../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../../../styles/functional_classnames.css";
 
 const overlayShow = keyframes({
   "0%": { opacity: 0 },
@@ -21,7 +21,7 @@ export const dialogOverlay = style([
       },
     },
   },
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     backgroundColor: "neutral_bg_1",
   }),
 ]);
@@ -42,7 +42,7 @@ export const dialogContent = style([
       "&:focus": { outline: "none" },
     },
   },
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     backgroundColor: "neutral_bg_3",
     borderRadius: "sm",
     boxShadow: "shadowDark",

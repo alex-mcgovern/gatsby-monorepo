@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../../styles/functional_classnames.css";
 import { resetList } from "../../../../styles/resets/reset_list.css";
 
 export const getDropdownStyles = recipe({
@@ -10,7 +10,7 @@ export const getDropdownStyles = recipe({
       textDecoration: "none",
       textAlign: "left",
     },
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       whiteSpace: "nowrap",
       color: "accent_fg_2",
       backgroundColor: {
@@ -24,17 +24,17 @@ export const getDropdownStyles = recipe({
   variants: {
     size: {
       xs: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_sm",
         }),
       ],
       sm: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_md",
         }),
       ],
       lg: [
-        getFunctionalClassNames({
+        geFunctionalClassNames({
           fontSize: "body_lg",
         }),
       ],
@@ -43,12 +43,12 @@ export const getDropdownStyles = recipe({
 });
 
 export const isHighlighted = style([
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     backgroundColor: "accent_ui_1",
   }),
 ]);
 export const isSelected = style([
-  getFunctionalClassNames({
+  geFunctionalClassNames({
     backgroundColor: "accent_ui_2",
   }),
 ]);

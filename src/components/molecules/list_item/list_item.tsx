@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { geFunctionalClassNames } from "../../../styles/functional_classnames.css";
 import { Box, BoxCustomisation } from "../../atoms/box/box";
 import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
@@ -30,12 +30,12 @@ export const ListItem = ({
 
   const listItemClassNames = classNames(
     styles.listItemWrapper,
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       ...customisation,
     })
   );
   const imageClassNames = classNames(
-    getFunctionalClassNames({
+    geFunctionalClassNames({
       aspectRatio,
     })
   );
