@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { navigate } from "gatsby";
+import React, { useContext, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Box } from "../../components/atoms/box/box";
 import { Button } from "../../components/atoms/button/button";
@@ -25,15 +24,6 @@ const Register = () => {
   if (error) {
     console.log(error);
   }
-
-  let isMounted = true;
-
-  useEffect(() => {
-    return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      isMounted = false;
-    };
-  }, []);
 
   function handleInputChange(e) {
     e.persist();
@@ -81,17 +71,21 @@ const Register = () => {
             </Typography>
 
             <Typography as="p">
-              I'll just need a few details to create an account. You data is
-              stored by Google on my behalf Authentication is handled with
-              Firebase.
+              I'll just need a few details to create an account. Authentication
+              is handled with Firebase. Your data is stored and processed by
+              Google on my behalf,{" "}
+              <a href="https://firebase.google.com/support/privacy">
+                here's their privacy policy
+              </a>
+              .
             </Typography>
           </Box>
           <form onSubmit={handleSubmit}>
             <Input
               onChange={handleInputChange}
-              placeholder="email"
+              placeholder="john@doe.com"
               id="email"
-              label="email"
+              label="Email address"
               type="email"
               name="email"
               required
@@ -99,7 +93,7 @@ const Register = () => {
             />
             <Input
               onChange={handleInputChange}
-              placeholder="Something very secure"
+              placeholder="6 or more characters"
               type="password"
               name="password"
               id="password"
@@ -109,12 +103,12 @@ const Register = () => {
             />
             <Input
               onChange={handleInputChange}
-              placeholder="confirm password"
+              placeholder="Retype your password"
               type="password"
               required
               isLabelVisible
               name="confirmPassword"
-              label="confirmPassword"
+              label="Confirm password"
               id="confirmPassword"
             />
             {!!errorMessage && (

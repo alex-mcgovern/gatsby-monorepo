@@ -103,13 +103,17 @@ export const createPages: GatsbyNode["createPages"] = async (
           const itemsToSkip = itemsPerPage * index;
           const currentPage = index + 1;
           const isFirstPage = index === 0;
+          const isEnglish = languageISO === "en";
 
           /** —————————————————————————————————————————————
            *      CREATE PAGE PATH
            * ——————————————————————————————————————————————— */
 
-          const pagePathArray = [...SHARED_BASE_PATH, languageISO];
+          const pagePathArray = [...SHARED_BASE_PATH];
 
+          if (!isEnglish) {
+            pagePathArray.push(languageISO);
+          }
           if (!isFirstPage) {
             pagePathArray.push(currentPage.toString());
           }

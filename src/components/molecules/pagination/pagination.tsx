@@ -47,7 +47,7 @@ export const Pagination = ({
       <Button
         id="pagination-button-previous"
         variant={{ appearance: "secondary" }}
-        iconLeading="arrow-left"
+        iconLeading="angle-left"
         to={previousPath}
         isDisabled={isFirstOrPrevDisabled}
       />
@@ -68,7 +68,7 @@ export const Pagination = ({
       <Button
         id="pagination-button-next"
         variant={{ appearance: "secondary" }}
-        iconTrailing="arrow-right"
+        iconTrailing="angle-right"
         to={nextPath}
         isDisabled={isNextOrLastDisabled}
       />

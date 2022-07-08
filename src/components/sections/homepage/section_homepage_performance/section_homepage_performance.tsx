@@ -51,6 +51,7 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
         <MetricGraphCard
           thresholds={{ green: 2500, amber: 400 }}
           min={0}
+          displayUnit={"numeric"}
           max={8000}
           metric={CLS}
         />

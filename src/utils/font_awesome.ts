@@ -1,6 +1,10 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
+  faAngleLeft,
+  faAngleRight,
+  faAnglesLeft,
+  faAnglesRight,
   faArrowLeft,
   faArrowRight,
   faBook,
@@ -28,6 +32,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
+  faAngleLeft,
+  faAngleRight,
+  faAnglesLeft,
+  faAnglesRight,
   faArrowLeft,
   faArrowRight,
   faBrain,

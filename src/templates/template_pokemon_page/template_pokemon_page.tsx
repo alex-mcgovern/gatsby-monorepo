@@ -11,6 +11,8 @@ import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_inde
 import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
 import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../utils/shared_props/box_props";
 
+const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
+
 interface TemplatePokemonPageProps {
   data: {
     allPokemon: {
@@ -77,18 +79,32 @@ export default function TemplatePokemonPage({
     allPokemon: allPokemonData,
     languageISO,
   });
-  const paginationBasePath = createUrlPathFromArray([languageISO, "pokemon"]);
 
-  const languageIndexBasePath = createUrlPathFromArray(["pokemon", pokedexID]);
+  const isEnglish = languageISO === "en";
+
+  const basePagePathArray = [...SHARED_BASE_PATH];
+
+  if (!isEnglish) {
+    basePagePathArray.push(languageISO);
+  }
+
+  const paginationBasePath = createUrlPathFromArray([
+    ...basePagePathArray,
+    "pokemon",
+  ]);
+
+  const languageIndexBasePath = createUrlPathFromArray([
+    ...basePagePathArray,
+    "pokemon",
+    pokedexID,
+  ]);
   const languageIndex = getLanguageSelectIndex({
     allLanguagesISO: allLanguagesISO.distinct,
     basePath: languageIndexBasePath,
   });
   const currentLanguageUpperCase = languageISO.toUpperCase();
   const allPokemonLink = createUrlPathFromArray([
-    "projects",
-    "multilingual-pokedex",
-    languageISO,
+    ...basePagePathArray,
     "pokedex",
   ]);
 
