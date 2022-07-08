@@ -103,10 +103,7 @@ export default function TemplatePokemonPage({
     basePath: languageIndexBasePath,
   });
   const currentLanguageUpperCase = languageISO.toUpperCase();
-  const allPokemonLink = createUrlPathFromArray([
-    ...basePagePathArray,
-    "pokedex",
-  ]);
+  const allPokemonLink = createUrlPathFromArray([...basePagePathArray]);
 
   return (
     <>

@@ -64,9 +64,16 @@ export const createPages: GatsbyNode["createPages"] = async (
      *      CREATE POKEDEX ENTRIES
      * ——————————————————————————————————————————————————————————————————————————————— */
     allPokemon.map(async ({ pokedexID, languageISO }) => {
+      const isEnglish = languageISO === "en";
+
+      const pagePathArray = [...SHARED_BASE_PATH];
+
+      if (!isEnglish) {
+        pagePathArray.push(languageISO);
+      }
+
       const pagePath = createUrlPathFromArray([
-        ...SHARED_BASE_PATH,
-        languageISO,
+        ...pagePathArray,
         "pokemon",
         pokedexID.toString(),
       ]);
