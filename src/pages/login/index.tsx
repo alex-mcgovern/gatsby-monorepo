@@ -19,11 +19,9 @@ const Login = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("debug formValues", formValues);
+
     return signInWithEmailAndPassword(formValues.email, formValues.password);
   }
-
-  console.log(loading);
 
   let loginButtonTitle = "Log in";
   if (loading) {

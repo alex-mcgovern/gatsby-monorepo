@@ -96,8 +96,6 @@ export default function Footer({}: IFooter) {
     };
   });
 
-  console.log(blogCategories);
-
   return (
     <Box
       as="footer"

@@ -33,7 +33,6 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
     }
   );
 
-  console.log("debug tasks", tasks);
   const [statuses, statusesLoading, statusesError] = useCollection(
     collection(getFirestore(firebaseApp), "statuses"),
     {
@@ -63,16 +62,8 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
       return { ...doc.data(), ref: doc.ref };
     });
 
-  console.log("debug collections", {
-    transformedTasks,
-    transformedStatuses,
-    transformedEpics,
-  });
-
   if (transformedTasks && transformedStatuses && transformedEpics) {
     const tasksGroupedByEpic = groupBy(transformedTasks, "epic");
-    console.log("debug transformedTasks", transformedTasks);
-    console.log("debug tasksGroupedByEpic", tasksGroupedByEpic);
 
     const statusesSortedBySortIndex = sortAlphabeticallyByKey({
       objects: transformedStatuses,
@@ -232,7 +223,6 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
                                     0 &&
                                   tasksInEpicGroupedByStatus[statusKey].map(
                                     (item) => {
-                                      console.log("debug item", item);
                                       return (
                                         <KanbanListItem
                                           id={item.id}

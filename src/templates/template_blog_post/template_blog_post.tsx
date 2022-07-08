@@ -56,7 +56,6 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
 
   const siteTitle = site.siteMetadata.title || `Title`;
 
-  console.log("debug categories", categories);
   const categoryLinks =
     categories?.length > 0 &&
     categories.map((categoryTitle) => {
