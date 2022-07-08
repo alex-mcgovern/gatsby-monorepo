@@ -16,6 +16,7 @@ export default function Example() {
     <Box
       as="section"
       customisation={{
+        marginY: "spacing10",
         display: "grid",
         gap: "spacing6",
         gridTemplateColumns: "1_2",
