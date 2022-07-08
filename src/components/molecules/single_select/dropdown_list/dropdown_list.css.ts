@@ -15,7 +15,7 @@ export const dropdownWrapper = style([
     marginTop: vars.spacing.spacing2,
   },
   geFunctionalClassNames({
-    maxHeight: "spacing32",
+    maxHeight: "50vh",
     boxShadow: "shadowLight",
     display: "block",
     position: "absolute",

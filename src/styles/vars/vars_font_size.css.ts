@@ -1,9 +1,6 @@
-import { modularScale } from "polished";
+import { createModularScale } from "../css_preprocessing_utils/create_modular_scale";
 
-const createScale = (ratio: number, base: number) => (steps: number) =>
-  `${modularScale(steps, base, ratio)}px`;
-
-const fontSizeScale = createScale(1.067, 16);
+const fontSizeScale = createModularScale(1.067, 16);
 
 export const varsFontSize = {
   root: "16px",
