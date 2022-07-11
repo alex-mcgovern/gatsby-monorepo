@@ -12,18 +12,18 @@ export const getFocusRingStyles = recipe({
       },
 
       "&[disabled]": {
-        opacity: 0.3,
+        opacity: 0.5,
       },
       "&:focus": {
-        outline: `2px solid ${vars.color.accent_border_1}`,
+        outline: `2px solid ${vars.color.accent_solid_2}`,
         outlineOffset: "2px",
       },
       "&:focus-visible": {
-        outline: `2px solid ${vars.color.accent_border_1}`,
+        outline: `2px solid ${vars.color.accent_solid_2}`,
         outlineOffset: "2px",
       },
       "&:focus-within": {
-        outline: `2px solid ${vars.color.accent_border_1}`,
+        outline: `2px solid ${vars.color.accent_solid_2}`,
         outlineOffset: "2px",
       },
     },

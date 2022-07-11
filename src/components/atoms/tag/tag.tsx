@@ -1,10 +1,10 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import classNames from "classnames";
+import clsx from "clsx";
 import { Link } from "gatsby";
 import {
   FunctionalClassNames,
-  getFunctionalClassNames,
+  getUtilityClasses,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -54,10 +54,10 @@ export const Tag = ({
 }: ITag) => {
   const isInternalLink = to && /^\/(?!\/)/.test(to);
 
-  const tagStyle = classNames([
+  const tagStyle = clsx([
     resetButton,
     getTagStyle(variant),
-    getFunctionalClassNames({
+    getUtilityClasses({
       ...customisation,
     }),
     getFocusRingStyles({}),
@@ -85,21 +85,32 @@ export const Tag = ({
       </a>
     );
   }
+  if (onClick)
+    return (
+      <button
+        className={tagStyle}
+        disabled={isDisabled}
+        onClick={onClick}
+        id={id}
+        type="button"
+        {...rest}
+      >
+        <TagInnerContent
+          iconLeading={iconLeading}
+          iconTrailing={iconTrailing}
+          title={title}
+        />
+      </button>
+    );
+
   return (
-    <button
-      className={tagStyle}
-      disabled={isDisabled}
-      onClick={onClick}
-      id={id}
-      type="button"
-      {...rest}
-    >
+    <div className={tagStyle} id={id} {...rest}>
       <TagInnerContent
         iconLeading={iconLeading}
         iconTrailing={iconTrailing}
         title={title}
       />
-    </button>
+    </div>
   );
 };
 

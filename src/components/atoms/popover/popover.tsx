@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as RadixPopover from "@radix-ui/react-popover";
 import { Box } from "../box/box";
 import { Button } from "../button/button";
+import { Card } from "../card/card";
 import { Typography } from "../typography/typography";
 import * as styles from "./popover.css";
 
@@ -17,24 +18,15 @@ export default function Popover({ popoverText }: IPopover) {
         <FontAwesomeIcon icon="circle-info" />
       </RadixPopover.Trigger>
 
-      <RadixPopover.Content
-        sideOffset={1}
-        side="top"
-        // className={styles.popoverContent}
-      >
-        <Box
+      <RadixPopover.Content sideOffset={1} side="top">
+        <Card
           customisation={{
-            padding: "spacing2",
-            backgroundColor: "neutral_bg_3",
-            borderRadius: "sm",
-            boxShadow: "shadowLight",
             maxWidth: "gridSpan5",
-            border: "1px solid",
-            borderColor: "neutral_ui_3",
+            padding: "spacing3",
           }}
         >
           <Typography>{popoverText}</Typography>
-        </Box>
+        </Card>
       </RadixPopover.Content>
     </RadixPopover.Root>
   );

@@ -121,7 +121,7 @@ export default function Footer({}: IFooter) {
       <Box
         customisation={{
           display: "grid",
-          gridTemplateColumns: "3x",
+          gridTemplateColumns: "4x",
           alignItems: "start",
           ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
         }}
@@ -143,12 +143,13 @@ export default function Footer({}: IFooter) {
           />
           {categoryLinks &&
             categoryLinks.length > 0 &&
-            categoryLinks.map((projectLink) => {
+            categoryLinks.map((categoryLink) => {
               return (
                 <Button
                   variant={{ size: "sm", appearance: "tertiary" }}
-                  title={projectLink.title}
-                  to={projectLink.link}
+                  key={categoryLink.link}
+                  title={categoryLink.title}
+                  to={categoryLink.link}
                 />
               );
             })}
@@ -170,6 +171,7 @@ export default function Footer({}: IFooter) {
               return (
                 <Button
                   variant={{ size: "sm", appearance: "tertiary" }}
+                  key={projectLink.link}
                   title={projectLink.title}
                   to={projectLink.link}
                 />
@@ -194,6 +196,7 @@ export default function Footer({}: IFooter) {
                 <Button
                   variant={{ size: "sm", appearance: "tertiary" }}
                   title={otherLink.title}
+                  key={otherLink.link}
                   to={otherLink.link}
                 />
               );

@@ -27,12 +27,18 @@ const Page = ({ children, description }: IPageProps) => {
         marginX: "auto",
         maxWidth: "gridSpan12",
         paddingX: "spacing2",
-        position: "relative",
       }}
     >
       {/* <Seo title={title} description={description} /> */}
       <Header />
-      <Box as="main">{children}</Box>
+      <Box
+        as="main"
+        // customisation={{
+        //   paddingY: "spacing5",
+        // }}
+      >
+        {children}
+      </Box>
       <Footer />
     </Box>
   );

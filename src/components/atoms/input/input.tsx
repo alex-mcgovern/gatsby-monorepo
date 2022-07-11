@@ -1,12 +1,13 @@
-import React, { AriaRole, HTMLInputTypeAttribute } from "react";
+import React, { AriaRole, HTMLInputTypeAttribute, forwardRef } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FunctionalClassNames,
-  getFunctionalClassNames,
+  getUtilityClasses,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { Box } from "../box/box";
+import { Label } from "../label/label";
 import * as styles from "./input.css";
 
 export interface InputCustomisation {
@@ -20,7 +21,11 @@ export interface InputCustomisation {
   width?: FunctionalClassNames["width"];
 }
 
-export interface IInputProps {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  autoComplete?: HTMLInputElement["autocomplete"];
+  /** Allow custom prop getter. Enables compatibility with DownshiftJS */
+  getInputProps?(...args: unknown[]): unknown;
   /** Customisation exposes utility-first styles as props. */
   customisation?: InputCustomisation;
   /** FontAwesome icon shown on the left side of input. */
@@ -44,75 +49,84 @@ export interface IInputProps {
   /** Aria role to use for the input (e.g. `search`). */
   role?: AriaRole;
   /** Variant prop controlling input appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
-  variant?: styles.TInputVariants;
+  variant?: styles.InputVariants;
   /** Allows directly assigning a value when the input is acting as a controlled element. */
   value?: string;
   // Whether the field is required.
   required?: boolean;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
 }
 
-export const Input = ({
-  placeholder,
-  iconLeading,
-  iconTrailing,
-  id,
-  name,
-  type,
-  onChange,
-  customisation,
-  value,
-  isLabelVisible,
-  isDisabled,
-  label,
-  variant,
-  role,
-  ...rest
-}: IInputProps) => {
-  const inputWrapperStyles = [
-    styles.getInputWrapperStyles({
-      ...variant,
-    }),
-    getFocusRingStyles(),
-    getFunctionalClassNames({ ...customisation }),
-  ];
+export const Input = forwardRef(
+  (
+    {
+      autoComplete,
+      customisation,
+      iconLeading,
+      iconTrailing,
+      id,
+      isDisabled,
+      isLabelVisible,
+      label,
+      name,
+      onChange,
+      placeholder,
+      role,
+      type,
+      value,
+      variant,
+      ...rest
+    }: InputProps,
+    ref
+  ) => {
+    const inputWrapperStyles = [
+      styles.getInputWrapperStyles({
+        ...variant,
+      }),
+      getFocusRingStyles(),
+      getUtilityClasses({ ...customisation }),
+    ];
 
-  return (
-    <Box customisation={customisation}>
-      {isLabelVisible && (
-        <label className={styles.inputLabel} htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <fieldset
-        className={inputWrapperStyles.join(" ")}
-        role={role}
-        disabled={isDisabled}
-      >
-        {iconLeading && (
-          <FontAwesomeIcon className={styles.leadingIcon} icon={iconLeading} />
+    return (
+      <Box customisation={customisation}>
+        {label && id && (
+          <Label isLabelVisible={isLabelVisible} label={label} id={id} />
         )}
-        <input
-          value={value}
-          type={type}
+        <fieldset
+          className={inputWrapperStyles.join(" ")}
+          role={role}
           disabled={isDisabled}
-          className={styles.inputElement}
-          placeholder={placeholder}
-          onChange={onChange}
-          name={name}
-          id={id}
-          {...rest}
-        />
-        {iconTrailing && (
-          <FontAwesomeIcon
-            className={styles.trailingIcon}
-            icon={iconTrailing}
+        >
+          {iconLeading && (
+            <FontAwesomeIcon
+              className={styles.leadingIcon}
+              icon={iconLeading}
+            />
+          )}
+          <input
+            value={value}
+            type={type}
+            autoComplete={autoComplete}
+            disabled={isDisabled}
+            className={styles.inputElement}
+            placeholder={placeholder}
+            onChange={onChange}
+            name={name}
+            id={id}
+            ref={ref}
+            {...rest}
           />
-        )}
-      </fieldset>
-    </Box>
-  );
-};
+          {iconTrailing && (
+            <FontAwesomeIcon
+              className={styles.trailingIcon}
+              icon={iconTrailing}
+            />
+          )}
+        </fieldset>
+      </Box>
+    );
+  }
+);
 
 Input.defaultProps = {
   placeholder: "",

@@ -4,7 +4,6 @@ import groupBy from "lodash.groupby";
 import { Box } from "../../../components/atoms/box/box";
 import { Typography } from "../../../components/atoms/typography/typography";
 import { ListItem } from "../../../components/molecules/list_item/list_item";
-import SectionDesignSystemFeatures from "../../../components/sections/design_system/section_design_system_features/section_design_system_features";
 import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 
 interface DesignSystemIndexProps {
@@ -67,12 +66,6 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
           <a href="https://vanilla-extract.style/">Vanilla Extract</a>, that is
           semi-self-documenting.
         </Typography>
-
-        <Typography as="p">
-          <b>Note:</b> This is an early-stage MVP, with more components and more
-          usage examples to be added over time. Long-term, the plan is for this
-          to be published on NPM as a full-blown package.
-        </Typography>
       </Box>
       <hr />
 
@@ -101,6 +94,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
               componentsGroupedByAtomicLevel[atomicLevel];
             return (
               <Box
+                key="atomicLevel"
                 customisation={{
                   marginY: "spacing4",
                 }}
@@ -136,9 +130,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
                           key={component.frontmatter.title}
                           title={component.frontmatter.title}
                           link={component.fields.linkSlug}
-                          subtitle={component.frontmatter.categories.join(
-                            " • "
-                          )}
+                          tags={component.frontmatter.categories}
                           description={component.frontmatter.description}
                         />
                       );

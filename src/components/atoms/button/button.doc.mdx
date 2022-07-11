@@ -6,8 +6,8 @@ categories: ["Interactive"]
 description: "A simple, customisable, and accessible button component."
 ---
 
-import { BOX_CUSTOMISATIONS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
 import { Box } from "../box/box.tsx";
+import { Card } from "../card/card.tsx";
 import { Typography } from "../typography/typography.tsx";
 import { BUTTON_APPEARANCE_VARIANTS_MOCK } from "./__mocks__/button_appearance_variants.mock.ts";
 import { BUTTON_ICON_VARIANTS_MOCK } from "./__mocks__/button_icon_variants.mock.ts";
@@ -46,12 +46,12 @@ Variants are configurable via the `variant` prop.
 
 ##### Appearance
 
-<Box
+<Card
   customisation={{
     display: "grid",
     gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
     gap: "spacing2",
-    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+    ,
   }}
 >
   {BUTTON_APPEARANCE_VARIANTS_MOCK?.length > 0 &&
@@ -69,7 +69,7 @@ Variants are configurable via the `variant` prop.
       );
     })}
 
-</Box>
+</Card>
 
 ##### Size
 
@@ -78,7 +78,7 @@ Variants are configurable via the `variant` prop.
     display: "grid",
     gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
     gap: "spacing2",
-    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+    ,
   }}
 >
   {BUTTON_SIZE_VARIANTS_MOCK?.length > 0 &&
@@ -105,7 +105,7 @@ Variants are configurable via the `variant` prop.
     display: "grid",
     gridTemplateColumns: { mobile: "1x", tablet: "3x" },
     gap: "spacing2",
-    ...BOX_CUSTOMISATIONS_COMPONENT_DEMO,
+    ,
   }}
 >
   {BUTTON_ICON_VARIANTS_MOCK?.length > 0 &&

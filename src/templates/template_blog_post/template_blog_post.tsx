@@ -84,13 +84,7 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
             {/** ————————————————————
              *      TITLE
              * ——————————————————————— */}
-            <Typography
-              as="h1"
-              customisation={{
-                marginTop: "none",
-                marginBottom: "spacing2",
-              }}
-            >
+            <Typography as="h1" customisation={{}}>
               {post.frontmatter.title}
             </Typography>
 
@@ -103,12 +97,12 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
                 fontSize: "body_lg",
                 fontWeight: "normal",
                 marginTop: "none",
-                marginBottom: "spacing3",
               }}
             >
               {post.frontmatter.description}
             </Typography>
 
+            <hr />
             <Box
               customisation={{
                 display: "flex",
@@ -120,9 +114,11 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
                *      DATE
                * ——————————————————————— */}
               <Typography
+                variant={{
+                  color: "accent_fg_1",
+                }}
                 customisation={{
                   marginY: "none",
-                  color: "accent_fg_1",
                 }}
               >
                 {post.frontmatter.date}
@@ -133,7 +129,6 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
                * ——————————————————————— */}
               <BlogCategoriesList categories={categoryLinks} />
             </Box>
-            <hr />
           </Box>
 
           {/** ————————————————————————————————————————————————————————————————————————————

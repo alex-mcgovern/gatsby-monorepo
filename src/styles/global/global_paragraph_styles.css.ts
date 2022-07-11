@@ -3,8 +3,9 @@ import { vars } from "../theme.css";
 
 globalStyle(`p`, {
   overflowWrap: `break-word`,
-  fontSize: vars.fontSize.body_lg,
-  // marginTop: vars.spacing.spacing3,
-  marginBottom: vars.spacing.spacing1,
-  maxWidth: vars.width.gridSpan8,
+
+  marginTop: vars.spacing.spacing2,
+  marginBottom: vars.spacing.spacing2,
+
+  maxWidth: vars.width.gridSpan6,
 });

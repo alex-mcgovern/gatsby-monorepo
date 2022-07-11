@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import { Box } from "../../components/atoms/box/box";
-import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
+import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
 import { ListItem } from "../../components/molecules/list_item/list_item";
 import { Pagination } from "../../components/molecules/pagination/pagination";
 import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
@@ -90,6 +90,7 @@ export default function TemplatePokemonListPage({
             dangerouslySetInnerHTML={{ __html: doc }}
             itemProp="articleBody"
           />
+          <hr />
         </Box>
 
         <Box
@@ -99,7 +100,7 @@ export default function TemplatePokemonListPage({
             justifyContent: "space-between",
           }}
         >
-          <DropdownCombobox
+          <ComboboxSearchable
             items={dropdownItems}
             isSearchable
             iconLeading="search"
@@ -112,7 +113,7 @@ export default function TemplatePokemonListPage({
             buttonTitle={currentLanguageUpperCase}
           />
 
-          <DropdownCombobox
+          <ComboboxSearchable
             items={languageIndex}
             variant={{
               size: "lg",

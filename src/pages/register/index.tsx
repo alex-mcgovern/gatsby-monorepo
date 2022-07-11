@@ -112,12 +112,12 @@ const Register = () => {
               id="confirmPassword"
             />
             {!!errorMessage && (
-              <Typography as="p" customisation={{ color: "semantic_red" }}>
+              <Typography as="p" variant={{ color: "semantic_red_bg" }}>
                 {errorMessage}
               </Typography>
             )}
             {/* {!!error && (
-              <Typography as="p" customisation={{ color: "semantic_red" }}>
+              <Typography as="p" customisation={{ color: "semantic_red_bg" }}>
                 {error}
               </Typography>
             )} */}

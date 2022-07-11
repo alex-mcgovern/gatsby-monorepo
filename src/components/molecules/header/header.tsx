@@ -6,7 +6,7 @@ import { ThemeContext } from "../../../context/theme_context";
 import { convertKebabCaseToSentenceCase } from "../../../utils/convert_kebab_case_to_sentence_case/convert_kebab_case_to_sentence_case";
 import { Box } from "../../atoms/box/box";
 import { Button } from "../../atoms/button/button";
-import DropdownCombobox from "../dropdown_combobox/dropdown_combobox";
+import { DropdownSingleSelect } from "../Dropdown/DropdownSingleSelect";
 
 interface IProjectsQueryResult {
   allProjects: {
@@ -53,7 +53,7 @@ export default function Header() {
       customisation={{
         display: "flex",
         justifyContent: "space-between",
-        marginY: "spacing3",
+        marginY: "spacing2",
       }}
     >
       {/** ————————————————————————————————————————————————————————————————————————————
@@ -62,7 +62,7 @@ export default function Header() {
       <Button
         id="header-home-button"
         iconLeading="shapes"
-        variant={{ size: "lg", appearance: "tertiary" }}
+        variant={{ size: "md", appearance: "tertiary" }}
         to="/"
         title="Alex McGovern"
       />
@@ -90,8 +90,9 @@ export default function Header() {
          *      PROJECTS DROPDOWN
          * ——————————————————————— */}
         {projectDropdownListItems && (
-          <DropdownCombobox
+          <DropdownSingleSelect
             buttonTitle="Projects"
+            initialInputValue="Projects"
             id="projects-dropdown"
             items={projectDropdownListItems}
             label="Projects"

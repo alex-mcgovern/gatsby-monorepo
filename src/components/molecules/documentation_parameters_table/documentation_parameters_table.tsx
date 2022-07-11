@@ -1,5 +1,6 @@
 // Adapted from https://github.com/transitive-bullshit/react-docgen-parameters-table
 import React from "react";
+import checkHasLength from "../../../utils/map_if_has_length/map_if_has_length";
 import { Box } from "../../atoms/box/box";
 import Popover from "../../atoms/popover/popover";
 import { Typography } from "../../atoms/typography/typography";
@@ -16,45 +17,32 @@ export const DocumentationParametersTable = ({
   parameters,
   ...rest
 }: IDocumentationParametersTable) => {
-  if (parameters && parameters.length > 0) {
+  if (checkHasLength(parameters)) {
     return (
       <>
         {parameters.map((parameter) => {
-          if (parameter.properties && parameter.properties.length > 0) {
+          if (checkHasLength(parameter.properties)) {
             return (
               <Box
                 as="section"
                 customisation={{ marginY: "spacing4" }}
                 key={parameter.type}
               >
-                {/* —————————————————————————————————————————————————————————————————————————————
-                 *      SECTION HEADING
-                 * ——————————————————————————————————————————————————————————————————————————————— */}
-
                 <Typography as="h3">Props</Typography>
 
-                {/* —————————————————————————————————————————————
-                 *      TABLE
-                 * ——————————————————————————————————————————————— */}
-                <Box as="table" customisation={{ width: "100%" }} {...rest}>
-                  {/* —————————————————————
-                   *      TABLE HEADER
-                   * ——————————————————————— */}
-                  <Box as="thead">
-                    <Box as="tr">
-                      <Box as="th">Property</Box>
-                      <Box as="th">Type</Box>
-                      <Box as="th">Default</Box>
-                    </Box>
-                  </Box>
+                <table {...rest}>
+                  <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                    </tr>
+                  </thead>
 
-                  {/* —————————————————————
-                   *      TABLE BODY
-                   * ——————————————————————— */}
-                  <Box as="tbody">
+                  <tbody>
                     {parameter.properties.map((property) => {
                       const subProperties =
-                        property.properties?.length > 0 &&
+                        checkHasLength(property.properties) &&
                         property.properties
                           .map((subProperty) => {
                             return (
@@ -66,14 +54,13 @@ export const DocumentationParametersTable = ({
                           .filter(Boolean);
 
                       return (
-                        <Box as="tr" key={property.name}>
-                          {/* PROP NAME */}
-                          <Box as="td">
+                        <tr key={property.name}>
+                          <td>
                             <Typography
                               as="code"
-                              customisation={{
-                                backgroundColor: "accent_bg_3",
+                              variant={{
                                 color: "accent_fg_1",
+                                backgroundColor: "accent_ui_1",
                               }}
                             >
                               {property.name}
@@ -82,9 +69,9 @@ export const DocumentationParametersTable = ({
                             {property.description && (
                               <Popover popoverText={property.description} />
                             )}
-                          </Box>
+                          </td>
 
-                          <Box as="td">
+                          <td>
                             <Typography as="code">
                               {property.type || getPropType(property.kind)}
                             </Typography>
@@ -93,27 +80,27 @@ export const DocumentationParametersTable = ({
                                 popoverText={subProperties.join(" | ")}
                               />
                             )}
-                          </Box>
+                          </td>
 
                           {!property.defaultValue ? (
-                            <Box as="td">
+                            <td>
                               <em>-</em>
-                            </Box>
+                            </td>
                           ) : (
-                            <Box as="td">
+                            <td>
                               {property.defaultValue.value === "''" ? (
                                 <em>[Empty String]</em>
                               ) : (
                                 property.defaultValue &&
                                 property.defaultValue.value.replace(/'/g, "")
                               )}
-                            </Box>
+                            </td>
                           )}
-                        </Box>
+                        </tr>
                       );
                     })}
-                  </Box>
-                </Box>
+                  </tbody>
+                </table>
               </Box>
             );
           }

@@ -1,6 +1,6 @@
-import { IButton } from "../button";
+import { ButtonProps } from "../button";
 
-export const BUTTON_APPEARANCE_VARIANTS_MOCK: IButton[] = [
+export const BUTTON_APPEARANCE_VARIANTS_MOCK: ButtonProps[] = [
   // Primary buttons
   {
     iconTrailing: "arrow-right",

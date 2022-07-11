@@ -32,26 +32,24 @@ export default function BlogListLayout({
         ...BOX_CUSTOMISATION_SECTION_SPACING,
       }}
     >
-      <Typography as="h1">Blog</Typography>
-
       <Box as="header" customisation={{}}>
+        <Typography as="h1">Blog</Typography>
         <Typography as="p">
           Stuff that I've done, or am interested in. Part brain-dump, part
           tutorial, part experience journal.
         </Typography>
-        <BlogCategoriesList
-          categories={allCategories}
-          currentCategoryTitle={currentCategoryTitle}
-        />
       </Box>
       <hr />
+      <BlogCategoriesList
+        categories={allCategories}
+        currentCategoryTitle={currentCategoryTitle}
+      />
       <Box
         as="section"
         customisation={{
-          marginTop: "spacing4",
           display: "grid",
           gap: "spacing2",
-          gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
+          gridTemplateColumns: { desktop: "4x", tablet: "2x", mobile: "1x" },
         }}
       >
         {posts &&
@@ -59,8 +57,8 @@ export default function BlogListLayout({
           posts.map((post) => {
             return (
               <ListItem
-                customisation={{ marginTop: "spacing3" }}
                 aspectRatio="wide"
+                key={post.fields.slug}
                 title={post.frontmatter.title || post.fields.slug}
                 subtitle={post.frontmatter.date}
                 description={post.frontmatter.description || post.excerpt}

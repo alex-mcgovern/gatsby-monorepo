@@ -5,7 +5,6 @@ import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../../../utils/shared_props
 import { Box } from "../../../atoms/box/box";
 import { Button } from "../../../atoms/button/button";
 import { Typography } from "../../../atoms/typography/typography";
-import { Wave } from "../../../atoms/wave/wave";
 import InstagramPostItem from "../../../molecules/instagram_post_item/instagram_post_item";
 
 interface ISectionHomepageInstagram {}
@@ -49,10 +48,8 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
       as="section"
       customisation={{
         overflow: "hidden",
-        backgroundImage: "gradient_secondary",
       }}
     >
-      <Wave color="neutral_bg_1" waveVariant="top" />
       {/* —————————————————————————————————————————————
        *      SECTION INNER CONTENT
        * ——————————————————————————————————————————————— */}
@@ -61,10 +58,12 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
          *      SECTION HEADER
          * ——————————————————————— */}
         <Typography
+          variant={{
+            color: "accent_fg_1",
+          }}
           customisation={{
             fontSize: "h6",
-            fontWeight: "semibold",
-            color: "accent_fg_1",
+            fontWeight: "medium",
           }}
           // marginBottom="spacing4"
         >
@@ -73,10 +72,12 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
 
         <Typography
           as="h3"
+          variant={{
+            color: "accent_fg_2",
+          }}
           customisation={{
             fontSize: "h3",
             fontWeight: "bold",
-            color: "accent_fg_2",
           }}
         >
           I also love design, illustration, painting, and 3D modelling.
@@ -122,7 +123,6 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
           />
         </Box>
       </Box>
-      <Wave color="neutral_bg_1" waveVariant="bottom" />
     </Box>
   );
 }

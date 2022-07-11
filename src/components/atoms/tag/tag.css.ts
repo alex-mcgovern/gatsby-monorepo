@@ -1,22 +1,34 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { vars } from "../../../styles/theme.css";
 
 export const getTagStyle = recipe({
   base: [
-    { flexShrink: 0 },
+    {
+      position: "relative",
+      display: "table",
+      alignItems: "center",
+      flexShrink: 0,
 
-    getFunctionalClassNames({
-      fontSize: "body_sm",
-      lineHeight: "lg",
-      textDecoration: {
-        default: "none",
-        hover: "underline",
-      },
-      borderRadius: "pill",
       whiteSpace: "nowrap",
-      display: "block",
-      alignItems: "end",
-      paddingX: "spacing2",
+      lineHeight: vars.lineHeight.md,
+      fontSize: vars.fontSize.body_sm,
+
+      borderRadius: vars.borderRadius.pill,
+      border: "1px solid",
+      textDecoration: "none",
+
+      transition: `color ease, background-color ease`,
+      transitionDuration: vars.transitionDuration.short,
+
+      selectors: {
+        "&:is(&:not([disabled]):hover, &:not([disabled]):focus)": {
+          // textDecoration: "underline",
+        },
+      },
+    },
+    getUtilityClasses({
+      paddingX: "spacing1",
       paddingY: "spacing0",
     }),
   ],
@@ -24,23 +36,37 @@ export const getTagStyle = recipe({
   variants: {
     state: {
       inactive: [
-        getFunctionalClassNames({
-          color: "neutral_fg_1",
-          backgroundColor: {
-            default: "neutral_ui_1",
-            hover: "neutral_ui_2",
+        {
+          color: vars.color.neutral_fg_2,
+          backgroundColor: vars.color.neutral_ui_1,
+          borderColor: vars.color.neutral_border_1,
+
+          selectors: {
+            "&:is(a,button):is(&:not([disabled]):hover, &:not([disabled]):focus)":
+              {
+                // color: vars.color.neutral_fg_2,
+                backgroundColor: vars.color.neutral_ui_2,
+                borderColor: vars.color.neutral_border_3,
+              },
           },
-        }),
+        },
       ],
 
       active: [
-        getFunctionalClassNames({
-          color: "accent_fg_1",
-          backgroundColor: {
-            default: "accent_ui_1",
-            hover: "accent_ui_2",
+        {
+          color: vars.color.accent_fg_2,
+          backgroundColor: vars.color.accent_ui_2,
+          borderColor: vars.color.accent_border_2,
+
+          selectors: {
+            "&:is(a,button):is(&:not([disabled]):hover, &:not([disabled]):focus)":
+              {
+                // color: vars.color.accent_fg_2,
+                backgroundColor: vars.color.accent_ui_3,
+                borderColor: vars.color.accent_border_3,
+              },
           },
-        }),
+        },
       ],
     },
   },

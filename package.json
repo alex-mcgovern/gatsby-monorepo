@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.18.2",
+    "@fontsource/dm-sans": "^4.5.7",
+    "@fontsource/montserrat": "^4.5.11",
+    "@fontsource/roboto": "^4.5.7",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -17,6 +20,7 @@
     "@mdx-js/react": "^1.6.22",
     "@parcel/namer-default": "^2.6.1",
     "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-collapsible": "^0.1.6",
     "@radix-ui/react-dialog": "^0.1.8-rc.44",
     "@radix-ui/react-popover": "^0.1.6",
     "@structured-types/api": "^3.46.11",
@@ -34,9 +38,9 @@
     "@vanilla-extract/sprinkles": "^1.4.1",
     "@vanilla-extract/webpack-plugin": "^2.1.11",
     "axios": "^0.27.2",
-    "babel-plugin-react-docgen-typescript": "^1.5.1",
     "brace-expansion": "^2.0.1",
     "classnames": "^2.3.1",
+    "clsx": "^1.2.1",
     "downshift": "^6.1.7",
     "firebase": "^9.8.3",
     "gatsby": "^4.17.0",
@@ -60,8 +64,6 @@
     "gatsby-source-filesystem": "^4.17.0",
     "gatsby-source-hubspot-forms": "^3.0.1",
     "gatsby-source-instagram-all": "^5.2.1",
-    "gatsby-transformer-react-docgen": "^7.17.0",
-    "gatsby-transformer-react-docgen-typescript": "^0.2.7",
     "gatsby-transformer-remark": "^5.17.0",
     "gatsby-transformer-sharp": "^4.17.0",
     "glob": "^8.0.3",
@@ -73,7 +75,8 @@
     "prismjs": "^1.28.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
-    "react-docgen": "^5.4.2",
+    "react-dnd": "^9.4.0",
+    "react-dnd-html5-backend": "^9.4.0",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^5.0.3",
     "react-helmet": "^6.1.0",
@@ -85,6 +88,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
+    "@testing-library/react": "^12.1.2",
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -123,6 +127,6 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "jest": "jest ."
   }
 }

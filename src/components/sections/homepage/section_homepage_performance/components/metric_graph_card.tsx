@@ -28,22 +28,9 @@ export default function MetricGraphCard({
   min,
   thresholds,
 }: IMetricGraphCard) {
-  if (!metric || !metric.value) {
-    return <Box>Is loading</Box>;
-  }
-  const strokeWidth = 12;
-  const percentage = getPercentageInRange(metric.value, min, max);
+  const strokeWidth = 4;
   const greenPercentage = getPercentageInRange(thresholds.green, min, max);
   const amberPercentage = getPercentageInRange(thresholds.amber, min, max);
-
-  let displayValue: string = metric.value.toString();
-
-  if (displayUnit === "ms" || displayUnit === "seconds") {
-    displayValue = getDuration({ inputDuration: metric.value, displayUnit });
-  }
-  if (displayUnit === "numeric") {
-    displayValue = metric.value.toFixed(2);
-  }
 
   const radius = 50 - strokeWidth / 2;
   const pathDescription = `
@@ -55,25 +42,54 @@ export default function MetricGraphCard({
   const diameter = Math.PI * 2 * radius;
 
   const greenStyle = {
-    stroke: vars.color.semantic_green,
+    stroke: vars.color.semantic_green_bg,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - greenPercentage) / 100) * diameter}px`,
   };
 
   const amberStyle = {
-    stroke: vars.color.semantic_yellow,
+    stroke: vars.color.semantic_yellow_bg,
     // strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - amberPercentage) / 100) * diameter}px`,
   };
 
-  const progressStyle = {
-    stroke: vars.color.accent_fg_2,
-    // strokeLinecap: "round",
-    strokeDasharray: `${diameter}px ${diameter}px`,
-    strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
-  };
+  let displayValue = metric?.value.toString();
+
+  let progressColor = vars.color.semantic_red_fg;
+  let progressStyle = {};
+
+  if (metric) {
+    const percentage =
+      metric?.value && getPercentageInRange(metric.value, min, max);
+
+    if (percentage && percentage < amberPercentage) {
+      progressColor = vars.color.semantic_yellow_fg;
+    }
+
+    if (percentage && percentage < greenPercentage) {
+      progressColor = vars.color.semantic_green_fg;
+    }
+
+    if (displayUnit === "ms" || displayUnit === "seconds") {
+      displayValue = getDuration({
+        inputDuration: metric.value,
+        displayUnit,
+      });
+    }
+
+    if (displayUnit === "numeric") {
+      displayValue = metric.value.toFixed(2);
+    }
+
+    progressStyle = {
+      stroke: progressColor,
+      // strokeLinecap: "round",
+      strokeDasharray: `${diameter}px ${diameter}px`,
+      strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
+    };
+  }
 
   return (
     <svg
@@ -88,7 +104,7 @@ export default function MetricGraphCard({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: vars.color.semantic_red,
+          stroke: vars.color.semantic_red_bg,
         }}
       />
 
@@ -126,7 +142,7 @@ export default function MetricGraphCard({
           textAnchor: "middle",
         }}
       >
-        {metric.name}
+        {metric?.name}
       </text>
       <text
         className="CircularProgressbar-text"
@@ -139,7 +155,7 @@ export default function MetricGraphCard({
           textAnchor: "middle",
         }}
       >
-        {displayValue}
+        {displayValue || "No data"}
       </text>
       <text
         className="CircularProgressbar-text"

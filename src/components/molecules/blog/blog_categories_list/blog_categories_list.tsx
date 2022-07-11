@@ -20,6 +20,7 @@ export default function BlogCategoriesList({
         customisation={{
           display: "flex",
           flexWrap: "wrap",
+          marginY: "spacing3",
           gap: "spacing1",
         }}
       >

@@ -1,15 +1,15 @@
 import React from "react";
 import {
   FunctionalClassNames,
-  getFunctionalClassNames,
+  getUtilityClasses,
 } from "../../../styles/functional_classnames.css";
+import { TypographyVariants, getTypographyStyle } from "./typography.css";
 
 export interface TypographyCustomisation {
-  backgroundColor?: FunctionalClassNames["backgroundColor"];
-  color?: FunctionalClassNames["color"];
   display?: FunctionalClassNames["display"];
   fontSize?: FunctionalClassNames["fontSize"];
   fontWeight?: FunctionalClassNames["fontWeight"];
+  lineHeight?: FunctionalClassNames["lineHeight"];
   marginBottom?: FunctionalClassNames["marginBottom"];
   maxWidth?: FunctionalClassNames["maxWidth"];
   marginY?: FunctionalClassNames["marginY"];
@@ -20,6 +20,8 @@ export interface TypographyCustomisation {
 }
 
 export interface TypographyProps {
+  /** Typography variant — controls color */
+  variant?: TypographyVariants;
   /** Polymorphic prop allowing `Typography` to return a wide range of HTML Element types. */
   as?:
     | "code"
@@ -44,11 +46,13 @@ export const Typography = ({
   as,
   children,
   customisation,
+  variant,
   className,
   ...rest
 }: TypographyProps) => {
   const buttonStyle = [
-    getFunctionalClassNames({
+    getTypographyStyle(variant),
+    getUtilityClasses({
       ...customisation,
     }),
     className,

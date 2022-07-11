@@ -1,13 +1,14 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
+import { getUtilityClasses } from "../../../../styles/functional_classnames.css";
 import {
   BOX_CUSTOMISATION_MAX_WIDTH_FULL,
   BOX_CUSTOMISATION_SECTION_SPACING,
 } from "../../../../utils/shared_props/box_props";
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
+import * as styles from "./section_design_system_features.css";
 
 interface ISectionDesignSystemFeatures {}
 
@@ -16,11 +17,6 @@ type TGridContent = {
   title: string;
   body: string;
 }[];
-
-const ICON_CLASSNAMES = getFunctionalClassNames({
-  marginBottom: "spacing1",
-  color: "accent_solid_1",
-});
 
 const GRID_CONTENT: TGridContent = [
   {
@@ -67,7 +63,7 @@ export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeat
         as="h3"
         customisation={
           {
-            // fontWeight: "semibold",
+            // fontWeight: "medium",
           }
         }
       >
@@ -89,15 +85,18 @@ export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeat
           return (
             <Box>
               <FontAwesomeIcon
-                className={ICON_CLASSNAMES}
+                className={styles.icon}
                 size="2x"
                 icon={content.icon}
               />
               <Typography
+                variant={{
+                  color: "accent_fg_2",
+                }}
                 customisation={{
                   fontSize: "body_lg",
-                  fontWeight: "semibold",
-                  color: "accent_fg_2",
+                  fontWeight: "medium",
+
                   marginTop: "spacing1",
                 }}
               >

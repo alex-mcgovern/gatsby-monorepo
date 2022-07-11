@@ -17,10 +17,12 @@ const SectionHomepageBrandedUserExperiences =
         }}
       >
         <Typography
+          variant={{
+            color: "accent_fg_1",
+          }}
           customisation={{
             fontSize: "h6",
-            fontWeight: "semibold",
-            color: "accent_fg_1",
+            fontWeight: "medium",
             textAlign: "center",
           }}
         >
@@ -29,10 +31,12 @@ const SectionHomepageBrandedUserExperiences =
 
         <Typography
           as="h2"
+          variant={{
+            color: "accent_fg_2",
+          }}
           customisation={{
             fontSize: "h2",
             fontWeight: "bold",
-            color: "accent_fg_2",
             textAlign: "center",
           }}
         >

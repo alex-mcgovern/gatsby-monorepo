@@ -1,6 +1,6 @@
-import { IInputProps } from "../input";
+import { InputProps } from "../input";
 
-export const INPUT_SIZE_VARIANTS_MOCK: IInputProps[] = [
+export const INPUT_SIZE_VARIANTS_MOCK: InputProps[] = [
   {
     iconTrailing: "arrow-right",
     placeholder: "Type in me",

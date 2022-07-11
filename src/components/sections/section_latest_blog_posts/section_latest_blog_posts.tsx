@@ -38,7 +38,7 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
       graphql`
       query {
         latestBlogPosts: allMarkdownRemark(
-          limit: 3
+          limit: 4
           sort: { fields: [frontmatter___date], order: DESC }
           filter: {fileAbsolutePath: {regex: "/(\/content\/blog)/.*\\.md$/"}}
         ) {
@@ -86,7 +86,7 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
             alignItems: "center",
           }}
         >
-          <Typography as="h3">Featured posts from my blog</Typography>
+          <Typography as="h3">Stuff I wrote</Typography>
           <Button
             variant={{
               size: "lg",
@@ -105,10 +105,9 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
         <Box
           as="section"
           customisation={{
-            marginY: "spacing2",
             display: "grid",
             gap: "spacing2",
-            gridTemplateColumns: { desktop: "3x", mobile: "1x" },
+            gridTemplateColumns: { desktop: "4x", mobile: "1x" },
           }}
         >
           {posts?.length > 0 &&

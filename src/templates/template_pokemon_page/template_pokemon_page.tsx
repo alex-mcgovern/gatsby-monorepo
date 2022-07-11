@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
 import { Box } from "../../components/atoms/box/box";
 import { Button } from "../../components/atoms/button/button";
-import DropdownCombobox from "../../components/molecules/dropdown_combobox/dropdown_combobox";
+import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
 import { Pagination } from "../../components/molecules/pagination/pagination";
 import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
@@ -133,7 +133,7 @@ export default function TemplatePokemonPage({
             iconTrailing="grip"
           />
 
-          <DropdownCombobox
+          <ComboboxSearchable
             items={dropdownItems}
             isSearchable
             variant={{
@@ -147,7 +147,7 @@ export default function TemplatePokemonPage({
             buttonTitle={currentLanguageUpperCase}
           />
 
-          <DropdownCombobox
+          <ComboboxSearchable
             items={languageIndex}
             variant={{
               appearance: "secondary",

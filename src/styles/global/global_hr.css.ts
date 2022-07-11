@@ -4,7 +4,7 @@ import { vars } from "../theme.css";
 globalStyle(`hr`, {
   borderBottom: "none",
   borderTop: "1px solid",
-  borderColor: vars.color.neutral_fg_1,
-  marginTop: vars.spacing.spacing4,
-  marginBottom: vars.spacing.spacing4,
+  borderColor: vars.color.neutral_border_2,
+  marginTop: vars.spacing.spacing3,
+  marginBottom: vars.spacing.spacing3,
 });

@@ -1,14 +1,10 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getFunctionalClassNames } from "../../../../styles/functional_classnames.css";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../../utils/shared_props/box_props";
+import { getUtilityClasses } from "../../../../styles/functional_classnames.css";
+import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../../utils/shared_props/box_props";
 import { Box } from "../../../atoms/box/box";
 import { Typography } from "../../../atoms/typography/typography";
-import { Wave } from "../../../atoms/wave/wave";
 
 interface ISectionHomepagePrinciples {}
 
@@ -18,9 +14,8 @@ type TGridContent = {
   body: string;
 }[];
 
-const ICON_CLASSNAMES = getFunctionalClassNames({
+const ICON_CLASSNAMES = getUtilityClasses({
   marginBottom: "spacing1",
-  color: "accent_solid_1",
 });
 
 const GRID_CONTENT: TGridContent = [
@@ -60,9 +55,10 @@ export default function SectionHomepagePrinciples({}: ISectionHomepagePrinciples
     >
       <Typography
         as="h3"
-        customisation={{
+        variant={{
           color: "accent_fg_1",
         }}
+        customisation={{}}
       >
         My engineering principles
       </Typography>
@@ -87,10 +83,12 @@ export default function SectionHomepagePrinciples({}: ISectionHomepagePrinciples
                 icon={content.icon}
               />
               <Typography
+                variant={{
+                  color: "accent_fg_2",
+                }}
                 customisation={{
                   fontSize: "h6",
-                  fontWeight: "semibold",
-                  color: "accent_fg_2",
+                  fontWeight: "medium",
                   marginBottom: "spacing1",
                 }}
               >

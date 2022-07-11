@@ -21,11 +21,12 @@ const SectionHomepageBio = ({}: IBioProps) => {
           customisation={{
             fontSize: "body_lg",
             fontWeight: "normal",
+            lineHeight: "lg",
           }}
         >
           I'm a web engineer working and living in London. I love{" "}
           <Link to="/projects/boondoggle-design-system">design systems</Link>,
-          UX, DevX and <i>fast</i> frontend.
+          UX, DevX and fast frontend.
         </Typography>
         <Typography as="p">
           I currently work at <a href="https://truelayer.com/">TrueLayer</a> as

@@ -12,18 +12,18 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       />
       <path
         d="M471.646 222.493V70.541a15.577 15.577 0 0115.577-15.577h208.744a15.577 15.577 0 0115.577 15.577v151.952a15.584 15.584 0 01-15.584 15.584H487.23a15.584 15.584 0 01-15.584-15.584zm15.577-166.279A14.327 14.327 0 00472.9 70.541v151.952a14.334 14.334 0 0014.334 14.334H695.96a14.334 14.334 0 0014.334-14.334V70.541a14.327 14.327 0 00-14.327-14.327z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <path
         d="M472.272 70.539V83.2h238.645V70.539a14.952 14.952 0 00-14.952-14.952H487.223a14.951 14.951 0 00-14.951 14.952zM553.773 103.666h-11.261a.5.5 0 010-1h11.261a.5.5 0 010 1z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <g fill={vars.color.accent_solid_1}>
         <path d="M534.391 103.666h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 112.686h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 121.706h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 130.726h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 139.746h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 148.766h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 157.786h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 166.806h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 175.826h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 184.846h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 193.866h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 202.886h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 211.906h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1zM534.391 220.927h-4.261a.5.5 0 010-1h4.261a.5.5 0 010 1z" />
       </g>
       <path
         d="M562.773 112.686h-10.261a.5.5 0 010-1h10.261a.5.5 0 010 1zM553.773 166.806h-11.261a.5.5 0 010-1h11.261a.5.5 0 010 1zM562.773 175.826h-10.261a.5.5 0 010-1h10.261a.5.5 0 010 1zM620.773 121.706h-61.261a.5.5 0 010-1h61.261a.5.5 0 010 1z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <path
         d="M674.86 121.706H631.6a.5.5 0 010-1h43.26a.5.5 0 010 1z"
@@ -31,7 +31,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       />
       <path
         d="M698.076 121.706h-13.26a.5.5 0 010-1h13.26a.5.5 0 010 1zM650.773 139.746h-91.261a.5.5 0 010-1h91.261a.5.5 0 010 1z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <path
         d="M674.86 139.746H661.6a.5.5 0 010-1h13.26a.5.5 0 010 1z"
@@ -47,7 +47,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       />
       <path
         d="M698.163 130.726H656.9a.5.5 0 010-1h41.261a.5.5 0 010 1zM620.773 148.766h-61.261a.5.5 0 010-1h61.261a.5.5 0 010 1z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <path
         d="M654.86 148.766H631.6a.5.5 0 010-1h23.26a.5.5 0 010 1z"
@@ -55,7 +55,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       />
       <path
         d="M698.076 148.766h-33.26a.5.5 0 010-1h33.26a.5.5 0 010 1z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <path
         d="M570.773 157.786h-11.261a.5.5 0 010-1h11.261a.5.5 0 010 1z"
@@ -68,7 +68,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       <g>
         <path
           d="M618.773 193.866h-61.261a.5.5 0 010-1h61.261a.5.5 0 010 1z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <path
           d="M672.86 193.866H629.6a.5.5 0 010-1h43.26a.5.5 0 010 1z"
@@ -86,7 +86,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M696.163 184.846H654.9a.5.5 0 010-1h41.261a.5.5 0 010 1z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
       </g>
       <g>
@@ -96,7 +96,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M672.86 211.907H659.6a.5.5 0 010-1h13.26a.5.5 0 010 1z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
       </g>
       <g>
@@ -106,7 +106,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M642.86 202.887H579.6a.5.5 0 010-1h63.26a.5.5 0 010 1z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <path
           d="M696.163 202.887H654.9a.5.5 0 010-1h41.261a.5.5 0 010 1z"
@@ -120,7 +120,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M652.86 220.927H629.6a.5.5 0 010-1h23.26a.5.5 0 010 1z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <path
           d="M696.076 220.927h-33.26a.5.5 0 010-1h33.26a.5.5 0 010 1z"
@@ -129,7 +129,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       </g>
       <path
         d="M525.381 230.579a.5.5 0 01-.5-.5V87.92a.5.5 0 111 0v142.159a.5.5 0 01-.5.5z"
-        fill={vars.color.accent_border_1}
+        fill={vars.color.accent_border_2}
       />
       <circle
         cx="692.838"
@@ -137,7 +137,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         r="8.022"
         fill={vars.color.accent_fg_2}
       />
-      <g fill={vars.color.accent_border_1}>
+      <g fill={vars.color.accent_border_2}>
         <path d="M502.512 94.166H480.86a.5.5 0 010-1h21.652a.5.5 0 010 1zM495.989 104.028H480.86a.5.5 0 010-1h15.129a.5.5 0 010 1zM509.294 113.89H480.86a.5.5 0 010-1h28.434a.5.5 0 010 1zM514.6 123.752h-23.74a.5.5 0 010-1h23.74a.5.5 0 010 1zM503.12 133.615h-12.26a.5.5 0 010-1h12.26a.5.5 0 010 1zM512.512 143.477H490.86a.5.5 0 010-1h21.652a.5.5 0 010 1zM497.555 153.339H480.86a.5.5 0 010-1h16.695a.5.5 0 010 1zM491.816 163.2H480.86a.5.5 0 010-1h10.956a.5.5 0 110 1z" />
       </g>
       <g fill={vars.color.accent_solid_1}>
@@ -145,28 +145,28 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       </g>
       <g>
         <path
-          fill={vars.color.accent_bg_3}
+          fill={vars.color.accent_ui_1}
           d="M61.675 0H413.9v352.225H61.675z"
         />
         <path
           data-name="c_3_c"
-          fill={vars.color.accent_bg_3}
+          fill={vars.color.accent_ui_1}
           d="M57.638 0h4.037v352.225h-4.037z"
         />
         <path
           data-name="c_3_c"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
           opacity=".05"
           d="M57.638 0h4.037v352.225h-4.037zM147.003 242.712v-92.154h75.488v53.54h116.93v94.797h49.697v53.33H78.619V242.712h68.384z"
         />
-        <g fill={vars.color.accent_ui_1}>
+        <g fill={vars.color.accent_ui_2}>
           <path
             data-name="c_3_wh"
             opacity=".34"
             d="M157.83 160.564h54.971v10.006H157.83zM157.83 181.298h54.971v10.006H157.83zM157.83 202.032h54.971v10.006H157.83z"
           />
         </g>
-        <g data-name="c_3_wh" fill={vars.color.accent_ui_1}>
+        <g data-name="c_3_wh" fill={vars.color.accent_ui_2}>
           <path
             data-name="c_3_wh"
             opacity=".34"
@@ -179,18 +179,18 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           data-name="c_3_c"
-          fill={vars.color.accent_bg_3}
+          fill={vars.color.accent_ui_1}
           d="M47.644 351.8h380.288v11.714H47.644z"
         />
         <path
           data-name="c_3_c"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
           opacity=".1"
           d="M47.644 351.8h380.288v11.714H47.644zM42.153 351.8h5.491v11.714h-5.491z"
         />
         <path
           data-name="c_3_c"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
           opacity=".1"
           d="M42.153 351.8h5.491v11.714h-5.491z"
         />
@@ -210,14 +210,14 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       </g>
       <g>
         <path
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
           d="M60.748 841.816l-1.964-.378L89.48 536.407l1.964.378-30.696 305.031zM175.046 841.816l-1.964-.378 30.695-305.031 1.964.378-30.695 305.031z"
         />
-        <g fill={vars.color.accent_ui_3}>
+        <g fill={vars.color.accent_border_1}>
           <path d="M427.694 841.816l1.964-.378-30.696-305.031-1.964.378 30.696 305.031zM313.396 841.816l1.964-.378-30.695-305.031-1.964.378 30.695 305.031z" />
         </g>
         <path
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
           d="M270.707 402.427l1.982-.265 17.932 134.304-1.982.265zM64.882 402.425l1.982-.265 17.932 134.305-1.982.264z"
         />
         <rect
@@ -226,7 +226,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           width="220.99"
           height="19.671"
           rx="9.835"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <rect
           x="79.293"
@@ -239,7 +239,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M290.448 547.431H89.129a10.835 10.835 0 110-21.67h201.319a10.835 10.835 0 110 21.67zm-201.319-19.67a8.835 8.835 0 100 17.67h201.319a8.835 8.835 0 100-17.67z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <rect
           x="189.789"
@@ -251,12 +251,12 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M400.944 547.431h-201.32a10.835 10.835 0 110-21.67h201.32a10.835 10.835 0 110 21.67zm-201.32-19.67a8.835 8.835 0 100 17.67h201.32a8.835 8.835 0 100-17.67z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <g>
           <path
             d="M261.66 402.292H66.413a13.146 13.146 0 01-13.035-11.448l-12.915-99.179A13.145 13.145 0 0153.5 276.823h195.245a13.145 13.145 0 0113.035 11.447l12.914 99.18a13.144 13.144 0 01-13.034 14.842z"
-            fill={vars.color.accent_border_1}
+            fill={vars.color.accent_border_2}
           />
           <path
             d="M261.66 402.292H66.413a13.146 13.146 0 01-13.035-11.448l-12.915-99.179A13.145 13.145 0 0153.5 276.823h195.245a13.145 13.145 0 0113.035 11.447l12.914 99.18a13.144 13.144 0 01-13.034 14.842z"
@@ -265,7 +265,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           />
           <path
             d="M261.66 403.292H66.413a14.182 14.182 0 01-14.027-12.319l-12.914-99.179A14.144 14.144 0 0153.5 275.822h195.245a14.18 14.18 0 0114.026 12.319l12.915 99.18a14.144 14.144 0 01-14.026 15.971zM53.5 277.822a12.145 12.145 0 00-12.043 13.713l12.915 99.18a12.175 12.175 0 0012.043 10.577H261.66a12.145 12.145 0 0012.04-13.713L260.788 288.4a12.176 12.176 0 00-12.043-10.577z"
-            fill={vars.color.accent_border_1}
+            fill={vars.color.accent_border_2}
           />
         </g>
         <g>
@@ -275,12 +275,12 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           />
           <path
             d="M272.7 403.292H77.453a14.181 14.181 0 01-14.026-12.319l-12.915-99.179a14.146 14.146 0 0114.027-15.972h195.246a14.182 14.182 0 0114.027 12.319l12.915 99.18a14.146 14.146 0 01-14.027 15.971zM64.539 277.822A12.146 12.146 0 0052.5 291.536l12.91 99.179a12.177 12.177 0 0012.043 10.577H272.7a12.145 12.145 0 0012.043-13.713L271.828 288.4a12.175 12.175 0 00-12.043-10.577z"
-            fill={vars.color.accent_border_1}
+            fill={vars.color.accent_border_2}
           />
         </g>
         <g>
           <path
-            fill={vars.color.accent_ui_3}
+            fill={vars.color.accent_border_1}
             d="M422.481 425.138l1.99-.201 42.157 417.35-1.99.2z"
           />
           <path
@@ -329,20 +329,20 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
             />
             <path
               d="M276.466 764.478l75.249-237.39h-136.4c-27.4 0-38.822-23.235-38.822-50.633s26.936-51.416 54.334-51.416h184.09c16.711 0 35.449 10.22 44.621 24.19s6.692 35.617.047 50.951l-120.5 292.666"
-              fill={vars.color.neutral_ui_3}
+              fill={vars.color.neutral_border_1}
             />
             <path
               d="M276.466 764.478l75.249-237.39h-136.4c-27.4 0-38.822-23.235-38.822-50.633s26.936-51.416 54.334-51.416h184.09c16.711 0 35.449 10.22 44.621 24.19s6.692 35.617.047 50.951l-120.5 292.666"
-              fill={vars.color.neutral_ui_2}
+              fill={vars.color.neutral_ui_3}
               opacity=".8"
             />
             <path
               d="M467.522 815.55L341.7 527.088l-165.209-.011c-38.711-3.035-56.44-24.25-55.876-51.642.556-27.045 14.25-53.758 41.173-53.758H384.46c19.92.409 35.592 22.423 42.982 40.925l104.6 335.288"
-              fill={vars.color.neutral_ui_3}
+              fill={vars.color.neutral_border_1}
             />
             <path
               d="M109.347 422.008s-7.337 47.846 4.293 74.447c14.519 33.21 68.947 30.622 68.947 30.622l-3.067-105.4z"
-              fill={vars.color.neutral_ui_3}
+              fill={vars.color.neutral_border_1}
             />
           </g>
           <path
@@ -360,11 +360,11 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           <g>
             <path
               d="M373.919 401.783l38.524-118.424a10.365 10.365 0 019.857-7.159h166.952a10.365 10.365 0 019.857 13.572L550.585 408.2a10.366 10.366 0 01-9.857 7.159H383.776a10.365 10.365 0 01-9.857-13.576z"
-              fill={vars.color.accent_border_1}
+              fill={vars.color.accent_border_2}
             />
             <path
               d="M373.919 401.783l38.524-118.424a10.365 10.365 0 019.857-7.159h166.952a10.365 10.365 0 019.857 13.572L550.585 408.2a10.366 10.366 0 01-9.857 7.159H383.776a10.365 10.365 0 01-9.857-13.576z"
-              fill={vars.color.accent_border_1}
+              fill={vars.color.accent_border_2}
             />
             <rect
               x="295.541"
@@ -372,7 +372,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
               width="114.544"
               height="9.602"
               rx="4.74"
-              fill={vars.color.accent_border_1}
+              fill={vars.color.accent_border_2}
             />
             <rect
               x="295.541"
@@ -380,7 +380,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
               width="114.544"
               height="9.602"
               rx="4.74"
-              fill={vars.color.accent_border_1}
+              fill={vars.color.accent_border_2}
             />
             <circle
               cx="481.514"
@@ -396,13 +396,13 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
             />
             <path
               d="M350.9 378.886a.463.463 0 01-.149-.026l-10.562-3.841a.435.435 0 01.3-.818l10.563 3.841a.435.435 0 01-.149.844z"
-              fill={vars.color.neutral_ui_2}
+              fill={vars.color.neutral_ui_3}
               opacity=".2"
             />
             <path
               data-name="b_4_ha_sh"
               d="M345.559 386.565a.44.44 0 01-.146-.025l-8.325-2.954a.435.435 0 11.29-.82l8.326 2.954a.435.435 0 01-.145.845zM337.719 394.358a.447.447 0 01-.155-.029l-3.9-1.487a.435.435 0 01.311-.813l3.9 1.487a.435.435 0 01-.155.842z"
-              fill={vars.color.neutral_ui_2}
+              fill={vars.color.neutral_ui_3}
               opacity=".2"
             />
           </g>
@@ -416,7 +416,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           />
         </g>
         <g>
-          <g fill={vars.color.accent_ui_3}>
+          <g fill={vars.color.accent_border_1}>
             <path d="M18.849 842.29l42.186-417.347 1.99.201L20.84 842.49zM193.147 842.289l42.186-417.346 1.99.2-42.186 417.347zM596.779 425.138l1.99-.201 42.157 417.35-1.99.2z" />
           </g>
           <rect
@@ -425,7 +425,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
             width="627.391"
             height="16.387"
             rx="8.194"
-            fill={vars.color.accent_border_1}
+            fill={vars.color.accent_border_2}
           />
           <rect
             x="17.587"
@@ -438,7 +438,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           />
           <path
             d="M636.785 434.232h-611a9.194 9.194 0 110-18.387h611a9.194 9.194 0 110 18.387zm-611-16.387a7.194 7.194 0 100 14.387h611a7.194 7.194 0 100-14.387z"
-            fill={vars.color.accent_border_1}
+            fill={vars.color.accent_border_2}
           />
           <g>
             <rect
@@ -451,7 +451,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
             />
             <path
               d="M636.785 434.232H206.742a9.194 9.194 0 010-18.387h430.043a9.194 9.194 0 110 18.387zm-430.043-16.387a7.194 7.194 0 000 14.387h430.043a7.194 7.194 0 100-14.387z"
-              fill={vars.color.accent_border_1}
+              fill={vars.color.accent_border_2}
             />
           </g>
         </g>
@@ -459,7 +459,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       <g>
         <path
           d="M653.265 709.44a.993.993 0 01-.707-.293c-1.409-1.408-3.706-27.258-9.892-104.223-2.531-31.492-4.922-61.238-6.667-79.315-.124-1.291-.625-1.441-.789-1.49-2.389-.721-9.652 5.006-13.707 10.022a1 1 0 01-1.556-1.258c2.682-3.316 11.422-12.009 15.838-10.68.89.268 2 1.042 2.205 3.214 1.747 18.093 4.138 47.847 6.67 79.347 3.759 46.77 8.017 99.756 9.417 103.093a1 1 0 01-.812 1.583z"
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
         />
         <ellipse
           cx="615.668"
@@ -484,7 +484,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M663.579 697.215a1 1 0 01-.944-1.329L680.4 644.8a9.5 9.5 0 0115.528-3.748l9.392 8.971a1 1 0 01-1.382 1.447l-9.391-8.972a7.5 7.5 0 00-12.259 2.959l-17.763 51.087a1 1 0 01-.946.671z"
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
         />
         <ellipse
           cx="707.658"
@@ -496,7 +496,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M645.2 706.182a1 1 0 01-.972-.767L614.412 580.77a4.751 4.751 0 00-8.212-2l-9.19 10.62a1 1 0 11-1.512-1.309l9.189-10.619a6.751 6.751 0 0111.671 2.848l29.81 124.644a1 1 0 01-.74 1.2.981.981 0 01-.228.028z"
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
         />
         <ellipse
           cx="606.213"
@@ -508,7 +508,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
         />
         <path
           d="M653.266 709.44a1.014 1.014 0 01-.123-.007 1 1 0 01-.871-1.115l19.036-154.557a8.807 8.807 0 0115.342-4.753l21.758 24.643a1 1 0 11-1.5 1.324l-21.758-24.643a6.806 6.806 0 00-11.857 3.673l-19.035 154.557a1 1 0 01-.992.878z"
-          fill={vars.color.accent_ui_3}
+          fill={vars.color.accent_border_1}
         />
         <ellipse
           cx="697.028"
@@ -546,7 +546,7 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
           opacity=".5"
         />
         <path
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
           d="M677.613 840.582h-48.696l-8.07-155.804h64.835l-8.069 155.804z"
         />
         <path
@@ -562,11 +562,11 @@ export default function SVGHeroIllustration({}: ISVGHeroIllustration) {
       <g>
         <path
           d="M701.122 841.986H.7a.7.7 0 110-1.4h700.42a.7.7 0 010 1.4z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
         />
         <path
           d="M701.122 841.986H.7a.7.7 0 110-1.4h700.42a.7.7 0 010 1.4z"
-          fill={vars.color.accent_border_1}
+          fill={vars.color.accent_border_2}
           opacity=".65"
         />
       </g>

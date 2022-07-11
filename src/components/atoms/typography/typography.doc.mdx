@@ -6,14 +6,13 @@ categories: ["Polymorphic"]
 description: "Polymorphic Typography component"
 ---
 
-import { BOX_CUSTOMISATIONS_COMPONENT_DEMO } from "../../../utils/shared_props/box_props";
 import { Box } from "../box/box.tsx";
 import { TYPOGRAPHY_SIZE_VARIANTS_MOCK } from "./__mocks__/typography_size_variants.mock.ts";
 import { Typography } from "./typography.tsx";
 
 ### `fontSize`
 
-<Box customisation={{ ...BOX_CUSTOMISATIONS_COMPONENT_DEMO }}>
+<Box customisation={{}}>
   {TYPOGRAPHY_SIZE_VARIANTS_MOCK?.length > 0 &&
     TYPOGRAPHY_SIZE_VARIANTS_MOCK.map((mock) => {
       return (

@@ -47,7 +47,7 @@ export const SectionFeaturedProjects = ({}: ISectionFeaturedProjects) => {
        *      PROJECTS SECTION HEADER
        * ——————————————————————————————————————————————— */}
 
-      <Typography as="h3">Personal projects</Typography>
+      <Typography as="h3">Stuff I made</Typography>
 
       {/* —————————————————————————————————————————————
        *      PROJECTS GRID
@@ -59,7 +59,7 @@ export const SectionFeaturedProjects = ({}: ISectionFeaturedProjects) => {
           marginY: "spacing3",
           display: "grid",
           gap: "spacing2",
-          gridTemplateColumns: { desktop: "2x", tablet: "2x", mobile: "1x" },
+          gridTemplateColumns: { desktop: "4x", tablet: "2x", mobile: "1x" },
         }}
       >
         {PROJECTS?.length > 0 &&

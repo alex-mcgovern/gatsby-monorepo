@@ -1,39 +1,33 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import classNames from "classnames";
-import { Link } from "gatsby";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import {
   FunctionalClassNames,
-  getFunctionalClassNames,
+  getUtilityClasses,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
-import { TButtonVariants, getButtonStyle } from "./button.css";
-import ButtonInnerContent from "./components/button_inner_content/button_inner_content";
+import { Interactive } from "../interactive/Interactive";
+import { Label } from "../label/label";
+import * as styles from "./button.css";
+import type { ButtonVariants } from "./button.css";
 
-export interface ButtonCustomisation {
-  display?: FunctionalClassNames["display"];
-  width?: FunctionalClassNames["width"];
-  marginTop?: FunctionalClassNames["marginTop"];
-  marginBottom?: FunctionalClassNames["marginBottom"];
-  justifyContent?: FunctionalClassNames["justifyContent"];
-}
-
-export type ButtonVariants = {
-  appearance?: "primary" | "secondary" | "tertiary";
-  size?: "small" | "medium" | "large";
-};
-export interface IButton {
+export interface ButtonProps {
   /** Variant prop controlling button appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
-  variant?: TButtonVariants;
+  variant?: ButtonVariants;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: ButtonCustomisation;
+  customisation?: FunctionalClassNames;
   /** FontAwesome icon shown on the left side of button. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of button. */
   iconTrailing?: IconProp;
   /** Controls whether to show an animated Fontawesome spinner in the trailing icon slot. Only works with buttons with onClick handlers */
   isLoading?: boolean;
+  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
+  isLabelVisible?: boolean;
+  /** Label text. (Will also be used as accessible `name` on the input element.) */
+  label?: string;
   /** Used as the html ID. */
   id?: string;
   /** If `true`, the component is disabled. */
@@ -48,71 +42,74 @@ export interface IButton {
   type?: "submit" | "button";
 }
 
-export const Button = ({
-  to,
-  title,
-  id,
-  customisation,
-  iconLeading,
-  iconTrailing,
-  isLoading,
-  onClick,
-  isDisabled,
-  type,
-  variant,
-  ...rest
-}: IButton) => {
-  const isInternalLink = to && /^\/(?!\/)/.test(to);
+export const Button = forwardRef(
+  (
+    {
+      to,
+      title,
+      label,
+      id,
+      customisation,
+      iconLeading,
+      iconTrailing,
+      isLoading,
+      isLabelVisible,
+      onClick,
+      isDisabled,
+      type,
+      variant,
+      ...rest
+    }: ButtonProps,
+    ref
+  ) => {
+    const buttonStyle = clsx([
+      resetButton,
+      styles.getButtonStyle(variant),
+      getFocusRingStyles({}),
+      getUtilityClasses({
+        ...customisation,
+      }),
+    ]);
 
-  const buttonStyle = classNames([
-    resetButton,
-    getButtonStyle(variant),
-    getFunctionalClassNames({
-      ...customisation,
-    }),
-    getFocusRingStyles({}),
-  ]);
+    const trailingIconClassnames = clsx(styles.iconTrailing, {
+      [styles.iconSpin]: isLoading,
+    });
 
-  if (!isDisabled && to && isInternalLink) {
     return (
-      <Link className={buttonStyle} to={to} onClick={onClick} id={id} {...rest}>
-        <ButtonInnerContent
-          iconLeading={iconLeading}
-          iconTrailing={iconTrailing}
-          title={title}
-        />
-      </Link>
+      <>
+        {label && id && (
+          <Label isLabelVisible={isLabelVisible} label={label} id={id} />
+        )}
+        <Interactive
+          className={buttonStyle}
+          disabled={isDisabled}
+          onClick={onClick}
+          to={to}
+          id={id}
+          type={type}
+          ref={ref}
+          {...rest}
+        >
+          {iconLeading && (
+            <FontAwesomeIcon
+              className={styles.iconLeading}
+              size={variant?.size}
+              icon={iconLeading}
+            />
+          )}
+          {title && <span>{title}</span>}
+          {iconTrailing && (
+            <FontAwesomeIcon
+              className={trailingIconClassnames}
+              size={variant?.size}
+              icon={isLoading ? "spinner" : iconTrailing}
+            />
+          )}
+        </Interactive>
+      </>
     );
   }
-  if (!isDisabled && to && !isInternalLink) {
-    return (
-      <a className={buttonStyle} href={to} onClick={onClick} id={id} {...rest}>
-        <ButtonInnerContent
-          iconLeading={iconLeading}
-          iconTrailing={iconTrailing}
-          title={title}
-        />
-      </a>
-    );
-  }
-  return (
-    <button
-      className={buttonStyle}
-      disabled={isDisabled}
-      onClick={onClick}
-      id={id}
-      type={type}
-      {...rest}
-    >
-      <ButtonInnerContent
-        iconLeading={iconLeading}
-        iconTrailing={isLoading ? "spinner" : iconTrailing}
-        title={title}
-        isIconSpinning={isLoading}
-      />
-    </button>
-  );
-};
+);
 
 Button.defaultProps = {
   type: "button",

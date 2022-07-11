@@ -90,7 +90,7 @@ const Login = () => {
               isLabelVisible
               //   value={formValues.password}
               id="password"
-              label="password"
+              label="Password"
               name="password"
               onChange={handleInputChange}
               placeholder="Alphanumeric, > 6 characters"
@@ -98,7 +98,7 @@ const Login = () => {
               isDisabled={!!user}
             />
             {!!errorMessage && (
-              <Typography as="p" customisation={{ color: "semantic_red" }}>
+              <Typography as="p" customisation={{ color: "semantic_red_bg" }}>
                 {errorMessage}
               </Typography>
             )}

@@ -1,9 +1,11 @@
 import React from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { getFunctionalClassNames } from "../../../styles/functional_classnames.css";
+import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import checkHasLength from "../../../utils/map_if_has_length/map_if_has_length";
 import { Box, BoxCustomisation } from "../../atoms/box/box";
+import { Tag } from "../../atoms/tag/tag";
 import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
 
@@ -15,6 +17,9 @@ export interface ListItemProps {
   link: string;
   subtitle?: string;
   title: string;
+  tags?: string[];
+  /** Callback on click. */
+  onClick?(...args: unknown[]): unknown;
 }
 
 export const ListItem = ({
@@ -23,19 +28,22 @@ export const ListItem = ({
   description,
   image,
   link,
+  onClick,
   subtitle,
+  tags,
   title,
 }: ListItemProps) => {
   const imageData = getImage(image);
 
-  const listItemClassNames = classNames(
+  const listItemClassNames = clsx(
     styles.listItemWrapper,
-    getFunctionalClassNames({
+    getUtilityClasses({
       ...customisation,
     })
   );
-  const imageClassNames = classNames(
-    getFunctionalClassNames({
+  const imageClassNames = clsx(
+    styles.image,
+    getUtilityClasses({
       aspectRatio,
     })
   );
@@ -52,11 +60,9 @@ export const ListItem = ({
 
       <Box
         customisation={{
-          padding: "spacing2",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          gap: "spacing2",
           height: "100%",
         }}
       >
@@ -64,37 +70,46 @@ export const ListItem = ({
           {title && (
             <Typography
               customisation={{
-                fontSize: "body_lg",
-                fontWeight: "semibold",
+                fontSize: "body_md",
+                fontWeight: "medium",
               }}
               className={styles.listItemTitle}
             >
               {title}
             </Typography>
           )}
-          {description && (
+          {subtitle && (
             <Typography
+              variant={{
+                color: "neutral_fg_1",
+              }}
               customisation={{
-                marginTop: "spacing1",
-                fontSize: "body_lg",
+                fontSize: "body_md",
+                fontWeight: "medium",
               }}
             >
-              {description}
+              {subtitle}
             </Typography>
           )}
-        </Box>
 
-        {subtitle && (
-          <Typography
-            customisation={{
-              fontSize: "body_lg",
-              fontWeight: "medium",
-              color: "accent_fg_1",
-            }}
-          >
-            {subtitle}
-          </Typography>
-        )}
+          {description && <Typography as="p">{description}</Typography>}
+        </Box>
+        <Box>
+          {checkHasLength(tags) && (
+            <Box
+              customisation={{
+                marginTop: "spacing3",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "spacing1",
+              }}
+            >
+              {tags.map((tag) => {
+                return <Tag key={tag} title={tag} />;
+              })}
+            </Box>
+          )}
+        </Box>
       </Box>
     </Link>
   );

@@ -1,15 +1,12 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { vars } from "./theme.css";
-import { varsBackgroundImage } from "./vars/vars_background_image.css";
 import { varsDisplay } from "./vars/vars_display.css";
-import { varsShadow } from "./vars/vars_shadow.css";
 
 const properties = defineProperties({
   properties: {
     alignItems: ["stretch", "start", "center", "end"],
     aspectRatio: vars.aspectRatio,
-    border: ["1px solid", "2px solid"],
-    borderRadius: vars.borderRadius,
+    boxShadow: vars.boxShadow,
     display: varsDisplay,
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
     flexWrap: ["wrap", "nowrap"],
@@ -26,14 +23,15 @@ const properties = defineProperties({
       "space-between",
     ],
     lineHeight: vars.lineHeight,
+    margin: vars.spacing,
+    padding: vars.spacing,
     marginBottom: vars.spacing,
     marginLeft: vars.spacing,
     marginRight: vars.spacing,
     marginTop: vars.spacing,
     maxHeight: vars.spacing,
     maxWidth: vars.width,
-    minHeight: ["100vh"],
-    minWidth: vars.width,
+    minHeight: ["100vh", "75vh"],
     overflow: ["hidden"],
     overflowY: ["auto"],
     paddingBottom: vars.spacing,
@@ -42,15 +40,14 @@ const properties = defineProperties({
     paddingTop: vars.spacing,
     position: ["relative", "absolute", "sticky"],
     textAlign: ["center", "left", "right"],
+    textDecoration: ["underline", "none"],
     textTransform: ["capitalize", "uppercase", "lowercase"],
     whiteSpace: ["nowrap"],
     zIndex: ["-1", "1"],
   },
   shorthands: {
-    margin: ["marginTop", "marginBottom", "marginLeft", "marginRight"],
     marginX: ["marginLeft", "marginRight"],
     marginY: ["marginTop", "marginBottom"],
-    padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],
     paddingX: ["paddingLeft", "paddingRight"],
     paddingY: ["paddingTop", "paddingBottom"],
   },
@@ -63,7 +60,7 @@ const responsiveProperties = defineProperties({
       "@media": "screen and (min-width: 376px)",
     },
     desktop: {
-      "@media": "screen and (min-width: 768px)",
+      "@media": "screen and (min-width: 960px)",
     },
   },
   defaultCondition: "mobile",
@@ -74,31 +71,9 @@ const responsiveProperties = defineProperties({
   },
 });
 
-const colorProperties = defineProperties({
-  conditions: {
-    default: {},
-    hover: {
-      selector: "&:is(&:not([disabled]):hover, &:not([disabled]):focus)",
-    },
-  },
-  defaultCondition: "default",
-  properties: {
-    backgroundColor: vars.color,
-    backgroundImage: varsBackgroundImage,
-    borderColor: vars.color,
-    boxShadow: varsShadow,
-    color: vars.color,
-    outline: ["1px solid", "1px dashed"],
-    textDecoration: ["underline", "none"],
-  },
-});
-
-export const getFunctionalClassNames = createSprinkles(
+export const getUtilityClasses = createSprinkles(
   properties,
-  responsiveProperties,
-  colorProperties
+  responsiveProperties
 );
 
-export type FunctionalClassNames = Parameters<
-  typeof getFunctionalClassNames
->[0];
+export type FunctionalClassNames = Parameters<typeof getUtilityClasses>[0];

@@ -9,20 +9,21 @@ import { vars } from "../theme.css";
 // });
 
 globalStyle(`table`, {
-  borderRadius: 8,
+  borderRadius: vars.borderRadius.sm,
   overflow: "hidden",
   boxSizing: "border-box",
   border: "1px solid",
-  borderColor: vars.color.neutral_ui_3,
+  borderColor: vars.color.neutral_border_1,
   borderSpacing: 0,
   emptyCells: "show",
   marginBottom: vars.spacing.spacing3,
   marginTop: vars.spacing.spacing3,
   fontSize: vars.fontSize.body_md,
+  width: "100%",
 });
 
 globalStyle(`thead`, {
-  backgroundColor: vars.color.neutral_bg_3,
+  backgroundColor: vars.color.neutral_ui_1,
   textAlign: "left",
   verticalAlign: "bottom",
 });

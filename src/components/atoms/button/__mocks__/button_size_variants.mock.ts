@@ -1,6 +1,6 @@
-import { IButton } from "../button";
+import { ButtonProps } from "../button";
 
-export const BUTTON_SIZE_VARIANTS_MOCK: IButton[] = [
+export const BUTTON_SIZE_VARIANTS_MOCK: ButtonProps[] = [
   {
     iconTrailing: "arrow-right",
     title: "Click me",
@@ -11,7 +11,7 @@ export const BUTTON_SIZE_VARIANTS_MOCK: IButton[] = [
     id: "button-lg-primary",
   },
   {
-    iconTrailing: "arrow-right",
+    iconTrailing: "arrow-left",
     title: "Click me",
     variant: {
       size: "md",
@@ -20,7 +20,7 @@ export const BUTTON_SIZE_VARIANTS_MOCK: IButton[] = [
   },
   {
     iconTrailing: "arrow-right",
-    title: "Click me",
+    title: "Button small",
     variant: {
       size: "sm",
     },

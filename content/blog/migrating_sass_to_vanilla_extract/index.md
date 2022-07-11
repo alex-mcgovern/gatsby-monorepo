@@ -48,6 +48,8 @@ Extract for my personal site instead later.
 
 ### Things I don't like
 
+#### Combinatorial explosion
+
 - the type that is returned from a recipe variant doesn't afford easy
   auto-scraping
 - use of helpers in the css.ts environment seriously slows down rebuilds
