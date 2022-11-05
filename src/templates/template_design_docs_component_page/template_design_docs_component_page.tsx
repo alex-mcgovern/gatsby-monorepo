@@ -138,12 +138,12 @@ export const query = graphql`
           type
           optional
           properties {
-            value
+            # value
             kind
             type
             name
             properties {
-              value
+              # value
               kind
               type
               name

@@ -21,27 +21,29 @@ interface IMarkdownRemarkStaticQueryResult {
 
 export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) {
   /** Grab latest posts via static query */
-  const { allInstagramContent }: IMarkdownRemarkStaticQueryResult =
-    useStaticQuery(
-      graphql`
-        query {
-          allInstagramContent(limit: 4) {
-            nodes {
-              id
-              permalink
-              caption
-              localImage {
-                childImageSharp {
-                  gatsbyImageData(layout: CONSTRAINED)
-                }
-              }
-            }
-          }
-        }
-      `
-    );
+  // const { allInstagramContent }: IMarkdownRemarkStaticQueryResult =
+  //   useStaticQuery(
+  //     graphql`
+  //       query {
+  //         allInstagramContent(limit: 4) {
+  //           nodes {
+  //             id
+  //             permalink
+  //             caption
+  //             localImage {
+  //               childImageSharp {
+  //                 gatsbyImageData(layout: CONSTRAINED)
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `
+  //   );
 
-  const images = allInstagramContent?.nodes;
+  // const images = allInstagramContent?.nodes;
+
+  const images = [];
 
   return (
     <Box
