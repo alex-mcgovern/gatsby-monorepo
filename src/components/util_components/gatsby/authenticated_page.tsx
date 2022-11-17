@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { FirebaseAuthContext } from "../../../context/firebase_context";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { Button } from "../../atoms/button/button";
 import { Loader } from "../../atoms/loader/Loader";
-import { Typography } from "../../atoms/typography/typography";
 
 const AuthenticatedPage = ({ component: Component, location, ...rest }) => {
   const { user, firebaseAuthLoading } = useContext(FirebaseAuthContext);
@@ -25,14 +24,14 @@ const AuthenticatedPage = ({ component: Component, location, ...rest }) => {
     );
   }
   return (
-    <Box as="header" customisation={{}}>
-      <Typography as="h1">You need to be signed in</Typography>
+    <BoxNew as="header">
+      <BoxNew as="h1">You need to be signed in</BoxNew>
 
-      <Typography as="p">
+      <BoxNew as="p">
         <b>Note:</b> You must have an account in order to use the demo.
-      </Typography>
+      </BoxNew>
 
-      <Box customisation={{ display: "flex", gap: "spacing1" }}>
+      <BoxNew display="flex" gap="spacing1">
         <Button
           variant={{
             appearance: "primary",
@@ -47,8 +46,8 @@ const AuthenticatedPage = ({ component: Component, location, ...rest }) => {
           title={"Read blog post"}
           to={"/blog"}
         />
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 };
 

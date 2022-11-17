@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Box } from "../../components/atoms/box/box";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import { Button } from "../../components/atoms/button/button";
 import { Input } from "../../components/atoms/input/input";
-import { Typography } from "../../components/atoms/typography/typography";
 import { FirebaseAuthContext } from "../../context/firebase_context";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 const Login = () => {
   const { firebaseAuth, user, firebaseAuthLoading } =
@@ -42,36 +40,30 @@ const Login = () => {
 
   return (
     <>
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Box
-          customisation={{
-            display: "grid",
-            gridTemplateColumns: {
-              mobile: "1x",
-              tablet: "2x",
-            },
-            gap: "spacing3",
+      <BoxNew marginY="spacing5">
+        <BoxNew
+          display="grid"
+          gridTemplateColumns={{
+            mobile: "1x",
+            tablet: "2x",
           }}
+          gap="spacing3"
         >
-          <Box as="header">
-            <Typography
+          <BoxNew as="header">
+            <BoxNew
               as="h1"
               customisation={{
                 marginTop: "none",
               }}
             >
               Login
-            </Typography>
+            </BoxNew>
 
-            <Typography as="p">
+            <BoxNew as="p">
               An account is required to access or interact with some projects.
               Authentication is handled with Firebase.
-            </Typography>
-          </Box>
+            </BoxNew>
+          </BoxNew>
           <form onSubmit={handleSubmit}>
             <Input
               required
@@ -98,9 +90,9 @@ const Login = () => {
               isDisabled={!!user}
             />
             {!!errorMessage && (
-              <Typography as="p" customisation={{ color: "semantic_red_bg" }}>
+              <BoxNew as="p" customisation={{ color: "semantic_red_bg" }}>
                 {errorMessage}
-              </Typography>
+              </BoxNew>
             )}
             <Button
               type="submit"
@@ -117,8 +109,8 @@ const Login = () => {
               />
             )}
           </form>
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
     </>
   );
 };

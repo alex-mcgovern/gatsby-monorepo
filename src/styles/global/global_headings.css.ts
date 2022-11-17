@@ -9,7 +9,7 @@ globalStyle(`h1, h2, h3, h4, h5, h6`, {
   marginTop: vars.spacing.spacing2,
   marginBottom: vars.spacing.spacing2,
 
-  maxWidth: vars.width.gridSpan6,
+  // maxWidth: vars.width.gridSpan6,
 
   fontFamily: vars.fontFamily.display,
   fontWeight: vars.fontWeight.medium,

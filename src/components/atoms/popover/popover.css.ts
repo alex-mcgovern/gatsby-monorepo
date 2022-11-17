@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -20,7 +20,7 @@ export const popoverTrigger = style([
       },
     },
   },
-  getUtilityClasses({
+  getSprinkles({
     padding: "spacing0",
   }),
   getFocusRingStyles(),

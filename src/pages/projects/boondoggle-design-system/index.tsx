@@ -1,10 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 import groupBy from "lodash.groupby";
-import { Box } from "../../../components/atoms/box/box";
-import { Typography } from "../../../components/atoms/typography/typography";
+import { BoxNew } from "../../../components/atoms/box_new/box_new";
 import { ListItem } from "../../../components/molecules/list_item/list_item";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 
 interface DesignSystemIndexProps {
   data: {
@@ -46,15 +44,10 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
       {/** —————————————————————————————————————————————————————————————————————————————
        *      PAGE HEADER
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        as="header"
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Typography as="h1">Boondoggle design system</Typography>
+      <BoxNew as="header" marginY="spacing5">
+        <BoxNew as="h1">Boondoggle design system</BoxNew>
 
-        <Typography
+        <BoxNew
           as="h2"
           customisation={{
             fontSize: "body_lg",
@@ -65,8 +58,8 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
           framework and component library built on top of{" "}
           <a href="https://vanilla-extract.style/">Vanilla Extract</a>, that is
           semi-self-documenting.
-        </Typography>
-      </Box>
+        </BoxNew>
+      </BoxNew>
       <hr />
 
       {/** ————————————————————————————————————————————————————————————————————————————
@@ -78,12 +71,7 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
       {/** ————————————————————————————————————————————————————————————————————————————
        *      COMPONENT LIST SECTION
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-        as="section"
-      >
+      <BoxNew marginY="spacing5" as="section">
         {/** ————————————————————————————————————————————
          *      MAP & RENDER ATOMIC LEVEL CATEGORIES
          * ——————————————————————————————————————————————— */}
@@ -93,22 +81,22 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
             const componentsInLevel =
               componentsGroupedByAtomicLevel[atomicLevel];
             return (
-              <Box
+              <BoxNew
                 key="atomicLevel"
                 customisation={{
                   marginY: "spacing4",
                 }}
                 as="section"
               >
-                <Typography
+                <BoxNew
                   customisation={{
                     fontWeight: "bold",
                     marginBottom: "spacing3",
                   }}
                 >
                   {atomicLevel}
-                </Typography>
-                <Box
+                </BoxNew>
+                <BoxNew
                   customisation={{
                     gap: "spacing2",
                     display: "grid",
@@ -135,11 +123,11 @@ const DesignSystemIndex = ({ data }: DesignSystemIndexProps) => {
                         />
                       );
                     })}
-                </Box>
-              </Box>
+                </BoxNew>
+              </BoxNew>
             );
           })}
-      </Box>
+      </BoxNew>
     </>
   );
 };

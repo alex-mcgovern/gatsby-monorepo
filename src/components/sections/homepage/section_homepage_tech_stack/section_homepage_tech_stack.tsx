@@ -7,28 +7,23 @@ import LogoSASS from "../../../../images/svg/logos/logo_sass.svg";
 import LogoTestingLibrary from "../../../../images/svg/logos/logo_testing_library.svg";
 import LogoTypescript from "../../../../images/svg/logos/logo_typescript.svg";
 import LogoVanillaExtract from "../../../../images/svg/logos/logo_vanilla_extract.svg";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../../utils/shared_props/box_props";
-import { Box } from "../../../atoms/box/box";
-import { Typography } from "../../../atoms/typography/typography";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import * as styles from "./section_tech_stack.css";
 
 export default function SectionHomepageTechStack() {
   return (
-    <Box
+    <BoxNew
       as="section"
-      customisation={{
-        display: "grid",
-        gap: "spacing4",
-        alignItems: "center",
-        gridTemplateColumns: {
-          desktop: "7_5",
-          tablet: "1x",
-        },
-
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
+      marginY="spacing5"
+      display="grid"
+      gap="spacing4"
+      alignItems="center"
+      gridTemplateColumns={{
+        desktop: "7_5",
+        tablet: "1x",
       }}
     >
-      <Box
+      <BoxNew
         customisation={{
           display: "grid",
           gridTemplateColumns: "4x",
@@ -43,10 +38,10 @@ export default function SectionHomepageTechStack() {
         <LogoSASS className={styles.icon} />
         <LogoVanillaExtract className={styles.icon} />
         <LogoRadix className={styles.icon} />
-      </Box>
+      </BoxNew>
 
-      <Box>
-        <Typography
+      <BoxNew>
+        <BoxNew
           variant={{
             color: "accent_fg_2",
           }}
@@ -57,14 +52,14 @@ export default function SectionHomepageTechStack() {
           }}
         >
           Modern tech stack
-        </Typography>
+        </BoxNew>
         <h3>These are a few of my favorite things...</h3>
         <p>
           I ❤️ React, TypeScript, GatsbyJS, SASS, React Testing Library and
           Cypress.
         </p>
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 }
 

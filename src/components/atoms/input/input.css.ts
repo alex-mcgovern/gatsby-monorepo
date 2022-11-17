@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { vars } from "../../../styles/theme.css";
 
 export const getInputWrapperStyles = recipe({
@@ -31,7 +31,7 @@ export const getInputWrapperStyles = recipe({
         },
       },
     },
-    getUtilityClasses({
+    getSprinkles({
       marginBottom: "spacing1",
     }),
   ],
@@ -40,19 +40,19 @@ export const getInputWrapperStyles = recipe({
     size: {
       sm: [
         { height: 32 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_sm",
         }),
       ],
       md: [
         { height: 40 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_md",
         }),
       ],
       lg: [
         { height: 48 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_lg",
         }),
       ],
@@ -80,7 +80,7 @@ export const inputElement = style([
       },
     },
   },
-  getUtilityClasses({
+  getSprinkles({
     paddingX: "spacing1",
     width: "100%",
   }),
@@ -88,13 +88,13 @@ export const inputElement = style([
 
 export const leadingIcon = style([
   { color: vars.color.neutral_fg_1 },
-  getUtilityClasses({
+  getSprinkles({
     marginLeft: "spacing2",
   }),
 ]);
 export const trailingIcon = style([
   { color: vars.color.neutral_fg_1 },
-  getUtilityClasses({
+  getSprinkles({
     marginRight: "spacing2",
   }),
 ]);

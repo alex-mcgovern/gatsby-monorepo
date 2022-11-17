@@ -1,7 +1,5 @@
 import React from "react";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
-import { Box } from "../../atoms/box/box";
-import { Typography } from "../../atoms/typography/typography";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import BlogCategoriesList from "../../molecules/blog/blog_categories_list/blog_categories_list";
 import { ListItem } from "../../molecules/list_item/list_item";
 import { Pagination } from "../../molecules/pagination/pagination";
@@ -26,31 +24,24 @@ export default function BlogListLayout({
   posts,
 }: BlogListLayoutProps) {
   return (
-    <Box
-      as="section"
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
-      <Box as="header" customisation={{}}>
-        <Typography as="h1">Blog</Typography>
-        <Typography as="p">
+    <BoxNew as="section" marginY="spacing4">
+      <BoxNew as="header">
+        <BoxNew as="h1">Blog</BoxNew>
+        <BoxNew as="p">
           Stuff that I've done, or am interested in. Part brain-dump, part
           tutorial, part experience journal.
-        </Typography>
-      </Box>
+        </BoxNew>
+      </BoxNew>
       <hr />
       <BlogCategoriesList
         categories={allCategories}
         currentCategoryTitle={currentCategoryTitle}
       />
-      <Box
+      <BoxNew
         as="section"
-        customisation={{
-          display: "grid",
-          gap: "spacing2",
-          gridTemplateColumns: { desktop: "4x", tablet: "2x", mobile: "1x" },
-        }}
+        display="grid"
+        gap="spacing2"
+        gridTemplateColumns={{ desktop: "4x", tablet: "2x", mobile: "1x" }}
       >
         {posts &&
           posts.length > 0 &&
@@ -66,7 +57,7 @@ export default function BlogListLayout({
               />
             );
           })}
-      </Box>
+      </BoxNew>
 
       {pageCount && pageCount > 1 && (
         <Pagination
@@ -75,6 +66,6 @@ export default function BlogListLayout({
           pageCount={pageCount}
         />
       )}
-    </Box>
+    </BoxNew>
   );
 }

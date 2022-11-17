@@ -1,13 +1,8 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { convertKebabCaseToSentenceCase } from "../../utils/convert_kebab_case_to_sentence_case/convert_kebab_case_to_sentence_case";
-import {
-  BOX_CUSTOMISATION_SECTION_SPACING,
-  BOX_CUSTOMISATION_SUBSECTION_SPACING,
-} from "../../utils/shared_props/box_props";
-import { Box } from "../atoms/box/box";
+import { BoxNew } from "../atoms/box_new/box_new";
 import { Button } from "../atoms/button/button";
-import { Typography } from "../atoms/typography/typography";
 import SectionHomepagePerformance from "../sections/homepage/section_homepage_performance/section_homepage_performance";
 
 interface IFooter {}
@@ -97,12 +92,7 @@ export default function Footer({}: IFooter) {
   });
 
   return (
-    <Box
-      as="footer"
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
+    <BoxNew as="footer" marginY="spacing5">
       <hr />
       {/** ————————————————————————————————————————————————————————————————————————————
        *      HOME BUTTON
@@ -111,31 +101,26 @@ export default function Footer({}: IFooter) {
         id="header-home-button"
         iconLeading="shapes"
         variant={{ size: "lg", appearance: "tertiary" }}
-        customisation={{ ...BOX_CUSTOMISATION_SECTION_SPACING }}
+        marginY="spacing5"
         to="/"
         title="Alex McGovern"
       />
       {/** ————————————————————————————————————————————————————————————————————————————
        *      LINKS SECTION
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        customisation={{
-          display: "grid",
-          gridTemplateColumns: "4x",
-          alignItems: "start",
-          ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
-        }}
+      <BoxNew
+        display="grid"
+        gridTemplateColumns="4x"
+        alignItems="start"
+        marginY="spacing4"
       >
         {/** ————————————————————————————————————————————
          *      MAP AND RENDER BLOG CATEGORIES
          * ——————————————————————————————————————————————— */}
-        <Box customisation={{ marginRight: "spacing3" }}>
-          <Typography
-            as="h4"
-            customisation={{ fontSize: "body_lg", marginTop: "spacing2" }}
-          >
+        <BoxNew marginRight="spacing3">
+          <BoxNew as="h4" fontSize="body_lg" marginTop="spacing2">
             Blog
-          </Typography>
+          </BoxNew>
           <Button
             variant={{ size: "sm", appearance: "tertiary" }}
             title="All posts"
@@ -153,18 +138,15 @@ export default function Footer({}: IFooter) {
                 />
               );
             })}
-        </Box>
+        </BoxNew>
 
         {/** ————————————————————————————————————————————
          *      MAP AND RENDER PROJECTS
          * ——————————————————————————————————————————————— */}
-        <Box customisation={{ marginRight: "spacing3" }}>
-          <Typography
-            as="h4"
-            customisation={{ fontSize: "body_lg", marginBottom: "spacing2" }}
-          >
+        <BoxNew marginRight="spacing3">
+          <BoxNew as="h4" fontSize="body_lg" marginTop="spacing2">
             Projects
-          </Typography>
+          </BoxNew>
           {projectLinks &&
             projectLinks.length > 0 &&
             projectLinks.map((projectLink) => {
@@ -177,18 +159,15 @@ export default function Footer({}: IFooter) {
                 />
               );
             })}
-        </Box>
+        </BoxNew>
 
         {/** ————————————————————————————————————————————
          *      MAP AND RENDER OTHER LINKS
          * ——————————————————————————————————————————————— */}
-        <Box customisation={{ marginRight: "spacing3" }}>
-          <Typography
-            as="h4"
-            customisation={{ fontSize: "body_lg", marginBottom: "spacing2" }}
-          >
+        <BoxNew marginRight="spacing3">
+          <BoxNew as="h4" fontSize="body_lg" marginTop="spacing2">
             Other links
-          </Typography>
+          </BoxNew>
           {OTHER_LINKS &&
             OTHER_LINKS.length > 0 &&
             OTHER_LINKS.map((otherLink) => {
@@ -201,37 +180,24 @@ export default function Footer({}: IFooter) {
                 />
               );
             })}
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
       {/** ————————————————————————————————————————————————————————————————————————————
        *      PERFORMANCE WIDGET SECTION
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
-        }}
-      >
-        <Typography
-          as="h4"
-          customisation={{ fontSize: "body_lg", marginBottom: "spacing2" }}
-        >
+      <BoxNew marginY="spacing4">
+        <BoxNew as="h4" fontSize="body_lg" marginTop="spacing2">
           Performance
-        </Typography>
+        </BoxNew>
         <SectionHomepagePerformance />
-      </Box>
+      </BoxNew>
       {/** ————————————————————————————————————————————————————————————————————————————
        *      DATE SECTION
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        as="section"
-        customisation={{
-          ...BOX_CUSTOMISATION_SUBSECTION_SPACING,
-          paddingBottom: "spacing4",
-        }}
-      >
+      <BoxNew as="section" marginY="spacing4" paddingBottom="spacing4">
         © {date} Alex McGovern.
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 }
 

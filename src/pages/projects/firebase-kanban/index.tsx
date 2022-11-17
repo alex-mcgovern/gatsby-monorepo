@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { graphql } from "gatsby";
-import { Box } from "../../../components/atoms/box/box";
+import { BoxNew } from "../../../components/atoms/box_new/box_new";
 import { Button } from "../../../components/atoms/button/button";
-import { Typography } from "../../../components/atoms/typography/typography";
 import { FirebaseAuthContext } from "../../../context/firebase_context";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
 import { FirebaseKanbanPageProps } from "./firebase_kanban";
 
 const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
@@ -15,19 +13,14 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
   const isLoggedIn = !!user;
 
   return (
-    <Box
-      as="section"
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
+    <BoxNew as="section" marginY="spacing4">
       {/** —————————————————————————————————————————————————————————————————————————————
        *      PAGE HEADER
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box as="header" customisation={{}}>
-        <Typography as="h1">Firebase kanban</Typography>
+      <BoxNew as="header">
+        <BoxNew as="h1">Firebase kanban</BoxNew>
 
-        <Typography
+        <BoxNew
           as="h2"
           customisation={{
             fontSize: "body_md",
@@ -35,12 +28,12 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
           }}
         >
           Example full-stack app. A Jira clone, backed by Firestore.
-        </Typography>
-        <Typography as="p">
+        </BoxNew>
+        <BoxNew as="p">
           <b>Note:</b> You must have an account in order to use the demo.
-        </Typography>
+        </BoxNew>
 
-        <Box customisation={{ display: "flex", gap: "spacing1" }}>
+        <BoxNew display="flex" gap="spacing1">
           <Button
             variant={{
               appearance: "primary",
@@ -55,9 +48,9 @@ const FirebaseKanbanPage = ({ data }: FirebaseKanbanPageProps) => {
             title={"Read blog post"}
             to={"/blog"}
           />
-        </Box>
-      </Box>
-    </Box>
+        </BoxNew>
+      </BoxNew>
+    </BoxNew>
   );
 };
 

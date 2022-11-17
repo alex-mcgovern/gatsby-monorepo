@@ -1,10 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as RadixPopover from "@radix-ui/react-popover";
-import { Box } from "../box/box";
-import { Button } from "../button/button";
+import { BoxNew } from "../box_new/box_new";
 import { Card } from "../card/card";
-import { Typography } from "../typography/typography";
 import * as styles from "./popover.css";
 
 interface IPopover {
@@ -19,13 +17,8 @@ export default function Popover({ popoverText }: IPopover) {
       </RadixPopover.Trigger>
 
       <RadixPopover.Content sideOffset={1} side="top">
-        <Card
-          customisation={{
-            maxWidth: "gridSpan5",
-            padding: "spacing3",
-          }}
-        >
-          <Typography>{popoverText}</Typography>
+        <Card maxWidth="gridSpan5" padding="spacing3">
+          <BoxNew>{popoverText}</BoxNew>
         </Card>
       </RadixPopover.Content>
     </RadixPopover.Root>

@@ -1,19 +1,13 @@
 import React, { useContext } from "react";
-import { Box, BoxProps } from "../../atoms/box/box";
+import { BoxNew, BoxNewProps } from "../../atoms/box_new/box_new";
 import { DownshiftContext } from "./DownshiftContext";
 
-export default function DropdownCombobox({
-  customisation,
-  children,
-}: BoxProps) {
+export default function DropdownCombobox({ children, ...rest }: BoxNewProps) {
   const { getComboboxProps } = useContext(DownshiftContext);
 
   return (
-    <Box
-      customisation={{ ...customisation, position: "relative" }}
-      {...getComboboxProps()}
-    >
+    <BoxNew position="relative" {...rest} {...getComboboxProps()}>
       {children}
-    </Box>
+    </BoxNew>
   );
 }

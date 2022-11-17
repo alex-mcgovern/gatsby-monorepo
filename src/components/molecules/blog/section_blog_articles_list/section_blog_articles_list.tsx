@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "../../../atoms/box/box";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import { ListItem } from "../../list_item/list_item";
 
 interface SectionBlogPostListProps {
@@ -8,13 +8,11 @@ interface SectionBlogPostListProps {
 
 function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
   return (
-    <Box
+    <BoxNew
       as="section"
-      customisation={{
-        display: "grid",
-        gap: "spacing2",
-        gridTemplateColumns: { desktop: "3x", tablet: "2x", mobile: "1x" },
-      }}
+      display="grid"
+      gap="spacing2"
+      gridTemplateColumns={{ desktop: "3x", tablet: "2x", mobile: "1x" }}
     >
       {posts.map((post) => {
         return (
@@ -28,7 +26,7 @@ function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
           />
         );
       })}
-    </Box>
+    </BoxNew>
   );
 }
 

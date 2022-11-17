@@ -1,34 +1,20 @@
 import React from "react";
-import { Box, BoxProps } from "../../../atoms/box/box";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import MetricGraphCard from "./components/metric_graph_card";
 import useWebVitals from "./hooks/use_web_vitals";
 
 interface SectionHomepagePerformanceProps {}
 
-const BOX_PROPS: BoxProps = {
-  variant: {
-    backgroundColor: "neutral_ui_1",
-    borderRadius: "sm",
-  },
-  customisation: {
-    padding: "spacing2",
-    boxShadow: "md",
-    aspectRatio: "square",
-  },
-};
-
 const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
   const { CLS, FCP, FID, LCP, TTFB } = useWebVitals() || {};
 
   return (
-    <Box
-      customisation={{
-        marginTop: "spacing3",
-        display: "grid",
-        gridTemplateColumns: "5x",
-        gap: "spacing2",
-        maxWidth: "gridSpan6",
-      }}
+    <BoxNew
+      marginTop="spacing3"
+      display="grid"
+      gridTemplateColumns="5x"
+      gap="spacing2"
+      maxWidth="gridSpan6"
     >
       {/* ——————————————————————————————————————————————
         //      TTFB: Time to first byte
@@ -101,8 +87,8 @@ const SectionHomepagePerformance = ({}: SectionHomepagePerformanceProps) => {
             max={5}
             value={CLS && CLS.toFixed(2)}
           />
-        </Box> */}
-    </Box>
+        </BoxNew> */}
+    </BoxNew>
   );
 };
 

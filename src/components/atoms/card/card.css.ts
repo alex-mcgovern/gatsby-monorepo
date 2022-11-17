@@ -1,5 +1,5 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { darkTheme, vars } from "../../../styles/theme.css";
 import { varsTransitionTime } from "../../../styles/vars/vars_transition.css";
 
@@ -18,7 +18,7 @@ export const getCardStyle = recipe({
       border: "1px solid",
       borderRadius: vars.borderRadius.md,
     },
-    getUtilityClasses({
+    getSprinkles({
       padding: "spacing2",
     }),
   ],

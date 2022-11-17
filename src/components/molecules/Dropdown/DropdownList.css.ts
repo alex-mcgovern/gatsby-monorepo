@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { resetList } from "../../../styles/resets/reset_list.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -35,7 +35,7 @@ export const dropdownWrapper = style([
       },
     },
   },
-  getUtilityClasses({
+  getSprinkles({
     marginTop: "spacing2",
   }),
 ]);

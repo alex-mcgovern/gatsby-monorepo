@@ -1,11 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { Box } from "../../components/atoms/box/box";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import { Button } from "../../components/atoms/button/button";
-import { Typography } from "../../components/atoms/typography/typography";
 import { DocumentationParametersTable } from "../../components/molecules/documentation_parameters_table/documentation_parameters_table";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 interface TemplateDesignDocsComponentPageProps {
   data: {
@@ -61,21 +59,12 @@ TemplateDesignDocsComponentPageProps) {
 
   return (
     <>
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Box
-          as="section"
-          customisation={{
-            marginY: "spacing4",
-          }}
-        >
+      <BoxNew marginY="spacing5">
+        <BoxNew as="section" marginY="spacing4">
           {/** ————————————————————————————————————————————————————————————————————————————
            *      COMPONENT PAGE HEADER
            * ——————————————————————————————————————————————————————————————————————————————— */}
-          <Box as="header">
+          <BoxNew as="header">
             <Button
               id="back-button"
               variant={{
@@ -86,8 +75,8 @@ TemplateDesignDocsComponentPageProps) {
               title="Back to Boondoggle"
               to={"/projects/boondoggle-design-system"}
             />
-            <Typography as="h1">{title}</Typography>
-            <Typography
+            <BoxNew as="h1">{title}</BoxNew>
+            <BoxNew
               as="h2"
               customisation={{
                 fontSize: "body_lg",
@@ -96,8 +85,8 @@ TemplateDesignDocsComponentPageProps) {
               }}
             >
               {description}
-            </Typography>
-          </Box>
+            </BoxNew>
+          </BoxNew>
           <hr />
 
           {/** ————————————————————————————————————————————————————————————————————————————
@@ -109,8 +98,8 @@ TemplateDesignDocsComponentPageProps) {
 
           {/* Render MDX content from local `*.doc.mdx` */}
           <MDXRenderer>{body}</MDXRenderer>
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "../components/atoms/box/box";
+import { BoxNew } from "../components/atoms/box_new/box_new";
 import DropdownSearchable from "../components/molecules/Dropdown/DropdownSearchable";
 
 interface DownshiftTestProps {
@@ -8,11 +8,7 @@ interface DownshiftTestProps {
 
 export default function DownshiftTest({ placeholderProp }: DownshiftTestProps) {
   return (
-    <Box
-      customisation={{
-        margin: "spacing5",
-      }}
-    >
+    <BoxNew margin="spacing5">
       <DropdownSearchable
         label="Downshift test"
         isCreatable
@@ -48,7 +44,7 @@ export default function DownshiftTest({ placeholderProp }: DownshiftTestProps) {
         }}
         items={[{ value: "test" }]}
       /> */}
-    </Box>
+    </BoxNew>
   );
 }
 

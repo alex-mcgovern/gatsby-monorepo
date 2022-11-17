@@ -1,15 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { Box } from "../../components/atoms/box/box";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import { Button } from "../../components/atoms/button/button";
 import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
 import { Pagination } from "../../components/molecules/pagination/pagination";
 import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
-import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../utils/shared_props/box_props";
 
 const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
 
@@ -115,13 +113,11 @@ export default function TemplatePokemonPage({
 
   return (
     <>
-      <Box customisation={BOX_CUSTOMISATION_MAX_WIDTH_FULL}>
-        <Box
-          customisation={{
-            display: "flex",
-            marginY: "spacing3",
-            justifyContent: "space-between",
-          }}
+      <BoxNew>
+        <BoxNew
+          display="flex"
+          marginY="spacing3"
+          justifyContent="space-between"
         >
           <Button
             iconLeading="arrow-left"
@@ -157,29 +153,31 @@ export default function TemplatePokemonPage({
             label="Status"
             buttonTitle={currentLanguageUpperCase}
           />
-        </Box>
+        </BoxNew>
 
-        <Box
+        <BoxNew
           as="section"
           customisation={{
             display: "grid",
             gridTemplateColumns: "2_1",
           }}
         >
-          <Box as="header" customisation={{ marginY: "spacing4" }}>
+          <BoxNew as="header" customisation={{ marginY: "spacing4" }}>
             <h2>{pokemonTitle}</h2>
             <h3>{genus}</h3>
             <p>{flavorText}</p>
-          </Box>
-          <Box>{imageData && <GatsbyImage alt={name} image={imageData} />}</Box>
-        </Box>
+          </BoxNew>
+          <BoxNew>
+            {imageData && <GatsbyImage alt={name} image={imageData} />}
+          </BoxNew>
+        </BoxNew>
 
         <Pagination
           basePath={paginationBasePath}
           currentPage={pokedexID}
           pageCount={totalCount}
         />
-      </Box>
+      </BoxNew>
     </>
   );
 }

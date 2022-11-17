@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
-import { Box } from "../../components/atoms/box/box";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
 import { ListItem } from "../../components/molecules/list_item/list_item";
 import { Pagination } from "../../components/molecules/pagination/pagination";
@@ -9,7 +9,6 @@ import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/c
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
 import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
 
@@ -80,25 +79,19 @@ export default function TemplatePokemonListPage({
 
   return (
     <>
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Box as="header" customisation={{}}>
+      <BoxNew marginY="spacing5">
+        <BoxNew as="header">
           <section
             dangerouslySetInnerHTML={{ __html: doc }}
             itemProp="articleBody"
           />
           <hr />
-        </Box>
+        </BoxNew>
 
-        <Box
-          customisation={{
-            display: "flex",
-            marginY: "spacing3",
-            justifyContent: "space-between",
-          }}
+        <BoxNew
+          display="flex"
+          marginY="spacing3"
+          justifyContent="space-between"
         >
           <ComboboxSearchable
             items={dropdownItems}
@@ -122,18 +115,16 @@ export default function TemplatePokemonListPage({
             label="Status"
             buttonTitle={currentLanguageUpperCase}
           />
-        </Box>
-        <Box
+        </BoxNew>
+        <BoxNew
           as="section"
-          customisation={{
-            marginY: "spacing3",
-            display: "grid",
-            gap: "spacing2",
-            gridTemplateColumns: {
-              desktop: "4x",
-              tablet: "2x",
-              mobile: "1x",
-            },
+          marginY="spacing3"
+          display="grid"
+          gap="spacing2"
+          gridTemplateColumns={{
+            desktop: "4x",
+            tablet: "2x",
+            mobile: "1x",
           }}
         >
           {allPokemon.map((pokemon) => {
@@ -158,8 +149,8 @@ export default function TemplatePokemonListPage({
               />
             );
           })}
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
       <Pagination
         basePath={paginationBasePath}
         currentPage={currentPage}

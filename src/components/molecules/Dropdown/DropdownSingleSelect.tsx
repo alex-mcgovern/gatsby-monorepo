@@ -1,6 +1,6 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { ButtonCustomisation } from "../../atoms/button/button";
 import { ButtonVariants } from "../../atoms/button/button.css";
 import { DownshiftSingleSelectProvider } from "./DownshiftContext";
@@ -45,7 +45,7 @@ export const DropdownSingleSelect = ({
       onValueChange={onSelect}
       selectedValue={initialInputValue}
     >
-      <Box customisation={{ position: "relative" }}>
+      <BoxNew position="relative">
         <DropdownButton
           id={id}
           label={label}
@@ -58,7 +58,7 @@ export const DropdownSingleSelect = ({
           variant={variant}
         />
         <DropdownList size={variant?.size} />
-      </Box>
+      </BoxNew>
     </DownshiftSingleSelectProvider>
   );
 };

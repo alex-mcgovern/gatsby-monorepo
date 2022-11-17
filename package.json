@@ -1,5 +1,5 @@
 {
-  "name": "alex-mcgovern-blog",
+  "name": "alex-mcgovern-personal-site",
   "private": true,
   "description": "Personal website & blog of Alex McGovern.",
   "version": "0.1.0",
@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.18.2",
+    "@dessert-box/core": "^0.2.0",
+    "@dessert-box/react": "^0.4.0",
     "@fontsource/dm-sans": "^4.5.7",
     "@fontsource/montserrat": "^4.5.11",
     "@fontsource/roboto": "^4.5.7",
@@ -111,7 +113,7 @@
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "alexmcgovern.com",
   "keywords": [
     "gatsby"
   ],

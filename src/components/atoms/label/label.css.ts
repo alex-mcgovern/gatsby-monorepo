@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { vars } from "../../../styles/theme.css";
 
 export const label = style([

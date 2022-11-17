@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { vars } from "../../../styles/theme.css";
 
 export const instagramPostLink = style([
@@ -18,7 +18,7 @@ export const instagramPostImage = style([
     boxShadow: vars.boxShadow.lg,
     aspectRatio: vars.aspectRatio.square,
   },
-  getUtilityClasses({
+  getSprinkles({
     padding: "spacing2",
   }),
 ]);
@@ -44,7 +44,7 @@ export const instagramPostOverlay = style([
       },
     },
   },
-  getUtilityClasses({
+  getSprinkles({
     padding: "spacing2",
   }),
 ]);

@@ -1,13 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getUtilityClasses } from "../../../../styles/functional_classnames.css";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../../utils/shared_props/box_props";
-import { Box } from "../../../atoms/box/box";
-import { Typography } from "../../../atoms/typography/typography";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import * as styles from "./section_design_system_features.css";
 
 interface ISectionDesignSystemFeatures {}
@@ -54,67 +48,43 @@ const GRID_CONTENT: TGridContent = [
 
 export default function SectionDesignSystemFeatures({}: ISectionDesignSystemFeatures) {
   return (
-    <Box
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
-      <Typography
-        as="h3"
-        customisation={
-          {
-            // fontWeight: "medium",
-          }
-        }
-      >
-        What's it all about?
-      </Typography>
-      <Box
-        customisation={{
-          display: "grid",
-          marginTop: "spacing3",
-          gap: "spacing2",
-          gridTemplateColumns: {
-            mobile: "1x",
-            tablet: "2x",
-            desktop: "3x",
-          },
+    <BoxNew marginY="spacing4">
+      <BoxNew as="h3">What's it all about?</BoxNew>
+      <BoxNew
+        display="grid"
+        marginTop="spacing3"
+        gap="spacing2"
+        gridTemplateColumns={{
+          mobile: "1x",
+          tablet: "2x",
+          desktop: "3x",
         }}
       >
         {GRID_CONTENT.map((content, index) => {
           return (
-            <Box>
+            <BoxNew>
               <FontAwesomeIcon
                 className={styles.icon}
                 size="2x"
                 icon={content.icon}
               />
-              <Typography
+              <BoxNew
                 variant={{
                   color: "accent_fg_2",
                 }}
-                customisation={{
-                  fontSize: "body_lg",
-                  fontWeight: "medium",
-
-                  marginTop: "spacing1",
-                }}
+                fontSize="body_lg"
+                marginTop="spacing2"
               >
                 {content.title}
-              </Typography>
-              <Typography
-                customisation={{
-                  marginTop: "spacing1",
-                  fontSize: "body_lg",
-                }}
-              >
+              </BoxNew>
+              <BoxNew fontSize="body_lg" marginTop="spacing2">
                 {content.body}
-              </Typography>
-            </Box>
+              </BoxNew>
+            </BoxNew>
           );
         })}
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 }
 

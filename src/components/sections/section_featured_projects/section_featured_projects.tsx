@@ -1,11 +1,6 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../utils/create_url_from_path_array/create_url_path_from_array";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../utils/shared_props/box_props";
-import { Box } from "../../atoms/box/box";
-import { Typography } from "../../atoms/typography/typography";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { ListItem } from "../../molecules/list_item/list_item";
 
 interface ISectionFeaturedProjects {}
@@ -38,29 +33,23 @@ const PROJECTS = [
 
 export const SectionFeaturedProjects = ({}: ISectionFeaturedProjects) => {
   return (
-    <Box
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
+    <BoxNew marginY="spacing4">
       {/* —————————————————————————————————————————————
        *      PROJECTS SECTION HEADER
        * ——————————————————————————————————————————————— */}
 
-      <Typography as="h3">Stuff I made</Typography>
+      <BoxNew as="h3">Stuff I made</BoxNew>
 
       {/* —————————————————————————————————————————————
        *      PROJECTS GRID
        * ——————————————————————————————————————————————— */}
 
-      <Box
+      <BoxNew
         as="section"
-        customisation={{
-          marginY: "spacing3",
-          display: "grid",
-          gap: "spacing2",
-          gridTemplateColumns: { desktop: "4x", tablet: "2x", mobile: "1x" },
-        }}
+        marginY="spacing3"
+        display="grid"
+        gap="spacing2"
+        gridTemplateColumns={{ desktop: "4x", tablet: "2x", mobile: "1x" }}
       >
         {PROJECTS?.length > 0 &&
           PROJECTS.map((project) => {
@@ -74,7 +63,7 @@ export const SectionFeaturedProjects = ({}: ISectionFeaturedProjects) => {
               />
             );
           })}
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 };

@@ -5,6 +5,7 @@ import "./global/global_fieldset.css";
 import "./global/global_headings.css";
 import "./global/global_hr.css";
 import "./global/global_input.css";
+import "./global/global_list_styles.css";
 import "./global/global_paragraph_styles.css";
 import "./global/global_tables.css";
 import { vars } from "./theme.css";

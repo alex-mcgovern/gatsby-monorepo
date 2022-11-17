@@ -1,22 +1,13 @@
 import React from "react";
-import {
-  BOX_CUSTOMISATION_MAX_WIDTH_FULL,
-  BOX_CUSTOMISATION_SECTION_SPACING,
-} from "../../../../utils/shared_props/box_props";
-import { Box } from "../../../atoms/box/box";
-import { Typography } from "../../../atoms/typography/typography";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 
 interface SectionHomepageBrandedUserExperiencesProps {}
 
 const SectionHomepageBrandedUserExperiences =
   ({}: SectionHomepageBrandedUserExperiencesProps) => {
     return (
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Typography
+      <BoxNew marginY="spacing4">
+        <BoxNew
           variant={{
             color: "accent_fg_1",
           }}
@@ -27,9 +18,9 @@ const SectionHomepageBrandedUserExperiences =
           }}
         >
           My mission
-        </Typography>
+        </BoxNew>
 
-        <Typography
+        <BoxNew
           as="h2"
           variant={{
             color: "accent_fg_2",
@@ -41,9 +32,9 @@ const SectionHomepageBrandedUserExperiences =
           }}
         >
           Build great online experiences.
-        </Typography>
+        </BoxNew>
 
-        <Typography
+        <BoxNew
           as="p"
           customisation={{
             textAlign: "center",
@@ -52,8 +43,8 @@ const SectionHomepageBrandedUserExperiences =
           Coming from a design to development background, my working style is
           deeply rooted in creating the simplest, most performant UX and DevX,
           and optimizing for that at scale.
-        </Typography>
-      </Box>
+        </BoxNew>
+      </BoxNew>
     );
   };
 

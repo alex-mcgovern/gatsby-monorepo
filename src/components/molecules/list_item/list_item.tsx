@@ -2,16 +2,14 @@ import React from "react";
 import clsx from "clsx";
 import { Link } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import checkHasLength from "../../../utils/map_if_has_length/map_if_has_length";
-import { Box, BoxCustomisation } from "../../atoms/box/box";
+import { BoxNew, BoxNewProps } from "../../atoms/box_new/box_new";
 import { Tag } from "../../atoms/tag/tag";
-import { Typography } from "../../atoms/typography/typography";
 import * as styles from "./list_item.css";
 
-export interface ListItemProps {
+export interface ListItemProps extends BoxNewProps {
   aspectRatio?: "square" | "wide" | "tall";
-  customisation?: BoxCustomisation;
   description?: string;
   image: ImageDataLike;
   link: string;
@@ -24,7 +22,6 @@ export interface ListItemProps {
 
 export const ListItem = ({
   aspectRatio,
-  customisation,
   description,
   image,
   link,
@@ -32,18 +29,19 @@ export const ListItem = ({
   subtitle,
   tags,
   title,
+  ...rest
 }: ListItemProps) => {
   const imageData = getImage(image);
 
   const listItemClassNames = clsx(
     styles.listItemWrapper,
-    getUtilityClasses({
-      ...customisation,
+    getSprinkles({
+      ...rest,
     })
   );
   const imageClassNames = clsx(
     styles.image,
-    getUtilityClasses({
+    getSprinkles({
       aspectRatio,
     })
   );
@@ -58,17 +56,15 @@ export const ListItem = ({
         />
       )}
 
-      <Box
-        customisation={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          height: "100%",
-        }}
+      <BoxNew
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        height="100%"
       >
-        <Box as="header">
+        <BoxNew as="header">
           {title && (
-            <Typography
+            <BoxNew
               customisation={{
                 fontSize: "body_md",
                 fontWeight: "medium",
@@ -76,10 +72,10 @@ export const ListItem = ({
               className={styles.listItemTitle}
             >
               {title}
-            </Typography>
+            </BoxNew>
           )}
           {subtitle && (
-            <Typography
+            <BoxNew
               variant={{
                 color: "neutral_fg_1",
               }}
@@ -89,28 +85,26 @@ export const ListItem = ({
               }}
             >
               {subtitle}
-            </Typography>
+            </BoxNew>
           )}
 
-          {description && <Typography as="p">{description}</Typography>}
-        </Box>
-        <Box>
+          {description && <BoxNew as="p">{description}</BoxNew>}
+        </BoxNew>
+        <BoxNew>
           {checkHasLength(tags) && (
-            <Box
-              customisation={{
-                marginTop: "spacing3",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "spacing1",
-              }}
+            <BoxNew
+              marginTop="spacing3"
+              display="flex"
+              flexWrap="wrap"
+              gap="spacing1"
             >
-              {tags.map((tag) => {
+              {tags?.map((tag) => {
                 return <Tag key={tag} title={tag} />;
               })}
-            </Box>
+            </BoxNew>
           )}
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
     </Link>
   );
 };

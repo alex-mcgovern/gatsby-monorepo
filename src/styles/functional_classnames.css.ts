@@ -67,13 +67,10 @@ const responsiveProperties = defineProperties({
   properties: {
     gridTemplateColumns: vars.gridTemplateColumns,
     gridTemplateRows: vars.gridTemplateColumns,
-    width: vars.width,
+    width: { ...vars.width, ...vars.spacing },
   },
 });
 
-export const getUtilityClasses = createSprinkles(
-  properties,
-  responsiveProperties
-);
+export const getSprinkles = createSprinkles(properties, responsiveProperties);
 
-export type FunctionalClassNames = Parameters<typeof getUtilityClasses>[0];
+export type GetSprinklesArgs = Parameters<typeof getSprinkles>[0];

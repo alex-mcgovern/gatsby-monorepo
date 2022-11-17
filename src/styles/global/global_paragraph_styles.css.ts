@@ -7,5 +7,5 @@ globalStyle(`p`, {
   marginTop: vars.spacing.spacing2,
   marginBottom: vars.spacing.spacing2,
 
-  maxWidth: vars.width.gridSpan6,
+  // maxWidth: vars.width.gridSpan6,
 });

@@ -7,8 +7,8 @@ import React, {
 } from "react";
 import clsx, { ClassValue } from "clsx";
 import {
-  FunctionalClassNames,
-  getUtilityClasses,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
 import { BoxVariants, getBoxStyle } from "./box.css";
 
@@ -18,7 +18,7 @@ export interface BoxProps {
   /** Option to add additional style overrides via class name. */
   className?: ClassValue;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: FunctionalClassNames;
+  customisation?: GetSprinklesArgs;
   children?: React.ReactNode;
   variant?: BoxVariants;
   /** Polymorphic prop allowing `Box` to return a wide range of HTML Element types. */
@@ -29,7 +29,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
   ({ customisation, as, children, id, className, variant, ...rest }, ref) => {
     const boxClassNames = clsx(
       getBoxStyle(variant),
-      getUtilityClasses({ ...customisation }),
+      getSprinkles({ ...customisation }),
       className
     );
 

@@ -1,5 +1,5 @@
 import { keyframes, style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../../styles/functional_classnames.css";
 import { vars } from "../../../../styles/theme.css";
 
 const overlayShow = keyframes({
@@ -44,7 +44,7 @@ export const dialogContent = style([
       "&:focus": { outline: "none" },
     },
   },
-  getUtilityClasses({
+  getSprinkles({
     width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan6" },
     maxHeight: "75vh",
     padding: "spacing2",

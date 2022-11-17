@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import checkHasLength from "../../../utils/map_if_has_length/map_if_has_length";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { DownshiftContext } from "./DownshiftContext";
 import * as styles from "./DropdownList.css";
 import DropdownListItem from "./DropdownListItem";
@@ -19,7 +19,7 @@ export const DropdownList = ({ size }: DropdownListProps) => {
   const { getMenuProps, isOpen, items } = useContext(DownshiftContext);
 
   return (
-    <Box as="ul" className={styles.dropdownWrapper} {...getMenuProps()}>
+    <BoxNew as="ul" className={styles.dropdownWrapper} {...getMenuProps()}>
       {isOpen &&
         checkHasLength(items) &&
         items.map((item, index) => {
@@ -32,6 +32,6 @@ export const DropdownList = ({ size }: DropdownListProps) => {
             />
           );
         })}
-    </Box>
+    </BoxNew>
   );
 };

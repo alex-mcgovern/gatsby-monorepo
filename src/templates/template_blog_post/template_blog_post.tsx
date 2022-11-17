@@ -2,13 +2,10 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import slugify from "slugify";
-import { Box } from "../../components/atoms/box/box";
-import { Typography } from "../../components/atoms/typography/typography";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
 import { ListItem } from "../../components/molecules/list_item/list_item";
-import Page from "../../components/organisms/page/page";
 import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 interface BlogPostTemplateProps {
   data: {
@@ -71,27 +68,21 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
 
   return (
     <>
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Box as="article">
+      <BoxNew marginY="spacing5">
+        <BoxNew as="article">
           {/** ————————————————————————————————————————————————————————————————————————————
            *      POST HEADER
            * ——————————————————————————————————————————————————————————————————————————————— */}
-          <Box as="header" customisation={{}}>
+          <BoxNew as="header">
             {/** ————————————————————
              *      TITLE
              * ——————————————————————— */}
-            <Typography as="h1" customisation={{}}>
-              {post.frontmatter.title}
-            </Typography>
+            <BoxNew as="h1">{post.frontmatter.title}</BoxNew>
 
             {/** ————————————————————
              *      DESCRIPTION
              * ——————————————————————— */}
-            <Typography
+            <BoxNew
               as="h2"
               customisation={{
                 fontSize: "body_lg",
@@ -100,20 +91,14 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               }}
             >
               {post.frontmatter.description}
-            </Typography>
+            </BoxNew>
 
             <hr />
-            <Box
-              customisation={{
-                display: "flex",
-                alignItems: "center",
-                gap: "spacing2",
-              }}
-            >
+            <BoxNew display="flex" alignItems="center" gap="spacing2">
               {/** ————————————————————
                *      DATE
                * ——————————————————————— */}
-              <Typography
+              <BoxNew
                 variant={{
                   color: "accent_fg_1",
                 }}
@@ -122,25 +107,23 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
                 }}
               >
                 {post.frontmatter.date}
-              </Typography>
+              </BoxNew>
 
               {/** ————————————————————
                *      CATEGORIES
                * ——————————————————————— */}
               <BlogCategoriesList categories={categoryLinks} />
-            </Box>
-          </Box>
+            </BoxNew>
+          </BoxNew>
 
           {/** ————————————————————————————————————————————————————————————————————————————
            *      POST BODY
            * ——————————————————————————————————————————————————————————————————————————————— */}
 
-          <Box
+          <BoxNew
             as="section"
-            customisation={{
-              marginY: "spacing3",
-              // marginX: "auto",
-            }}
+            marginY="spacing3"
+            // marginX: "auto",
           >
             {/* <section
               dangerouslySetInnerHTML={{ __html: html }}
@@ -150,28 +133,27 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
             <RemarkMarkdown htmlAst={htmlAst} />
             <hr />
             <footer></footer>
-          </Box>
+          </BoxNew>
 
-          <Box
-            customisation={{
-              marginY: "spacing3",
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "spacing2",
-            }}
+          <BoxNew
+            marginY="spacing3"
+            display="flex"
+            justifyContent="space-between"
+            gap="spacing2"
             as="nav"
           >
             <ListItem
               description={previous?.frontmatter?.title}
               link={previous?.fields?.slug}
               title="Previous"
-              customisation={{ width: "100%" }}
+              width="100%"
             />
             <ListItem
               description={next?.frontmatter?.title}
               link={next?.fields?.slug}
               title="Next"
-              customisation={{ width: "100%", textAlign: "right" }}
+              width="100%"
+              textAlign="right"
             />
             {/* <Button
               iconLeading="arrow-left"
@@ -186,9 +168,9 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
               to={next?.fields?.slug}
               title={next?.frontmatter?.title}
             /> */}
-          </Box>
-        </Box>
-      </Box>
+          </BoxNew>
+        </BoxNew>
+      </BoxNew>
     </>
   );
 };

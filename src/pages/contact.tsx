@@ -2,10 +2,8 @@ import React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
 import { Controller, useForm } from "react-hook-form";
-import { Box } from "../components/atoms/box/box";
+import { BoxNew } from "../components/atoms/box_new/box_new";
 import { Input } from "../components/atoms/input/input";
-import { Typography } from "../components/atoms/typography/typography";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../utils/shared_props/box_props";
 
 interface IContactPageProps {
   data: {
@@ -45,38 +43,32 @@ const ContactPage = ({ data }: IContactPageProps) => {
   const { formFieldGroups } = hubspotForm;
 
   return (
-    <Box
-      customisation={{
-        ...BOX_CUSTOMISATION_SECTION_SPACING,
-      }}
-    >
-      <Box
-        customisation={{
-          display: "grid",
-          gridTemplateColumns: {
-            mobile: "1x",
-            tablet: "2x",
-          },
-          gap: "spacing3",
+    <BoxNew marginY="spacing4">
+      <BoxNew
+        display="grid"
+        gridTemplateColumns={{
+          mobile: "1x",
+          tablet: "2x",
         }}
+        gap="spacing3"
       >
-        <Box as="header">
-          <Typography
+        <BoxNew as="header">
+          <BoxNew
             as="h1"
             customisation={{
               marginTop: "none",
             }}
           >
             Contact me
-          </Typography>
-          <Typography as="p">
+          </BoxNew>
+          <BoxNew as="p">
             It's probably easier for you to reach me on{" "}
             <a href="https://uk.linkedin.com/in/lxdesign">LinkedIn</a>. just
             built this contact page as an exercise in pre-rendering a Hubspot
             form at build time instead of embedding their widget — but if you
             wanna ask me something, go for it.
-          </Typography>
-        </Box>
+          </BoxNew>
+        </BoxNew>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {formFieldGroups.map((group) => {
@@ -108,8 +100,8 @@ const ContactPage = ({ data }: IContactPageProps) => {
           })}
           <input type="submit" />
         </form>
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 };
 

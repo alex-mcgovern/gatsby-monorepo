@@ -3,7 +3,7 @@ import { ThemeContext } from "../../../context/theme_context";
 import "../../../styles/global.css";
 import { darkTheme, lightTheme } from "../../../styles/theme.css";
 import { checkIsClient } from "../../../utils/helper_functions/check_is_client/check_is_client";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import Header from "../../molecules/header/header";
 // import Seo from "../../seo";
 import Footer from "../footer";
@@ -22,25 +22,12 @@ const Page = ({ children, description }: IPageProps) => {
   }
 
   return (
-    <Box
-      customisation={{
-        marginX: "auto",
-        maxWidth: "gridSpan12",
-        paddingX: "spacing2",
-      }}
-    >
+    <BoxNew marginX="auto" maxWidth="gridSpan12" paddingX="spacing2">
       {/* <Seo title={title} description={description} /> */}
       <Header />
-      <Box
-        as="main"
-        // customisation={{
-        //   paddingY: "spacing5",
-        // }}
-      >
-        {children}
-      </Box>
+      <BoxNew as="main">{children}</BoxNew>
       <Footer />
-    </Box>
+    </BoxNew>
   );
 };
 

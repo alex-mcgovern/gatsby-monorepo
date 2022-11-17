@@ -7,10 +7,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { useDrag } from "react-dnd";
-import { Box } from "../../../../components/atoms/box/box";
+import { BoxNew } from "../../../../components/atoms/box_new/box_new";
 import { Button } from "../../../../components/atoms/button/button";
 import { Card } from "../../../../components/atoms/card/card";
-import { Typography } from "../../../../components/atoms/typography/typography";
 import ComboboxSearchable, {
   DropdownSearchableProps,
 } from "../../../../components/molecules/Dropdown/DropdownSearchable";
@@ -93,38 +92,34 @@ export default function KanbanListItem({
 
   return (
     <Card
-      customisation={{
-        padding: "spacing1",
-        marginBottom: "spacing1",
-      }}
+      padding="spacing1"
+      marginBottom="spacing1"
       className={styles.KanbanListItem}
       ref={ref}
     >
       <Collapsible.Root open={isOpen} onOpenChange={setIsOpen}>
-        <Box
+        <BoxNew
           as="header"
-          customisation={{
-            display: "flex",
-            alignItems: "start",
-            justifyContent: "space-between",
-            gap: "spacing1",
-          }}
+          display="flex"
+          alignItems="start"
+          justifyContent="space-between"
+          gap="spacing1"
         >
-          <Typography
+          <BoxNew
             customisation={{
               fontWeight: "medium",
             }}
           >
             {title}
-          </Typography>
+          </BoxNew>
           {description && (
-            <Typography
+            <BoxNew
               customisation={{
                 fontWeight: "medium",
               }}
             >
               {description}
-            </Typography>
+            </BoxNew>
           )}
 
           <Collapsible.Trigger>
@@ -139,7 +134,7 @@ export default function KanbanListItem({
               }}
             />
           </Collapsible.Trigger>
-        </Box>
+        </BoxNew>
 
         <Collapsible.Content>
           {/** ————————————————————

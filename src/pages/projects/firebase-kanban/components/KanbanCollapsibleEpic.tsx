@@ -2,10 +2,9 @@ import React, { useCallback, useRef, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
-import { Box } from "../../../../components/atoms/box/box";
+import { BoxNew } from "../../../../components/atoms/box_new/box_new";
 import { Button } from "../../../../components/atoms/button/button";
 import { Card } from "../../../../components/atoms/card/card";
-import { Typography } from "../../../../components/atoms/typography/typography";
 import checkHasLength from "../../../../utils/map_if_has_length/map_if_has_length";
 import KanbanColumn from "./KanbanColumn";
 
@@ -40,20 +39,17 @@ export const KanbanCollapsibleEpic = ({
           padding: "spacing2",
         }}
       > */}
-      <Box
+      <BoxNew
         as="header"
-        customisation={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          // marginY: "spacing3",
-        }}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
       >
         {/** ————————————————————————————————————————————————————————————————————————————
          *      EPIC BOARD TITLE & CONTROLS
          *      Here we add the epic title, delete epic button, and create new task button
          * ——————————————————————————————————————————————————————————————————————————————— */}
-        <Typography
+        <BoxNew
           as="h3"
           variant={{
             color: "accent_fg_2",
@@ -65,25 +61,25 @@ export const KanbanCollapsibleEpic = ({
           }}
         >
           {epicKey}
-        </Typography>
+        </BoxNew>
         {/* Epic buttons wrapper */}
 
-        <Box customisation={{ display: "flex", gap: "spacing1" }}>
+        <BoxNew customisation={{ display: "flex", gap: "spacing1" }}>
           <Collapsible.Trigger>
             <Button
               iconTrailing={isOpen ? "eye-slash" : "eye"}
               variant={{ size: "sm", appearance: "secondary" }}
             />
           </Collapsible.Trigger>
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
       {/** ————————————————————————————————————————————————————————————————————————————
        *      COLUMNS FOR STATUSES
        * ——————————————————————————————————————————————————————————————————————————————— */}
 
       <Collapsible.Content>
         <DndProvider backend={HTML5Backend}>
-          <Box
+          <BoxNew
             customisation={{
               display: "grid",
               gridTemplateColumns: {
@@ -109,7 +105,7 @@ export const KanbanCollapsibleEpic = ({
                   />
                 );
               })}
-          </Box>
+          </BoxNew>
         </DndProvider>
       </Collapsible.Content>
       <hr />

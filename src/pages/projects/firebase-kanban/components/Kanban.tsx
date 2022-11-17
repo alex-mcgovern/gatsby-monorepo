@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import { collection, getFirestore } from "firebase/firestore";
 import groupBy from "lodash.groupby";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { Box } from "../../../../components/atoms/box/box";
+import { BoxNew } from "../../../../components/atoms/box_new/box_new";
 import { Loader } from "../../../../components/atoms/loader/Loader";
-import { Typography } from "../../../../components/atoms/typography/typography";
 import { FirebaseAuthContext } from "../../../../context/firebase_context";
 import checkHasLength from "../../../../utils/map_if_has_length/map_if_has_length";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../../utils/shared_props/box_props";
 import { KanbanCollapsibleEpic } from "./KanbanCollapsibleEpic";
 import { KanbanCreateTaskDialog } from "./KanbanCreateTaskDialog";
 
@@ -77,10 +75,10 @@ export const Kanban = () => {
   }
   if (error) {
     return (
-      <Box>
-        <Typography as="h1">Error</Typography>
-        <Box as="section">
-          <Typography
+      <BoxNew>
+        <BoxNew as="h1">Error</BoxNew>
+        <BoxNew as="section">
+          <BoxNew
             as="h3"
             customisation={{
               fontSize: "body_lg",
@@ -88,35 +86,30 @@ export const Kanban = () => {
             }}
           >
             {error.message}
-          </Typography>
-        </Box>
+          </BoxNew>
+        </BoxNew>
         <KanbanCreateTaskDialog
           epicsDropdownItems={epicsDropdownItems}
           statusesDropdownItems={statusesDropdownItems}
         />
-      </Box>
+      </BoxNew>
     );
   }
 
   if (!transformedTasks) {
-    return <Box>No tasks</Box>;
+    return <BoxNew>No tasks</BoxNew>;
   }
 
   return (
     <>
-      <Box
-        as="section"
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
+      <BoxNew as="section" marginY="spacing5">
         {/** —————————————————————————————————————————————————————————————————————————————
          *      PAGE HEADER
          * ——————————————————————————————————————————————————————————————————————————————— */}
-        <Box as="header" customisation={{}}>
-          <Typography as="h1">Firebase kanban</Typography>
+        <BoxNew as="header">
+          <BoxNew as="h1">Firebase kanban</BoxNew>
 
-          <Typography
+          <BoxNew
             as="h2"
             customisation={{
               fontSize: "body_lg",
@@ -124,12 +117,12 @@ export const Kanban = () => {
             }}
           >
             Example full-stack app backed by Firestore.
-          </Typography>
-          <Typography as="p">
+          </BoxNew>
+          <BoxNew as="p">
             This is your own kanban board, any tasks you create are visible only
             to you.
-          </Typography>
-        </Box>
+          </BoxNew>
+        </BoxNew>
         <hr />
         <KanbanCreateTaskDialog
           statusesDropdownItems={[]}
@@ -158,7 +151,7 @@ export const Kanban = () => {
               />
             );
           })}
-      </Box>
+      </BoxNew>
     </>
   );
 };

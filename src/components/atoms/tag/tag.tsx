@@ -3,8 +3,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import clsx from "clsx";
 import { Link } from "gatsby";
 import {
-  FunctionalClassNames,
-  getUtilityClasses,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -12,11 +12,11 @@ import TagInnerContent from "./components/tag_inner_content/tag_inner_content";
 import { TTagVariants, getTagStyle } from "./tag.css";
 
 export interface TagCustomisation {
-  display?: FunctionalClassNames["display"];
-  width?: FunctionalClassNames["width"];
-  marginTop?: FunctionalClassNames["marginTop"];
-  marginBottom?: FunctionalClassNames["marginBottom"];
-  justifyContent?: FunctionalClassNames["justifyContent"];
+  display?: GetSprinklesArgs["display"];
+  width?: GetSprinklesArgs["width"];
+  marginTop?: GetSprinklesArgs["marginTop"];
+  marginBottom?: GetSprinklesArgs["marginBottom"];
+  justifyContent?: GetSprinklesArgs["justifyContent"];
 }
 
 export interface ITag {
@@ -57,7 +57,7 @@ export const Tag = ({
   const tagStyle = clsx([
     resetButton,
     getTagStyle(variant),
-    getUtilityClasses({
+    getSprinkles({
       ...customisation,
     }),
     getFocusRingStyles({}),

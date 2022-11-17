@@ -1,6 +1,6 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../../utils/create_url_from_path_array/create_url_path_from_array";
-import { Box } from "../../../atoms/box/box";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import { Tag } from "../../../atoms/tag/tag";
 
 interface IBlogCategoriesList {
@@ -16,14 +16,7 @@ export default function BlogCategoriesList({
 }: IBlogCategoriesList) {
   if (categories && categories.length > 0)
     return (
-      <Box
-        customisation={{
-          display: "flex",
-          flexWrap: "wrap",
-          marginY: "spacing3",
-          gap: "spacing1",
-        }}
-      >
+      <BoxNew display="flex" flexWrap="wrap" marginY="spacing3" gap="spacing1">
         {categories.map((category) => {
           const isActive = category.categoryTitle === currentCategoryTitle;
           const categoryLink = createUrlPathFromArray([
@@ -44,7 +37,7 @@ export default function BlogCategoriesList({
             />
           );
         })}
-      </Box>
+      </BoxNew>
     );
   return null;
 }

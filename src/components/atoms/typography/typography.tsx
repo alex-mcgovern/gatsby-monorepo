@@ -1,28 +1,28 @@
 import React from "react";
 import {
-  FunctionalClassNames,
-  getUtilityClasses,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
 import { TypographyVariants, getTypographyStyle } from "./typography.css";
 
 export interface TypographyCustomisation {
-  display?: FunctionalClassNames["display"];
-  fontSize?: FunctionalClassNames["fontSize"];
-  fontWeight?: FunctionalClassNames["fontWeight"];
-  lineHeight?: FunctionalClassNames["lineHeight"];
-  marginBottom?: FunctionalClassNames["marginBottom"];
-  maxWidth?: FunctionalClassNames["maxWidth"];
-  marginY?: FunctionalClassNames["marginY"];
-  marginTop?: FunctionalClassNames["marginTop"];
-  textAlign?: FunctionalClassNames["textAlign"];
-  textTransform?: FunctionalClassNames["textTransform"];
-  whiteSpace?: FunctionalClassNames["whiteSpace"];
+  display?: GetSprinklesArgs["display"];
+  fontSize?: GetSprinklesArgs["fontSize"];
+  fontWeight?: GetSprinklesArgs["fontWeight"];
+  lineHeight?: GetSprinklesArgs["lineHeight"];
+  marginBottom?: GetSprinklesArgs["marginBottom"];
+  maxWidth?: GetSprinklesArgs["maxWidth"];
+  marginY?: GetSprinklesArgs["marginY"];
+  marginTop?: GetSprinklesArgs["marginTop"];
+  textAlign?: GetSprinklesArgs["textAlign"];
+  textTransform?: GetSprinklesArgs["textTransform"];
+  whiteSpace?: GetSprinklesArgs["whiteSpace"];
 }
 
 export interface TypographyProps {
-  /** Typography variant — controls color */
+  /** BoxNew variant — controls color */
   variant?: TypographyVariants;
-  /** Polymorphic prop allowing `Typography` to return a wide range of HTML Element types. */
+  /** Polymorphic prop allowing `BoxNew` to return a wide range of HTML Element types. */
   as?:
     | "code"
     | "div"
@@ -42,7 +42,7 @@ export interface TypographyProps {
   className?: string;
 }
 
-export const Typography = ({
+export const BoxNew = ({
   as,
   children,
   customisation,
@@ -52,7 +52,7 @@ export const Typography = ({
 }: TypographyProps) => {
   const buttonStyle = [
     getTypographyStyle(variant),
-    getUtilityClasses({
+    getSprinkles({
       ...customisation,
     }),
     className,

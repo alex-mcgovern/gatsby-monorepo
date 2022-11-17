@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Box } from "../../components/atoms/box/box";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
 import { Button } from "../../components/atoms/button/button";
 import { Input } from "../../components/atoms/input/input";
-import { Typography } from "../../components/atoms/typography/typography";
 import { FirebaseAuthContext } from "../../context/firebase_context";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../utils/shared_props/box_props";
 
 const Register = () => {
   const { firebaseAuth } = useContext(FirebaseAuthContext);
@@ -45,32 +43,21 @@ const Register = () => {
 
   return (
     <>
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
-        <Box
-          customisation={{
-            display: "grid",
-            gridTemplateColumns: {
-              mobile: "1x",
-              tablet: "2x",
-            },
-            gap: "spacing3",
+      <BoxNew marginY="spacing5">
+        <BoxNew
+          display="grid"
+          gridTemplateColumns={{
+            mobile: "1x",
+            tablet: "2x",
           }}
+          gap="spacing3"
         >
-          <Box as="header">
-            <Typography
-              as="h1"
-              customisation={{
-                marginTop: "none",
-              }}
-            >
+          <BoxNew as="header">
+            <BoxNew as="h1" marginTop="none">
               Register
-            </Typography>
+            </BoxNew>
 
-            <Typography as="p">
+            <BoxNew as="p">
               I'll just need a few details to create an account. Authentication
               is handled with Firebase. Your data is stored and processed by
               Google on my behalf,{" "}
@@ -78,8 +65,8 @@ const Register = () => {
                 here's their privacy policy
               </a>
               .
-            </Typography>
-          </Box>
+            </BoxNew>
+          </BoxNew>
           <form onSubmit={handleSubmit}>
             <Input
               onChange={handleInputChange}
@@ -112,20 +99,20 @@ const Register = () => {
               id="confirmPassword"
             />
             {!!errorMessage && (
-              <Typography as="p" variant={{ color: "semantic_red_bg" }}>
+              <BoxNew as="p" variant={{ color: "semantic_red_bg" }}>
                 {errorMessage}
-              </Typography>
+              </BoxNew>
             )}
             {/* {!!error && (
-              <Typography as="p" customisation={{ color: "semantic_red_bg" }}>
+              <BoxNew as="p" customisation={{ color: "semantic_red_bg" }}>
                 {error}
-              </Typography>
+              </BoxNew>
             )} */}
 
             <Button type="submit" title="Register" isLoading={loading} />
           </form>
-        </Box>
-      </Box>
+        </BoxNew>
+      </BoxNew>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { FirebaseAuthContext } from "../../../context/firebase_context";
 import { ThemeContext } from "../../../context/theme_context";
 import { convertKebabCaseToSentenceCase } from "../../../utils/convert_kebab_case_to_sentence_case/convert_kebab_case_to_sentence_case";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { Button } from "../../atoms/button/button";
 import { DropdownSingleSelect } from "../Dropdown/DropdownSingleSelect";
 
@@ -48,13 +48,11 @@ export default function Header() {
   });
 
   return (
-    <Box
+    <BoxNew
       as="nav"
-      customisation={{
-        display: "flex",
-        justifyContent: "space-between",
-        marginY: "spacing2",
-      }}
+      display="flex"
+      justifyContent="space-between"
+      marginY="spacing2"
     >
       {/** ————————————————————————————————————————————————————————————————————————————
        *      LEFT HAND SIDE
@@ -69,14 +67,7 @@ export default function Header() {
       {/** ————————————————————————————————————————————————————————————————————————————
        *      RIGHT HAND SIDE
        * ——————————————————————————————————————————————————————————————————————————————— */}
-      <Box
-        as="menu"
-        customisation={{
-          display: "flex",
-          alignItems: "center",
-          gap: "spacing2",
-        }}
-      >
+      <BoxNew as="menu" display="flex" alignItems="center" gap="spacing2">
         {/** ————————————————————
          *      BLOG BUTTON
          * ——————————————————————— */}
@@ -135,7 +126,7 @@ export default function Header() {
           onClick={toggleDark}
           variant={{ size: "md", appearance: "tertiary" }}
         />
-      </Box>
-    </Box>
+      </BoxNew>
+    </BoxNew>
   );
 }

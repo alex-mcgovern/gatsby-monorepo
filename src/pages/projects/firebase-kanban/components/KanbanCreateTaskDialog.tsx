@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { getFirestore } from "firebase/firestore";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
-import { Box } from "../../../../components/atoms/box/box";
+import { BoxNew } from "../../../../components/atoms/box_new/box_new";
 import { Button } from "../../../../components/atoms/button/button";
 import { Input } from "../../../../components/atoms/input/input";
-import { Typography } from "../../../../components/atoms/typography/typography";
 import ComboboxSearchable from "../../../../components/molecules/Dropdown/DropdownSearchable";
 import { FirebaseAuthContext } from "../../../../context/firebase_context";
 import { dialogContent, dialogOverlay } from "./KanbanCreateTaskDialog.css";
@@ -64,7 +63,7 @@ export const KanbanCreateTaskDialog = ({
             //      DIALOG HEADER                                  
             // —————————————————————————————————————————————— */}
           <DialogPrimitive.Title>
-            <Typography
+            <BoxNew
               customisation={{
                 fontSize: "h3",
                 fontWeight: "bold",
@@ -72,7 +71,7 @@ export const KanbanCreateTaskDialog = ({
               as="h3"
             >
               Create a new task
-            </Typography>
+            </BoxNew>
           </DialogPrimitive.Title>
           {/* <DialogPrimitive.Description>
             Make changes to your profile here. Click save when you're done.
@@ -85,12 +84,7 @@ export const KanbanCreateTaskDialog = ({
             name="addTask"
           >
             {/* Task title input */}
-            <Box
-              as="fieldset"
-              customisation={{
-                marginY: "spacing3",
-              }}
-            >
+            <BoxNew as="fieldset" marginY="spacing3">
               <Input
                 id="title"
                 name="title"
@@ -159,7 +153,7 @@ export const KanbanCreateTaskDialog = ({
                 placeholder="Select a status or create a new one"
                 variant={{ size: "lg" }}
               />
-            </Box>
+            </BoxNew>
             {/* ——————————————————————————————————————————————
             //      DIALOG SUBMIT
             // —————————————————————————————————————————————— */}

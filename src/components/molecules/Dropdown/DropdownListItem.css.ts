@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { resetList } from "../../../styles/resets/reset_list.css";
 import { vars } from "../../../styles/theme.css";
 
@@ -20,7 +20,7 @@ export const getDropdownStyles = recipe({
         },
       },
     },
-    getUtilityClasses({
+    getSprinkles({
       padding: "spacing2",
     }),
   ],

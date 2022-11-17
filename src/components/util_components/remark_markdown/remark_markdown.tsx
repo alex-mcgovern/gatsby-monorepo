@@ -1,6 +1,5 @@
 import React from "react";
 import rehypeReact, { Options } from "rehype-react";
-import { Typography } from "../../atoms/typography/typography";
 
 interface IRemarkMarkdown {
   htmlAst?: string;
@@ -10,7 +9,7 @@ const rehypeOptions: Options = {
   createElement: React.createElement,
   components: {
     // h1: ({ children }) => {
-    //   return <Typography as="h1">{children}</Typography>;
+    //   return <BoxNew as="h1">{children}</BoxNew>;
     // },
   },
 };

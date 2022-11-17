@@ -1,10 +1,8 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
-import { BOX_CUSTOMISATION_SECTION_SPACING } from "../../../utils/shared_props/box_props";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { Button } from "../../atoms/button/button";
-import { Typography } from "../../atoms/typography/typography";
 import { ListItem } from "../../molecules/list_item/list_item";
 
 interface ISectionLatestBlogPostProps {}
@@ -70,23 +68,17 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
 
   if (posts && posts?.length > 0) {
     return (
-      <Box
-        customisation={{
-          ...BOX_CUSTOMISATION_SECTION_SPACING,
-        }}
-      >
+      <BoxNew marginY="spacing5">
         {/* —————————————————————————————————————————————
          *      BLOG SECTION HEADER
          * ——————————————————————————————————————————————— */}
 
-        <Box
-          customisation={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+        <BoxNew
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
-          <Typography as="h3">Stuff I wrote</Typography>
+          <BoxNew as="h3">Stuff I wrote</BoxNew>
           <Button
             variant={{
               size: "lg",
@@ -96,19 +88,17 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
             to="/blog"
             title={buttonTitle}
           />
-        </Box>
+        </BoxNew>
 
         {/* —————————————————————————————————————————————
          *      BLOG POST GRID
          * ——————————————————————————————————————————————— */}
 
-        <Box
+        <BoxNew
           as="section"
-          customisation={{
-            display: "grid",
-            gap: "spacing2",
-            gridTemplateColumns: { desktop: "4x", mobile: "1x" },
-          }}
+          display="grid"
+          gap="spacing2"
+          gridTemplateColumns={{ desktop: "4x", mobile: "1x" }}
         >
           {posts?.length > 0 &&
             posts.map((post) => {
@@ -123,20 +113,18 @@ export const SectionLatestBlogPosts = ({}: ISectionLatestBlogPostProps) => {
                 />
               );
             })}
-        </Box>
+        </BoxNew>
 
         {/* —————————————————————————————————————————————
          *      "EXPLORE ALL POSTS" CTA SECTION
          * ——————————————————————————————————————————————— */}
-        <Box
-          customisation={{
-            marginY: "spacing3",
-            display: "flex",
-            justifyContent: "center",
-            gap: "spacing2",
-          }}
+        <BoxNew
+          marginY="spacing3"
+          display="flex"
+          justifyContent="center"
+          gap="spacing2"
         />
-      </Box>
+      </BoxNew>
     );
   }
   return null;

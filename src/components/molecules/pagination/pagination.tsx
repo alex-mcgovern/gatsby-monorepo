@@ -1,6 +1,6 @@
 import React from "react";
 import { createUrlPathFromArray } from "../../../utils/create_url_from_path_array/create_url_path_from_array";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import { Button } from "../../atoms/button/button";
 import getPaginationArray from "./helper_functions/filter_page_array/get_pagination_array";
 
@@ -28,13 +28,11 @@ export const Pagination = ({
   const pageArray = getPaginationArray({ pageCount, currentPage });
 
   return (
-    <Box
-      customisation={{
-        display: "flex",
-        justifyContent: "center",
-        marginY: "spacing3",
-        gap: "spacing1",
-      }}
+    <BoxNew
+      display="flex"
+      justifyContent="center"
+      marginY="spacing3"
+      gap="spacing1"
       as="nav"
     >
       <Button
@@ -79,7 +77,7 @@ export const Pagination = ({
         to={lastPath}
         isDisabled={isNextOrLastDisabled}
       />
-    </Box>
+    </BoxNew>
   );
 };
 

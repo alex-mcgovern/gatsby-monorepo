@@ -1,5 +1,5 @@
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { vars } from "../../../styles/theme.css";
 
 export const getTagStyle = recipe({
@@ -27,7 +27,7 @@ export const getTagStyle = recipe({
         },
       },
     },
-    getUtilityClasses({
+    getSprinkles({
       paddingX: "spacing1",
       paddingY: "spacing0",
     }),

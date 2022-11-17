@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { darkTheme, vars } from "../../../styles/theme.css";
 import { varsTransitionTime } from "../../../styles/vars/vars_transition.css";
@@ -33,7 +33,7 @@ export const listItemWrapper = style([
     },
   },
   getFocusRingStyles(),
-  getUtilityClasses({
+  getSprinkles({
     padding: "spacing2",
   }),
 ]);

@@ -2,7 +2,6 @@ import React from "react";
 import { Metric } from "web-vitals";
 import { vars } from "../../../../../styles/theme.css";
 import getDuration from "../../../../../utils/get_duration/get_duration";
-import { Box } from "../../../../atoms/box/box";
 
 interface IMetricGraphCard {
   metric?: Metric;

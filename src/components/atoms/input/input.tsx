@@ -1,33 +1,29 @@
-import React, { AriaRole, HTMLInputTypeAttribute, forwardRef } from "react";
+import React, {
+  AriaRole,
+  HTMLInputTypeAttribute,
+  InputHTMLAttributes,
+  forwardRef,
+} from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  FunctionalClassNames,
-  getUtilityClasses,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
-import { Box } from "../box/box";
+import { BoxNew } from "../box_new/box_new";
 import { Label } from "../label/label";
 import * as styles from "./input.css";
 
-export interface InputCustomisation {
-  margin?: FunctionalClassNames["margin"];
-  marginBottom?: FunctionalClassNames["marginBottom"];
-  marginLeft?: FunctionalClassNames["marginLeft"];
-  marginRight?: FunctionalClassNames["marginRight"];
-  marginTop?: FunctionalClassNames["marginTop"];
-  marginX?: FunctionalClassNames["marginY"];
-  marginY?: FunctionalClassNames["marginX"];
-  width?: FunctionalClassNames["width"];
-}
-
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<
+      InputHTMLAttributes<HTMLInputElement>,
+      "width" | "height" | "style"
+    >,
+    GetSprinklesArgs {
   autoComplete?: HTMLInputElement["autocomplete"];
   /** Allow custom prop getter. Enables compatibility with DownshiftJS */
   getInputProps?(...args: unknown[]): unknown;
-  /** Customisation exposes utility-first styles as props. */
-  customisation?: InputCustomisation;
   /** FontAwesome icon shown on the left side of input. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of input. */
@@ -84,11 +80,11 @@ export const Input = forwardRef(
         ...variant,
       }),
       getFocusRingStyles(),
-      getUtilityClasses({ ...customisation }),
+      getSprinkles({ ...customisation }),
     ];
 
     return (
-      <Box customisation={customisation}>
+      <BoxNew>
         {label && id && (
           <Label isLabelVisible={isLabelVisible} label={label} id={id} />
         )}
@@ -123,7 +119,7 @@ export const Input = forwardRef(
             />
           )}
         </fieldset>
-      </Box>
+      </BoxNew>
     );
   }
 );

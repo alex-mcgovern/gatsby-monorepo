@@ -2,8 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { updateDoc } from "firebase/firestore";
 import { graphql } from "gatsby";
 import { useDrop } from "react-dnd";
-import { Box } from "../../../../components/atoms/box/box";
-import { Typography } from "../../../../components/atoms/typography/typography";
+import { BoxNew } from "../../../../components/atoms/box_new/box_new";
 import checkHasLength from "../../../../utils/map_if_has_length/map_if_has_length";
 import KanbanListItem from "./KanbanListItem";
 
@@ -29,7 +28,7 @@ const KanbanColumn = ({
   epicsDropdownItems,
 }: KanbanStatusColumnProps) => {
   if (isLoading) {
-    return <Box>Is loading</Box>;
+    return <BoxNew>Is loading</BoxNew>;
   }
 
   const changeTaskStatus = useCallback(async ({ docRef, newStatus }) => {
@@ -53,8 +52,8 @@ const KanbanColumn = ({
   drop(ref);
 
   return (
-    <Box key={statusKey} ref={ref}>
-      <Typography
+    <BoxNew key={statusKey} ref={ref}>
+      <BoxNew
         variant={{
           color: "neutral_fg_1",
         }}
@@ -66,7 +65,7 @@ const KanbanColumn = ({
         }}
       >
         {statusKey}
-      </Typography>
+      </BoxNew>
 
       {checkHasLength(tasksInEpicGroupedByStatus[statusKey]) &&
         tasksInEpicGroupedByStatus[statusKey].map((item) => {
@@ -85,7 +84,7 @@ const KanbanColumn = ({
             />
           );
         })}
-    </Box>
+    </BoxNew>
   );
 };
 

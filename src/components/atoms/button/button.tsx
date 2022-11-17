@@ -3,8 +3,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import {
-  FunctionalClassNames,
-  getUtilityClasses,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
 import { getFocusRingStyles } from "../../../styles/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../../../styles/resets/reset_button.css";
@@ -17,7 +17,7 @@ export interface ButtonProps {
   /** Variant prop controlling button appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
   variant?: ButtonVariants;
   /** Customisation exposes utility-first styles as props. */
-  customisation?: FunctionalClassNames;
+  customisation?: GetSprinklesArgs;
   /** FontAwesome icon shown on the left side of button. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of button. */
@@ -66,7 +66,7 @@ export const Button = forwardRef(
       resetButton,
       styles.getButtonStyle(variant),
       getFocusRingStyles({}),
-      getUtilityClasses({
+      getSprinkles({
         ...customisation,
       }),
     ]);

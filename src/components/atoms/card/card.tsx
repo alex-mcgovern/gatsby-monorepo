@@ -1,23 +1,23 @@
-import React, { forwardRef } from "react";
+import React, { Ref, forwardRef } from "react";
 import clsx from "clsx";
-import { Box, BoxProps } from "../box/box";
+import { BoxNew, BoxNewProps } from "../box_new/box_new";
 import { CardVariants, getCardStyle } from "./card.css";
 
-interface CardProps extends Omit<BoxProps, "variant"> {
+interface CardProps extends BoxNewProps {
   variant: CardVariants;
 }
 
 export const Card = forwardRef(
   (
-    { customisation, children, className: userClassName, variant }: CardProps,
-    ref
+    { children, className: userClassName, variant, ...rest }: CardProps,
+    ref: Ref<HTMLElement> | undefined
   ) => {
     const classNames = clsx(getCardStyle(variant), userClassName);
 
     return (
-      <Box customisation={customisation} className={classNames} ref={ref}>
+      <BoxNew {...rest} className={classNames} ref={ref}>
         {children}
-      </Box>
+      </BoxNew>
     );
   }
 );

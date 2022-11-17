@@ -1,9 +1,8 @@
 // Adapted from https://github.com/transitive-bullshit/react-docgen-parameters-table
 import React from "react";
 import checkHasLength from "../../../utils/map_if_has_length/map_if_has_length";
-import { Box } from "../../atoms/box/box";
+import { BoxNew } from "../../atoms/box_new/box_new";
 import Popover from "../../atoms/popover/popover";
-import { Typography } from "../../atoms/typography/typography";
 import getPropType from "./helper_functions/get_prop_type";
 
 // import { Tooltip } from "./tooltip/tooltip";
@@ -23,12 +22,8 @@ export const DocumentationParametersTable = ({
         {parameters.map((parameter) => {
           if (checkHasLength(parameter.properties)) {
             return (
-              <Box
-                as="section"
-                customisation={{ marginY: "spacing4" }}
-                key={parameter.type}
-              >
-                <Typography as="h3">Props</Typography>
+              <BoxNew as="section" marginY="spacing4" key={parameter.type}>
+                <BoxNew as="h3">Props</BoxNew>
 
                 <table {...rest}>
                   <thead>
@@ -56,7 +51,7 @@ export const DocumentationParametersTable = ({
                       return (
                         <tr key={property.name}>
                           <td>
-                            <Typography
+                            <BoxNew
                               as="code"
                               variant={{
                                 color: "accent_fg_1",
@@ -65,16 +60,16 @@ export const DocumentationParametersTable = ({
                             >
                               {property.name}
                               {!property.optional && "*"}
-                            </Typography>
+                            </BoxNew>
                             {property.description && (
                               <Popover popoverText={property.description} />
                             )}
                           </td>
 
                           <td>
-                            <Typography as="code">
+                            <BoxNew as="code">
                               {property.type || getPropType(property.kind)}
-                            </Typography>
+                            </BoxNew>
                             {subProperties?.length > 0 && (
                               <Popover
                                 popoverText={subProperties.join(" | ")}
@@ -101,7 +96,7 @@ export const DocumentationParametersTable = ({
                     })}
                   </tbody>
                 </table>
-              </Box>
+              </BoxNew>
             );
           }
           return null;

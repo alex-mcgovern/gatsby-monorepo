@@ -1,10 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
-import { BOX_CUSTOMISATION_MAX_WIDTH_FULL } from "../../../../utils/shared_props/box_props";
-import { Box } from "../../../atoms/box/box";
+import { BoxNew } from "../../../atoms/box_new/box_new";
 import { Button } from "../../../atoms/button/button";
-import { Typography } from "../../../atoms/typography/typography";
 import InstagramPostItem from "../../../molecules/instagram_post_item/instagram_post_item";
 
 interface ISectionHomepageInstagram {}
@@ -46,20 +43,15 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
   const images = [];
 
   return (
-    <Box
-      as="section"
-      customisation={{
-        overflow: "hidden",
-      }}
-    >
+    <BoxNew as="section" overflow="hidden">
       {/* —————————————————————————————————————————————
        *      SECTION INNER CONTENT
        * ——————————————————————————————————————————————— */}
-      <Box customisation={BOX_CUSTOMISATION_MAX_WIDTH_FULL}>
+      <BoxNew>
         {/* —————————————————————
          *      SECTION HEADER
          * ——————————————————————— */}
-        <Typography
+        <BoxNew
           variant={{
             color: "accent_fg_1",
           }}
@@ -70,9 +62,9 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
           // marginBottom="spacing4"
         >
           When I'm not coding...
-        </Typography>
+        </BoxNew>
 
-        <Typography
+        <BoxNew
           as="h3"
           variant={{
             color: "accent_fg_2",
@@ -83,13 +75,13 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
           }}
         >
           I also love design, illustration, painting, and 3D modelling.
-        </Typography>
+        </BoxNew>
 
         {/* —————————————————————
          *      INSTAGRAM POST GRID
          * ——————————————————————— */}
 
-        <Box
+        <BoxNew
           customisation={{
             marginY: "spacing3",
             display: "grid",
@@ -102,13 +94,13 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
             images.map((image) => {
               return <InstagramPostItem wrappedImage={image} />;
             })}
-        </Box>
+        </BoxNew>
 
         {/* —————————————————————
          *      INSTAGRAM CTA SECTION
          * ——————————————————————— */}
 
-        <Box
+        <BoxNew
           customisation={{
             marginY: "spacing4",
             display: "flex",
@@ -123,9 +115,9 @@ export default function SectionHomepageInstagram({}: ISectionHomepageInstagram) 
             to="/"
             title="Check me out on Instagram"
           />
-        </Box>
-      </Box>
-    </Box>
+        </BoxNew>
+      </BoxNew>
+    </BoxNew>
   );
 }
 

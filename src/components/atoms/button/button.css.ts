@@ -1,6 +1,6 @@
 import { keyframes, style } from "@vanilla-extract/css";
 import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
-import { getUtilityClasses } from "../../../styles/functional_classnames.css";
+import { getSprinkles } from "../../../styles/functional_classnames.css";
 import { vars } from "../../../styles/theme.css";
 
 export const getButtonStyle = recipe({
@@ -29,7 +29,7 @@ export const getButtonStyle = recipe({
         },
       },
     },
-    getUtilityClasses({
+    getSprinkles({
       marginY: "spacing1",
     }),
   ],
@@ -50,7 +50,7 @@ export const getButtonStyle = recipe({
             },
           },
         },
-        getUtilityClasses({
+        getSprinkles({
           paddingX: "spacing2",
           // paddingY: "spacing1",
         }),
@@ -70,7 +70,7 @@ export const getButtonStyle = recipe({
             },
           },
         },
-        getUtilityClasses({
+        getSprinkles({
           paddingX: "spacing2",
           // paddingY: "spacing1",
         }),
@@ -90,19 +90,19 @@ export const getButtonStyle = recipe({
     size: {
       sm: [
         { height: 32 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_sm",
         }),
       ],
       md: [
         { height: 40 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_md",
         }),
       ],
       lg: [
         { height: 48 },
-        getUtilityClasses({
+        getSprinkles({
           fontSize: "body_lg",
         }),
       ],
