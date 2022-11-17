@@ -1,18 +1,17 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import AlternatingLayout from "../../components/atoms/alternating_layout/alternating_layout";
-import Button from "../../components/atoms/button/button/button";
-import Box from "../../components/layout/box/box";
-import Layout from "../../components/layout/layout/layout";
-import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import Seo from "../../components/seo";
+import { ImageDataLike } from "gatsby-plugin-image";
+import slugify from "slugify";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
+import BlogCategoriesList from "../../components/molecules/blog/blog_categories_list/blog_categories_list";
+import { ListItem } from "../../components/molecules/list_item/list_item";
+import RemarkMarkdown from "../../components/util_components/remark_markdown/remark_markdown";
 
 interface BlogPostTemplateProps {
   data: {
     markdownRemark: {
       excerpt: string;
-      html: string;
+      htmlAst: string;
       frontmatter: {
         cover?: ImageDataLike;
         date?: string;
@@ -36,9 +35,9 @@ interface BlogPostTemplateProps {
         title?: string;
       };
     };
-    site?: {
+    site: {
       siteMetadata: {
-        title?: string;
+        title: string;
       };
     };
   };
@@ -48,81 +47,131 @@ const BlogPostTemplate = ({ data }: BlogPostTemplateProps) => {
   const { markdownRemark: post, site, previous, next } = data;
   const {
     excerpt,
-    frontmatter: { cover, description },
-    html,
+    frontmatter: { description, categories },
+    htmlAst,
   } = post;
 
-  const siteTitle = site?.siteMetadata?.title || `Title`;
-  const {} = data;
-  const image = cover && getImage(cover);
+  const siteTitle = site.siteMetadata.title || `Title`;
+
+  const categoryLinks =
+    categories?.length > 0 &&
+    categories.map((categoryTitle) => {
+      const categorySlug = slugify(categoryTitle, {
+        lower: true,
+        strict: true,
+      });
+      return {
+        categoryTitle,
+        categorySlug,
+      };
+    });
 
   return (
-    <Layout title={siteTitle}>
-      <Seo
-        title={post.frontmatter.title}
-        description={description || excerpt}
-      />
-      <LayoutMaxWidthContainer>
-        <Box as="section" marginY="spacing9">
-          <AlternatingLayout ratio="2_1">
-            <Box as="header" outline="dashed" marginY="spacing9">
-              <h1>{post.frontmatter.title}</h1>
-              <p>{post.frontmatter.description}</p>
-              <h2>{post.frontmatter.date}</h2>
-            </Box>
-            <Box outline="dashed" background="crosshatch">
-              {image && (
-                <GatsbyImage alt={post.frontmatter.title} image={image} />
-              )}
-            </Box>
-          </AlternatingLayout>
-        </Box>
-        <article itemScope itemType="http://schema.org/Article">
-          <Box
+    <>
+      <BoxNew marginY="spacing5">
+        <BoxNew as="article">
+          {/** ————————————————————————————————————————————————————————————————————————————
+           *      POST HEADER
+           * ——————————————————————————————————————————————————————————————————————————————— */}
+          <BoxNew as="header">
+            {/** ————————————————————
+             *      TITLE
+             * ——————————————————————— */}
+            <BoxNew as="h1">{post.frontmatter.title}</BoxNew>
+
+            {/** ————————————————————
+             *      DESCRIPTION
+             * ——————————————————————— */}
+            <BoxNew
+              as="h2"
+              customisation={{
+                fontSize: "body_lg",
+                fontWeight: "normal",
+                marginTop: "none",
+              }}
+            >
+              {post.frontmatter.description}
+            </BoxNew>
+
+            <hr />
+            <BoxNew display="flex" alignItems="center" gap="spacing2">
+              {/** ————————————————————
+               *      DATE
+               * ——————————————————————— */}
+              <BoxNew
+                variant={{
+                  color: "accent_fg_1",
+                }}
+                customisation={{
+                  marginY: "none",
+                }}
+              >
+                {post.frontmatter.date}
+              </BoxNew>
+
+              {/** ————————————————————
+               *      CATEGORIES
+               * ——————————————————————— */}
+              <BlogCategoriesList categories={categoryLinks} />
+            </BoxNew>
+          </BoxNew>
+
+          {/** ————————————————————————————————————————————————————————————————————————————
+           *      POST BODY
+           * ——————————————————————————————————————————————————————————————————————————————— */}
+
+          <BoxNew
             as="section"
             marginY="spacing3"
-            marginY="spacing9"
-            outline="dashed"
+            // marginX: "auto",
           >
-            <section
+            {/* <section
               dangerouslySetInnerHTML={{ __html: html }}
               itemProp="articleBody"
-            />
+            /> */}
+
+            <RemarkMarkdown htmlAst={htmlAst} />
             <hr />
             <footer></footer>
-          </Box>
-        </article>
-        <nav>
-          <Box
+          </BoxNew>
+
+          <BoxNew
             marginY="spacing3"
             display="flex"
-            justifyContent={"space-between"}
-            gap="spacing3"
-            outline="dashed"
+            justifyContent="space-between"
+            gap="spacing2"
+            as="nav"
           >
-            <Button
-              leadingIcon="angle-left"
+            <ListItem
+              description={previous?.frontmatter?.title}
+              link={previous?.fields?.slug}
+              title="Previous"
+              width="100%"
+            />
+            <ListItem
+              description={next?.frontmatter?.title}
+              link={next?.fields?.slug}
+              title="Next"
+              width="100%"
+              textAlign="right"
+            />
+            {/* <Button
+              iconLeading="arrow-left"
+              variant={{
+                size: "lg",
+              }}
               to={previous?.fields?.slug}
               title={previous?.frontmatter?.title}
             />
             <Button
-              trailingIcon="angle-right"
+              iconTrailing="arrow-right"
               to={next?.fields?.slug}
               title={next?.frontmatter?.title}
-            />
-          </Box>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          ></ul>
-        </nav>
-      </LayoutMaxWidthContainer>
-    </Layout>
+            /> */}
+          </BoxNew>
+        </BoxNew>
+      </BoxNew>
+    </>
   );
 };
 
@@ -142,16 +191,12 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
-      html
+      htmlAst
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        cover {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
+        categories
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

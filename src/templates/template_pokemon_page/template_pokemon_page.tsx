@@ -1,21 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, ImageDataLike, getImage } from "gatsby-plugin-image";
-import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import AlternatingLayout from "../../components/atoms/alternating_layout/alternating_layout";
-import Box from "../../components/layout/box/box";
-import Layout from "../../components/layout/layout/layout";
-import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import Pagination from "../../components/molecules/pokedex/pagination/pagination";
-import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
+import { Button } from "../../components/atoms/button/button";
+import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
+import { Pagination } from "../../components/molecules/pagination/pagination";
+import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
-import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
-import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+
+const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
 
 interface TemplatePokemonPageProps {
   data: {
     allPokemon: {
-      nodes: {}[];
+      nodes: {
+        pokedexID: string;
+        name: string;
+      }[];
       totalCount: number;
     };
     currentPokemon: {
@@ -28,9 +30,9 @@ interface TemplatePokemonPageProps {
         };
       }[];
     };
-    site?: {
-      siteMetadata?: {
-        title?: string;
+    site: {
+      siteMetadata: {
+        title: string;
       };
     };
     allLanguagesISO: {
@@ -50,12 +52,14 @@ export default function TemplatePokemonPage({
   pageContext,
 }: TemplatePokemonPageProps) {
   const { pokedexID, languageISO } = pageContext;
-  const { allPokemon, allLanguagesISO, site, currentPokemon } = data;
+  const { allPokemon, allLanguagesISO, currentPokemon } = data;
+
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
   const { nodes: allPokemonData, totalCount } = allPokemon;
   const {
     node: { flavorText, name, genus, artwork },
   } = currentPokemon?.edges[0];
-  const siteTitle = site?.siteMetadata?.title || `Title`;
 
   // allLanguagesISO: { distinct: allLanguagesISO },
 
@@ -69,50 +73,112 @@ export default function TemplatePokemonPage({
 
   const imageData = getImage(artwork);
 
-  const searchIndex = getPokedexSearchIndex({
+  const dropdownItems = getPokedexDropdownItems({
     allPokemon: allPokemonData,
     languageISO,
   });
-  const paginationBasePath = createUrlPathFromArray([languageISO, "pokemon"]);
 
-  const languageIndexBasePath = createUrlPathFromArray(["pokemon", pokedexID]);
-  const languageIndex = getLanguageSelectIndex({
-    allLanguagesISO: allLanguagesISO.distinct,
-    basePath: languageIndexBasePath,
+  const isEnglish = languageISO === "en";
+
+  const basePagePathArray = [...SHARED_BASE_PATH];
+  const paginationPathArray = [...SHARED_BASE_PATH];
+
+  if (!isEnglish) {
+    paginationPathArray.push(languageISO);
+  }
+
+  paginationPathArray.push("pokemon");
+
+  const paginationBasePath = createUrlPathFromArray(paginationPathArray);
+
+  const languageIndex = allLanguagesISO.distinct.map((language) => {
+    const pagePathArray = [...basePagePathArray];
+    const isEnglish = language === "en";
+
+    if (!isEnglish) {
+      pagePathArray.push(language);
+    }
+
+    pagePathArray.push("pokemon");
+
+    if (pokedexID) {
+      pagePathArray.push(pokedexID.toString());
+    }
+    const value = language.toUpperCase();
+    const link = createUrlPathFromArray(pagePathArray);
+    return { value, label: value, link };
   });
+  const currentLanguageUpperCase = languageISO.toUpperCase();
+  const allPokemonLink = createUrlPathFromArray([...basePagePathArray]);
+
   return (
-    <Layout title={siteTitle}>
-      <LayoutMaxWidthContainer>
-        <Box as="section" marginY="spacing9">
-          <PokedexNav
-            searchIndex={searchIndex}
-            languageISO={languageISO}
-            languageIndex={languageIndex}
+    <>
+      <BoxNew>
+        <BoxNew
+          display="flex"
+          marginY="spacing3"
+          justifyContent="space-between"
+        >
+          <Button
+            iconLeading="arrow-left"
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
+            to={allPokemonLink}
+            iconTrailing="grip"
           />
 
-          <Box as="section">
-            <AlternatingLayout ratio="2_1">
-              <Box as="header" outline="dashed" marginY="spacing9">
-                <h2>{pokemonTitle}</h2>
-                <h3>{genus}</h3>
-                <p>{flavorText}</p>
-              </Box>
-              <Box outline="solid" background="crosshatch">
-                {imageData && <GatsbyImage alt={name} image={imageData} />}
-              </Box>
-            </AlternatingLayout>
-          </Box>
-        </Box>
-
-        <Box>
-          <Pagination
-            basePath={paginationBasePath}
-            currentPage={pokedexID}
-            pageCount={totalCount}
+          <ComboboxSearchable
+            items={dropdownItems}
+            isSearchable
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
+            iconLeading="search"
+            id="pokedex-search"
+            label="Search"
+            placeholder="Search for a Pokemon"
+            buttonTitle={currentLanguageUpperCase}
           />
-        </Box>
-      </LayoutMaxWidthContainer>
-    </Layout>
+
+          <ComboboxSearchable
+            items={languageIndex}
+            variant={{
+              appearance: "secondary",
+              size: "lg",
+            }}
+            id="language-dropdown"
+            label="Status"
+            buttonTitle={currentLanguageUpperCase}
+          />
+        </BoxNew>
+
+        <BoxNew
+          as="section"
+          customisation={{
+            display: "grid",
+            gridTemplateColumns: "2_1",
+          }}
+        >
+          <BoxNew as="header" customisation={{ marginY: "spacing4" }}>
+            <h2>{pokemonTitle}</h2>
+            <h3>{genus}</h3>
+            <p>{flavorText}</p>
+          </BoxNew>
+          <BoxNew>
+            {imageData && <GatsbyImage alt={name} image={imageData} />}
+          </BoxNew>
+        </BoxNew>
+
+        <Pagination
+          basePath={paginationBasePath}
+          currentPage={pokedexID}
+          pageCount={totalCount}
+        />
+      </BoxNew>
+    </>
   );
 }
 

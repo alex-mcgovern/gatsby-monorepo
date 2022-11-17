@@ -1,36 +1,40 @@
 import { globalStyle } from "@vanilla-extract/css";
-import { varsFontSize } from "../vars/vars_font_size.css";
-import { varsFontWeight } from "../vars/vars_font_weight.css";
-import { varsSpacing } from "../vars/vars_spacing.css";
+import { vars } from "../theme.css";
 
 globalStyle(`h1, h2, h3, h4, h5, h6`, {
+  display: "block",
   overflowWrap: `break-word`,
-  fontWeight: varsFontWeight.bold,
-  lineHeight: 1.2,
-  marginTop: varsSpacing.spacing5,
-  marginBottom: varsSpacing.spacing5,
-});
+  lineHeight: 1.4,
 
-globalStyle(`h6`, {
-  fontSize: varsFontSize.h6,
-});
+  marginTop: vars.spacing.spacing2,
+  marginBottom: vars.spacing.spacing2,
 
-globalStyle(`h5`, {
-  fontSize: varsFontSize.h5,
-});
+  // maxWidth: vars.width.gridSpan6,
 
-globalStyle(`h4`, {
-  fontSize: varsFontSize.h4,
-});
-
-globalStyle(`h3`, {
-  fontSize: varsFontSize.h3,
-});
-
-globalStyle(`h2`, {
-  fontSize: varsFontSize.h2,
+  fontFamily: vars.fontFamily.display,
+  fontWeight: vars.fontWeight.medium,
 });
 
 globalStyle(`h1`, {
-  fontSize: varsFontSize.h1,
+  fontSize: vars.fontSize.h1,
+});
+
+globalStyle(`h2`, {
+  fontSize: vars.fontSize.h2,
+});
+
+globalStyle(`h3`, {
+  fontSize: vars.fontSize.h3,
+});
+
+globalStyle(`h4`, {
+  fontSize: vars.fontSize.h4,
+});
+
+globalStyle(`h5`, {
+  fontSize: vars.fontSize.h5,
+});
+
+globalStyle(`h6`, {
+  fontSize: vars.fontSize.h6,
 });

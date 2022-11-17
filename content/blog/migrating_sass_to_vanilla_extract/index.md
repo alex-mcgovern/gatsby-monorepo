@@ -1,14 +1,13 @@
 ---
-title: Migrating SASS to Vanilla extract
+title: Migrating 15K LOC from JS to TS
 date: "2015-05-06T23:46:37.121Z"
-cover: ./pexels-cottonbro-4629625.jpg
+categories: ["Frontend", "Design systems"]
 description:
-  Vanilla Extract offers a neat way to generate and compose re-usable functional
-  utility classes in your project. Pain points, learning curve and was it worth
-  it?
+  How my team and I refactored and upgraded 15,000 lines of code to type safe
+  components and type-safe styles.
 ---
 
-# An experiment in type-safe styles.
+# a.k.a how we removed 50% of our code
 
 A dream of mine is to develop a very modular, and minimal CSS-driven design
 system that does away with extraneous dependencies, heavy components and runtime
@@ -46,6 +45,14 @@ Extract for my personal site instead later.
 - no implicit, unsafe parent/descendant selectors — you must reference the
   object you wish to target directly, and can safely import it between modules
   with intellisense
+
+### Things I don't like
+
+#### Combinatorial explosion
+
+- the type that is returned from a recipe variant doesn't afford easy
+  auto-scraping
+- use of helpers in the css.ts environment seriously slows down rebuilds
 
 ### The unintuitive:
 

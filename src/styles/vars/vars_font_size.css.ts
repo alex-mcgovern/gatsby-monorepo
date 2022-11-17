@@ -1,51 +1,18 @@
+import { createModularScale } from "../css_preprocessing_utils/create_modular_scale";
+
+const fontSizeScale = createModularScale(1.125, 16);
+
 export const varsFontSize = {
-  root: 16,
+  root: "16px",
 
-  /* ——————————————————————————————————————————————
-  //      BODY FONT SIZE                          
-  // —————————————————————————————————————————————— */
+  h1: fontSizeScale(7),
+  h2: fontSizeScale(6),
+  h3: fontSizeScale(5),
+  h4: fontSizeScale(4),
+  h5: fontSizeScale(3),
+  h6: fontSizeScale(2),
 
-  body_xl: "1.5rem",
-
-  body_lg: "1.25rem",
-
-  body_md: "1.125rem",
-
-  body_sm: "1rem",
-
-  body_xs: "0.875rem",
-
-  body_XXS: "0.75rem",
-
-  /* ——————————————————————————————————————————————
-  //      HEADING FONT SIZE                       
-  // —————————————————————————————————————————————— */
-
-  h1: "3.5rem",
-
-  h2: "3rem",
-
-  h3: "2.5rem",
-
-  h4: "2rem",
-
-  h5: "1.5rem",
-
-  h6: "1rem",
-
-  /* ——————————————————————————————————————————————
-  //      BUTTON FONT SIZE                       
-  // —————————————————————————————————————————————— */
-
-  fontSizeButtonSm: "0.875rem",
-
-  // letterSpacingButtonSm: "0.8px",
-
-  fontSizeButtonMd: "1rem",
-
-  // letterSpacingButtonMd: "0.8px",
-
-  fontSizeButtonLg: "1.125rem",
-
-  // letterSpacingButtonLg: "0.8px",
+  body_lg: fontSizeScale(1),
+  body_md: fontSizeScale(0),
+  body_sm: "14px",
 };

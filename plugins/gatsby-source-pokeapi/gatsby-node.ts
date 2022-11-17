@@ -1,4 +1,4 @@
-import type { GatsbyNode, Node, NodeInput, PluginOptions } from "gatsby";
+import type { GatsbyNode, PluginOptions } from "gatsby";
 import { createRemoteFileNode } from "gatsby-source-filesystem";
 import { FALLBACK_PLUGIN_OPTIONS, PLUGIN_NAME } from "./constants";
 import fetchAllPokemonList from "./helper_functions/fetch_all_pokemon_list";
@@ -9,17 +9,13 @@ import parsePokemonGeneraByLanguage from "./helper_functions/parse_pokemon_gener
 import parsePokemonNameByLanguage from "./helper_functions/parse_pokemon_name_by_language";
 import validateAndFilterPokemonData from "./helper_functions/validate_and_filter_pokemon_data";
 
-interface ISourcePokeApiPluginOptions extends PluginOptions {
+interface SourcePokeApiPluginOptions extends PluginOptions {
   options: {
     numberOfPokemonToSource: number;
     targetLanguageList: string[];
     targetGameVersion: string;
     enableDebugLogging: boolean;
   };
-}
-
-interface IOnCreatePokedexNode extends Node {
-  artworkUrl: string;
 }
 
 export const onPreInit: GatsbyNode["onPreInit"] = () => {
@@ -37,7 +33,7 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
       targetGameVersion,
       enableDebugLogging,
     } = FALLBACK_PLUGIN_OPTIONS,
-  }: ISourcePokeApiPluginOptions
+  }: SourcePokeApiPluginOptions
 ) => {
   /* ——————————————————————————————————————————————————————————————————————————————
   //      PokeAPI NETWORK REQUESTS                                               
@@ -122,7 +118,6 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
             id: nodeId,
             internal: {
               type: `pokemon`,
-              content: JSON.stringify(pokemonData),
               contentDigest: createContentDigest(pokemonData),
             },
           });
@@ -150,6 +145,8 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
 }) => {
   if (node.internal.type === "pokemon" && node.artworkUrl) {
     const artworkNode = await createRemoteFileNode({
+      // @ts-ignore
+      // ToDo: Fix type issue in  gatsby-source-poke-api
       url: node.artworkUrl,
       parentNodeId: node.id,
       getCache,

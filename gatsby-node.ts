@@ -3,15 +3,11 @@ import type { GatsbyNode } from "gatsby";
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-type markdownQueryResult = {
-  data: {
+type IMarkdownQueryResult = {
+  errors?: any;
+  data?: {
     allMarkdownRemark: {
-      nodes: {
-        id: string;
-        fields: {
-          slug: string;
-        };
-      }[];
+      nodes: { id: string; fields: { slug: string } }[];
     };
   };
 };
@@ -29,7 +25,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   );
 
   // Get all markdown blog posts sorted by date
-  const result: markdownQueryResult = await graphql(
+  const result: IMarkdownQueryResult = await graphql(
     `
       {
         allMarkdownRemark(
@@ -47,6 +43,14 @@ export const createPages: GatsbyNode["createPages"] = async ({
     `
   );
 
+  const distinctCategories: IMarkdownQueryResult = await graphql(`
+    {
+      allMarkdownRemark {
+        distinct(field: frontmatter___categories)
+      }
+    }
+  `);
+
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -55,13 +59,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.nodes;
+  const posts = result?.data?.allMarkdownRemark?.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
+  if (posts && posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId =
@@ -71,6 +75,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
         path: post.fields.slug,
         component: blogPost,
         context: {
+          distinctCategories,
           id: post.id,
           previousPostId,
           nextPostId,
@@ -95,6 +100,20 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
       node,
       value,
     });
+  }
+};
+
+export const onCreatePage: GatsbyNode["onCreatePage"] = async ({
+  page,
+  actions,
+}) => {
+  const { createPage } = actions;
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path.match(/\/projects\/firebase-kanban\/demo/)) {
+    page.matchPath = "/projects/firebase-kanban/demo";
+    // Update the page.
+    createPage(page);
   }
 };
 
@@ -145,7 +164,9 @@ export const onCreateWebpackConfig: GatsbyNode["createSchemaCustomization"] = ({
   actions,
   getConfig,
 }) => {
+  // @ts-ignore
   const config = getConfig();
+  // @ts-ignore
   const miniCssExtractPlugin = config.plugins.find((plugin) => {
     return plugin.constructor.name === "MiniCssExtractPlugin";
   });

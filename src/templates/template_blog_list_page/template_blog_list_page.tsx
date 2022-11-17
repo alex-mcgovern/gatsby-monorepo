@@ -1,25 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Box from "../../components/layout/box/box";
-import Layout from "../../components/layout/layout/layout";
-import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import SectionBlogPostList from "../../components/molecules/blog/section_blog_articles_list/section_blog_articles_list";
-import Pagination from "../../components/molecules/pokedex/pagination/pagination";
+import BlogListLayout from "../../components/organisms/blog_list_page/blog_list_layout";
 
 const PAGINATION_BASE_PATH = "blog";
 
 interface TemplateBlogListPageProps {
   data: {
-    allLanguagesISO: {
-      distinct?: string[];
-    }[];
     allMarkdownRemark: {
-      nodes?: {
-        posts?: {}[];
-      }[];
-    };
-    allPokemon: {
-      nodes?: {}[];
+      nodes?: IMarkdownRemarkBlogPost[];
     };
     site: {
       siteMetadata?: {
@@ -28,9 +16,9 @@ interface TemplateBlogListPageProps {
     };
   };
   pageContext: {
-    currentPage?: number;
-    languageISO?: string;
-    pageCount?: number;
+    allCategories: IBlogCategory[];
+    currentPage: number;
+    pageCount: number;
   };
 }
 
@@ -38,7 +26,7 @@ export default function TemplateBlogListPage({
   data,
   pageContext,
 }: TemplateBlogListPageProps) {
-  const { currentPage, pageCount } = pageContext;
+  const { currentPage, pageCount, allCategories } = pageContext;
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
@@ -47,21 +35,13 @@ export default function TemplateBlogListPage({
   } = data;
 
   return (
-    <Layout title={siteTitle}>
-      <LayoutMaxWidthContainer>
-        <Box as="section" marginY="spacing9">
-          <SectionBlogPostList posts={posts} />
-        </Box>
-
-        {pageCount && pageCount > 1 && (
-          <Pagination
-            basePath={PAGINATION_BASE_PATH}
-            currentPage={currentPage}
-            pageCount={pageCount}
-          />
-        )}
-      </LayoutMaxWidthContainer>
-    </Layout>
+    <BlogListLayout
+      currentPage={currentPage}
+      pageCount={pageCount}
+      posts={posts}
+      siteTitle={siteTitle}
+      allCategories={allCategories}
+    />
   );
 }
 
@@ -87,11 +67,6 @@ export const query = graphql`
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
-          cover {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED)
-            }
-          }
           category
           description
         }

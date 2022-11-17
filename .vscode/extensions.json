@@ -11,6 +11,7 @@
     "zengxingxin.sort-js-object-keys",
     "stylelint.vscode-stylelint",
     "adamwalzer.string-converter",
-    "suming.react-proptypes-generate"
+    "suming.react-proptypes-generate",
+    "lakkannawalikar.css-converter"
   ]
 }

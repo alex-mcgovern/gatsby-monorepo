@@ -1,19 +1,23 @@
 ---
 title: Hello World
-cover: ./pexels-cottonbro-4629634.jpg
-category: "About me"
 isBio: true
 date: "2022-04-01T22:12:03.284Z"
-description:
-  "A little about me, my career to date and some of my interests and hobbies.
-  (Warning, contains nerdiness 🤓)"
+categories: ["Personal"]
+description: "A little intro to me and my way of working."
 ---
 
 # Hi, I'm Alex.
 
-I build enterprise B2B websites for performance and scale. I currently lead a
-team at a hypergrowth fintech where we are scaling a multi-language, 500+ page
-site.
+I'm a **web engineer** and **engineering manager**. I build beautiful, branded
+experiences for performance and scale.
+
+<!-- I love building beautiful, branded experiences for performance and scale. Coming
+from a `design => development` background, my working style is deeply rooted in
+creating the simplest, most performant UX _and_ DevX, and optimizing for that at
+scale. -->
+
+I currently lead a cross-functional team at TrueLayer where we have been scaling
+the multilingual, multi-market brand.
 
 Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove

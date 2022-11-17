@@ -1,0 +1,119 @@
+---
+title: Button
+mdxType: Component
+atomicLevel: Atoms
+categories: ["Interactive"]
+description: "A simple, customisable, and accessible button component."
+---
+
+import { Box } from "../box/box.tsx";
+import { Card } from "../card/card.tsx";
+import { Typography } from "../typography/typography.tsx";
+import { BUTTON_APPEARANCE_VARIANTS_MOCK } from "./__mocks__/button_appearance_variants.mock.ts";
+import { BUTTON_ICON_VARIANTS_MOCK } from "./__mocks__/button_icon_variants.mock.ts";
+import { BUTTON_SIZE_VARIANTS_MOCK } from "./__mocks__/button_size_variants.mock.ts";
+import { Button } from "./button.tsx";
+
+<Button
+  title="Click me friend"
+  size="lg"
+  onClick={() => alert("Hello friend")}
+  customisation={{
+    marginTop: "spacing3",
+  }}
+></Button>
+
+The `Button` includes everything you would expect; handling internal & external
+links as well as onClick handlers.
+
+Customising the button is easy using the `customisation` prop. This exposes a
+large set of CSS properties for quick, inline adaptation without the need to
+create custom CSS classes, or add unnecessary wrapper DOM elements.
+
+**Note:** The current implementation of the `Button` component is tied to
+Gatsby's `Link` routing component. There are plans to decouple this, and allow
+passing in a custom routing component (e.g. Reach Router's `Link`) and add an
+`asChild` prop to dynamically merge button attrs, styles and children onto any
+HTML element.
+
+---
+
+### Usage examples
+
+#### Variants
+
+Variants are configurable via the `variant` prop.
+
+##### Appearance
+
+<Card
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
+    gap: "spacing2",
+    ,
+  }}
+>
+  {BUTTON_APPEARANCE_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_APPEARANCE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+            <Typography
+              as="code"
+              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+            >
+              {mock?.variant?.appearance}
+            </Typography>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
+
+</Card>
+
+##### Size
+
+<Box
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
+    gap: "spacing2",
+    ,
+  }}
+>
+  {BUTTON_SIZE_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_SIZE_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+            <Typography
+              as="code"
+              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+            >
+              {mock?.variant?.size}
+            </Typography>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
+
+</Box>
+
+##### Icon
+
+<Box
+  customisation={{
+    display: "grid",
+    gridTemplateColumns: { mobile: "1x", tablet: "3x" },
+    gap: "spacing2",
+    ,
+  }}
+>
+  {BUTTON_ICON_VARIANTS_MOCK?.length > 0 &&
+    BUTTON_ICON_VARIANTS_MOCK.map((mock) => {
+      return (
+        <Box>
+          <Button {...mock}></Button>
+        </Box>
+      );
+    })}
+</Box>

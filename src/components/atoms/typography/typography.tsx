@@ -1,48 +1,68 @@
 import React from "react";
 import {
-  TFunctionalClassNames,
-  getFunctionalClassNames,
+  GetSprinklesArgs,
+  getSprinkles,
 } from "../../../styles/functional_classnames.css";
+import { TypographyVariants, getTypographyStyle } from "./typography.css";
 
-interface ITypography {
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  children?: React.ReactNode;
-  color?: TFunctionalClassNames["color"];
-  fontSize?: TFunctionalClassNames["fontSize"];
-  fontWeight?: TFunctionalClassNames["fontWeight"];
-  marginBottom?: TFunctionalClassNames["marginBottom"];
-  marginTop?: TFunctionalClassNames["marginTop"];
-  textTransform?: TFunctionalClassNames["textTransform"];
+export interface TypographyCustomisation {
+  display?: GetSprinklesArgs["display"];
+  fontSize?: GetSprinklesArgs["fontSize"];
+  fontWeight?: GetSprinklesArgs["fontWeight"];
+  lineHeight?: GetSprinklesArgs["lineHeight"];
+  marginBottom?: GetSprinklesArgs["marginBottom"];
+  maxWidth?: GetSprinklesArgs["maxWidth"];
+  marginY?: GetSprinklesArgs["marginY"];
+  marginTop?: GetSprinklesArgs["marginTop"];
+  textAlign?: GetSprinklesArgs["textAlign"];
+  textTransform?: GetSprinklesArgs["textTransform"];
+  whiteSpace?: GetSprinklesArgs["whiteSpace"];
 }
 
-export default function Typography({
-  fontWeight,
+export interface TypographyProps {
+  /** BoxNew variant — controls color */
+  variant?: TypographyVariants;
+  /** Polymorphic prop allowing `BoxNew` to return a wide range of HTML Element types. */
+  as?:
+    | "code"
+    | "div"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "label"
+    | "p"
+    | "span";
+  children?: React.ReactNode;
+  /** Customisation exposes utility-first styles as props. */
+  customisation?: TypographyCustomisation;
+  /** Allow additional classnames to be applied for more advanced customisation*/
+  className?: string;
+}
+
+export const BoxNew = ({
   as,
   children,
-  color,
-  fontSize,
-  marginBottom,
-  marginTop,
-  textTransform,
+  customisation,
+  variant,
+  className,
   ...rest
-}: ITypography) {
+}: TypographyProps) => {
   const buttonStyle = [
-    getFunctionalClassNames({
-      color,
-      fontSize,
-      fontWeight,
-      marginBottom,
-      marginTop,
-      textTransform,
+    getTypographyStyle(variant),
+    getSprinkles({
+      ...customisation,
     }),
+    className,
   ];
 
-  // allow polymorphism
-  const Element = as || "span";
+  const Element = as || "div";
 
   return (
     <Element className={buttonStyle.join(" ")} {...rest}>
       {children}
     </Element>
   );
-}
+};

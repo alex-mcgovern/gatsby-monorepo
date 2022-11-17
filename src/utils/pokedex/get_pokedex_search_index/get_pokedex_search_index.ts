@@ -1,6 +1,6 @@
-import { createUrlPathFromArray } from "../../../../utils/create_url_path_from_array";
+import { createUrlPathFromArray } from "../../create_url_from_path_array/create_url_path_from_array";
 
-interface IGetPokedexSearchIndex {
+interface GetPokedexDropdownItemsArgs {
   allPokemon: {
     pokedexID: string;
     name: string;
@@ -8,12 +8,12 @@ interface IGetPokedexSearchIndex {
   languageISO: string;
 }
 
-export default function getPokedexSearchIndex({
+export default function getPokedexDropdownItems({
   allPokemon,
   languageISO,
-}: IGetPokedexSearchIndex) {
+}: GetPokedexDropdownItemsArgs) {
   return allPokemon.map(({ pokedexID, name }) => {
     const link = createUrlPathFromArray([languageISO, "pokemon", pokedexID]);
-    return { value: name, link };
+    return { label: name, value: name, link };
   });
 }

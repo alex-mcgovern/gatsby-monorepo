@@ -1,25 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { ImageDataLike } from "gatsby-plugin-image";
-import { createUrlPathFromArray } from "../../../utils/create_url_path_from_array";
-import ResponsiveGrid from "../../components/atoms/responsive_grid/responsive_grid";
-import Box from "../../components/layout/box/box";
-import Layout from "../../components/layout/layout/layout";
-import LayoutMaxWidthContainer from "../../components/layout/layout_max_width_container/layout_max_width_container";
-import HeaderProject from "../../components/molecules/header/header_project/header_project";
-import ListItemWithImage from "../../components/molecules/list_item/list_item_with_image/list_item_with_image";
-import Pagination from "../../components/molecules/pokedex/pagination/pagination";
-import PokedexNav from "../../components/molecules/pokedex/pokedex_nav/pokedex_nav";
+import { BoxNew } from "../../components/atoms/box_new/box_new";
+import ComboboxSearchable from "../../components/molecules/Dropdown/DropdownSearchable";
+import { ListItem } from "../../components/molecules/list_item/list_item";
+import { Pagination } from "../../components/molecules/pagination/pagination";
+import { createUrlPathFromArray } from "../../utils/create_url_from_path_array/create_url_path_from_array";
 import padStart from "../../utils/helper_functions/pad_start/pad_start";
 import getLanguageSelectIndex from "../../utils/pokedex/get_language_select_index/get_language_select_index";
-import getPokedexSearchIndex from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+import getPokedexDropdownItems from "../../utils/pokedex/get_pokedex_search_index/get_pokedex_search_index";
+
+const SHARED_BASE_PATH = ["projects", "multilingual-pokedex"];
 
 interface TemplatePokemonListPageProps {
   data: {
     allPokemon: {
       nodes: {
         artwork: ImageDataLike;
-        pokedexID: number;
+        pokedexID: string;
         name: string;
       }[];
     };
@@ -49,51 +47,84 @@ export default function TemplatePokemonListPage({
   pageContext,
 }: TemplatePokemonListPageProps) {
   const { languageISO, currentPage, pageCount } = pageContext;
-  const { site } = data;
-
-  const siteTitle = site.siteMetadata?.title || `Title`;
 
   const {
     allPokemon: { nodes: allPokemon },
     allLanguagesISO: { distinct: allLanguagesISO },
   } = data;
 
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
   const doc = data.doc.nodes[0].excerpt;
 
-  const searchIndex = getPokedexSearchIndex({ allPokemon, languageISO });
-  const paginationBasePath = createUrlPathFromArray([languageISO, "pokedex"]);
+  const isEnglish = languageISO === "en";
 
-  const languageIndexBasePath = createUrlPathFromArray([
-    "pokedex",
-    currentPage,
-  ]);
+  const basePagePathArray = [...SHARED_BASE_PATH];
+
+  const dropdownItems = getPokedexDropdownItems({ allPokemon, languageISO });
+
+  if (!isEnglish) {
+    basePagePathArray.push(languageISO);
+  }
+
+  const paginationBasePath = createUrlPathFromArray([...basePagePathArray]);
+
   const languageIndex = getLanguageSelectIndex({
     allLanguagesISO,
-    basePath: languageIndexBasePath,
+    basePathArray: SHARED_BASE_PATH,
+    currentPage,
   });
 
+  const currentLanguageUpperCase = languageISO.toUpperCase();
+
   return (
-    <Layout title={siteTitle}>
-      <LayoutMaxWidthContainer>
-        <HeaderProject doc={doc} />
+    <>
+      <BoxNew marginY="spacing5">
+        <BoxNew as="header">
+          <section
+            dangerouslySetInnerHTML={{ __html: doc }}
+            itemProp="articleBody"
+          />
+          <hr />
+        </BoxNew>
 
-        <PokedexNav
-          searchIndex={searchIndex}
-          languageISO={languageISO}
-          languageIndex={languageIndex}
-          placeholder="Search for a pokemon"
-          isTopLevel
-        />
+        <BoxNew
+          display="flex"
+          marginY="spacing3"
+          justifyContent="space-between"
+        >
+          <ComboboxSearchable
+            items={dropdownItems}
+            isSearchable
+            iconLeading="search"
+            variant={{
+              size: "lg",
+            }}
+            id="pokedex-search"
+            label="Search"
+            placeholder="Search for a Pokemon"
+            buttonTitle={currentLanguageUpperCase}
+          />
 
-        <Box
+          <ComboboxSearchable
+            items={languageIndex}
+            variant={{
+              size: "lg",
+            }}
+            id="language-dropdown"
+            label="Status"
+            buttonTitle={currentLanguageUpperCase}
+          />
+        </BoxNew>
+        <BoxNew
           as="section"
           marginY="spacing3"
           display="grid"
-          gap="spacing3"
+          gap="spacing2"
           gridTemplateColumns={{
-            desktop: "1_1_1_1",
-            tablet: "1_1",
-            mobile: "1",
+            desktop: "4x",
+            tablet: "2x",
+            mobile: "1x",
           }}
         >
           {allPokemon.map((pokemon) => {
@@ -104,13 +135,13 @@ export default function TemplatePokemonListPage({
               padCharacter: "0",
             });
             const link = createUrlPathFromArray([
-              languageISO,
+              ...basePagePathArray,
               "pokemon",
               pokedexID,
             ]);
             const title = `${paddedPokedexId} ${name}`;
             return (
-              <ListItemWithImage
+              <ListItem
                 aspectRatio="square"
                 link={link}
                 title={title}
@@ -118,14 +149,14 @@ export default function TemplatePokemonListPage({
               />
             );
           })}
-        </Box>
-        <Pagination
-          basePath={paginationBasePath}
-          currentPage={currentPage}
-          pageCount={pageCount}
-        />
-      </LayoutMaxWidthContainer>
-    </Layout>
+        </BoxNew>
+      </BoxNew>
+      <Pagination
+        basePath={paginationBasePath}
+        currentPage={currentPage}
+        pageCount={pageCount}
+      />
+    </>
   );
 }
 

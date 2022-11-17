@@ -1,27 +1,14 @@
 import { globalStyle } from "@vanilla-extract/css";
+import "./global/global_button.css";
+import "./global/global_code.css";
+import "./global/global_fieldset.css";
 import "./global/global_headings.css";
-import "./global/paragraph.css";
-import { varsFontSize } from "./vars/vars_font_size.css";
-
-export const rootColors = {
-  light: {
-    bg: `white`,
-    color: `black`,
-  },
-  dark: {
-    bg: `#0B1222`,
-    color: `#CBD5E1`,
-  },
-};
-
-/* ——————————————————————————————————————————————————————————————————————————————
-//      DARK MODE SELECTORS
-// —————————————————————————————————————————————————————————————————————————————— */
-
-globalStyle(`.dark`, {
-  background: rootColors.dark.bg,
-  color: rootColors.dark.color,
-});
+import "./global/global_hr.css";
+import "./global/global_input.css";
+import "./global/global_list_styles.css";
+import "./global/global_paragraph_styles.css";
+import "./global/global_tables.css";
+import { vars } from "./theme.css";
 
 /* ——————————————————————————————————————————————————————————————————————————————
 //      GLOBAL SELECTORS                                                        
@@ -33,20 +20,20 @@ globalStyle(`*`, {
 });
 
 globalStyle(`html`, {
-  background: rootColors.light.bg,
-  color: rootColors.light.color,
-  fontSize: 16,
+  fontSize: vars.fontSize.root,
+  color: vars.color.neutral_fg_2,
+  backgroundColor: vars.color.neutral_bg_2,
 });
 
 globalStyle(`html, body`, {
   height: `100%`,
-  fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  fontFamily: vars.fontFamily.body,
 });
 
 globalStyle(`body`, {
-  lineHeight: 1.4,
-  fontSize: varsFontSize.body_lg,
+  lineHeight: 1.8,
   WebkitFontSmoothing: `antialiased`,
+  width: "100vw",
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————
@@ -57,8 +44,8 @@ globalStyle(`a`, {
   padding: 0,
   margin: 0,
   listStyleType: "none",
-  textDecoration: "none",
-  color: "inherit",
+  // textDecoration: "none",
+  color: vars.color.accent_fg_1,
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————

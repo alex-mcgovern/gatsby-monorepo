@@ -26,39 +26,99 @@ const config: GatsbyConfig = {
     /* ——————————————————————————————————————————————————————————————————————————————
     //      CUSTOM PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
+
+    /* ——————————————————————————————————————————————
+    //      MULTILINGUAL POKEDEX PROJECT DATA SOURCE
+    // —————————————————————————————————————————————— */
+
     {
       resolve: "gatsby-source-pokeapi",
       options: {
         numberOfPokemonToSource: 151,
         targetLanguageList: TARGET_LANGUAGE_LIST,
         targetGameVersion: "x", // "fr", "de", "es" languages not available in earlier versions
-        enableDebugLogging: true,
+        enableDebugLogging: false,
       },
     },
     {
-      resolve: `gatsby-plugin-vanilla-extract`,
-      options: {
-        identifiers: `debug`,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-pokemon-pages",
+      resolve: "gatsby-plugin-create-pokedex",
       options: {
         targetLanguageList: TARGET_LANGUAGE_LIST,
         itemsPerPage: 12,
-        enableDebugLogging: true,
+        enableDebugLogging: false,
+      },
+    },
+
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      DESIGN SYSTEM DOCUMENTATION                                             
+    // —————————————————————————————————————————————————————————————————————————————— */
+
+    /* ——————————————————————————————————————————————
+    //      AUTOGENERATE TYPES & INTERFACE DOCUMENTATION
+    // —————————————————————————————————————————————— */
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `global-types`,
+        path: path.resolve(`src/global.d.ts`),
       },
     },
     {
-      resolve: "gatsby-plugin-create-pages-blog-list",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        itemsPerPage: 12,
+        name: `styles`,
+        path: path.resolve(`src/styles`),
       },
     },
+
+    {
+      resolve: "gatsby-transformer-react-docgen-typescript-v2",
+    },
+
+    /* ——————————————————————————————————————————————
+    //      CREATE DOCUMENTATION PAGES
+    // —————————————————————————————————————————————— */
+
+    `gatsby-plugin-create-design-docs`,
+
+    /* ——————————————————————————————————————————————
+    //      BLOG PAGINATION PAGE CREATION           
+    // —————————————————————————————————————————————— */
+
+    {
+      resolve: "gatsby-plugin-create-blog-pagination",
+      options: {
+        itemsPerPage: 3,
+      },
+    },
+
+    /** —————————————————————————————————————————————————————————————————————————————
+     *      STYLING
+     * ——————————————————————————————————————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-plugin-vanilla-extract`,
+      // options: {
+      //   identifiers: `debug`,
+      // },
+    },
+
+    /** —————————————————————————————————————————————————————————————————————————————
+     *      VENDOR SOFTWARE
+     * ——————————————————————————————————————————————————————————————————————————————— */
+    {
+      resolve: "gatsby-source-hubspot-forms",
+      options: {
+        apiKey: process.env.HUBSPOT_API_KEY,
+      },
+    },
+
     /* ——————————————————————————————————————————————————————————————————————————————
     //      GATSBY PLUGINS                                                          
     // —————————————————————————————————————————————————————————————————————————————— */
+
     `gatsby-plugin-image`,
+
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
@@ -67,20 +127,7 @@ const config: GatsbyConfig = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`content/blog`),
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`content/docs`),
-        name: `docs`,
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -88,12 +135,54 @@ const config: GatsbyConfig = {
         path: path.resolve(`src/images`),
       },
     },
+    /* ——————————————————————————————————————————————
+    //      BLOG POSTS
+    //      .md files processed with `gatsby-transformer-remark`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.resolve(`content/blog`),
+        name: `blog`,
+      },
+    },
+    /* ——————————————————————————————————————————————
+    //      PROJECT DOCUMENTATION                 
+    //      .md files processed with `gatsby-transformer-remark`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.resolve(`content/docs`),
+        name: `docs`,
+      },
+    },
+
+    /* ——————————————————————————————————————————————
+    //      COMPONENT DOCUMENTATION                 
+    //      .mdx files processed with `gatsby-plugin-mdx`,
+    // —————————————————————————————————————————————— */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `documentation`,
+        path: path.resolve(`src/components`),
+      },
+    },
+    `gatsby-plugin-mdx`,
+
+    /* ——————————————————————————————————————————————
+    //      INSTAGRAM GALLERY DATA SOURCE
+    // —————————————————————————————————————————————— */
     {
       resolve: `gatsby-source-instagram-all`,
       options: {
-        access_token: process.env.API_KEY_INSTAGRAM,
+        access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
+    /* ——————————————————————————————————————————————————————————————————————————————
+    //      TRANSFORMER PLUGINS                                                     
+    // —————————————————————————————————————————————————————————————————————————————— */
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -124,60 +213,7 @@ const config: GatsbyConfig = {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
-                return {
-                  ...node.frontmatter,
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                };
-              });
-            },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
-          },
-        ],
-      },
-    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
