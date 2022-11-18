@@ -4,14 +4,12 @@
     "node": true
   },
   "extends": [
-    "airbnb",
-    "airbnb/hooks",
     "airbnb-typescript",
-    "airbnb-typescript/base",
-    "plugin:react-perf/recommended",
-    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:mdx/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:react-perf/recommended",
+    "prettier"
   ],
   "globals": {
     "cy": true,
@@ -32,12 +30,23 @@
       "env": {
         "jest": true
       },
-      "files": [
-        "**/*.spec.js",
-        "**/*.spec.jsx",
-        "**/*.test.js",
-        "**/*.test.jsx"
-      ]
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "rules": {
+        "react-perf/jsx-no-new-array-as-prop": "off",
+        "sonarjs/no-duplicate-string": "off"
+      }
+    },
+    {
+      "files": ["**/*.css.ts"],
+      "rules": {
+        "sonarjs/no-duplicate-string": "off"
+      }
+    },
+    {
+      "files": ["jest.*", "src/templates/*", "src/pages/*", "gatsby-config.ts"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
@@ -48,73 +57,86 @@
     "project": "./tsconfig.json",
     "requireConfigFile": true
   },
-  "plugins": ["react-perf", "sonarjs", "@typescript-eslint"],
+  "plugins": [
+    "react-perf",
+    "sonarjs",
+    "jsdoc",
+    "@typescript-eslint",
+    "unused-imports"
+  ],
   "rules": {
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "disallowTypeAnnotations": true,
+        "prefer": "type-imports"
+      }
+    ],
+
+    "@typescript-eslint/no-unused-vars": "off" /** Disabled in favour of `unused-imports` plugin */,
     "@typescript-eslint/prefer-optional-chain": "warn",
     "arrow-body-style": ["error", "always"],
-    "import/no-cycle": 0,
+    "import/no-cycle": "error",
+    "import/no-default-export": "error",
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "gatsby-node.js",
-          "gatsby-config.js",
-          ".storybook/**",
-          "**/*.stories.*",
-          "**/tests/*.js",
-          "**/*.test.js",
-          "**/*.test.jsx",
-          "cypress/**/*",
-          "tests/global_test_helpers/**/*"
-        ],
+        "devDependencies": ["*.test.ts", "*.test.tsx"],
         "packageDir": "."
       }
     ],
-    "no-console": "warn",
+    "import/prefer-default-export": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "info"]
+      }
+    ],
     "no-underscore-dangle": [
       "error",
       {
         "allow": ["_uid"]
       }
     ],
-    "react-perf/jsx-no-jsx-as-prop": [
-      "warn",
+    "no-unused-vars": "off" /** Disabled in favour of `unused-imports` plugin */,
+    "react-perf/jsx-no-jsx-as-prop": "error",
+    "react-perf/jsx-no-new-array-as-prop": "error",
+    "react-perf/jsx-no-new-function-as-prop": "error",
+    "react-perf/jsx-no-new-object-as-prop": "error",
+    "react/button-has-type": "error",
+    "react/destructuring-assignment": [
+      "error",
+      "always",
       {
-        "nativeAllowList": "all"
+        "destructureInSignature": "always",
+        "ignoreClassFields": true
       }
     ],
-    "react-perf/jsx-no-new-array-as-prop": [
-      "warn",
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
       {
-        "nativeAllowList": "all"
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "vars": "all",
+        "varsIgnorePattern": "^_"
       }
-    ],
-    "react-perf/jsx-no-new-function-as-prop": [
-      "warn",
-      {
-        "nativeAllowList": "all"
-      }
-    ],
-    "react-perf/jsx-no-new-object-as-prop": [
-      "warn",
-      {
-        "nativeAllowList": "all"
-      }
-    ],
-    "react/destructuring-assignment": 0,
-    "react/jsx-props-no-spreading": 0
+    ]
   },
   "settings": {
     "import/resolver": {
       "alias": {
         "map": [
           ["~utils", "./src/utils"],
-          ["~hooks", "./src/hooks"],
-          ["~components", "./src/components"]
+          ["~hooks", "./src/hooks"]
         ]
       },
       "node": {
-        "extensions": [".ts", ".js", ".jsx", ".tsx", ".json"]
+        "extensions": [".ts", ".tsx", ".json"]
       }
     }
   }
