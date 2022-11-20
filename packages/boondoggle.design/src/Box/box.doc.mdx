@@ -30,31 +30,30 @@ the `as` prop allows changing the HTML tag rendered by a component. You can find
 the full list of supported elements in the props table.
 
 <Box
-  customisation={{
-    display: "grid",
-    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
-    gap: "spacing2",
-  }}
+
+    display="grid"
+    gridTemplateColumns={{ mobile: "1x", tablet: "2x", desktop: "3x" }}
+    gap="spacing2"
+
 >
+
   <Box
-    customisation={{
-      ,
-    }}
-  >
+
+>
+
     I am a div
+
   </Box>
   <Box
-    customisation={{
-      ,
-    }}
+
     as="span"
-  >
+
+>
+
     I am a span
+
   </Box>
   <Box
-    customisation={{
-      ,
-    }}
     as="section"
   >
     I am a section

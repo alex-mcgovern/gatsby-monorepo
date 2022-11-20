@@ -1,65 +1,41 @@
 import { style } from "@vanilla-extract/css";
+import { calc } from "@vanilla-extract/css-utils";
+import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
-import { getFocusRingStyles } from "../__css__/recipes/get_focus_ring_styles.css";
 import { darkTheme, vars } from "../__css__/theme.css";
-import { varsTransitionTime } from "../__css__/vars/vars_transition.css";
+import { createAccessibleTransition } from "../styles/css_preprocessing_utils/create_accessible_transition";
+import { SELECTOR_LINK_BUTTON_HOVER_FOCUS } from "../styles/global/css_selector_vars";
 
 export const listItemWrapper = style([
-  {
+  getSprinkles({
+    padding: "spacing2",
     display: "block",
     isolation: "isolate",
     overflow: "hidden",
-
     textDecoration: "none",
+    background: "neutral_secondary_base",
+    border: "neutral_border_interactive",
+    borderRadius: "md",
+  }),
+  focusedStateStyle,
+  createAccessibleTransition({
+    transition: `ease ${vars.transitionDuration.short}`,
+    transitionProperty:
+      "color, background-color, border-color, box-shadow, transform",
+  }),
+  {
     color: "inherit",
 
-    backgroundColor: vars.color.neutral_ui_1,
-
-    border: "1px solid",
-    borderColor: vars.color.neutral_border_2,
-    borderRadius: vars.borderRadius.md,
-
     selectors: {
-      "&:is(&:not([disabled]):hover, &:not([disabled]):focus)": {
-        transition: `background-color ease`,
-        transitionDuration: varsTransitionTime.short,
-        backgroundColor: vars.color.neutral_bg_2,
+      [SELECTOR_LINK_BUTTON_HOVER_FOCUS]: {
+        transform: `translateY(${calc.multiply(vars.spacing.spacing0, -1)})`,
+        borderColor: vars.color.neutral_border_interactiveActive,
+        backgroundColor: vars.color.neutral_secondary_base,
         boxShadow: vars.boxShadow.md,
       },
-      [`${darkTheme} &:is(&:not([disabled]):hover, &:not([disabled]):focus)`]: {
-        backgroundColor: vars.color.neutral_ui_2,
-        boxShadow: vars.boxShadow.md,
+      [`${darkTheme} ${SELECTOR_LINK_BUTTON_HOVER_FOCUS}`]: {
+        backgroundColor: vars.color.neutral_secondary_active,
       },
     },
   },
-  getFocusRingStyles(),
-  getSprinkles({
-    padding: "spacing2",
-  }),
 ]);
-
-export const listItemTitle = style({
-  // selectors: {
-  //   [`${listItemWrapper} &`]: {
-  //     transition: `color ease`,
-  //     transitionDuration: varsTransitionTime.short,
-  //   },
-  //   [`${listItemWrapper}:hover &`]: {
-  //     color: vars.color.accent_fg_1,
-  //   },
-  // },
-});
-
-export const image = style({
-  selectors: {
-    [`${listItemWrapper} &`]: {
-      // transition: "transform 0.2s ease",
-    },
-    [`${listItemWrapper}:hover &`]: {
-      transform: `scale(1.05)`,
-    },
-    [`${listItemWrapper}:focus &`]: {
-      transform: `scale(1.05)`,
-    },
-  },
-});

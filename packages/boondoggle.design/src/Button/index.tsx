@@ -1,110 +1,89 @@
-import type { LegacyRef } from "react";
-import React, { forwardRef } from "react";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
+import React, { createElement, forwardRef } from "react";
+import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
-import { Label } from "../Label";
+import type { IconProps } from "../Icon";
+import { Icon } from "../Icon";
+import type { VariantInteractiveElementSizeEnum } from "../__css__/common/variant_interactive_element_size.css";
 import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
-import { getFocusRingStyles } from "../__css__/recipes/get_focus_ring_styles.css";
-import { resetButton } from "../__css__/resets/reset_button.css";
-import * as styles from "./button.css";
-import type { ButtonVariants } from "./button.css";
+import type { VariantButtonAppearanceEnum } from "./button-appearance.css";
+import type { VariantButtonColorEnum } from "./button-color.css";
+import { getButtonStyles, iconStyle } from "./button.css";
+import { buttonTheme } from "./button.theme.css";
 
-export interface ButtonProps {
-  /** Variant p rop controlling button appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
-  variant?: ButtonVariants;
-  /** Customisation exposes utility-first styles as props. */
-  customisation?: GetSprinklesArgs;
+// <TElement extends ElementType>
+
+export interface ButtonProps
+  extends ComponentPropsWithoutRef<"button">,
+    Omit<GetSprinklesArgs, "color"> {
+  /** Allow polymorphism, compose `Button` as any other element or component. */
+  as?: ElementType;
   /** FontAwesome icon shown on the left side of button. */
-  iconLeading?: IconProp;
+  iconLeading?: IconProps["icon"];
   /** FontAwesome icon shown on the right side of button. */
-  iconTrailing?: IconProp;
-  /** Controls whether to show an animated Fontawesome spinner in the trailing icon slot. Only works with buttons with onClick handlers */
-  isLoading?: boolean;
-  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
-  isLabelVisible?: boolean;
-  /** Label text. (Will also be used as accessible `name` on the input element.) */
-  label?: string;
-  /** Used as the html ID. */
-  id?: string;
-  /** If `true`, the component is disabled. */
-  isDisabled?: boolean;
-  /** Callback on click. */
-  onClick?(...args: unknown[]): unknown;
-  /** The string shown in the button. */
-  title?: string;
-  /** The string URI to link to. Supports relative and absolute URIs. */
-  to?: string;
-  /** Allow overriding html button type attribute. */
-  type?: "submit" | "button";
+  iconTrailing?: IconProps["icon"];
+  /** Title for button, shown in the UI */
+  name?: string;
+  /** HTML button type, defaults to `button`. */
+  type?: "button" | "submit" | "reset";
+  /** Size of the button element */
+  size?: VariantInteractiveElementSizeEnum;
+  /** Color for the button */
+  color?: VariantButtonColorEnum;
+  /** Appearance for the button */
+  appearance?: VariantButtonAppearanceEnum;
 }
 
+/** Renders a button component. Incorporates website-specific Gatsby link logic */
 export const Button = forwardRef(
   (
     {
-      to,
-      title,
-      label,
-      id,
-      customisation,
+      as: element = "button",
+      appearance = "primary",
+      children,
+      className: userClassName,
+      color,
+      disabled,
       iconLeading,
       iconTrailing,
-      isLoading,
-      isLabelVisible,
-      onClick,
-      isDisabled,
-      type,
-      variant,
+      id,
+      size = "md",
+      type = "button",
       ...rest
     }: ButtonProps,
     ref
   ) => {
-    const buttonStyle = clsx([
-      resetButton,
-      styles.getButtonStyle(variant),
-      getFocusRingStyles({}),
-      getSprinkles({
-        ...customisation,
-      }),
-    ]);
+    /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
+    const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
 
-    const trailingIconClassnames = clsx(styles.iconTrailing, {
-      [styles.iconSpin]: isLoading,
-    });
+    const buttonClassNames = clsx(
+      buttonTheme,
+      getButtonStyles({ appearance, color, size }),
+      getSprinkles(atomProps),
+      userClassName
+    );
 
-    return (
-      <>
-        {label && id && (
-          <Label isLabelVisible={isLabelVisible} label={label} id={id} />
-        )}
-        <button
-          className={buttonStyle}
-          disabled={isDisabled}
-          onClick={onClick}
-          // to={to}
-          id={id}
-          type={type}
-          ref={ref as LegacyRef<HTMLButtonElement>}
-          {...rest}
-        >
-          {iconLeading && (
-            <FontAwesomeIcon
-              className={styles.iconLeading}
-              size={variant?.size}
-              icon={iconLeading}
-            />
-          )}
-          {title && <span>{title}</span>}
-          {iconTrailing && (
-            <FontAwesomeIcon
-              className={trailingIconClassnames}
-              size={variant?.size}
-              icon={isLoading ? "spinner" : iconTrailing}
-            />
-          )}
-        </button>
-      </>
+    return createElement(
+      element,
+      /** Props */
+      {
+        ref,
+        disabled,
+        id,
+        className: buttonClassNames,
+        /** Conditionally spread `button` attributes */
+        ...(element === "button" && {
+          disabled,
+          "aria-disabled": disabled,
+          type,
+        }),
+        ...otherProps,
+      },
+      /** Child nodes */
+      iconLeading && <Icon className={iconStyle} icon={iconLeading} />,
+      children,
+      iconTrailing && <Icon className={iconStyle} icon={iconTrailing} />
     );
   }
 );

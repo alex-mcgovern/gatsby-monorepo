@@ -1,4 +1,4 @@
-import { InputProps } from "..";
+import type { InputProps } from "..";
 
 export const INPUT_SIZE_VARIANTS_MOCK: InputProps[] = [
   {

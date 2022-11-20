@@ -1,0 +1,13 @@
+{
+  "name": "@alexmcgovern/utils",
+  "description": "Handy JS utils used across alexmcgovern.com",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/alex-mcgovern/alexmcgovern.com/packages/utils"
+  }
+}

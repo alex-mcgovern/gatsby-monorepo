@@ -13,7 +13,7 @@ globalStyle(`table`, {
   overflow: "hidden",
   boxSizing: "border-box",
   border: "1px solid",
-  borderColor: vars.color.neutral_border_1,
+  borderColor: vars.color.neutral_border_nonInteractive,
   borderSpacing: 0,
   emptyCells: "show",
   marginBottom: vars.spacing.spacing3,
@@ -23,7 +23,7 @@ globalStyle(`table`, {
 });
 
 globalStyle(`thead`, {
-  backgroundColor: vars.color.neutral_ui_1,
+  backgroundColor: vars.color.neutral_secondary_base,
   textAlign: "left",
   verticalAlign: "bottom",
 });
@@ -33,7 +33,7 @@ globalStyle(`tr`, {
 });
 
 globalStyle(`tbody tr:nth-of-type(odd)`, {
-  backgroundColor: vars.color.neutral_bg_2,
+  backgroundColor: vars.color.neutral_background_raised,
 });
 
 globalStyle(`th`, {

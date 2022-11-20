@@ -3,7 +3,11 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import type { IconProps } from "../Icon";
 import { Icon } from "../Icon";
 
-export function Loader({ icon = faSpinner, ...rest }: IconProps) {
+export interface LoaderProps extends Omit<IconProps, "icon"> {
+  icon?: IconProps["icon"];
+}
+
+export function Loader({ icon = faSpinner, ...rest }: LoaderProps) {
   return (
     <Icon
       alignItems="center"
@@ -16,5 +20,3 @@ export function Loader({ icon = faSpinner, ...rest }: IconProps) {
     />
   );
 }
-
-export type LoaderProps = IconProps;

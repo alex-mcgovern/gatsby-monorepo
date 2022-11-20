@@ -11,7 +11,7 @@ interface TagInnerContentProps {
   onClick?(...args: unknown[]): unknown;
 }
 
-export default function TagInnerContent({
+export function TagInnerContent({
   title,
   iconLeading,
   iconTrailing,

@@ -1,5 +1,14 @@
 export const varsLineHeight = {
-  sm: "1",
-  md: "1.2",
-  lg: "1.4",
+  root: "1.5",
+
+  h1: "1",
+  h2: "1",
+  h3: "1",
+  h4: "1",
+  h5: "1",
+  h6: "1",
+
+  body_lg: "1.5",
+  body_md: "1.5",
+  body_sm: "1.5",
 };

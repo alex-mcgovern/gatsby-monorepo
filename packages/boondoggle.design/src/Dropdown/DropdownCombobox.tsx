@@ -3,7 +3,7 @@ import type { BoxProps } from "../Box";
 import { Box } from "../Box";
 import { DownshiftContext } from "./DownshiftContext";
 
-export default function DropdownCombobox({ children, ...rest }: BoxProps) {
+export function DropdownCombobox({ children, ...rest }: BoxProps) {
   const { getComboboxProps } = useContext(DownshiftContext);
 
   return (

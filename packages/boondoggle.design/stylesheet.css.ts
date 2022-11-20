@@ -21,8 +21,8 @@ globalStyle(`*`, {
 
 globalStyle(`html`, {
   fontSize: vars.fontSize.root,
-  color: vars.color.neutral_fg_2,
-  backgroundColor: vars.color.neutral_bg_2,
+  color: vars.color.neutral_text_highContrast,
+  backgroundColor: vars.color.neutral_background_raised,
 });
 
 globalStyle(`html, body`, {
@@ -44,8 +44,7 @@ globalStyle(`a`, {
   padding: 0,
   margin: 0,
   listStyleType: "none",
-  // textDecoration: "none",
-  color: vars.color.accent_fg_1,
+  color: vars.color.accent_text_lowContrast,
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————

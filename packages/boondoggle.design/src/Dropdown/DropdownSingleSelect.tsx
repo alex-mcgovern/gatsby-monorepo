@@ -1,14 +1,16 @@
 import React from "react";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Box } from "../Box";
+import type { ButtonProps } from "../Button";
 import type { ButtonVariants } from "../Button/button.css";
-import { DownshiftSingleSelectProvider } from "./DownshiftContext";
-import DropdownButton from "./DropdownButton";
+import { SingleSelectProvider } from "./DownshiftContext";
+import { DropdownButton } from "./DropdownButton";
 import { DropdownList } from "./DropdownList";
+import type { DropdownItem } from "./types";
 
 export interface DropdownSingleSelectProps {
-  buttonCustomisation?: ButtonCustomisation;
   buttonTitle?: string;
+  buttonProps?: ButtonProps;
   iconLeading?: IconProp;
   iconTrailing?: IconProp;
   id: string;
@@ -20,26 +22,25 @@ export interface DropdownSingleSelectProps {
   label: string;
   onSelect?(...args: unknown[]): unknown;
   placeholder?: string;
-  title: string;
   variant?: ButtonVariants;
 }
 
 export function DropdownSingleSelect({
-  id,
-  isLabelVisible,
+  buttonProps,
   iconLeading,
   iconTrailing,
+  id,
+  initialInputValue,
   isDisabled,
+  isLabelVisible,
   items,
   label,
-  title,
-  buttonCustomisation,
   onSelect,
-  initialInputValue,
+
   variant,
 }: DropdownSingleSelectProps) {
   return (
-    <DownshiftSingleSelectProvider
+    <SingleSelectProvider
       items={items}
       onValueChange={onSelect}
       selectedValue={initialInputValue}
@@ -51,15 +52,13 @@ export function DropdownSingleSelect({
           isLabelVisible={isLabelVisible}
           title={initialInputValue}
           isDisabled={isDisabled}
-          customisation={buttonCustomisation}
           iconLeading={iconLeading}
           iconTrailing={iconTrailing}
           variant={variant}
+          {...buttonProps}
         />
         <DropdownList size={variant?.size} />
       </Box>
-    </DownshiftSingleSelectProvider>
+    </SingleSelectProvider>
   );
 }
-
-export default DropdownSingleSelect;

@@ -10,13 +10,13 @@ export const getDropdownStyles = recipe({
       display: "block",
       width: "100%",
       textDecoration: "none",
-      color: vars.color.accent_fg_2,
+      color: vars.color.accent_text_highContrast,
       whiteSpace: "nowrap",
 
       textAlign: "left",
       selectors: {
         "&:is(&:not([disabled]):hover, &:not([disabled]):focus)": {
-          backgroundColor: vars.color.accent_ui_2,
+          backgroundColor: vars.color.accent_secondary_active,
         },
       },
     },
@@ -35,12 +35,12 @@ export const getDropdownStyles = recipe({
 
 export const isHighlighted = style([
   {
-    backgroundColor: vars.color.accent_ui_2,
+    backgroundColor: vars.color.accent_secondary_active,
   },
 ]);
 export const isSelected = style([
   {
-    backgroundColor: vars.color.accent_ui_3,
+    backgroundColor: vars.color.accent_secondary_selected,
   },
 ]);
 export const resultWrapper = style([resetList]);

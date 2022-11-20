@@ -28,7 +28,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/global.d.ts",
+    "packages/gatsby-site/src/global.d.ts",
     "./src/**/*",
     "./gatsby-node.ts",
     "./gatsby-browser.ts",
@@ -36,6 +36,6 @@
     "./gatsby-config.ts",
     "./plugins/**/*",
     "./packages/**/*",
-    "firebase-kanban"
+    "packages/firebase-kanban"
   ]
 }

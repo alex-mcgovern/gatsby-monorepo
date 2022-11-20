@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Box } from "../Box";
 import { DownshiftContext } from "./DownshiftContext";
 import * as styles from "./DropdownList.css";
-import DropdownListItem from "./DropdownListItem";
+import { DropdownListItem } from "./DropdownListItem";
 import type { DropdownItem } from "./types";
 
 interface DropdownListProps {

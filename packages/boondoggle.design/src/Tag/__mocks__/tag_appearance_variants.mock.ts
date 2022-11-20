@@ -1,4 +1,4 @@
-import { TagProps } from "..";
+import type { TagProps } from "..";
 
 export const BUTTON_APPEARANCE_VARIANTS_MOCK: TagProps[] = [
   // Primary tags

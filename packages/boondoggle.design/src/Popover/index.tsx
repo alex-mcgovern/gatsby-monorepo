@@ -1,21 +1,18 @@
 import React from "react";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import * as RadixPopover from "@radix-ui/react-popover";
 import { Box } from "../Box";
 import { Card } from "../Card";
+import type { IconProps } from "../Icon";
 import { Icon } from "../Icon";
 import * as styles from "./popover.css";
 
-interface IPopover {
+export interface PopoverProps {
   popoverText: string;
-  icon: IconProp;
+  icon?: IconProps["icon"];
 }
 
-export default function Popover({
-  popoverText,
-  icon = faInfoCircle,
-}: IPopover) {
+export function Popover({ popoverText, icon = faInfoCircle }: PopoverProps) {
   return (
     <RadixPopover.Root>
       <RadixPopover.Trigger className={styles.popoverTrigger}>

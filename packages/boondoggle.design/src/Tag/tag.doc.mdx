@@ -7,7 +7,7 @@ description: "A simple, customisable, and accessible tag component."
 ---
 
 import { Box } from "@alexmcgovern/boondoggle.design";
-import { Typography } from "../typography/typography.tsx";
+import { Box } from "../typography/typography.tsx";
 import { BUTTON_APPEARANCE_VARIANTS_MOCK } from "./__mocks__/tag_appearance_variants.mock.ts";
 import { BUTTON_ICON_VARIANTS_MOCK } from "./__mocks__/tag_icon_variants.mock.ts";
 import { BUTTON_SIZE_VARIANTS_MOCK } from "./__mocks__/tag_size_variants.mock.ts";
@@ -17,10 +17,10 @@ import { Tag } from "./tag.tsx";
   title="Click me friend"
   size="lg"
   onClick={() => alert("Hello friend")}
-  customisation={{
-    marginTop: "spacing3",
-  }}
-></Tag>
+
+    marginTop="spacing3"
+
+> </Tag>
 
 The `Tag` includes everything you would expect; handling internal & external
 links as well as onClick handlers.
@@ -45,23 +45,24 @@ Variants are configurable via the `variant` prop.
 ##### Appearance
 
 <Box
-  customisation={{
-    display: "grid",
-    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
-    gap: "spacing2",
-    ,
-  }}
->
-  {BUTTON_APPEARANCE_VARIANTS_MOCK?.length > 0 &&
+
+    display="grid"
+    gridTemplateColumns={{ mobile: "1x", tablet: "2x", desktop: "3x" }}
+    gap="spacing2"
+
+> {BUTTON_APPEARANCE_VARIANTS_MOCK?.length > 0 &&
+
     BUTTON_APPEARANCE_VARIANTS_MOCK.map((mock) => {
       return (
         <Box>
-            <Typography
+            <Box
               as="code"
-              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+              display="block"
+              width="min-content"
+              marginBottom="spacing3"
             >
               {mock?.variant?.appearance}
-            </Typography>
+            </Box>
           <Tag {...mock}></Tag>
         </Box>
       );
@@ -72,23 +73,22 @@ Variants are configurable via the `variant` prop.
 ##### Size
 
 <Box
-  customisation={{
-    display: "grid",
-    gridTemplateColumns: { mobile: "1x", tablet: "2x", desktop: "3x" },
-    gap: "spacing2",
-    ,
-  }}
->
-  {BUTTON_SIZE_VARIANTS_MOCK?.length > 0 &&
+    display="grid"
+    gridTemplateColumns={ mobile: "1x", tablet: "2x", desktop: "3x" }
+    gap="spacing2"
+> {BUTTON_SIZE_VARIANTS_MOCK?.length > 0 &&
+
     BUTTON_SIZE_VARIANTS_MOCK.map((mock) => {
       return (
         <Box>
-            <Typography
+            <Box
               as="code"
-              customisation={{ display: "block", width: "min-content", marginBottom: "spacing3" }}
+              display="block"
+              width="min-content"
+              marginBottom="spacing3"
             >
               {mock?.variant?.size}
-            </Typography>
+            </Box>
           <Tag {...mock}></Tag>
         </Box>
       );
@@ -99,14 +99,11 @@ Variants are configurable via the `variant` prop.
 ##### Icon
 
 <Box
-  customisation={{
-    display: "grid",
-    gridTemplateColumns: { mobile: "1x", tablet: "3x" },
-    gap: "spacing2",
-    ,
-  }}
->
-  {BUTTON_ICON_VARIANTS_MOCK?.length > 0 &&
+    display="grid"
+    gridTemplateColumns={{ mobile: "1x", tablet: "3x" }}
+    gap="spacing2"
+> {BUTTON_ICON_VARIANTS_MOCK?.length > 0 &&
+
     BUTTON_ICON_VARIANTS_MOCK.map((mock) => {
       return (
         <Box>
@@ -114,4 +111,5 @@ Variants are configurable via the `variant` prop.
         </Box>
       );
     })}
+
 </Box>

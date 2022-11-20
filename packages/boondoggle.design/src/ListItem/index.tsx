@@ -1,8 +1,8 @@
+import type { ReactNode } from "react";
 import React from "react";
+import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
 import { Link } from "gatsby";
-import type { ImageDataLike } from "gatsby-plugin-image";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import type { BoxProps } from "../Box";
 import { Box } from "../Box";
 import { Tag } from "../Tag";
@@ -12,50 +12,37 @@ import * as styles from "./list_item.css";
 export interface ListItemProps extends BoxProps {
   aspectRatio?: "square" | "wide" | "tall";
   description?: string;
-  image: ImageDataLike;
   link: string;
   subtitle?: string;
   title: string;
   tags?: string[];
+  leadingNode?: ReactNode;
   /** Callback on click. */
   onClick?(...args: unknown[]): unknown;
 }
 
 export function ListItem({
-  aspectRatio,
   description,
-  image,
   link,
-  onClick,
+  leadingNode,
   subtitle,
   tags,
   title,
   ...rest
 }: ListItemProps) {
-  const imageData = getImage(image);
+  /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
+  const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
 
   const listItemClassNames = clsx(
     styles.listItemWrapper,
     getSprinkles({
-      ...rest,
-    })
-  );
-  const imageClassNames = clsx(
-    styles.image,
-    getSprinkles({
-      aspectRatio,
+      ...atomProps,
     })
   );
 
   return (
-    <Link to={link} className={listItemClassNames}>
-      {imageData && (
-        <GatsbyImage
-          alt={title}
-          image={imageData}
-          imgClassName={imageClassNames}
-        />
-      )}
+    <Link to={link} className={listItemClassNames} {...otherProps}>
+      {leadingNode}
 
       <Box
         display="flex"
@@ -65,25 +52,15 @@ export function ListItem({
       >
         <Box as="header">
           {title && (
-            <Box
-              customisation={{
-                fontSize: "body_md",
-                fontWeight: "medium",
-              }}
-              className={styles.listItemTitle}
-            >
+            <Box fontSize="body_lg" fontWeight="medium">
               {title}
             </Box>
           )}
           {subtitle && (
             <Box
-              variant={{
-                color: "neutral_fg_1",
-              }}
-              customisation={{
-                fontSize: "body_md",
-                fontWeight: "medium",
-              }}
+              color="neutral_text_lowContrast"
+              fontSize="body_sm"
+              fontWeight="medium"
             >
               {subtitle}
             </Box>

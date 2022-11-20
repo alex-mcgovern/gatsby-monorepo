@@ -1,39 +1,39 @@
 import { style } from "@vanilla-extract/css";
 import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { recipe } from "@vanilla-extract/recipes";
+import { focusBaseStyle } from "../__css__/common/focus_ring_styles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import { vars } from "../__css__/theme.css";
+import { createAccessibleTransition } from "../styles/css_preprocessing_utils/create_accessible_transition";
 
 export const getInputWrapperStyles = recipe({
   base: [
-    {
-      border: "1px solid",
-      borderColor: vars.color.neutral_border_2,
-      borderRadius: vars.borderRadius.sm,
-
-      backgroundColor: vars.color.neutral_bg_1,
-
-      color: vars.color.neutral_fg_1,
-      fontWeight: vars.fontWeight.normal,
-      textDecoration: "none",
-
+    getSprinkles({
+      marginBottom: "spacing1",
+      border: "neutral_border_interactive",
+      borderRadius: "md",
+      background: "neutral_background_base",
+      color: "neutral_text_lowContrast",
       display: "flex",
       alignItems: "center",
       width: "100%",
       overflow: "hidden",
-
+    }),
+    {
       selectors: {
-        "&:is(&:not([disabled]):hover, &:not([disabled]):focus, &:not([disabled]):focus-within)":
-          {
-            borderColor: vars.color.accent_border_3,
-          },
+        "&:hover:not([disabled])": {
+          borderColor: vars.color.accent_border_interactiveActive,
+        },
+        "&:is(&:not([disabled]):focus, &:not([disabled]):focus-within)":
+          focusBaseStyle,
         "&[disabled]": {
-          borderColor: vars.color.neutral_border_2,
+          borderColor: vars.color.neutral_border_interactive,
         },
       },
     },
-    getSprinkles({
-      marginBottom: "spacing1",
+    createAccessibleTransition({
+      transition: `ease ${vars.transitionDuration.short}`,
+      transitionProperty: "color, background-color, border-color",
     }),
   ],
 
@@ -66,8 +66,12 @@ export const getInputWrapperStyles = recipe({
 });
 
 export const inputElement = style([
+  getSprinkles({
+    paddingX: "spacing1",
+    width: "100%",
+  }),
   {
-    color: vars.color.neutral_fg_2,
+    color: vars.color.neutral_text_highContrast,
     selectors: {
       "&:focus": {
         border: "none",
@@ -81,20 +85,16 @@ export const inputElement = style([
       },
     },
   },
-  getSprinkles({
-    paddingX: "spacing1",
-    width: "100%",
-  }),
 ]);
 
 export const leadingIcon = style([
-  { color: vars.color.neutral_fg_1 },
+  { color: vars.color.neutral_text_lowContrast },
   getSprinkles({
     marginLeft: "spacing2",
   }),
 ]);
 export const trailingIcon = style([
-  { color: vars.color.neutral_fg_1 },
+  { color: vars.color.neutral_text_lowContrast },
   getSprinkles({
     marginRight: "spacing2",
   }),

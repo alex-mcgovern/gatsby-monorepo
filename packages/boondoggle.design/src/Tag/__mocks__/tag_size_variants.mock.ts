@@ -1,4 +1,4 @@
-import { TagProps } from "..";
+import type { TagProps } from "..";
 
 export const BUTTON_SIZE_VARIANTS_MOCK: TagProps[] = [
   // Large tags

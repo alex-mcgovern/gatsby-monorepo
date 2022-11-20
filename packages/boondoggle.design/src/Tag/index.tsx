@@ -2,13 +2,13 @@ import React from "react";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import clsx from "clsx";
 import { Link } from "gatsby";
+import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
 import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
-import { getFocusRingStyles } from "../__css__/recipes/get_focus_ring_styles.css";
 import { resetButton } from "../__css__/resets/reset_button.css";
 import type { TTagVariants } from "./tag.css";
 import { getTagStyle } from "./tag.css";
-import TagInnerContent from "./tag_inner_content";
+import { TagInnerContent } from "./tag_inner_content";
 
 export interface TagCustomisation {
   display?: GetSprinklesArgs["display"];
@@ -21,8 +21,6 @@ export interface TagCustomisation {
 export interface TagProps {
   /** Variant prop controlling tag appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
   variant?: TTagVariants;
-  /** Customisation exposes utility-first styles as props. */
-  customisation?: TagCustomisation;
   /** FontAwesome icon shown on the left side of tag. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of tag. */
@@ -43,7 +41,6 @@ export function Tag({
   to,
   title,
   id,
-  customisation,
   iconLeading,
   iconTrailing,
   onClick,
@@ -57,9 +54,9 @@ export function Tag({
     resetButton,
     getTagStyle(variant),
     getSprinkles({
-      ...customisation,
+      ...rest,
     }),
-    getFocusRingStyles({}),
+    focusedStateStyle,
   ]);
 
   if (!isDisabled && to && isInternalLink) {

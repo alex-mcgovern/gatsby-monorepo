@@ -3,7 +3,7 @@ import type { ButtonProps } from "../Button";
 import { Button } from "../Button";
 import { DownshiftContext } from "./DownshiftContext";
 
-export default function DropdownButton(props: ButtonProps) {
+export function DropdownButton(props: ButtonProps) {
   const { toggleMenu, getToggleButtonProps } = useContext(DownshiftContext);
 
   return <Button {...props} onClick={toggleMenu} {...getToggleButtonProps()} />;

@@ -1,7 +1,7 @@
+import { createPathFromSegmentArray } from "@alexmcgovern/utils";
 import type { GatsbyNode } from "gatsby";
 import path from "path";
 import slugify from "slugify";
-import { createUrlPathFromArray } from "../../src/utils/create_url_from_path_array/create_url_path_from_array";
 
 const { PLUGIN_NAME } = require("./constants");
 
@@ -45,7 +45,7 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
       const atomicLevelSlug = slugify(atomicLevel, { lower: true });
       const titleSlug = slugify(title, { lower: true });
 
-      const linkSlug = createUrlPathFromArray([
+      const linkSlug = createPathFromSegmentArray([
         "projects",
         "boondoggle-design-system",
         "components",

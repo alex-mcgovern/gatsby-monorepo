@@ -22,14 +22,11 @@ to dynamically merge button attrs, styles and children onto any HTML element.
 ## Variants
 
 <Box
-  customisation={{
-    display: "grid",
-    gridTemplateColumns: { mobile: "1x", tablet: "3x" },
-    gap: "spacing2",
-    ,
-  }}
->
-  {INPUT_SIZE_VARIANTS_MOCK?.length > 0 &&
+    display="grid"
+    gridTemplateColumns={ mobile: "1x", tablet: "3x" }
+    gap="spacing2"
+> {INPUT_SIZE_VARIANTS_MOCK?.length > 0 &&
+
     INPUT_SIZE_VARIANTS_MOCK.map((mock) => {
       return (
         <Box>
@@ -37,4 +34,5 @@ to dynamically merge button attrs, styles and children onto any HTML element.
         </Box>
       );
     })}
+
 </Box>

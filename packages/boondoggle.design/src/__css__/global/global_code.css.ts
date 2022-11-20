@@ -2,7 +2,7 @@ import { globalStyle } from "@vanilla-extract/css";
 import { vars } from "../theme.css";
 
 globalStyle(`code`, {
-  background: vars.color.neutral_ui_2,
-  color: vars.color.neutral_fg_2,
+  background: vars.color.neutral_secondary_active,
+  color: vars.color.neutral_text_highContrast,
   fontWeight: vars.fontWeight.normal,
 });

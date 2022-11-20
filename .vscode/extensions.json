@@ -12,6 +12,7 @@
     "stylelint.vscode-stylelint",
     "adamwalzer.string-converter",
     "suming.react-proptypes-generate",
-    "lakkannawalikar.css-converter"
+    "lakkannawalikar.css-converter",
+    "ChakrounAnas.turbo-console-log"
   ]
 }

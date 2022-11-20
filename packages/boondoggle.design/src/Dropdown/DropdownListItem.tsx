@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { resetButton } from "../__css__/resets/reset_button.css";
 import { DownshiftContext } from "./DownshiftContext";
 import * as styles from "./DropdownListItem.css";
-import { DropdownItem } from "./types";
+import type { DropdownItem } from "./types";
 
 interface DropdownListItemProps {
   selectItem(...args: unknown[]): unknown;
@@ -16,11 +16,7 @@ interface DropdownListItemProps {
   selectedItem?: DropdownItem | null;
 }
 
-export default function DropdownListItem({
-  item,
-  size,
-  index,
-}: DropdownListItemProps) {
+export function DropdownListItem({ item, size, index }: DropdownListItemProps) {
   const dropdownStyles = styles.getDropdownStyles({
     size,
   });

@@ -20,14 +20,14 @@ export const dropdownWrapper = style([
 
     border: "1px solid",
     borderRadius: vars.borderRadius.sm,
-    color: vars.color.accent_fg_2,
-    backgroundColor: vars.color.neutral_bg_1,
+    color: vars.color.accent_text_highContrast,
+    backgroundColor: vars.color.neutral_background_base,
     boxShadow: vars.boxShadow.lg,
-    borderColor: vars.color.neutral_border_2,
+    borderColor: vars.color.neutral_border_interactive,
 
     selectors: {
       "&:is(&:not([disabled]):hover, &:not([disabled]):focus)": {
-        borderColor: vars.color.neutral_border_2,
+        borderColor: vars.color.neutral_border_interactive,
       },
 
       "&:empty": {

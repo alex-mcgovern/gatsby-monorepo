@@ -1,5 +1,5 @@
 /** ————————————————————————————————————————————————————————————————————————————
- *      REACT COMPONENTS
+ * REACT COMPONENTS
  * ——————————————————————————————————————————————————————————————————————————————— */
 
 export { Box } from "./src/Box";
@@ -11,6 +11,17 @@ export type { ButtonProps } from "./src/Button";
 export { Card } from "./src/Card";
 export type { CardProps } from "./src/Card";
 
+export type { DropdownItem } from "./src/Dropdown/types";
+
+export { DropdownSingleSelect } from "./src/Dropdown/DropdownSingleSelect";
+export type { DropdownSingleSelectProps } from "./src/Dropdown/DropdownSingleSelect";
+
+export { SingleSelect } from "./src/DropdownNew/SingleSelect";
+export type { SingleSelectProps } from "./src/DropdownNew/SingleSelect";
+
+export { DropdownSearchable } from "./src/Dropdown/DropdownSearchable";
+export type { DropdownSearchableProps } from "./src/Dropdown/DropdownSearchable";
+
 export { Input } from "./src/Input";
 export type { InputProps } from "./src/Input";
 
@@ -20,21 +31,22 @@ export type { IconProps } from "./src/Icon";
 export { Label } from "./src/Label";
 export type { LabelProps } from "./src/Label";
 
-export { Tag } from "./src/Tag";
-export type { TagProps } from "./src/Tag";
-
 export { ListItem } from "./src/ListItem";
 export type { ListItemProps } from "./src/ListItem";
 
 export { Loader } from "./src/Loader";
 export type { LoaderProps } from "./src/Loader";
 
-export { DropdownSingleSelect } from "./src/Dropdown/DropdownSingleSelect";
-export type { DropdownSingleSelectProps } from "./src/Dropdown/DropdownSingleSelect";
-export type { DropdownItem } from "./src/Dropdown/types";
+export { Tag } from "./src/Tag";
+export type { TagProps } from "./src/Tag";
+
+export { ThemeContext, ThemeProvider } from "./src/ThemeContext";
+
+export { Popover } from "./src/Popover";
+export type { PopoverProps } from "./src/Popover";
 
 /** ————————————————————————————————————————————————————————————————————————————
- *      STYLES
+ * STYLES
  * ——————————————————————————————————————————————————————————————————————————————— */
 
 export { getSprinkles } from "./src/__css__/getSprinkles.css";

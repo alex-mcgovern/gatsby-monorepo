@@ -3,7 +3,7 @@
     "scope": "javascript,typescript",
     "prefix": "JS Fn",
     "body": [
-      "export default function functionName({ argument }) {",
+      "export function functionName({ argument }) {",
       "\treturn argument;",
       "}"
     ]
@@ -43,10 +43,8 @@
     "scope": "javascript,typescript",
     "prefix": "Jest",
     "body": [
-      "describe(\"Test suite title\", () => {",
-      "  test(\"Unit test description\", () => {",
-      "",
-      "  });",
+      "test(\"XXXXX\", () => {",
+      "  expect(YYYYYY).toBe(ZZZZZ)",
       "});",
       ""
     ]

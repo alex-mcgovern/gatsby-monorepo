@@ -1,10 +1,10 @@
 import React from "react";
 import type { InputProps } from "../Input";
 import { DownshiftSearchableSelectProvider } from "./DownshiftContext";
-import DropdownCombobox from "./DropdownCombobox";
-import DropdownInput from "./DropdownInput";
+import { DropdownCombobox } from "./DropdownCombobox";
+import { DropdownInput } from "./DropdownInput";
 import { DropdownList } from "./DropdownList";
-import { DropdownItem } from "./types";
+import type { DropdownItem } from "./types";
 
 export interface DropdownSearchableProps extends InputProps {
   isSearchable?: boolean;
@@ -23,13 +23,13 @@ export function DropdownSearchable({
   isDisabled,
   items,
   label,
-  customisation,
   onSelect,
   placeholder,
   initialInputValue,
   variant,
   type,
   name,
+  ...rest
 }: DropdownSearchableProps) {
   return (
     <DownshiftSearchableSelectProvider
@@ -50,8 +50,8 @@ export function DropdownSearchable({
           iconLeading={iconLeading}
           iconTrailing={iconTrailing}
           label={label}
-          customisation={customisation}
           isLabelVisible={isLabelVisible}
+          {...rest}
         />
 
         <DropdownList size={variant?.size} />
@@ -59,5 +59,3 @@ export function DropdownSearchable({
     </DownshiftSearchableSelectProvider>
   );
 }
-
-export default DropdownSearchable;

@@ -1,25 +1,30 @@
 // Notes: https://making.close.com/posts/highlights-from-a-complex-downshift-js-refactor/
 import React from "react";
 import { useSelect } from "downshift";
-import useComboboxWithCreate from "./hooks/use_combobox_with_create";
+import { useComboboxWithCreate } from "./hooks/useComboboxWithCreate";
 
 export const DownshiftContext = React.createContext({});
 
-export function DownshiftSingleSelectProvider({
+export function SingleSelectProvider({
   items,
   selectedValue,
   onValueChange,
   children,
 }) {
   // cast selectedValue to its relevant item
-  const selectedItem = items.find((item) => {return item.value === selectedValue});
+  const selectedItem = items.find((item) => {
+    return item.value === selectedValue;
+  });
 
   // fire callback
-  const handleSelectedItemsChange = (state) =>
-    {return onValueChange(state.selectedItem.value)};
+  const handleSelectedItemsChange = (state) => {
+    return onValueChange(state.selectedItem.value);
+  };
 
   // convenience function for knowing whether an item is selected
-  const isItemSelected = (item) => {return selectedItem?.value === item.value};
+  const isItemSelected = (item) => {
+    return selectedItem?.value === item.value;
+  };
 
   const {
     toggleMenu,

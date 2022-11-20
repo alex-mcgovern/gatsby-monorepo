@@ -1,5 +1,6 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
 import { vars } from "./theme.css";
+import { varsBorder } from "./vars/vars_border.css";
 import { varsDisplay } from "./vars/vars_display.css";
 
 const properties = defineProperties({
@@ -8,12 +9,16 @@ const properties = defineProperties({
     aspectRatio: vars.aspectRatio,
     boxShadow: vars.boxShadow,
     display: varsDisplay,
+    background: vars.color,
+    color: vars.color,
+    borderRadius: vars.borderRadius,
+    border: varsBorder,
     flexDirection: ["row", "column", "row-reverse", "column-reverse"],
     flexWrap: ["wrap", "nowrap"],
-    fontSize: vars.fontSize,
+    flexShrink: ["0"],
     fontWeight: vars.fontWeight,
+    isolation: ["isolate"],
     gap: vars.spacing,
-    height: vars.spacing,
     justifyContent: [
       "stretch",
       "start",
@@ -22,7 +27,6 @@ const properties = defineProperties({
       "space-around",
       "space-between",
     ],
-    lineHeight: vars.lineHeight,
     margin: vars.spacing,
     padding: vars.spacing,
     marginBottom: vars.spacing,
@@ -31,6 +35,7 @@ const properties = defineProperties({
     marginTop: vars.spacing,
     maxHeight: vars.spacing,
     maxWidth: vars.width,
+    minWidth: { ...vars.width, ...vars.spacing },
     minHeight: ["100vh", "75vh"],
     overflow: ["hidden"],
     overflowY: ["auto"],
@@ -65,9 +70,15 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: "mobile",
   properties: {
+    fontSize: vars.fontSize,
+    lineHeight: vars.lineHeight,
     gridTemplateColumns: vars.gridTemplateColumns,
     gridTemplateRows: vars.gridTemplateColumns,
     width: { ...vars.width, ...vars.spacing },
+    height: vars.spacing,
+  },
+  shorthands: {
+    fontStyle: ["fontSize", "lineHeight"],
   },
 });
 
