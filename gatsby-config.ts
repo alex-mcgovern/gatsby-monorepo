@@ -21,16 +21,16 @@ const config: GatsbyConfig = {
   },
   plugins: [
     /* ——————————————————————————————————————————————————————————————————————————————
-    //      CUSTOM PLUGINS                                                          
-    // —————————————————————————————————————————————————————————————————————————————— */
+     * CUSTOM PLUGINS
+     * —————————————————————————————————————————————————————————————————————————————— */
 
     /* ——————————————————————————————————————————————————————————————————————————————
-    //      DESIGN SYSTEM DOCUMENTATION                                             
-    // —————————————————————————————————————————————————————————————————————————————— */
+     * DESIGN SYSTEM DOCUMENTATION
+     * —————————————————————————————————————————————————————————————————————————————— */
 
     /* ——————————————————————————————————————————————
-    //      AUTOGENERATE TYPES & INTERFACE DOCUMENTATION
-    // —————————————————————————————————————————————— */
+     * AUTOGENERATE TYPES & INTERFACE DOCUMENTATION
+     * —————————————————————————————————————————————— */
 
     // {
     //   resolve: `gatsby-source-filesystem`,
@@ -52,8 +52,8 @@ const config: GatsbyConfig = {
     // },
 
     /* ——————————————————————————————————————————————
-    //      CREATE DOCUMENTATION PAGES
-    // —————————————————————————————————————————————— */
+     * CREATE DOCUMENTATION PAGES
+     * —————————————————————————————————————————————— */
 
     // `gatsby-plugin-create-design-docs`,
 
@@ -78,8 +78,8 @@ const config: GatsbyConfig = {
     // },
 
     /* ——————————————————————————————————————————————————————————————————————————————
-    //      GATSBY PLUGINS                                                          
-    // —————————————————————————————————————————————————————————————————————————————— */
+     * GATSBY PLUGINS
+     * —————————————————————————————————————————————————————————————————————————————— */
 
     `gatsby-plugin-image`,
 
@@ -92,9 +92,9 @@ const config: GatsbyConfig = {
     },
 
     /* ——————————————————————————————————————————————
-    //      PROJECT DOCUMENTATION                 
-    //      .md files processed with `gatsby-transformer-remark`,
-    // —————————————————————————————————————————————— */
+     * PROJECT DOCUMENTATION
+     * .md files processed with `gatsby-transformer-remark`,
+     * —————————————————————————————————————————————— */
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -104,9 +104,9 @@ const config: GatsbyConfig = {
     },
 
     /* ——————————————————————————————————————————————
-    //      COMPONENT DOCUMENTATION                 
-    //      .mdx files processed with `gatsby-plugin-mdx`,
-    // —————————————————————————————————————————————— */
+     * COMPONENT DOCUMENTATION
+     * .mdx files processed with `gatsby-plugin-mdx`,
+     * —————————————————————————————————————————————— */
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
@@ -117,8 +117,8 @@ const config: GatsbyConfig = {
     // `gatsby-plugin-mdx`,
 
     /* ——————————————————————————————————————————————————————————————————————————————
-    //      TRANSFORMER PLUGINS                                                     
-    // —————————————————————————————————————————————————————————————————————————————— */
+     * TRANSFORMER PLUGINS
+     * —————————————————————————————————————————————————————————————————————————————— */
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
