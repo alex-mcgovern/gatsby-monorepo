@@ -101,7 +101,7 @@ export function MetricGraphCard({
       <path
         className="CircularProgressbar-trail"
         d={PATH_DESCRIPTION}
-        STROKE_WIDTH={STROKE_WIDTH}
+        strokeWidth={STROKE_WIDTH}
         fillOpacity={0}
         style={{
           stroke: vars.color.semantic_red_lowContrast,
@@ -111,14 +111,14 @@ export function MetricGraphCard({
       <path
         className="CircularProgressbar-green"
         d={PATH_DESCRIPTION}
-        STROKE_WIDTH={STROKE_WIDTH}
+        strokeWidth={STROKE_WIDTH}
         fillOpacity={0}
         style={lowContrastYellowPathAttrs}
       />
       <path
         className="CircularProgressbar-green"
         d={PATH_DESCRIPTION}
-        STROKE_WIDTH={STROKE_WIDTH}
+        strokeWidth={STROKE_WIDTH}
         fillOpacity={0}
         style={lowContrastGreenPathAttrs}
       />
@@ -126,7 +126,7 @@ export function MetricGraphCard({
       <path
         className="CircularProgressbar-path"
         d={PATH_DESCRIPTION}
-        STROKE_WIDTH={STROKE_WIDTH}
+        strokeWidth={STROKE_WIDTH}
         fillOpacity={0}
         style={progressStyle}
       />
