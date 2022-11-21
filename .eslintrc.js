@@ -103,7 +103,8 @@ module.exports = {
     "react/require-default-props": "off",
 
     /**
-     * Rules aimed at improving code readability and style consistency.
+     * Enforce "type imports", ensuring transpilers *absolutely* do not
+     * import or include types in runtime JS.
      */
 
     "@typescript-eslint/consistent-type-imports": [
@@ -113,6 +114,10 @@ module.exports = {
         prefer: "type-imports",
       },
     ],
+
+    /**
+     * Rules aimed at improving code readability and style consistency.
+     */
     "@typescript-eslint/prefer-optional-chain": "error",
     "arrow-body-style": ["error", "always"],
     "react/destructuring-assignment": [
