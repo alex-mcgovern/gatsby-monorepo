@@ -2,7 +2,8 @@
   "search.exclude": {
     "**/package-lock.json": true,
     "**/node_modules": true,
-    "**/.cache": true
+    "**/.cache": true,
+    "**/*.snap": true
   },
   "commentBox.styles": {
     "h1": {
