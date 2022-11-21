@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, ListItem, SingleSelect } from "@alexmcgovern/boondoggle.design";
+import { Box, ListItem, SelectSingle } from "@alexmcgovern/boondoggle.design";
+import { Pagination } from "@alexmcgovern/gatsby-shared";
 import { createPathFromSegmentArray, padStart } from "@alexmcgovern/utils";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { graphql } from "gatsby";
 import type { ImageDataLike } from "gatsby-plugin-image";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Pagination } from "../../components/molecules/pagination/pagination";
 import { getLanguageSelectIndex } from "../utils/getLanguageSelectIndex";
 import { getPokedexDropdownItems } from "../utils/getPokedexDropdownItems";
 
@@ -88,7 +88,7 @@ export default function TemplatePokemonListPage({
         </Box>
 
         <Box display="flex" marginY="spacing3" justifyContent="space-between">
-          <SingleSelect
+          <SelectSingle
             items={dropdownItems}
             isSearchable
             iconLeading={faSearch}
@@ -101,7 +101,7 @@ export default function TemplatePokemonListPage({
             buttonTitle={currentLanguageUpperCase}
           />
 
-          <SingleSelect
+          <SelectSingle
             items={languageIndex}
             variant={{
               size: "lg",

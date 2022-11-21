@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  getSprinkles,
-} from "@alexmcgovern/boondoggle.design";
+import { Box, Button, getSprinkles } from "@alexmcgovern/boondoggle.design";
 import { Pagination } from "@alexmcgovern/gatsby-shared";
 import { createPathFromSegmentArray } from "@alexmcgovern/utils";
 import { faArrowLeft, faGrip } from "@fortawesome/free-solid-svg-icons";
@@ -55,11 +51,6 @@ export default function TemplatePokemonPage({
 
   const { totalCount } = allPokemon || {};
 
-  console.debug("debug ~ data pageContext", {
-    data,
-    pageContext,
-  });
-
   const { languageISO, pokedexID } = pageContext || {};
 
   const {
@@ -81,7 +72,7 @@ export default function TemplatePokemonPage({
           iconTrailing={faGrip}
         />
 
-        {/* <SingleSelect
+        {/* <SelectSingle
           items={dropdownItems}
           isSearchable
           iconLeading={faSearch}
@@ -91,7 +82,7 @@ export default function TemplatePokemonPage({
           buttonTitle={currentLanguageUpperCase}
         />
 
-        <SingleSelect
+        <SelectSingle
           items={languageIndex}
           variant={{
             appearance: "secondary",

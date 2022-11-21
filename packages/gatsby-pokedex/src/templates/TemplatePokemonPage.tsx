@@ -2,16 +2,16 @@ import React from "react";
 import {
   Box,
   Button,
-  SingleSelect,
+  SelectSingle,
   getSprinkles,
 } from "@alexmcgovern/boondoggle.design";
+import { Pagination } from "@alexmcgovern/gatsby-shared";
 import { createPathFromSegmentArray, padStart } from "@alexmcgovern/utils";
 import {
   faArrowLeft,
   faGrip,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { Pagination } from "alexmcgovern.com/src/components/molecules/pagination/pagination";
 import { Link, graphql } from "gatsby";
 import type { ImageDataLike } from "gatsby-plugin-image";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -130,7 +130,7 @@ export default function TemplatePokemonPage({
           iconTrailing={faGrip}
         />
 
-        <SingleSelect
+        <SelectSingle
           items={dropdownItems}
           isSearchable
           iconLeading={faSearch}
@@ -140,7 +140,7 @@ export default function TemplatePokemonPage({
           buttonTitle={currentLanguageUpperCase}
         />
 
-        <SingleSelect
+        <SelectSingle
           items={languageIndex}
           variant={{
             appearance: "secondary",
