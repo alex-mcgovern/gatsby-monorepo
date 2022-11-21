@@ -25,8 +25,8 @@ export const onPreInit: GatsbyNode["onPreInit"] = () => {
 };
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      ADD HUMAN FRIENDLY SLUG TO .DOC MDX NODES
-// —————————————————————————————————————————————————————————————————————————————— */
+ * ADD HUMAN FRIENDLY SLUG TO .DOC MDX NODES
+ *  —————————————————————————————————————————————————————————————————————————————— */
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
   actions: { createNodeField },
@@ -59,8 +59,8 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
 };
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      CREATE DESIGN SYSTEM DOCS PAGES                                         
-// —————————————————————————————————————————————————————————————————————————————— */
+ * CREATE DESIGN SYSTEM DOCS PAGES
+ * —————————————————————————————————————————————————————————————————————————————— */
 
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,
