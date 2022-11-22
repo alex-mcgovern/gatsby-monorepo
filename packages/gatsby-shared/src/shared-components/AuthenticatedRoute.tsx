@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import type { ElementType } from "react";
+import React, { useContext, useMemo } from "react";
 import { Box, Button, Loader } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
+import { Link } from "gatsby";
+
+interface AuthenticatedRouteProps {
+  component: ElementType;
+  returnTo: string;
+}
 
 export function AuthenticatedRoute({
   component: Component,
-  location,
+  returnTo,
   ...rest
-}) {
+}: AuthenticatedRouteProps) {
   const { user, firebaseAuthLoading } = useContext(FirebaseContext);
   const isLoggedIn = !!user;
+
+  const linkState = useMemo(() => {
+    return { returnTo };
+  }, [returnTo]);
 
   if (isLoggedIn) {
     return <Component {...rest} />;
@@ -23,17 +34,12 @@ export function AuthenticatedRoute({
       <Box as="h1">You need to be signed in</Box>
 
       <Box as="p">
-        <b>Note:</b> You must have an account in order to use the demo.
+        <b>Note:</b> You must have an account in order to access this resource.
       </Box>
 
-      <Box display="flex" gap="spacing1">
-        <Button
-          appearance="secondary"
-          title={isLoggedIn ? "Go to demo" : "Log in"}
-          to={isLoggedIn ? "/projects/firebase-kanban/demo" : "/login"}
-        />
-        <Button appearance="primary" title="Read blog post" to="/blog" />
-      </Box>
+      <Button as={Link} to="/login" state={linkState}>
+        Log in
+      </Button>
     </Box>
   );
 }

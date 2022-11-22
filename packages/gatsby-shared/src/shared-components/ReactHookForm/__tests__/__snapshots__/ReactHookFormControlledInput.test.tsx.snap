@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given required props, matches snapshot 1`] = `
+<input
+  class="InputBase_getInputWrapperStyles__5mrrr91 InputBase__5mrrr90 get_sprinkles_paddingTop_spacing2_mobile__1reh6ztg get_sprinkles_paddingBottom_spacing2_mobile__1reh6znp get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_width_100%_mobile__1reh6z107 focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 InputBase_getInputWrapperStyles_size_md__5mrrr93 variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc"
+  data-testid="tested-component"
+  id="input"
+  name="Test input"
+  value=""
+/>
+`;

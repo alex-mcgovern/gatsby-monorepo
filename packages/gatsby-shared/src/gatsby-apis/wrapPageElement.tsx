@@ -5,7 +5,7 @@ import React from "react";
 import "@alexmcgovern/boondoggle.design/stylesheet.css";
 import "@fontsource/dm-sans";
 import "prismjs/themes/prism.css";
-import { Layout } from "./Layout";
+import { Layout } from "../shared-components/Layout";
 
 interface IWrapPageElement {
   element: React.ReactNode;

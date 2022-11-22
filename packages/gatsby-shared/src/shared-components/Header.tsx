@@ -6,7 +6,7 @@ import type {
 import {
   Box,
   Button,
-  SingleSelect,
+  SelectSingle,
   ThemeContext,
 } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
@@ -42,11 +42,11 @@ export function Header() {
   // const { allProjects }: IProjectsQueryResult = useStaticQuery(
   //   graphql`
   //     query {
-  //       allProjects: allSitePage(filter: { path: { glob: "/projects/*" } }) {
-  //         nodes {
-  //           path
-  //         }
-  //       }
+  //  allProjects: allSitePage(filter: { path: { glob: "/projects/*" } }) {
+  //    nodes {
+  //      path
+  //    }
+  //  }
   //     }
   //   `
   // );
@@ -93,7 +93,7 @@ export function Header() {
 
         {/** Projects dropdown */}
         {projectsDropdownItems && (
-          <SingleSelect
+          <SelectSingle
             initialInputValue="Projects"
             id="projects-dropdown"
             items={projectsDropdownItems}
