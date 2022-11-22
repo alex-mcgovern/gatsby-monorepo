@@ -1,3 +1,4 @@
+import { siteMetadata } from "@alexmcgovern/gatsby-shared";
 import dotenv from "dotenv";
 import type { GatsbyConfig } from "gatsby";
 import path from "path";
@@ -7,6 +8,7 @@ dotenv.config({
 });
 
 const config: GatsbyConfig = {
+  siteMetadata,
   plugins: [
     {
       resolve: "gatsby-transformer-remark",
@@ -72,18 +74,6 @@ const config: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
   ],
-  siteMetadata: {
-    author: {
-      name: "Alex McGovern",
-      summary: "who lives and works in London building beautiful things.",
-    },
-    description: "Personal website.",
-    siteUrl: "https://gatsbystarterblogsource.gatsbyjs.io/",
-    social: {
-      twitter: "@lex_mcgovern",
-    },
-    title: "Alex McGovern",
-  },
 };
 
 export default config;

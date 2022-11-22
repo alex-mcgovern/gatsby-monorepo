@@ -33,11 +33,11 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
     Object.keys(parsedTSExports).map((exportKey) => {
       const currentExport = parsedTSExports[exportKey];
 
-      /* ——————————————————————————————————————————————————————————————————————————————
+      /* -----------------------------------------------------------------------------—
        * FUNCTIONS
        * defined in @structured-types/api/packages/api/src/types.ts
        * see https://www.npmjs.com/package/@structured-types/api#docsoptions
-       * ——————————————————————————————————————————————————————————————————————————————— */
+       * ------------------------------------------------------------------------------- */
       if (currentExport.kind === 11) {
         if (
           currentExport &&
@@ -58,11 +58,11 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
           });
         }
       }
-      /* ——————————————————————————————————————————————————————————————————————————————
+      /* -----------------------------------------------------------------------------—
        * INTERFACES
        * defined in @structured-types/api/packages/api/src/types.ts
        * see https://www.npmjs.com/package/@structured-types/api#docsoptions
-       * ——————————————————————————————————————————————————————————————————————————————— */
+       * ------------------------------------------------------------------------------- */
       if (currentExport.kind === 14) {
         if (
           currentExport &&

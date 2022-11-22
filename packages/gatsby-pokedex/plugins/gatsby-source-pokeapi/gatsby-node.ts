@@ -35,9 +35,9 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
     } = FALLBACK_PLUGIN_OPTIONS,
   }: SourcePokeApiPluginOptions
 ) => {
-  /* ——————————————————————————————————————————————————————————————————————————————
+  /* -----------------------------------------------------------------------------—
    * POKEAPI NETWORK REQUESTS
-   * —————————————————————————————————————————————————————————————————————————————— */
+   * -----------------------------------------------------------------------------— */
   // Get a initial list of pokemon with name & URL to detailed pokedex info
   // Use this endpoint: https://pokeapi.co/api/v2/pokemon-species/
   const basicPokeAPIPokedexList = await fetchAllPokemonList({
@@ -60,9 +60,6 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async (
     }
 
     if (detailedPokeAPIPokedexList) {
-      /* —————————————————————————————————————————————————————————————————————————
-       * REDUCE AND TRANSFORM RESPONSE FOR GATSBY NODE
-       * ————————————————————————————————————————————————————————————————————————— */
       // Pick out only the keys we need for our graphql data-layer:
       // ID (Pokedex ID), name, genus, flavor text, language and artwork URL.
 

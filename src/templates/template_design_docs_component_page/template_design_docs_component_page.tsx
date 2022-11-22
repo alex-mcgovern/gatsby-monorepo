@@ -60,9 +60,9 @@ TemplateDesignDocsComponentPageProps) {
   return (
     <Box marginY="spacing5">
       <Box as="section" marginY="spacing4">
-        {/** ————————————————————————————————————————————————————————————————————————————
+        {/** -----------------------------------------------------------------------------
          * COMPONENT PAGE HEADER
-         * ——————————————————————————————————————————————————————————————————————————————— */}
+         * ------------------------------------------------------------------------------- */}
         <Box as="header">
           <Button
             id="back-button"
@@ -85,9 +85,9 @@ TemplateDesignDocsComponentPageProps) {
         </Box>
         <hr />
 
-        {/** ————————————————————————————————————————————————————————————————————————————
+        {/** -----------------------------------------------------------------------------
          * COMPONENT PAGE BODY
-         * ——————————————————————————————————————————————————————————————————————————————— */}
+         * ------------------------------------------------------------------------------- */}
 
         {/* Render props table which is auto generated from typings by `gatsby-transformer-react-docgen-typescript-v2`  */}
         <DocumentationParametersTable parameters={parameters} />

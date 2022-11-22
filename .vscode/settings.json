@@ -7,64 +7,56 @@
   },
   "commentBox.styles": {
     "h1": {
-      "bottomEdgeToken": "—",
+      "bottomEdgeToken": "-",
       "bottomLeftToken": "* ",
       "boxWidth": 80,
-      "commentEndToken": "— */",
+      "capitalize": false,
+      "commentEndToken": "- */",
       "commentStartToken": "/** ",
       "leftEdgeToken": "* ",
       "rightEdgeToken": "",
       "textAlignment": "left",
-      "topEdgeToken": "—",
-      "topRightToken": "—"
+      "topEdgeToken": "-",
+      "topRightToken": "-"
     },
     "h1_JSX": {
-      "bottomEdgeToken": "—",
+      "bottomEdgeToken": "-",
       "bottomLeftToken": "* ",
       "boxWidth": 80,
-      "commentEndToken": "— */}",
+      "capitalize": false,
+      "commentEndToken": "- */}",
       "commentStartToken": "{/** ",
       "leftEdgeToken": "* ",
       "rightEdgeToken": "",
       "textAlignment": "left",
-      "topEdgeToken": "—",
-      "topRightToken": "—"
+      "topEdgeToken": "-",
+      "topRightToken": "-"
     },
     "h2": {
-      "bottomEdgeToken": "—",
+      "bottomEdgeToken": "-",
       "bottomLeftToken": "* ",
       "boxWidth": 48,
-      "commentEndToken": "— */",
+      "capitalize": false,
+      "commentEndToken": "- */",
       "commentStartToken": "/** ",
       "leftEdgeToken": "* ",
       "rightEdgeToken": "",
       "textAlignment": "left",
-      "topEdgeToken": "—",
-      "topRightToken": "—"
+      "topEdgeToken": "-",
+      "topRightToken": "-"
     },
     "h2_JSX": {
-      "bottomEdgeToken": "—",
+      "bottomEdgeToken": "-",
       "bottomLeftToken": "* ",
       "boxWidth": 48,
-      "commentEndToken": "— */}",
+      "capitalize": false,
+      "commentEndToken": "- */}",
       "commentStartToken": "{/** ",
       "leftEdgeToken": "* ",
       "rightEdgeToken": "",
       "textAlignment": "left",
-      "topEdgeToken": "—",
-      "topRightToken": "—"
-    },
-    "h3_JSX": {
-      "bottomEdgeToken": "—",
-      "bottomLeftToken": "* ",
-      "boxWidth": 24,
-      "commentEndToken": "— */}",
-      "commentStartToken": "{/** ",
-      "leftEdgeToken": "* ",
-      "rightEdgeToken": "",
-      "textAlignment": "left",
-      "topEdgeToken": "—",
-      "topRightToken": "—"
+      "topEdgeToken": "-",
+      "topRightToken": "-"
     }
   },
   "cSpell.language": "en-GB",

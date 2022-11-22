@@ -59,9 +59,9 @@ export const createPages: GatsbyNode["createPages"] = async (
     if (enableDebugLogging)
       console.info("pokemonListLength", pokemonListLength);
 
-    /** —————————————————————————————————————————————————————————————————————————————
+    /** -----------------------------------------------------------------------------
      * CREATE POKEDEX LIST PAGINATION
-     * ——————————————————————————————————————————————————————————————————————————————— */
+     * ------------------------------------------------------------------------------- */
     targetLanguageList.map(async (languageISO) => {
       const languageNames = new Intl.DisplayNames([languageISO], {
         type: "language",

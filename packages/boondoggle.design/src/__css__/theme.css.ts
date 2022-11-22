@@ -29,10 +29,10 @@ import { varsSpacing } from "./vars/vars_spacing.css";
 import { varsTransitionTime } from "./vars/vars_transition.css";
 import { varsWidth } from "./vars/vars_width.css";
 
-/** —————————————————————————————————————————————————————————————————————————————
+/** -----------------------------------------------------------------------------
  * GLOBAL VARIABLES
  * These are declared as css vars at the `root:` level, in scope of the `html` element
- * ——————————————————————————————————————————————————————————————————————————————— */
+ * ------------------------------------------------------------------------------- */
 
 export const root = createGlobalTheme(":root", {
   aspectRatio: varsAspectRatio,
@@ -52,9 +52,9 @@ export const root = createGlobalTheme(":root", {
   width: varsWidth,
 });
 
-/** —————————————————————————————————————————————————————————————————————————————
+/** -----------------------------------------------------------------------------
  * THEME CONFIG
- * ——————————————————————————————————————————————————————————————————————————————— */
+ * ------------------------------------------------------------------------------- */
 
 export const accentPaletteDark = plumDark;
 export const accentPaletteLight = plum;

@@ -40,11 +40,11 @@ export const createPages: GatsbyNode["createPages"] = async (
   const { allPostsCount, groupedByCategory } =
     query.data?.allMarkdownRemark || {};
 
-  /* ——————————————————————————————————————————————————————————————————————————————
+  /* -----------------------------------------------------------------------------—
    * CREATE "ALL POSTS" PAGINATION
    *
    * Create a series of pages for all blog posts, without any filtering applied.
-   * —————————————————————————————————————————————————————————————————————————————— */
+   * -----------------------------------------------------------------------------— */
   if (!allPostsCount) return;
 
   const allPostsPageCount = Math.ceil(allPostsCount / itemsPerPage);
@@ -76,11 +76,11 @@ export const createPages: GatsbyNode["createPages"] = async (
     });
   });
 
-  /* ——————————————————————————————————————————————————————————————————————————————
+  /* -----------------------------------------------------------------------------—
    * CREATE "CATEGORIES" PAGINATION
    *
    * Create series of pages for each blog category
-   * —————————————————————————————————————————————————————————————————————————————— */
+   * -----------------------------------------------------------------------------— */
 
   if (!Array.isArray(groupedByCategory)) return;
 
