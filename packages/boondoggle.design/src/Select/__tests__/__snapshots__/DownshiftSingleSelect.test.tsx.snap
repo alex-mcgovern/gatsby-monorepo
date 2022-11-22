@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders without error 1`] = `
+<div
+  class="get_sprinkles_position_relative__1reh6z97"
+  data-testid="tested-component"
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-labelledby="downshift-0-label downshift-0-toggle-button"
+    class="ButtonBase.theme__createTheme__140hr5k0 ButtonBase_getButtonStyles__xgx7an1 focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 ButtonBase__xgx7an0 get_sprinkles_borderRadius_sm__1reh6z1j get_sprinkles_display_flex_mobile__1reh6zcd get_sprinkles_gap_spacing0__1reh6z4g get_sprinkles_alignItems_center__1reh6zz ButtonBase_getButtonStyles_appearance_select__xgx7an4 ButtonAppearance_variantButtonAppearance_select__1074psh6 ButtonAppearance__1074psh2 get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_paddingTop_spacing1_mobile__1reh6zta get_sprinkles_paddingBottom_spacing1_mobile__1reh6znj get_sprinkles_whiteSpace_nowrap__1reh6z9d ButtonBase_getButtonStyles_size_md__xgx7and variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc ButtonBase_getButtonStyles_colorDark__xgx7ana ButtonColor_variantButtonColorDark__1ts0amr3 get_sprinkles_justifyContent_space-between__1reh6z5m"
+    data-testid="test-dropdown"
+    id="test-dropdown"
+    name="test-dropdown"
+    type="button"
+  >
+    foo
+    <svg
+      aria-hidden="true"
+      class="svg-inline--fa fa-angle-down ButtonBase__xgx7ank get_sprinkles_flexShrink_0__1reh6z2q get_sprinkles_display_block_mobile__1reh6zcg get_sprinkles_width_auto_mobile__1reh6z10p get_sprinkles_minWidth_spacing2__1reh6z7v"
+      data-icon="angle-down"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+  <div
+    aria-labelledby="downshift-0-label"
+    class="DownshiftMenu_dropdownListWrapper__stbbpv1 focus_ring_styles_focusRingStyles__xbo52k0 DownshiftMenu__stbbpv0 get_sprinkles_marginTop_spacing1_mobile__1reh6zlm get_sprinkles_marginBottom_none_mobile__1reh6zcy get_sprinkles_marginLeft_none_mobile__1reh6zhm get_sprinkles_marginRight_none_mobile__1reh6zjj get_sprinkles_width_max-content_mobile__1reh6z10v get_sprinkles_minWidth_100%__1reh6z8d get_sprinkles_display_block_mobile__1reh6zcg get_sprinkles_borderRadius_sm__1reh6z1j get_sprinkles_overflow_hidden__1reh6z8x get_sprinkles_background_background_1__1reh6z16g get_sprinkles_boxShadowLight__1reh6z1r get_sprinkles_border_dividerColorLight__1reh6z17 get_sprinkles_overflowY_auto__1reh6z8z DownshiftMenu_dropdownWrapperClosed__stbbpv4"
+    id="downshift-0-menu"
+    role="listbox"
+    tabindex="-1"
+  >
+    <span
+      aria-selected="false"
+      class="DownshiftListItem_getDropdownStyles__ia0dkx1 DownshiftListItem__ia0dkx0 get_sprinkles_marginTop_none_mobile__1reh6zlg get_sprinkles_marginBottom_none_mobile__1reh6zcy get_sprinkles_marginLeft_none_mobile__1reh6zhm get_sprinkles_marginRight_none_mobile__1reh6zjj get_sprinkles_paddingTop_spacing2_mobile__1reh6ztg get_sprinkles_paddingBottom_spacing2_mobile__1reh6znp get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_display_flex_mobile__1reh6zcd get_sprinkles_alignItems_center__1reh6zz get_sprinkles_textDecoration_none__1reh6z17l get_sprinkles_width_100%_mobile__1reh6z107 get_sprinkles_textAlign_left_mobile__1reh6z13s get_sprinkles_color_text_highContrast__1reh6zi get_sprinkles_whiteSpace_nowrap__1reh6z9d focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 DownshiftListItem_getDropdownStyles_size_md__ia0dkx3 variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc"
+      id="downshift-0-item-0"
+      role="option"
+    >
+      foo
+    </span>
+    <span
+      aria-selected="false"
+      class="DownshiftListItem_getDropdownStyles__ia0dkx1 DownshiftListItem__ia0dkx0 get_sprinkles_marginTop_none_mobile__1reh6zlg get_sprinkles_marginBottom_none_mobile__1reh6zcy get_sprinkles_marginLeft_none_mobile__1reh6zhm get_sprinkles_marginRight_none_mobile__1reh6zjj get_sprinkles_paddingTop_spacing2_mobile__1reh6ztg get_sprinkles_paddingBottom_spacing2_mobile__1reh6znp get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_display_flex_mobile__1reh6zcd get_sprinkles_alignItems_center__1reh6zz get_sprinkles_textDecoration_none__1reh6z17l get_sprinkles_width_100%_mobile__1reh6z107 get_sprinkles_textAlign_left_mobile__1reh6z13s get_sprinkles_color_text_highContrast__1reh6zi get_sprinkles_whiteSpace_nowrap__1reh6z9d focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 DownshiftListItem_getDropdownStyles_size_md__ia0dkx3 variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc"
+      id="downshift-0-item-1"
+      role="option"
+    >
+      bar
+    </span>
+    <span
+      aria-selected="false"
+      class="DownshiftListItem_getDropdownStyles__ia0dkx1 DownshiftListItem__ia0dkx0 get_sprinkles_marginTop_none_mobile__1reh6zlg get_sprinkles_marginBottom_none_mobile__1reh6zcy get_sprinkles_marginLeft_none_mobile__1reh6zhm get_sprinkles_marginRight_none_mobile__1reh6zjj get_sprinkles_paddingTop_spacing2_mobile__1reh6ztg get_sprinkles_paddingBottom_spacing2_mobile__1reh6znp get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_display_flex_mobile__1reh6zcd get_sprinkles_alignItems_center__1reh6zz get_sprinkles_textDecoration_none__1reh6z17l get_sprinkles_width_100%_mobile__1reh6z107 get_sprinkles_textAlign_left_mobile__1reh6z13s get_sprinkles_color_text_highContrast__1reh6zi get_sprinkles_whiteSpace_nowrap__1reh6z9d focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 DownshiftListItem_getDropdownStyles_size_md__ia0dkx3 variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc"
+      id="downshift-0-item-2"
+      role="option"
+    >
+      bob
+    </span>
+    <span
+      aria-selected="false"
+      class="DownshiftListItem_getDropdownStyles__ia0dkx1 DownshiftListItem__ia0dkx0 get_sprinkles_marginTop_none_mobile__1reh6zlg get_sprinkles_marginBottom_none_mobile__1reh6zcy get_sprinkles_marginLeft_none_mobile__1reh6zhm get_sprinkles_marginRight_none_mobile__1reh6zjj get_sprinkles_paddingTop_spacing2_mobile__1reh6ztg get_sprinkles_paddingBottom_spacing2_mobile__1reh6znp get_sprinkles_paddingLeft_spacing2_mobile__1reh6zpm get_sprinkles_paddingRight_spacing2_mobile__1reh6zrj get_sprinkles_display_flex_mobile__1reh6zcd get_sprinkles_alignItems_center__1reh6zz get_sprinkles_textDecoration_none__1reh6z17l get_sprinkles_width_100%_mobile__1reh6z107 get_sprinkles_textAlign_left_mobile__1reh6z13s get_sprinkles_color_text_highContrast__1reh6zi get_sprinkles_whiteSpace_nowrap__1reh6z9d focus_ring_styles_focusRingStyles__xbo52k0 disabled_state_styles_disabledStateStyles__uj6nll0 DownshiftListItem_getDropdownStyles_size_md__ia0dkx3 variant_interactive_element_size_variantInteractiveElementSize_md__1dzyhqw9 variant_interactive_element_size__1dzyhqw1 get_sprinkles_fontSize_body_lg_mobile__1reh6zfg get_sprinkles_fontSize_body_sm_desktop__1reh6zfo get_sprinkles_lineHeight_body_lg_mobile__1reh6zgs get_sprinkles_lineHeight_body_sm_desktop__1reh6zh0 get_sprinkles_height_spacing6_mobile__1reh6zbd get_sprinkles_height_spacing5_desktop__1reh6zbc"
+      id="downshift-0-item-3"
+      role="option"
+    >
+      alice
+    </span>
+  </div>
+</div>
+`;

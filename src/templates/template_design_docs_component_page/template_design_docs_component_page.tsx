@@ -1,9 +1,9 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { Box, Button } from "@alexmcgovern/boondoggle.design";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { BoxNew } from "../../components/atoms/box_new/box_new";
-import { Button } from "../../components/atoms/button/button";
-import { DocumentationParametersTable } from "../../components/molecules/documentation_parameters_table/documentation_parameters_table";
+import { DocumentationParametersTable } from "../../components/documentation_parameters_table/documentation_parameters_table";
 
 interface TemplateDesignDocsComponentPageProps {
   data: {
@@ -58,133 +58,127 @@ TemplateDesignDocsComponentPageProps) {
   const siteTitle = site.siteMetadata.title || `Title`;
 
   return (
-    <>
-      <BoxNew marginY="spacing5">
-        <BoxNew as="section" marginY="spacing4">
-          {/** ————————————————————————————————————————————————————————————————————————————
-           *      COMPONENT PAGE HEADER
-           * ——————————————————————————————————————————————————————————————————————————————— */}
-          <BoxNew as="header">
-            <Button
-              id="back-button"
-              variant={{
-                appearance: "tertiary",
-                size: "sm",
-              }}
-              iconLeading="arrow-left"
-              title="Back to Boondoggle"
-              to={"/projects/boondoggle-design-system"}
-            />
-            <BoxNew as="h1">{title}</BoxNew>
-            <BoxNew
-              as="h2"
-              customisation={{
-                fontSize: "body_lg",
-                fontWeight: "normal",
-                marginTop: "spacing3",
-              }}
-            >
-              {description}
-            </BoxNew>
-          </BoxNew>
-          <hr />
+    <Box marginY="spacing5">
+      <Box as="section" marginY="spacing4">
+        {/** -----------------------------------------------------------------------------
+         * COMPONENT PAGE HEADER
+         * ------------------------------------------------------------------------------- */}
+        <Box as="header">
+          <Button
+            id="back-button"
+            appearance="uiLink"
+            iconLeading={faArrowLeft}
+            as={Link}
+            to="/projects/boondoggle-design-system"
+          >
+            All components
+          </Button>
+          <Box as="h1">{title}</Box>
+          <Box
+            as="h2"
+            fontSize="body_lg"
+            fontWeight="normal"
+            marginTop="spacing3"
+          >
+            {description}
+          </Box>
+        </Box>
+        <hr />
 
-          {/** ————————————————————————————————————————————————————————————————————————————
-           *      COMPONENT PAGE BODY
-           * ——————————————————————————————————————————————————————————————————————————————— */}
+        {/** -----------------------------------------------------------------------------
+         * COMPONENT PAGE BODY
+         * ------------------------------------------------------------------------------- */}
 
-          {/* Render props table which is auto generated from typings by `gatsby-transformer-react-docgen-typescript-v2`  */}
-          <DocumentationParametersTable parameters={parameters} />
+        {/* Render props table which is auto generated from typings by `gatsby-transformer-react-docgen-typescript-v2`  */}
+        <DocumentationParametersTable parameters={parameters} />
 
-          {/* Render MDX content from local `*.doc.mdx` */}
-          <MDXRenderer>{body}</MDXRenderer>
-        </BoxNew>
-      </BoxNew>
-    </>
+        {/* Render MDX content from local `*.doc.mdx` */}
+        <MDXRenderer>{body}</MDXRenderer>
+      </Box>
+    </Box>
   );
 }
+// $mdxId: String
+// $componentTitle: String
 
 export const query = graphql`
-  query TemplateDesignDocsComponentPageQuery(
-    $mdxId: String
-    $componentTitle: String
-  ) {
+  query TemplateDesignDocsComponentPageQuery {
     site {
       siteMetadata {
         title
       }
     }
 
-    componentMetadata: tsFunction(name: { eq: $componentTitle }) {
-      name
-      parameters {
-        type
-        kind
-        properties {
-          name
-          description
-          kind
-          type
-          optional
-          properties {
-            # value
-            kind
-            type
-            name
-            properties {
-              # value
-              kind
-              type
-              name
-            }
-          }
-        }
-      }
-    }
+    # componentMetadata: tsFunction(name: { eq: $componentTitle }) {
+    #   name
+    #   parameters {
+    #     type
+    #     kind
+    #     properties {
+    #       name
+    #       description
+    #       kind
+    #       type
+    #       optional
+    #       properties {
+    #         # value
+    #         kind
+    #         type
+    #         name
+    #         properties {
+    #           # value
+    #           kind
+    #           type
+    #           name
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
 
-    allComponents: allMdx(
-      sort: { fields: frontmatter___atomicLevel, order: ASC }
-      filter: { frontmatter: { mdxType: { eq: "Component" } } }
-    ) {
-      totalCount
-      nodes {
-        fields {
-          linkSlug
-        }
-        frontmatter {
-          title
-        }
-      }
-    }
-    currentComponent: allMdx(filter: { id: { eq: $mdxId } }) {
-      edges {
-        next {
-          fields {
-            linkSlug
-          }
-          frontmatter {
-            title
-          }
-        }
-        previous {
-          fields {
-            linkSlug
-          }
-          frontmatter {
-            title
-          }
-        }
-        node {
-          body
-          frontmatter {
-            description
-            title
-          }
-          fields {
-            linkSlug
-          }
-        }
-      }
-    }
+    # allComponents: allMdx(
+    #   sort: { fields: frontmatter___atomicLevel, order: ASC }
+    #   filter: { frontmatter: { mdxType: { eq: "Component" } } }
+    # ) {
+    #   totalCount
+    #   nodes {
+    #     fields {
+    #       linkSlug
+    #     }
+    #     frontmatter {
+    #       title
+    #     }
+    #   }
+    # }
+    # currentComponent: allMdx(filter: { id: { eq: $mdxId } }) {
+    #   edges {
+    #     next {
+    #       fields {
+    #         linkSlug
+    #       }
+    #       frontmatter {
+    #         title
+    #       }
+    #     }
+    #     previous {
+    #       fields {
+    #         linkSlug
+    #       }
+    #       frontmatter {
+    #         title
+    #       }
+    #     }
+    #     node {
+    #       body
+    #       frontmatter {
+    #         description
+    #         title
+    #       }
+    #       fields {
+    #         linkSlug
+    #       }
+    #     }
+    #   }
+    # }
   }
 `;

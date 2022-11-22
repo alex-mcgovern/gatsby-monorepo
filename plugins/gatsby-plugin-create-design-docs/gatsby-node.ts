@@ -1,7 +1,7 @@
+import { createPathFromSegmentArray } from "@alexmcgovern/utils";
 import type { GatsbyNode } from "gatsby";
 import path from "path";
 import slugify from "slugify";
-import { createUrlPathFromArray } from "../../src/utils/create_url_from_path_array/create_url_path_from_array";
 
 const { PLUGIN_NAME } = require("./constants");
 
@@ -24,9 +24,9 @@ export const onPreInit: GatsbyNode["onPreInit"] = () => {
   console.info(`${PLUGIN_NAME} plugin initializing`);
 };
 
-/* ——————————————————————————————————————————————————————————————————————————————
-//      ADD HUMAN FRIENDLY SLUG TO .DOC MDX NODES
-// —————————————————————————————————————————————————————————————————————————————— */
+/* -----------------------------------------------------------------------------—
+ * ADD HUMAN FRIENDLY SLUG TO .DOC MDX NODES
+ *  -----------------------------------------------------------------------------— */
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
   actions: { createNodeField },
@@ -45,7 +45,7 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
       const atomicLevelSlug = slugify(atomicLevel, { lower: true });
       const titleSlug = slugify(title, { lower: true });
 
-      const linkSlug = createUrlPathFromArray([
+      const linkSlug = createPathFromSegmentArray([
         "projects",
         "boondoggle-design-system",
         "components",
@@ -58,9 +58,9 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({
   }
 };
 
-/* ——————————————————————————————————————————————————————————————————————————————
-//      CREATE DESIGN SYSTEM DOCS PAGES                                         
-// —————————————————————————————————————————————————————————————————————————————— */
+/* -----------------------------------------------------------------------------—
+ * CREATE DESIGN SYSTEM DOCS PAGES
+ * -----------------------------------------------------------------------------— */
 
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,

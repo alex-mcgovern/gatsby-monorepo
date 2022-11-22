@@ -1,0 +1,21 @@
+{
+  "name": "@alexmcgovern/gatsby-shared",
+  "description": "Shared components for alexmcgovern.com Gatsby project",
+  "version": "0.1.0",
+  "dependencies": {
+    "@alexmcgovern/boondoggle.design": "*",
+    "@alexmcgovern/firebase": "*",
+    "@alexmcgovern/utils": "*",
+    "@alexmcgovern/web-vitals-widget": "*",
+    "@fontsource/dm-sans": "^4.5.9",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "gatsby": "^5.0.1",
+    "react": "^18.0.0",
+    "react-hook-form": "^7.39.4"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/alex-mcgovern/alexmcgovern.com/packages/shared"
+  }
+}

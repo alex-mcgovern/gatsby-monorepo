@@ -3,9 +3,7 @@
   "proseWrap": "always",
   "overrides": [
     {
-      "files": [
-        "index_loadable.js"
-      ],
+      "files": ["index_loadable.js"],
       "options": {
         "printWidth": 200
       }

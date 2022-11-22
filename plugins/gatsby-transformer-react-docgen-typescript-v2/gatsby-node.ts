@@ -1,5 +1,5 @@
 import { parseFiles } from "@structured-types/api";
-import { GatsbyNode, Node, SourceNodesArgs } from "gatsby";
+import type { GatsbyNode, Node, SourceNodesArgs } from "gatsby";
 import glob from "glob";
 import { PLUGIN_NAME } from "./constants";
 
@@ -33,11 +33,11 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
     Object.keys(parsedTSExports).map((exportKey) => {
       const currentExport = parsedTSExports[exportKey];
 
-      /* ——————————————————————————————————————————————————————————————————————————————
-       *      FUNCTIONS
-       *      defined in @structured-types/api/packages/api/src/types.ts
-       *      see https://www.npmjs.com/package/@structured-types/api#docsoptions
-       * ——————————————————————————————————————————————————————————————————————————————— */
+      /* -----------------------------------------------------------------------------—
+       * FUNCTIONS
+       * defined in @structured-types/api/packages/api/src/types.ts
+       * see https://www.npmjs.com/package/@structured-types/api#docsoptions
+       * ------------------------------------------------------------------------------- */
       if (currentExport.kind === 11) {
         if (
           currentExport &&
@@ -58,11 +58,11 @@ export const sourceNodes: GatsbyNode["sourceNodes"] = async ({
           });
         }
       }
-      /* ——————————————————————————————————————————————————————————————————————————————
-       *      INTERFACES
-       *      defined in @structured-types/api/packages/api/src/types.ts
-       *      see https://www.npmjs.com/package/@structured-types/api#docsoptions
-       * ——————————————————————————————————————————————————————————————————————————————— */
+      /* -----------------------------------------------------------------------------—
+       * INTERFACES
+       * defined in @structured-types/api/packages/api/src/types.ts
+       * see https://www.npmjs.com/package/@structured-types/api#docsoptions
+       * ------------------------------------------------------------------------------- */
       if (currentExport.kind === 14) {
         if (
           currentExport &&
