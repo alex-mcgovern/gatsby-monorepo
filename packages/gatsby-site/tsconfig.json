@@ -3,5 +3,10 @@
   "compilerOptions": {
     // "outDir": "./lib"
   },
-  "include": ["./src", "pages/index.tsx", "../../src/projects"]
+  "include": [
+    "./src",
+    "pages/index.tsx",
+    "../../src/projects",
+    "../gatsby-kanban/src/pages/dropdown-test.tsx"
+  ]
 }

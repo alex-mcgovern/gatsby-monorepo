@@ -1,7 +1,7 @@
 import React from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import { Box, ListItem } from "@alexmcgovern/boondoggle.design";
-import { Pagination } from "@alexmcgovern/gatsby-shared/src/Pagination";
+import { Pagination } from "@alexmcgovern/gatsby-shared/src/shared-components/Pagination";
 import { BlogCategoriesList } from "./BlogCategoryTags";
 
 const PAGINATION_BASE_PATH = "blog";
