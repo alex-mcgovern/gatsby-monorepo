@@ -1,13 +1,13 @@
 import React, { useCallback, useRef } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
-import { Box } from "@alexmcgovern/boondoggle.design";
+import { Box, Loader } from "@alexmcgovern/boondoggle.design";
 import { checkArrayHasLength } from "@alexmcgovern/utils";
 import { updateDoc } from "firebase/firestore";
 import { useDrop } from "react-dnd";
 import { KanbanListItem } from "./KanbanListItem";
 
 interface KanbanStatusColumnProps {
-  tasksInEpicGroupedByStatus: {
+  tasksInColumn: {
     [key: string]: {}[];
   };
   uniqueStatuses?: {}[];
@@ -19,7 +19,7 @@ interface KanbanStatusColumnProps {
 }
 
 export function KanbanColumn({
-  tasksInEpicGroupedByStatus,
+  tasksInColumn,
   uniqueStatuses,
   isLoading,
   statusKey,
@@ -37,10 +37,6 @@ export function KanbanColumn({
     }
   }, []);
 
-  if (isLoading) {
-    return <Box>Is loading</Box>;
-  }
-
   const ref = useRef(null);
   const [, drop] = useDrop({
     accept: "kanbanCard",
@@ -49,36 +45,49 @@ export function KanbanColumn({
       // alert("new status");
     },
   });
+
   drop(ref);
 
-  return (
-    <Box key={statusKey} ref={ref}>
-      <Box
-        color="neutral_fg_1"
-        fontSize="body_md"
-        textTransform="uppercase"
-        fontWeight="medium"
-        marginBottom="spacing3"
-      >
-        {statusKey}
-      </Box>
+  if (isLoading) {
+    return <Loader size="3x" width="100%" />;
+  }
 
-      {checkArrayHasLength(tasksInEpicGroupedByStatus[statusKey]) &&
-        tasksInEpicGroupedByStatus[statusKey].map((item) => {
-          return (
-            <KanbanListItem
-              id={item.id}
-              docRef={item.ref}
-              key={item.id}
-              description={item.description}
-              title={item.title}
-              status={item.status}
-              epic={item.epic}
-              statusesDropdownItems={statusesDropdownItems}
-              epicsDropdownItems={epicsDropdownItems}
-            />
-          );
-        })}
+  return (
+    <Box marginY="spacing1">
+      <Box
+        fontSize="body_md"
+        marginBottom="spacing1"
+        color="neutral_text_lowContrast"
+        fontWeight="medium"
+      >
+        {statusKey} ({tasksInColumn?.length || 0})
+      </Box>
+      <Box
+        key={statusKey}
+        ref={ref}
+        padding="spacing1"
+        borderRadius="md"
+        height="100%"
+        minHeight="25vh"
+        background="neutral_secondary_base"
+      >
+        {checkArrayHasLength(tasksInColumn) &&
+          tasksInColumn.map((item) => {
+            return (
+              <KanbanListItem
+                id={item.id}
+                docRef={item.ref}
+                key={item.ref}
+                description={item.description}
+                title={item.title}
+                status={item.status}
+                epic={item.epic}
+                statusesDropdownItems={statusesDropdownItems}
+                epicsDropdownItems={epicsDropdownItems}
+              />
+            );
+          })}
+      </Box>
     </Box>
   );
 }

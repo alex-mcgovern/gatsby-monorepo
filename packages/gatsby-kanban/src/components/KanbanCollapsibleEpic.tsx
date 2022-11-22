@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
-import { Box, Button } from "@alexmcgovern/boondoggle.design";
+import { Box, Button, Collapsible } from "@alexmcgovern/boondoggle.design";
 import { checkArrayHasLength } from "@alexmcgovern/utils";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import * as Collapsible from "@radix-ui/react-collapsible";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { DndProvider } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { KanbanColumn } from "./KanbanColumn";
 
 interface KanbanCollapsibleEpicProps {
@@ -29,52 +28,48 @@ export function KanbanCollapsibleEpic({
   uniqueStatuses,
   tasksInEpicGroupedByStatus,
   isLoading,
+  isOpenByDefault = false,
 }: KanbanCollapsibleEpicProps) {
-  const [isOpen, setIsOpen] = useState(true);
-  return (
-    <Collapsible.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Box
-        as="header"
-        display="flex"
-        alignItems="center"
+  const [isOpen, setIsOpen] = useState(isOpenByDefault);
+
+  /**
+   * Memo-ised trigger for collapsible
+   */
+  const collapsibleTriggerNode = useMemo(() => {
+    return (
+      <Button
+        size="lg"
+        width="100%"
+        appearance="tertiary"
         justifyContent="space-between"
+        iconTrailing={faAngleDown}
+        // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
+        iconTrailingProps={{
+          rotation: isOpen ? 180 : undefined,
+        }}
+      >
+        {epicKey || "Unnamed epic"}
+      </Button>
+    );
+  }, [epicKey, isOpen]);
+
+  return (
+    <>
+      <hr />
+      <Collapsible
+        isOpen={isOpenByDefault}
+        onOpenChange={setIsOpen}
+        triggerNode={collapsibleTriggerNode}
       >
         {/** ————————————————————————————————————————————————————————————————————————————
-         * EPIC BOARD TITLE & CONTROLS
-         * Here we add the epic title, delete epic button, and create new task button
+         * COLUMNS FOR STATUSES
          * ——————————————————————————————————————————————————————————————————————————————— */}
-        <Box
-          as="h3"
-          color="accent_fg_2"
-          fontSize="h6"
-          fontWeight="medium"
-          marginY="none"
-        >
-          {epicKey}
-        </Box>
-        {/* Epic buttons wrapper */}
-
-        <Box display="flex" gap="spacing1">
-          <Collapsible.Trigger>
-            <Button
-              iconTrailing={isOpen ? faEyeSlash : faEye}
-              size="sm_square"
-              appearance="secondary"
-            />
-          </Collapsible.Trigger>
-        </Box>
-      </Box>
-      {/** ————————————————————————————————————————————————————————————————————————————
-       * COLUMNS FOR STATUSES
-       * ——————————————————————————————————————————————————————————————————————————————— */}
-
-      <Collapsible.Content>
         <DndProvider backend={HTML5Backend}>
           <Box
             display="grid"
             gridTemplateColumns={{
               mobile: "1x",
-              tablet: "3x",
+              tablet: "2x",
               desktop: "4x",
             }}
             gap="spacing2"
@@ -84,21 +79,19 @@ export function KanbanCollapsibleEpic({
               uniqueStatuses.map((statusKey: string) => {
                 return (
                   <KanbanColumn
-                    key={statusKey}
+                    key={`${statusKey}-${isOpen}`}
                     statusKey={statusKey}
                     epicsDropdownItems={epicsDropdownItems}
                     statusesDropdownItems={statusesDropdownItems}
                     uniqueStatuses={uniqueStatuses}
-                    tasksInEpicGroupedByStatus={tasksInEpicGroupedByStatus}
+                    tasksInColumn={tasksInEpicGroupedByStatus[statusKey]}
                     isLoading={isLoading}
                   />
                 );
               })}
           </Box>
         </DndProvider>
-      </Collapsible.Content>
-      <hr />
-      {/* </Card> */}
-    </Collapsible.Root>
+      </Collapsible>
+    </>
   );
 }

@@ -20,11 +20,9 @@ export function Kanban() {
     }
   );
 
-  const transformedTasks =
-    tasks &&
-    tasks.docs.map((doc) => {
-      return { ...doc.data(), ref: doc.ref };
-    });
+  const transformedTasks = tasks?.docs.map((doc) => {
+    return { ...doc.data(), ref: doc.ref };
+  });
 
   const uniqueEpics = transformedTasks && [
     ...new Set(
@@ -34,8 +32,6 @@ export function Kanban() {
     ),
   ];
   const uniqueStatuses = ["To-do", "In-progress", "Blocked", "Done"];
-
-  console.log("debug transformed", transformedTasks);
 
   const isLoading = !!tasksLoading;
   const error = tasksError;
@@ -74,10 +70,10 @@ export function Kanban() {
             {error.message}
           </Box>
         </Box>
-        <KanbanCreateTaskDialog
+        {/* <KanbanCreateTaskDialog
           epicsDropdownItems={epicsDropdownItems}
           statusesDropdownItems={statusesDropdownItems}
-        />
+        /> */}
       </Box>
     );
   }
@@ -107,8 +103,8 @@ export function Kanban() {
       <hr />
 
       <KanbanCreateTaskDialog
-        statusesDropdownItems={[]}
-        epicsDropdownItems={[]}
+        statusesDropdownItems={statusesDropdownItems}
+        epicsDropdownItems={epicsDropdownItems}
       />
 
       {/** ————————————————————————————————————————————————————————————————————————————
@@ -117,13 +113,15 @@ export function Kanban() {
       {uniqueEpics &&
         checkArrayHasLength(uniqueEpics) &&
         checkArrayHasLength(Object.keys(tasksGroupedByEpic)) &&
-        uniqueEpics.map((epicTitle) => {
+        uniqueEpics.map((epicTitle, index) => {
           // Parse and sort tasks by status
           const tasksInEpic = tasksGroupedByEpic[epicTitle];
           const tasksInEpicGroupedByStatus = groupBy(tasksInEpic, "status");
 
           return (
             <KanbanCollapsibleEpic
+              isOpenByDefault={index === 0}
+              key={epicTitle}
               epicKey={epicTitle}
               epicsDropdownItems={epicsDropdownItems}
               statusesDropdownItems={statusesDropdownItems}
