@@ -1,8 +1,8 @@
 import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { recipe } from "@vanilla-extract/recipes";
+import { createAccessibleTransition } from "../__css__/css_preprocessing_utils/createAccessibleTransition";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import { vars } from "../__css__/theme.css";
-import { createAccessibleTransition } from "../styles/css_preprocessing_utils/create_accessible_transition";
 import { SELECTOR_LINK_BUTTON_HOVER_FOCUS } from "../styles/global/css_selector_vars";
 
 export const getTagStyle = recipe({

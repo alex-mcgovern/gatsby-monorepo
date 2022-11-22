@@ -36,7 +36,7 @@ const properties = defineProperties({
     maxHeight: vars.spacing,
     maxWidth: vars.width,
     minWidth: { ...vars.width, ...vars.spacing },
-    minHeight: ["100vh", "75vh"],
+    minHeight: vars.height,
     overflow: ["hidden"],
     overflowY: ["auto"],
     paddingBottom: vars.spacing,

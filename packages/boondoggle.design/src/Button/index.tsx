@@ -7,10 +7,10 @@ import { Icon } from "../Icon";
 import type { VariantInteractiveElementSizeEnum } from "../__css__/common/variant_interactive_element_size.css";
 import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
-import type { VariantButtonAppearanceEnum } from "./button-appearance.css";
 import type { VariantButtonColorEnum } from "./button-color.css";
 import { getButtonStyles, iconStyle } from "./button.css";
 import { buttonTheme } from "./button.theme.css";
+import type { VariantButtonAppearanceEnum } from "./variantButtonAppearance.css";
 
 // <TElement extends ElementType>
 
@@ -21,8 +21,12 @@ export interface ButtonProps
   as?: ElementType;
   /** FontAwesome icon shown on the left side of button. */
   iconLeading?: IconProps["icon"];
+  /** Props for leading icon */
+  iconLeadingProps?: Omit<IconProps, "icon">;
   /** FontAwesome icon shown on the right side of button. */
   iconTrailing?: IconProps["icon"];
+  /** Props for trailing icon */
+  iconTrailingProps?: Omit<IconProps, "icon">;
   /** Title for button, shown in the UI */
   name?: string;
   /** HTML button type, defaults to `button`. */
@@ -39,14 +43,16 @@ export interface ButtonProps
 export const Button = forwardRef(
   (
     {
-      as: element = "button",
       appearance = "primary",
+      as: element = "button",
       children,
       className: userClassName,
       color,
       disabled,
       iconLeading,
+      iconLeadingProps,
       iconTrailing,
+      iconTrailingProps,
       id,
       size = "md",
       type = "button",
@@ -81,9 +87,17 @@ export const Button = forwardRef(
         ...otherProps,
       },
       /** Child nodes */
-      iconLeading && <Icon className={iconStyle} icon={iconLeading} />,
+      iconLeading && (
+        <Icon className={iconStyle} icon={iconLeading} {...iconLeadingProps} />
+      ),
       children,
-      iconTrailing && <Icon className={iconStyle} icon={iconTrailing} />
+      iconTrailing && (
+        <Icon
+          className={iconStyle}
+          icon={iconTrailing}
+          {...iconTrailingProps}
+        />
+      )
     );
   }
 );

@@ -1,13 +1,11 @@
 import { keyframes, style } from "@vanilla-extract/css";
-import { varsTransitionDuration } from "~styles/vars/vars_transition_duration";
+import { vars } from "../theme.css";
 
-const TRANSITION_TIMING = varsTransitionDuration.medium;
-
-/** Shared styles used for collapsible open/close in places like
- * - "~components/search_job_posts/job_search_results_collapsible.css.ts
- * - ~components/coverage_page/coverage_page_search/coverage_page_results_collapsible.css.ts
- * - src/components/domain/sections/section_frequently_asked_questions/section_frequently_asked_questions.css.ts
+/**
+ * Shared styles used for collapsible open/close state
  */
+
+const TRANSITION_TIMING = vars.transitionDuration.short;
 
 const open = keyframes({
   from: { height: 0 },

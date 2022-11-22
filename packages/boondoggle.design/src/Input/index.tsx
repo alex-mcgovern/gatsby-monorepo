@@ -7,8 +7,9 @@ import type {
 import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box } from "../Box";
+import { Icon } from "../Icon";
+import { InputErrorMessage } from "../InputErrorMessage";
 import { Label } from "../Label";
 import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
 import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
@@ -25,17 +26,25 @@ export interface InputProps
   /** Allow custom prop getter. Enables compatibility with DownshiftJS */
   getInputProps?(...args: unknown[]): unknown;
   /** FontAwesome icon shown on the left side of input. */
-  iconLeading?: IconProp;
+  iconLeading?: IconProps["icon"];
+  /** Props for leading icon */
+  iconLeadingProps?: Omit<IconProps, "icon">;
   /** FontAwesome icon shown on the right side of input. */
-  iconTrailing?: IconProp;
+  iconTrailing?: IconProps["icon"];
+  /** Props for trailing icon */
+  iconTrailingProps?: Omit<IconProps, "icon">;
   /** Used as the html ID. */
   id: string;
-  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
-  isLabelVisible?: boolean;
+  /** Controls `aria-required` and input `required` attributes. */
+  required?: boolean;
+  /** Allow controlling components to set error styles, `aria-invalid` prop and display error message. */
+  invalid?: boolean;
   /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
   isDisabled?: boolean;
   /** Name of the form control. Submitted with the form as part of a name/value pair */
   name: string;
+  /** Message shown when `invalid=true`. May originate from controlling library, like `react-hook-form` */
+  errorMessage?: string;
   /** Label text. (Will also be used as accessible `name` on the input element.) */
   label?: string;
   /** Callback on input change. */
@@ -48,8 +57,6 @@ export interface InputProps
   variant?: styles.InputVariants;
   /** Allows directly assigning a value when the input is acting as a controlled element. */
   value?: string;
-  // Whether the field is required.
-  required?: boolean;
   type?: HTMLInputTypeAttribute;
 }
 
@@ -57,15 +64,19 @@ export const Input = forwardRef(
   (
     {
       autoComplete,
+      errorMessage,
       iconLeading,
+      iconLeadingProps,
       iconTrailing,
+      iconTrailingProps,
       id,
+      invalid,
       isDisabled,
-      isLabelVisible,
       label,
       name,
       onChange,
       placeholder,
+      required,
       role,
       type,
       value,
@@ -87,18 +98,17 @@ export const Input = forwardRef(
 
     return (
       <Box>
-        {label && id && (
-          <Label isLabelVisible={isLabelVisible} label={label} id={id} />
-        )}
+        {label && id && <Label label={label} htmlFor={id} />}
         <fieldset
           className={inputWrapperStyles.join(" ")}
           role={role}
           disabled={isDisabled}
         >
           {iconLeading && (
-            <FontAwesomeIcon
+            <Icon
               className={styles.leadingIcon}
               icon={iconLeading}
+              {...iconLeadingProps}
             />
           )}
           <input
@@ -109,18 +119,25 @@ export const Input = forwardRef(
             className={styles.inputElement}
             placeholder={placeholder}
             onChange={onChange}
+            aria-invalid={invalid}
+            aria-required={required}
             name={name}
             id={id}
             ref={ref}
             {...otherProps}
           />
           {iconTrailing && (
-            <FontAwesomeIcon
+            <Icon
               className={styles.trailingIcon}
               icon={iconTrailing}
+              {...iconTrailingProps}
             />
           )}
         </fieldset>
+
+        {invalid && errorMessage && (
+          <InputErrorMessage message={errorMessage} />
+        )}
       </Box>
     );
   }

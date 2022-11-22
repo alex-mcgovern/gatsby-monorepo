@@ -1,19 +1,25 @@
 import React from "react";
-import * as styles from "./label.css";
+import { Box } from "../Box";
+import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 
-export interface LabelProps {
+export interface LabelProps extends GetSprinklesArgs {
   label: string;
-  id: string;
-  isLabelVisible?: boolean;
+  htmlFor: string;
 }
 
-export function Label({ label, id, isLabelVisible }: LabelProps) {
-  if (isLabelVisible) {
-    return (
-      <label className={styles.label} htmlFor={id}>
-        {label}
-      </label>
-    );
-  }
-  return null;
+export function Label({ label, htmlFor, ...rest }: LabelProps) {
+  return (
+    <Box
+      as="label"
+      color="neutral_text_lowContrast"
+      display="block"
+      fontSize="body_md"
+      fontWeight="medium"
+      marginBottom="spacing0"
+      htmlFor={htmlFor}
+      {...rest}
+    >
+      {label}
+    </Box>
+  );
 }

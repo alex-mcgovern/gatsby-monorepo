@@ -1,0 +1,17 @@
+export const varsGridTemplateColumns = {
+  "": "",
+  "1": "1fr",
+  "1x": "1fr",
+  "2x": "repeat(2, 1fr)",
+  "3x": "repeat(3, 1fr)",
+  "4x": "repeat(4, 1fr)",
+  "5x": "repeat(5, 1fr)",
+  "6x": "repeat(6, 1fr)",
+  "1x_2x": "1fr 2fr",
+  "1x_3x": "1fr 3fr",
+  "2x_1x": "2fr 1fr",
+  "3x_1x": "3fr 1fr",
+  "3x_2x": "3fr 2fr",
+  "5x_7x": "5fr 7fr",
+  "7x_5x": "7fr 5fr",
+};

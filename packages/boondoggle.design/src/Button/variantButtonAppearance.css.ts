@@ -13,7 +13,6 @@ export const variantButtonAppearance = styleVariants({
   primary: [
     getSprinkles({
       paddingX: "spacing1",
-      // paddingY: "spacing0",
       justifyContent: "center",
       whiteSpace: "nowrap",
       fontWeight: "semibold",
@@ -33,8 +32,7 @@ export const variantButtonAppearance = styleVariants({
 
   secondary: [
     getSprinkles({
-      paddingX: "spacing2",
-      paddingY: "spacing1",
+      paddingX: "spacing1",
       justifyContent: "center",
       whiteSpace: "nowrap",
       fontWeight: "semibold",
@@ -58,14 +56,17 @@ export const variantButtonAppearance = styleVariants({
 
   select: [
     getSprinkles({
-      paddingX: "spacing2",
-      paddingY: "spacing1",
-      whiteSpace: "nowrap",
+      alignItems: "center",
+      background: "neutral_background_base",
+      border: "neutral_border_interactive",
+      borderRadius: "md",
+      color: "neutral_text_lowContrast",
+      display: "flex",
+      overflow: "hidden",
+      paddingX: "spacing1",
+      width: "100%",
     }),
     {
-      color: varsButtonTheme.textColor,
-      border: "1px solid",
-      borderColor: varsButtonTheme.borderColor,
       selectors: {
         [SELECTOR_LINK_BUTTON_HOVER]: {
           borderColor: vars.color.neutral_border_interactiveActive,

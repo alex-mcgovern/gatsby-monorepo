@@ -23,6 +23,7 @@ import { varsShadow } from "./vars/vars_box_shadow.css";
 import { varsFontSize } from "./vars/vars_font_size.css";
 import { varsFontWeight } from "./vars/vars_font_weight.css";
 import { varsGridTemplateColumns } from "./vars/vars_grid_template_columns.css";
+import { varsHeight } from "./vars/vars_height";
 import { varsLineHeight } from "./vars/vars_line_height.css";
 import { varsSpacing } from "./vars/vars_spacing.css";
 import { varsTransitionTime } from "./vars/vars_transition.css";
@@ -45,6 +46,7 @@ export const root = createGlobalTheme(":root", {
   fontWeight: varsFontWeight,
   gridTemplateColumns: varsGridTemplateColumns,
   lineHeight: varsLineHeight,
+  height: varsHeight,
   spacing: varsSpacing,
   transitionDuration: varsTransitionTime,
   width: varsWidth,

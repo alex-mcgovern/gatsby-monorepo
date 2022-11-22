@@ -17,7 +17,7 @@ export const variantInteractiveElementSize = styleVariants({
   lg: [
     getSprinkles({
       height: { mobile: "spacing5", desktop: "spacing5" },
-      fontStyle: { mobile: "body_lg", desktop: "body_lg" },
+      fontStyle: { mobile: "h6", desktop: "h6" },
     }),
   ],
 

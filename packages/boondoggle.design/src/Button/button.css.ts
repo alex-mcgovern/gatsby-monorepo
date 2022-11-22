@@ -2,11 +2,11 @@ import { recipe } from "@vanilla-extract/recipes";
 import { disabledStateStyles } from "../__css__/common/disabled_state_styles.css";
 import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
 import { variantInteractiveElementSize } from "../__css__/common/variant_interactive_element_size.css";
+import { createAccessibleTransition } from "../__css__/css_preprocessing_utils/createAccessibleTransition";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import { vars } from "../__css__/theme.css";
-import { createAccessibleTransition } from "../styles/css_preprocessing_utils/create_accessible_transition";
-import { variantButtonAppearance } from "./button-appearance.css";
 import { variantButtonColor } from "./button-color.css";
+import { variantButtonAppearance } from "./variantButtonAppearance.css";
 
 export const getButtonStyles = recipe({
   /** —————————————————————————————————————————————
@@ -27,7 +27,8 @@ export const getButtonStyles = recipe({
       gap: "spacing0",
       alignItems: "center",
       textDecoration: "none",
-      // width: "max-content", /** <- Still unsure best default for this property */
+      // width:
+      //   "max-content" /** <- Still unsure best default for this property */,
     }),
     createAccessibleTransition({
       transition: `ease ${vars.transitionDuration.short}`,

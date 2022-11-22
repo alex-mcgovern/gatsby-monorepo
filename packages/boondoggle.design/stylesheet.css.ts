@@ -1,5 +1,6 @@
 import { globalStyle } from "@vanilla-extract/css";
 import "./src/__css__/global/global_button.css";
+import "./src/__css__/global/global_checkbox_styles.css";
 import "./src/__css__/global/global_code.css";
 import "./src/__css__/global/global_fieldset.css";
 import "./src/__css__/global/global_headings.css";
@@ -11,7 +12,7 @@ import "./src/__css__/global/global_tables.css";
 import { vars } from "./src/__css__/theme.css";
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      GLOBAL SELECTORS                                                        
+* GLOBAL SELECTORS                                                        
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`*`, {
@@ -37,7 +38,7 @@ globalStyle(`body`, {
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      ANCHOR TAGS                                                        
+* ANCHOR TAGS                                                        
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`a`, {
@@ -48,7 +49,7 @@ globalStyle(`a`, {
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      VISUAL ELEMENTS                                                         
+* VISUAL ELEMENTS                                                         
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`img, picture, video, canvas, svg`, {
@@ -57,7 +58,7 @@ globalStyle(`img, picture, video, canvas, svg`, {
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      INPUTS                                                                  
+* INPUTS                                                                  
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`input, button, textarea, select`, {
@@ -65,7 +66,7 @@ globalStyle(`input, button, textarea, select`, {
 });
 
 /* ——————————————————————————————————————————————————————————————————————————————
-//      GATSBY OVERRIDES                                                        
+* GATSBY OVERRIDES                                                        
 // —————————————————————————————————————————————————————————————————————————————— */
 
 globalStyle(`___gatsby`, {

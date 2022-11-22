@@ -2,14 +2,13 @@ import { style } from "@vanilla-extract/css";
 import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { recipe } from "@vanilla-extract/recipes";
 import { focusBaseStyle } from "../__css__/common/focus_ring_styles.css";
+import { createAccessibleTransition } from "../__css__/css_preprocessing_utils/createAccessibleTransition";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import { vars } from "../__css__/theme.css";
-import { createAccessibleTransition } from "../styles/css_preprocessing_utils/create_accessible_transition";
 
 export const getInputWrapperStyles = recipe({
   base: [
     getSprinkles({
-      marginBottom: "spacing1",
       border: "neutral_border_interactive",
       borderRadius: "md",
       background: "neutral_background_base",
