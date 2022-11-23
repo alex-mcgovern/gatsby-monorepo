@@ -1,16 +1,16 @@
 import { globalStyle } from "@vanilla-extract/css";
-// import "./src/__css__/reset.css"; <-- should probably be used for cross-browser support, but need to sort import order issue
-import "./src/__css__/global/global_button.css";
-import "./src/__css__/global/global_checkbox_styles.css";
-import "./src/__css__/global/global_code.css";
-import "./src/__css__/global/global_fieldset.css";
-import "./src/__css__/global/global_headings.css";
-import "./src/__css__/global/global_hr.css";
-import "./src/__css__/global/global_input.css";
-import "./src/__css__/global/global_list_styles.css";
-import "./src/__css__/global/global_paragraph_styles.css";
-import "./src/__css__/global/global_tables.css";
-import { vars } from "./src/__css__/theme.css";
+// import "./src/styles/reset.css"; <-- should probably be used for cross-browser support, but need to sort import order issue
+import "./src/styles/global/global_button.css";
+import "./src/styles/global/global_checkbox_styles.css";
+import "./src/styles/global/global_code.css";
+import "./src/styles/global/global_fieldset.css";
+import "./src/styles/global/global_headings.css";
+import "./src/styles/global/global_hr.css";
+import "./src/styles/global/global_input.css";
+import "./src/styles/global/global_list_styles.css";
+import "./src/styles/global/global_paragraph_styles.css";
+import "./src/styles/global/global_tables.css";
+import { vars } from "./src/styles/theme.css";
 
 /* -----------------------------------------------------------------------------—
  * GLOBAL SELECTORS

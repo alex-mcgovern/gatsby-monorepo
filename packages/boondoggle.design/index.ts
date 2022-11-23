@@ -55,15 +55,15 @@ export type { SelectCreatableProps } from "./src/Select/SelectSingleCreatable";
 export { Tag } from "./src/Tag";
 export type { TagProps } from "./src/Tag";
 
-export { ThemeContext, ThemeProvider } from "./src/ThemeContext";
+export { ThemeContext, ThemeProvider } from "./src/context/ThemeContext";
 
 /** -----------------------------------------------------------------------------
  * STYLES
  * ------------------------------------------------------------------------------- */
 
-export { getSprinkles } from "./src/__css__/getSprinkles.css";
-export type { GetSprinklesArgs } from "./src/__css__/getSprinkles.css";
+export { getSprinkles } from "./src/styles/getSprinkles.css";
+export type { GetSprinklesArgs } from "./src/styles/getSprinkles.css";
 
-export { createAccessibleTransition } from "./src/__css__/css_preprocessing_utils/createAccessibleTransition";
+export { createAccessibleTransition } from "./src/styles/css_preprocessing_utils/createAccessibleTransition";
 
-export { darkTheme, lightTheme, vars } from "./src/__css__/theme.css";
+export { darkTheme, lightTheme, vars } from "./src/styles/theme.css";
