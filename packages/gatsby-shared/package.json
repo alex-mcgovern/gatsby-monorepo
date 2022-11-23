@@ -9,13 +9,22 @@
     "@alexmcgovern/web-vitals-widget": "*",
     "@fontsource/dm-sans": "^4.5.9",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "react-firebase-hooks": "^5.1.1",
     "gatsby": "^5.0.1",
     "react": "^18.0.0",
-    "react-hook-form": "^7.39.4"
+    "react-hook-form": "^7.39.4",
+    "react-helmet": "^6.1.0",
+    "prismjs": "^1.29.0"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://https://github.com/alex-mcgovern/alexmcgovern.com/packages/shared"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.9.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-mdx": "^2.0.5"
   }
 }

@@ -1,24 +1,22 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
-import { Link } from "gatsby";
+import type { BoxProps } from "../Box";
 import { Box } from "../Box";
 import { Tag } from "../Tag";
-import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import * as styles from "./index.css";
 
-export interface ListItemProps extends GetSprinklesArgs {
+export interface ListItemProps extends Omit<BoxProps, "title"> {
   aspectRatio?: "square" | "wide" | "tall";
   description?: string;
-  link: string;
   subtitle?: string;
-  className: string;
+  className?: string;
   title: ReactNode;
   tags?: string[];
   leadingNode?: ReactNode;
-  children: ReactNode | Array<ReactNode>;
+  children?: ReactNode | Array<ReactNode>;
   /** Callback on click. */
   onClick?(...args: unknown[]): unknown;
 }
@@ -26,17 +24,17 @@ export interface ListItemProps extends GetSprinklesArgs {
 export const ListItem = forwardRef(
   (
     {
-      description,
+      as = "div",
       children,
       className,
-      link,
+      description,
       leadingNode,
       subtitle,
       tags,
       title,
       ...rest
     }: ListItemProps,
-    ref
+    ref: Ref<HTMLElement>
   ) => {
     /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
     const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
@@ -50,10 +48,11 @@ export const ListItem = forwardRef(
     );
 
     return (
-      <Link to={link} ref={ref} className={listItemClassNames} {...otherProps}>
+      <Box as={as} ref={ref} className={listItemClassNames} {...otherProps}>
         {leadingNode}
 
         <Box
+
         // display="flex"
         // flexDirection="column"
         // justifyContent="space-between"
@@ -93,7 +92,7 @@ export const ListItem = forwardRef(
             )}
           </Box>
         </Box>
-      </Link>
+      </Box>
     );
   }
 );

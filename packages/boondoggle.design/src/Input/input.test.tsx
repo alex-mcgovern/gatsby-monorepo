@@ -26,7 +26,6 @@ describe(COMPONENT_NAME, () => {
         id: "test_input",
         label: "This is the label",
         type: "text",
-        isLabelVisible: true,
       });
       expect(
         component.getByText("This is the label", { exact: false })

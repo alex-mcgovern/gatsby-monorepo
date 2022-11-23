@@ -1,12 +1,12 @@
 import { styleVariants } from "@vanilla-extract/css";
-import { focusBaseStyle } from "../__css__/common/focus_ring_styles.css";
-import { getSprinkles } from "../__css__/getSprinkles.css";
-import { vars } from "../__css__/theme.css";
 import {
   SELECTOR_LINK_BUTTON_FOCUS,
   SELECTOR_LINK_BUTTON_HOVER,
   SELECTOR_LINK_BUTTON_HOVER_FOCUS,
-} from "../styles/global/css_selector_vars";
+} from "../__css__/common/css_selector_vars";
+import { focusBaseStyle } from "../__css__/common/focus_ring_styles.css";
+import { getSprinkles } from "../__css__/getSprinkles.css";
+import { vars } from "../__css__/theme.css";
 import { varsButtonTheme } from "./button.theme.css";
 
 export const variantButtonAppearance = styleVariants({

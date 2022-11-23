@@ -30,7 +30,6 @@ export interface SelectCreatableProps {
   onValueChange?(selectedItem: DropdownItem): void;
   buttonProps?: ButtonProps;
   buttonText?: string;
-  isLabelVisible?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   label?: string;
@@ -79,6 +78,7 @@ export const SelectSingleCreatable = forwardRef(
                   errorMessage={errorMessage}
                   placeholder={selectedItem?.value || placeholder}
                   size={size}
+                  ref={ref}
                 />
 
                 <DropdownMenu size={size} />

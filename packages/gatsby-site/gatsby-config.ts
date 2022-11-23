@@ -1,4 +1,4 @@
-import { siteMetadata } from "@alexmcgovern/gatsby-shared";
+// import { siteMetadata } from "@alexmcgovern/gatsby-shared";
 import dotenv from "dotenv";
 import type { GatsbyConfig } from "gatsby";
 import path from "path";
@@ -8,7 +8,7 @@ dotenv.config({
 });
 
 const config: GatsbyConfig = {
-  siteMetadata,
+  //  siteMetadata,
   plugins: [
     {
       resolve: "gatsby-transformer-remark",

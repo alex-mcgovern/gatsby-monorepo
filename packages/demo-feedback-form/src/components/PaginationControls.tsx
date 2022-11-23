@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Button } from "@alexmcgovern/boondoggle.design";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import type { PaginationStateShape } from "../hooks/usePaginatedComments";
+
+// import type { PaginationStateShape } from "../hooks/usePaginatedComments";
 
 interface PaginationControlsProps {
-  totalPages: number;
-  paginationState: PaginationStateShape;
+  // totalPages: number;
+  // paginationState: PaginationStateShape;
   comments: unknown;
   commentsLoading: boolean;
   canLoadOlderComments: boolean;
@@ -15,8 +16,8 @@ interface PaginationControlsProps {
 }
 
 export function PaginationControls({
-  totalPages,
-  paginationState,
+  // totalPages,
+  // paginationState,
   comments,
   commentsLoading,
   canLoadOlderComments,
@@ -26,6 +27,7 @@ export function PaginationControls({
 }: PaginationControlsProps) {
   return (
     <Box marginLeft="auto" display="flex" gap="spacing0">
+      {/* ToDo(feedback-form/PaginationControls): decide on right level of info to display */}
       {/* <div>
         Page <b>{paginationState.current}</b> of <b>{totalPages}</b>
       </div> */}

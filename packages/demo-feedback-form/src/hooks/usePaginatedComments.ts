@@ -27,12 +27,15 @@ export function usePaginatedComments({
   const { firebaseApp } = useContext(FirebaseContext);
 
   const collectionRef = useMemo(() => {
-    return collection(
-      getFirestore(firebaseApp),
-      "feedback",
-      "data",
-      "comments"
-    );
+    if (firebaseApp) {
+      return collection(
+        getFirestore(firebaseApp),
+        "feedback",
+        "data",
+        "comments"
+      );
+    }
+    return undefined;
   }, [firebaseApp]);
 
   /** -----------------------------------------------------------------------------
@@ -44,11 +47,14 @@ export function usePaginatedComments({
 
   const [queryFunction, setCachedQuery] = useState(() => {
     return () => {
-      return query(
-        collectionRef,
-        orderBy("created", "desc"),
-        limit(commentsPerPage)
-      );
+      if (collectionRef) {
+        return query(
+          collectionRef,
+          orderBy("created", "desc"),
+          limit(commentsPerPage)
+        );
+      }
+      return undefined;
     };
   });
 
@@ -90,9 +96,11 @@ export function usePaginatedComments({
   });
 
   useEffect(() => {
-    getCountFromServer(collectionRef).then((response) => {
-      return setCommentsCount(response.data().count);
-    });
+    if (collectionRef) {
+      getCountFromServer(collectionRef).then((response) => {
+        return setCommentsCount(response.data().count);
+      });
+    }
   }, [collectionRef]);
 
   const { totalPages, canLoadOlderComments, canLoadNewerComments } =
@@ -133,12 +141,15 @@ export function usePaginatedComments({
 
       setCachedQuery(() => {
         return () => {
-          return query(
-            collectionRef,
-            orderBy("created", "desc"),
-            startAfter(lastVisibleComment),
-            limit(commentsPerPage)
-          );
+          if (collectionRef) {
+            return query(
+              collectionRef,
+              orderBy("created", "desc"),
+              startAfter(lastVisibleComment),
+              limit(commentsPerPage)
+            );
+          }
+          return undefined;
         };
       });
     }
@@ -160,12 +171,15 @@ export function usePaginatedComments({
 
       setCachedQuery(() => {
         return () => {
-          return query(
-            collectionRef,
-            orderBy("created", "desc"),
-            endBefore(firstVisibleComment),
-            limit(commentsPerPage)
-          );
+          if (collectionRef) {
+            return query(
+              collectionRef,
+              orderBy("created", "desc"),
+              endBefore(firstVisibleComment),
+              limit(commentsPerPage)
+            );
+          }
+          return undefined;
         };
       });
     }

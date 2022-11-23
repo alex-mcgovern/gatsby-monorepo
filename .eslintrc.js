@@ -1,10 +1,19 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
 module.exports = {
+  /** -----------------------------------------------------------------------------
+   * 🏚 Env
+   * ------------------------------------------------------------------------------- */
+
   env: {
     browser: true,
     node: true,
   },
+
+  /** -----------------------------------------------------------------------------
+   * 🤝 Extends
+   * ------------------------------------------------------------------------------- */
 
   extends: [
     "airbnb",
@@ -17,27 +26,73 @@ module.exports = {
     "prettier",
   ],
 
+  /** -----------------------------------------------------------------------------
+   * 🌍 Globals
+   * ------------------------------------------------------------------------------- */
+
   globals: {
     cy: true,
     Cypress: true,
     fs: true,
   },
 
-  ignorePatterns: ["*.snap", "*.svg", "*.md"],
+  /** -----------------------------------------------------------------------------
+   * ⛔️ Ignore
+   * ------------------------------------------------------------------------------- */
+
+  ignorePatterns: [
+    "packages/boondoggle-docs",
+    "packages/demo-kanban",
+    "**/public",
+    "*.snap",
+    "*.test.*",
+    "*.mock.*",
+    "*.svg",
+    "*.md",
+    "*.mdx",
+    "coverage",
+  ],
+
+  /** -----------------------------------------------------------------------------
+   * 💪 Overrides
+   * ------------------------------------------------------------------------------- */
 
   overrides: [
     /**
-     * Allow duplicate strings in tests & css.ts files for
-     * better readability, where JS performance is less of an issue.
+     * Overrides for MDX files
+     */
+
+    // {
+    //   files: "*.mdx",
+    //   parser: "eslint-mdx",
+    // },
+
+    /**
+     * Overrides for vanilla extract css.ts files
+     */
+
+    {
+      files: ["**/*.css.ts"],
+      rules: {
+        "sonarjs/no-duplicate-string": "off",
+      },
+    },
+
+    /**
+     * Overrides for test files
      */
 
     {
       env: {
         jest: true,
       },
-      files: ["**/*.test.ts", "**/*.test.tsx", "**/*.css.ts"],
+      files: ["**/*/test.ts", "**/*.test.tsx"],
       rules: {
         "sonarjs/no-duplicate-string": "off",
+        "react-perf/jsx-no-jsx-as-prop": "off",
+        "react-perf/jsx-no-new-array-as-prop": "off",
+        "react-perf/jsx-no-new-function-as-prop": "off",
+        "react-perf/jsx-no-new-object-as-prop": "off",
       },
     },
 
@@ -68,13 +123,22 @@ module.exports = {
     requireConfigFile: true,
   },
 
+  /** -----------------------------------------------------------------------------
+   * 📦 Plugins
+   * ------------------------------------------------------------------------------- */
+
   plugins: [
     "react-perf",
     "sonarjs",
     "jsdoc",
     "@typescript-eslint",
     "unused-imports",
+    "import",
   ],
+
+  /** -----------------------------------------------------------------------------
+   * 📄 Rules
+   * ------------------------------------------------------------------------------- */
 
   rules: {
     "import/no-cycle": "error",
@@ -89,8 +153,29 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        devDependencies: ["*.test.ts", "*.test.tsx"],
-        packageDir: ".",
+        devDependencies: ["**/*.test.ts", "**/*.test.tsx", "./test/**/*"],
+        // packageDir: path.resolve(__dirname),
+      },
+    ],
+
+    /**
+     * Override annoying default behavior for unescaped entities, focusing on only the characters
+     * most likely to break JSX. Although I've never experienced this issue personally.
+     */
+
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        forbid: [
+          {
+            char: ">",
+            alternatives: ["&gt;"],
+          },
+          {
+            char: "}",
+            alternatives: ["&#125;"],
+          },
+        ],
       },
     ],
 
@@ -178,8 +263,20 @@ module.exports = {
     ],
   },
 
+  /** -----------------------------------------------------------------------------
+   * 🛠 Settings
+   * ------------------------------------------------------------------------------- */
+
   settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
     "import/resolver": {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ["packages/*/tsconfig.json", "tsconfig.json"],
+      },
+
       "eslint-import-resolver-lerna": {
         packages: path.resolve(__dirname, "packages"),
       },

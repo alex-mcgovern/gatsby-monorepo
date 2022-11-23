@@ -74,9 +74,9 @@ export const semanticRedPaletteLight = red;
 export const semanticYellowPaletteDark = yellowDark;
 export const semanticYellowPaletteLight = yellow;
 
-/** —————————————————————————————————————————————
+/** ---------------------------------------------—
  * THEME CONTRACT
- * ——————————————————————————————————————————————— */
+ * ----------------------------------------------- */
 const color = createThemeContract({
   /** Accent color scale */
   accent_background_base: null,
@@ -131,9 +131,9 @@ const color = createThemeContract({
   semantic_yellow_highContrast: null,
 });
 
-/** ————————————————————————————————————————————
+/** ---------------------------------------------
  * LIGHT THEME
- * ——————————————————————————————————————————————— */
+ * ----------------------------------------------- */
 
 export const lightTheme = createTheme(color, {
   /** Accent color scale */
@@ -189,9 +189,9 @@ export const lightTheme = createTheme(color, {
   semantic_yellow_highContrast: semanticYellowPaletteLight.yellow10,
 });
 
-/** ————————————————————————————————————————————
+/** ---------------------------------------------
  * DARK THEME
- * ——————————————————————————————————————————————— */
+ * ----------------------------------------------- */
 
 export const darkTheme = createTheme(color, {
   /** Accent color scale */

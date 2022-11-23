@@ -1,19 +1,8 @@
-import type { FormEvent } from "react";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useMemo, useState } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
-import { Box, Button, Dialog } from "@alexmcgovern/boondoggle.design";
+import { Button, Dialog } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import {
-  ReactHookFormControlledInput,
-  ReactHookFormControlledSingleSelect,
-  getHookFormButtonIconProps,
-} from "@alexmcgovern/gatsby-shared";
+import { Form, FormInput, FormSingleSelect } from "@alexmcgovern/gatsby-shared";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import {
   Timestamp,
@@ -21,7 +10,15 @@ import {
   collection,
   getFirestore,
 } from "firebase/firestore";
-import { FormProvider, useForm } from "react-hook-form";
+
+interface FormDataShape {
+  rating: number;
+  description: string;
+}
+
+/**
+ * ToDo: Nicer rating select experience
+ */
 
 const FEEDBACK_STAR_DROPDOWN_ITEMS: Array<DropdownItem> = [
   {
@@ -47,76 +44,65 @@ const FEEDBACK_STAR_DROPDOWN_ITEMS: Array<DropdownItem> = [
 ];
 
 export function FeedbackFormDialog() {
+  /** ---------------------------------------------
+   * Setup dialog state & handlers
+   * ----------------------------------------------- */
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const reactHookFormMethods = useForm();
-  const { formState, handleSubmit, reset } = reactHookFormMethods;
-  const {
-    isDirty,
-    isSubmitSuccessful,
-    isSubmitted,
-    isSubmitting,
-    isValid,
-    isValidating,
-    errors,
-  } = formState;
+  const closeDialog = useCallback(() => {
+    setIsDialogOpen(false);
+  }, []);
 
-  const { buttonIcon, buttonIconProps } = useMemo(() => {
-    return getHookFormButtonIconProps({
-      isValid,
-      isValidating,
-      isSubmitting,
-      isSubmitSuccessful,
-      isSubmitted,
-      isDirty,
-      errors,
-    });
-  }, [
-    isDirty,
-    isSubmitSuccessful,
-    isSubmitted,
-    isSubmitting,
-    isValid,
-    isValidating,
-    errors,
-  ]);
+  /** ---------------------------------------------
+   * Get firebase app & initialise collection
+   * ----------------------------------------------- */
 
   const { firebaseApp, user } = useContext(FirebaseContext);
+  const collectionRef = useMemo(() => {
+    if (firebaseApp && user) {
+      return collection(
+        getFirestore(firebaseApp),
+        "feedback",
+        "data",
+        "comments"
+      );
+    }
+    return null;
+  }, [firebaseApp, user]);
 
-  /**
-   * Reset hook form state & close dialog on submit
-   */
-  useEffect(() => {
-    reset();
-    setIsDialogOpen(false);
-  }, [reset, isSubmitSuccessful]);
+  /** ---------------------------------------------
+   * Handle form submission
+   * ----------------------------------------------- */
 
-  const onSubmit = useCallback(
-    async (event: FormEvent) => {
-      return handleSubmit(async ({ description, rating }) => {
-        if (!firebaseApp || !user) return null;
+  const createCommentOnFormSubmission = useCallback(
+    async (formData: FormDataShape) => {
+      if (!collectionRef || !user) return null;
 
-        return addDoc(
-          collection(getFirestore(firebaseApp), "feedback", "data", "comments"),
-          {
-            displayName: user.displayName,
-            email: user.email,
-            rating,
-            description,
-            author_uid: user.uid,
-            created: Timestamp.now(),
-          }
-        ).catch((error) => {
-          console.error(error);
-        });
-      })(event);
+      return addDoc(collectionRef, {
+        ...formData,
+        displayName: user.displayName,
+        email: user.email,
+        author_uid: user.uid,
+        created: Timestamp.now(),
+      }).catch((error) => {
+        console.error(error);
+      });
     },
-    [firebaseApp, handleSubmit, user]
+    [collectionRef, user]
   );
+
+  /** ---------------------------------------------
+   * Trigger for dialog
+   * ----------------------------------------------- */
 
   const dialogTriggerNode = useMemo(() => {
     return <Button iconLeading={faMessage}>Leave feedback</Button>;
   }, []);
+
+  /** -----------------------------------------------------------------------------
+   * Markup
+   * ------------------------------------------------------------------------------- */
 
   return (
     <Dialog
@@ -126,36 +112,28 @@ export function FeedbackFormDialog() {
       title="Leave feedback"
       description="Please leave a few details on how we are doing so that we can continue to improve our service. Thanks, you rock. 🤘"
     >
-      <FormProvider {...reactHookFormMethods}>
-        <Box as="form" onSubmit={onSubmit} display="grid" gap="spacing2">
-          <ReactHookFormControlledSingleSelect
-            errorMessage="Please ensure you have made a selection."
-            id="rating"
-            items={FEEDBACK_STAR_DROPDOWN_ITEMS}
-            label="Rating"
-            name="rating"
-            placeholder="Select a status"
-          />
+      <Form
+        callbackOnSuccessfulFormSubmission={closeDialog}
+        handleFormSubmission={createCommentOnFormSubmission}
+        submitButtonText="Submit feedback"
+      >
+        <FormSingleSelect
+          errorMessage="Please ensure you have made a selection."
+          id="rating"
+          items={FEEDBACK_STAR_DROPDOWN_ITEMS}
+          label="Rating"
+          name="rating"
+          placeholder="Select a status"
+        />
 
-          <ReactHookFormControlledInput
-            errorMessage="Please ensure you have entered a valid email address."
-            id="description"
-            label="Task description"
-            name="description"
-            placeholder="Add a bit of additional context about this task"
-          />
-
-          <Button
-            aria-label="Close"
-            width="100%"
-            type="submit"
-            iconTrailing={buttonIcon}
-            iconTrailingProps={buttonIconProps}
-          >
-            Leave feedback
-          </Button>
-        </Box>
-      </FormProvider>
+        <FormInput
+          errorMessage="Please ensure you have entered a valid email address."
+          id="description"
+          label="Task description"
+          name="description"
+          placeholder="Add a bit of additional context about this task"
+        />
+      </Form>
     </Dialog>
   );
 }

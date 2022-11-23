@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+// import "./src/__css__/reset.css"; <-- should probably be used for cross-browser support, but need to sort import order issue
 import "./src/__css__/global/global_button.css";
 import "./src/__css__/global/global_checkbox_styles.css";
 import "./src/__css__/global/global_code.css";
@@ -12,8 +13,8 @@ import "./src/__css__/global/global_tables.css";
 import { vars } from "./src/__css__/theme.css";
 
 /* -----------------------------------------------------------------------------—
-* GLOBAL SELECTORS                                                        
-// -----------------------------------------------------------------------------— */
+ * GLOBAL SELECTORS
+ ** -----------------------------------------------------------------------------— */
 
 globalStyle(`*`, {
   boxSizing: `border-box`,
@@ -38,8 +39,8 @@ globalStyle(`body`, {
 });
 
 /* -----------------------------------------------------------------------------—
-* ANCHOR TAGS                                                        
-// -----------------------------------------------------------------------------— */
+ * ANCHOR TAGS
+ ** -----------------------------------------------------------------------------— */
 
 globalStyle(`a`, {
   padding: 0,
@@ -49,8 +50,8 @@ globalStyle(`a`, {
 });
 
 /* -----------------------------------------------------------------------------—
-* VISUAL ELEMENTS                                                         
-// -----------------------------------------------------------------------------— */
+ * VISUAL ELEMENTS
+ ** -----------------------------------------------------------------------------— */
 
 globalStyle(`img, picture, video, canvas, svg`, {
   display: `block`,
@@ -58,16 +59,16 @@ globalStyle(`img, picture, video, canvas, svg`, {
 });
 
 /* -----------------------------------------------------------------------------—
-* INPUTS                                                                  
-// -----------------------------------------------------------------------------— */
+ * INPUTS
+ ** -----------------------------------------------------------------------------— */
 
 globalStyle(`input, button, textarea, select`, {
   font: `inherit`,
 });
 
 /* -----------------------------------------------------------------------------—
-* GATSBY OVERRIDES                                                        
-// -----------------------------------------------------------------------------— */
+ * GATSBY OVERRIDES
+ ** -----------------------------------------------------------------------------— */
 
 globalStyle(`___gatsby`, {
   isolation: `isolate`,

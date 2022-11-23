@@ -19,7 +19,8 @@ export function Comment({
 
   const handleDelete = useCallback(async () => {
     return deleteDoc(documentRef).catch((error) => {
-      alert(error);
+      /** ToDo(feedback-form/Comment): Render potential errors nicely in frontend */
+      console.error(error);
     });
   }, [documentRef]);
 

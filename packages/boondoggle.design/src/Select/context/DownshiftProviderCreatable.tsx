@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useCombobox } from "downshift";
 import type { DropdownItem } from "../types";
-// import { matchSorter } from "match-sorter";
 import { filterDownshiftAvailableItems } from "../utils/filterDownshiftAvailableItems";
 import { DownshiftContext } from "./DownshiftContext";
 
@@ -31,10 +30,6 @@ export function DownshiftProviderCreatable({
   children,
 }: DownshiftProviderCreatableProps) {
   const [inputValue, setInputValue] = useState<string>(initialInputValue);
-
-  // const [selectedItem, selectItem] = useState<
-  //   DropdownItem | null | undefined
-  // >(initialValue);
 
   /**
    * Filter all available items based on the combobox input value
@@ -72,6 +67,7 @@ export function DownshiftProviderCreatable({
     inputValue,
     items: filteredItems,
     initialInputValue,
+    initialSelectedItem: initialValue,
     stateReducer(_, actionAndChanges) {
       const { changes, type } = actionAndChanges;
 
@@ -80,6 +76,8 @@ export function DownshiftProviderCreatable({
          * Prevent Downshift opening menu on input focus, which was
          * fighting `toggleMenu` attached to input's 'onClick' handler,
          * causing flickering.
+         *
+         * Accepted as bug by maintainers, tracking here: https://github.com/downshift-js/downshift/issues/1439
          */
         case useCombobox.stateChangeTypes.InputFocus:
           return { ...changes, isOpen: false };
@@ -177,44 +175,3 @@ export function DownshiftProviderCreatable({
     </DownshiftContext.Provider>
   );
 }
-
-// const [isCreating, setIsCreating] = useState(false);
-
-// useEffect(() => {
-//   if ((!inputItems || inputItems.length < 1) && isCreatable) {
-//     setIsCreating(true);
-//     // setInputItems([{ label: `+ Create ${inputValue}`, value: inputValue }]);
-//     setHighlightedIndex(0);
-//   }
-// }, [inputItems, setIsCreating, setHighlightedIndex, inputValue, isCreatable]);
-
-// onInputValueChange: ({ inputValue }) => {
-//   const filteredItems = matchSorter(items, inputValue || "", {
-//     keys: ["value", "label"],
-//   });
-
-//   if (isCreating && filteredItems.length > 0) {
-//     setIsCreating(false);
-//   }
-
-//   setInputItems(filteredItems);
-// },
-
-// case useCombobox.stateChangeTypes.InputKeyDownEnter:
-// case useCombobox.stateChangeTypes.ItemClick:
-//   if (onSelectItem) {
-//     onSelectItem(newSelectedItem);
-
-//     // if (
-//     //   changes.selectedItem?.value === inputValue &&
-//     //   !items.includes(changes.selectedItem)
-//     // ) {
-//     //   // Can receive an optional callback
-//     //   if (onSelect) {
-//     //     onSelect(changes.selectedItem);
-//     //   }
-//     //   setInputItems(items);
-//     //   setIsCreating(false);
-//     // }
-//   }
-//   break;

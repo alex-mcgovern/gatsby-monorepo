@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Box, ListItem } from "@alexmcgovern/boondoggle.design";
-import { checkArrayHasLength } from "@alexmcgovern/utils";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import type { ImageDataLike } from "gatsby-plugin-image";
 import slugify from "slugify";
 import { BlogCategoriesList } from "../../components/BlogCategoryTags";
 import { RemarkMarkdown } from "../../components/BlogRemarkRenderer";
+import type { BlogCategoryShape } from "../../types";
 
 interface PageBlogProps {
   data: {
@@ -17,6 +17,7 @@ interface PageBlogProps {
         date?: string;
         description?: string;
         title: string;
+        categories?: Array<string>;
       };
     };
     next?: {
@@ -44,18 +45,14 @@ interface PageBlogProps {
 }
 
 export default function PageBlog({ data }: PageBlogProps) {
-  const { markdownRemark: post, site, previous, next } = data;
+  const { markdownRemark: post, previous, next } = data;
   const {
-    excerpt,
-    frontmatter: { description, categories },
+    frontmatter: { categories },
     htmlAst,
   } = post;
 
-  const siteTitle = site.siteMetadata.title || `Title`;
-
-  const categoryLinks =
-    checkArrayHasLength(categories) &&
-    categories.map((categoryTitle) => {
+  const categoryLinks: Array<BlogCategoryShape> | undefined = categories?.map(
+    (categoryTitle) => {
       const categorySlug = slugify(categoryTitle, {
         lower: true,
         strict: true,
@@ -64,7 +61,8 @@ export default function PageBlog({ data }: PageBlogProps) {
         categoryTitle,
         categorySlug,
       };
-    });
+    }
+  );
 
   return (
     <Box marginY="spacing5">
@@ -109,14 +107,16 @@ export default function PageBlog({ data }: PageBlogProps) {
           as="nav"
         >
           <ListItem
+            as={Link}
             description={previous?.frontmatter?.title}
-            link={previous?.fields?.slug}
+            to={previous?.fields?.slug}
             title="Previous"
             width="100%"
           />
           <ListItem
+            as={Link}
             description={next?.frontmatter?.title}
-            link={next?.fields?.slug}
+            to={next?.fields?.slug}
             title="Next"
             width="100%"
             textAlign="right"

@@ -1,17 +1,14 @@
-import type { ReactNode, Ref } from "react";
+import type { Ref } from "react";
 import React, { forwardRef } from "react";
 import clsx from "clsx";
 import { Box } from "../../../Box";
-import type { ButtonProps } from "../../../Button";
 import type { VariantInteractiveElementSizeEnum } from "../../../__css__/common/variant_interactive_element_size.css";
 import type { DropdownItem } from "../../types";
 import * as styles from "./index.css";
 
-export interface DownshiftListItemInnerProps {
-  isSelected?: boolean;
-  item: DropdownItem;
-  size?: ButtonProps["size"];
-}
+/**
+ * ToDo: Re-enable links and polymorphism in DropdownListItem
+ */
 
 export interface DropdownListItemProps {
   isHighlighted: boolean;
@@ -19,7 +16,6 @@ export interface DropdownListItemProps {
   item: DropdownItem;
   isSelected?: boolean;
   isCheckboxVisible: boolean;
-  children: ReactNode;
 }
 
 export const DropdownListItem = forwardRef(
@@ -29,7 +25,6 @@ export const DropdownListItem = forwardRef(
       size,
       isHighlighted,
       isSelected,
-      children,
       isCheckboxVisible,
       ...rest
     }: DropdownListItemProps,

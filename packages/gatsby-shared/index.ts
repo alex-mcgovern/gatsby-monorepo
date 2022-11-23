@@ -10,10 +10,15 @@ export { Layout } from "./src/shared-components/Layout";
 export { Pagination } from "./src/shared-components/Pagination";
 export { Seo } from "./src/shared-components/Seo";
 
-export { ReactHookFormControlledInput } from "./src/shared-components/ReactHookForm/ReactHookFormControlledInput";
-export { ReactHookFormControlledSingleSelect } from "./src/shared-components/ReactHookForm/ReactHookFormControlledSingleSelect";
-export { ReactHookFormControlledSingleSelectCreatable } from "./src/shared-components/ReactHookForm/ReactHookFormControlledSingleSelectCreatable";
-export { getHookFormButtonIconProps } from "./src/shared-components/ReactHookForm/getHookFormButtonIcon";
+/** -----------------------------------------------------------------------------
+ * React hook form
+ * ------------------------------------------------------------------------------- */
+
+export { Form, FormProps } from "./src/shared-components/Form";
+export { FormInput } from "./src/shared-components/Form/FormInput";
+export { FormSingleSelect } from "./src/shared-components/Form/FormSingleSelect";
+export { FormSingleSelectCreatable } from "./src/shared-components/Form/FormSingleSelectCreatable";
+export { getHookFormButtonIconProps } from "./src/shared-components/Form/getHookFormButtonIcon";
 
 /** -----------------------------------------------------------------------------
  * Gatsby APIs

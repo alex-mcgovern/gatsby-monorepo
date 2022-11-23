@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { vars } from "@alexmcgovern/boondoggle.design";
+import { Loader, vars } from "@alexmcgovern/boondoggle.design";
 import type { TickFormatter } from "@visx/axis";
 import { curveNatural } from "@visx/curve";
 import { LinearGradient } from "@visx/gradient";
@@ -19,9 +19,9 @@ interface FeedbackGraphProps {
   paginationState: PaginationStateShape;
 }
 
-/** -----------------------------------------------------------------------------
+/** ---------------------------------------------
  * Data accessor functions for Area Series
- * ------------------------------------------------------------------------------- */
+ * ----------------------------------------------- */
 
 const xAccessor = (comment: CommentShape) => {
   return new Date(comment.created.seconds * 1000);
@@ -31,9 +31,9 @@ const yAccessor = (comment: CommentShape) => {
   return comment.rating;
 };
 
-/** -----------------------------------------------------------------------------
+/** ---------------------------------------------
  * Getter functions for tick values
- * ------------------------------------------------------------------------------- */
+ * ----------------------------------------------- */
 
 const getYAxisTickFormat: TickFormatter<number> = (tickValue: number) => {
   return Math.floor(tickValue).toString();
@@ -43,9 +43,9 @@ const getXAxisTickFormat: TickFormatter<Date> = (tickValue: Date) => {
   return tickValue.toISOString().substr(11, 5);
 };
 
-/** -----------------------------------------------------------------------------
+/** ---------------------------------------------
  * Getter functions for label props
- * ------------------------------------------------------------------------------- */
+ * ----------------------------------------------- */
 
 const getXAxisLabelProps = (): Partial<TextProps> => {
   return {
@@ -53,8 +53,8 @@ const getXAxisLabelProps = (): Partial<TextProps> => {
   };
 };
 
-/** ----------------------------------------------------------------------------
- * Graph component
+/** -----------------------------------------------------------------------------
+ * Main component
  * ------------------------------------------------------------------------------- */
 
 export function FeedbackGraph({
@@ -68,12 +68,10 @@ export function FeedbackGraph({
   const [cachedComments, setCachedComments] = useState(comments);
 
   useEffect(() => {
-    if (comments) {
-      setCachedComments(comments);
-    }
+    if (comments) setCachedComments(comments);
   }, [comments]);
 
-  if (!cachedComments) return null;
+  if (!cachedComments) return <Loader />;
 
   /**
    * Transition time series ticks in accordance with pagination direction
@@ -86,7 +84,10 @@ export function FeedbackGraph({
       captureEvents={false}
       height={320}
       theme={VISX_CHART_THEME}
-      /** Disabling perf warnings here as abstracting this out caused a knotty type error */
+      /**
+       * Disabling perf warnings for these props as abstracting this meant dealing with some knotty
+       * typings. (This AirBnB library is a bit over-engineered 🤔)
+       */
       // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
       xScale={{ type: "band", reverse: true }}
       // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop

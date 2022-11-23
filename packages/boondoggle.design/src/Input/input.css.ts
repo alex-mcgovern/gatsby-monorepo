@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { recipe } from "@vanilla-extract/recipes";
 import { focusBaseStyle } from "../__css__/common/focus_ring_styles.css";
+import { variantInteractiveElementSize } from "../__css__/common/variant_interactive_element_size.css";
 import { createAccessibleTransition } from "../__css__/css_preprocessing_utils/createAccessibleTransition";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import { vars } from "../__css__/theme.css";
@@ -36,28 +37,7 @@ export const getInputWrapperStyles = recipe({
     }),
   ],
 
-  variants: {
-    size: {
-      sm: [
-        { height: 32 },
-        getSprinkles({
-          fontSize: "body_sm",
-        }),
-      ],
-      md: [
-        { height: 40 },
-        getSprinkles({
-          fontSize: "body_md",
-        }),
-      ],
-      lg: [
-        { height: 48 },
-        getSprinkles({
-          fontSize: "body_lg",
-        }),
-      ],
-    },
-  },
+  variants: { size: variantInteractiveElementSize },
 
   defaultVariants: {
     size: "md",
@@ -68,6 +48,7 @@ export const inputElement = style([
   getSprinkles({
     paddingX: "spacing1",
     width: "100%",
+    height: "100%",
   }),
   {
     color: vars.color.neutral_text_highContrast,

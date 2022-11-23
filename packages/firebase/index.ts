@@ -1,1 +1,6 @@
-export { FirebaseContext, FirebaseProvider } from "./src/FirebaseContext";
+export {
+  FirebaseContext,
+  FirebaseProvider,
+} from "./src/context/FirebaseContext";
+
+export { getFirebaseAuthErrorMessage } from "./src/utils/getFirebaseAuthErrorMessage";

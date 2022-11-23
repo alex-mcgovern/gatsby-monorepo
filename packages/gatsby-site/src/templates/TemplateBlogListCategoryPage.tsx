@@ -1,23 +1,17 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { BlogListLayout } from "../components/BlogListLayout";
-
-const PAGINATION_BASE_PATH = "blog";
+import type { BlogCategoryShape, MarkdownRemarkBlogPostShape } from "../types";
 
 interface TemplateBlogListCategoryPageProps {
   data: {
     allMarkdownRemark: {
-      nodes: IMarkdownRemarkBlogPost[];
-    };
-    site: {
-      siteMetadata?: {
-        title?: string;
-      };
+      nodes: MarkdownRemarkBlogPostShape[];
     };
   };
   pageContext: {
     currentCategoryTitle: string;
-    allCategories: IBlogCategory[];
+    allCategories: Array<BlogCategoryShape>;
     currentPage: number;
     pageCount: number;
   };
@@ -30,8 +24,6 @@ export default function TemplateBlogListCategoryPage({
   const { currentPage, pageCount, allCategories, currentCategoryTitle } =
     pageContext;
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
-
   const {
     allMarkdownRemark: { nodes: posts },
   } = data;
@@ -41,7 +33,6 @@ export default function TemplateBlogListCategoryPage({
       currentPage={currentPage}
       pageCount={pageCount}
       posts={posts}
-      siteTitle={siteTitle}
       allCategories={allCategories}
       currentCategoryTitle={currentCategoryTitle}
     />
@@ -49,30 +40,28 @@ export default function TemplateBlogListCategoryPage({
 }
 
 export const query = graphql`
-  query TemplateBlogListCategoryPageQuery($itemsPerPage: Int, $itemsToSkip: Int, $currentCategoryTitle: String) {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-  allMarkdownRemark(
-    limit: $itemsPerPage
-    skip: $itemsToSkip
-    sort: {frontmatter: {date: DESC}}
-    filter: {fileAbsolutePath: {regex: "/(/content/blog)/.*\\.md$/"}, frontmatter: {categories: {in:
-[$currentCategoryTitle]}}}
+  query TemplateBlogListCategoryPageQuery(
+    $itemsPerPage: Int
+    $itemsToSkip: Int
+    $currentCategoryTitle: String
   ) {
-    nodes {
-      excerpt
-      fields {
-        slug
-      }
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-        description
+    allMarkdownRemark(
+      limit: $itemsPerPage
+      skip: $itemsToSkip
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { categories: { in: [$currentCategoryTitle] } } }
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
       }
     }
   }
-}
 `;

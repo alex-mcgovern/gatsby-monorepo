@@ -17,7 +17,7 @@ export const VISX_CHART_THEME = buildChartTheme({
 
   svgLabelBig: {
     fill: vars.color.accent_text_lowContrast,
-    fontSize: vars.fontSize.body_md,
+    fontSize: vars.fontSize.body_sm,
     fontFamily: vars.fontFamily.display,
   },
 

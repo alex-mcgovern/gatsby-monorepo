@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import React from "react";
-import { Box, Button } from "@alexmcgovern/boondoggle.design";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Box } from "../Box";
+import { Button } from "../Button";
 import * as styles from "./dialog.css";
 
 export interface DialogProps {
@@ -38,9 +39,9 @@ export function Dialog({
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className={styles.dialogOverlay} />
         <DialogPrimitive.Content className={styles.dialogContent}>
-          {/* ——————————————————————————————————————————————
+          {/* ---------------------------------------------——
            * DIALOG HEADER
-           * —————————————————————————————————————————————— */}
+           * ---------------------------------------------—— */}
           <Box
             display="flex"
             justifyContent="space-between"
@@ -68,9 +69,9 @@ export function Dialog({
             {description}
           </DialogPrimitive.Description>
 
-          {/* ——————————————————————————————————————————————
+          {/* ---------------------------------------------——
            * DIALOG CONTENT
-           * —————————————————————————————————————————————— */}
+           * ---------------------------------------------—— */}
 
           {children}
         </DialogPrimitive.Content>

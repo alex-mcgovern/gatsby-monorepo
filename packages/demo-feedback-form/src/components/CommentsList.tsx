@@ -18,6 +18,7 @@ export function CommentsList({
   if (commentsLoading) {
     return <Loader size="3x" width="100%" minHeight="75vh" />;
   }
+
   if (commentsError) {
     return (
       <Box>

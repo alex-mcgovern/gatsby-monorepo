@@ -2,6 +2,8 @@ import React from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import { Box, ListItem } from "@alexmcgovern/boondoggle.design";
 import { Pagination } from "@alexmcgovern/gatsby-shared/src/shared-components/Pagination";
+import { Link } from "gatsby";
+import type { BlogCategoryShape, MarkdownRemarkBlogPostShape } from "../types";
 import { BlogCategoriesList } from "./BlogCategoryTags";
 
 const PAGINATION_BASE_PATH = "blog";
@@ -9,9 +11,9 @@ const PAGINATION_BASE_PATH = "blog";
 interface BlogListLayoutProps {
   currentPage: number;
   pageCount: number;
-  allCategories: IBlogCategory[];
+  allCategories: Array<BlogCategoryShape>;
   currentCategoryTitle?: string;
-  posts: IMarkdownRemarkBlogPost[];
+  posts: MarkdownRemarkBlogPostShape[];
 }
 
 const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
@@ -52,12 +54,13 @@ export function BlogListLayout({
           posts.map((post) => {
             return (
               <ListItem
+                as={Link}
                 aspectRatio="wide"
                 key={post.fields.slug}
                 title={post.frontmatter.title || post.fields.slug}
                 subtitle={post.frontmatter.date}
                 description={post.frontmatter.description || post.excerpt}
-                link={post.fields.slug}
+                to={post.fields.slug}
               />
             );
           })}

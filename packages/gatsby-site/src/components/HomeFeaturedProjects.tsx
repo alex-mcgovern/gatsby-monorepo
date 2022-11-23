@@ -2,6 +2,7 @@ import React from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import { Box, ListItem } from "@alexmcgovern/boondoggle.design";
 import { createPathFromSegmentArray } from "@alexmcgovern/utils";
+import { Link } from "gatsby";
 
 const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
   desktop: "4x",
@@ -51,10 +52,11 @@ export function HomeFeaturedProjects() {
           PROJECTS.map((project) => {
             return (
               <ListItem
+                as={Link}
                 title={project.title}
                 key={project.title}
                 description={project.description}
-                link={project.link}
+                to={project.link}
               />
             );
           })}

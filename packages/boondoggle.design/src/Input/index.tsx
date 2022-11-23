@@ -6,12 +6,13 @@ import type {
 } from "react";
 import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Box } from "../Box";
+import type { IconProps } from "../Icon";
 import { Icon } from "../Icon";
 import { InputErrorMessage } from "../InputErrorMessage";
 import { Label } from "../Label";
 import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
+import type { VariantInteractiveElementSizeEnum } from "../__css__/common/variant_interactive_element_size.css";
 import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
 import * as styles from "./input.css";
@@ -19,12 +20,10 @@ import * as styles from "./input.css";
 export interface InputProps
   extends Omit<
       InputHTMLAttributes<HTMLInputElement>,
-      "width" | "height" | "style" | "color"
+      "width" | "height" | "style" | "color" | "size"
     >,
     GetSprinklesArgs {
   autoComplete?: HTMLInputElement["autocomplete"];
-  /** Allow custom prop getter. Enables compatibility with DownshiftJS */
-  getInputProps?(...args: unknown[]): unknown;
   /** FontAwesome icon shown on the left side of input. */
   iconLeading?: IconProps["icon"];
   /** Props for leading icon */
@@ -39,8 +38,8 @@ export interface InputProps
   required?: boolean;
   /** Allow controlling components to set error styles, `aria-invalid` prop and display error message. */
   invalid?: boolean;
-  /** Whether to show the label. (Label value will also be used as accessible `name` on the input element.) */
-  isDisabled?: boolean;
+  /** Is input disabled. Mapped to html5 <input> `disabled` attribute and `aria-disabled` attribute. */
+  disabled?: boolean;
   /** Name of the form control. Submitted with the form as part of a name/value pair */
   name: string;
   /** Message shown when `invalid=true`. May originate from controlling library, like `react-hook-form` */
@@ -53,8 +52,8 @@ export interface InputProps
   placeholder?: string;
   /** Aria role to use for the input (e.g. `search`). */
   role?: AriaRole;
-  /** Variant prop controlling input appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
-  variant?: styles.InputVariants;
+  /** Common interactive element size, shared with button, select, etc */
+  size?: VariantInteractiveElementSizeEnum;
   /** Allows directly assigning a value when the input is acting as a controlled element. */
   value?: string;
   type?: HTMLInputTypeAttribute;
@@ -71,16 +70,16 @@ export const Input = forwardRef(
       iconTrailingProps,
       id,
       invalid,
-      isDisabled,
+      disabled,
       label,
       name,
       onChange,
       placeholder,
       required,
       role,
+      size = "md",
       type,
       value,
-      variant,
       ...rest
     }: InputProps,
     ref: Ref<HTMLInputElement>
@@ -90,7 +89,7 @@ export const Input = forwardRef(
 
     const inputWrapperStyles = [
       styles.getInputWrapperStyles({
-        ...variant,
+        size,
       }),
       focusedStateStyle,
       getSprinkles({ ...atomProps }),
@@ -102,7 +101,7 @@ export const Input = forwardRef(
         <fieldset
           className={inputWrapperStyles.join(" ")}
           role={role}
-          disabled={isDisabled}
+          disabled={disabled}
         >
           {iconLeading && (
             <Icon
@@ -115,7 +114,7 @@ export const Input = forwardRef(
             value={value}
             type={type}
             autoComplete={autoComplete}
-            disabled={isDisabled}
+            disabled={disabled}
             className={styles.inputElement}
             placeholder={placeholder}
             onChange={onChange}

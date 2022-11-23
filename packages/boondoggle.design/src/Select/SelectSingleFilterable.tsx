@@ -32,7 +32,6 @@ export interface SelectSingleFilterableProps {
   onValueChange?(...args: Array<DropdownItem>): Array<DropdownItem>;
   buttonProps?: ButtonProps;
   buttonText?: string;
-  isLabelVisible?: boolean;
   invalid?: boolean;
   errorMessage?: string;
   label?: string;
@@ -81,6 +80,7 @@ export const SelectSingleFilterable = forwardRef(
                   errorMessage={errorMessage}
                   placeholder={selectedItem?.value || placeholder}
                   size={size}
+                  ref={ref}
                 />
 
                 <DropdownMenu size={size} />

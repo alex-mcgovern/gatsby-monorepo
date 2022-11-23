@@ -17,7 +17,7 @@ export interface DownshiftContextProvided {
   getToggleButtonProps: UseComboboxPropGetters<DropdownItem>["getToggleButtonProps"];
   highlightedIndex: number | undefined;
   isOpen: boolean;
-  items: Array<DropdownItem>;
+  items: Array<DropdownItem | undefined>;
   selectedItem: DropdownItem | null | undefined;
   selectedItems: (DropdownItem | null | undefined)[] | undefined;
   toggleMenu: UseComboboxActions<DropdownItem>["toggleMenu"];

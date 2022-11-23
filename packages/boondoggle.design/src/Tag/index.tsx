@@ -1,26 +1,18 @@
 import React from "react";
+import { extractAtomsFromProps } from "@dessert-box/core";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import clsx from "clsx";
-import { Link } from "gatsby";
+import type { BoxProps } from "../Box";
+import { Box } from "../Box";
+import { Icon } from "../Icon";
 import { focusedStateStyle } from "../__css__/common/focus_ring_styles.css";
-import type { GetSprinklesArgs } from "../__css__/getSprinkles.css";
 import { getSprinkles } from "../__css__/getSprinkles.css";
-import { resetButton } from "../__css__/resets/reset_button.css";
-import type { TTagVariants } from "./tag.css";
-import { getTagStyle } from "./tag.css";
-import { TagInnerContent } from "./tag_inner_content";
+import * as styles from "./index.css";
+import type { VariantTagStateEnum } from "./tag_state.css";
 
-export interface TagCustomisation {
-  display?: GetSprinklesArgs["display"];
-  width?: GetSprinklesArgs["width"];
-  marginTop?: GetSprinklesArgs["marginTop"];
-  marginBottom?: GetSprinklesArgs["marginBottom"];
-  justifyContent?: GetSprinklesArgs["justifyContent"];
-}
-
-export interface TagProps {
+export interface TagProps extends BoxProps {
   /** Variant prop controlling tag appearance. Note: Auto-generated documentation for this is still a WIP, so variant styles are missing. */
-  variant?: TTagVariants;
+  state?: VariantTagStateEnum;
   /** FontAwesome icon shown on the left side of tag. */
   iconLeading?: IconProp;
   /** FontAwesome icon shown on the right side of tag. */
@@ -28,7 +20,7 @@ export interface TagProps {
   /** Used as the html ID. */
   id?: string;
   /** If `true`, the component is disabled. */
-  isDisabled?: boolean;
+  disabled?: boolean;
   /** Callback on click. */
   onClick?(...args: unknown[]): unknown;
   /** The string shown in the tag. */
@@ -38,74 +30,31 @@ export interface TagProps {
 }
 
 export function Tag({
-  to,
+  as,
   title,
   id,
   iconLeading,
   iconTrailing,
-  onClick,
-  isDisabled,
-  variant,
+  state,
   ...rest
 }: TagProps) {
-  const isInternalLink = to && /^\/(?!\/)/.test(to);
+  const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
 
   const tagStyle = clsx([
-    resetButton,
-    getTagStyle(variant),
-    getSprinkles({
-      ...rest,
-    }),
+    styles.getTagStyle({ state }),
+    getSprinkles(atomProps),
     focusedStateStyle,
   ]);
 
-  if (!isDisabled && to && isInternalLink) {
-    return (
-      <Link className={tagStyle} to={to} onClick={onClick} id={id} {...rest}>
-        <TagInnerContent
-          iconLeading={iconLeading}
-          iconTrailing={iconTrailing}
-          title={title}
-        />
-      </Link>
-    );
-  }
-  if (!isDisabled && to && !isInternalLink) {
-    return (
-      <a className={tagStyle} href={to} onClick={onClick} id={id} {...rest}>
-        <TagInnerContent
-          iconLeading={iconLeading}
-          iconTrailing={iconTrailing}
-          title={title}
-        />
-      </a>
-    );
-  }
-  if (onClick)
-    return (
-      <button
-        className={tagStyle}
-        disabled={isDisabled}
-        onClick={onClick}
-        id={id}
-        type="button"
-        {...rest}
-      >
-        <TagInnerContent
-          iconLeading={iconLeading}
-          iconTrailing={iconTrailing}
-          title={title}
-        />
-      </button>
-    );
-
   return (
-    <div className={tagStyle} id={id} {...rest}>
-      <TagInnerContent
-        iconLeading={iconLeading}
-        iconTrailing={iconTrailing}
-        title={title}
-      />
-    </div>
+    <Box as={as} className={tagStyle} id={id} {...otherProps}>
+      {iconLeading && (
+        <Icon className={styles.iconLeading} icon={iconLeading} />
+      )}
+      {title && <span>{title}</span>}
+      {iconTrailing && (
+        <Icon className={styles.iconTrailing} icon={iconTrailing} />
+      )}
+    </Box>
   );
 }

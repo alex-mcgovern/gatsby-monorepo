@@ -13,13 +13,16 @@ export interface IconProps
   extends GetSprinklesArgs,
     Omit<
       FontAwesomeIconProps,
-      | "width"
-      | "height"
-      | "textDecoration"
-      | "overflow"
-      | "fontWeight"
-      | "fontSize"
+      | "border"
+      | "color"
       | "display"
+      | "fontSize"
+      | "fontStyle"
+      | "fontWeight"
+      | "height"
+      | "overflow"
+      | "textDecoration"
+      | "width"
     > {
   icon: IconProp;
 }

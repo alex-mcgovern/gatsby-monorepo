@@ -116,7 +116,8 @@
     "tsbuildinfo",
     "tsdoc",
     "TTFB",
-    "vars"
+    "vars",
+    "VISX"
   ],
   "turboConsoleLog.delimiterInsideMessage": "",
   "turboConsoleLog.includeFileNameAndLineNum": false,

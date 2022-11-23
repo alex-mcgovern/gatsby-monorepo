@@ -1,13 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { BlogListLayout } from "../components/BlogListLayout";
-
-const PAGINATION_BASE_PATH = "blog";
+import type { BlogCategoryShape, MarkdownRemarkBlogPostShape } from "../types";
 
 interface TemplateBlogListPageProps {
   data: {
     allMarkdownRemark: {
-      nodes?: IMarkdownRemarkBlogPost[];
+      nodes: MarkdownRemarkBlogPostShape[];
     };
     site: {
       siteMetadata?: {
@@ -16,7 +15,7 @@ interface TemplateBlogListPageProps {
     };
   };
   pageContext: {
-    allCategories: IBlogCategory[];
+    allCategories: Array<BlogCategoryShape>;
     currentPage: number;
     pageCount: number;
   };
@@ -28,8 +27,6 @@ export default function TemplateBlogListPage({
 }: TemplateBlogListPageProps) {
   const { currentPage, pageCount, allCategories } = pageContext;
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`;
-
   const {
     allMarkdownRemark: { nodes: posts },
   } = data;
@@ -39,7 +36,6 @@ export default function TemplateBlogListPage({
       currentPage={currentPage}
       pageCount={pageCount}
       posts={posts}
-      siteTitle={siteTitle}
       allCategories={allCategories}
     />
   );
@@ -47,28 +43,22 @@ export default function TemplateBlogListPage({
 
 export const query = graphql`
   query TemplateBlogListPageQuery($itemsPerPage: Int, $itemsToSkip: Int) {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-  allMarkdownRemark(
-    limit: $itemsPerPage
-    skip: $itemsToSkip
-    sort: {frontmatter: {date: DESC}}
-    filter: {fileAbsolutePath: {regex: "/(/content/blog)/.*\\.md$/"}}
-  ) {
-    nodes {
-      excerpt
-      fields {
-        slug
-      }
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-        description
+    allMarkdownRemark(
+      limit: $itemsPerPage
+      skip: $itemsToSkip
+      sort: { frontmatter: { date: DESC } }
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
       }
     }
   }
-}
 `;

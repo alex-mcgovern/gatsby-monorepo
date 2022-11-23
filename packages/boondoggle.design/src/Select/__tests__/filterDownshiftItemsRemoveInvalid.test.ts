@@ -1,4 +1,4 @@
-import { filterDownshiftItemsRemoveInvalid } from "../filterDownshiftItemsRemoveInvalid";
+import { filterDownshiftItemsRemoveInvalid } from "../utils/filterDownshiftItemsRemoveInvalid";
 
 test("Given 1 valid initial selected item, returns that item", () => {
   expect(

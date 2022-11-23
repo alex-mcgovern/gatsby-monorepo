@@ -1,4 +1,4 @@
-import { filterDownshiftAvailableItems } from "../filterDownshiftAvailableItems";
+import { filterDownshiftAvailableItems } from "../utils/filterDownshiftAvailableItems";
 
 test("Given no selected items, and empty string as inputValue, returns all items", () => {
   expect(

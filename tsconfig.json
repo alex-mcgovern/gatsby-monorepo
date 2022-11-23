@@ -3,39 +3,62 @@
     "target": "ES2020",
     "lib": ["dom", "esnext"],
     "jsx": "react",
+    "noEmit": true,
 
-    /* Modules */
+    /** ---------------------------------------------
+     * Modules
+     * ----------------------------------------------- */
+
     "module": "esnext",
     "moduleResolution": "node",
 
-    /* JavaScript Support */
+    /** ---------------------------------------------
+     * JavaScript Support
+     * ----------------------------------------------- */
+
     "allowJs": true,
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
-    /* Type Checking */
+    /** ---------------------------------------------
+     * Type Checking
+     * ----------------------------------------------- */
+
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* Completeness */
+    /** ---------------------------------------------
+     * Completeness
+     * ----------------------------------------------- */
+
     "skipLibCheck": true
   },
+
+  /** ---------------------------------------------
+   * Scope
+   * ----------------------------------------------- */
+
+  "exclude": ["**/*/public", "./packages/boondoggle-docs"],
+
   "include": [
-    "packages/gatsby-site/src/global.d.ts",
-    "./src/**/*",
-    "./gatsby-node.ts",
-    "./gatsby-browser.ts",
-    "./gatsby-ssr.ts",
-    "./gatsby-config.ts",
-    "./plugins/**/*",
-    "./packages/**/*",
-    "packages/firebase-kanban"
+    ".eslintrc.js",
+    "**/*/gatsby-browser.ts",
+    "**/*/gatsby-config.ts",
+    "**/*/gatsby-node.ts",
+    "**/*/gatsby-ssr.ts",
+    "**/*/plugins/**/*",
+    "**/*/src/**/*",
+    "global.d.ts",
+    "jest.config.ts",
+    // "packages/**/*",
+    "test/**/*"
   ]
 }

@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
+    "@alexmcgovern/utils": "*",
     "react": "^18.0.0",
     "web-vitals": "^3.1.0"
   },
@@ -14,5 +15,10 @@
   "repository": {
     "type": "git",
     "url": "https://https://github.com/alex-mcgovern/alexmcgovern.com/packages/web-vitals-widget"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.9.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-mdx": "^2.0.5"
   }
 }

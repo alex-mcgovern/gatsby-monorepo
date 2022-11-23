@@ -3,5 +3,10 @@
   "compilerOptions": {
     // "outDir": "./lib"
   },
-  "include": ["./src", "src/pages/index.tsx", "../../src/projects"]
+  "include": [
+    "./src",
+    "src/pages/index.tsx",
+    "../../src/projects",
+    "../boondoggle-docs/src/index.tsx"
+  ]
 }

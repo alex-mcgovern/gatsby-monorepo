@@ -16,7 +16,6 @@ export interface SelectMultiFilterableProps
   onValueChange?(...args: Array<unknown>): unknown;
   onSelectItem?(...args: Array<unknown>): unknown;
   selectedItems?: Array<DropdownItem>;
-  isLabelVisible?: boolean;
   label?: string;
 }
 

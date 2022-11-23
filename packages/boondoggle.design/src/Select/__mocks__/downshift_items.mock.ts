@@ -1,4 +1,4 @@
-import { DropdownItem } from "../types";
+import type { DropdownItem } from "../types";
 
 export const ITEM_TO_FIND_MOCK: DropdownItem = {
   label: "Italy",
