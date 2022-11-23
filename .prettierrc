@@ -1,20 +1,9 @@
 {
   "arrowParens": "always",
   "proseWrap": "always",
-  "overrides": [
-    {
-      "files": ["index_loadable.js"],
-      "options": {
-        "printWidth": 200
-      }
-    }
-  ],
   "importOrder": [
     "^react$",
     "<THIRD_PARTY_MODULES>",
-    "~components/*",
-    "~utils/*",
-    "~hooks/*",
     "^[./]"
   ],
   "importOrderSeparation": false,
