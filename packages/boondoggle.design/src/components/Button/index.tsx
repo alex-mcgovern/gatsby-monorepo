@@ -1,0 +1,125 @@
+/**
+ * Approach adapted from a LogRocket blog by Ohans Emmanuel
+ * https://blog.logrocket.com/build-strongly-typed-polymorphic-components-react-typescript/
+ */
+import type { ElementType, ReactElement } from "react";
+import React, { forwardRef } from "react";
+import { extractAtomsFromProps } from "@dessert-box/core";
+import clsx from "clsx";
+import type { VariantInteractiveElementSizeEnum } from "../../styles/common/variant_interactive_element_size.css";
+import { getSprinkles } from "../../styles/getSprinkles.css";
+import type {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from "../../types";
+import { Icon } from "../Icon/index";
+import type { IconProps } from "../Icon/index";
+import type { VariantButtonColorEnum } from "./button-color.css";
+import { getButtonStyles, iconStyle } from "./button.css";
+import { buttonTheme } from "./button.theme.css";
+import type { VariantButtonAppearanceEnum } from "./variantButtonAppearance.css";
+
+type ButtonProps<TPolymorphicAs extends ElementType> =
+  PolymorphicComponentPropWithRef<
+    TPolymorphicAs,
+    {
+      /** FontAwesome icon shown on the left side of button. */
+      iconLeading?: IconProps["icon"];
+      /** Props for leading icon */
+      iconLeadingProps?: Omit<IconProps, "icon">;
+      /** FontAwesome icon shown on the right side of button. */
+      iconTrailing?: IconProps["icon"];
+      /** Props for trailing icon */
+      iconTrailingProps?: Omit<IconProps, "icon">;
+      /** Title for button, shown in the UI */
+      name?: string;
+      /** HTML button type, defaults to `button`. */
+      type?: "button" | "submit" | "reset";
+      /** Size of the button element */
+      size?: VariantInteractiveElementSizeEnum;
+      /** Color for the button */
+      color?: VariantButtonColorEnum;
+      /** Appearance for the button */
+      appearance?: VariantButtonAppearanceEnum;
+    }
+  >;
+
+/**
+ * This is the type used in the type annotation for the component
+ */
+type ButtonComponent = <TPolymorphicAs extends ElementType = "button">(
+  props: ButtonProps<TPolymorphicAs>
+) => ReactElement | null;
+
+/** -----------------------------------------------------------------------------
+ * Button component
+ * ------------------------------------------------------------------------------- */
+
+export const Button: ButtonComponent = forwardRef(
+  <TPolymorphicAs extends ElementType = "span">(
+    {
+      appearance = "primary",
+      as,
+      children,
+      className: userClassName,
+      color,
+      disabled,
+      iconLeading,
+      iconLeadingProps,
+      iconTrailing,
+      iconTrailingProps,
+      id,
+      size = "md",
+      type = "button",
+      ...rest
+    }: ButtonProps<TPolymorphicAs>,
+    ref?: PolymorphicRef<TPolymorphicAs>
+  ) => {
+    /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
+    const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
+
+    const Component = as || "button";
+
+    const buttonClassNames = clsx(
+      buttonTheme,
+      getButtonStyles({ appearance, color, size }),
+      getSprinkles(atomProps),
+      userClassName
+    );
+
+    return (
+      <Component
+        {...{
+          ref,
+          disabled,
+          id,
+          className: buttonClassNames,
+          /** Conditionally spread `button` attributes */
+          ...(as === "button" && {
+            disabled,
+            "aria-disabled": disabled,
+            type,
+          }),
+          ...otherProps,
+        }}
+      >
+        {iconLeading && (
+          <Icon
+            className={iconStyle}
+            icon={iconLeading}
+            {...iconLeadingProps}
+          />
+        )}
+
+        {children}
+        {iconTrailing && (
+          <Icon
+            className={iconStyle}
+            icon={iconTrailing}
+            {...iconTrailingProps}
+          />
+        )}
+      </Component>
+    );
+  }
+);
