@@ -8,7 +8,7 @@ import {
   faAnglesRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
-import { getPaginationArray } from "./helper_functions/filter_page_array/get_pagination_array";
+import { getPaginationArray } from "./helper_functions/get_pagination_array";
 
 export interface PaginationProps {
   basePath: string;
