@@ -17,7 +17,7 @@ export function getPaginationVars({
 
   const nthPagePath = path.join(basePagePath, currentPage.toString());
 
-  const pagePath = isFirstPage ? basePagePath : nthPagePath;
+  const pagePath = isFirstPage ? `/${basePagePath}` : nthPagePath;
 
   return {
     currentPage,
