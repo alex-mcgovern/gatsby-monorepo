@@ -3,6 +3,7 @@
   "private": true,
   "description": "Documentation site for Boondoggle design system",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "author": "Alex McGovern <alex_mcgovernsmith@icloud.com>",
   "bugs": {
     "url": "https://github.com/alex-mcgovern/alexmcgovern.com/issues"

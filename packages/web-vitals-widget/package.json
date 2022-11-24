@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/web-vitals-widget",
   "description": "Core web vitals UI widget for alexmcgovern.com Gatsby project",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/utils": "*",

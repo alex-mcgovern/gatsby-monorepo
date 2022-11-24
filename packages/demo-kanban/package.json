@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/demo-kanban",
   "description": "Kanban board alexmcgovern.com, built with Firebase and Firestore.",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/firebase": "*",

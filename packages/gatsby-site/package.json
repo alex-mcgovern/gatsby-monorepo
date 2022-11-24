@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/gatsby-site",
   "description": "Main website for alexmcgovern.com, built with GatsbyJS.",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/gatsby-shared": "*",

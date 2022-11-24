@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/demo-pokedex",
   "description": "Pokedex built with Gatsby & PokeAPI",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/gatsby-shared": "*",

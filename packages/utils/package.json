@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/utils",
   "description": "Handy JS utils used across alexmcgovern.com",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
     "tsc": "tsc"

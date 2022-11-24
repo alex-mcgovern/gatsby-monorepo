@@ -2,6 +2,7 @@
   "name": "@alexmcgovern/demo-feedback-form",
   "description": "Customer feedback form technical challenge, built with Firebase & Firestore",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/firebase": "*",
