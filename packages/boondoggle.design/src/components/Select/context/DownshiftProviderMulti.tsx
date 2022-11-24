@@ -11,6 +11,7 @@ interface DownshiftProviderMultiProps {
   /** Wrapped components, which may access downshift state, or prop getters from context */
   children: ReactNode;
   /** Initial value for text input */
+
   initialInputValue?: string;
   /** Array of items to be selected when initially mounts */
   initialValue?: Array<DropdownItem>;
@@ -53,7 +54,7 @@ export function DownshiftProviderMulti({
    * context to dropdown menu items.
    */
   const getIsDropdownItemSelected = useCallback(
-    (item: DropdownItem) => {
+    (item: DropdownItem | null | undefined) => {
       return (
         selectedItems &&
         selectedItems.length > 0 &&

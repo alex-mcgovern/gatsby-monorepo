@@ -2,7 +2,7 @@ import type { DropdownItem } from "../types";
 
 interface FilterDownshiftAvailableItemsArgs {
   /** All available DownshiftItems */
-  items?: Array<DropdownItem>;
+  items: Array<DropdownItem>;
   /** Value of controlled combobox input */
   inputValue?: string;
 }
@@ -20,10 +20,11 @@ export function filterDownshiftAvailableItems({
   /**
    * Filter out items that don't match the `inputValue`
    */
-  return (
-    Array.isArray(items) &&
-    items.filter((item) => {
+  if (items && items.length > 0) {
+    return items.filter((item) => {
       return item?.label?.toLowerCase().includes(inputValue.toLowerCase());
-    })
-  );
+    });
+  }
+
+  return items;
 }

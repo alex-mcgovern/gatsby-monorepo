@@ -13,7 +13,7 @@ import { Link, navigate } from "gatsby";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
 import { Form } from "../shared-components/Form";
-import { FormInput } from "../shared-components/Form/FormInput";
+import { FormInput } from "../shared-components/Form/components/FormInput";
 
 interface SharedPageLoginProps {
   location: {

@@ -4,8 +4,8 @@ import { Box, Button } from "@alexmcgovern/boondoggle.design";
 import { FormProvider, useForm } from "react-hook-form";
 import type { FormInputProps } from "./FormInput";
 import type { FormSingleSelectProps } from "./FormSingleSelect";
-import type { FormSingleSelectCreatableProps } from "./FormSingleSelectCreatable";
-import { getHookFormButtonIconProps } from "./getHookFormButtonIcon";
+import type { FormSingleSelectCreatableProps } from "./__tests__/FormSingleSelectCreatable";
+import { getHookFormButtonIconProps } from "./utils/getHookFormButtonIcon";
 
 export interface FormProps {
   callbackOnSuccessfulFormSubmission: () => void;

@@ -5,7 +5,7 @@ import { createAccessibleTransition } from "../../styles/css_preprocessing_utils
 import { getSprinkles } from "../../styles/getSprinkles.css";
 import { darkTheme, vars } from "../../styles/theme.css";
 
-export const listItemWrapper = style([
+export const cardStyle = style([
   getSprinkles({
     padding: "spacing2",
     display: "block",

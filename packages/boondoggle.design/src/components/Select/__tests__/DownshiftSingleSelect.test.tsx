@@ -11,7 +11,8 @@ test("Renders without error", async () => {
   const { getByTestId } = renderTestComponent<SelectSingleProps>(
     <SelectSingle
       id="test-dropdown"
-      initialInputValue="foo"
+      placeholder="Foo bar"
+      initialValue={{ value: "foo", label: "foo" }}
       items={[
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
@@ -19,7 +20,6 @@ test("Renders without error", async () => {
         { value: "alice", label: "alice" },
       ]}
       name="test-dropdown"
-      size={undefined}
     />
   );
 
@@ -33,7 +33,8 @@ test("When user selects an item, should call `onChange` correctly", async () => 
   const { component, user, getByText } = renderTestComponent<SelectSingleProps>(
     <SelectSingle
       id="test-dropdown"
-      initialInputValue="foo"
+      initialValue={{ value: "foo", label: "foo" }}
+      placeholder="Foo bar"
       items={[
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
@@ -41,8 +42,7 @@ test("When user selects an item, should call `onChange` correctly", async () => 
         { value: "alice", label: "alice" },
       ]}
       name="test-dropdown"
-      size={undefined}
-      onChange={onChange}
+      onValueChange={onChange}
     />
   );
 

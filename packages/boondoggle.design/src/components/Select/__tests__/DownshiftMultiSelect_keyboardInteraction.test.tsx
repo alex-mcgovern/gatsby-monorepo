@@ -26,6 +26,7 @@ test("When user uses keyboard to select and deselect an item, should call `onCha
   );
 
   const input = getByRole("textbox");
+  console.log("debug ~ input", input);
 
   /**
    * Focus element with keyboard

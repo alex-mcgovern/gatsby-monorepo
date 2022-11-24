@@ -1,4 +1,8 @@
 import { createSprinkles, defineProperties } from "@vanilla-extract/sprinkles";
+import {
+  MEDIA_QUERY_DESKTOP,
+  MEDIA_QUERY_TABLET,
+} from "./common/css_vars_media_queries";
 import { vars } from "./theme.css";
 import { varsBorder } from "./vars/vars_border.css";
 import { varsDisplay } from "./vars/vars_display.css";
@@ -27,6 +31,7 @@ const properties = defineProperties({
       "space-around",
       "space-between",
     ],
+
     margin: vars.spacing,
     padding: vars.spacing,
     marginBottom: vars.spacing,
@@ -62,10 +67,10 @@ const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
     tablet: {
-      "@media": "screen and (min-width: 376px)",
+      "@media": MEDIA_QUERY_TABLET,
     },
     desktop: {
-      "@media": "screen and (min-width: 960px)",
+      "@media": MEDIA_QUERY_DESKTOP,
     },
   },
   defaultCondition: "mobile",

@@ -1,11 +1,11 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-import { disabledStateStyles } from "../../../styles/common/disabled_state_styles.css";
-import { focusedStateStyle } from "../../../styles/common/focus_ring_styles.css";
-import { variantInteractiveElementSize } from "../../../styles/common/variant_interactive_element_size.css";
-import { createAccessibleTransition } from "../../../styles/css_preprocessing_utils/createAccessibleTransition";
-import { getSprinkles } from "../../../styles/getSprinkles.css";
-import { vars } from "../../../styles/theme.css";
+import { disabledStateStyles } from "../../../../styles/common/disabled_state_styles.css";
+import { focusedStateStyle } from "../../../../styles/common/focus_ring_styles.css";
+import { variantInteractiveElementSize } from "../../../../styles/common/variant_interactive_element_size.css";
+import { createAccessibleTransition } from "../../../../styles/css_preprocessing_utils/createAccessibleTransition";
+import { getSprinkles } from "../../../../styles/getSprinkles.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const getDropdownListItemStyles = recipe({
   base: [

@@ -1,14 +1,11 @@
-import type { ReactNode, Ref } from "react";
-import React, { forwardRef } from "react";
-import { extractAtomsFromProps } from "@dessert-box/core";
-import clsx from "clsx";
-import { getSprinkles } from "../../styles/getSprinkles.css";
-import type { BoxProps } from "../Box";
+import type { ReactNode } from "react";
+import React from "react";
 import { Box } from "../Box";
+import type { CardProps } from "../Card";
+import { Card } from "../Card";
 import { Tag } from "../Tag";
-import * as styles from "./index.css";
 
-export interface ListItemProps extends Omit<BoxProps, "title"> {
+export interface ListItemProps extends CardProps {
   aspectRatio?: "square" | "wide" | "tall";
   description?: string;
   subtitle?: string;
@@ -21,78 +18,52 @@ export interface ListItemProps extends Omit<BoxProps, "title"> {
   onClick?(...args: unknown[]): unknown;
 }
 
-export const ListItem = forwardRef(
-  (
-    {
-      as = "div",
-      children,
-      className,
-      description,
-      leadingNode,
-      subtitle,
-      tags,
-      title,
-      ...rest
-    }: ListItemProps,
-    ref: Ref<HTMLElement>
-  ) => {
-    /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
-    const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
+export function ListItem({
+  children,
+  description,
+  leadingNode,
+  subtitle,
+  tags,
+  title,
+  ...rest
+}: ListItemProps) {
+  return (
+    <Card {...rest}>
+      {leadingNode}
 
-    const listItemClassNames = clsx(
-      className,
-      styles.listItemWrapper,
-      getSprinkles({
-        ...atomProps,
-      })
-    );
-
-    return (
-      <Box as={as} ref={ref} className={listItemClassNames} {...otherProps}>
-        {leadingNode}
-
-        <Box
-
-        // display="flex"
-        // flexDirection="column"
-        // justifyContent="space-between"
-        // height="100%"
-        >
-          <Box as="header">
-            {title && (
-              <Box fontSize="body_lg" fontWeight="medium">
-                {title}
-              </Box>
-            )}
-            {subtitle && (
-              <Box
-                color="neutral_text_lowContrast"
-                fontSize="body_sm"
-                fontWeight="medium"
-              >
-                {subtitle}
-              </Box>
-            )}
-
-            {description && <Box as="p">{description}</Box>}
+      <Box as="header">
+        {title && (
+          <Box fontSize="body_lg" fontWeight="medium">
+            {title}
           </Box>
-          {children}
-          <Box>
-            {tags && tags.length > 0 && (
-              <Box
-                marginTop="spacing3"
-                display="flex"
-                flexWrap="wrap"
-                gap="spacing1"
-              >
-                {tags?.map((tag) => {
-                  return <Tag key={tag} title={tag} />;
-                })}
-              </Box>
-            )}
+        )}
+        {subtitle && (
+          <Box
+            color="neutral_text_lowContrast"
+            fontSize="body_sm"
+            fontWeight="medium"
+          >
+            {subtitle}
           </Box>
-        </Box>
+        )}
+
+        {description && <Box as="p">{description}</Box>}
       </Box>
-    );
-  }
-);
+      {children}
+      <Box>
+        {tags && tags.length > 0 && (
+          <Box
+            marginTop="spacing3"
+            display="flex"
+            flexWrap="wrap"
+            gap="spacing1"
+          >
+            {tags?.map((tag) => {
+              return <Tag key={tag} title={tag} />;
+            })}
+          </Box>
+        )}
+      </Box>
+    </Card>
+  );
+}

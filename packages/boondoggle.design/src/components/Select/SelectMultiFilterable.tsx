@@ -1,5 +1,4 @@
 import React from "react";
-import type { DropdownItem } from "../..";
 import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
 import { Box } from "../Box";
 import type { InputProps } from "../Input";
@@ -7,6 +6,7 @@ import { Label } from "../Label";
 import { DropdownMenu } from "./components/DropdownMenu";
 import { SelectInput } from "./components/SelectInput";
 import { DownshiftProviderMulti } from "./context/DownshiftProviderMulti";
+import type { DropdownItem } from "./types";
 
 export interface SelectMultiFilterableProps
   extends Omit<InputProps, "value" | "iconTrailing">,

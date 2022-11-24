@@ -1,26 +1,60 @@
-import type { Ref } from "react";
+import type { ElementType, ReactElement, ReactNode } from "react";
 import React, { forwardRef } from "react";
+import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
-import type { BoxProps } from "../Box";
+import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
+import { getSprinkles } from "../../styles/getSprinkles.css";
+import type {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from "../../types";
 import { Box } from "../Box";
-import type { CardVariants } from "./card.css";
-import { getCardStyle } from "./card.css";
+import * as styles from "./index.css";
 
-export interface CardProps extends BoxProps {
-  variant: CardVariants;
-}
+type BaseCardProps<TPolymorphicAs extends ElementType> = GetSprinklesArgs &
+  PolymorphicComponentPropWithRef<
+    TPolymorphicAs,
+    {
+      children: ReactNode | Array<ReactNode>;
+      className?: string;
+    }
+  >;
 
-export const Card = forwardRef(
-  (
-    { children, className: userClassName, variant, ...rest }: CardProps,
-    ref: Ref<HTMLElement> | undefined
+export type CardProps = <TPolymorphicAs extends ElementType = "button">(
+  props: BaseCardProps<TPolymorphicAs>
+) => ReactElement | null;
+
+export const Card: CardProps = forwardRef(
+  <TPolymorphicAs extends ElementType = "div">(
+    {
+      children,
+      as,
+      className: userClassName,
+      ...rest
+    }: BaseCardProps<TPolymorphicAs>,
+    ref?: PolymorphicRef<TPolymorphicAs>
   ) => {
-    const classNames = clsx(getCardStyle(variant), userClassName);
+    /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
+    const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
+
+    const Component = as || Box;
+
+    const classNames = clsx(
+      styles.cardStyle,
+      getSprinkles(atomProps),
+      userClassName
+    );
 
     return (
-      <Box {...rest} className={classNames} ref={ref}>
+      <Component
+        {...{
+          ref,
+          className: classNames,
+          ...otherProps,
+        }}
+      >
         {children}
-      </Box>
+      </Component>
     );
   }
 );

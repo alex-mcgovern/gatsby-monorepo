@@ -12,7 +12,7 @@ test("Given 1 initial selected item, on first render, should have text '1 select
     renderTestComponent<SelectMultiFilterableProps>(
       <SelectMultiFilterable
         id="test-dropdown"
-        initialSelectedItems={[{ value: "foo", label: "foo" }]}
+        initialValue={[{ value: "foo", label: "foo" }]}
         items={[
           { value: "foo", label: "foo" },
           { value: "bar", label: "bar" },
@@ -32,7 +32,7 @@ test("Given 2 initial selected items, on first render, should have text '2 selec
     renderTestComponent<SelectMultiFilterableProps>(
       <SelectMultiFilterable
         id="test-dropdown"
-        initialSelectedItems={[
+        initialValue={[
           { value: "foo", label: "foo" },
           { value: "bar", label: "bar" },
         ]}
@@ -55,7 +55,7 @@ test("Given an invalid initial selected item, on first render, input should not 
     renderTestComponent<SelectMultiFilterableProps>(
       <SelectMultiFilterable
         id="test-dropdown"
-        initialSelectedItems={[{ value: "wrong", label: "wrong" }]}
+        initialValue={[{ value: "wrong", label: "wrong" }]}
         items={[
           { value: "foo", label: "foo" },
           { value: "bar", label: "bar" },

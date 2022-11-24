@@ -3,9 +3,9 @@ import type { LegacyRef } from "react";
 import React, { forwardRef, useContext } from "react";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import clsx from "clsx";
+import { invalidInput } from "../../../../styles/common/invalid_input_styles.css";
 import type { ButtonProps } from "../../../Button";
 import { Button } from "../../../Button";
-import { invalidInput } from "../../../styles/common/invalid_input_styles.css";
 import { DownshiftContext } from "../../context/DownshiftContext";
 
 export interface SelectToggleButtonProps

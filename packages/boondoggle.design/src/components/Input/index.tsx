@@ -15,7 +15,7 @@ import type { IconProps } from "../Icon";
 import { Icon } from "../Icon";
 import { InputErrorMessage } from "../InputErrorMessage";
 import { Label } from "../Label";
-import * as styles from "./input.css";
+import * as styles from "./index.css";
 
 export interface InputProps
   extends Omit<

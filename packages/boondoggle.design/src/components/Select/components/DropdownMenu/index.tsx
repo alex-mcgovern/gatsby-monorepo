@@ -1,8 +1,8 @@
 import type { LegacyRef } from "react";
 import React, { forwardRef, useContext } from "react";
 import clsx from "clsx";
+import type { VariantInteractiveElementSizeEnum } from "../../../../styles/common/variant_interactive_element_size.css";
 import { Box } from "../../../Box";
-import type { VariantInteractiveElementSizeEnum } from "../../../styles/common/variant_interactive_element_size.css";
 import { DownshiftContext } from "../../context/DownshiftContext";
 import { DropdownListItem } from "../DropdownListItem";
 import * as styles from "./index.css";
@@ -43,7 +43,7 @@ export const DropdownMenu = forwardRef(
         <Box className={styles.dropdownListInner}>
           {items?.length > 0 &&
             items.map((item, index) => {
-              if (!item.label) {
+              if (!item?.label) {
                 return null;
               }
 

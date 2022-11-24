@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
-import { focusedStateStyle } from "../../../styles/common/focus_ring_styles.css";
-import { createAccessibleTransition } from "../../../styles/css_preprocessing_utils/createAccessibleTransition";
-import { getSprinkles } from "../../../styles/getSprinkles.css";
-import { vars } from "../../../styles/theme.css";
+import { focusedStateStyle } from "../../../../styles/common/focus_ring_styles.css";
+import { createAccessibleTransition } from "../../../../styles/css_preprocessing_utils/createAccessibleTransition";
+import { getSprinkles } from "../../../../styles/getSprinkles.css";
+import { vars } from "../../../../styles/theme.css";
 
 export const dropdownMenu = style([
   focusedStateStyle,

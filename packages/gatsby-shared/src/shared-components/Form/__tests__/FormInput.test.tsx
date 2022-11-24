@@ -1,10 +1,9 @@
 /** @jest-environment jsdom */
 import React from "react";
+import { FormInput, renderTestComponent } from "@alexmcgovern/gatsby-shared";
 import { cleanup } from "@testing-library/react";
-import { renderTestComponent } from "~test/renderTestComponent";
-import type { FormInputProps } from "../FormInput";
-import { FormInput } from "../FormInput";
-import { FormTestProvider } from "../FormTestProvider";
+import { FormTestProvider } from "../../../shared-testing/TestFormProvider";
+import { FormInputProps } from "../components/FormInput";
 
 afterEach(cleanup);
 

@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import type { DropdownItem } from "../..";
 import { Box } from "../Box";
 import type { ButtonProps } from "../Button";
 import { InputErrorMessage } from "../InputErrorMessage";
@@ -8,6 +7,7 @@ import { DropdownMenu } from "./components/DropdownMenu";
 import { SelectToggleButton } from "./components/SelectToggleButton";
 import { DownshiftContext } from "./context/DownshiftContext";
 import { DownshiftProviderSingle } from "./context/DownshiftProviderSingle";
+import type { DropdownItem } from "./types";
 
 export interface SelectSingleProps
   extends Omit<ButtonProps, "onChange" | "color" | "iconTrailing"> {

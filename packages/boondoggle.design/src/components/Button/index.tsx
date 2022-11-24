@@ -2,11 +2,16 @@
  * Approach adapted from a LogRocket blog by Ohans Emmanuel
  * https://blog.logrocket.com/build-strongly-typed-polymorphic-components-react-typescript/
  */
-import type { ElementType, ReactElement } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ElementType,
+  ReactElement,
+} from "react";
 import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
 import type { VariantInteractiveElementSizeEnum } from "../../styles/common/variant_interactive_element_size.css";
+import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
 import { getSprinkles } from "../../styles/getSprinkles.css";
 import type {
   PolymorphicComponentPropWithRef,
@@ -19,7 +24,10 @@ import { getButtonStyles, iconStyle } from "./button.css";
 import { buttonTheme } from "./button.theme.css";
 import type { VariantButtonAppearanceEnum } from "./variantButtonAppearance.css";
 
-type ButtonProps<TPolymorphicAs extends ElementType> =
+type BaseButtonProps<TPolymorphicAs extends ElementType> = Omit<
+  GetSprinklesArgs,
+  "color"
+> &
   PolymorphicComponentPropWithRef<
     TPolymorphicAs,
     {
@@ -44,12 +52,11 @@ type ButtonProps<TPolymorphicAs extends ElementType> =
     }
   >;
 
-/**
- * This is the type used in the type annotation for the component
- */
 type ButtonComponent = <TPolymorphicAs extends ElementType = "button">(
-  props: ButtonProps<TPolymorphicAs>
+  props: BaseButtonProps<TPolymorphicAs>
 ) => ReactElement | null;
+
+export type ButtonProps = ComponentPropsWithoutRef<typeof Button>;
 
 /** -----------------------------------------------------------------------------
  * Button component
@@ -72,7 +79,7 @@ export const Button: ButtonComponent = forwardRef(
       size = "md",
       type = "button",
       ...rest
-    }: ButtonProps<TPolymorphicAs>,
+    }: BaseButtonProps<TPolymorphicAs>,
     ref?: PolymorphicRef<TPolymorphicAs>
   ) => {
     /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */

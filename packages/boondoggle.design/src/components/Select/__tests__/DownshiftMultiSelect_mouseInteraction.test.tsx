@@ -83,7 +83,7 @@ test("Given an initial input value, when user deselects initial item, should cal
     renderTestComponent<SelectMultiFilterableProps>(
       <SelectMultiFilterable
         id="test-dropdown"
-        initialSelectedItems={[{ value: "foo", label: "foo" }]}
+        initialValue={[{ value: "foo", label: "foo" }]}
         items={[
           { value: "foo", label: "foo" },
           { value: "bar", label: "bar" },
