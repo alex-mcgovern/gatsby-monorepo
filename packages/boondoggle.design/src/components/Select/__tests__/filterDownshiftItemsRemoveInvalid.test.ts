@@ -4,7 +4,7 @@ test("Given 1 valid initial selected item, returns that item", () => {
   expect(
     filterDownshiftItemsRemoveInvalid({
       itemsToFilter: [{ value: "foo", label: "foo" }],
-      allItems: [
+      items: [
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
         { value: "bob", label: "bob" },
@@ -21,7 +21,8 @@ test("Given 2 valid initial selected items, returns those items", () => {
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
       ],
-      allItems: [
+
+      items: [
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
         { value: "bob", label: "bob" },
@@ -38,7 +39,7 @@ test("Given 1 invalid initial selected items, returns an empty array", () => {
   expect(
     filterDownshiftItemsRemoveInvalid({
       itemsToFilter: [{ value: "wrong", label: "wrong" }],
-      allItems: [
+      items: [
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
         { value: "bob", label: "bob" },
@@ -55,7 +56,7 @@ test("Given 1 invalid and 1 valid initial selected items, returns an empty array
         { value: "wrong", label: "wrong" },
         { value: "foo", label: "foo" },
       ],
-      allItems: [
+      items: [
         { value: "foo", label: "foo" },
         { value: "bar", label: "bar" },
         { value: "bob", label: "bob" },
