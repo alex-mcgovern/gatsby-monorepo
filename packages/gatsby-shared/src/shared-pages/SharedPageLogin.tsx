@@ -54,7 +54,7 @@ export function SharedPageLogin({ location }: SharedPageLoginProps) {
    * Handle firebase auth
    * ----------------------------------------------- */
 
-  const { firebaseAuth, user } = useContext(FirebaseContext);
+  const { firebaseAuth, user } = useContext(FirebaseContext) || {};
 
   /**
    * Note, we don't need 2nd & 3rd positional returns from this hook,

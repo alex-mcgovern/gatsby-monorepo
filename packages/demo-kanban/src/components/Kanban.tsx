@@ -9,7 +9,7 @@ import { KanbanCollapsibleEpic } from "./KanbanCollapsibleEpic";
 import { KanbanCreateTaskDialog } from "./KanbanCreateTaskDialog";
 
 export function Kanban() {
-  const { firebaseApp, user } = useContext(FirebaseContext);
+  const { firebaseApp, user } = useContext(FirebaseContext) || {};
 
   const userID = user?.uid || "";
 

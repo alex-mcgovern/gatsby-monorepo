@@ -4,7 +4,7 @@ import { FirebaseContext } from "@alexmcgovern/firebase";
 import { Link, graphql } from "gatsby";
 
 export default function FirebaseKanbanPage() {
-  const { user } = useContext(FirebaseContext);
+  const { user } = useContext(FirebaseContext) || {};
   const isLoggedIn = !!user;
 
   return (

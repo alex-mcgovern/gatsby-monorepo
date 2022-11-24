@@ -51,7 +51,7 @@ export function KanbanCreateTaskDialog({
    * Get firebase app & initialise collection
    * ----------------------------------------------- */
 
-  const { firebaseApp, user } = useContext(FirebaseContext);
+  const { firebaseApp, user } = useContext(FirebaseContext) || {};
   const collectionRef = useMemo(() => {
     if (firebaseApp && user) {
       return collection(

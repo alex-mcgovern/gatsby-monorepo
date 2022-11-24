@@ -37,8 +37,8 @@ interface FirebaseContextProvided {
 }
 
 export const FirebaseContext = createContext<FirebaseContextProvided>({
-  user: undefined,
   firebaseAuth,
+  firestore,
 });
 
 export function FirebaseProvider({ children }: FirebaseAuthProviderProps) {

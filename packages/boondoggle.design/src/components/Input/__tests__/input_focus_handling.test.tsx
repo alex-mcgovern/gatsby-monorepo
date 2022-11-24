@@ -1,6 +1,6 @@
 /** @jest-environment jsdom */
 import React from "react";
-import { renderTestComponent } from "@alexmcgovern/gatsby-shared";
+import { renderTestComponent } from "@alexmcgovern/gatsby-shared/src/shared-testing/TestComponentRenderer";
 import { cleanup } from "@testing-library/react";
 import type { InputProps } from "..";
 import { Input } from "..";

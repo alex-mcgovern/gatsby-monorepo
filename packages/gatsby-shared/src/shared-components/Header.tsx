@@ -20,10 +20,10 @@ const NAV_BUTTON_COMMON_PROPS: ButtonProps = {
 
 export function Header() {
   const { dark, toggleDark } = useContext(ThemeContext);
-  const { user, firebaseAuth } = useContext(FirebaseContext);
+  const { user, firebaseAuth } = useContext(FirebaseContext) || {};
 
   const handleSignOut = useCallback(() => {
-    return firebaseAuth.signOut();
+    return firebaseAuth?.signOut();
   }, [firebaseAuth]);
 
   return (

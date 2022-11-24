@@ -14,7 +14,7 @@ export function AuthenticatedRoute({
   returnTo,
   ...rest
 }: AuthenticatedRouteProps) {
-  const { user, firebaseAuthLoading } = useContext(FirebaseContext);
+  const { user, firebaseAuthLoading } = useContext(FirebaseContext) || {};
   const isLoggedIn = !!user;
 
   const linkState = useMemo(() => {

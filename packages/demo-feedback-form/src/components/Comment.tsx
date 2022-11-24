@@ -15,7 +15,7 @@ export function Comment({
   documentRef,
   author_uid,
 }: CommentShape) {
-  const { user } = useContext(FirebaseContext);
+  const { user } = useContext(FirebaseContext) || {};
 
   const handleDelete = useCallback(async () => {
     return deleteDoc(documentRef).catch((error) => {

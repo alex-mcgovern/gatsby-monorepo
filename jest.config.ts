@@ -1,25 +1,10 @@
-const jestConfig = {
-  // globalSetup: "./global-setup.js",
-  /**
-   * RESOLVE ALIASED IMPORTS
-   *
-   * These aliases allow a quicker developer experience
-   * and speed up refactoring by resolving  import aliases against an absolute URL.
-   *
-   * *Note*: Any new aliases will also need to be reflected in
-   * `gatsby-node.ts`, `tsconfig.json` and `.eslintrc`
-   *
-   * ToDo: Abstract mapping for webpack/ts/jest aliases and create a
-   * function to populate all 3 from a common datasource
-   */
+/** -----------------------------------------------------------------------------
+ * Base jest config
+ * ------------------------------------------------------------------------------- */
+
+const BASE_CONFIG = {
   moduleNameMapper: {
     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/test/__mocks__/file-mock.js`,
-    "^~components(.*)$": "<rootDir>/src/components$1",
-    "^~context(.*)$": "<rootDir>/src/context$1",
-    "^~hooks(.*)$": "<rootDir>/src/hooks$1",
-    "^~styles(.*)$": "<rootDir>/src/styles$1",
-    "^~test(.*)$": "<rootDir>/test$1",
-    "^~utils(.*)$": "<rootDir>/src/utils$1",
   },
   preset: "ts-jest",
   reporters: ["default", "jest-junit"],
@@ -50,4 +35,77 @@ const jestConfig = {
   transformIgnorePatterns: [`node_modules/(?!(gatsby|gatsby-script)/)`],
 };
 
+/** -----------------------------------------------------------------------------
+ * Main Jest config
+ * ------------------------------------------------------------------------------- */
+
+const jestConfig = {
+  projects: [
+    /** ---------------------------------------------
+     * 🔩 Boondoggle design component library
+     * ----------------------------------------------- */
+    {
+      ...BASE_CONFIG,
+      displayName: "Boondoggle design",
+      testMatch: [
+        "<rootDir>/packages/boondoggle.design/**/?(*.)+(spec|test).[jt]s?(x)",
+      ],
+
+      // resolver: "jest-node-exports-resolver",
+    },
+    /** ---------------------------------------------
+     * 🏚 Main gatsby site
+     *
+     * ----------------------------------------------- */
+    {
+      ...BASE_CONFIG,
+      displayName: "Main site",
+      testMatch: [
+        "<rootDir>/packages/gatsby-site/**/?(*.)+(spec|test).[jt]s?(x)",
+      ],
+    },
+    /** ---------------------------------------------
+     * 💬 Feedback form
+     * ----------------------------------------------- */
+    // {
+    //   preset: "ts-jest/presets/js-with-ts",
+    //   testEnvironment: "jsdom",
+    //   setupFilesAfterEnv: ["<rootDir>/test/jest.setup.ts"],
+    //   displayName: "Feedback form",
+    //   testMatch: [
+    //     "<rootDir>/packages/demo-feedback-form/**/?(*.)+(spec|test).[jt]s?(x)",
+    //   ],
+    // transform: BASE_TRANSFORM,
+
+    // },
+  ],
+
+  // transformIgnorePatterns: ["node_modules/(?!(firebase/app|@firebase))"],
+
+  // globalSetup: "./global-setup.js",
+  // moduleNameMapper: {
+  //   ...packages.reduce((acc, name) => {
+  //     return {
+  //       ...acc,
+  //       [`@alexmcgovern/${name}(.*)$`]: `<rootDir>/packages/./${name}/$1`,
+  //     };
+  //   }, {}),
+  // },
+};
+
 export default jestConfig;
+
+// import { lstatSync, readdirSync } from "fs";
+
+// import path from "path";
+
+/** -----------------------------------------------------------------------------
+ * Get listing of packages in the mono repo
+ * Adapted from:
+ * https://blog.ah.technology/a-guide-through-the-wild-wild-west-of-setting-up-a-mono-repo-part-2-adding-jest-with-a-breeze-16e08596f0de
+ * ------------------------------------------------------------------------------- */
+
+// const basePath = path.resolve(__dirname, "packages");
+// const packages = readdirSync(basePath).filter((name) => {
+//   return lstatSync(path.join(basePath, name)).isDirectory();
+// });

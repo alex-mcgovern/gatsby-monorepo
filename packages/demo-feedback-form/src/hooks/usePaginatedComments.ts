@@ -24,7 +24,7 @@ export interface PaginationStateShape {
 export function usePaginatedComments({
   commentsPerPage,
 }: UsePaginatedCommentsArgs) {
-  const { firebaseApp } = useContext(FirebaseContext);
+  const { firebaseApp } = useContext(FirebaseContext) || {};
 
   const collectionRef = useMemo(() => {
     if (firebaseApp) {

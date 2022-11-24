@@ -9,7 +9,7 @@ import { PaginationControls } from "../components/PaginationControls";
 import { usePaginatedComments } from "../hooks/usePaginatedComments";
 
 export default function FeedbackForm() {
-  const { user } = useContext(FirebaseContext);
+  const { user } = useContext(FirebaseContext) || {};
 
   /**
    * State passed to `Link` to login page, to return user here
