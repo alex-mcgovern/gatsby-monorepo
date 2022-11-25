@@ -52,7 +52,7 @@ export function HomeBio() {
               color="accent"
               iconLeading={faLinkedin}
             >
-              Connect on LinkedIn
+              LinkedIn
             </Button>
 
             <Button
@@ -61,7 +61,7 @@ export function HomeBio() {
               appearance="tertiary"
               color="accent"
             >
-              Download a CV
+              Download CV
             </Button>
           </Box>
         </Box>
