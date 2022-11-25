@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: write
     name: Build site
     env:
       # Expose firebase variables to gatsby runtime
