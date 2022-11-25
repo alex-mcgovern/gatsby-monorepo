@@ -3,9 +3,6 @@ on:
     # Sequence of patterns matched against refs/heads
     branches:
       - master
-    paths:
-      - "packages/gatsby-site/**"
-  workflow_dispatch:
 
 jobs:
   test:
