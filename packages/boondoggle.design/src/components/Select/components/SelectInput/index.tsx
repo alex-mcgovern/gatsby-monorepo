@@ -1,3 +1,4 @@
+import type { LegacyRef } from "react";
 import React, { forwardRef, useContext, useEffect, useState } from "react";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import type { InputProps } from "../../../Input";
@@ -7,7 +8,10 @@ import { DownshiftContext } from "../../context/DownshiftContext";
 export type SelectInputProps = Omit<InputProps, "iconTrailing">;
 
 export const SelectInput = forwardRef(
-  ({ placeholder = "All", ...rest }: SelectInputProps, ref) => {
+  (
+    { placeholder = "All", ...rest }: SelectInputProps,
+    ref: LegacyRef<HTMLInputElement>
+  ) => {
     const [inputPlaceholder, setInputPlaceholder] = useState(placeholder);
 
     const {
@@ -32,7 +36,7 @@ export const SelectInput = forwardRef(
     return (
       <Input
         {...getInputProps({
-          ...getDropdownProps({ preventKeyAction: isOpen }),
+          ...getDropdownProps({ preventKeyAction: isOpen, ref }),
           iconTrailing: faAngleDown,
           // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
           iconTrailingProps: {
@@ -40,7 +44,6 @@ export const SelectInput = forwardRef(
           },
           onClick: toggleMenu,
           placeholder: inputPlaceholder || placeholder,
-          ref,
           ...rest,
         })}
       />
