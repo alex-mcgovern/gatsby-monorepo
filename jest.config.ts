@@ -40,7 +40,7 @@ const jestConfig = {
      * ----------------------------------------------- */
     {
       ...BASE_CONFIG,
-      displayName: "Boondoggle design",
+      displayName: "boondoggle.design",
       testMatch: [
         "<rootDir>/packages/boondoggle.design/**/?(*.)+(spec|test).[jt]s?(x)",
       ],
@@ -51,7 +51,7 @@ const jestConfig = {
      * ----------------------------------------------- */
     {
       ...BASE_CONFIG,
-      displayName: "Main site",
+      displayName: "gatsby-site",
       testMatch: [
         "<rootDir>/packages/gatsby-site/**/?(*.)+(spec|test).[jt]s?(x)",
       ],

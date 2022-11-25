@@ -79,6 +79,8 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "jest": "jest .",
+    "jest:boondoggle.design": "jest --select-projects boondoggle.design",
+    "jest:gatsby-site": "jest --select-projects gatsby-site",
     "jest:watch": "jest --watch",
     "lint": "eslint . --fix",
     "serve": "gatsby serve",
