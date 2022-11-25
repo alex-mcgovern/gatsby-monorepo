@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    name: Run jest
+    name: Build site
     steps:
       - uses: actions/checkout@v3
 
