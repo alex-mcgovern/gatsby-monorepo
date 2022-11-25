@@ -9,7 +9,7 @@ export function HomeBio() {
     <Box
       display="grid"
       marginY="spacing5"
-      gridTemplateColumns="1_2"
+      gridTemplateColumns="1_3"
       alignItems="center"
       gap="spacing4"
     >
