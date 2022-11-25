@@ -20,8 +20,8 @@ import type {
 import { Icon } from "../Icon/index";
 import type { IconProps } from "../Icon/index";
 import type { VariantButtonColorEnum } from "./button-color.css";
-import { getButtonStyles, iconStyle } from "./button.css";
 import { buttonTheme } from "./button.theme.css";
+import { getButtonStyles, iconStyle } from "./index.css";
 import type { VariantButtonAppearanceEnum } from "./variantButtonAppearance.css";
 
 type BaseButtonProps<TPolymorphicAs extends ElementType> = Omit<
