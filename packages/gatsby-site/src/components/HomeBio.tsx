@@ -52,7 +52,7 @@ export function HomeBio() {
               color="accent"
               iconLeading={faLinkedin}
             >
-              Connect on LinkedIn
+              LinkedIn
             </Button>
 
             <Button
