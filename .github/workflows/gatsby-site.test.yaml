@@ -1,5 +1,11 @@
 on:
-  pull_request:
+   pull_request:
+    # Sequence of patterns matched against refs/heads
+    branches:    
+      - main
+      - 'mona/octocat'
+      - 'releases/**'
+      
   paths:
     - "packages/gatsby-site/**"
   workflow_dispatch:
