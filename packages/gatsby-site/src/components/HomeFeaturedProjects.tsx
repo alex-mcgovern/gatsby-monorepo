@@ -5,7 +5,7 @@ import { createPathFromSegmentArray } from "@alexmcgovern/utils";
 import { Link } from "gatsby";
 
 const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
-  desktop: "4x",
+  desktop: "3x",
   tablet: "2x",
   mobile: "1x",
 };
