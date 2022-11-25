@@ -27,7 +27,16 @@ jobs:
         run: cd packages/gatsby-site
 
       - name: Build Gatsby site
-        run: gatsby build
+        run: npm run build
 
       - name: Verify build
         run: ls -la public
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.GH_ACTIONS_CF_PAGES_API_TOKEN }}
+          accountId: ${{ secrets.CF_PAGES_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PAGES_PROJECT_GATSBY_SITE }}
+          directory: public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
