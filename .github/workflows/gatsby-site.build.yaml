@@ -36,6 +36,17 @@ jobs:
           cache: "npm"
           # cache-dependency-path: package-lock.json
 
+      - name: Caching Gatsby
+        id: gatsby-cache-build
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./packages/gatsby-site/public
+            ./packages/gatsby-site/.cache
+          key: ${{ runner.os }}-gatsby-site-build-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-site-build-
+
       - name: Install dependencies
         run: npm ci
 

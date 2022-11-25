@@ -33,8 +33,8 @@ export function HomeBio() {
           <Box as="h2" fontStyle="body_md">
             London based software engineer specialising in React, Typescript and
             Node.js. Currently employed at{" "}
-            <a href="https://truelayer.com/">TrueLayer</a> as an engineering
-            manager, where I own the public website.
+            <a href="https://truelayer.com/">TrueLayer</a> working on our public
+            facing website.
           </Box>
 
           <p>
