@@ -45,9 +45,6 @@ jobs:
         working-directory: ./packages/gatsby-site
         run: npm run build
 
-      - name: Verify build
-        run: ls -la public
-
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
