@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
     name: Run jest
     steps:
       - uses: actions/checkout@v3
