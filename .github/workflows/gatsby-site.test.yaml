@@ -1,11 +1,7 @@
 on:
-  # Runs on pushes targeting the default branch
   pull_request:
-    branches: ["master"]
-    paths:
-      - "packages/gatsby-site/**"
-
-  # Allows you to run this workflow manually from the Actions tab
+  paths:
+    - "packages/gatsby-site/**"
   workflow_dispatch:
 
 jobs:
