@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/gatsby-site/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    name: Run jest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+          # cache-dependency-path: subdir/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Switch to package directory
+        run: cd packages/gatsby-site
+
+      - name: Build Gatsby site
+        run: gatsby build
+
+      - name: Verify build
+        run: ls -la public
