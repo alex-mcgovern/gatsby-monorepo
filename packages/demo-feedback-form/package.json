@@ -1,0 +1,58 @@
+{
+  "name": "@alexmcgovern/demo-feedback-form",
+  "description": "Customer feedback form technical challenge, built with Firebase & Firestore",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@alexmcgovern/boondoggle.design": "*",
+    "@alexmcgovern/firebase": "*",
+    "@alexmcgovern/gatsby-shared": "*",
+    "@alexmcgovern/utils": "*",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@radix-ui/react-collapsible": "^1.0.1",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@vanilla-extract/css": "^1.7.2",
+    "@vanilla-extract/css-utils": "^0.1.2",
+    "@vanilla-extract/recipes": "^0.2.5",
+    "@vanilla-extract/sprinkles": "^1.4.1",
+    "@vanilla-extract/webpack-plugin": "^2.1.11",
+    "@visx/axis": "^2.14.0",
+    "@visx/curve": "^2.1.0",
+    "@visx/gradient": "^2.10.0",
+    "@visx/text": "^2.12.2",
+    "@visx/xychart": "^2.16.0",
+    "dotenv": "^16.0.3",
+    "firebase": "^9.14.0",
+    "gatsby": "^5.0.1",
+    "gatsby-plugin-image": "^3.0.0",
+    "gatsby-plugin-sharp": "^5.0.0",
+    "gatsby-plugin-vanilla-extract": "^3.0.1",
+    "gatsby-transformer-sharp": "^5.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.39.4"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.9.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-mdx": "^2.0.5",
+    "lerna": "^6.0.3",
+    "typescript": "^4.9.3"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-mcgovern/alexmcgovern.com.git"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop -p 8004",
+    "serve": "gatsby serve"
+  }
+}

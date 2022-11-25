@@ -8,7 +8,6 @@ export const varsHeight = {
   "75vh": "75vh",
   "50vh": "50vh",
   "25vh": "25vh",
-  headerHeight: "80px",
   auto: "auto",
   "min-content": "min-content",
 };

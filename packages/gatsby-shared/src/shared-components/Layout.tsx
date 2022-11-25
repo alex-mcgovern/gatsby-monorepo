@@ -7,17 +7,14 @@ import {
   lightTheme,
 } from "@alexmcgovern/boondoggle.design";
 import { checkIsInClient } from "@alexmcgovern/utils";
-// import {Seo} from "../../seo";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 interface LayoutProps {
   children?: ReactNode;
-  // title: string;
-  description?: string;
 }
 
-export function Layout({ children, description }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const { dark } = useContext(ThemeContext);
 
   if (checkIsInClient()) {

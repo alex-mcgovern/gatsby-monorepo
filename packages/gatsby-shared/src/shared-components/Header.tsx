@@ -1,26 +1,17 @@
-import React, { useCallback, useContext, useMemo } from "react";
-import type {
-  ButtonProps,
-  DropdownItem,
-} from "@alexmcgovern/boondoggle.design";
-import {
-  Box,
-  Button,
-  SelectSingle,
-  ThemeContext,
-} from "@alexmcgovern/boondoggle.design";
+import React, { useCallback, useContext } from "react";
+import type { ButtonProps } from "@alexmcgovern/boondoggle.design";
+import { Box, Button, ThemeContext } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import { transformKebabCaseToSentenceCase } from "@alexmcgovern/utils";
-import { faMoon, faShapes, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faHouseUser,
+  faMoon,
+  faParagraph,
+  faRightFromBracket,
+  faRightToBracket,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
-
-interface IProjectsQueryResult {
-  allProjects: {
-    nodes: {
-      path: string;
-    }[];
-  };
-}
 
 const NAV_BUTTON_COMMON_PROPS: ButtonProps = {
   appearance: "uiLink",
@@ -29,39 +20,11 @@ const NAV_BUTTON_COMMON_PROPS: ButtonProps = {
 
 export function Header() {
   const { dark, toggleDark } = useContext(ThemeContext);
-  const { user, firebaseAuth } = useContext(FirebaseContext);
+  const { user, firebaseAuth } = useContext(FirebaseContext) || {};
 
   const handleSignOut = useCallback(() => {
-    return firebaseAuth.signOut();
+    return firebaseAuth?.signOut();
   }, [firebaseAuth]);
-
-  /** Auto-populate project pages dropdown */
-
-  const allProjects = undefined;
-
-  // const { allProjects }: IProjectsQueryResult = useStaticQuery(
-  //   graphql`
-  //     query {
-  //  allProjects: allSitePage(filter: { path: { glob: "/projects/*" } }) {
-  //    nodes {
-  //      path
-  //    }
-  //  }
-  //     }
-  //   `
-  // );
-
-  const projectsDropdownItems: Array<DropdownItem> = useMemo(() => {
-    return allProjects?.nodes?.map((projectPath) => {
-      const trimmedPath = projectPath.path.replace(/\/projects\//g, "");
-      const title = transformKebabCaseToSentenceCase(trimmedPath);
-      return {
-        link: projectPath.path,
-        value: title,
-        label: title,
-      };
-    });
-  }, [allProjects]);
 
   return (
     <Box
@@ -76,7 +39,7 @@ export function Header() {
       <Button
         {...NAV_BUTTON_COMMON_PROPS}
         as={Link}
-        iconLeading={faShapes}
+        iconLeading={faHouseUser}
         to="/"
       >
         Alex McGovern
@@ -87,33 +50,40 @@ export function Header() {
        * ------------------------------------------------------------------------------- */}
       <Box as="menu" display="flex" alignItems="center" gap="spacing2">
         {/** Blog page */}
-        <Button {...NAV_BUTTON_COMMON_PROPS} as={Link} to="/blog">
+        <Button
+          {...NAV_BUTTON_COMMON_PROPS}
+          as={Link}
+          to="/blog"
+          iconLeading={faParagraph}
+        >
           Blog
         </Button>
 
-        {/** Projects dropdown */}
-        {projectsDropdownItems && (
-          <SelectSingle
-            initialInputValue="Projects"
-            id="projects-dropdown"
-            items={projectsDropdownItems}
-            label="Projects"
-            buttonProps={NAV_BUTTON_COMMON_PROPS}
-          />
-        )}
-
-        {/** Contact page */}
-        <Button {...NAV_BUTTON_COMMON_PROPS} as={Link} to="/contact">
-          Get in touch
+        <Button
+          as="a"
+          href="https://www.linkedin.com/in/alexmcgovern/"
+          {...NAV_BUTTON_COMMON_PROPS}
+          iconLeading={faLinkedin}
+        >
+          LinkedIn
         </Button>
 
         {/** Log in/out */}
         {firebaseAuth && user ? (
-          <Button {...NAV_BUTTON_COMMON_PROPS} onClick={handleSignOut}>
+          <Button
+            {...NAV_BUTTON_COMMON_PROPS}
+            onClick={handleSignOut}
+            iconLeading={faRightFromBracket}
+          >
             Log out
           </Button>
         ) : (
-          <Button {...NAV_BUTTON_COMMON_PROPS} as={Link} to="/login">
+          <Button
+            {...NAV_BUTTON_COMMON_PROPS}
+            as={Link}
+            to="/login"
+            iconLeading={faRightToBracket}
+          >
             Log in
           </Button>
         )}

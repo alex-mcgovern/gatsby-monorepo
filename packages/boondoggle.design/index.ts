@@ -2,68 +2,68 @@
  * REACT COMPONENTS
  * ------------------------------------------------------------------------------- */
 
-export { Box } from "./src/Box";
-export type { BoxProps } from "./src/Box";
+export { Box } from "./src/components/Box";
+export type { BoxProps } from "./src/components/Box";
 
-export { Button } from "./src/Button";
-export type { ButtonProps } from "./src/Button";
+export { Button } from "./src/components/Button";
+export type { ButtonProps } from "./src/components/Button";
 
-export { Card } from "./src/Card";
-export type { CardProps } from "./src/Card";
+export { Card } from "./src/components/Card";
+export type { CardProps } from "./src/components/Card";
 
-export { Collapsible } from "./src/Collapsible";
-export type { CollapsibleProps } from "./src/Collapsible";
+export { Collapsible } from "./src/components/Collapsible";
+export type { CollapsibleProps } from "./src/components/Collapsible";
 
-export type { DropdownItem } from "./src/Select/types";
+export type { DropdownItem } from "./src/components/Select/types";
 
-export { Dialog } from "./src/Dialog";
-export type { DialogProps } from "./src/Dialog";
+export { Dialog } from "./src/components/Dialog";
+export type { DialogProps } from "./src/components/Dialog";
 
-export { Input } from "./src/Input";
-export type { InputProps } from "./src/Input";
+export { Input } from "./src/components/Input";
+export type { InputProps } from "./src/components/Input";
 
-export { InputErrorMessage } from "./src/InputErrorMessage";
-export type { InputErrorMessageProps } from "./src/InputErrorMessage";
+export { InputErrorMessage } from "./src/components/InputErrorMessage";
+export type { InputErrorMessageProps } from "./src/components/InputErrorMessage";
 
-export { Icon } from "./src/Icon";
-export type { IconProps } from "./src/Icon";
+export { Icon } from "./src/components/Icon";
+export type { IconProps } from "./src/components/Icon";
 
-export { Label } from "./src/Label";
-export type { LabelProps } from "./src/Label";
+export { Label } from "./src/components/Label";
+export type { LabelProps } from "./src/components/Label";
 
-export { ListItem } from "./src/ListItem";
-export type { ListItemProps } from "./src/ListItem";
+export { ListItem } from "./src/components/ListItem";
+export type { ListItemProps } from "./src/components/ListItem";
 
-export { Loader } from "./src/Loader";
-export type { LoaderProps } from "./src/Loader";
+export { Loader } from "./src/components/Loader";
+export type { LoaderProps } from "./src/components/Loader";
 
-export { Popover } from "./src/Popover";
-export type { PopoverProps } from "./src/Popover";
+export { Popover } from "./src/components/Popover";
+export type { PopoverProps } from "./src/components/Popover";
 
-export { SelectSingle } from "./src/Select/SelectSingle";
-export type { SelectSingleProps } from "./src/Select/SelectSingle";
+export { SelectSingle } from "./src/components/Select/SelectSingle";
+export type { SelectSingleProps } from "./src/components/Select/SelectSingle";
 
-export { SelectMultiFilterable } from "./src/Select/SelectMultiFilterable";
-export type { SelectMultiFilterableProps } from "./src/Select/SelectMultiFilterable";
+export { SelectMultiFilterable } from "./src/components/Select/SelectMultiFilterable";
+export type { SelectMultiFilterableProps } from "./src/components/Select/SelectMultiFilterable";
 
-export { SelectSingleFilterable } from "./src/Select/SelectSingleFilterable";
-export type { SelectSingleFilterableProps } from "./src/Select/SelectSingleFilterable";
+export { SelectSingleFilterable } from "./src/components/Select/SelectSingleFilterable";
+export type { SelectSingleFilterableProps } from "./src/components/Select/SelectSingleFilterable";
 
-export { SelectSingleCreatable } from "./src/Select/SelectSingleCreatable";
-export type { SelectCreatableProps } from "./src/Select/SelectSingleCreatable";
+export { SelectSingleCreatable } from "./src/components/Select/SelectSingleCreatable";
+export type { SelectCreatableProps } from "./src/components/Select/SelectSingleCreatable";
 
-export { Tag } from "./src/Tag";
-export type { TagProps } from "./src/Tag";
+export { Tag } from "./src/components/Tag";
+export type { TagProps } from "./src/components/Tag";
 
-export { ThemeContext, ThemeProvider } from "./src/ThemeContext";
+export { ThemeContext, ThemeProvider } from "./src/context/ThemeContext";
 
 /** -----------------------------------------------------------------------------
  * STYLES
  * ------------------------------------------------------------------------------- */
 
-export { getSprinkles } from "./src/__css__/getSprinkles.css";
-export type { GetSprinklesArgs } from "./src/__css__/getSprinkles.css";
+export { getSprinkles } from "./src/styles/getSprinkles.css";
+export type { GetSprinklesArgs } from "./src/styles/getSprinkles.css";
 
-export { createAccessibleTransition } from "./src/__css__/css_preprocessing_utils/createAccessibleTransition";
+export { createAccessibleTransition } from "./src/styles/css_preprocessing_utils/createAccessibleTransition";
 
-export { darkTheme, lightTheme, vars } from "./src/__css__/theme.css";
+export { darkTheme, lightTheme, vars } from "./src/styles/theme.css";

@@ -1,58 +1,79 @@
-import React, { useContext, useState } from "react";
-import { Box, Button, Input } from "@alexmcgovern/boondoggle.design";
-import { FirebaseContext } from "@alexmcgovern/firebase";
+import React, { useCallback, useContext, useState } from "react";
+import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
+import { Box, InputErrorMessage } from "@alexmcgovern/boondoggle.design";
+import {
+  FirebaseContext,
+  getFirebaseAuthErrorMessage,
+} from "@alexmcgovern/firebase";
+import { navigate } from "gatsby";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
+import { Form } from "../shared-components/Form";
+import { FormInput } from "../shared-components/Form/components/FormInput";
 
-export function SharedPageRegister() {
-  const { firebaseAuth } = useContext(FirebaseContext);
-  const [errorMessage, setErrorMessage] = useState("");
+interface SharedPageRegisterProps {
+  location: {
+    state?: {
+      returnTo?: string;
+    };
+  };
+}
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+interface FormDataShape {
+  email: string;
+  password: string;
+}
+
+const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
+  mobile: "1x",
+  tablet: "2x",
+};
+
+export function SharedPageRegister({ location }: SharedPageRegisterProps) {
+  /** ---------------------------------------------
+   * Handle redirect to previous page on successful log in
+   * ----------------------------------------------- */
+
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+
+  const initiateRedirect = useCallback(() => {
+    setShouldRedirect(true);
+  }, []);
+
+  const handleRedirect = useCallback(() => {
+    if (location?.state?.returnTo) {
+      navigate(location.state.returnTo);
+    }
+  }, [location.state?.returnTo]);
+
+  /** ---------------------------------------------
+   * Handle firebase auth
+   * ----------------------------------------------- */
+
+  const { firebaseAuth, user } = useContext(FirebaseContext) || {};
+
+  /**
+   * Note, we don't need 2nd & 3rd positional returns from this hook,
+   * take care not to break this by omitting them.
+   */
+
+  const [createUserWithEmailAndPassword, , , registrationError] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
 
-  const isLoggedIn = !!user;
+  /** ---------------------------------------------
+   * Handle form submission
+   * ----------------------------------------------- */
 
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    username: "",
-  });
-
-  if (error) {
-    console.error(error);
-  }
-
-  function handleInputChange(e) {
-    e.persist();
-    setErrorMessage("");
-    setFormValues((currentValues) => {
-      return {
-        ...currentValues,
-        [e.target.name]: e.target.value,
-      };
-    });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (formValues.password === formValues.confirmPassword) {
-      createUserWithEmailAndPassword(formValues.email, formValues.password);
-    } else {
-      setErrorMessage("Password and Confirm Password fields must match");
-    }
-  }
+  const logInOnFormSubmission = useCallback(
+    async ({ email, password }: FormDataShape) => {
+      return createUserWithEmailAndPassword(email, password);
+    },
+    [createUserWithEmailAndPassword]
+  );
 
   return (
     <Box marginY="spacing5">
-      <Box
-        display="grid"
-        gridTemplateColumns={{
-          mobile: "1x",
-          tablet: "2x",
-        }}
-        gap="spacing3"
-      >
+      <Box display="grid" gridTemplateColumns={GRID_LAYOUT} gap="spacing3">
         <Box as="header">
           <Box as="h1" marginTop="none">
             Register
@@ -60,63 +81,68 @@ export function SharedPageRegister() {
 
           <Box as="p">
             I'll just need a few details to create an account. Authentication is
-            handled with Firebase. Your data is stored and processed by Google
-            on my behalf,{" "}
+            handled through Firebase.{" "}
             <a href="https://firebase.google.com/support/privacy">
-              here's their privacy policy
+              Firebase privacy policy.
             </a>
             .
           </Box>
         </Box>
-        <form onSubmit={handleSubmit}>
-          <Input
-            onChange={handleInputChange}
-            placeholder="john@doe.com"
-            id="email"
-            label="Email address"
-            type="email"
-            name="email"
-            required
-            isLabelVisible
-            disabled={isLoggedIn}
-          />
-          <Input
-            onChange={handleInputChange}
-            placeholder="6 or more characters"
-            type="password"
-            name="password"
-            id="password"
-            label="Password"
-            required
-            isLabelVisible
-            disabled={isLoggedIn}
-          />
-          <Input
-            onChange={handleInputChange}
-            placeholder="Retype your password"
-            type="password"
-            required
-            isLabelVisible
-            name="confirmPassword"
-            label="Confirm password"
-            id="confirmPassword"
-            disabled={isLoggedIn}
-          />
-          {errorMessage && (
-            <Box as="p" color="semantic_red_highContrast">
-              {errorMessage}
+        <Box>
+          {/** --------------------------------------------
+           * Registration form
+           * ----------------------------------------------- */}
+
+          <Form
+            callbackOnSuccessfulFormSubmission={initiateRedirect}
+            handleFormSubmission={logInOnFormSubmission}
+            submitButtonText={user ? "Registered" : "Register"}
+            disabled={!!user}
+          >
+            <FormInput
+              errorMessage="Please ensure you have entered a valid email address."
+              required
+              name="email"
+              label="Email address"
+              id="email"
+              placeholder="john@doe.com"
+              type="email"
+              autoComplete="email"
+              disabled={!!user}
+            />
+            <FormInput
+              errorMessage="Please ensure you have entered a valid password."
+              id="description"
+              label="Password"
+              name="password"
+              placeholder="Must be alphanumeric, with > 6 characters"
+              type="password"
+              autoComplete="current-password"
+              disabled={!!user}
+            />
+          </Form>
+
+          {/** --------------------------------------------
+           * Render auth errors
+           * ----------------------------------------------- */}
+
+          {registrationError && (
+            <InputErrorMessage
+              message={getFirebaseAuthErrorMessage(registrationError.code)}
+            />
+          )}
+
+          {/** --------------------------------------------
+           * Handle redirect to previous page, and communicate state to user
+           * ----------------------------------------------- */}
+
+          {user && location?.state?.returnTo && shouldRedirect && (
+            <Box>
+              Redirecting in{" "}
+              <CountdownWithCallback callback={handleRedirect} seconds={3} />
             </Box>
           )}
-          {/* {!!error && (
-              <Box as="p" color="semantic_red_bg">
-                {error}
-              </Box>
-            )} */}
-
-          <Button type="submit" isLoading={loading} disabled={isLoggedIn}>
-            {isLoggedIn ? "Registered" : "Register"}
-          </Button>
-        </form>
+        </Box>
       </Box>
     </Box>
   );

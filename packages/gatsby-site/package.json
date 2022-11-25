@@ -2,11 +2,11 @@
   "name": "@alexmcgovern/gatsby-site",
   "description": "Main website for alexmcgovern.com, built with GatsbyJS.",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "dependencies": {
     "@alexmcgovern/boondoggle.design": "*",
     "@alexmcgovern/gatsby-shared": "*",
     "@alexmcgovern/utils": "*",
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@vanilla-extract/css": "^1.7.2",
@@ -17,6 +17,7 @@
     "dotenv": "^16.0.3",
     "gatsby": "^5.0.1",
     "gatsby-plugin-image": "^3.0.0",
+    "gatsby-source-filesystem": "^5.0.0",
     "gatsby-plugin-sharp": "^5.0.0",
     "gatsby-plugin-vanilla-extract": "^3.0.1",
     "gatsby-remark-copy-linked-files": "^6.0.0",
@@ -26,7 +27,6 @@
     "gatsby-remark-smartypants": "^6.0.0",
     "gatsby-transformer-remark": "^6.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
-    "prismjs": "^1.29.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
@@ -34,6 +34,9 @@
     "slugify": "^1.6.5"
   },
   "devDependencies": {
+    "@vanilla-extract/css": "^1.9.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-mdx": "^2.0.5",
     "lerna": "^6.0.3",
     "typescript": "^4.9.3"
   },
@@ -44,7 +47,7 @@
   "license": "0BSD",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/alex-mcgovern/alexmcgovern.com.git"
   },
   "scripts": {
     "build": "gatsby build",

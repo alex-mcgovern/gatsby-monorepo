@@ -5,13 +5,12 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 import * as React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
 
 interface SeoProps {
   description?: string;
   lang?: string;
-  meta?: {}[];
+  meta?: Array<Record<string, unknown>>;
   title: string;
 }
 
@@ -21,21 +20,23 @@ export function Seo({
   //  meta,
   title,
 }: SeoProps) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
-          }
-        }
-      }
-    `
-  );
+  // const { site } = useStaticQuery(
+  //   graphql`
+  //     query {
+  //       site {
+  //         siteMetadata {
+  //           title
+  //           description
+  //           social {
+  //             twitter
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // );
+
+  return null;
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;

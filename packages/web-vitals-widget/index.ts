@@ -1,1 +1,1 @@
-export { WebVitalsWidget } from "./src/WebVitalsWidget";
+export { WebVitalsWidget } from "./src/components/WebVitalsWidget";

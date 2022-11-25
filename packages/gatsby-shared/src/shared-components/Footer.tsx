@@ -3,7 +3,7 @@ import type { ButtonProps } from "@alexmcgovern/boondoggle.design";
 import { Box, Button } from "@alexmcgovern/boondoggle.design";
 import { transformKebabCaseToSentenceCase } from "@alexmcgovern/utils";
 import { WebVitalsWidget } from "@alexmcgovern/web-vitals-widget";
-import { faShapes } from "@fortawesome/free-solid-svg-icons";
+import { faHouseUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, graphql, useStaticQuery } from "gatsby";
 
 interface IProjectsQueryResult {
@@ -66,10 +66,10 @@ export function Footer() {
       `
     );
 
-  /** —————————————————————————————————————————————
+  /** ---------------------------------------------—
    * TRANSFORM PROJECTS
    * Make button-friendly objects from our query response
-   * ——————————————————————————————————————————————— */
+   * ----------------------------------------------- */
 
   const projectPaths = allProjects?.nodes;
   const projectLinks = projectPaths?.map((projectPath) => {
@@ -81,10 +81,10 @@ export function Footer() {
     };
   });
 
-  /** —————————————————————————————————————————————
+  /** ---------------------------------------------—
    * TRANSFORM BLOG CATEGORIES
    * Make button-friendly objects from our query response
-   * ——————————————————————————————————————————————— */
+   * ----------------------------------------------- */
   const blogCategories = allBlogCategories?.nodes;
   const categoryLinks = blogCategories?.map((projectPath) => {
     const trimmedPath = projectPath.path.replace(/\/blog\//g, "");
@@ -103,7 +103,7 @@ export function Footer() {
        * ------------------------------------------------------------------------------- */}
       <Button
         id="header-home-button"
-        iconLeading={faShapes}
+        iconLeading={faHouseUser}
         {...FOOTER_LINK_COMMON_PROPS}
         marginY="spacing2"
         to="/"
@@ -121,9 +121,9 @@ export function Footer() {
         alignItems="start"
         marginY="spacing2"
       >
-        {/** ————————————————————————————————————————————
+        {/** ---------------------------------------------
          * MAP AND RENDER BLOG CATEGORIES
-         * ——————————————————————————————————————————————— */}
+         * ----------------------------------------------- */}
 
         <Box marginRight="spacing3">
           <Box as="h4" fontSize="body_lg" marginTop="spacing2">
@@ -149,9 +149,9 @@ export function Footer() {
             })}
         </Box>
 
-        {/** ————————————————————————————————————————————
+        {/** ---------------------------------------------
          * MAP AND RENDER PROJECTS
-         * ——————————————————————————————————————————————— */}
+         * ----------------------------------------------- */}
 
         <Box marginRight="spacing3">
           <Box as="h4" fontSize="body_lg" marginTop="spacing2">
@@ -172,9 +172,9 @@ export function Footer() {
             })}
         </Box>
 
-        {/** ————————————————————————————————————————————
+        {/** ---------------------------------------------
          * MAP AND RENDER OTHER LINKS
-         * ——————————————————————————————————————————————— */}
+         * ----------------------------------------------- */}
 
         <Box marginRight="spacing3">
           <Box as="h4" fontSize="body_lg" marginTop="spacing2">

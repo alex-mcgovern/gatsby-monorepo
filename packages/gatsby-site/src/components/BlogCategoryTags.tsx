@@ -2,9 +2,10 @@ import React from "react";
 import { Box, Tag } from "@alexmcgovern/boondoggle.design";
 import { createPathFromSegmentArray } from "@alexmcgovern/utils";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import type { BlogCategoryShape } from "../types";
 
 interface IBlogCategoriesList {
-  categories: IBlogCategory[];
+  categories?: Array<BlogCategoryShape>;
   currentCategoryTitle?: string;
 }
 
@@ -35,9 +36,7 @@ export function BlogCategoriesList({
             <Tag
               id={category.categorySlug}
               key={category.categorySlug}
-              variant={{
-                state: isActive ? "active" : "inactive",
-              }}
+              state={isActive ? "active" : "inactive"}
               title={category.categoryTitle}
               to={isActive ? BLOG_LINK : categoryLink}
               iconTrailing={isActive ? faTimes : undefined}

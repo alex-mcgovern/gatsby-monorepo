@@ -1,9 +1,11 @@
 import React from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import { Box, ListItem } from "@alexmcgovern/boondoggle.design";
+import { Link } from "gatsby";
+import type { MarkdownRemarkBlogPostShape } from "../types";
 
 interface SectionBlogPostListProps {
-  posts: IMarkdownRemarkBlogPost[];
+  posts: MarkdownRemarkBlogPostShape[];
 }
 
 const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
@@ -24,10 +26,11 @@ export function SectionBlogPostList({ posts }: SectionBlogPostListProps) {
         return (
           <ListItem
             aspectRatio="wide"
+            as={Link}
             title={post.frontmatter.title || post.fields.slug}
             subtitle={post.frontmatter.date}
             description={post.frontmatter.description || post.excerpt}
-            link={post.fields.slug}
+            to={post.fields.slug}
             // image={post.frontmatter.cover}
           />
         );

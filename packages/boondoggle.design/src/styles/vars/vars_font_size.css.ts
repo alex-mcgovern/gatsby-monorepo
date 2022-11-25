@@ -1,23 +1,18 @@
+import { createModularScale } from "../css_preprocessing_utils/create_modular_scale";
+
+const fontSizeScale = createModularScale(1.125, 16);
+
 export const varsFontSize = {
   root: "16px",
 
-  h0: "4rem",
-  h1: "3.5rem",
-  h2: "3rem",
-  h3: "2.5rem",
-  h4: "2rem",
-  h5: "1.75rem",
-  h6: "1.5rem",
+  h1: fontSizeScale(8),
+  h2: fontSizeScale(7),
+  h3: fontSizeScale(6),
+  h4: fontSizeScale(5),
+  h5: fontSizeScale(4),
+  h6: fontSizeScale(3),
 
-  body_lg: "1.25rem",
-  body_md: "1.125rem",
-  body_sm: "1rem",
-  body_xs: "0.875rem",
-  body_xxs: "0.75rem",
-
-  button_lg: "1.125rem",
-  button_md: "1rem",
-  button_sm: "0.875rem",
-
-  code: "0.875rem",
+  body_lg: fontSizeScale(2),
+  body_md: fontSizeScale(1),
+  body_sm: "14px",
 };

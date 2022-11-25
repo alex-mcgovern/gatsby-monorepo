@@ -1,27 +1,22 @@
+import { createModularScale } from "../css_preprocessing_utils/create_modular_scale";
+
+const spacingScale = createModularScale(1.5, 8);
+
 export const varsSpacing = {
-  // ToDo: [TS-migration] Investigate if unset storyblok props mapped directly to styles can return undefined instead of empty string
-  // Empty string as key because height/width prop can arrive as an empty string via storyblok
   "": "0",
-  none: "0",
-  spacing0: "0.25rem",
-  spacing1: "0.5rem",
-  "spacing1.5": "0.75rem",
-  spacing2: "1rem",
-  "spacing2.5": "1.25rem",
-  spacing3: "1.5rem",
-  "spacing3.5": "1.75rem",
-  spacing4: "2rem",
-  spacing5: "2.5rem",
-  spacing6: "3rem",
-  spacing7: "3.5rem",
-  spacing8: "4rem",
-  spacing9: "4.5rem",
-  spacing10: "5rem",
-  spacing12: "6rem",
-  spacing15: "7.5rem",
-  spacing16: "8rem",
-  spacing20: "10rem",
-  spacing24: "12rem",
-  spacing28: "14rem",
+  "100%": "100%",
+  "100vh": "100vh",
+  "50%": "50%",
+  "25%": "25%",
+  "50vh": "50vh",
+  "75vh": "75vh",
   auto: "auto",
+
+  none: "0",
+  spacing0: spacingScale(0),
+  spacing1: spacingScale(1),
+  spacing2: spacingScale(2),
+  spacing3: spacingScale(3),
+  spacing4: spacingScale(4),
+  spacing5: spacingScale(5),
 };

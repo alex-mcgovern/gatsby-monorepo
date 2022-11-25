@@ -70,9 +70,9 @@ export function HomeLatestBlogPosts() {
   if (posts && posts?.length > 0) {
     return (
       <Box marginY="spacing5">
-        {/* —————————————————————————————————————————————
+        {/* ---------------------------------------------—
          * BLOG SECTION HEADER
-         * ——————————————————————————————————————————————— */}
+         * ----------------------------------------------- */}
 
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box as="h3">Here's some stuff I wrote</Box>
@@ -88,9 +88,9 @@ export function HomeLatestBlogPosts() {
           </Button>
         </Box>
 
-        {/* —————————————————————————————————————————————
+        {/* ---------------------------------------------—
          * BLOG POST GRID
-         * ——————————————————————————————————————————————— */}
+         * ----------------------------------------------- */}
 
         <Box
           as="section"
@@ -102,11 +102,12 @@ export function HomeLatestBlogPosts() {
             posts.map((post) => {
               return (
                 <ListItem
+                  as={Link}
                   aspectRatio="wide"
                   title={post.frontmatter.title || post.fields.slug}
                   subtitle={post.frontmatter.date}
                   description={post.frontmatter.description || post.excerpt}
-                  link={`blog${post.fields.slug}`}
+                  to={`blog${post.fields.slug}`}
                   // image={post.frontmatter.cover}
                 />
               );

@@ -8,7 +8,7 @@ import {
   faAnglesRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
-import { getPaginationArray } from "./helper_functions/filter_page_array/get_pagination_array";
+import { getPaginationArray } from "./helper_functions/get_pagination_array";
 
 export interface PaginationProps {
   basePath: string;
@@ -47,7 +47,7 @@ export function Pagination({
         iconLeading={faAnglesLeft}
         as={Link}
         to={firstPath}
-        isDisabled={isFirstOrPrevDisabled}
+        disabled={isFirstOrPrevDisabled}
       />
 
       <Button
@@ -56,7 +56,7 @@ export function Pagination({
         iconLeading={faAngleLeft}
         as={Link}
         to={previousPath}
-        isDisabled={isFirstOrPrevDisabled}
+        disabled={isFirstOrPrevDisabled}
       />
 
       {pageArray.length > 0 &&
@@ -83,7 +83,7 @@ export function Pagination({
         iconTrailing={faAngleRight}
         as={Link}
         to={nextPath}
-        isDisabled={isNextOrLastDisabled}
+        disabled={isNextOrLastDisabled}
       />
 
       <Button
@@ -92,7 +92,7 @@ export function Pagination({
         iconTrailing={faAnglesRight}
         as={Link}
         to={lastPath}
-        isDisabled={isNextOrLastDisabled}
+        disabled={isNextOrLastDisabled}
       />
     </Box>
   );

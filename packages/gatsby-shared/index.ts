@@ -10,17 +10,30 @@ export { Layout } from "./src/shared-components/Layout";
 export { Pagination } from "./src/shared-components/Pagination";
 export { Seo } from "./src/shared-components/Seo";
 
-export { ReactHookFormControlledInput } from "./src/shared-components/ReactHookForm/ReactHookFormControlledInput";
-export { ReactHookFormControlledSingleSelect } from "./src/shared-components/ReactHookForm/ReactHookFormControlledSingleSelect";
-export { ReactHookFormControlledSingleSelectCreatable } from "./src/shared-components/ReactHookForm/ReactHookFormControlledSingleSelectCreatable";
-export { getHookFormButtonIconProps } from "./src/shared-components/ReactHookForm/getHookFormButtonIcon";
-
 /** -----------------------------------------------------------------------------
  * Gatsby APIs
  * ------------------------------------------------------------------------------- */
 
 export { wrapPageElement } from "./src/gatsby-apis/wrapPageElement";
 export { wrapRootElement } from "./src/gatsby-apis/wrapRootElement";
+
+/** -----------------------------------------------------------------------------
+ * Misc
+ * ------------------------------------------------------------------------------- */
+
+export { siteMetadata } from "./src/site-metadata";
+
+/** -----------------------------------------------------------------------------
+ * React hook form
+ * ------------------------------------------------------------------------------- */
+
+export { Form } from "./src/shared-components/Form/index";
+export type { FormProps } from "./src/shared-components/Form/index";
+
+export { FormInput } from "./src/shared-components/Form/components/FormInput";
+export { FormSingleSelect } from "./src/shared-components/Form/components/FormSingleSelect";
+export { FormSingleSelectCreatable } from "./src/shared-components/Form/components/FormSingleSelectCreatable";
+export { getHookFormButtonIconProps } from "./src/shared-components/Form/utils/getHookFormButtonIcon";
 
 /** -----------------------------------------------------------------------------
  * Shared pages
@@ -31,7 +44,7 @@ export { SharedPageLogin } from "./src/shared-pages/SharedPageLogin";
 export { SharedPageRegister } from "./src/shared-pages/SharedPageRegister";
 
 /** -----------------------------------------------------------------------------
- * Misc
+ * Testing
  * ------------------------------------------------------------------------------- */
 
-export { siteMetadata } from "./src/site-metadata";
+export { renderTestComponent } from "./src/shared-testing/TestComponentRenderer";
