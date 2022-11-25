@@ -1,5 +1,0 @@
-{
-  "entryPoints": ["src/components/atoms/button/button.tsx"],
-  "out": "docs",
-  "tsconfig": "tsconfig.json"
-}

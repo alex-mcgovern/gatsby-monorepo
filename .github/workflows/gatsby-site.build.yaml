@@ -36,8 +36,8 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@1
         with:
-          apiToken: ${{ secrets.GH_ACTIONS_CF_PAGES_API_TOKEN }}
+          apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
           accountId: ${{ secrets.CF_PAGES_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PAGES_PROJECT_GATSBY_SITE }}
+          projectName: ${{ secrets.CF_PAGES_SITE_MAIN }}
           directory: public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
