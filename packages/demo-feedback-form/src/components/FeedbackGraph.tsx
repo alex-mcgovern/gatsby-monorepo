@@ -65,6 +65,7 @@ export function FeedbackGraph({
    * Ensure chart remains mounted when new comment data loading,
    * enabling smooth animation between data sets
    */
+
   const [cachedComments, setCachedComments] = useState(comments);
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export function FeedbackGraph({
   /**
    * Transition time series ticks in accordance with pagination direction
    */
+
   const xAxisTicksAnimationTrajectory =
     paginationState.current > paginationState.previous ? "min" : "max";
 
@@ -106,6 +108,7 @@ export function FeedbackGraph({
       {/** --------------------------------------------
        * Axis & grid
        * ----------------------------------------------- */}
+
       <AnimatedAxis
         label="Rating"
         orientation="left"
