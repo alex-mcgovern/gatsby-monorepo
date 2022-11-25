@@ -54,5 +54,5 @@ jobs:
           apiToken: ${{ secrets.CF_PAGES_API_TOKEN }}
           accountId: ${{ secrets.CF_PAGES_ACCOUNT_ID }}
           projectName: ${{ secrets.CF_PAGES_SITE_MAIN }}
-          directory: public
+          directory: packages/gatsby-site/public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
