@@ -36,9 +36,9 @@ jobs:
           cache: "npm"
           # cache-dependency-path: package-lock.json
 
-      - name: Caching Gatsby
+      - name: Cache Gatsby build output
         id: gatsby-cache-build
-        uses: actions/cache@v2
+        uses: actions/cache@3
         with:
           path: |
             ./packages/gatsby-site/public
