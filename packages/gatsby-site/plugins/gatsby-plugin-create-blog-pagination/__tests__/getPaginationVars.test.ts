@@ -9,7 +9,7 @@ test("Given valid args, and index of 0, returns correct value", () => {
     })
   ).toStrictEqual({
     currentPage: 1,
-    itemsToSkip: 0,
+    itemsToSkip: 1,
     pagePath: "/blog",
   });
 });
