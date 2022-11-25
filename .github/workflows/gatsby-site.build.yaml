@@ -27,6 +27,7 @@ jobs:
         run: cd packages/gatsby-site
 
       - name: Build Gatsby site
+        working-directory: ./packages/gatsby-site
         run: npm run build
 
       - name: Verify build
