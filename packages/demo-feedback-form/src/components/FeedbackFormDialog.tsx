@@ -69,7 +69,7 @@ export function FeedbackFormDialog() {
         getFirestore(firebaseApp),
         "feedback",
         "data",
-        "documents"
+        "comments"
       );
     }
     return null;
