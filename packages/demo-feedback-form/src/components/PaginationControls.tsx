@@ -19,19 +19,19 @@ import { FeedbackFormDialog } from "./FeedbackFormDialog";
 const PER_PAGE_DROPDOWN_ITEMS: Array<DropdownItem> = [
   {
     label: "5 per page",
-    value: 5,
+    value: "5",
   },
   {
     label: "10 per page",
-    value: 10,
+    value: "10",
   },
   {
     label: "25 per page",
-    value: 25,
+    value: "25",
   },
   {
     label: "50 per page",
-    value: 50,
+    value: "50",
   },
 ];
 
@@ -46,6 +46,7 @@ export function PaginationControls({
   setPerPage,
   totalNbComments,
   totalNbPages,
+  ...rest
 }: Partial<UsePaginatedCommentsStateShape>) {
   const { user } = useContext(FirebaseContext) || {};
 
@@ -59,8 +60,8 @@ export function PaginationControls({
 
   const updatePerPage = useCallback(
     (newValue: DropdownItem) => {
-      if (setPerPage && !Number.isNaN(newValue.value)) {
-        setPerPage(newValue.value as number);
+      if (setPerPage) {
+        setPerPage(Number(newValue.value));
       }
     },
     [setPerPage]
@@ -73,6 +74,7 @@ export function PaginationControls({
       paddingTop="spacing1"
       background="neutral_background_raised"
       zIndex="1"
+      {...rest}
     >
       <Card
         boxShadow="lg"

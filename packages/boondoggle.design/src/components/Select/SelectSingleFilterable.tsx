@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import React, { forwardRef } from "react";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
@@ -57,7 +58,7 @@ export const SelectSingleFilterable = forwardRef(
       size = "md",
       ...rest
     }: SelectSingleFilterableProps,
-    ref
+    ref: Ref<HTMLInputElement>
   ) => {
     return (
       <DownshiftProviderSingleFilterable
@@ -78,7 +79,7 @@ export const SelectSingleFilterable = forwardRef(
                   invalid={invalid}
                   name={name}
                   errorMessage={errorMessage}
-                  placeholder={selectedItem?.value || placeholder}
+                  placeholder={selectedItem?.value.toString() || placeholder}
                   size={size}
                   ref={ref}
                 />

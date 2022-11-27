@@ -1,8 +1,8 @@
 import React from "react";
-import type { InputProps } from "@alexmcgovern/boondoggle.design";
-import { Input } from "@alexmcgovern/boondoggle.design";
 import type { Validate } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
+import type { InputProps } from "../../Input";
+import { Input } from "../../Input";
 
 export interface FormInputProps extends InputProps {
   /** Message to render when erroring. */

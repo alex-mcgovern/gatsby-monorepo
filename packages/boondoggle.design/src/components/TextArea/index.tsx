@@ -1,4 +1,8 @@
-import type { DetailedHTMLProps, Ref, TextareaHTMLAttributes } from "react";
+import type {
+  DetailedHTMLProps,
+  LegacyRef,
+  TextareaHTMLAttributes,
+} from "react";
 import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
@@ -17,7 +21,7 @@ export interface TextAreaProps
         TextareaHTMLAttributes<HTMLTextAreaElement>,
         HTMLTextAreaElement
       >,
-      "color"
+      "color" | "ref"
     > {
   size?: VariantInteractiveElementSizeEnum;
   name: string;
@@ -28,7 +32,7 @@ export interface TextAreaProps
 export const TextArea = forwardRef(
   (
     { size = "md", invalid, errorMessage, ...rest }: TextAreaProps,
-    ref: Ref<HTMLTextAreaElement>
+    ref: LegacyRef<HTMLTextAreaElement> | undefined
   ) => {
     /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
     const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);

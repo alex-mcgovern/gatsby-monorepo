@@ -1,5 +1,6 @@
+import type { JSXElementConstructor, ReactElement } from "react";
+import { cloneElement } from "react";
 import { render, screen } from "@testing-library/react";
-import { cloneElement, JSXElementConstructor, ReactElement } from "react";
 import userEvent from "@testing-library/user-event";
 
 export const renderTestComponent = <TComponentProps>(

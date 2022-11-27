@@ -1,12 +1,14 @@
 import React, { useCallback, useContext, useMemo, useState } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
-import { Button, Dialog } from "@alexmcgovern/boondoggle.design";
-import { FirebaseContext } from "@alexmcgovern/firebase";
 import {
+  Box,
+  Button,
+  Dialog,
   Form,
   FormSingleSelect,
   FormTextArea,
-} from "@alexmcgovern/gatsby-shared";
+} from "@alexmcgovern/boondoggle.design";
+import { FirebaseContext } from "@alexmcgovern/firebase";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import {
   Timestamp,
@@ -16,12 +18,13 @@ import {
 } from "firebase/firestore";
 
 interface FormDataShape {
-  rating: number;
+  rating: string;
   description: string;
 }
 
 /**
- * ToDo: Nicer rating select experience
+ * Create items for dropdown menu
+ * ToDo: Create a nicer rating select experience
  */
 
 const FEEDBACK_STAR_DROPDOWN_ITEMS: Array<DropdownItem> = [
@@ -47,7 +50,7 @@ const FEEDBACK_STAR_DROPDOWN_ITEMS: Array<DropdownItem> = [
   },
 ];
 
-export function FeedbackFormDialog() {
+export function FeedbackFormDialog({ ...rest }) {
   /** ---------------------------------------------
    * Setup dialog state & handlers
    * ----------------------------------------------- */
@@ -80,11 +83,12 @@ export function FeedbackFormDialog() {
    * ----------------------------------------------- */
 
   const createCommentOnFormSubmission = useCallback(
-    async (formData: FormDataShape) => {
+    async ({ rating, description }: FormDataShape) => {
       if (!collectionRef || !user) return null;
 
       return addDoc(collectionRef, {
-        ...formData,
+        rating: Number.parseInt(rating, 10),
+        description,
         displayName: user.displayName,
         email: user.email,
         author_uid: user.uid,
@@ -113,37 +117,38 @@ export function FeedbackFormDialog() {
    * ------------------------------------------------------------------------------- */
 
   return (
-    <Dialog
-      callbackOnOpenChange={setIsDialogOpen}
-      isOpen={isDialogOpen}
-      triggerNode={dialogTriggerNode}
-      title="Leave feedback"
-      description="Please leave a few details on how we are doing so that we can continue to improve our service. Thanks, you rock. 🤘"
-    >
-      <Form
-        callbackOnSuccessfulFormSubmission={closeDialog}
-        handleFormSubmission={createCommentOnFormSubmission}
-        submitButtonText="Submit feedback"
+    <Box {...rest}>
+      <Dialog
+        callbackOnOpenChange={setIsDialogOpen}
+        isOpen={isDialogOpen}
+        triggerNode={dialogTriggerNode}
+        title="Leave feedback"
+        description="Please leave a few details on how we are doing so that we can continue to improve our service. Thanks, you rock. 🤘"
       >
-        <FormSingleSelect
-          errorMessage="Please ensure you have made a selection."
-          id="rating"
-          items={FEEDBACK_STAR_DROPDOWN_ITEMS}
-          label="Rating"
-          name="rating"
-          placeholder="Select a rating"
-        />
-
-        <FormTextArea
-          rows={5}
-          required
-          errorMessage="Please ensure you have entered a description."
-          id="description"
-          label="Task description"
-          name="description"
-          placeholder="Add a bit of additional context about"
-        />
-      </Form>
-    </Dialog>
+        <Form
+          callbackOnSuccessfulFormSubmission={closeDialog}
+          handleFormSubmission={createCommentOnFormSubmission}
+          submitButtonText="Submit feedback"
+        >
+          <FormSingleSelect
+            errorMessage="Please ensure you have made a selection."
+            id="rating"
+            items={FEEDBACK_STAR_DROPDOWN_ITEMS}
+            label="Rating"
+            name="rating"
+            placeholder="Select a rating"
+          />
+          <FormTextArea
+            errorMessage="Please ensure you have entered a description."
+            id="description"
+            label="Task description"
+            name="description"
+            placeholder="Add a bit of additional context about"
+            required
+            rows={5}
+          />
+        </Form>
+      </Dialog>
+    </Box>
   );
 }

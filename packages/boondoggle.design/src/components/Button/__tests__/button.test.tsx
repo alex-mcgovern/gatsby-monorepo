@@ -1,13 +1,9 @@
 /** @jest-environment jsdom */
 import React from "react";
-import { renderTestComponent } from "@alexmcgovern/gatsby-shared/src/shared-testing/TestComponentRenderer";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { cleanup } from "@testing-library/react";
+import { renderTestComponent } from "../../../../../../test/renderTestComponent";
 import type { ButtonProps } from "../index";
 import { Button } from "../index";
-
-library.add(faSearch);
 
 afterEach(cleanup);
 

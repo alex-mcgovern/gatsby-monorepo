@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { createRef, useContext, useEffect } from "react";
 import { Box } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
 import { CommentsList } from "../components/CommentsList";
@@ -7,7 +7,7 @@ import { PaginationControls } from "../components/PaginationControls";
 import { usePaginatedComments } from "../utils/usePaginatedComments";
 
 export default function FeedbackForm() {
-  const { user, firebaseApp } = useContext(FirebaseContext) || {};
+  const { firebaseApp } = useContext(FirebaseContext) || {};
 
   /**
    * Get comments from firestore, with pagination controls
@@ -16,6 +16,21 @@ export default function FeedbackForm() {
     commentsPerPage: 5,
     firebaseApp,
   });
+
+  /**
+   * Handle scrolling to top on page change
+   */
+
+  const scrollRef = createRef<HTMLHRElement>();
+
+  useEffect(() => {
+    if (
+      paginationState.currentPage !== paginationState.previousPage &&
+      scrollRef.current
+    ) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [paginationState.currentPage, paginationState.previousPage, scrollRef]);
 
   return (
     <Box as="section" marginY="spacing5" position="relative">
@@ -37,8 +52,16 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      <hr />
+      {/** -----------------------------------------------------------------------------
+       * Controls
+       * ------------------------------------------------------------------------------- */}
+      <hr ref={scrollRef} />
+
       <PaginationControls {...paginationState} />
+
+      {/** -----------------------------------------------------------------------------
+       * Graph
+       * ------------------------------------------------------------------------------- */}
 
       <Box
         marginY="spacing3"
@@ -54,6 +77,10 @@ export default function FeedbackForm() {
       <FeedbackGraph documents={paginationState.documents} />
 
       <hr />
+
+      {/** -----------------------------------------------------------------------------
+       * All comments
+       * ------------------------------------------------------------------------------- */}
       <Box
         marginY="spacing3"
         display="flex"

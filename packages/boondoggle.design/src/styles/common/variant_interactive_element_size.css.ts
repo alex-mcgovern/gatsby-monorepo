@@ -4,20 +4,26 @@ import { getSprinkles } from "../getSprinkles.css";
 export const variantInteractiveElementSize = styleVariants({
   sm: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing3" },
+      // height: { mobile: "spacing5", desktop: "spacing3" },
+      paddingX: "spacing1",
+      paddingY: "spacing0",
       fontStyle: { mobile: "body_lg", desktop: "body_sm" },
     }),
   ],
   md: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing4" },
+      // height: { mobile: "spacing5", desktop: "spacing4" },
+      paddingX: "spacing1",
+      paddingY: "spacing0",
       fontStyle: { mobile: "body_lg", desktop: "body_md" },
     }),
   ],
   lg: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing5" },
-      fontStyle: { mobile: "h6", desktop: "h6" },
+      // height: { mobile: "spacing5", desktop: "spacing5" },
+      paddingX: "spacing1",
+      paddingY: "spacing0",
+      fontStyle: { mobile: "body_lg", desktop: "body_lg" },
     }),
   ],
 

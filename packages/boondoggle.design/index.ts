@@ -19,6 +19,15 @@ export type { DropdownItem } from "./src/components/Select/types";
 export { Dialog } from "./src/components/Dialog";
 export type { DialogProps } from "./src/components/Dialog";
 
+export { Form } from "./src/components/Form";
+export type { FormProps } from "./src/components/Form";
+
+export { FormInput } from "./src/components/Form/components/FormInput";
+export { FormSingleSelect } from "./src/components/Form/components/FormSingleSelect";
+export { FormTextArea } from "./src/components/Form/components/FormTextArea";
+export { FormSingleSelectCreatable } from "./src/components/Form/components/FormSingleSelectCreatable";
+export { getHookFormButtonIconProps } from "./src/components/Form/utils/getHookFormButtonIcon";
+
 export { Input } from "./src/components/Input";
 export type { InputProps } from "./src/components/Input";
 
@@ -47,7 +56,7 @@ export { SelectSingleFilterable } from "./src/components/Select/SelectSingleFilt
 export type { SelectSingleFilterableProps } from "./src/components/Select/SelectSingleFilterable";
 
 export { SelectSingleCreatable } from "./src/components/Select/SelectSingleCreatable";
-export type { SelectCreatableProps } from "./src/components/Select/SelectSingleCreatable";
+export type { SelectSingleCreatableProps } from "./src/components/Select/SelectSingleCreatable";
 
 export { Tag } from "./src/components/Tag";
 export type { TagProps } from "./src/components/Tag";

@@ -215,13 +215,13 @@ module.exports = {
     ],
 
     /**
-     * Error on patterns that may cause frontend performance degradation.
+     * Warn on patterns that may cause frontend performance degradation.
      */
 
-    "react-perf/jsx-no-jsx-as-prop": "error",
-    "react-perf/jsx-no-new-array-as-prop": "error",
-    "react-perf/jsx-no-new-function-as-prop": "error",
-    "react-perf/jsx-no-new-object-as-prop": "error",
+    "react-perf/jsx-no-jsx-as-prop": "warn",
+    "react-perf/jsx-no-new-array-as-prop": "warn",
+    "react-perf/jsx-no-new-function-as-prop": "warn",
+    "react-perf/jsx-no-new-object-as-prop": "warn",
 
     /**
      * Ensure errant console.log & console.debug's are not left lying about,
@@ -281,12 +281,6 @@ module.exports = {
         packages: path.resolve(__dirname, "packages"),
       },
 
-      alias: {
-        map: [
-          ["~utils", "./src/utils"],
-          ["~hooks", "./src/hooks"],
-        ],
-      },
       node: {
         extensions: [".ts", ".tsx", ".json"],
       },

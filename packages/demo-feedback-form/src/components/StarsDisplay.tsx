@@ -9,13 +9,13 @@ const STAR_CLASS_NAMES = getSprinkles({
   flexShrink: "0",
 });
 
-interface StarsDisplayProps {
+export interface StarsDisplayProps {
   rating: number;
 }
 
-export function StarsDisplay({ rating }: StarsDisplayProps) {
+export function StarsDisplay({ rating, ...rest }: StarsDisplayProps) {
   return (
-    <Box display="flex">
+    <Box display="flex" {...rest}>
       {Array.from({ length: 5 }, (_, index) => {
         const starIcon: IconProps["icon"] =
           rating > index ? faStarSolid : faStarRegular;

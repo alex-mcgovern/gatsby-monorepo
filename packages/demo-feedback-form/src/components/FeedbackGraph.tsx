@@ -8,7 +8,7 @@ import { AnimatedAreaSeries, AnimatedGrid, Axis, XYChart } from "@visx/xychart";
 import { VISX_CHART_THEME } from "../VISX_CHART_THEME";
 import type { CommentShape } from "../types";
 
-interface FeedbackGraphProps {
+export interface FeedbackGraphProps {
   documents?: Array<CommentShape>;
 }
 
@@ -50,7 +50,7 @@ const getXAxisLabelProps = (): Partial<TextProps> => {
  * Main component
  * ------------------------------------------------------------------------------- */
 
-export function FeedbackGraph({ documents }: FeedbackGraphProps) {
+export function FeedbackGraph({ documents, ...rest }: FeedbackGraphProps) {
   /**
    * Ensure chart remains mounted when new comment data loading,
    * enabling smooth animation between data sets
@@ -73,14 +73,9 @@ export function FeedbackGraph({ documents }: FeedbackGraphProps) {
       captureEvents={false}
       height={320}
       theme={VISX_CHART_THEME}
-      /**
-       * Disabling perf warnings for these props as abstracting this meant dealing with some knotty
-       * typings. (This AirBnB library is a bit over-engineered 🤔)
-       */
-      // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
       xScale={{ type: "band", reverse: true }}
-      // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
       yScale={{ domain: [0, 5], type: "linear" }}
+      {...rest}
     >
       {/** --------------------------------------------
        * Set up elements for render

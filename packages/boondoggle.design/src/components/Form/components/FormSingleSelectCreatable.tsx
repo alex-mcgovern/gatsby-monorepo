@@ -1,22 +1,21 @@
 import React, { useCallback } from "react";
-import type {
-  DropdownItem,
-  SelectSingleProps,
-} from "@alexmcgovern/boondoggle.design";
-import { SelectSingle } from "@alexmcgovern/boondoggle.design";
 import { useController, useFormContext } from "react-hook-form";
+import type { SelectSingleCreatableProps } from "../../Select/SelectSingleCreatable";
+import { SelectSingleCreatable } from "../../Select/SelectSingleCreatable";
+import type { DropdownItem } from "../../Select/types";
 
-export interface FormSingleSelectProps extends SelectSingleProps {
+export interface FormSingleSelectSingleCreatableProps
+  extends SelectSingleCreatableProps {
   errorMessage: string;
 }
 
 /** React Hook Form connected version of `SelectSingle`. Uses `useFormContext`
  * to access Hook Form's methods so can be deeply nested. */
-export function FormSingleSelect({
+export function FormSingleSelectCreatable({
   name,
 
   ...rest
-}: FormSingleSelectProps) {
+}: FormSingleSelectSingleCreatableProps) {
   const { control } = useFormContext();
 
   const {
@@ -31,13 +30,13 @@ export function FormSingleSelect({
 
   const handleChange = useCallback(
     (item: DropdownItem) => {
-      return onChange(item.value);
+      return onChange(item?.value);
     },
     [onChange]
   );
 
   return (
-    <SelectSingle
+    <SelectSingleCreatable
       ref={ref}
       invalid={!!error}
       onValueChange={handleChange}

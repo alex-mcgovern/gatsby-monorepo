@@ -1,5 +1,5 @@
 export interface DropdownItem {
-  label?: string | number;
-  value: string | number;
+  label?: string;
+  value: string;
   link?: string;
 }

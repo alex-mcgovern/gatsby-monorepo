@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import React, { forwardRef } from "react";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
@@ -11,7 +12,7 @@ import { DownshiftContext } from "./context/DownshiftContext";
 import { DownshiftProviderCreatable } from "./context/DownshiftProviderCreatable";
 import type { DropdownItem } from "./types";
 
-export interface SelectCreatableProps {
+export interface SelectSingleCreatableProps {
   /** FontAwesome icon shown on the left side of select. */
   iconLeading?: IconProp;
   /** HTML id attribute */
@@ -54,8 +55,8 @@ export const SelectSingleCreatable = forwardRef(
       placeholder,
       size = "md",
       ...rest
-    }: SelectCreatableProps,
-    ref
+    }: SelectSingleCreatableProps,
+    ref: Ref<HTMLInputElement>
   ) => {
     return (
       <DownshiftProviderCreatable
@@ -76,7 +77,7 @@ export const SelectSingleCreatable = forwardRef(
                   invalid={invalid}
                   name={name}
                   errorMessage={errorMessage}
-                  placeholder={selectedItem?.value || placeholder}
+                  placeholder={selectedItem?.value.toString() || placeholder}
                   size={size}
                   ref={ref}
                 />

@@ -13,7 +13,6 @@ import {
 import { useCollection } from "react-firebase-hooks/firestore";
 import type { PaginationStateShape } from "./firestorePaginationReducer";
 import { firestorePaginationReducer } from "./firestorePaginationReducer";
-import { resolveFirestoreDocData } from "./resolveFirestoreDocData";
 
 interface UsePaginatedCommentsArgs {
   commentsPerPage: number;
@@ -63,21 +62,6 @@ export function usePaginatedComments({
   });
 
   /** ---------------------------------------------
-   * Get total count
-   * ----------------------------------------------- */
-
-  useEffect(() => {
-    if (!collectionRef) return;
-
-    getCountFromServer(collectionRef).then((response) => {
-      return dispatch({
-        type: "SET_COUNT",
-        payload: { totalNbComments: response.data().count },
-      });
-    });
-  }, [collectionRef, firebaseApp]);
-
-  /** ---------------------------------------------
    * Initialise hook & sync snapshot
    * ----------------------------------------------- */
 
@@ -102,6 +86,21 @@ export function usePaginatedComments({
   }, [docsSnapshot]);
 
   /** ---------------------------------------------
+   * Get total count
+   * ----------------------------------------------- */
+
+  useEffect(() => {
+    if (!collectionRef) return;
+
+    getCountFromServer(collectionRef).then((response) => {
+      return dispatch({
+        type: "SET_COUNT",
+        payload: { totalNbComments: response.data().count },
+      });
+    });
+  }, [collectionRef, firebaseApp]);
+
+  /** ---------------------------------------------
    * Setup handlers
    * ----------------------------------------------- */
 
@@ -124,7 +123,9 @@ export function usePaginatedComments({
     canLoadPrevious,
     canLoadNext,
     commentsPerPage,
-    documents: resolveFirestoreDocData(querySnapshot?.docs),
+    documents: querySnapshot?.docs.map((doc) => {
+      return { ...doc.data(), documentRef: doc.ref };
+    }),
     totalNbComments,
     setPerPage,
     error,

@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import React from "react";
-import { renderTestComponent } from "@alexmcgovern/gatsby-shared/src/shared-testing/TestComponentRenderer";
 import { cleanup } from "@testing-library/react";
+import { renderTestComponent } from "../../../../../../test/renderTestComponent";
 import type { ButtonProps } from "../index";
 import { Button } from "../index";
 

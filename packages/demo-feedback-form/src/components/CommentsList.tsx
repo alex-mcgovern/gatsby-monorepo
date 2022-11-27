@@ -4,20 +4,25 @@ import type { FirestoreError } from "firebase/firestore";
 import type { CommentShape } from "../types";
 import { Comment } from "./Comment";
 
-interface CommentsListProps {
+export interface CommentsListProps {
   documents: Array<CommentShape>;
   loading: boolean;
   error?: FirestoreError;
 }
 
-export function CommentsList({ documents, loading, error }: CommentsListProps) {
+export function CommentsList({
+  documents,
+  loading,
+  error,
+  ...rest
+}: CommentsListProps) {
   if (loading) {
-    return <Loader size="3x" width="100%" minHeight="75vh" />;
+    return <Loader {...rest} size="3x" width="100%" minHeight="75vh" />;
   }
 
   if (error) {
     return (
-      <Box>
+      <Box {...rest}>
         <Box as="h1">Error</Box>
         <Box as="section">
           <Box as="h3" fontSize="body_lg" fontWeight="normal">
@@ -30,13 +35,18 @@ export function CommentsList({ documents, loading, error }: CommentsListProps) {
 
   if (Array.isArray(documents) && documents.length > 0) {
     return (
-      <Box display="grid" gap="spacing2" gridTemplateColumns="1x">
+      <Box {...rest} display="grid" gap="spacing2" gridTemplateColumns="1x">
         {documents.map((comment) => {
-          return <Comment {...comment} key={comment.documentRef.id} />;
+          return (
+            <Comment
+              {...comment}
+              key={`${comment.author_uid}-${comment.created.seconds}`}
+            />
+          );
         })}
       </Box>
     );
   }
 
-  return <Box>No documents. Probably something is broken. 🤔</Box>;
+  return <Box {...rest}>No documents. Probably something is broken. 🤔</Box>;
 }

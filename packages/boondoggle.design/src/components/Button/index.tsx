@@ -31,6 +31,8 @@ type BaseButtonProps<TPolymorphicAs extends ElementType> = Omit<
   PolymorphicComponentPropWithRef<
     TPolymorphicAs,
     {
+      /** Is button disabled. Mapped to html5 <button> `disabled` attribute and `aria-disabled` attribute. */
+      disabled?: boolean;
       /** FontAwesome icon shown on the left side of button. */
       iconLeading?: IconProps["icon"];
       /** Props for leading icon */

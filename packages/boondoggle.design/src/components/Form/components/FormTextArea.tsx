@@ -1,8 +1,8 @@
 import React from "react";
-import type { TextAreaProps } from "@alexmcgovern/boondoggle.design";
-import { TextArea } from "@alexmcgovern/boondoggle.design";
 import type { Validate } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
+import type { TextAreaProps } from "../../TextArea";
+import { TextArea } from "../../TextArea";
 
 export interface FormTextAreaProps extends TextAreaProps {
   /** Message to render when erroring. */
@@ -22,7 +22,6 @@ export function FormTextArea({
   errorMessage,
   required,
   validateFunction,
-
   ...rest
 }: FormTextAreaProps) {
   const { control } = useFormContext();
