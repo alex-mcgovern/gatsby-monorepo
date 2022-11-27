@@ -79,7 +79,7 @@ export function PaginationControls({
       <Card
         boxShadow="lg"
         display="flex"
-        gap="spacing1"
+        gap="spacing2"
         alignItems="center"
         flexWrap="wrap"
       >
