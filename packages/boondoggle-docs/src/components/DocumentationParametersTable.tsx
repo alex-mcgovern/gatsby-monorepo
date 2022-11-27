@@ -1,6 +1,6 @@
 // Adapted from https://github.com/transitive-bullshit/react-docgen-parameters-table
 import React from "react";
-import { Box, Popover } from "@alexmcgovern/boondoggle.design";
+import { Box, Tooltip } from "@alexmcgovern/boondoggle.design";
 import { checkArrayHasLength } from "@alexmcgovern/utils";
 import { getPropType } from "../utils/get_prop_type";
 
@@ -59,7 +59,7 @@ export function DocumentationParametersTable({
                               {!property.optional && "*"}
                             </Box>
                             {property.description && (
-                              <Popover popoverText={property.description} />
+                              <Tooltip popoverText={property.description} />
                             )}
                           </td>
 
@@ -68,7 +68,7 @@ export function DocumentationParametersTable({
                               {property.type || getPropType(property.kind)}
                             </Box>
                             {subProperties?.length > 0 && (
-                              <Popover
+                              <Tooltip
                                 popoverText={subProperties.join(" | ")}
                               />
                             )}

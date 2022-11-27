@@ -9,7 +9,7 @@ export const dropdownMenu = style([
   getSprinkles({
     marginTop: "spacing1",
     width: "max-content",
-    // minWidth: "100%",
+    minWidth: "100%",
     maxWidth: "gridSpan3",
     display: "block",
     margin: "none",

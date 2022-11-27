@@ -31,6 +31,8 @@ type BaseButtonProps<TPolymorphicAs extends ElementType> = Omit<
   PolymorphicComponentPropWithRef<
     TPolymorphicAs,
     {
+      /** Is button disabled. Mapped to html5 <button> `disabled` attribute and `aria-disabled` attribute. */
+      disabled?: boolean;
       /** FontAwesome icon shown on the left side of button. */
       iconLeading?: IconProps["icon"];
       /** Props for leading icon */
@@ -97,16 +99,12 @@ export const Button: ButtonComponent = forwardRef(
     return (
       <Component
         {...{
-          ref,
+          "aria-disabled": disabled,
+          className: buttonClassNames,
           disabled,
           id,
-          className: buttonClassNames,
-          /** Conditionally spread `button` attributes */
-          ...(as === "button" && {
-            disabled,
-            "aria-disabled": disabled,
-            type,
-          }),
+          ref,
+          type,
           ...otherProps,
         }}
       >
@@ -117,7 +115,6 @@ export const Button: ButtonComponent = forwardRef(
             {...iconLeadingProps}
           />
         )}
-
         {children}
         {iconTrailing && (
           <Icon

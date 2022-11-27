@@ -1,42 +1,39 @@
-import React, { useContext, useMemo } from "react";
-import { Box, Button } from "@alexmcgovern/boondoggle.design";
+import React, { createRef, useContext, useEffect } from "react";
+import { Box } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import { Link } from "gatsby";
 import { CommentsList } from "../components/CommentsList";
-import { FeedbackFormDialog } from "../components/FeedbackFormDialog";
 import { FeedbackGraph } from "../components/FeedbackGraph";
 import { PaginationControls } from "../components/PaginationControls";
-import { usePaginatedComments } from "../hooks/usePaginatedComments";
+import { usePaginatedComments } from "../utils/usePaginatedComments";
 
 export default function FeedbackForm() {
-  const { user } = useContext(FirebaseContext) || {};
-
-  /**
-   * State passed to `Link` to login page, to return user here
-   * after sign in.
-   */
-  const linkState = useMemo(() => {
-    return { returnTo: "/" };
-  }, []);
+  const { firebaseApp } = useContext(FirebaseContext) || {};
 
   /**
    * Get comments from firestore, with pagination controls
    */
-  const {
-    canLoadNewerComments,
-    canLoadOlderComments,
-    comments,
-    commentsCount,
-    commentsError,
-    commentsLoading,
-    loadNewerComments,
-    loadOlderComments,
-    paginationState,
-    totalPages,
-  } = usePaginatedComments({ commentsPerPage: 20 });
+  const paginationState = usePaginatedComments({
+    commentsPerPage: 5,
+    firebaseApp,
+  });
+
+  /**
+   * Handle scrolling to top on page change
+   */
+
+  const scrollRef = createRef<HTMLHRElement>();
+
+  useEffect(() => {
+    if (
+      paginationState.currentPage !== paginationState.previousPage &&
+      scrollRef.current
+    ) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [paginationState.currentPage, paginationState.previousPage, scrollRef]);
 
   return (
-    <Box as="section" marginY="spacing5">
+    <Box as="section" marginY="spacing5" position="relative">
       {/** -----------------------------------------------------------------------------
        * Page header
        * ------------------------------------------------------------------------------- */}
@@ -55,15 +52,16 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      {user ? (
-        <FeedbackFormDialog />
-      ) : (
-        <Button width="max-content" as={Link} to="/login" state={linkState}>
-          Log in to leave feedback
-        </Button>
-      )}
+      {/** -----------------------------------------------------------------------------
+       * Controls
+       * ------------------------------------------------------------------------------- */}
+      <hr ref={scrollRef} />
 
-      <hr />
+      <PaginationControls {...paginationState} />
+
+      {/** -----------------------------------------------------------------------------
+       * Graph
+       * ------------------------------------------------------------------------------- */}
 
       <Box
         marginY="spacing3"
@@ -72,24 +70,17 @@ export default function FeedbackForm() {
         justifyContent="space-between"
       >
         <Box as="h3" fontStyle="h4">
-          Performance overview
+          Feedback performance
         </Box>
-
-        <PaginationControls
-          totalPages={totalPages}
-          paginationState={paginationState}
-          comments={comments}
-          commentsLoading={commentsLoading}
-          canLoadOlderComments={canLoadOlderComments}
-          canLoadNewerComments={canLoadNewerComments}
-          loadOlderComments={loadOlderComments}
-          loadNewerComments={loadNewerComments}
-        />
       </Box>
 
-      <FeedbackGraph comments={comments} paginationState={paginationState} />
+      <FeedbackGraph documents={paginationState.documents} />
 
       <hr />
+
+      {/** -----------------------------------------------------------------------------
+       * All comments
+       * ------------------------------------------------------------------------------- */}
       <Box
         marginY="spacing3"
         display="flex"
@@ -97,25 +88,14 @@ export default function FeedbackForm() {
         justifyContent="space-between"
       >
         <Box as="h3" fontStyle="h4">
-          All comments ({commentsCount})
+          All feedback
         </Box>
-
-        <PaginationControls
-          totalPages={totalPages}
-          paginationState={paginationState}
-          comments={comments}
-          commentsLoading={commentsLoading}
-          canLoadOlderComments={canLoadOlderComments}
-          canLoadNewerComments={canLoadNewerComments}
-          loadOlderComments={loadOlderComments}
-          loadNewerComments={loadNewerComments}
-        />
       </Box>
 
       <CommentsList
-        comments={comments}
-        commentsError={commentsError}
-        commentsLoading={commentsLoading}
+        documents={paginationState.documents}
+        error={paginationState.error}
+        loading={paginationState.loading}
       />
     </Box>
   );

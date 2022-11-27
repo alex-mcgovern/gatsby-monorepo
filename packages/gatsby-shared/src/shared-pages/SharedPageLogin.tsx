@@ -3,6 +3,8 @@ import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import {
   Box,
   Button,
+  Form,
+  FormInput,
   InputErrorMessage,
 } from "@alexmcgovern/boondoggle.design";
 import {
@@ -12,8 +14,6 @@ import {
 import { Link, navigate } from "gatsby";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
-import { Form } from "../shared-components/Form";
-import { FormInput } from "../shared-components/Form/components/FormInput";
 
 interface SharedPageLoginProps {
   location: {
@@ -140,9 +140,10 @@ export function SharedPageLogin({ location }: SharedPageLoginProps) {
            * ----------------------------------------------- */}
 
           {user && location?.state?.returnTo && shouldRedirect && (
-            <Box>
+            <Box marginTop="spacing1">
               Redirecting in{" "}
-              <CountdownWithCallback callback={handleRedirect} seconds={3} />
+              <CountdownWithCallback callback={handleRedirect} seconds={3} />.{" "}
+              <Link to={location.state.returnTo}>Go now</Link>
             </Box>
           )}
 

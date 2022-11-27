@@ -19,6 +19,15 @@ export type { DropdownItem } from "./src/components/Select/types";
 export { Dialog } from "./src/components/Dialog";
 export type { DialogProps } from "./src/components/Dialog";
 
+export { Form } from "./src/components/Form";
+export type { FormProps } from "./src/components/Form";
+
+export { FormInput } from "./src/components/Form/components/FormInput";
+export { FormSingleSelect } from "./src/components/Form/components/FormSingleSelect";
+export { FormTextArea } from "./src/components/Form/components/FormTextArea";
+export { FormSingleSelectCreatable } from "./src/components/Form/components/FormSingleSelectCreatable";
+export { getHookFormButtonIconProps } from "./src/components/Form/utils/getHookFormButtonIcon";
+
 export { Input } from "./src/components/Input";
 export type { InputProps } from "./src/components/Input";
 
@@ -37,9 +46,6 @@ export type { ListItemProps } from "./src/components/ListItem";
 export { Loader } from "./src/components/Loader";
 export type { LoaderProps } from "./src/components/Loader";
 
-export { Popover } from "./src/components/Popover";
-export type { PopoverProps } from "./src/components/Popover";
-
 export { SelectSingle } from "./src/components/Select/SelectSingle";
 export type { SelectSingleProps } from "./src/components/Select/SelectSingle";
 
@@ -50,10 +56,16 @@ export { SelectSingleFilterable } from "./src/components/Select/SelectSingleFilt
 export type { SelectSingleFilterableProps } from "./src/components/Select/SelectSingleFilterable";
 
 export { SelectSingleCreatable } from "./src/components/Select/SelectSingleCreatable";
-export type { SelectCreatableProps } from "./src/components/Select/SelectSingleCreatable";
+export type { SelectSingleCreatableProps } from "./src/components/Select/SelectSingleCreatable";
 
 export { Tag } from "./src/components/Tag";
 export type { TagProps } from "./src/components/Tag";
+
+export { Tooltip } from "./src/components/Tooltip";
+export type { TooltipProps } from "./src/components/Tooltip";
+
+export { TextArea } from "./src/components/TextArea";
+export type { TextAreaProps } from "./src/components/TextArea";
 
 export { ThemeContext, ThemeProvider } from "./src/context/ThemeContext";
 

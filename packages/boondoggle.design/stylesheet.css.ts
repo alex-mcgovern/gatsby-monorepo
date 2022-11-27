@@ -22,20 +22,20 @@ globalStyle(`*`, {
 });
 
 globalStyle(`html`, {
-  fontSize: vars.fontSize.root,
   color: vars.color.neutral_text_highContrast,
   backgroundColor: vars.color.neutral_background_raised,
+  fontSize: vars.fontSize.root,
 });
 
 globalStyle(`html, body`, {
   height: `100%`,
   fontFamily: vars.fontFamily.body,
+  fontSize: vars.fontSize.body_md,
 });
 
 globalStyle(`body`, {
-  lineHeight: 1.8,
+  lineHeight: vars.lineHeight.body_md,
   WebkitFontSmoothing: `antialiased`,
-  width: "100vw",
 });
 
 /* -----------------------------------------------------------------------------—

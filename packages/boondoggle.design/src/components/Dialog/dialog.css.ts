@@ -18,6 +18,8 @@ export const dialogOverlay = style([
     backgroundColor: `#00000080`,
     position: "fixed",
     inset: 0,
+    zIndex: 99999,
+
     "@media": {
       "(prefers-reduced-motion: no-preference)": {},
     },
@@ -42,6 +44,7 @@ export const dialogContent = style([
     maxHeight: "75vh",
   }),
   {
+    zIndex: 99999,
     position: "fixed",
     top: "50%",
     left: "50%",

@@ -5,14 +5,14 @@ import { Box } from "../Box";
 import { Card } from "../Card";
 import type { IconProps } from "../Icon";
 import { Icon } from "../Icon";
-import * as styles from "./popover.css";
+import * as styles from "./tooltip.css";
 
-export interface PopoverProps {
+export interface TooltipProps {
   popoverText: string;
   icon?: IconProps["icon"];
 }
 
-export function Popover({ popoverText, icon = faInfoCircle }: PopoverProps) {
+export function Tooltip({ popoverText, icon = faInfoCircle }: TooltipProps) {
   return (
     <RadixPopover.Root>
       <RadixPopover.Trigger className={styles.popoverTrigger}>

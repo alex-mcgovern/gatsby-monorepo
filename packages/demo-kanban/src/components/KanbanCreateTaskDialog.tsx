@@ -1,12 +1,13 @@
 import React, { useCallback, useContext, useMemo, useState } from "react";
-import { Button, Dialog } from "@alexmcgovern/boondoggle.design";
-import { FirebaseContext } from "@alexmcgovern/firebase";
 import {
+  Button,
+  Dialog,
   Form,
   FormInput,
   FormSingleSelect,
   FormSingleSelectCreatable,
-} from "@alexmcgovern/gatsby-shared";
+} from "@alexmcgovern/boondoggle.design";
+import { FirebaseContext } from "@alexmcgovern/firebase";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import {
   Timestamp,

@@ -1,6 +1,11 @@
 import React, { useCallback, useContext, useState } from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
-import { Box, InputErrorMessage } from "@alexmcgovern/boondoggle.design";
+import {
+  Box,
+  Form,
+  FormInput,
+  InputErrorMessage,
+} from "@alexmcgovern/boondoggle.design";
 import {
   FirebaseContext,
   getFirebaseAuthErrorMessage,
@@ -8,8 +13,6 @@ import {
 import { navigate } from "gatsby";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
-import { Form } from "../shared-components/Form";
-import { FormInput } from "../shared-components/Form/components/FormInput";
 
 interface SharedPageRegisterProps {
   location: {

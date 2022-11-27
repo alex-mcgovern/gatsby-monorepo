@@ -22,7 +22,10 @@ export function filterDownshiftAvailableItems({
    */
   if (items && items.length > 0) {
     return items.filter((item) => {
-      return item?.label?.toLowerCase().includes(inputValue.toLowerCase());
+      return item?.label
+        ?.toString()
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
     });
   }
 

@@ -3,5 +3,9 @@
   "compilerOptions": {
     "outDir": "./lib"
   },
-  "include": ["./src", "stylesheet.css.ts"]
+  "include": [
+    "./src",
+    "stylesheet.css.ts",
+    "../boondoggle.design/src/components/Form"
+  ]
 }

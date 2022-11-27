@@ -26,9 +26,14 @@ export function Dialog({
   children,
   isOpen,
   callbackOnOpenChange,
+  ...rest
 }: DialogProps) {
   return (
-    <DialogPrimitive.Root onOpenChange={callbackOnOpenChange} open={isOpen}>
+    <DialogPrimitive.Root
+      onOpenChange={callbackOnOpenChange}
+      open={isOpen}
+      {...rest}
+    >
       {/**
        * Allow custom trigger node, e.g. menu icon.
        * ToDo: Figure out a way to require triggerNode to accept ref, or to

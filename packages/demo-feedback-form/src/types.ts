@@ -1,11 +1,14 @@
-import type { DocumentReference, Timestamp } from "firebase/firestore";
+import type { DocumentReference } from "firebase/firestore";
 
 export interface CommentShape {
-  displayName: string;
+  displayName: string | null;
   email: string;
-  created: Timestamp;
+  created: {
+    seconds: number;
+    nanoseconds: number;
+  };
   description: string;
   rating: number;
-  documentRef: DocumentReference<CommentShape>;
+  documentRef?: DocumentReference<CommentShape>;
   author_uid: string;
 }

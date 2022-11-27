@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<div
+  data-testid="tested-component"
+>
+  <button
+    aria-controls="radix-:r3:"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9an Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing1__1jganc99g getSprinkles_paddingRight_spacing1__1jganc99v getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9ar getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_lg__1lclbjhb variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_paddingLeft_spacing1__1jganc99g getSprinkles_paddingRight_spacing1__1jganc99v getSprinkles_paddingTop_spacing0__1jganc9a9 getSprinkles_paddingBottom_spacing0__1jganc990 getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontSize_body_lg_desktop__1jganc9c5 getSprinkles_lineHeight_body_lg_mobile__1jganc9cx getSprinkles_lineHeight_body_lg_desktop__1jganc9cz"
+    data-state="closed"
+    type="button"
+  >
+    <div>
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-message icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c getSprinkles_display_block_mobile__1jganc9au getSprinkles_width_auto_mobile__1jganc9fi getSprinkles_minWidth_spacing2__1jganc98a"
+        data-icon="message"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    Leave feedback
+  </button>
+</div>
+`;

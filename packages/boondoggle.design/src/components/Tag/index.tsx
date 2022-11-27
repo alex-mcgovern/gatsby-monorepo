@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import React from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -23,19 +24,19 @@ export interface TagProps extends BoxProps {
   disabled?: boolean;
   /** Callback on click. */
   onClick?(...args: unknown[]): unknown;
-  /** The string shown in the tag. */
-  title?: string;
+  /** The react node rendered in the tag. */
+  children?: ReactNode;
   /** The string URI to link to. Supports relative and absolute URIs. */
   to?: string;
 }
 
 export function Tag({
   as,
-  title,
   id,
   iconLeading,
   iconTrailing,
   state,
+  children,
   ...rest
 }: TagProps) {
   const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
@@ -51,7 +52,7 @@ export function Tag({
       {iconLeading && (
         <Icon className={styles.iconLeading} icon={iconLeading} />
       )}
-      {title && <span>{title}</span>}
+      {children}
       {iconTrailing && (
         <Icon className={styles.iconTrailing} icon={iconTrailing} />
       )}

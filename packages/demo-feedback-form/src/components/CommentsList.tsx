@@ -4,38 +4,39 @@ import type { FirestoreError } from "firebase/firestore";
 import type { CommentShape } from "../types";
 import { Comment } from "./Comment";
 
-interface CommentsListProps {
-  comments: Array<CommentShape>;
-  commentsLoading: boolean;
-  commentsError?: FirestoreError;
+export interface CommentsListProps {
+  documents: Array<CommentShape>;
+  loading: boolean;
+  error?: FirestoreError;
 }
 
 export function CommentsList({
-  comments,
-  commentsLoading,
-  commentsError,
+  documents,
+  loading,
+  error,
+  ...rest
 }: CommentsListProps) {
-  if (commentsLoading) {
-    return <Loader size="3x" width="100%" minHeight="75vh" />;
+  if (loading) {
+    return <Loader {...rest} size="3x" width="100%" minHeight="75vh" />;
   }
 
-  if (commentsError) {
+  if (error) {
     return (
-      <Box>
+      <Box {...rest}>
         <Box as="h1">Error</Box>
         <Box as="section">
           <Box as="h3" fontSize="body_lg" fontWeight="normal">
-            {commentsError.message}
+            {error.message}
           </Box>
         </Box>
       </Box>
     );
   }
 
-  if (Array.isArray(comments) && comments.length > 0) {
+  if (Array.isArray(documents) && documents.length > 0) {
     return (
-      <Box display="grid" gap="spacing2">
-        {comments.map((comment) => {
+      <Box {...rest} display="grid" gap="spacing2" gridTemplateColumns="1x">
+        {documents.map((comment) => {
           return (
             <Comment
               {...comment}
@@ -47,5 +48,5 @@ export function CommentsList({
     );
   }
 
-  return <Box>No comments. Probably something is broken. 🤔</Box>;
+  return <Box {...rest}>No documents. Probably something is broken. 🤔</Box>;
 }
