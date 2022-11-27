@@ -1,5 +1,5 @@
-import type { DetailedHTMLProps, TextareaHTMLAttributes } from "react";
-import React from "react";
+import type { DetailedHTMLProps, Ref, TextareaHTMLAttributes } from "react";
+import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
 import { focusedStateStyle } from "../../styles/common/focus_ring_styles.css";
@@ -25,31 +25,34 @@ export interface TextAreaProps
   invalid?: boolean;
 }
 
-export function TextArea({
-  size = "md",
-  invalid,
-  errorMessage,
-  ...rest
-}: TextAreaProps) {
-  /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
-  const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
+export const TextArea = forwardRef(
+  (
+    { size = "md", invalid, errorMessage, ...rest }: TextAreaProps,
+    ref: Ref<HTMLTextAreaElement>
+  ) => {
+    /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
+    const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
 
-  const inputWrapperStyles = clsx(
-    getInputWrapperStyles({
-      size,
-    }),
-    focusedStateStyle,
-    getSprinkles({ ...atomProps })
-  );
+    const inputWrapperStyles = clsx(
+      getInputWrapperStyles({
+        size,
+      }),
+      focusedStateStyle,
+      getSprinkles({ ...atomProps })
+    );
 
-  return (
-    <Box>
-      <textarea
-        aria-invalid={invalid}
-        className={inputWrapperStyles}
-        {...otherProps}
-      />
-      {invalid && errorMessage && <InputErrorMessage message={errorMessage} />}
-    </Box>
-  );
-}
+    return (
+      <Box>
+        <textarea
+          aria-invalid={invalid}
+          className={inputWrapperStyles}
+          ref={ref}
+          {...otherProps}
+        />
+        {invalid && errorMessage && (
+          <InputErrorMessage message={errorMessage} />
+        )}
+      </Box>
+    );
+  }
+);
