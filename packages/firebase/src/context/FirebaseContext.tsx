@@ -30,7 +30,7 @@ interface FirebaseAuthProviderProps {
 interface FirebaseContextProvided {
   user?: User | null;
   firebaseAuthError?: Error;
-  firebaseApp?: FirebaseApp;
+  firebaseApp: FirebaseApp;
   firebaseAuthLoading?: boolean;
   firebaseAuth: Auth;
   firestore?: Firestore;
@@ -39,6 +39,11 @@ interface FirebaseContextProvided {
 export const FirebaseContext = createContext<FirebaseContextProvided>({
   firebaseAuth,
   firestore,
+  firebaseApp: {
+    name: "undefined",
+    options: {},
+    automaticDataCollectionEnabled: false,
+  },
 });
 
 export function FirebaseProvider({ children }: FirebaseAuthProviderProps) {
