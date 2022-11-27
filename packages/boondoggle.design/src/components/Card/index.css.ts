@@ -10,7 +10,7 @@ export const cardStyle = style([
     padding: "spacing2",
     display: "block",
     isolation: "isolate",
-    overflow: "hidden",
+    // overflow: "hidden",
     textDecoration: "none",
     background: "neutral_secondary_base",
     border: "neutral_border_interactive",
