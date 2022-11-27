@@ -99,16 +99,12 @@ export const Button: ButtonComponent = forwardRef(
     return (
       <Component
         {...{
-          ref,
+          "aria-disabled": disabled,
+          className: buttonClassNames,
           disabled,
           id,
-          className: buttonClassNames,
-          /** Conditionally spread `button` attributes */
-          ...(as === "button" && {
-            disabled,
-            "aria-disabled": disabled,
-            type,
-          }),
+          ref,
+          type,
           ...otherProps,
         }}
       >
@@ -119,7 +115,6 @@ export const Button: ButtonComponent = forwardRef(
             {...iconLeadingProps}
           />
         )}
-
         {children}
         {iconTrailing && (
           <Icon
