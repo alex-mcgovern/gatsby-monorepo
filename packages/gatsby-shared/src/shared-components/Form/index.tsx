@@ -18,7 +18,7 @@ export interface FormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleFormSubmission: (...args: Array<any>) => Promise<unknown>;
   submitButtonText: string;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export function Form({

@@ -32,6 +32,7 @@ export type { FormProps } from "./src/shared-components/Form/index";
 
 export { FormInput } from "./src/shared-components/Form/components/FormInput";
 export { FormSingleSelect } from "./src/shared-components/Form/components/FormSingleSelect";
+export { FormTextArea } from "./src/shared-components/Form/components/FormTextArea";
 export { FormSingleSelectCreatable } from "./src/shared-components/Form/components/FormSingleSelectCreatable";
 export { getHookFormButtonIconProps } from "./src/shared-components/Form/utils/getHookFormButtonIcon";
 
