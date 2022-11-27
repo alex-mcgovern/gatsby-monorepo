@@ -6,10 +6,6 @@ import { Box } from "../../../Box";
 import type { DropdownItem } from "../../types";
 import * as styles from "./index.css";
 
-/**
- * ToDo: Re-enable links and polymorphism in DropdownListItem
- */
-
 export interface DropdownListItemProps {
   isHighlighted: boolean;
   size?: VariantInteractiveElementSizeEnum;
@@ -40,6 +36,9 @@ export const DropdownListItem = forwardRef(
       }
     );
 
+    /**
+     * ToDo: Re-implement links in dropdown as polymorphic list items
+     */
     // const link = item.link && createInternalLink(item.link);
     // if (link) {
     //   return (
@@ -58,7 +57,7 @@ export const DropdownListItem = forwardRef(
     return (
       <Box
         as="span"
-        id={item.label}
+        id={item.label?.toString()}
         className={linkClassNames}
         {...rest}
         ref={ref as Ref<HTMLElement>}
