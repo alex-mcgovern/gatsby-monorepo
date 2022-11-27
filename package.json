@@ -75,18 +75,20 @@
   },
   "scripts": {
     "bootstrap": "lerna clean --yes && lerna bootstrap --use-workspaces",
+    "build:demo-feedback-form": "cd packages/demo-feedback-form gatsby build",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
+    "develop:demo-feedback-form": "cd packages/demo-feedback-form && npm run develop",
+    "develop:pokedex": "cd packages/pokedex && npm run develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "jest": "jest .",
     "jest:boondoggle.design": "jest --select-projects boondoggle.design",
-    "jest:gatsby-site": "jest --select-projects gatsby-site",
     "jest:demo-feedback-form": "jest --select-projects demo-feedback-form",
+    "jest:gatsby-site": "jest --select-projects gatsby-site",
     "jest:watch": "jest --watch",
     "lint": "eslint . --fix",
-    "serve": "gatsby serve",
-    "develop:pokedex": "cd packages/pokedex && npm run develop"
+    "serve": "gatsby serve"
   },
   "workspaces": [
     "packages/*"

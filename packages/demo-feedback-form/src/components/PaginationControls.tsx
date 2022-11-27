@@ -91,7 +91,6 @@ export function PaginationControls({
           <FeedbackFormDialog />
         ) : (
           <Button
-            size="lg"
             as={Link}
             iconLeading={faRightToBracket}
             state={linkState}
@@ -123,7 +122,6 @@ export function PaginationControls({
          * ----------------------------------------------- */}
 
         <SelectSingle
-          size="lg"
           placeholder="5"
           items={PER_PAGE_DROPDOWN_ITEMS}
           onValueChange={updatePerPage}
@@ -134,7 +132,6 @@ export function PaginationControls({
          * ----------------------------------------------- */}
 
         <Button
-          size="lg"
           appearance="primary"
           disabled={!canLoadNext}
           iconLeading={faAngleLeft}
@@ -144,7 +141,6 @@ export function PaginationControls({
         </Button>
 
         <Button
-          size="lg"
           appearance="primary"
           disabled={!canLoadPrevious}
           iconTrailing={faAngleRight}
