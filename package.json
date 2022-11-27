@@ -82,6 +82,7 @@
     "jest": "jest .",
     "jest:boondoggle.design": "jest --select-projects boondoggle.design",
     "jest:gatsby-site": "jest --select-projects gatsby-site",
+    "jest:demo-feedback-form": "jest --select-projects demo-feedback-form",
     "jest:watch": "jest --watch",
     "lint": "eslint . --fix",
     "serve": "gatsby serve",
