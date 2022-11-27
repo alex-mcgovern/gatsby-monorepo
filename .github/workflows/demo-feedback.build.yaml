@@ -62,3 +62,4 @@ jobs:
           projectName: ${{ secrets.CF_PAGES_SITE_DEMO_FEEDBACK }}
           directory: packages/demo-feedback-form/public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
