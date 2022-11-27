@@ -2,7 +2,11 @@ import React, { useCallback, useContext, useMemo, useState } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
 import { Button, Dialog } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import { Form, FormInput, FormSingleSelect } from "@alexmcgovern/gatsby-shared";
+import {
+  Form,
+  FormSingleSelect,
+  FormTextArea,
+} from "@alexmcgovern/gatsby-shared";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import {
   Timestamp,
@@ -65,7 +69,7 @@ export function FeedbackFormDialog() {
         getFirestore(firebaseApp),
         "feedback",
         "data",
-        "comments"
+        "documents"
       );
     }
     return null;
@@ -97,7 +101,11 @@ export function FeedbackFormDialog() {
    * ----------------------------------------------- */
 
   const dialogTriggerNode = useMemo(() => {
-    return <Button iconLeading={faMessage}>Leave feedback</Button>;
+    return (
+      <Button size="lg" iconLeading={faMessage}>
+        Leave feedback
+      </Button>
+    );
   }, []);
 
   /** -----------------------------------------------------------------------------
@@ -123,15 +131,17 @@ export function FeedbackFormDialog() {
           items={FEEDBACK_STAR_DROPDOWN_ITEMS}
           label="Rating"
           name="rating"
-          placeholder="Select a status"
+          placeholder="Select a rating"
         />
 
-        <FormInput
-          errorMessage="Please ensure you have entered a valid email address."
+        <FormTextArea
+          rows={5}
+          required
+          errorMessage="Please ensure you have entered a description."
           id="description"
           label="Task description"
           name="description"
-          placeholder="Add a bit of additional context about this task"
+          placeholder="Add a bit of additional context about"
         />
       </Form>
     </Dialog>

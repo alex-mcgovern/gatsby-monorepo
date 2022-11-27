@@ -4,19 +4,12 @@ import type { TickFormatter } from "@visx/axis";
 import { curveNatural } from "@visx/curve";
 import { LinearGradient } from "@visx/gradient";
 import type { TextProps } from "@visx/text/lib/types";
-import {
-  AnimatedAreaSeries,
-  AnimatedAxis,
-  AnimatedGrid,
-  XYChart,
-} from "@visx/xychart";
-import { VISX_CHART_THEME } from "../constants/VISX_CHART_THEME";
-import type { PaginationStateShape } from "../hooks/usePaginatedComments";
+import { AnimatedAreaSeries, AnimatedGrid, Axis, XYChart } from "@visx/xychart";
+import { VISX_CHART_THEME } from "../VISX_CHART_THEME";
 import type { CommentShape } from "../types";
 
 interface FeedbackGraphProps {
-  comments?: Array<CommentShape>;
-  paginationState: PaginationStateShape;
+  documents?: Array<CommentShape>;
 }
 
 /** ---------------------------------------------
@@ -57,29 +50,23 @@ const getXAxisLabelProps = (): Partial<TextProps> => {
  * Main component
  * ------------------------------------------------------------------------------- */
 
-export function FeedbackGraph({
-  comments,
-  paginationState,
-}: FeedbackGraphProps) {
+export function FeedbackGraph({ documents }: FeedbackGraphProps) {
   /**
    * Ensure chart remains mounted when new comment data loading,
    * enabling smooth animation between data sets
    */
 
-  const [cachedComments, setCachedComments] = useState(comments);
+  const [cachedComments, setCachedComments] = useState(documents);
 
   useEffect(() => {
-    if (comments) setCachedComments(comments);
-  }, [comments]);
+    if (documents) setCachedComments(documents);
+  }, [documents]);
 
   if (!cachedComments) return <Loader />;
 
   /**
    * Transition time series ticks in accordance with pagination direction
    */
-
-  const xAxisTicksAnimationTrajectory =
-    paginationState.current > paginationState.previous ? "min" : "max";
 
   return (
     <XYChart
@@ -109,16 +96,14 @@ export function FeedbackGraph({
        * Axis & grid
        * ----------------------------------------------- */}
 
-      <AnimatedAxis
+      <Axis
         label="Rating"
         orientation="left"
         labelOffset={8}
-        animationTrajectory="min"
         numTicks={5}
         tickFormat={getYAxisTickFormat}
       />
-      <AnimatedAxis
-        animationTrajectory={xAxisTicksAnimationTrajectory}
+      <Axis
         label="Created"
         labelOffset={32}
         orientation="bottom"
