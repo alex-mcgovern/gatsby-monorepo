@@ -1,10 +1,11 @@
-import React, { createRef, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Box } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
 import { CommentsList } from "../components/CommentsList";
 import { FeedbackGraph } from "../components/FeedbackGraph";
 import { PaginationControls } from "../components/PaginationControls";
 import { usePaginatedComments } from "../utils/usePaginatedComments";
+import { useScrollToTop } from "../utils/useScrollToTop";
 
 export default function FeedbackForm() {
   const { firebaseApp } = useContext(FirebaseContext) || {};
@@ -18,19 +19,9 @@ export default function FeedbackForm() {
   });
 
   /**
-   * Handle scrolling to top on page change
+   * Scroll to top on change of total comment count, or page count.
    */
-
-  const scrollRef = createRef<HTMLHRElement>();
-
-  useEffect(() => {
-    if (
-      paginationState.currentPage !== paginationState.previousPage &&
-      scrollRef.current
-    ) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [paginationState.currentPage, paginationState.previousPage, scrollRef]);
+  const scrollRef = useScrollToTop(paginationState);
 
   return (
     <Box as="section" marginY="spacing5" position="relative">
@@ -92,11 +83,13 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      <CommentsList
-        documents={paginationState.documents}
-        error={paginationState.error}
-        loading={paginationState.loading}
-      />
+      {paginationState.documents && (
+        <CommentsList
+          documents={paginationState.documents}
+          error={paginationState.error}
+          loading={paginationState.loading}
+        />
+      )}
     </Box>
   );
 }
