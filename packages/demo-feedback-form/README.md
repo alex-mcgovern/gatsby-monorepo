@@ -44,6 +44,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 ### Bugs
 
 - **Adding new comment does not scroll to top if not on page 1**
+- **Flash of unstyled content on initial load:** This is probably something minor caused by how the design system stylesheet is loaded. Will be fixed soon, but omitted due to time constraints.
 
 ## Environment Variables
 
