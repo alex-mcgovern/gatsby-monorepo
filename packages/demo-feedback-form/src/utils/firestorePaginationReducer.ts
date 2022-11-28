@@ -1,6 +1,5 @@
 import type {
   CollectionReference,
-  DocumentData,
   Query,
   QuerySnapshot,
 } from "firebase/firestore";
@@ -12,14 +11,16 @@ import {
   query,
   startAfter,
 } from "firebase/firestore";
+import type { CommentShape } from "../types";
+import { firestoreCommentsConverter } from "./firestoreConverter";
 import type { PaginationVarsShape } from "./getPaginationVars";
 import { getPaginationVars } from "./getPaginationVars";
 
 export interface PaginationStateShape extends Partial<PaginationVarsShape> {
-  collectionRef?: CollectionReference<DocumentData>;
+  collectionRef?: CollectionReference<CommentShape>;
   commentsPerPage: number;
-  query?: Query<DocumentData>;
-  querySnapshot?: QuerySnapshot<DocumentData>;
+  query?: Query<CommentShape>;
+  querySnapshot?: QuerySnapshot<CommentShape>;
   totalNbComments?: number;
 }
 
@@ -55,11 +56,11 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
           docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
-          query: query(
+          query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
             limit(state.commentsPerPage)
-          ),
+          ).withConverter(firestoreCommentsConverter),
         }),
       };
 
@@ -78,12 +79,12 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
           docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
-          query: query(
+          query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
             startAfter(state.querySnapshot?.docs.slice(-1)[0]),
             limit(state.commentsPerPage)
-          ),
+          ).withConverter(firestoreCommentsConverter),
         }),
       };
 
@@ -103,7 +104,7 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
             docsLength: state.querySnapshot?.docs.length,
           }),
           ...(state.collectionRef && {
-            query: query(
+            query: query<CommentShape>(
               state.collectionRef,
               orderBy("created", "desc"),
               limit(state.commentsPerPage)
@@ -122,12 +123,12 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
           docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
-          query: query(
+          query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
             endBefore(state.querySnapshot?.docs[0]),
             limitToLast(state.commentsPerPage)
-          ),
+          ).withConverter(firestoreCommentsConverter),
         }),
       };
 
@@ -164,11 +165,11 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
           }),
           commentsPerPage: action.payload?.commentsPerPage,
           ...(state.collectionRef && {
-            query: query(
+            query: query<CommentShape>(
               state.collectionRef,
               orderBy("created", "desc"),
               limit(action.payload?.commentsPerPage)
-            ),
+            ).withConverter(firestoreCommentsConverter),
           }),
         };
       }

@@ -1,16 +1,14 @@
 import { useCallback, useEffect, useReducer } from "react";
 import type { FirebaseApp } from "firebase/app";
-import type {
-  DocumentData,
-  DocumentReference,
-  FirestoreError,
-} from "firebase/firestore";
+import type { FirestoreError } from "firebase/firestore";
 import {
   collection,
   getCountFromServer,
   getFirestore,
 } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
+import type { CommentShape } from "../types";
+import { firestoreCommentsConverter } from "./firestoreConverter";
 import type { PaginationStateShape } from "./firestorePaginationReducer";
 import { firestorePaginationReducer } from "./firestorePaginationReducer";
 
@@ -20,7 +18,7 @@ interface UsePaginatedCommentsArgs {
 }
 
 export interface UsePaginatedCommentsStateShape extends PaginationStateShape {
-  documents?: Array<{ documentRef: DocumentReference<DocumentData> }>;
+  documents?: Array<CommentShape>;
   setPerPage?: (perPage: number) => void;
   error?: FirestoreError;
   loading?: boolean;
@@ -58,7 +56,7 @@ export function usePaginatedComments({
       "feedback",
       "data",
       "comments"
-    ),
+    ).withConverter(firestoreCommentsConverter),
   });
 
   /** ---------------------------------------------
@@ -66,9 +64,12 @@ export function usePaginatedComments({
    * ----------------------------------------------- */
 
   /** Run query and listen for changes */
-  const [docsSnapshot, loading, error] = useCollection(customQuery, {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
+  const [docsSnapshot, loading, error] = useCollection<CommentShape>(
+    customQuery,
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
 
   /** Init on mount */
   useEffect(() => {
@@ -83,7 +84,7 @@ export function usePaginatedComments({
         payload: { querySnapshot: docsSnapshot },
       });
     }
-  }, [docsSnapshot]);
+  }, [collectionRef, docsSnapshot]);
 
   /** ---------------------------------------------
    * Get total count

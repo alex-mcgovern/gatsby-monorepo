@@ -6,7 +6,7 @@ import { Comment } from "./Comment";
 
 export interface CommentsListProps {
   documents: Array<CommentShape>;
-  loading: boolean;
+  loading?: boolean;
   error?: FirestoreError;
 }
 
