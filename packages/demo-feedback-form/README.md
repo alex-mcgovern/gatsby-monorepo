@@ -17,6 +17,10 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 ## What's left to improve & why
 
+### Auth
+
+- **No option to add display name to user profile:** Will need to implement a second screen after auth to add display name & other details to user profile. Omitted due to time constraints.
+
 ### UI
 
 - **Nicer UI component for feedback modal:** Project uses a simple single select
