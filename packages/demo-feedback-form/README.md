@@ -17,7 +17,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 ## What's left to improve & why
 
-### UI improvements
+### UI
 
 - **Nicer UI component for feedback modal:** Project uses a simple single select
   for "rating" field in dialog. Ideally would create something more bespoke, and
@@ -25,7 +25,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 - **Design system component improvements:** Project uses my own design system,
   which is still in it's early stages. Could use a lot more test coverage.
 
-### Testing improvements
+### Testing
 
 - **Mock Firebase functions in test environment:** Currently only pagination
   state and component functionality is tested, while creating & updating
@@ -34,7 +34,8 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 - **Test Graph component:** Due to some async state updates, feedback graph is
   empty on initial render. This probably needs to be wrapped in `act(...)`, but
   due to time constraints, has been left untested.
-- **Unit tests for Firestore security rules**
+- **Unit tests for Firestore security rules:** Omitted due to time constraints
+- **E2E tests with Cypress:** Requires Firebase simulator, omitted due to time constraints.
 
 ### Bugs
 
@@ -89,6 +90,12 @@ Install dependencies with Lerna
 
 ```bash
   npx lerna bootstrap
+```
+
+Create a `.env.development` file in the project package directory, and populate it with required [Environment Variables](#environment-variables)
+
+```bash
+  touch packages/demo-feedback-form/.env.development
 ```
 
 Start the Gatsby development server
