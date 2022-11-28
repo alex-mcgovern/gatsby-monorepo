@@ -38,7 +38,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 ### Bugs
 
-- **Adding new comment does not scroll to top:**
+- **Adding new comment does not scroll to top**
 
 ## Environment Variables
 
