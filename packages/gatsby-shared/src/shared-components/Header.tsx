@@ -2,11 +2,9 @@ import React, { useCallback, useContext } from "react";
 import type { ButtonProps } from "@alexmcgovern/boondoggle.design";
 import { Box, Button, ThemeContext } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faHouseUser,
   faMoon,
-  faParagraph,
   faRightFromBracket,
   faRightToBracket,
   faSun,
@@ -42,32 +40,13 @@ export function Header() {
         iconLeading={faHouseUser}
         to="/"
       >
-        Alex McGovern
+        Home
       </Button>
 
       {/** -----------------------------------------------------------------------------
        * RIGHT HAND SIDE
        * ------------------------------------------------------------------------------- */}
       <Box as="menu" display="flex" alignItems="center" gap="spacing2">
-        {/** Blog page */}
-        <Button
-          {...NAV_BUTTON_COMMON_PROPS}
-          as={Link}
-          to="/blog"
-          iconLeading={faParagraph}
-        >
-          Blog
-        </Button>
-
-        <Button
-          as="a"
-          href="https://www.linkedin.com/in/alexmcgovern/"
-          {...NAV_BUTTON_COMMON_PROPS}
-          iconLeading={faLinkedin}
-        >
-          LinkedIn
-        </Button>
-
         {/** Log in/out */}
         {firebaseAuth && user ? (
           <Button

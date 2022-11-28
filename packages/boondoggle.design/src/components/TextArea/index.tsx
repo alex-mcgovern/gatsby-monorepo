@@ -7,12 +7,12 @@ import React, { forwardRef } from "react";
 import { extractAtomsFromProps } from "@dessert-box/core";
 import clsx from "clsx";
 import { focusedStateStyle } from "../../styles/common/focus_ring_styles.css";
-import type { VariantInteractiveElementSizeEnum } from "../../styles/common/variant_interactive_element_size.css";
 import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
 import { getSprinkles } from "../../styles/getSprinkles.css";
 import { Box } from "../Box";
-import { getInputWrapperStyles } from "../Input/index.css";
 import { InputErrorMessage } from "../InputErrorMessage";
+import type { VariantTextAreaSizeEnum } from "./index.css";
+import { getTextAreaStyles } from "./index.css";
 
 export interface TextAreaProps
   extends GetSprinklesArgs,
@@ -23,7 +23,7 @@ export interface TextAreaProps
       >,
       "color" | "ref"
     > {
-  size?: VariantInteractiveElementSizeEnum;
+  size?: VariantTextAreaSizeEnum;
   name: string;
   errorMessage?: string;
   invalid?: boolean;
@@ -38,7 +38,7 @@ export const TextArea = forwardRef(
     const { atomProps, otherProps } = extractAtomsFromProps(rest, getSprinkles);
 
     const inputWrapperStyles = clsx(
-      getInputWrapperStyles({
+      getTextAreaStyles({
         size,
       }),
       focusedStateStyle,
