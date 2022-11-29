@@ -45,7 +45,7 @@ export function usePaginatedComments({
       lastItemIndex,
       collectionRef,
       totalNbPages,
-      querySnapshot,
+      cachedCommentsSnapshot,
       query: customQuery,
     },
     dispatch,
@@ -64,7 +64,7 @@ export function usePaginatedComments({
    * ----------------------------------------------- */
 
   /** Run query and listen for changes */
-  const [docsSnapshot, loading, error] = useCollection<CommentShape>(
+  const [commentsSnapshot, loading, error] = useCollection<CommentShape>(
     customQuery,
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -78,13 +78,13 @@ export function usePaginatedComments({
 
   /** Sync snapshots to state reducer */
   useEffect(() => {
-    if (docsSnapshot && docsSnapshot.docs?.length > 0) {
+    if (commentsSnapshot && commentsSnapshot.docs?.length > 0) {
       dispatch({
         type: "CACHE_DOCS",
-        payload: { querySnapshot: docsSnapshot },
+        payload: { cachedCommentsSnapshot: commentsSnapshot },
       });
     }
-  }, [collectionRef, docsSnapshot]);
+  }, [collectionRef, commentsSnapshot]);
 
   /** ---------------------------------------------
    * Get total count
@@ -124,7 +124,7 @@ export function usePaginatedComments({
     canLoadPrevious,
     canLoadNext,
     commentsPerPage,
-    documents: querySnapshot?.docs.map((doc) => {
+    documents: cachedCommentsSnapshot?.docs.map((doc) => {
       return { ...doc.data(), documentRef: doc.ref };
     }),
     totalNbComments,

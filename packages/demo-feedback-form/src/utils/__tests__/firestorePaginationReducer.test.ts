@@ -81,7 +81,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 2,
             previousPage: 3,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -98,7 +98,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 0,
         lastItemIndex: 9,
         previousPage: 2,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -121,7 +121,7 @@ describe("Dispatch actions", () => {
             currentPage: 0,
             previousPage: 0,
             totalNbPages: 10,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
           },
           {
             type: "LOAD_OLDER",
@@ -135,7 +135,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 10,
         lastItemIndex: 19,
         previousPage: 0,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -150,7 +150,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 2,
             previousPage: 3,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -166,7 +166,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 30,
         lastItemIndex: 39,
         previousPage: 2,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -181,7 +181,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 8,
             previousPage: 7,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -197,7 +197,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 90,
         lastItemIndex: 99,
         previousPage: 8,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -212,7 +212,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 9,
             previousPage: 8,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -228,7 +228,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 90,
         lastItemIndex: 99,
         previousPage: 8,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -251,7 +251,7 @@ describe("Dispatch actions", () => {
             currentPage: 0,
             previousPage: 0,
             totalNbPages: 10,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
           },
           {
             type: "LOAD_NEWER",
@@ -267,7 +267,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 0,
         lastItemIndex: 9,
         totalNbPages: 10,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
       });
     });
 
@@ -280,7 +280,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 3,
             previousPage: 4,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -296,7 +296,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 20,
         lastItemIndex: 29,
         previousPage: 3,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -311,7 +311,7 @@ describe("Dispatch actions", () => {
             commentsPerPage: 10,
             currentPage: 1,
             previousPage: 2,
-            querySnapshot: QUERY_SNAPSHOT_MOCK,
+            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -327,7 +327,7 @@ describe("Dispatch actions", () => {
         firstItemIndex: 0,
         lastItemIndex: 9,
         previousPage: 1,
-        querySnapshot: QUERY_SNAPSHOT_MOCK,
+        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
