@@ -8,59 +8,30 @@ exports[`Given valid props, matches snapshot 1`] = `
   <div
     class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0 getSprinkles_boxShadow_lg__1jganc98 getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing2__1jganc93v getSprinkles_alignItems_center__1jganc92 getSprinkles_flexWrap_wrap__1jganc93a"
   >
-    <div
-      class="getSprinkles_gap_spacing1__1jganc93u getSprinkles_display_flex_mobile__1jganc9az"
+    <a
+      class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9an Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99h getSprinkles_paddingRight_spacing2__1jganc99w getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9ar getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontSize_body_md_desktop__1jganc9c8 getSprinkles_lineHeight_body_lg_mobile__1jganc9cx getSprinkles_lineHeight_body_md_desktop__1jganc9d2 getSprinkles_height_spacing5_mobile__1jganc9ir getSprinkles_height_spacing4_desktop__1jganc9iq getSprinkles_width_max-content_mobile__1jganc9fo"
+      href="/login"
+      type="button"
     >
-      <button
-        aria-disabled="false"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
-        type="button"
-      >
-        <div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
-            data-icon="angle-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 320 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-        Older
-      </button>
-      <button
-        aria-disabled="true"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
-        disabled=""
-        type="button"
-      >
-        Newer
-        <div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
-            data-icon="angle-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 320 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-      </button>
-    </div>
+      <div>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-right-to-bracket icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+          data-icon="right-to-bracket"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352 96h64c17.7 0 32 14.3 32 32V384c0 17.7-14.3 32-32 32H352c-17.7 0-32 14.3-32 32s14.3 32 32 32h64c53 0 96-43 96-96V128c0-53-43-96-96-96H352c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-7.5 177.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H160v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      Log in to leave feedback
+    </a>
     <div
       class="getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_lineHeight_body_sm_mobile__1jganc9d5 getSprinkles_marginLeft_auto__1jganc95l"
     >
@@ -170,6 +141,55 @@ exports[`Given valid props, matches snapshot 1`] = `
         </div>
       </div>
     </div>
+    <button
+      aria-disabled="false"
+      class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9an Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99h getSprinkles_paddingRight_spacing2__1jganc99w getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9ar getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontSize_body_md_desktop__1jganc9c8 getSprinkles_lineHeight_body_lg_mobile__1jganc9cx getSprinkles_lineHeight_body_md_desktop__1jganc9d2 getSprinkles_height_spacing5_mobile__1jganc9ir getSprinkles_height_spacing4_desktop__1jganc9iq"
+      type="button"
+    >
+      <div>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+          data-icon="angle-left"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      Older
+    </button>
+    <button
+      aria-disabled="true"
+      class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9an Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99h getSprinkles_paddingRight_spacing2__1jganc99w getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9ar getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontSize_body_md_desktop__1jganc9c8 getSprinkles_lineHeight_body_lg_mobile__1jganc9cx getSprinkles_lineHeight_body_md_desktop__1jganc9d2 getSprinkles_height_spacing5_mobile__1jganc9ir getSprinkles_height_spacing4_desktop__1jganc9iq"
+      disabled=""
+      type="button"
+    >
+      Newer
+      <div>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+          data-icon="angle-right"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </button>
   </div>
 </div>
 `;
