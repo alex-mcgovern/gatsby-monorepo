@@ -40,8 +40,7 @@ export const dialogContent = style([
     border: "neutral_border_interactive",
     borderRadius: "md",
     boxShadow: "lg",
-    width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan8" },
-    maxWidth: "maxContained",
+    width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan6" },
     maxHeight: "75vh",
   }),
   {

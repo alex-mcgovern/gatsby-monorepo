@@ -8,14 +8,18 @@ exports[`Matches snapshot 1`] = `
     aria-controls="radix-:r3:"
     aria-expanded="false"
     aria-haspopup="dialog"
+
     class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_lg__1lclbjhb variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw"
+
     data-state="closed"
     type="button"
   >
     <div>
       <svg
         aria-hidden="true"
+
         class="svg-inline--fa fa-message icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+
         data-icon="message"
         data-prefix="fas"
         focusable="false"

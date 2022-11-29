@@ -2,20 +2,20 @@
 
 exports[`Given valid comment list, matches snapshot 1`] = `
 <div
-  class="getSprinkles_display_grid_mobile__1jganc9b2 getSprinkles_gap_spacing2__1jganc93v getSprinkles_gridTemplateColumns_1x_mobile__1jganc9d8"
+  class="getSprinkles_display_grid_mobile__1jganc9b0 getSprinkles_gap_spacing2__1jganc93v getSprinkles_gridTemplateColumns_1x_mobile__1jganc9d6"
   data-testid="tested-component"
 >
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9au getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9an getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
   >
     <header>
       <div
-        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontWeight_medium__1jganc93f"
       >
         test123@test.com
       </div>
       <div
-        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9c9 getSprinkles_fontWeight_medium__1jganc93f"
       >
         27/11/2022, 18:16:47
       </div>
@@ -25,10 +25,10 @@ exports[`Given valid comment list, matches snapshot 1`] = `
     </p>
     <hr />
     <div
-      class="getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
+      class="getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
     >
       <div
-        class="getSprinkles_display_flex_mobile__1jganc9az"
+        class="getSprinkles_display_flex_mobile__1jganc9ax"
       >
         <div>
           <svg
@@ -119,16 +119,16 @@ exports[`Given valid comment list, matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9au getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9an getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
   >
     <header>
       <div
-        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontWeight_medium__1jganc93f"
       >
         aleu@over-blog.com
       </div>
       <div
-        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9c9 getSprinkles_fontWeight_medium__1jganc93f"
       >
         21/11/2022, 02:18:01
       </div>
@@ -138,10 +138,10 @@ exports[`Given valid comment list, matches snapshot 1`] = `
     </p>
     <hr />
     <div
-      class="getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
+      class="getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
     >
       <div
-        class="getSprinkles_display_flex_mobile__1jganc9az"
+        class="getSprinkles_display_flex_mobile__1jganc9ax"
       >
         <div>
           <svg
@@ -232,16 +232,16 @@ exports[`Given valid comment list, matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9au getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9an getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
   >
     <header>
       <div
-        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontWeight_medium__1jganc93f"
       >
         emcillrickl@buzzfeed.com
       </div>
       <div
-        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9c9 getSprinkles_fontWeight_medium__1jganc93f"
       >
         20/11/2022, 00:51:39
       </div>
@@ -253,10 +253,10 @@ Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, 
     </p>
     <hr />
     <div
-      class="getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
+      class="getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
     >
       <div
-        class="getSprinkles_display_flex_mobile__1jganc9az"
+        class="getSprinkles_display_flex_mobile__1jganc9ax"
       >
         <div>
           <svg
@@ -347,16 +347,16 @@ Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, 
     </div>
   </div>
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9au getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9an getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
   >
     <header>
       <div
-        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontWeight_medium__1jganc93f"
       >
         lbooker1i@redcross.org
       </div>
       <div
-        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9c9 getSprinkles_fontWeight_medium__1jganc93f"
       >
         16/11/2022, 01:20:15
       </div>
@@ -368,10 +368,10 @@ Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum
     </p>
     <hr />
     <div
-      class="getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
+      class="getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
     >
       <div
-        class="getSprinkles_display_flex_mobile__1jganc9az"
+        class="getSprinkles_display_flex_mobile__1jganc9ax"
       >
         <div>
           <svg
@@ -462,16 +462,16 @@ Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum
     </div>
   </div>
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9au getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9an getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0"
   >
     <header>
       <div
-        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_fontSize_body_lg_mobile__1jganc9c3 getSprinkles_fontWeight_medium__1jganc93f"
       >
         kkynea@census.gov
       </div>
       <div
-        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
+        class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9c9 getSprinkles_fontWeight_medium__1jganc93f"
       >
         15/11/2022, 12:35:11
       </div>
@@ -481,10 +481,10 @@ Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum
     </p>
     <hr />
     <div
-      class="getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
+      class="getSprinkles_display_flex_mobile__1jganc9ax getSprinkles_alignItems_center__1jganc92 getSprinkles_justifyContent_space-between__1jganc944"
     >
       <div
-        class="getSprinkles_display_flex_mobile__1jganc9az"
+        class="getSprinkles_display_flex_mobile__1jganc9ax"
       >
         <div>
           <svg
