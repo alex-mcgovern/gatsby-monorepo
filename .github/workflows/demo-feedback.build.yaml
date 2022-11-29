@@ -1,9 +1,11 @@
 on:
+  workflow_dispatch
   push:
     branches:
       - master
     paths:
       - "packages/demo-feedback-form/**"
+
 
 jobs:
   test:
