@@ -28,8 +28,8 @@ export const variantInteractiveElementSize = styleVariants({
     getSprinkles({
       paddingX: "none",
       paddingY: "spacing1",
-      height: "spacing3",
-      width: "spacing3",
+      height: { mobile: "spacing5", desktop: "spacing3" },
+      width: { mobile: "spacing5", desktop: "spacing3" },
       fontStyle: "body_sm",
     }),
   ],
@@ -37,8 +37,8 @@ export const variantInteractiveElementSize = styleVariants({
     getSprinkles({
       paddingX: "spacing1",
       paddingY: "spacing1",
-      height: "spacing4",
-      width: "spacing4",
+      height: { mobile: "spacing5", desktop: "spacing4" },
+      width: { mobile: "spacing5", desktop: "spacing4" },
       fontStyle: "body_md",
     }),
   ],

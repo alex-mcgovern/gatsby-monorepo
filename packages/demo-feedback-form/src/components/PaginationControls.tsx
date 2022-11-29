@@ -117,7 +117,7 @@ export function PaginationControls({
          * Pagination state display
          * ----------------------------------------------- */}
 
-        <Box marginLeft="auto">
+        <Box marginLeft="auto" fontStyle="body_sm">
           <div>
             Page <b>{currentPage ? currentPage + 1 : 1}</b> of{" "}
             <b>{totalNbPages}</b>
@@ -137,29 +137,29 @@ export function PaginationControls({
           placeholder="5"
           items={PER_PAGE_DROPDOWN_ITEMS}
           onValueChange={updatePerPage}
+          display={{ mobile: "none", tablet: "block" }}
         />
 
         {/** --------------------------------------------
          * Next/previous buttons
          * ----------------------------------------------- */}
 
-        <Button
-          appearance="primary"
-          disabled={!canLoadNext}
-          iconLeading={faAngleLeft}
-          onClick={loadNext}
-        >
-          Older
-        </Button>
-
-        <Button
-          appearance="primary"
-          disabled={!canLoadPrevious}
-          iconTrailing={faAngleRight}
-          onClick={loadPrevious}
-        >
-          Newer
-        </Button>
+        <Box gap="spacing1" display="flex">
+          <Button
+            appearance="primary"
+            size="md_square"
+            disabled={!canLoadNext}
+            iconLeading={faAngleLeft}
+            onClick={loadNext}
+          />
+          <Button
+            appearance="primary"
+            size="md_square"
+            disabled={!canLoadPrevious}
+            iconTrailing={faAngleRight}
+            onClick={loadPrevious}
+          />
+        </Box>
       </Card>
     </Box>
   );
