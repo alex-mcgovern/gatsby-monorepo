@@ -113,6 +113,7 @@ export function Form({
 
         <Button
           aria-label={submitButtonText}
+          size="lg"
           width="100%"
           type="submit"
           iconTrailing={buttonIcon}
