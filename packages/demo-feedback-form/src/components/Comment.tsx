@@ -47,8 +47,6 @@ export function Comment({
         )}
       </Box>
 
-      <hr />
-
       {description && <Box as="p">{description}</Box>}
 
       <hr />
