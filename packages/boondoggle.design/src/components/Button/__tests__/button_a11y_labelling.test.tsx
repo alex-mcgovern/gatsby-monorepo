@@ -46,7 +46,6 @@ describe.skip("Aria attributes", () => {
     const { component } = renderTestComponent<ButtonProps>(
       <Button id="button" name="Test button" color="accent" disabled />
     );
-    console.debug("debug ~ component", component);
     expect(component?.getAttribute("aria-disabled")).toBe("true");
   });
 
