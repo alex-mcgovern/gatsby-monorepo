@@ -1,3 +1,5 @@
+name: demo-feedback:build
+
 on:
   workflow_dispatch:
 

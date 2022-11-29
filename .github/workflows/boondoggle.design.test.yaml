@@ -1,3 +1,5 @@
+name: boondoggle.design:test
+
 on:
   workflow_dispatch:
 
