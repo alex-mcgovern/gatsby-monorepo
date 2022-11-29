@@ -57,7 +57,7 @@ export const getButtonStyles = recipe({
 
 export const iconStyle = getSprinkles({
   flexShrink: "0",
-  display: "block",
-  width: "auto",
-  minWidth: "spacing2",
+  // display: "block",
+  // width: "auto",
+  // minWidth: "spacing2",
 });
