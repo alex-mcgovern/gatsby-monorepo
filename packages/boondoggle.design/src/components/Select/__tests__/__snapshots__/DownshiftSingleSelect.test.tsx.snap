@@ -22,9 +22,7 @@ exports[`Renders without error 1`] = `
     <div>
       <svg
         aria-hidden="true"
-
         class="svg-inline--fa fa-angle-down icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
-
         data-icon="angle-down"
         data-prefix="fas"
         focusable="false"
