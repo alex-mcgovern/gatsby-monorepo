@@ -13,7 +13,21 @@ export default function FeedbackForm() {
   /**
    * Get comments from firestore, with pagination controls
    */
-  const paginationState = usePaginatedComments({
+  const {
+    canLoadPrevious,
+    canLoadNext,
+    documents,
+    totalNbComments,
+    setPerPage,
+    error,
+    loading,
+    firstItemIndex,
+    lastItemIndex,
+    currentPage,
+    loadNext,
+    loadPrevious,
+    totalNbPages,
+  } = usePaginatedComments({
     commentsPerPage: 5,
     firebaseApp,
   });
@@ -21,7 +35,10 @@ export default function FeedbackForm() {
   /**
    * Scroll to top on change of total comment count, or page count.
    */
-  const scrollRef = useScrollToTop(paginationState);
+  const scrollRef = useScrollToTop({
+    currentPage,
+    totalNbComments,
+  });
 
   return (
     <Box as="section" marginY="spacing5" position="relative">
@@ -48,7 +65,18 @@ export default function FeedbackForm() {
        * ------------------------------------------------------------------------------- */}
       <hr ref={scrollRef} />
 
-      <PaginationControls {...paginationState} />
+      <PaginationControls
+        canLoadNext={canLoadNext}
+        canLoadPrevious={canLoadPrevious}
+        currentPage={currentPage}
+        firstItemIndex={firstItemIndex}
+        lastItemIndex={lastItemIndex}
+        loadNext={loadNext}
+        loadPrevious={loadPrevious}
+        totalNbComments={totalNbComments}
+        totalNbPages={totalNbPages}
+        setPerPage={setPerPage}
+      />
 
       {/** -----------------------------------------------------------------------------
        * Graph
@@ -65,7 +93,7 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      <FeedbackGraph documents={paginationState.documents} />
+      <FeedbackGraph documents={documents} />
 
       <hr />
 
@@ -83,12 +111,8 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      {paginationState.documents && (
-        <CommentsList
-          documents={paginationState.documents}
-          error={paginationState.error}
-          loading={paginationState.loading}
-        />
+      {documents && (
+        <CommentsList documents={documents} error={error} loading={loading} />
       )}
     </Box>
   );

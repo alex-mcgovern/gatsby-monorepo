@@ -1,5 +1,9 @@
 import { createRef, useEffect, useState } from "react";
-import type { UsePaginatedCommentsStateShape } from "./usePaginatedComments";
+
+interface UseScrollToTopArgs {
+  currentPage?: number;
+  totalNbComments?: number;
+}
 
 /**
  * Handle scrolling to top on page change whenever total count
@@ -8,9 +12,10 @@ import type { UsePaginatedCommentsStateShape } from "./usePaginatedComments";
  * This could be more graceful.
  * ToDo(feedback-form): Refine "scroll to top" behaviour
  */
-export function useScrollToTop(
-  paginationState: UsePaginatedCommentsStateShape
-) {
+export function useScrollToTop({
+  currentPage,
+  totalNbComments,
+}: UseScrollToTopArgs) {
   const scrollRef = createRef<HTMLHRElement>();
   const [cachedPage, setCachedPage] = useState(0);
   const [cachedCount, setCachedCount] = useState(0);
@@ -18,25 +23,18 @@ export function useScrollToTop(
   useEffect(() => {
     if (
       scrollRef.current &&
-      (paginationState?.currentPage !== cachedPage ||
-        paginationState?.totalNbComments !== cachedCount)
+      (currentPage !== cachedPage || totalNbComments !== cachedCount)
     ) {
-      if (paginationState.currentPage) {
-        setCachedPage(paginationState?.currentPage);
+      if (currentPage) {
+        setCachedPage(currentPage);
       }
 
-      if (paginationState.totalNbComments) {
-        setCachedCount(paginationState?.totalNbComments);
+      if (totalNbComments) {
+        setCachedCount(totalNbComments);
       }
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [
-    cachedCount,
-    cachedPage,
-    paginationState.currentPage,
-    paginationState.totalNbComments,
-    scrollRef,
-  ]);
+  }, [cachedCount, cachedPage, currentPage, scrollRef, totalNbComments]);
 
   return scrollRef;
 }

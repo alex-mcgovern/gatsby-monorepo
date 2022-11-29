@@ -8,6 +8,8 @@ on:
       - master
     paths:
       - "packages/gatsby-site/**"
+      - "packages/boondoggle.design/**"
+      - "packages/gatsby-shared/**"
 
 jobs:
   test:
