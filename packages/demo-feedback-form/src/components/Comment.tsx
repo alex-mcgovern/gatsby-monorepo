@@ -42,7 +42,7 @@ export function Comment({
             fontSize="body_sm"
             fontWeight="medium"
           >
-            {new Date(created.seconds * 1000).toLocaleString()}
+            {new Date(created.seconds * 1000).toLocaleString("en-GB")}
           </Box>
         )}
       </Box>
