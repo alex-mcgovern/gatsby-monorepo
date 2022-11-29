@@ -1,18 +1,15 @@
 import React, { useCallback, useContext, useMemo, useState } from "react";
+import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
 import {
   Box,
   Button,
   Dialog,
   Form,
-  FormSlider,
+  FormSingleSelect,
   FormTextArea,
 } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import {
-  faFaceMeh,
-  faFaceSmile,
-  faMessage,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import {
   Timestamp,
   addDoc,
@@ -24,6 +21,34 @@ interface FormDataShape {
   rating: string;
   description: string;
 }
+
+/**
+ * Create items for dropdown menu
+ * ToDo: Create a nicer rating select experience
+ */
+
+const FEEDBACK_STAR_DROPDOWN_ITEMS: Array<DropdownItem> = [
+  {
+    value: "1",
+    label: "⭐️",
+  },
+  {
+    value: "2",
+    label: "⭐️⭐️",
+  },
+  {
+    value: "3",
+    label: "⭐️⭐️⭐️",
+  },
+  {
+    value: "4",
+    label: "⭐️⭐️⭐️⭐️",
+  },
+  {
+    value: "5",
+    label: "⭐️⭐️⭐️⭐️⭐️",
+  },
+];
 
 export function FeedbackFormDialog({ ...rest }) {
   /** ---------------------------------------------
@@ -80,11 +105,7 @@ export function FeedbackFormDialog({ ...rest }) {
    * ----------------------------------------------- */
 
   const dialogTriggerNode = useMemo(() => {
-    return (
-      <Button size="lg" iconLeading={faMessage}>
-        Leave feedback
-      </Button>
-    );
+    return <Button iconLeading={faMessage}>Leave feedback</Button>;
   }, []);
 
   /** -----------------------------------------------------------------------------
@@ -105,24 +126,20 @@ export function FeedbackFormDialog({ ...rest }) {
           handleFormSubmission={createCommentOnFormSubmission}
           submitButtonText="Submit feedback"
         >
-          <FormSlider
+          <FormSingleSelect
             errorMessage="Please ensure you have made a selection."
             id="rating"
+            items={FEEDBACK_STAR_DROPDOWN_ITEMS}
             label="Rating"
             name="rating"
             placeholder="Select a rating"
-            defaultValue={[2]}
-            max={5}
-            iconLeading={faFaceMeh}
-            iconTrailing={faFaceSmile}
-            step={1}
           />
           <FormTextArea
-            errorMessage="Please ensure you have entered a message."
+            errorMessage="Please ensure you have entered a description."
             id="description"
-            label="Leave us a message"
+            label="Task description"
             name="description"
-            placeholder="Add a bit of additional context about your feedback."
+            placeholder="Add a bit of additional context about"
             required
             rows={5}
           />

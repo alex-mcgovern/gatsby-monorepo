@@ -1,5 +1,4 @@
 import { calc } from "@vanilla-extract/css-utils";
-import { varsSpacing } from "./vars_spacing.css";
 
 const GRID_MAX_WIDTH = 1080;
 const GRID_MAX_WIDTH_PX = `${GRID_MAX_WIDTH}px`;
@@ -12,7 +11,6 @@ export const varsWidth = {
   auto: "auto",
   "min-content": "min-content",
   "max-content": "max-content",
-  maxContained: calc.subtract("100vw", varsSpacing.spacing4),
   gridSpan1: calc.divide(GRID_MAX_WIDTH_PX, 12),
   gridSpan2: calc.multiply(calc.divide(GRID_MAX_WIDTH_PX, 12), 2),
   gridSpan3: calc.multiply(calc.divide(GRID_MAX_WIDTH_PX, 12), 3),

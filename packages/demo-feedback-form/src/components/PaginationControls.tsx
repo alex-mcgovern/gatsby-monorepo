@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import type { DropdownItem } from "@alexmcgovern/boondoggle.design";
 import {
   Box,
@@ -6,7 +6,14 @@ import {
   Card,
   SelectSingle,
 } from "@alexmcgovern/boondoggle.design";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FirebaseContext } from "@alexmcgovern/firebase";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "gatsby";
+import { FeedbackFormDialog } from "./FeedbackFormDialog";
 
 const PER_PAGE_DROPDOWN_ITEMS: Array<DropdownItem> = [
   {
@@ -53,6 +60,16 @@ export function PaginationControls({
   totalNbPages,
   ...rest
 }: PaginationControlsProps) {
+  const { user } = useContext(FirebaseContext) || {};
+
+  /**
+   * State passed to `Link` to login page, to return user here
+   * after sign in.
+   */
+  const linkState = useMemo(() => {
+    return { returnTo: "/" };
+  }, []);
+
   const updatePerPage = useCallback(
     (newValue: DropdownItem) => {
       if (setPerPage) {
@@ -79,33 +96,28 @@ export function PaginationControls({
         flexWrap="wrap"
       >
         {/** --------------------------------------------
-         * Next/previous buttons
+         * Login / leave feedback button
          * ----------------------------------------------- */}
 
-        <Box gap="spacing1" display="flex">
+        {user ? (
+          <FeedbackFormDialog />
+        ) : (
           <Button
-            appearance="primary"
-            disabled={!canLoadNext}
-            iconLeading={faAngleLeft}
-            onClick={loadNext}
+            as={Link}
+            iconLeading={faRightToBracket}
+            state={linkState}
+            to="/login"
+            width="max-content"
           >
-            Older
+            Log in to leave feedback
           </Button>
-          <Button
-            appearance="primary"
-            disabled={!canLoadPrevious}
-            iconTrailing={faAngleRight}
-            onClick={loadPrevious}
-          >
-            Newer
-          </Button>
-        </Box>
+        )}
 
         {/** --------------------------------------------
          * Pagination state display
          * ----------------------------------------------- */}
 
-        <Box marginLeft="auto" fontStyle="body_sm">
+        <Box marginLeft="auto">
           <div>
             Page <b>{currentPage ? currentPage + 1 : 1}</b> of{" "}
             <b>{totalNbPages}</b>
@@ -125,10 +137,29 @@ export function PaginationControls({
           placeholder="5"
           items={PER_PAGE_DROPDOWN_ITEMS}
           onValueChange={updatePerPage}
-          /** Hidden for space, but also low-tier mobile devices less likely
-           * to handle large numbers of dom updates efficiently */
-          display={{ mobile: "none", tablet: "block" }}
         />
+
+        {/** --------------------------------------------
+         * Next/previous buttons
+         * ----------------------------------------------- */}
+
+        <Button
+          appearance="primary"
+          disabled={!canLoadNext}
+          iconLeading={faAngleLeft}
+          onClick={loadNext}
+        >
+          Older
+        </Button>
+
+        <Button
+          appearance="primary"
+          disabled={!canLoadPrevious}
+          iconTrailing={faAngleRight}
+          onClick={loadPrevious}
+        >
+          Newer
+        </Button>
       </Card>
     </Box>
   );
