@@ -53,7 +53,7 @@ export const sliderTrack = style([
 export const sliderRange = style([
   getSprinkles({
     position: "absolute",
-    background: "accent_border_interactiveActive",
+    background: "accent_border_interactive",
     borderRadius: "pill",
     height: "100%",
   }),
@@ -64,7 +64,8 @@ export const sliderThumb = style([
     display: "block",
     width: "spacing3",
     height: "spacing3",
-    background: "accent_primary_base",
+    background: "neutral_secondary_base",
+    border: "neutral_border_interactive",
     boxShadow: "sm",
     borderRadius: "50%",
   }),
@@ -75,8 +76,9 @@ export const sliderThumb = style([
   {
     selectors: {
       [`&${SELECTOR_IS_HOVER}`]: {
-        cursor: "grab",
-        background: vars.color.accent_primary_active,
+        cursor: "pointer",
+        background: vars.color.accent_secondary_active,
+        borderColor: vars.color.accent_border_interactiveActive,
       },
       [`&${SELECTOR_IS_FOCUS}`]: {
         outline: "none",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import type { Validate } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
 import type { SliderProps } from "../../Slider";
@@ -46,9 +46,21 @@ export function FormSlider({
     defaultValue: "",
   });
 
+  /**
+   * Radix Slider returns an array of values, for the "slider range" use case.
+   * Currently we don't need these, so we're just destructuring the first and using that.
+   */
+  const handleChange = useCallback(
+    (value: Array<number>) => {
+      const [firstValue] = value || [];
+      return onChange(firstValue);
+    },
+    [onChange]
+  );
+
   return (
     <Slider
-      onChange={onChange}
+      onValueChange={handleChange}
       onBlur={onBlur}
       invalid={!!error}
       aria-required={required}

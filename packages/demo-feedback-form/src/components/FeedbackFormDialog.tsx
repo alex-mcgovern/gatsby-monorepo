@@ -80,7 +80,11 @@ export function FeedbackFormDialog({ ...rest }) {
    * ----------------------------------------------- */
 
   const dialogTriggerNode = useMemo(() => {
-    return <Button iconLeading={faMessage}>Leave feedback</Button>;
+    return (
+      <Button size="lg" iconLeading={faMessage}>
+        Leave feedback
+      </Button>
+    );
   }, []);
 
   /** -----------------------------------------------------------------------------
@@ -114,11 +118,11 @@ export function FeedbackFormDialog({ ...rest }) {
             step={1}
           />
           <FormTextArea
-            errorMessage="Please ensure you have entered a description."
+            errorMessage="Please ensure you have entered a message."
             id="description"
             label="Leave us a message"
             name="description"
-            placeholder="Add a bit of additional context about"
+            placeholder="Add a bit of additional context about your feedback."
             required
             rows={5}
           />

@@ -40,8 +40,7 @@ export interface SliderProps
   errorMessage?: string;
   /** Label text. (Will also be used as accessible `name` on the input element.) */
   label?: string;
-  /** Callback on input change. */
-  onChange?(...args: unknown[]): unknown;
+
   /** Text shown before user has interacted with the input. */
   placeholder?: string;
   /** Aria role to use for the input (e.g. `search`). */
