@@ -2,7 +2,7 @@
 
 exports[`Given valid rating, matches snapshot 1`] = `
 <div
-  class="getSprinkles_display_flex_mobile__1jganc9az"
+  class="getSprinkles_display_flex_mobile__1jganc9ax"
   data-testid="tested-component"
 >
   <div>

@@ -1,19 +1,14 @@
 import React, { useContext } from "react";
-import { Box, Button } from "@alexmcgovern/boondoggle.design";
+import { Box } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
-import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "gatsby";
 import { CommentsList } from "../components/CommentsList";
-import { FeedbackFormDialog } from "../components/FeedbackFormDialog";
 import { FeedbackGraph } from "../components/FeedbackGraph";
 import { PaginationControls } from "../components/PaginationControls";
 import { usePaginatedComments } from "../utils/usePaginatedComments";
 import { useScrollToTop } from "../utils/useScrollToTop";
 
-const LINK_STATE = { returnTo: "/" };
-
 export default function FeedbackForm() {
-  const { firebaseApp, user } = useContext(FirebaseContext) || {};
+  const { firebaseApp } = useContext(FirebaseContext) || {};
 
   /**
    * Get comments from firestore, with pagination controls
@@ -47,11 +42,10 @@ export default function FeedbackForm() {
 
   return (
     <Box as="section" marginY="spacing5" position="relative">
+      {/** -----------------------------------------------------------------------------
+       * Page header
+       * ------------------------------------------------------------------------------- */}
       <Box as="header">
-        {/** --------------------------------------------
-         * Page header
-         * ----------------------------------------------- */}
-
         <Box as="h1">We welcome your feedback</Box>
 
         <Box as="h2" fontStyle="body_md" fontWeight="normal">
@@ -64,24 +58,6 @@ export default function FeedbackForm() {
           publicly visible. You can edit or delete your feedback after you have
           posted it.
         </Box>
-
-        {/** --------------------------------------------
-         * Login / leave feedback button
-         * ----------------------------------------------- */}
-
-        {user ? (
-          <FeedbackFormDialog />
-        ) : (
-          <Button
-            as={Link}
-            iconLeading={faRightToBracket}
-            state={LINK_STATE}
-            to="/login"
-            width="max-content"
-          >
-            Log in to leave feedback
-          </Button>
-        )}
       </Box>
 
       {/** -----------------------------------------------------------------------------
