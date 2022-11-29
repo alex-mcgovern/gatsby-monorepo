@@ -13,7 +13,6 @@ import {
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
-import type { UsePaginatedCommentsStateShape } from "../utils/usePaginatedComments";
 import { FeedbackFormDialog } from "./FeedbackFormDialog";
 
 const PER_PAGE_DROPDOWN_ITEMS: Array<DropdownItem> = [
@@ -35,6 +34,19 @@ const PER_PAGE_DROPDOWN_ITEMS: Array<DropdownItem> = [
   },
 ];
 
+interface PaginationControlsProps {
+  canLoadNext?: boolean;
+  canLoadPrevious?: boolean;
+  currentPage?: number;
+  firstItemIndex?: number;
+  lastItemIndex?: number;
+  loadNext?: () => void;
+  loadPrevious?: () => void;
+  setPerPage?: (perPage: number) => void;
+  totalNbComments?: number;
+  totalNbPages?: number;
+}
+
 export function PaginationControls({
   canLoadNext,
   canLoadPrevious,
@@ -47,7 +59,7 @@ export function PaginationControls({
   totalNbComments,
   totalNbPages,
   ...rest
-}: Partial<UsePaginatedCommentsStateShape>) {
+}: PaginationControlsProps) {
   const { user } = useContext(FirebaseContext) || {};
 
   /**
