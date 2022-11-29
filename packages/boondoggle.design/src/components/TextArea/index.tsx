@@ -11,6 +11,7 @@ import type { GetSprinklesArgs } from "../../styles/getSprinkles.css";
 import { getSprinkles } from "../../styles/getSprinkles.css";
 import { Box } from "../Box";
 import { InputErrorMessage } from "../InputErrorMessage";
+import { Label } from "../Label";
 import type { VariantTextAreaSizeEnum } from "./index.css";
 import { getTextAreaStyles } from "./index.css";
 
@@ -27,11 +28,23 @@ export interface TextAreaProps
   name: string;
   errorMessage?: string;
   invalid?: boolean;
+  /** Used as the html ID. */
+  id: string;
+  /** Label text. (Will also be used as accessible `name` on the textarea element.) */
+  label?: string;
 }
 
 export const TextArea = forwardRef(
   (
-    { size = "md", invalid, errorMessage, ...rest }: TextAreaProps,
+    {
+      size = "md",
+      invalid,
+      errorMessage,
+
+      label,
+      id,
+      ...rest
+    }: TextAreaProps,
     ref: LegacyRef<HTMLTextAreaElement> | undefined
   ) => {
     /** Separate `GetSprinklesArgs` from other spread props, so we don't break Vanilla Extract */
@@ -47,6 +60,8 @@ export const TextArea = forwardRef(
 
     return (
       <Box>
+        {label && id && <Label label={label} htmlFor={id} />}
+
         <textarea
           aria-invalid={invalid}
           className={inputWrapperStyles}

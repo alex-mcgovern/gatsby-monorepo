@@ -22,6 +22,9 @@ export type { DialogProps } from "./src/components/Dialog";
 export { Form } from "./src/components/Form";
 export type { FormProps } from "./src/components/Form";
 
+export { FormSlider } from "./src/components/Form/components/FormSlider";
+export type { FormSliderProps } from "./src/components/Form/components/FormSlider";
+
 export { FormInput } from "./src/components/Form/components/FormInput";
 export { FormSingleSelect } from "./src/components/Form/components/FormSingleSelect";
 export { FormTextArea } from "./src/components/Form/components/FormTextArea";
@@ -77,5 +80,6 @@ export { getSprinkles } from "./src/styles/getSprinkles.css";
 export type { GetSprinklesArgs } from "./src/styles/getSprinkles.css";
 
 export { createAccessibleTransition } from "./src/styles/css_preprocessing_utils/createAccessibleTransition";
-
+export { variantInteractiveElementSize } from "./src/styles/common/variant_interactive_element_size.css";
+export type { VariantInteractiveElementSizeEnum } from "./src/styles/common/variant_interactive_element_size.css";
 export { darkTheme, lightTheme, vars } from "./src/styles/theme.css";
