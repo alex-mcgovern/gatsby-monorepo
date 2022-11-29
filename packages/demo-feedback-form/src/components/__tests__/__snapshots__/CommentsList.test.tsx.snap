@@ -20,7 +20,6 @@ exports[`Given valid comment list, matches snapshot 1`] = `
         27/11/2022, 18:16:47
       </div>
     </header>
-    <hr />
     <p>
       This is a test description
     </p>
@@ -134,7 +133,6 @@ exports[`Given valid comment list, matches snapshot 1`] = `
         21/11/2022, 02:18:01
       </div>
     </header>
-    <hr />
     <p>
       Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
     </p>
@@ -248,7 +246,6 @@ exports[`Given valid comment list, matches snapshot 1`] = `
         20/11/2022, 00:51:39
       </div>
     </header>
-    <hr />
     <p>
       Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.
 
@@ -364,7 +361,6 @@ Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, 
         16/11/2022, 01:20:15
       </div>
     </header>
-    <hr />
     <p>
       Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
 
@@ -480,7 +476,6 @@ Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum
         15/11/2022, 12:35:11
       </div>
     </header>
-    <hr />
     <p>
       Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
     </p>

@@ -17,7 +17,6 @@ exports[`Given valid comment, matches snapshot 1`] = `
       27/11/2022, 18:16:47
     </div>
   </header>
-  <hr />
   <p>
     This is a test description
   </p>
