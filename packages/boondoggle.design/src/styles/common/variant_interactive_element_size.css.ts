@@ -4,51 +4,48 @@ import { getSprinkles } from "../getSprinkles.css";
 export const variantInteractiveElementSize = styleVariants({
   sm: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing3" },
-
-      fontStyle: { mobile: "body_lg", desktop: "body_sm" },
+      fontStyle: { mobile: "body_lg", tablet: "body_sm" },
+      height: "spacing3",
     }),
   ],
   md: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing4" },
-
-      fontStyle: { mobile: "body_lg", desktop: "body_md" },
+      fontStyle: { mobile: "body_lg", tablet: "body_md" },
+      height: "spacing4",
     }),
   ],
   lg: [
     getSprinkles({
-      height: { mobile: "spacing5", desktop: "spacing5" },
-
-      fontStyle: { mobile: "body_lg", desktop: "body_lg" },
+      fontStyle: { mobile: "body_lg", tablet: "body_lg" },
+      height: "spacing5",
     }),
   ],
 
   sm_square: [
     getSprinkles({
+      fontStyle: "body_sm",
+      height: "spacing3",
       paddingX: "none",
       paddingY: "spacing1",
-      height: { mobile: "spacing5", desktop: "spacing3" },
-      width: { mobile: "spacing5", desktop: "spacing3" },
-      fontStyle: "body_sm",
+      width: "spacing3",
     }),
   ],
   md_square: [
     getSprinkles({
+      fontStyle: "body_md",
+      height: "spacing4",
       paddingX: "spacing1",
       paddingY: "spacing1",
-      height: { mobile: "spacing5", desktop: "spacing4" },
-      width: { mobile: "spacing5", desktop: "spacing4" },
-      fontStyle: "body_md",
+      width: "spacing4",
     }),
   ],
   lg_square: [
     getSprinkles({
+      fontStyle: "body_lg",
+      height: "spacing5",
       paddingX: "spacing1",
       paddingY: "spacing1",
-      height: "spacing5",
       width: "spacing5",
-      fontStyle: "body_lg",
     }),
   ],
 });
