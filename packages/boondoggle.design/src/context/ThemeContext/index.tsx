@@ -15,14 +15,10 @@ interface ThemeContextProvided {
   toggleDark?: () => void;
 }
 
-const defaultState = {
-  dark: true,
-};
-
-export const ThemeContext = createContext<ThemeContextProvided>(defaultState);
+export const ThemeContext = createContext<ThemeContextProvided>({ dark: true });
 
 export function ThemeProvider({ children }: IThemeProviderProps) {
-  const [dark, setDark] = useState(defaultState.dark);
+  const [dark, setDark] = useState(true);
 
   const toggleDark = useCallback(() => {
     setDark((currentDarkLightState) => {
