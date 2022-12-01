@@ -1,30 +1,14 @@
 import React from "react";
-import { Box, Collapsible, Icon } from "@alexmcgovern/boondoggle.design";
-import {
-  faArrowRight,
-  faBookOpen,
-  faBuildingColumns,
-  faInfoCircle,
-  faMicrochip,
-} from "@fortawesome/free-solid-svg-icons";
+import { Box, Collapsible } from "@alexmcgovern/boondoggle.design";
+import { faArrowRight, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { CollapsibleTrigger } from "../components/CollapsibleTrigger";
 import { HppCardWrapper } from "../components/HppCardWrapper";
-import { HppContainer } from "../components/HppContainer";
 import { PaymentSecurityInfo } from "../components/PaymentSecurityInfo";
-import { PeopleAlsoBought } from "../components/PeopleAlsoBought";
 
-export default function HppPayLater() {
+export default function HppConfirm() {
   return (
     <Box as="section" marginY="spacing5" position="relative">
-      <HppCardWrapper title="Review payment">
-        {/** --------------------------------------------
-         * illustration
-         * ----------------------------------------------- */}
-        <Box>
-          <Icon icon={faBookOpen} />
-          <Icon icon={faMicrochip} />
-          <Icon icon={faBuildingColumns} />
-        </Box>
+      <HppCardWrapper title="You've got the deal">
         {/** --------------------------------------------
          * Payment info
          * ----------------------------------------------- */}

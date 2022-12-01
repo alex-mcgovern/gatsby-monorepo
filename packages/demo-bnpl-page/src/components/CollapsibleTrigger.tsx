@@ -1,6 +1,6 @@
 import React from "react";
 import type { IconProps } from "@alexmcgovern/boondoggle.design";
-import { Button } from "@alexmcgovern/boondoggle.design";
+import { Box, Button, Icon } from "@alexmcgovern/boondoggle.design";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 interface CollapsibleTriggerProps {
@@ -8,19 +8,25 @@ interface CollapsibleTriggerProps {
   icon: IconProps["icon"];
 }
 
-export function CollapsibleTrigger({ title, icon }: CollapsibleTriggerProps) {
+export function CollapsibleTrigger({
+  title,
+  icon,
+  ...rest
+}: CollapsibleTriggerProps) {
   return (
-    <Button
-      appearance="tertiary"
+    <Box
       width="100%"
       padding="spacing3"
       gap="spacing2"
       background="neutral_background_raised"
       marginY="spacing1"
-      iconLeading={icon}
-      iconTrailing={faAngleDown}
+      justifyContent="space-between"
+      display="flex"
     >
-      {title}
-    </Button>
+      <Button appearance="tertiary" iconLeading={icon} {...rest}>
+        {title}
+      </Button>
+      <Icon icon={faAngleDown} />
+    </Box>
   );
 }
