@@ -143,7 +143,8 @@ export function CheckoutHeader() {
           appearance="primary"
           color="accent"
           as={Link}
-          to="confirm"
+          to="2-login-to-checkout"
+          state={{ returnTo: "/3-confirm" }}
           iconTrailing={faAngleRight}
         >
           Checkout
