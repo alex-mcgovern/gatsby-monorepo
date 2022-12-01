@@ -17,23 +17,23 @@ export interface CollapsibleProps {
 export function Collapsible({
   triggerNode,
   children,
-  isOpen,
-  onOpenChange,
-}: CollapsibleProps) {
-  const [localOpenState, setLocalOpenState] = useState(isOpen);
+}: // isOpen,
+// onOpenChange,
+CollapsibleProps) {
+  // const [localOpenState, setLocalOpenState] = useState(isOpen);
 
-  const handleOpenChange = useCallback(
-    (openState: boolean) => {
-      setLocalOpenState(openState);
-      onOpenChange(openState);
-    },
-    [onOpenChange]
-  );
+  // const handleOpenChange = useCallback(
+  //   (openState: boolean) => {
+  //     setLocalOpenState(openState);
+  //     onOpenChange(openState);
+  //   },
+  //   [onOpenChange]
+  // );
 
   return (
     <CollapsiblePrimitive.Root
-      open={localOpenState}
-      onOpenChange={handleOpenChange}
+    // open={localOpenState}
+    // onOpenChange={handleOpenChange}
     >
       {/**
        * Allow custom trigger node. Must accept a ref.
