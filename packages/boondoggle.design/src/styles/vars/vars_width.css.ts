@@ -11,6 +11,7 @@ export const varsWidth = {
   auto: "auto",
   "min-content": "min-content",
   "max-content": "max-content",
+  "fit-content": "fit-content",
   gridSpan1: calc.divide(GRID_MAX_WIDTH_PX, 12),
   gridSpan2: calc.multiply(calc.divide(GRID_MAX_WIDTH_PX, 12), 2),
   gridSpan3: calc.multiply(calc.divide(GRID_MAX_WIDTH_PX, 12), 3),
