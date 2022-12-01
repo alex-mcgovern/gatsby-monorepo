@@ -51,8 +51,10 @@ export default function HppPayLater() {
             <CollapsibleTrigger icon={faArrowRight} title="Payment details" />
           }
         >
-          Hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor
-          hodor hodor hodor hodor
+          <div>
+            Hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor
+            hodor hodor hodor hodor
+          </div>
         </Collapsible>
 
         <Collapsible
@@ -63,8 +65,10 @@ export default function HppPayLater() {
             />
           }
         >
-          Hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor
-          hodor hodor hodor hodor
+          <div>
+            Hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor hodor
+            hodor hodor hodor hodor
+          </div>
         </Collapsible>
       </HppCardWrapper>
     </Box>
