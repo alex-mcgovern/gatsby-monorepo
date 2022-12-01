@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, { ReactNode }, Card, Icon } from "@alexmcgovern/boondoggle.design";
+import { Box, Card, Icon } from "@alexmcgovern/boondoggle.design";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface HppCardWrapperProps {
