@@ -55,13 +55,13 @@ export default function HppContainer() {
       {/** --------------------------------------------
        * Product table
        * ----------------------------------------------- */}
-      <Box __maxWidth={600}>
-        <Card boxShadow="md" width="100%">
+      <Box __maxWidth={600} background="neutral_white">
+        <Box boxShadow="md" width="100%">
           <Box display="flex" justifyContent="end">
             <Icon icon={faTimes} />
           </Box>
           <Box>
-            <Box>
+            <Box display="flex" alignItems="center" flexDirection="column">
               <Box as="h1" textAlign="center" width="100%">
                 Pay later options
               </Box>
@@ -233,7 +233,7 @@ export default function HppContainer() {
               </Box>
             </Box>
           </Box>
-        </Card>
+        </Box>
       </Box>
     </Box>
   );
