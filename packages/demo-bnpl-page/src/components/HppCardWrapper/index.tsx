@@ -13,17 +13,19 @@ interface HppCardWrapperProps {
 export function HppCardWrapper({ title, children }: HppCardWrapperProps) {
   return (
     <Box
-      maxWidth="gridSpan6"
-      boxShadow="lg"
+      alignItems="center"
+      background="neutral_white"
       border="neutral_nonInteractive"
       borderRadius="md"
-      marginX="auto"
-      paddingY="spacing2"
-      paddingX="spacing5"
+      boxShadow="lg"
       display="flex"
-      alignItems="center"
       flexDirection="column"
+      marginX="auto"
+      maxWidth="gridSpan6"
+      paddingX="spacing5"
+      paddingY="spacing2"
       position="relative"
+      textAlign="center"
     >
       <Icon icon={faTimes} padding="spacing1" className={closeButton} />
       <Box display="flex" justifyContent="space-between">
@@ -35,6 +37,19 @@ export function HppCardWrapper({ title, children }: HppCardWrapperProps) {
         <BankConnectorIllustration />
       </Box>
       {children}
+
+      <Box
+        marginTop="spacing1"
+        marginBottom="spacing2"
+        __fontSize={10}
+        color="neutral_text_lowContrast"
+      >
+        By continuing you are permitting TrueLayer to initiate a payment from
+        your bank account. You also agree to our{" "}
+        <a href="https://truelayer.com/enduser_tos">End User Terms of use</a>{" "}
+        and
+        <a href="https://truelayer.com/privacy-policy">Privacy Policy.</a>
+      </Box>
     </Box>
   );
 }

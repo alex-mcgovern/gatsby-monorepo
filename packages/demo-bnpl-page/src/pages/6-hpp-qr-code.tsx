@@ -1,37 +1,31 @@
 import React from "react";
-import { Box, Button } from "@alexmcgovern/boondoggle.design";
+import { Box, Button, Icon } from "@alexmcgovern/boondoggle.design";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
+import { HppCardWrapper } from "../components/HppCardWrapper";
+import QrCode from "../images/svg/qr.svg";
 
 export default function HppQrCode() {
   return (
-    <Box
-      as="section"
-      marginY="spacing5"
-      position="relative"
-      marginX="auto"
-      maxWidth="gridSpan6"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Box __fontSize={200}>🎉</Box>
-      <Box as="h1" fontWeight="bold">
-        Order successful
-      </Box>
-      <Box fontStyle="body_lg">You'll be nose deep in</Box>
+    <HppCardWrapper title="Review payment">
+      <QrCode />
       <Box
-        marginY="spacing1"
-        fontStyle="h4"
-        color="accent_text_lowContrast"
-        fontWeight="semibold"
+        borderBottom="neutral_nonInteractive"
+        paddingBottom="spacing4"
+        fontStyle="body_sm"
       >
-        50 shades of grey
+        <Box>Scan this QR code and pay with the Natwest app</Box>
       </Box>
-      <Box fontStyle="body_lg">Within 5-10 business days</Box>
 
-      <Button as={Link} size="lg" marginY="spacing5" to="/">
-        Get back to shopping ASAP
+      <Button
+        width="100%"
+        marginY="spacing4"
+        size="lg"
+        as={Link}
+        to="/7-success"
+      >
+        Or continue on desktop
       </Button>
-    </Box>
+    </HppCardWrapper>
   );
 }

@@ -87,7 +87,7 @@ export function CheckoutHeader() {
           />
 
           <Box>50 shades of grey</Box>
-          <Box>£1,000</Box>
+          <Box>£1,200.00</Box>
           <Box>
             <SelectSingle
               items={SELECT_QUANTITY_ITEMS}
@@ -114,7 +114,7 @@ export function CheckoutHeader() {
           justifyContent="space-between"
         >
           <Box>Subtotal</Box>
-          <Box>£1,000.00</Box>
+          <Box>£1,200.00</Box>
         </Box>
 
         <Box
@@ -135,7 +135,7 @@ export function CheckoutHeader() {
           justifyContent="space-between"
         >
           <Box>Total</Box>
-          <Box>£1,000</Box>
+          <Box>£1,200.00</Box>
         </Box>
 
         <Button

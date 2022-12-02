@@ -14,6 +14,7 @@ const properties = defineProperties({
     boxShadow: vars.boxShadow,
     background: vars.color,
     color: vars.color,
+    cursor: ["pointer"],
     borderRadius: vars.borderRadius,
     border: varsBorder,
     borderRight: varsBorder,

@@ -6,6 +6,7 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
+import BnplBankLogo from "../images/svg/bnpl-bank.svg";
 
 export default function ConfirmPurchase() {
   return (
@@ -59,7 +60,7 @@ export default function ConfirmPurchase() {
             justifyContent="space-between"
           >
             <Box>Subtotal</Box>
-            <Box>£1,000.00</Box>
+            <Box>£1,200.00</Box>
           </Box>
 
           <Box
@@ -80,7 +81,7 @@ export default function ConfirmPurchase() {
             justifyContent="space-between"
           >
             <Box>Total</Box>
-            <Box>£1,000</Box>
+            <Box>£1,200.00</Box>
           </Box>
         </Box>
 
@@ -88,13 +89,14 @@ export default function ConfirmPurchase() {
          * Checkout card
          * ----------------------------------------------- */}
 
-        <Card display="flex" flexDirection="column" gap="spacing1">
+        <Card display="flex" flexDirection="column" gap="spacing2">
           <Box fontStyle="body_lg" fontWeight="bold" marginBottom="spacing1">
             Payment methods
           </Box>
 
-          <Card
+          <Box
             as={Link}
+            textDecoration="none"
             to="/4-hpp-paylater"
             padding="spacing2"
             borderRadius="md"
@@ -102,21 +104,23 @@ export default function ConfirmPurchase() {
             border="accent_border_interactive"
           >
             <Box display="flex" alignItems="center" gap="spacing1">
-              <Icon icon={faBuildingColumns} />
-              <Box fontStyle="body_md">Pay later with Natwest</Box>
+              <Box width="spacing3">
+                <BnplBankLogo />
+              </Box>
+              <Box fontStyle="body_md">Pay later with your bank</Box>
             </Box>
             <Box fontStyle="body_sm" color="neutral_text_lowContrast">
               Fast, secure and no need to enter details – just authenticate in
               your bank app.
             </Box>
-          </Card>
+          </Box>
 
           <Button
             appearance="tertiary"
             color="neutral"
             iconLeading={faBuildingColumns}
           >
-            Pay later by bank
+            Instant bank payment
           </Button>
           <Button
             appearance="tertiary"
@@ -131,15 +135,6 @@ export default function ConfirmPurchase() {
             iconLeading={faCreditCard}
           >
             PayPal
-          </Button>
-
-          <Button
-            marginTop="spacing2"
-            appearance="primary"
-            color="accent"
-            iconTrailing={faAngleRight}
-          >
-            Checkout
           </Button>
         </Card>
       </Box>{" "}

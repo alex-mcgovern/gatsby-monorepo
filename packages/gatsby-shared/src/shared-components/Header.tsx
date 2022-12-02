@@ -3,6 +3,7 @@ import type { ButtonProps } from "@alexmcgovern/boondoggle.design";
 import { Box, Button, ThemeContext } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
 import {
+  faBook,
   faHouseUser,
   faMoon,
   faRightFromBracket,
@@ -37,10 +38,10 @@ export function Header() {
       <Button
         {...NAV_BUTTON_COMMON_PROPS}
         as={Link}
-        iconLeading={faHouseUser}
+        iconLeading={faBook}
         to="/"
       >
-        Home
+        First editions
       </Button>
 
       {/** -----------------------------------------------------------------------------

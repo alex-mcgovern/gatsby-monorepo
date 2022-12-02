@@ -22,6 +22,8 @@ export function CollapsibleTrigger({
       marginY="spacing1"
       justifyContent="space-between"
       display="flex"
+      border="neutral_nonInteractive"
+      borderRadius="sm"
     >
       <Button appearance="tertiary" iconLeading={icon} {...rest}>
         {title}

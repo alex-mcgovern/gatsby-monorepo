@@ -12,7 +12,7 @@ export function Footer() {
        * DATE SECTION
        * ------------------------------------------------------------------------------- */}
       <Box as="section" marginY="spacing4" paddingBottom="spacing4">
-        © {date} Alex McGovern.
+        © {date} 50 shades of Moat.
       </Box>
     </Box>
   );
