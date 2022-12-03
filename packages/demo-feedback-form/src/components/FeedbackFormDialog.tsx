@@ -81,7 +81,7 @@ export function FeedbackFormDialog({ ...rest }) {
 
   const dialogTriggerNode = useMemo(() => {
     return (
-      <Button size="lg" iconLeading={faMessage}>
+      <Button size="lg" name="leave-feedback" iconLeading={faMessage}>
         Leave feedback
       </Button>
     );

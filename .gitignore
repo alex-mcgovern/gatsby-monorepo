@@ -17,6 +17,11 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Cypress junk
+cypress/downloads
+cypress/screenshots
+cypress/videos
+
 # junit test reports
 junit.xml
 

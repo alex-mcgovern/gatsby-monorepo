@@ -60,11 +60,12 @@ export function Dialog({
 
             <DialogPrimitive.Close asChild>
               <Button
+                name="close"
                 size="md_square"
                 appearance="secondary"
                 iconLeading={faTimes}
                 aria-label="Close"
-                type="submit"
+                type="button"
                 width="100%"
               />
             </DialogPrimitive.Close>
