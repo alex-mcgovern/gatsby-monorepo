@@ -56,6 +56,7 @@ export function Comment({
         {user?.uid === author_uid && (
           <Button
             appearance="tertiary"
+            name="delete"
             color="neutral"
             onClick={handleDelete}
             iconTrailing={faTrashCan}

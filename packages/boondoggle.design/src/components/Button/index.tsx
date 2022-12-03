@@ -42,7 +42,7 @@ type BaseButtonProps<TPolymorphicAs extends ElementType> = Omit<
       /** Props for trailing icon */
       iconTrailingProps?: Omit<IconProps, "icon">;
       /** Title for button, shown in the UI */
-      name?: string;
+      name: string;
       /** HTML button type, defaults to `button`. */
       type?: "button" | "submit" | "reset";
       /** Size of the button element */
