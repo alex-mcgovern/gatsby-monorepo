@@ -23,5 +23,16 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-      - run: npm ci
-      - run: npm run jest:demo-feedback-form
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Jest
+        run: npm run demo-feedback:jest
+
+      - name: Build Gatsby site
+        working-directory: ./packages/demo-feedback-form
+        run: npm run build
+
+      - name: Cypress
+      - run: npm run demo-feedback:cy:run
