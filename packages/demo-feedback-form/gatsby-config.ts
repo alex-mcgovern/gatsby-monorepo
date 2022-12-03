@@ -23,9 +23,7 @@ const config: GatsbyConfig = {
         start_url: `/`,
       },
     },
-    {
-      resolve: "gatsby-plugin-vanilla-extract",
-    },
+    "gatsby-plugin-vanilla-extract",
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
