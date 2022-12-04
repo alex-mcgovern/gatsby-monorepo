@@ -53,6 +53,7 @@ export function Header() {
             {...NAV_BUTTON_COMMON_PROPS}
             onClick={handleSignOut}
             iconLeading={faRightFromBracket}
+            name="log-out"
           >
             Log out
           </Button>
@@ -61,6 +62,7 @@ export function Header() {
             {...NAV_BUTTON_COMMON_PROPS}
             as={Link}
             to="/login"
+            name="log-in"
             iconLeading={faRightToBracket}
           >
             Log in

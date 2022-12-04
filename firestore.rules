@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+	function isSignedIn() {
+    return request.auth.uid != null
+  }
+  
+  match /databases/{database}/documents {
+    match /kanban/{userId}/{document=**} {
+      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update, delete: if isSignedIn() && request.auth.uid == userId;
+    }
+    
+    match /feedback/{document=**} {
+      allow read;
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn() && request.auth.uid == resource.data.author_uid;
+    }
+	}
+  
+}
+
