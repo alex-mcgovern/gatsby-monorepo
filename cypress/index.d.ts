@@ -2,7 +2,9 @@
 
 declare namespace Cypress {
   interface Chainable {
-    firebaseReset(): void;
-    firebaseLogin(): void;
+    firebaseDeleteLocalStorageDb(): void;
+    firebaseRegister({ email, password }): void;
+    firebaseLogIn({ email, password }): void;
+    firebaseLogOut(): void;
   }
 }

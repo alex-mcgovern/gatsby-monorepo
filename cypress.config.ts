@@ -6,8 +6,12 @@ dotenv.config({
 });
 
 export default defineConfig({
+  chromeWebSecurity: false,
   e2e: {
     baseUrl: "http://localhost:8000",
+    /**
+     * Expose env vars to Cypress
+     */
     setupNodeEvents(_, config) {
       const { parsed: parsedEnvVars } =
         dotenv.config({
