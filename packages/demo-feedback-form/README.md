@@ -15,36 +15,29 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 - Pagination for Firestore
 - Feedback scores visualised with VisX
 
-## What's left to improve & why
+## ToDo
 
 ### Auth
 
-- **No option to add display name to user profile:** Will need to implement a second screen after auth to add display name & other details to user profile. Omitted due to time constraints.
+- [ ] Add display name to user profile
+
 
 ### UI
 
-- **Nicer UI component for feedback modal:** Project uses a simple single select
-  for "rating" field in dialog. Ideally would create something more bespoke, and
-  nicer to use — e.g. slider.
-- **Design system component improvements:** Project uses my own design system,
-  which is still in it's early stages. Could use a lot more test coverage.
+- [x] ~Create `Slider`, use it in feedback form~
 
 ### Testing
 
-- **Mock Firebase functions in test environment:** Currently only pagination
-  state and component functionality is tested, while creating & updating
-  Firestore docs is still uncovered. Ideally would mock Firebase using a similar
-  approach as [here](https://www.npmjs.com/package/firestore-jest-mock).
-- **Test Graph component:** Due to some async state updates, feedback graph is
-  empty on initial render. This probably needs to be wrapped in `act(...)`, but
-  due to time constraints, has been left untested.
-- **Unit tests for Firestore security rules:** Omitted due to time constraints
-- **E2E tests with Cypress:** Requires Firebase simulator, omitted due to time constraints.
+- [x] ~Cypress~
+- [x] ~Setup Firebase emulator for Cypress~ 
+- [ ] Test VisX graph component
+- [ ] Unit tests for Firestore security rules (partially covered via Cypress)
 
 ### Bugs
 
-- **Adding new comment does not scroll to top if not on page 1**
-- **Flash of unstyled content on initial load:** This is probably something minor caused by how the design system stylesheet is loaded. Will be fixed soon, but omitted due to time constraints.
+- [x] ~Flash of unstyled content on initial load~
+- [ ] Adding new comment does not scroll to top if not on page 1
+
 
 ## Environment Variables
 
