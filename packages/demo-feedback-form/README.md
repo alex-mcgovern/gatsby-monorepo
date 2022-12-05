@@ -19,7 +19,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 ### Auth
 
-- [ ] Add display name to user profile
+- [x] ~Add display name to user profile~
 
 
 ### UI
@@ -30,13 +30,14 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 - [x] ~Cypress~
 - [x] ~Setup Firebase emulator for Cypress~ 
+- [ ] Fix types in `cypress` folder
 - [ ] Test VisX graph component
 - [ ] Unit tests for Firestore security rules (partially covered via Cypress)
 
 ### Bugs
 
 - [x] ~Flash of unstyled content on initial load~
-- [ ] Adding new comment does not scroll to top if not on page 1
+- [x] ~Adding new comment does not scroll to top if not on page 1~
 
 
 ## Environment Variables
