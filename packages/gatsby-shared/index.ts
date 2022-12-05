@@ -30,3 +30,4 @@ export { siteMetadata } from "./src/site-metadata";
 export { SharedPage404 } from "./src/shared-pages/SharedPage404";
 export { SharedPageLogin } from "./src/shared-pages/SharedPageLogin";
 export { SharedPageRegister } from "./src/shared-pages/SharedPageRegister";
+export { SharedPageUpdateProfile } from "./src/shared-pages/SharedPageUpdateProfile";

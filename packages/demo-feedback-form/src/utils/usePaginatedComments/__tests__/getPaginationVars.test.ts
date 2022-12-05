@@ -1,4 +1,4 @@
-import { getPaginationVars } from "../getPaginationVars";
+import { getPaginationVars } from "../utils/getPaginationVars";
 
 test("Given initial values, returns correct state", () => {
   expect(
@@ -12,10 +12,10 @@ test("Given initial values, returns correct state", () => {
   ).toStrictEqual({
     canLoadNext: false,
     canLoadPrevious: false,
-    currentPage: 0,
-    firstItemIndex: 0,
-    lastItemIndex: 0,
-    previousPage: 0,
+    pageNbCurrent: 0,
+    indexOfFirstInCursor: 0,
+    indexOfLastInCursor: 0,
+    pageNbPrevious: 0,
     totalNbPages: 0,
   });
 });
@@ -32,10 +32,10 @@ test("Given values for updating count only, returns correct state", () => {
   ).toStrictEqual({
     canLoadNext: true,
     canLoadPrevious: false,
-    currentPage: 0,
-    firstItemIndex: 0,
-    lastItemIndex: 0,
-    previousPage: 0,
+    pageNbCurrent: 0,
+    indexOfFirstInCursor: 0,
+    indexOfLastInCursor: 0,
+    pageNbPrevious: 0,
     totalNbPages: 10,
   });
 });
@@ -52,10 +52,10 @@ test("Given values for incrementing page, returns correct state", () => {
   ).toStrictEqual({
     canLoadNext: true,
     canLoadPrevious: true,
-    currentPage: 1,
-    firstItemIndex: 10,
-    lastItemIndex: 19,
-    previousPage: 0,
+    pageNbCurrent: 1,
+    indexOfFirstInCursor: 10,
+    indexOfLastInCursor: 19,
+    pageNbPrevious: 0,
     totalNbPages: 10,
   });
 });
@@ -72,10 +72,10 @@ test("Given values for decrementing page, returns correct state", () => {
   ).toStrictEqual({
     canLoadNext: true,
     canLoadPrevious: false,
-    currentPage: 0,
-    firstItemIndex: 0,
-    lastItemIndex: 9,
-    previousPage: 1,
+    pageNbCurrent: 0,
+    indexOfFirstInCursor: 0,
+    indexOfLastInCursor: 9,
+    pageNbPrevious: 1,
     totalNbPages: 10,
   });
 });
@@ -92,10 +92,10 @@ test("Given values for incrementing to last page, returns correct state", () => 
   ).toStrictEqual({
     canLoadNext: false,
     canLoadPrevious: true,
-    currentPage: 9,
-    firstItemIndex: 90,
-    lastItemIndex: 99,
-    previousPage: 8,
+    pageNbCurrent: 9,
+    indexOfFirstInCursor: 90,
+    indexOfLastInCursor: 99,
+    pageNbPrevious: 8,
     totalNbPages: 10,
   });
 });

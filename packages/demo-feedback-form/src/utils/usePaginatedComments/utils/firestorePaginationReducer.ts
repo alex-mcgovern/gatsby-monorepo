@@ -11,8 +11,7 @@ import {
   query,
   startAfter,
 } from "firebase/firestore";
-import type { CommentShape } from "../types";
-import { firestoreCommentsConverter } from "./firestoreConverter";
+import type { CommentShape } from "../../../types";
 import type { PaginationVarsShape } from "./getPaginationVars";
 import { getPaginationVars } from "./getPaginationVars";
 
@@ -20,18 +19,17 @@ export interface PaginationStateShape extends Partial<PaginationVarsShape> {
   collectionRef?: CollectionReference<CommentShape>;
   commentsPerPage: number;
   query?: Query<CommentShape>;
-  cachedCommentsSnapshot?: QuerySnapshot<CommentShape>;
+  querySnapshot?: QuerySnapshot<CommentShape>;
   totalNbComments?: number;
 }
 
 export interface PaginationStateAction {
   payload?: Partial<PaginationStateShape>;
   type?:
-    | "CACHE_DOCS"
+    | "UPDATE_DOCS"
     | "INITIALISE"
     | "LOAD_NEWER"
     | "LOAD_OLDER"
-    | "SET_COUNT"
     | "SET_PER_PAGE";
 }
 
@@ -52,56 +50,60 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
           count: state.totalNbComments,
           perPage: state.commentsPerPage,
           newIndex: 0,
-          currentIndex: state.currentPage,
-          docsLength: state.cachedCommentsSnapshot?.docs.length,
+          currentIndex: state.pageNbCurrent,
+          docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
           query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
             limit(state.commentsPerPage)
-          ).withConverter(firestoreCommentsConverter),
+          ),
         }),
       };
 
       break;
 
     case "LOAD_OLDER":
-      if (!state.canLoadNext || state.currentPage === undefined) break;
+      if (!state.canLoadNext || state.pageNbCurrent === undefined) {
+        break;
+      }
 
       return {
         ...state,
         ...getPaginationVars({
           count: state.totalNbComments,
           perPage: state.commentsPerPage,
-          newIndex: state.currentPage + 1,
-          currentIndex: state.currentPage,
-          docsLength: state.cachedCommentsSnapshot?.docs.length,
+          newIndex: state.pageNbCurrent + 1,
+          currentIndex: state.pageNbCurrent,
+          docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
           query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
-            startAfter(state.cachedCommentsSnapshot?.docs.slice(-1)[0]),
+            startAfter(state.querySnapshot?.docs.slice(-1)[0]),
             limit(state.commentsPerPage)
-          ).withConverter(firestoreCommentsConverter),
+          ),
         }),
       };
 
       break;
 
     case "LOAD_NEWER":
-      if (!state.canLoadPrevious || state.currentPage === undefined) break;
+      if (!state.canLoadPrevious || state.pageNbCurrent === undefined) {
+        break;
+      }
 
-      if (state.currentPage <= 1) {
+      if (state.pageNbCurrent <= 1) {
         return {
           ...state,
           ...getPaginationVars({
             count: state.totalNbComments,
             perPage: state.commentsPerPage,
             newIndex: 0,
-            currentIndex: state.currentPage,
-            docsLength: state.cachedCommentsSnapshot?.docs.length,
+            currentIndex: state.pageNbCurrent,
+            docsLength: state.querySnapshot?.docs.length,
           }),
           ...(state.collectionRef && {
             query: query<CommentShape>(
@@ -118,39 +120,21 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
         ...getPaginationVars({
           count: state.totalNbComments,
           perPage: state.commentsPerPage,
-          newIndex: state.currentPage - 1,
-          currentIndex: state.currentPage,
-          docsLength: state.cachedCommentsSnapshot?.docs.length,
+          newIndex: state.pageNbCurrent - 1,
+          currentIndex: state.pageNbCurrent,
+          docsLength: state.querySnapshot?.docs.length,
         }),
         ...(state.collectionRef && {
           query: query<CommentShape>(
             state.collectionRef,
             orderBy("created", "desc"),
-            endBefore(state.cachedCommentsSnapshot?.docs[0]),
+            endBefore(state.querySnapshot?.docs[0]),
             limitToLast(state.commentsPerPage)
-          ).withConverter(firestoreCommentsConverter),
+          ),
         }),
       };
 
       break;
-
-    case "SET_COUNT": {
-      if (action.payload?.totalNbComments) {
-        return {
-          ...state,
-          ...getPaginationVars({
-            count: action.payload.totalNbComments,
-            perPage: state.commentsPerPage,
-            newIndex: 0,
-            currentIndex: state.currentPage,
-            docsLength: state.cachedCommentsSnapshot?.docs.length,
-          }),
-          totalNbComments: action.payload.totalNbComments,
-        };
-      }
-
-      break;
-    }
 
     case "SET_PER_PAGE": {
       if (action.payload?.commentsPerPage) {
@@ -160,8 +144,8 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
             count: state.totalNbComments,
             perPage: action.payload?.commentsPerPage,
             newIndex: 0,
-            currentIndex: state.currentPage,
-            docsLength: state.cachedCommentsSnapshot?.docs.length,
+            currentIndex: state.pageNbCurrent,
+            docsLength: state.querySnapshot?.docs.length,
           }),
           commentsPerPage: action.payload?.commentsPerPage,
           ...(state.collectionRef && {
@@ -169,7 +153,7 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
               state.collectionRef,
               orderBy("created", "desc"),
               limit(action.payload?.commentsPerPage)
-            ).withConverter(firestoreCommentsConverter),
+            ),
           }),
         };
       }
@@ -177,18 +161,19 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
       break;
     }
 
-    case "CACHE_DOCS": {
-      if (action.payload?.cachedCommentsSnapshot) {
+    case "UPDATE_DOCS": {
+      if (action.payload?.querySnapshot) {
         return {
           ...state,
           ...getPaginationVars({
-            count: state.totalNbComments,
+            count: action.payload.totalNbComments,
             perPage: state.commentsPerPage,
-            newIndex: state.currentPage,
-            currentIndex: state.previousPage,
-            docsLength: action.payload.cachedCommentsSnapshot.docs.length,
+            newIndex: state.pageNbCurrent,
+            currentIndex: state.pageNbPrevious,
+            docsLength: action.payload.querySnapshot.docs.length,
           }),
-          cachedCommentsSnapshot: action.payload.cachedCommentsSnapshot,
+          querySnapshot: action.payload.querySnapshot,
+          totalNbComments: action.payload.totalNbComments,
         };
       }
 
@@ -201,9 +186,9 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
         ...getPaginationVars({
           count: state.totalNbComments,
           perPage: state.commentsPerPage,
-          newIndex: state.currentPage,
-          currentIndex: state.previousPage,
-          docsLength: state.cachedCommentsSnapshot?.docs.length,
+          newIndex: state.pageNbCurrent,
+          currentIndex: state.pageNbPrevious,
+          docsLength: state.querySnapshot?.docs.length,
         }),
       };
     }
@@ -214,9 +199,9 @@ export const firestorePaginationReducer: FirestorePaginationReducer = (
     ...getPaginationVars({
       count: state.totalNbComments,
       perPage: state.commentsPerPage,
-      newIndex: state.currentPage,
-      currentIndex: state.previousPage,
-      docsLength: state.cachedCommentsSnapshot?.docs.length,
+      newIndex: state.pageNbCurrent,
+      currentIndex: state.pageNbPrevious,
+      docsLength: state.querySnapshot?.docs.length,
     }),
   };
 };

@@ -2,7 +2,7 @@
 import React from "react";
 import { cleanup } from "@testing-library/react";
 import { renderTestComponent } from "../../../../../test/renderTestComponent";
-import { UsePaginatedCommentsStateShape } from "../../utils/usePaginatedComments";
+import { PaginatedCommentsState } from "../../utils/usePaginatedComments";
 import { PaginationControls } from "../PaginationControls";
 
 afterEach(cleanup);
@@ -13,7 +13,7 @@ afterEach(cleanup);
  * ----------------------------------------------- */
 jest.mock("firebase/firestore", () => {
   return {
-    getFirestore: jest.fn(),
+    initializeFirestore: jest.fn(),
   };
 });
 jest.mock("firebase/app", () => {
@@ -28,13 +28,13 @@ jest.mock("firebase/auth", () => {
 });
 
 test("Given valid props, renders without error", () => {
-  const { getByTestId } = renderTestComponent<UsePaginatedCommentsStateShape>(
+  const { getByTestId } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={false}
-      currentPage={0}
-      firstItemIndex={0}
-      lastItemIndex={4}
+      pageNbCurrent={0}
+      indexOfFirstInCursor={0}
+      indexOfLastInCursor={4}
       totalNbComments={101}
       totalNbPages={21}
     />
@@ -44,13 +44,13 @@ test("Given valid props, renders without error", () => {
 });
 
 test("Given valid props, matches snapshot", () => {
-  const { getByTestId } = renderTestComponent<UsePaginatedCommentsStateShape>(
+  const { getByTestId } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={false}
-      currentPage={0}
-      firstItemIndex={0}
-      lastItemIndex={4}
+      pageNbCurrent={0}
+      indexOfFirstInCursor={0}
+      indexOfLastInCursor={4}
       totalNbComments={101}
       totalNbPages={21}
     />
@@ -60,13 +60,13 @@ test("Given valid props, matches snapshot", () => {
 });
 
 test("Given initial props, buttons have correct `disabled` state", () => {
-  const { getByText } = renderTestComponent<UsePaginatedCommentsStateShape>(
+  const { getByText } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={false}
-      currentPage={0}
-      firstItemIndex={0}
-      lastItemIndex={4}
+      pageNbCurrent={0}
+      indexOfFirstInCursor={0}
+      indexOfLastInCursor={4}
       totalNbComments={101}
       totalNbPages={21}
     />
@@ -77,13 +77,13 @@ test("Given initial props, buttons have correct `disabled` state", () => {
 });
 
 test("Given props for second page, buttons have correct `disabled` state", () => {
-  const { getByText } = renderTestComponent<UsePaginatedCommentsStateShape>(
+  const { getByText } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={true}
-      currentPage={1}
-      firstItemIndex={10}
-      lastItemIndex={19}
+      pageNbCurrent={1}
+      indexOfFirstInCursor={10}
+      indexOfLastInCursor={19}
       totalNbComments={101}
       totalNbPages={21}
     />

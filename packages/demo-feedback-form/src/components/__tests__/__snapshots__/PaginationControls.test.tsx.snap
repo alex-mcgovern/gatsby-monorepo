@@ -13,13 +13,14 @@ exports[`Given valid props, matches snapshot 1`] = `
     >
       <button
         aria-disabled="false"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+        name="load-next"
         type="button"
       >
         <div>
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c getSprinkles_display_block_mobile__1jganc9aw getSprinkles_width_auto_mobile__1jganc9fk getSprinkles_minWidth_spacing2__1jganc98c"
+            class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
             data-icon="angle-left"
             data-prefix="fas"
             focusable="false"
@@ -37,15 +38,16 @@ exports[`Given valid props, matches snapshot 1`] = `
       </button>
       <button
         aria-disabled="true"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
         disabled=""
+        name="load-previous"
         type="button"
       >
         Newer
         <div>
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c getSprinkles_display_block_mobile__1jganc9aw getSprinkles_width_auto_mobile__1jganc9fk getSprinkles_minWidth_spacing2__1jganc98c"
+            class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
             data-icon="angle-right"
             data-prefix="fas"
             focusable="false"
@@ -85,8 +87,8 @@ exports[`Given valid props, matches snapshot 1`] = `
           5
            
         </b>
-         of
          
+        of 
         <b>
           101
         </b>
@@ -100,7 +102,7 @@ exports[`Given valid props, matches snapshot 1`] = `
         aria-controls="downshift-1-menu"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="downshift-1-label downshift-1-toggle-button"
+        aria-labelledby="downshift-1-label"
         class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_select__1lclbjh4 variantButtonAppearance_variantButtonAppearance_select__gh61hw6 variantButtonAppearance__gh61hw2 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_alignItems_center__1jganc92 getSprinkles_background_neutral_background_base__1jganc9p getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_display_flex_mobile__1jganc9az getSprinkles_overflow_hidden__1jganc98r getSprinkles_width_100%_mobile__1jganc9fb Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_justifyContent_space-between__1jganc944"
         role="combobox"
         tabindex="0"
@@ -110,7 +112,7 @@ exports[`Given valid props, matches snapshot 1`] = `
         <div>
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-angle-down icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c getSprinkles_display_block_mobile__1jganc9aw getSprinkles_width_auto_mobile__1jganc9fk getSprinkles_minWidth_spacing2__1jganc98c"
+            class="svg-inline--fa fa-angle-down icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
             data-icon="angle-down"
             data-prefix="fas"
             focusable="false"

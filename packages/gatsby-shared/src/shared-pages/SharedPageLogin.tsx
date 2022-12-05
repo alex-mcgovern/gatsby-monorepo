@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext } from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import {
   Box,
@@ -13,7 +13,6 @@ import {
 } from "@alexmcgovern/firebase";
 import { Link, navigate } from "gatsby";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
 
 interface SharedPageLoginProps {
   location: {
@@ -34,22 +33,6 @@ const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
 };
 
 export function SharedPageLogin({ location }: SharedPageLoginProps) {
-  /** ---------------------------------------------
-   * Handle redirect to previous page on successful log in
-   * ----------------------------------------------- */
-
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const initiateRedirect = useCallback(() => {
-    setShouldRedirect(true);
-  }, []);
-
-  const handleRedirect = useCallback(() => {
-    if (location?.state?.returnTo) {
-      navigate(location.state.returnTo);
-    }
-  }, [location.state?.returnTo]);
-
   /** ---------------------------------------------
    * Handle firebase auth
    * ----------------------------------------------- */
@@ -74,6 +57,18 @@ export function SharedPageLogin({ location }: SharedPageLoginProps) {
     [signInWithEmailAndPassword]
   );
 
+  /** ---------------------------------------------
+   * Handle redirect to previous page on successful log in
+   * ----------------------------------------------- */
+
+  const handleRedirect = useCallback(() => {
+    if (!signInError && user) {
+      if (location?.state?.returnTo) {
+        navigate(location.state.returnTo);
+      }
+    }
+  }, [location?.state?.returnTo, signInError, user]);
+
   return (
     <Box marginY="spacing5">
       <Box display="grid" gridTemplateColumns={GRID_LAYOUT} gap="spacing3">
@@ -96,7 +91,7 @@ export function SharedPageLogin({ location }: SharedPageLoginProps) {
            * ----------------------------------------------- */}
 
           <Form
-            callbackOnSuccessfulFormSubmission={initiateRedirect}
+            callbackOnSuccessfulFormSubmission={handleRedirect}
             handleFormSubmission={logInOnFormSubmission}
             submitButtonText={user ? "Logged in" : "Log in"}
             disabled={!!user}
@@ -136,23 +131,18 @@ export function SharedPageLogin({ location }: SharedPageLoginProps) {
           )}
 
           {/** --------------------------------------------
-           * Handle redirect to previous page, and communicate state to user
-           * ----------------------------------------------- */}
-
-          {user && location?.state?.returnTo && shouldRedirect && (
-            <Box marginTop="spacing1">
-              Redirecting in{" "}
-              <CountdownWithCallback callback={handleRedirect} seconds={3} />.{" "}
-              <Link to={location.state.returnTo}>Go now</Link>
-            </Box>
-          )}
-
-          {/** --------------------------------------------
            * Allow non-logged in users to register an account
            * ----------------------------------------------- */}
 
           {!user && (
-            <Button size="sm" appearance="uiLink" to="/register" as={Link}>
+            <Button
+              name="register"
+              size="sm"
+              appearance="uiLink"
+              to="/register"
+              as={Link}
+              state={location?.state}
+            >
               Register an account
             </Button>
           )}

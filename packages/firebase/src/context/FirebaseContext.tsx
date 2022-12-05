@@ -1,14 +1,20 @@
 import type { ReactNode } from "react";
 import React, { createContext, useMemo } from "react";
-import type { FirebaseApp } from "firebase/app";
+import type { FirebaseApp, FirebaseOptions } from "firebase/app";
 import { initializeApp } from "firebase/app";
 import type { Auth, User } from "firebase/auth";
-import { getAuth } from "firebase/auth";
+import { connectAuthEmulator, getAuth } from "firebase/auth";
 import type { Firestore } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import {
+  connectFirestoreEmulator,
+  initializeFirestore,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const firebaseConfig = {
+const USE_EMULATOR =
+  process.env.GATSBY_USE_FIREBASE_EMULATOR === "true" || false;
+
+const firebaseConfig: FirebaseOptions = {
   apiKey: process.env.GATSBY_FIREBASE_WEB_API_KEY,
   authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.GATSBY_FIREBASE_DATABASE_URL,
@@ -21,7 +27,21 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
-const firestore = getFirestore(firebaseApp);
+const firestore = initializeFirestore(firebaseApp, {
+  experimentalForceLongPolling: USE_EMULATOR,
+});
+
+/**
+ * Optionally use emulator for testing/development
+ */
+if (USE_EMULATOR) {
+  connectFirestoreEmulator(firestore, "127.0.0.1", 8080);
+  connectAuthEmulator(firebaseAuth, "http://127.0.0.1:9099");
+}
+
+/** -----------------------------------------------------------------------------
+ * Main Firebase context provider
+ * ------------------------------------------------------------------------------- */
 
 interface FirebaseAuthProviderProps {
   children: ReactNode | Array<ReactNode>;
@@ -33,7 +53,7 @@ interface FirebaseContextProvided {
   firebaseApp: FirebaseApp;
   firebaseAuthLoading?: boolean;
   firebaseAuth: Auth;
-  firestore?: Firestore;
+  firestore: Firestore;
 }
 
 export const FirebaseContext = createContext<FirebaseContextProvided>({

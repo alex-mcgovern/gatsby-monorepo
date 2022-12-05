@@ -103,6 +103,7 @@ module.exports = {
     {
       files: [
         "gatsby-config.ts",
+        "cypress.config.ts",
         "jest.*",
         "**/pages/**/*.tsx",
         "**/templates/**/*.tsx",
@@ -153,7 +154,12 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        devDependencies: ["**/*.test.ts", "**/*.test.tsx", "./test/**/*"],
+        devDependencies: [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "./test/**/*",
+          "cypress.config.js",
+        ],
         // packageDir: path.resolve(__dirname),
       },
     ],
@@ -205,6 +211,7 @@ module.exports = {
      */
     "@typescript-eslint/prefer-optional-chain": "error",
     "arrow-body-style": ["error", "always"],
+    curly: ["error", "all"],
     "react/destructuring-assignment": [
       "error",
       "always",

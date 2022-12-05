@@ -10,10 +10,10 @@ export interface PaginationVarsShape {
   totalNbPages: number;
   canLoadPrevious: boolean;
   canLoadNext: boolean;
-  previousPage: number;
-  currentPage: number;
-  firstItemIndex: number;
-  lastItemIndex: number;
+  pageNbPrevious: number;
+  pageNbCurrent: number;
+  indexOfFirstInCursor: number;
+  indexOfLastInCursor: number;
 }
 
 export const getPaginationVars = ({
@@ -28,16 +28,18 @@ export const getPaginationVars = ({
   const canLoadPrevious = newIndex > 0 || false;
   const canLoadNext = newIndex < totalNbPages - 1 || false;
 
-  const firstItemIndex = newIndex ? newIndex * perPage : 0;
-  const lastItemIndex = docsLength ? newIndex * perPage + docsLength - 1 : 0;
+  const indexOfFirstInCursor = newIndex ? newIndex * perPage : 0;
+  const indexOfLastInCursor = docsLength
+    ? newIndex * perPage + docsLength - 1
+    : 0;
 
   return {
     totalNbPages,
     canLoadPrevious,
     canLoadNext,
-    currentPage: newIndex,
-    previousPage: currentIndex,
-    firstItemIndex,
-    lastItemIndex,
+    pageNbCurrent: newIndex,
+    pageNbPrevious: currentIndex,
+    indexOfFirstInCursor,
+    indexOfLastInCursor,
   };
 };

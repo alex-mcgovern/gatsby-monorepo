@@ -9,6 +9,6 @@ export interface CommentShape extends DocumentData {
   };
   description: string;
   rating: number;
-  documentRef?: DocumentReference<CommentShape>;
+  documentRef?: DocumentReference<DocumentData>;
   author_uid: string;
 }

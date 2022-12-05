@@ -18,7 +18,7 @@ afterEach(cleanup);
 
 test.skip("Given valid comments, renders without error", async () => {
   const { findByTestId } = renderTestComponent<FeedbackGraphProps>(
-    <FeedbackGraph documents={COMMENTS_DOCUMENTS} />
+    <FeedbackGraph comments={COMMENTS_DOCUMENTS} />
   );
 
   expect(await findByTestId("tested-component")).not.toBeNull();
@@ -26,7 +26,7 @@ test.skip("Given valid comments, renders without error", async () => {
 
 test.skip("Given valid comments, matches snapshot", async () => {
   const { findByTestId } = renderTestComponent<CommentShape>(
-    <FeedbackGraph documents={COMMENTS_DOCUMENTS} />
+    <FeedbackGraph comments={COMMENTS_DOCUMENTS} />
   );
 
   expect(await findByTestId("tested-component")).toMatchSnapshot();

@@ -20,12 +20,19 @@ import {
   getFirestore,
 } from "firebase/firestore";
 
+interface FeedbackFormDialogProps {
+  callbackOnFormSubmit: () => void;
+}
+
 interface FormDataShape {
   rating: string;
   description: string;
 }
 
-export function FeedbackFormDialog({ ...rest }) {
+export function FeedbackFormDialog({
+  callbackOnFormSubmit,
+  ...rest
+}: FeedbackFormDialogProps) {
   /** ---------------------------------------------
    * Setup dialog state & handlers
    * ----------------------------------------------- */
@@ -37,18 +44,13 @@ export function FeedbackFormDialog({ ...rest }) {
   }, []);
 
   /** ---------------------------------------------
-   * Get firebase app & initialise collection
+   * Get firebase app & initialize collection
    * ----------------------------------------------- */
 
   const { firebaseApp, user } = useContext(FirebaseContext) || {};
   const collectionRef = useMemo(() => {
     if (firebaseApp && user) {
-      return collection(
-        getFirestore(firebaseApp),
-        "feedback",
-        "data",
-        "comments"
-      );
+      return collection(getFirestore(firebaseApp), "feedback");
     }
     return null;
   }, [firebaseApp, user]);
@@ -59,7 +61,9 @@ export function FeedbackFormDialog({ ...rest }) {
 
   const createCommentOnFormSubmission = useCallback(
     async ({ rating, description }: FormDataShape) => {
-      if (!collectionRef || !user) return null;
+      if (!collectionRef || !user) {
+        return null;
+      }
 
       return addDoc(collectionRef, {
         rating: Number.parseInt(rating, 10),
@@ -74,6 +78,16 @@ export function FeedbackFormDialog({ ...rest }) {
     },
     [collectionRef, user]
   );
+  /** ---------------------------------------------
+   * Callback on form submission
+   * ----------------------------------------------- */
+
+  const handleSuccessfulFormSubmission = useCallback(() => {
+    if (callbackOnFormSubmit) {
+      callbackOnFormSubmit();
+    }
+    closeDialog();
+  }, [callbackOnFormSubmit, closeDialog]);
 
   /** ---------------------------------------------
    * Trigger for dialog
@@ -81,7 +95,7 @@ export function FeedbackFormDialog({ ...rest }) {
 
   const dialogTriggerNode = useMemo(() => {
     return (
-      <Button size="lg" iconLeading={faMessage}>
+      <Button size="lg" name="leave-feedback" iconLeading={faMessage}>
         Leave feedback
       </Button>
     );
@@ -101,7 +115,7 @@ export function FeedbackFormDialog({ ...rest }) {
         description="Please leave a few details on how we are doing so that we can continue to improve our service. Thanks, you rock. 🤘"
       >
         <Form
-          callbackOnSuccessfulFormSubmission={closeDialog}
+          callbackOnSuccessfulFormSubmission={handleSuccessfulFormSubmission}
           handleFormSubmission={createCommentOnFormSubmission}
           submitButtonText="Submit feedback"
         >

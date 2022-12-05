@@ -30,12 +30,12 @@ const PER_PAGE_DROPDOWN_ITEMS: Array<DropdownItem> = [
 interface PaginationControlsProps {
   canLoadNext?: boolean;
   canLoadPrevious?: boolean;
-  currentPage?: number;
-  firstItemIndex?: number;
-  lastItemIndex?: number;
+  pageNbCurrent?: number;
+  indexOfFirstInCursor?: number;
+  indexOfLastInCursor?: number;
   loadNext?: () => void;
   loadPrevious?: () => void;
-  setPerPage?: (perPage: number) => void;
+  setCommentsPerPage?: (perPage: number) => void;
   totalNbComments?: number;
   totalNbPages?: number;
 }
@@ -43,23 +43,23 @@ interface PaginationControlsProps {
 export function PaginationControls({
   canLoadNext,
   canLoadPrevious,
-  currentPage,
-  firstItemIndex = 0,
-  lastItemIndex = 0,
+  pageNbCurrent,
+  indexOfFirstInCursor = 0,
+  indexOfLastInCursor = 0,
   loadNext,
   loadPrevious,
-  setPerPage,
+  setCommentsPerPage,
   totalNbComments,
   totalNbPages,
   ...rest
 }: PaginationControlsProps) {
   const updatePerPage = useCallback(
     (newValue: DropdownItem) => {
-      if (setPerPage) {
-        setPerPage(Number(newValue.value));
+      if (setCommentsPerPage) {
+        setCommentsPerPage(Number(newValue.value));
       }
     },
-    [setPerPage]
+    [setCommentsPerPage]
   );
 
   return (
@@ -88,6 +88,7 @@ export function PaginationControls({
             disabled={!canLoadNext}
             iconLeading={faAngleLeft}
             onClick={loadNext}
+            name="load-next"
           >
             Older
           </Button>
@@ -96,6 +97,7 @@ export function PaginationControls({
             disabled={!canLoadPrevious}
             iconTrailing={faAngleRight}
             onClick={loadPrevious}
+            name="load-previous"
           >
             Newer
           </Button>
@@ -107,13 +109,13 @@ export function PaginationControls({
 
         <Box marginLeft="auto" fontStyle="body_sm">
           <div>
-            Page <b>{currentPage ? currentPage + 1 : 1}</b> of{" "}
+            Page <b>{pageNbCurrent ? pageNbCurrent + 1 : 1}</b> of{" "}
             <b>{totalNbPages}</b>
           </div>
 
           <div>
-            <b> {firstItemIndex + 1}</b>—<b>{lastItemIndex + 1} </b> of{" "}
-            <b>{totalNbComments}</b>
+            <b> {indexOfFirstInCursor + 1}</b>—<b>{indexOfLastInCursor + 1} </b>{" "}
+            of <b>{totalNbComments}</b>
           </div>
         </Box>
 

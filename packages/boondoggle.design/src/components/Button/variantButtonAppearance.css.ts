@@ -12,7 +12,7 @@ import { varsButtonTheme } from "./button.theme.css";
 export const variantButtonAppearance = styleVariants({
   primary: [
     getSprinkles({
-      paddingX: "spacing1",
+      paddingX: "spacing2",
       justifyContent: "center",
       whiteSpace: "nowrap",
       fontWeight: "semibold",

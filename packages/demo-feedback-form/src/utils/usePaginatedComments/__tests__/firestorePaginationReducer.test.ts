@@ -1,5 +1,5 @@
 import { QUERY_SNAPSHOT_MOCK } from "../__mocks__/QUERY_SNAPSHOT.mock";
-import { firestorePaginationReducer } from "../firestorePaginationReducer";
+import { firestorePaginationReducer } from "../utils/firestorePaginationReducer";
 
 /** -----------------------------------------------------------------------------
  * Initialisation
@@ -12,8 +12,8 @@ test("Given initial values, returns state correctly", () => {
         canLoadPrevious: false,
         canLoadNext: false,
         totalNbComments: 0,
-        currentPage: 0,
-        previousPage: 0,
+        pageNbCurrent: 0,
+        pageNbPrevious: 0,
         totalNbPages: 0,
         commentsPerPage: 10,
       },
@@ -24,11 +24,11 @@ test("Given initial values, returns state correctly", () => {
     canLoadNext: false,
     totalNbComments: 0,
     commentsPerPage: 10,
-    currentPage: 0,
-    previousPage: 0,
+    pageNbCurrent: 0,
+    pageNbPrevious: 0,
     totalNbPages: 0,
-    firstItemIndex: 0,
-    lastItemIndex: 0,
+    indexOfFirstInCursor: 0,
+    indexOfLastInCursor: 0,
   });
 });
 
@@ -37,74 +37,6 @@ test("Given initial values, returns state correctly", () => {
  * ------------------------------------------------------------------------------- */
 
 describe("Dispatch actions", () => {
-  /** ---------------------------------------------
-   * Update total number of comments
-   * ----------------------------------------------- */
-
-  describe("SET_COUNT", () => {
-    test("Given initial values, without snapshot, when updates count, returns correct values", () => {
-      expect(
-        firestorePaginationReducer(
-          {
-            canLoadNext: false,
-            canLoadPrevious: false,
-            commentsPerPage: 10,
-            currentPage: 0,
-            previousPage: 0,
-            totalNbComments: 0,
-            totalNbPages: 0,
-          },
-          {
-            type: "SET_COUNT",
-            payload: { totalNbComments: 100 },
-          }
-        )
-      ).toStrictEqual({
-        canLoadNext: true,
-        canLoadPrevious: false,
-        commentsPerPage: 10,
-        currentPage: 0,
-        firstItemIndex: 0,
-        lastItemIndex: 0,
-        previousPage: 0,
-        totalNbComments: 100,
-        totalNbPages: 10,
-      });
-    });
-
-    test("Given first page, with snapshot, when updates count, returns correct values", () => {
-      expect(
-        firestorePaginationReducer(
-          {
-            canLoadNext: true,
-            canLoadPrevious: true,
-            commentsPerPage: 10,
-            currentPage: 2,
-            previousPage: 3,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
-            totalNbComments: 100,
-            totalNbPages: 10,
-          },
-          {
-            type: "SET_COUNT",
-            payload: { totalNbComments: 100 },
-          }
-        )
-      ).toStrictEqual({
-        canLoadNext: true,
-        canLoadPrevious: false,
-        commentsPerPage: 10,
-        currentPage: 0,
-        firstItemIndex: 0,
-        lastItemIndex: 9,
-        previousPage: 2,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
-        totalNbComments: 100,
-        totalNbPages: 10,
-      });
-    });
-  });
-
   /** ---------------------------------------------
    * Load next
    * ----------------------------------------------- */
@@ -118,10 +50,10 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             totalNbComments: 100,
             commentsPerPage: 10,
-            currentPage: 0,
-            previousPage: 0,
+            pageNbCurrent: 0,
+            pageNbPrevious: 0,
             totalNbPages: 10,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
           },
           {
             type: "LOAD_OLDER",
@@ -131,11 +63,11 @@ describe("Dispatch actions", () => {
         canLoadNext: true,
         canLoadPrevious: true,
         commentsPerPage: 10,
-        currentPage: 1,
-        firstItemIndex: 10,
-        lastItemIndex: 19,
-        previousPage: 0,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 1,
+        indexOfFirstInCursor: 10,
+        indexOfLastInCursor: 19,
+        pageNbPrevious: 0,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -148,9 +80,9 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             canLoadPrevious: true,
             commentsPerPage: 10,
-            currentPage: 2,
-            previousPage: 3,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            pageNbCurrent: 2,
+            pageNbPrevious: 3,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -162,11 +94,11 @@ describe("Dispatch actions", () => {
         canLoadNext: true,
         canLoadPrevious: true,
         commentsPerPage: 10,
-        currentPage: 3,
-        firstItemIndex: 30,
-        lastItemIndex: 39,
-        previousPage: 2,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 3,
+        indexOfFirstInCursor: 30,
+        indexOfLastInCursor: 39,
+        pageNbPrevious: 2,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -179,9 +111,9 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             canLoadPrevious: true,
             commentsPerPage: 10,
-            currentPage: 8,
-            previousPage: 7,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            pageNbCurrent: 8,
+            pageNbPrevious: 7,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -193,11 +125,11 @@ describe("Dispatch actions", () => {
         canLoadNext: false,
         canLoadPrevious: true,
         commentsPerPage: 10,
-        currentPage: 9,
-        firstItemIndex: 90,
-        lastItemIndex: 99,
-        previousPage: 8,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 9,
+        indexOfFirstInCursor: 90,
+        indexOfLastInCursor: 99,
+        pageNbPrevious: 8,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -210,9 +142,9 @@ describe("Dispatch actions", () => {
             canLoadNext: false,
             canLoadPrevious: true,
             commentsPerPage: 10,
-            currentPage: 9,
-            previousPage: 8,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            pageNbCurrent: 9,
+            pageNbPrevious: 8,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -224,11 +156,11 @@ describe("Dispatch actions", () => {
         canLoadNext: false,
         canLoadPrevious: true,
         commentsPerPage: 10,
-        currentPage: 9,
-        firstItemIndex: 90,
-        lastItemIndex: 99,
-        previousPage: 8,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 9,
+        indexOfFirstInCursor: 90,
+        indexOfLastInCursor: 99,
+        pageNbPrevious: 8,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -248,10 +180,10 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             totalNbComments: 100,
             commentsPerPage: 10,
-            currentPage: 0,
-            previousPage: 0,
+            pageNbCurrent: 0,
+            pageNbPrevious: 0,
             totalNbPages: 10,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
           },
           {
             type: "LOAD_NEWER",
@@ -262,12 +194,12 @@ describe("Dispatch actions", () => {
         canLoadNext: true,
         totalNbComments: 100,
         commentsPerPage: 10,
-        currentPage: 0,
-        previousPage: 0,
-        firstItemIndex: 0,
-        lastItemIndex: 9,
+        pageNbCurrent: 0,
+        pageNbPrevious: 0,
+        indexOfFirstInCursor: 0,
+        indexOfLastInCursor: 9,
         totalNbPages: 10,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
       });
     });
 
@@ -278,9 +210,9 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             canLoadPrevious: true,
             commentsPerPage: 10,
-            currentPage: 3,
-            previousPage: 4,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            pageNbCurrent: 3,
+            pageNbPrevious: 4,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -292,11 +224,11 @@ describe("Dispatch actions", () => {
         canLoadNext: true,
         canLoadPrevious: true,
         commentsPerPage: 10,
-        currentPage: 2,
-        firstItemIndex: 20,
-        lastItemIndex: 29,
-        previousPage: 3,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 2,
+        indexOfFirstInCursor: 20,
+        indexOfLastInCursor: 29,
+        pageNbPrevious: 3,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });
@@ -309,9 +241,9 @@ describe("Dispatch actions", () => {
             canLoadNext: true,
             canLoadPrevious: true,
             commentsPerPage: 10,
-            currentPage: 1,
-            previousPage: 2,
-            cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+            pageNbCurrent: 1,
+            pageNbPrevious: 2,
+            querySnapshot: QUERY_SNAPSHOT_MOCK,
             totalNbComments: 100,
             totalNbPages: 10,
           },
@@ -323,11 +255,11 @@ describe("Dispatch actions", () => {
         canLoadNext: true,
         canLoadPrevious: false,
         commentsPerPage: 10,
-        currentPage: 0,
-        firstItemIndex: 0,
-        lastItemIndex: 9,
-        previousPage: 1,
-        cachedCommentsSnapshot: QUERY_SNAPSHOT_MOCK,
+        pageNbCurrent: 0,
+        indexOfFirstInCursor: 0,
+        indexOfLastInCursor: 9,
+        pageNbPrevious: 1,
+        querySnapshot: QUERY_SNAPSHOT_MOCK,
         totalNbComments: 100,
         totalNbPages: 10,
       });

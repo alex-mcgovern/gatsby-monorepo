@@ -16,7 +16,9 @@
     "@alexmcgovern/gatsby-shared": "*",
     "@alexmcgovern/gatsby-site": "*",
     "@alexmcgovern/utils": "*",
-    "@alexmcgovern/web-vitals-widget": "*"
+    "@alexmcgovern/web-vitals-widget": "*",
+    "firebase-tools": "^11.16.1",
+    "wait-on": "^6.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
@@ -36,6 +38,8 @@
     "@typescript-eslint/parser": "^5.43.0",
     "@vanilla-extract/css": "^1.7.2",
     "@vanilla-extract/jest-transform": "^1.0.1",
+    "cypress": "^11.2.0",
+    "dotenv-parse-variables": "^2.0.0",
     "eslint": "^8.28.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -75,20 +79,25 @@
   },
   "scripts": {
     "bootstrap": "lerna clean --yes && lerna bootstrap --use-workspaces",
-    "build:demo-feedback-form": "cd packages/demo-feedback-form gatsby build",
-    "build": "gatsby build",
-    "clean": "gatsby clean",
-    "develop": "gatsby develop",
-    "develop:demo-feedback-form": "cd packages/demo-feedback-form && npm run develop",
-    "develop:pokedex": "cd packages/pokedex && npm run develop",
+    "cy:open": "cypress open",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "firebase:emulators": "firebase emulators:start",
+    "firebase:emulators:exec": "firebase emulators:exec",
     "jest": "jest .",
-    "jest:boondoggle.design": "jest --select-projects boondoggle.design",
-    "jest:demo-feedback-form": "jest --select-projects demo-feedback-form",
-    "jest:gatsby-site": "jest --select-projects gatsby-site",
     "jest:watch": "jest --watch",
     "lint": "eslint . --fix",
-    "serve": "gatsby serve"
+    "boondoggle:jest": "jest --select-projects boondoggle.design",
+    "demo-feedback:cy:open": "npm run demo-feedback:develop & wait-on http://localhost:8000 && npm run cy:open",
+    "demo-feedback:cy:open:emulate-firebase": "firebase emulators:exec 'npm run demo-feedback:develop & wait-on http://localhost:8000 && npm run cy:open'",
+    "demo-feedback:cy:run": "npm run demo-feedback:develop & wait-on http://localhost:8000 && cypress run --spec 'cypress/e2e/packages/demo-feedback-form/**/*'",
+    "demo-feedback:cy:run:emulate-firebase": "firebase emulators:exec 'npm run demo-feedback:cy:run'",
+    "demo-feedback:develop": "cd packages/demo-feedback-form && gatsby develop",
+    "demo-feedback:develop:emulate-firebase": "cd packages/demo-feedback-form && GATSBY_USE_FIREBASE_EMULATOR=true gatsby develop",
+    "demo-feedback:jest": "jest --select-projects demo-feedback-form",
+    "demo-pokedex:develop": "cd packages/demo-pokedex && gatsby develop",
+    "demo-pokedex:jest": "jest --select-projects gatsby-pokedex",
+    "gatsby-site:develop": "cd packages/gatsby-site && gatsby develop",
+    "gatsby-site:jest": "jest --select-projects gatsby-site"
   },
   "workspaces": [
     "packages/*"

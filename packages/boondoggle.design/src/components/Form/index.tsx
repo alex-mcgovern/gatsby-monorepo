@@ -10,11 +10,15 @@ import { getHookFormButtonIconProps } from "./utils/getHookFormButtonIcon";
 
 export interface FormProps {
   callbackOnSuccessfulFormSubmission: () => void;
-  children: Array<
+  children:
     | ReactElement<FormInputProps>
     | ReactElement<FormSingleSelectSingleCreatableProps>
     | ReactElement<FormSingleSelectProps>
-  >;
+    | Array<
+        | ReactElement<FormInputProps>
+        | ReactElement<FormSingleSelectSingleCreatableProps>
+        | ReactElement<FormSingleSelectProps>
+      >;
   /** ToDo(react-hook-form): Fix submission handler types */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleFormSubmission: (...args: Array<any>) => Promise<unknown>;
@@ -113,7 +117,9 @@ export function Form({
 
         <Button
           aria-label={submitButtonText}
+          size="lg"
           width="100%"
+          name="submit"
           type="submit"
           iconTrailing={buttonIcon}
           iconTrailingProps={buttonIconProps}

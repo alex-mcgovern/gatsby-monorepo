@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext } from "react";
 import type { GetSprinklesArgs } from "@alexmcgovern/boondoggle.design";
 import {
   Box,
@@ -12,7 +12,6 @@ import {
 } from "@alexmcgovern/firebase";
 import { navigate } from "gatsby";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { CountdownWithCallback } from "../shared-components/CountdownWithCallback";
 
 interface SharedPageRegisterProps {
   location: {
@@ -37,17 +36,14 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
    * Handle redirect to previous page on successful log in
    * ----------------------------------------------- */
 
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  const initiateRedirect = useCallback(() => {
-    setShouldRedirect(true);
-  }, []);
-
   const handleRedirect = useCallback(() => {
-    if (location?.state?.returnTo) {
-      navigate(location.state.returnTo);
+    if (location?.state) {
+      navigate("/update-profile/", {
+        state: location.state,
+      });
     }
-  }, [location.state?.returnTo]);
+    navigate("/update-profile/");
+  }, [location?.state]);
 
   /** ---------------------------------------------
    * Handle firebase auth
@@ -67,7 +63,7 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
    * Handle form submission
    * ----------------------------------------------- */
 
-  const logInOnFormSubmission = useCallback(
+  const registerOnFormSubmission = useCallback(
     async ({ email, password }: FormDataShape) => {
       return createUserWithEmailAndPassword(email, password);
     },
@@ -97,8 +93,8 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
            * ----------------------------------------------- */}
 
           <Form
-            callbackOnSuccessfulFormSubmission={initiateRedirect}
-            handleFormSubmission={logInOnFormSubmission}
+            callbackOnSuccessfulFormSubmission={handleRedirect}
+            handleFormSubmission={registerOnFormSubmission}
             submitButtonText={user ? "Registered" : "Register"}
             disabled={!!user}
           >
@@ -133,17 +129,6 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
             <InputErrorMessage
               message={getFirebaseAuthErrorMessage(registrationError.code)}
             />
-          )}
-
-          {/** --------------------------------------------
-           * Handle redirect to previous page, and communicate state to user
-           * ----------------------------------------------- */}
-
-          {user && location?.state?.returnTo && shouldRedirect && (
-            <Box>
-              Redirecting in{" "}
-              <CountdownWithCallback callback={handleRedirect} seconds={3} />
-            </Box>
           )}
         </Box>
       </Box>

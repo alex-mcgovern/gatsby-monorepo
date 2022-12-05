@@ -1,42 +1,33 @@
 import React from "react";
-import { Box, Loader } from "@alexmcgovern/boondoggle.design";
+import { Box, Card, Loader } from "@alexmcgovern/boondoggle.design";
 import type { FirestoreError } from "firebase/firestore";
 import type { CommentShape } from "../types";
 import { Comment } from "./Comment";
 
 export interface CommentsListProps {
-  documents: Array<CommentShape>;
-  loading?: boolean;
+  comments?: Array<CommentShape>;
+  isLoading?: boolean;
   error?: FirestoreError;
 }
 
 export function CommentsList({
-  documents,
-  loading,
+  comments,
+  isLoading,
   error,
   ...rest
 }: CommentsListProps) {
-  if (loading) {
-    return <Loader {...rest} size="3x" width="100%" minHeight="75vh" />;
+  if (isLoading) {
+    return <Loader {...rest} size="4x" width="100%" minHeight="25vh" />;
   }
 
   if (error) {
-    return (
-      <Box {...rest}>
-        <Box as="h1">Error</Box>
-        <Box as="section">
-          <Box as="h3" fontSize="body_lg" fontWeight="normal">
-            {error.message}
-          </Box>
-        </Box>
-      </Box>
-    );
+    return <Card textAlign="center">{error.message}</Card>;
   }
 
-  if (Array.isArray(documents) && documents.length > 0) {
+  if (Array.isArray(comments) && comments.length > 0) {
     return (
       <Box {...rest} display="grid" gap="spacing2" gridTemplateColumns="1x">
-        {documents.map((comment) => {
+        {comments.map((comment) => {
           return (
             <Comment
               {...comment}
@@ -48,5 +39,5 @@ export function CommentsList({
     );
   }
 
-  return <Box {...rest}>No documents. Probably something is broken. 🤔</Box>;
+  return <Card textAlign="center">No feedback to display yet.</Card>;
 }

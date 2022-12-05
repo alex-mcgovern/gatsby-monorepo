@@ -9,7 +9,10 @@ exports[`Given valid comment, matches snapshot 1`] = `
     <div
       class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
     >
+      Bob smith
+       (
       test123@test.com
+      )
     </div>
     <div
       class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
@@ -17,7 +20,6 @@ exports[`Given valid comment, matches snapshot 1`] = `
       27/11/2022, 18:16:47
     </div>
   </header>
-  <hr />
   <p>
     This is a test description
   </p>

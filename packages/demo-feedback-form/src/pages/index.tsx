@@ -19,18 +19,19 @@ export default function FeedbackForm() {
    * Get comments from firestore, with pagination controls
    */
   const {
-    canLoadPrevious,
     canLoadNext,
-    documents,
-    totalNbComments,
-    setPerPage,
+    canLoadPrevious,
+    comments,
     error,
-    loading,
-    firstItemIndex,
-    lastItemIndex,
-    currentPage,
+    indexOfFirstInCursor,
+    indexOfLastInCursor,
+    initialize,
+    isLoading,
     loadNext,
     loadPrevious,
+    pageNbCurrent,
+    setCommentsPerPage,
+    totalNbComments,
     totalNbPages,
   } = usePaginatedComments({
     commentsPerPage: 5,
@@ -41,7 +42,7 @@ export default function FeedbackForm() {
    * Scroll to top on change of total comment count, or page count.
    */
   const scrollRef = useScrollToTop({
-    currentPage,
+    pageNbCurrent,
     totalNbComments,
   });
 
@@ -70,12 +71,14 @@ export default function FeedbackForm() {
          * ----------------------------------------------- */}
 
         {user ? (
-          <FeedbackFormDialog />
+          <FeedbackFormDialog callbackOnFormSubmit={initialize} />
         ) : (
           <Button
             as={Link}
+            name="log-in-to-leave-feedback"
             iconLeading={faRightToBracket}
             state={LINK_STATE}
+            size="lg"
             to="/login"
             width="max-content"
           >
@@ -92,14 +95,14 @@ export default function FeedbackForm() {
       <PaginationControls
         canLoadNext={canLoadNext}
         canLoadPrevious={canLoadPrevious}
-        currentPage={currentPage}
-        firstItemIndex={firstItemIndex}
-        lastItemIndex={lastItemIndex}
+        pageNbCurrent={pageNbCurrent}
+        indexOfFirstInCursor={indexOfFirstInCursor}
+        indexOfLastInCursor={indexOfLastInCursor}
         loadNext={loadNext}
         loadPrevious={loadPrevious}
         totalNbComments={totalNbComments}
         totalNbPages={totalNbPages}
-        setPerPage={setPerPage}
+        setCommentsPerPage={setCommentsPerPage}
       />
 
       {/** -----------------------------------------------------------------------------
@@ -117,7 +120,7 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      <FeedbackGraph documents={documents} />
+      <FeedbackGraph comments={comments} />
 
       <hr />
 
@@ -135,8 +138,8 @@ export default function FeedbackForm() {
         </Box>
       </Box>
 
-      {documents && (
-        <CommentsList documents={documents} error={error} loading={loading} />
+      {comments && (
+        <CommentsList comments={comments} error={error} isLoading={isLoading} />
       )}
     </Box>
   );
