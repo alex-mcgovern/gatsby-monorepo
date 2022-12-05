@@ -42,7 +42,7 @@ export const dialogContent = style([
     boxShadow: "lg",
     width: { mobile: "gridSpan10", tablet: "gridSpan8", desktop: "gridSpan8" },
     maxWidth: "maxContained",
-    maxHeight: "75vh",
+    maxHeight: "100vh",
   }),
   {
     zIndex: 99999,
