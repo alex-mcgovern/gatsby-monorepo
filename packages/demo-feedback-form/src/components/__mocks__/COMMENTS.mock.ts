@@ -1,6 +1,6 @@
-import type { CommentsListProps } from "../CommentsList";
+import { CommentShape } from "../../types";
 
-export const COMMENTS_DOCUMENTS: CommentsListProps["documents"] = [
+export const COMMENTS_DOCUMENTS: Array<CommentShape> = [
   {
     author_uid: "aEu0ygMXLHQ5ri0CI4EHIHIwOv73",
     created: {
@@ -8,7 +8,7 @@ export const COMMENTS_DOCUMENTS: CommentsListProps["documents"] = [
       seconds: 1669573007,
     },
     description: "This is a test description",
-    displayName: null,
+    displayName: "Bob smith",
     email: "test123@test.com",
     rating: 4,
   },

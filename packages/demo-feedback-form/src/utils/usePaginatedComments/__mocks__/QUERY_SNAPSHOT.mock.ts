@@ -1,5 +1,5 @@
 import { QuerySnapshot } from "firebase/firestore";
-import { CommentShape } from "../../types";
+import { CommentShape } from "../../../types";
 
 /**
  * Lightweight Firestore query snapshot mock.

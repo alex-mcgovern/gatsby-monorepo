@@ -18,5 +18,6 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ES2020"
-  }
+  },
+  "exclude": ["cypress", "./cypress.config.ts"]
 }

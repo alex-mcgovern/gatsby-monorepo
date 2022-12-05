@@ -14,7 +14,7 @@ afterEach(cleanup);
  * ----------------------------------------------- */
 jest.mock("firebase/firestore", () => {
   return {
-    getFirestore: jest.fn(),
+    initializeFirestore: jest.fn(),
   };
 });
 jest.mock("firebase/app", () => {
@@ -49,6 +49,7 @@ test("Given valid comment, renders correct text", () => {
     <Comment {...COMMENTS_DOCUMENTS[0]} />
   );
 
-  expect(getByText("test123@test.com")).not.toBeNull();
+  expect(getByText("Bob Smith", { exact: false })).not.toBeNull();
+  expect(getByText("test123@test.com", { exact: false })).not.toBeNull();
   expect(getByText("This is a test description")).not.toBeNull();
 });

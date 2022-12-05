@@ -211,6 +211,7 @@ module.exports = {
      */
     "@typescript-eslint/prefer-optional-chain": "error",
     "arrow-body-style": ["error", "always"],
+    curly: ["error", "all"],
     "react/destructuring-assignment": [
       "error",
       "always",

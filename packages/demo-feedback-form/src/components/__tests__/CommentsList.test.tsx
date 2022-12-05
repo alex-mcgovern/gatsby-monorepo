@@ -14,7 +14,7 @@ afterEach(cleanup);
  * ----------------------------------------------- */
 jest.mock("firebase/firestore", () => {
   return {
-    getFirestore: jest.fn(),
+    initializeFirestore: jest.fn(),
   };
 });
 jest.mock("firebase/app", () => {
@@ -31,8 +31,8 @@ jest.mock("firebase/auth", () => {
 test("Given valid comment list, renders without error", () => {
   const { getByTestId } = renderTestComponent<CommentsListProps>(
     <CommentsList
-      documents={COMMENTS_DOCUMENTS}
-      loading={false}
+      comments={COMMENTS_DOCUMENTS}
+      isLoading={false}
       error={undefined}
     />
   );
@@ -43,8 +43,8 @@ test("Given valid comment list, renders without error", () => {
 test("Given valid comment list, matches snapshot", () => {
   const { getByTestId } = renderTestComponent<CommentsListProps>(
     <CommentsList
-      documents={COMMENTS_DOCUMENTS}
-      loading={false}
+      comments={COMMENTS_DOCUMENTS}
+      isLoading={false}
       error={undefined}
     />
   );
@@ -52,9 +52,9 @@ test("Given valid comment list, matches snapshot", () => {
   expect(getByTestId("tested-component")).toMatchSnapshot();
 });
 
-test("Given loading state, renders loader", () => {
+test("Given isLoading state, renders loader", () => {
   const { getByRole } = renderTestComponent<CommentsListProps>(
-    <CommentsList documents={[]} loading={true} error={undefined} />
+    <CommentsList comments={[]} isLoading={true} error={undefined} />
   );
 
   expect(getByRole("img", { hidden: true })).not.toBeNull();
@@ -63,8 +63,8 @@ test("Given loading state, renders loader", () => {
 test("Given error, renders error", () => {
   const { getByText } = renderTestComponent<CommentsListProps>(
     <CommentsList
-      documents={[]}
-      loading={false}
+      comments={[]}
+      isLoading={false}
       error={{ message: "Error message", code: "unknown", name: "Error name" }}
     />
   );

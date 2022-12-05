@@ -1,7 +1,8 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import type { ButtonProps } from "@alexmcgovern/boondoggle.design";
 import { Box, Button, ThemeContext } from "@alexmcgovern/boondoggle.design";
 import { FirebaseContext } from "@alexmcgovern/firebase";
+import { checkIsInClient } from "@alexmcgovern/utils";
 import {
   faHouseUser,
   faMoon,
@@ -24,6 +25,15 @@ export function Header() {
     return firebaseAuth?.signOut();
   }, [firebaseAuth]);
 
+  const returnToAfterLoginLinkState = useMemo(() => {
+    if (checkIsInClient()) {
+      return {
+        returnTo: window.location.pathname,
+      };
+    }
+    return {};
+  }, []);
+
   return (
     <Box
       as="nav"
@@ -37,6 +47,7 @@ export function Header() {
       <Button
         {...NAV_BUTTON_COMMON_PROPS}
         as={Link}
+        name="home"
         iconLeading={faHouseUser}
         to="/"
       >
@@ -64,6 +75,7 @@ export function Header() {
             to="/login"
             name="log-in"
             iconLeading={faRightToBracket}
+            state={returnToAfterLoginLinkState}
           >
             Log in
           </Button>
@@ -74,6 +86,7 @@ export function Header() {
           iconLeading={dark ? faSun : faMoon}
           id="header-dark-mode-button"
           onClick={toggleDark}
+          name="light-dark"
           size="md_square"
           {...NAV_BUTTON_COMMON_PROPS}
         />

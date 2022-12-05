@@ -12,7 +12,10 @@ exports[`Given valid comment list, matches snapshot 1`] = `
       <div
         class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
       >
+        Bob smith
+         (
         test123@test.com
+        )
       </div>
       <div
         class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
@@ -125,7 +128,10 @@ exports[`Given valid comment list, matches snapshot 1`] = `
       <div
         class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
       >
+        Abelard Le Brum
+         (
         aleu@over-blog.com
+        )
       </div>
       <div
         class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
@@ -238,7 +244,10 @@ exports[`Given valid comment list, matches snapshot 1`] = `
       <div
         class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
       >
+        Enrichetta McIllrick
+         (
         emcillrickl@buzzfeed.com
+        )
       </div>
       <div
         class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
@@ -353,7 +362,10 @@ Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, 
       <div
         class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
       >
+        Lazarus Booker
+         (
         lbooker1i@redcross.org
+        )
       </div>
       <div
         class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"
@@ -468,7 +480,10 @@ Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum
       <div
         class="getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontWeight_medium__1jganc93f"
       >
+        Kennan Kyne
+         (
         kkynea@census.gov
+        )
       </div>
       <div
         class="getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_fontWeight_medium__1jganc93f"

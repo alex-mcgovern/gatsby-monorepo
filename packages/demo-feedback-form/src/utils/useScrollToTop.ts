@@ -1,7 +1,7 @@
 import { createRef, useEffect, useState } from "react";
 
 interface UseScrollToTopArgs {
-  currentPage?: number;
+  pageNbCurrent?: number;
   totalNbComments?: number;
 }
 
@@ -13,28 +13,21 @@ interface UseScrollToTopArgs {
  * ToDo(feedback-form): Refine "scroll to top" behaviour
  */
 export function useScrollToTop({
-  currentPage,
+  pageNbCurrent,
   totalNbComments,
 }: UseScrollToTopArgs) {
   const scrollRef = createRef<HTMLHRElement>();
-  const [cachedPage, setCachedPage] = useState(0);
-  const [cachedCount, setCachedCount] = useState(0);
+  const [cachedPageNb, setCachedPage] = useState(0);
 
   useEffect(() => {
-    if (
-      scrollRef.current &&
-      (currentPage !== cachedPage || totalNbComments !== cachedCount)
-    ) {
-      if (currentPage) {
-        setCachedPage(currentPage);
+    if (scrollRef.current && pageNbCurrent !== cachedPageNb) {
+      if (pageNbCurrent !== undefined) {
+        setCachedPage(pageNbCurrent);
       }
 
-      if (totalNbComments) {
-        setCachedCount(totalNbComments);
-      }
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [cachedCount, cachedPage, currentPage, scrollRef, totalNbComments]);
+  }, [cachedPageNb, pageNbCurrent, scrollRef, totalNbComments]);
 
   return scrollRef;
 }

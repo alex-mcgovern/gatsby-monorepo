@@ -6,14 +6,11 @@ import {
   FormInput,
   InputErrorMessage,
 } from "@alexmcgovern/boondoggle.design";
-import {
-  FirebaseContext,
-  getFirebaseAuthErrorMessage,
-} from "@alexmcgovern/firebase";
+import { FirebaseContext } from "@alexmcgovern/firebase";
 import { navigate } from "gatsby";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useUpdateProfile } from "react-firebase-hooks/auth";
 
-interface SharedPageRegisterProps {
+interface SharedPageLoginProps {
   location: {
     state?: {
       returnTo?: string;
@@ -22,8 +19,7 @@ interface SharedPageRegisterProps {
 }
 
 interface FormDataShape {
-  email: string;
-  password: string;
+  displayName: string;
 }
 
 const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
@@ -31,19 +27,18 @@ const GRID_LAYOUT: GetSprinklesArgs["gridTemplateColumns"] = {
   tablet: "2x",
 };
 
-export function SharedPageRegister({ location }: SharedPageRegisterProps) {
+export function SharedPageUpdateProfile({ location }: SharedPageLoginProps) {
   /** ---------------------------------------------
    * Handle redirect to previous page on successful log in
    * ----------------------------------------------- */
+  /** ToDo(update-profile): Debug why `navigate` not passing state from previous page */
 
   const handleRedirect = useCallback(() => {
-    if (location?.state) {
-      navigate("/update-profile/", {
-        state: location.state,
-      });
+    if (location?.state?.returnTo) {
+      navigate("/");
     }
-    navigate("/update-profile/");
-  }, [location?.state]);
+    navigate("/");
+  }, [location.state?.returnTo]);
 
   /** ---------------------------------------------
    * Handle firebase auth
@@ -55,19 +50,17 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
    * Note, we don't need 2nd & 3rd positional returns from this hook,
    * take care not to break this by omitting them.
    */
-
-  const [createUserWithEmailAndPassword, , , registrationError] =
-    useCreateUserWithEmailAndPassword(firebaseAuth);
+  const [updateProfile, , updateProfileError] = useUpdateProfile(firebaseAuth);
 
   /** ---------------------------------------------
    * Handle form submission
    * ----------------------------------------------- */
 
-  const registerOnFormSubmission = useCallback(
-    async ({ email, password }: FormDataShape) => {
-      return createUserWithEmailAndPassword(email, password);
+  const updateDisplayNameOnFormSubmission = useCallback(
+    async ({ displayName }: FormDataShape) => {
+      return updateProfile({ displayName });
     },
-    [createUserWithEmailAndPassword]
+    [updateProfile]
   );
 
   return (
@@ -75,49 +68,38 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
       <Box display="grid" gridTemplateColumns={GRID_LAYOUT} gap="spacing3">
         <Box as="header">
           <Box as="h1" marginTop="none">
-            Register
+            Update your profile
           </Box>
 
           <Box as="p">
-            I'll just need a few details to create an account. Authentication is
-            handled through Firebase.{" "}
+            You need a display name to access or interact with some projects.
+            Your personal information is stored with Firebase.{" "}
             <a href="https://firebase.google.com/support/privacy">
               Firebase privacy policy.
             </a>
-            .
           </Box>
         </Box>
         <Box>
           {/** --------------------------------------------
-           * Registration form
+           * Log in form
            * ----------------------------------------------- */}
 
           <Form
             callbackOnSuccessfulFormSubmission={handleRedirect}
-            handleFormSubmission={registerOnFormSubmission}
-            submitButtonText={user ? "Registered" : "Register"}
-            disabled={!!user}
+            handleFormSubmission={updateDisplayNameOnFormSubmission}
+            submitButtonText="Update profile"
+            disabled={!user}
           >
             <FormInput
-              errorMessage="Please ensure you have entered a valid email address."
+              errorMessage="Please ensure you have entered a valid name."
               required
-              name="email"
-              label="Email address"
-              id="email"
-              placeholder="john@doe.com"
-              type="email"
-              autoComplete="email"
-              disabled={!!user}
-            />
-            <FormInput
-              errorMessage="Please ensure you have entered a valid password."
-              id="description"
-              label="Password"
-              name="password"
-              placeholder="Must be alphanumeric, with > 6 characters"
-              type="password"
-              autoComplete="current-password"
-              disabled={!!user}
+              name="displayName"
+              label="Display name"
+              id="display name"
+              placeholder="e.g. John Doe"
+              type="text"
+              autoComplete="name"
+              disabled={!user}
             />
           </Form>
 
@@ -125,10 +107,8 @@ export function SharedPageRegister({ location }: SharedPageRegisterProps) {
            * Render auth errors
            * ----------------------------------------------- */}
 
-          {registrationError && (
-            <InputErrorMessage
-              message={getFirebaseAuthErrorMessage(registrationError.code)}
-            />
+          {updateProfileError && (
+            <InputErrorMessage message="Sorry, there was an error. Please reload the page and try again." />
           )}
         </Box>
       </Box>

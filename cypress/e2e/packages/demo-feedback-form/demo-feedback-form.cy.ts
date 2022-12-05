@@ -21,7 +21,7 @@ describe("Feedback form works E2E", () => {
   });
 
   it("User can register/log out/log in", () => {
-    cy.firebaseRegister({ email: EMAIL, password: TIMESTAMP });
+    cy.firebaseRegister({ email: EMAIL, password: TIMESTAMP, name: TIMESTAMP });
 
     cy.firebaseLogOut();
 
@@ -34,10 +34,14 @@ describe("Feedback form works E2E", () => {
 
     /** Leave feedback with dialog */
     cy.get("button[name=leave-feedback]").click();
-    cy.get("button[name=rating]").click().type("{downarrow}{enter}");
 
+    /** Use slider */
+    cy.get("span[role=slider]").click().type("{rightarrow}{enter}");
+
+    /** Type comment */
     cy.get("textarea[name=description]").type(TEST_COMMENT);
 
+    /** Submit comment */
     cy.get("button[type=submit]").click();
 
     /** Feedback is visible */

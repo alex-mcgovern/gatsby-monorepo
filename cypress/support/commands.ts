@@ -5,7 +5,7 @@
  * ------------------------------------------------------------------------------- */
 
 Cypress.Commands.add("firebaseDeleteLocalStorageDb", async () => {
-  return new Cypress.Promise(async (resolve) => {
+  return new Cypress.Promise((resolve) => {
     const req = indexedDB.deleteDatabase("firebaseLocalStorageDb");
     req.onsuccess = () => {
       resolve();
@@ -20,11 +20,12 @@ Cypress.Commands.add("firebaseDeleteLocalStorageDb", async () => {
 interface FirebaseRegisterArgs {
   email: string;
   password: string;
+  name: string;
 }
 
 Cypress.Commands.add(
   "firebaseRegister",
-  ({ email, password }: FirebaseRegisterArgs) => {
+  ({ email, password, name }: FirebaseRegisterArgs) => {
     cy.visit("/register");
 
     cy.get("input[name=email]").type(email);
@@ -32,6 +33,16 @@ Cypress.Commands.add(
     cy.get("button[type=submit]").click();
 
     cy.get("button[type=submit]").should("be.disabled");
+
+    /** Should redirect to update profile page */
+    cy.location("pathname").should("eq", "/update-profile/");
+
+    /** Update display name */
+    cy.get("input[name=displayName]").type(name);
+    cy.get("button[type=submit]").click();
+
+    /** Should redirect to home page */
+    cy.location("pathname").should("eq", "/");
   }
 );
 

@@ -3,7 +3,7 @@
 declare namespace Cypress {
   interface Chainable {
     firebaseDeleteLocalStorageDb(): void;
-    firebaseRegister({ email, password }): void;
+    firebaseRegister({ email, password, name }): void;
     firebaseLogIn({ email, password }): void;
     firebaseLogOut(): void;
   }

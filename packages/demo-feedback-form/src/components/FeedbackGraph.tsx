@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Loader, vars } from "@alexmcgovern/boondoggle.design";
+import React from "react";
+import { Card, Loader } from "@alexmcgovern/boondoggle.design";
+import { checkArrayHasLength } from "@alexmcgovern/utils";
 import type { TickFormatter } from "@visx/axis";
 import { curveNatural } from "@visx/curve";
-import { LinearGradient } from "@visx/gradient";
 import type { TextProps } from "@visx/text/lib/types";
-import { AnimatedAreaSeries, AnimatedGrid, Axis, XYChart } from "@visx/xychart";
+import { AnimatedGrid, AnimatedLineSeries, Axis, XYChart } from "@visx/xychart";
 import { VISX_CHART_THEME } from "../VISX_CHART_THEME";
 import type { CommentShape } from "../types";
 
 export interface FeedbackGraphProps {
-  documents?: Array<CommentShape>;
+  comments?: Array<CommentShape>;
+  isLoading?: boolean;
 }
 
 /** ---------------------------------------------
@@ -33,7 +34,15 @@ const getYAxisTickFormat: TickFormatter<number> = (tickValue: number) => {
 };
 
 const getXAxisTickFormat: TickFormatter<Date> = (tickValue: Date) => {
-  return tickValue.toISOString().substr(11, 5);
+  const date = tickValue.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+  });
+  const time = tickValue.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return `${date} ${time}`;
 };
 
 /** ---------------------------------------------
@@ -50,23 +59,23 @@ const getXAxisLabelProps = (): Partial<TextProps> => {
  * Main component
  * ------------------------------------------------------------------------------- */
 
-export function FeedbackGraph({ documents, ...rest }: FeedbackGraphProps) {
+export function FeedbackGraph({
+  comments,
+  isLoading,
+  ...rest
+}: FeedbackGraphProps) {
   /**
-   * Ensure chart remains mounted when new comment data loading,
+   * Ensure chart remains mounted when new comment data isLoading,
    * enabling smooth animation between data sets
    */
 
-  const [cachedComments, setCachedComments] = useState(documents);
+  if (!checkArrayHasLength(comments)) {
+    return <Card textAlign="center">No feedback to graph.</Card>;
+  }
 
-  useEffect(() => {
-    if (documents) setCachedComments(documents);
-  }, [documents]);
-
-  if (!cachedComments) return <Loader />;
-
-  /**
-   * Transition time series ticks in accordance with pagination direction
-   */
+  if (isLoading) {
+    return <Loader {...rest} size="4x" width="100%" minHeight="25vh" />;
+  }
 
   return (
     <XYChart
@@ -77,16 +86,6 @@ export function FeedbackGraph({ documents, ...rest }: FeedbackGraphProps) {
       yScale={{ domain: [0, 5], type: "linear" }}
       {...rest}
     >
-      {/** --------------------------------------------
-       * Set up elements for render
-       * ----------------------------------------------- */}
-
-      <LinearGradient
-        id="line-series-background-gradient"
-        from={vars.color.accent_secondary_base}
-        to={vars.color.accent_background_base}
-      />
-
       {/** --------------------------------------------
        * Axis & grid
        * ----------------------------------------------- */}
@@ -102,6 +101,7 @@ export function FeedbackGraph({ documents, ...rest }: FeedbackGraphProps) {
         label="Created"
         labelOffset={32}
         orientation="bottom"
+        numTicks={8}
         tickFormat={getXAxisTickFormat}
         tickLabelProps={getXAxisLabelProps}
       />
@@ -112,16 +112,13 @@ export function FeedbackGraph({ documents, ...rest }: FeedbackGraphProps) {
        * Graph data
        * ----------------------------------------------- */}
 
-      {cachedComments && (
-        <AnimatedAreaSeries
-          curve={curveNatural}
-          data={cachedComments}
-          dataKey="line-series-background"
-          fill="url('#line-series-background-gradient')"
-          xAccessor={xAccessor}
-          yAccessor={yAccessor}
-        />
-      )}
+      <AnimatedLineSeries
+        curve={curveNatural}
+        data={comments}
+        dataKey="line-series-background"
+        xAccessor={xAccessor}
+        yAccessor={yAccessor}
+      />
     </XYChart>
   );
 }

@@ -10,9 +10,11 @@ afterEach(cleanup);
  * Mock firestore when not directly testing as jest
  * will attempt to pull in un-transpiled es6 js from firebase
  * ----------------------------------------------- */
+const callbackOnFormSubmit = jest.fn();
+
 jest.mock("firebase/firestore", () => {
   return {
-    getFirestore: jest.fn(),
+    initializeFirestore: jest.fn(),
   };
 });
 jest.mock("firebase/app", () => {
@@ -27,13 +29,17 @@ jest.mock("firebase/auth", () => {
 });
 
 test("Renders without error", () => {
-  const { getByTestId } = renderTestComponent(<FeedbackFormDialog />);
+  const { getByTestId } = renderTestComponent(
+    <FeedbackFormDialog callbackOnFormSubmit={callbackOnFormSubmit} />
+  );
 
   expect(getByTestId("tested-component")).not.toBeNull();
 });
 
 test("Matches snapshot", () => {
-  const { getByTestId } = renderTestComponent(<FeedbackFormDialog />);
+  const { getByTestId } = renderTestComponent(
+    <FeedbackFormDialog callbackOnFormSubmit={callbackOnFormSubmit} />
+  );
 
   expect(getByTestId("tested-component")).toMatchSnapshot();
 });

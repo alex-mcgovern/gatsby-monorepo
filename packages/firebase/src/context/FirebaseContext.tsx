@@ -53,7 +53,7 @@ interface FirebaseContextProvided {
   firebaseApp: FirebaseApp;
   firebaseAuthLoading?: boolean;
   firebaseAuth: Auth;
-  firestore?: Firestore;
+  firestore: Firestore;
 }
 
 export const FirebaseContext = createContext<FirebaseContextProvided>({

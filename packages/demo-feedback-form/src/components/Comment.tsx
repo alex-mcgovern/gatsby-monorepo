@@ -13,15 +13,15 @@ export function Comment({
   rating,
   documentRef,
   author_uid,
-  // intentionally destructured & unused until display name added to firebase auth
-  // eslint-disable-next-line unused-imports/no-unused-vars
   displayName,
   ...rest
 }: CommentShape) {
   const { user } = useContext(FirebaseContext) || {};
 
   const handleDelete = useCallback(async () => {
-    if (!documentRef) return;
+    if (!documentRef) {
+      return;
+    }
 
     deleteDoc(documentRef).catch((error) => {
       /** ToDo(feedback-form/Comment): Render potential errors nicely in frontend */
@@ -33,7 +33,7 @@ export function Comment({
     <Card {...rest}>
       <Box as="header">
         <Box fontSize="body_lg" fontWeight="medium">
-          {email}
+          {displayName} ({email})
         </Box>
 
         {created && (
