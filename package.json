@@ -17,6 +17,7 @@
     "@alexmcgovern/gatsby-site": "*",
     "@alexmcgovern/utils": "*",
     "@alexmcgovern/web-vitals-widget": "*",
+    "firebase-tools": "^11.16.1",
     "wait-on": "^6.0.1"
   },
   "devDependencies": {
