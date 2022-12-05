@@ -59,8 +59,12 @@ test("Given valid props, matches snapshot", () => {
   expect(getByTestId("tested-component")).toMatchSnapshot();
 });
 
+/**
+ * ToDo: Use `getByRole` instead of `getByTestId` — subbing this in due to time constraints
+ */
+
 test("Given initial props, buttons have correct `disabled` state", () => {
-  const { getByText } = renderTestComponent<PaginatedCommentsState>(
+  const { getByTestId } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={false}
@@ -72,12 +76,12 @@ test("Given initial props, buttons have correct `disabled` state", () => {
     />
   );
 
-  expect(getByText("Older")).not.toBeDisabled();
-  expect(getByText("Newer")).toBeDisabled();
+  expect(getByTestId("load-next")).not.toBeDisabled();
+  expect(getByTestId("load-previous")).toBeDisabled();
 });
 
 test("Given props for second page, buttons have correct `disabled` state", () => {
-  const { getByText } = renderTestComponent<PaginatedCommentsState>(
+  const { getByTestId } = renderTestComponent<PaginatedCommentsState>(
     <PaginationControls
       canLoadNext={true}
       canLoadPrevious={true}
@@ -89,6 +93,6 @@ test("Given props for second page, buttons have correct `disabled` state", () =>
     />
   );
 
-  expect(getByText("Older")).not.toBeDisabled();
-  expect(getByText("Newer")).not.toBeDisabled();
+  expect(getByTestId("load-next")).not.toBeDisabled();
+  expect(getByTestId("load-previous")).not.toBeDisabled();
 });
