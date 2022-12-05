@@ -15,6 +15,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 - Custom Pagination hook for Firestore
 - Feedback scores visualised with VisX
 - Firebase emulator for local development
+- Build/test/deploy CI workflow with Github Actions
 
 ## ToDo
 
