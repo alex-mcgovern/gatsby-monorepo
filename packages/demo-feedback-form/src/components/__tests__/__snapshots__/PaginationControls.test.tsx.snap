@@ -6,94 +6,59 @@ exports[`Given valid props, matches snapshot 1`] = `
   data-testid="tested-component"
 >
   <div
-    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0 getSprinkles_boxShadow_lg__1jganc98 getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing2__1jganc93v getSprinkles_alignItems_center__1jganc92 getSprinkles_flexWrap_wrap__1jganc93a"
+    class="Card_cardStyle__1s7cia51 Card__1s7cia50 getSprinkles_padding_spacing2__1jganc94v getSprinkles_display_block_mobile__1jganc9aw getSprinkles_isolation_isolate__1jganc93j getSprinkles_textDecoration_none__1jganc9ap getSprinkles_background_neutral_secondary_base__1jganc9y getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a focus_ring_styles_focusedStateStyle__1vv8g8r0 getSprinkles_boxShadow_lg__1jganc98 getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing1__1jganc93u getSprinkles_alignItems_center__1jganc92 getSprinkles_flexWrap_wrap__1jganc93a"
   >
-    <div
-      class="getSprinkles_gap_spacing1__1jganc93u getSprinkles_display_flex_mobile__1jganc9az"
-    >
-      <button
-        aria-disabled="false"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
-        name="load-next"
-        type="button"
-      >
-        <div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
-            data-icon="angle-left"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 320 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-        Older
-      </button>
-      <button
-        aria-disabled="true"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
-        disabled=""
-        name="load-previous"
-        type="button"
-      >
-        Newer
-        <div>
-          <svg
-            aria-hidden="true"
-            class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
-            data-icon="angle-right"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            viewBox="0 0 320 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-      </button>
-    </div>
-    <div
-      class="getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_lineHeight_body_sm_mobile__1jganc9d5 getSprinkles_marginLeft_auto__1jganc95l"
+    <button
+      aria-disabled="false"
+      class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_lg_square__1lclbjhe variant_interactive_element_size_variantInteractiveElementSize_lg_square__t3r2odb variant_interactive_element_size__t3r2od5 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_paddingTop_spacing1__1jganc9ac getSprinkles_paddingBottom_spacing1__1jganc993 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_height_spacing5_mobile__1jganc9iw getSprinkles_width_spacing5_mobile__1jganc9hn"
+      data-testid="load-next"
+      name="load-next"
+      type="button"
     >
       <div>
-        Page 
-        <b>
-          1
-        </b>
-         of
-         
-        <b>
-          21
-        </b>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-angle-left icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+          data-icon="angle-left"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
+    </button>
+    <button
+      aria-disabled="true"
+      class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_primary__1lclbjh2 variantButtonAppearance_variantButtonAppearance_primary__gh61hw4 variantButtonAppearance__gh61hw0 getSprinkles_paddingLeft_spacing2__1jganc99j getSprinkles_paddingRight_spacing2__1jganc99y getSprinkles_justifyContent_center__1jganc941 getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_fontWeight_semibold__1jganc93g Button_getButtonStyles_size_lg_square__1lclbjhe variant_interactive_element_size_variantInteractiveElementSize_lg_square__t3r2odb variant_interactive_element_size__t3r2od5 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_paddingTop_spacing1__1jganc9ac getSprinkles_paddingBottom_spacing1__1jganc993 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_height_spacing5_mobile__1jganc9iw getSprinkles_width_spacing5_mobile__1jganc9hn"
+      data-testid="load-previous"
+      disabled=""
+      name="load-previous"
+      type="button"
+    >
       <div>
-        <b>
-           
-          1
-        </b>
-        —
-        <b>
-          5
-           
-        </b>
-         
-        of 
-        <b>
-          101
-        </b>
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-angle-right icon_icon__111gfxw0 Button__1lclbjhf getSprinkles_flexShrink_0__1jganc93c"
+          data-icon="angle-right"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
-    </div>
+    </button>
     <div
       class="getSprinkles_position_relative__1jganc9ai getSprinkles_display_none_mobile__1jganc9be getSprinkles_display_block_tablet__1jganc9ax"
     >
@@ -103,7 +68,7 @@ exports[`Given valid props, matches snapshot 1`] = `
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="downshift-1-label"
-        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_select__1lclbjh4 variantButtonAppearance_variantButtonAppearance_select__gh61hw6 variantButtonAppearance__gh61hw2 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_alignItems_center__1jganc92 getSprinkles_background_neutral_background_base__1jganc9p getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_display_flex_mobile__1jganc9az getSprinkles_overflow_hidden__1jganc98r getSprinkles_width_100%_mobile__1jganc9fb Button_getButtonStyles_size_md__1lclbjha variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_justifyContent_space-between__1jganc944"
+        class="button.theme_buttonTheme__1a9lj020 Button_getButtonStyles__1lclbjh1 focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 Button__1lclbjh0 getSprinkles_borderRadius_md__1jganc92a getSprinkles_display_flex_mobile__1jganc9az getSprinkles_gap_spacing0__1jganc93t getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap Button_getButtonStyles_appearance_select__1lclbjh4 variantButtonAppearance_variantButtonAppearance_select__gh61hw6 variantButtonAppearance__gh61hw2 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_alignItems_center__1jganc92 getSprinkles_background_neutral_background_base__1jganc9p getSprinkles_border_neutral_border_interactive__1jganc92g getSprinkles_borderRadius_md__1jganc92a getSprinkles_color_neutral_text_lowContrast__1jganc91u getSprinkles_display_flex_mobile__1jganc9az getSprinkles_overflow_hidden__1jganc98r getSprinkles_width_100%_mobile__1jganc9fb Button_getButtonStyles_size_lg__1lclbjhb variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_justifyContent_space-between__1jganc944"
         role="combobox"
         tabindex="0"
         type="button"
@@ -139,7 +104,7 @@ exports[`Given valid props, matches snapshot 1`] = `
         >
           <span
             aria-selected="false"
-            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_md__mbnr2x3 variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_lg__mbnr2x4 variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw"
             id="downshift-1-item-0"
             role="option"
           >
@@ -147,7 +112,7 @@ exports[`Given valid props, matches snapshot 1`] = `
           </span>
           <span
             aria-selected="false"
-            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_md__mbnr2x3 variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_lg__mbnr2x4 variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw"
             id="downshift-1-item-1"
             role="option"
           >
@@ -155,7 +120,7 @@ exports[`Given valid props, matches snapshot 1`] = `
           </span>
           <span
             aria-selected="false"
-            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_md__mbnr2x3 variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_lg__mbnr2x4 variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw"
             id="downshift-1-item-2"
             role="option"
           >
@@ -163,13 +128,44 @@ exports[`Given valid props, matches snapshot 1`] = `
           </span>
           <span
             aria-selected="false"
-            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_md__mbnr2x3 variant_interactive_element_size_variantInteractiveElementSize_md__t3r2od7 variant_interactive_element_size__t3r2od1 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_md_tablet__1jganc9c9 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_md_tablet__1jganc9d3 getSprinkles_height_spacing4_mobile__1jganc9it"
+            class="DropdownListItem_getDropdownListItemStyles__mbnr2x1 DropdownListItem__mbnr2x0 getSprinkles_paddingLeft_spacing1__1jganc99i getSprinkles_paddingRight_spacing1__1jganc99x getSprinkles_display_flex_mobile__1jganc9az getSprinkles_alignItems_center__1jganc92 getSprinkles_textDecoration_none__1jganc9ap getSprinkles_width_100%_mobile__1jganc9fb getSprinkles_textAlign_left__1jganc9am getSprinkles_color_neutral_text_highContrast__1jganc91v getSprinkles_whiteSpace_nowrap__1jganc9at getSprinkles_margin_none__1jganc94d getSprinkles_gap_spacing0__1jganc93t focus_ring_styles_focusedStateStyle__1vv8g8r0 disabled_state_styles_disabledStateStyles__5jo1bk0 DropdownListItem_getDropdownListItemStyles_size_lg__mbnr2x4 variant_interactive_element_size_variantInteractiveElementSize_lg__t3r2od8 variant_interactive_element_size__t3r2od2 getSprinkles_fontSize_body_lg_mobile__1jganc9c5 getSprinkles_fontSize_body_lg_tablet__1jganc9c6 getSprinkles_lineHeight_body_lg_mobile__1jganc9cz getSprinkles_lineHeight_body_lg_tablet__1jganc9d0 getSprinkles_height_spacing5_mobile__1jganc9iw"
             id="downshift-1-item-3"
             role="option"
           >
             50 per page
           </span>
         </div>
+      </div>
+    </div>
+    <div
+      class="getSprinkles_fontSize_body_sm_mobile__1jganc9cb getSprinkles_lineHeight_body_sm_mobile__1jganc9d5 getSprinkles_marginLeft_auto__1jganc95l"
+    >
+      <div>
+        Page 
+        <b>
+          1
+        </b>
+         of
+         
+        <b>
+          21
+        </b>
+      </div>
+      <div>
+        <b>
+           
+          1
+        </b>
+        —
+        <b>
+          5
+           
+        </b>
+         
+        of 
+        <b>
+          101
+        </b>
       </div>
     </div>
   </div>

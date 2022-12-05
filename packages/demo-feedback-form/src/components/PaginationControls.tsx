@@ -74,7 +74,7 @@ export function PaginationControls({
       <Card
         boxShadow="lg"
         display="flex"
-        gap="spacing2"
+        gap="spacing1"
         alignItems="center"
         flexWrap="wrap"
       >
@@ -82,26 +82,38 @@ export function PaginationControls({
          * Next/previous buttons
          * ----------------------------------------------- */}
 
-        <Box gap="spacing1" display="flex">
-          <Button
-            appearance="primary"
-            disabled={!canLoadNext}
-            iconLeading={faAngleLeft}
-            onClick={loadNext}
-            name="load-next"
-          >
-            Older
-          </Button>
-          <Button
-            appearance="primary"
-            disabled={!canLoadPrevious}
-            iconTrailing={faAngleRight}
-            onClick={loadPrevious}
-            name="load-previous"
-          >
-            Newer
-          </Button>
-        </Box>
+        <Button
+          appearance="primary"
+          size="lg_square"
+          disabled={!canLoadNext}
+          iconTrailing={faAngleLeft}
+          onClick={loadNext}
+          name="load-next"
+          data-testid="load-next"
+        />
+        <Button
+          appearance="primary"
+          size="lg_square"
+          disabled={!canLoadPrevious}
+          iconTrailing={faAngleRight}
+          onClick={loadPrevious}
+          name="load-previous"
+          data-testid="load-previous"
+        />
+
+        {/** --------------------------------------------
+         * Per page
+         * ----------------------------------------------- */}
+
+        <SelectSingle
+          size="lg"
+          placeholder="5"
+          items={PER_PAGE_DROPDOWN_ITEMS}
+          onValueChange={updatePerPage}
+          /** Hidden for space, but also low-tier mobile devices less likely
+           * to handle large numbers of dom updates efficiently */
+          display={{ mobile: "none", tablet: "block" }}
+        />
 
         {/** --------------------------------------------
          * Pagination state display
@@ -118,19 +130,6 @@ export function PaginationControls({
             of <b>{totalNbComments}</b>
           </div>
         </Box>
-
-        {/** --------------------------------------------
-         * Per page
-         * ----------------------------------------------- */}
-
-        <SelectSingle
-          placeholder="5"
-          items={PER_PAGE_DROPDOWN_ITEMS}
-          onValueChange={updatePerPage}
-          /** Hidden for space, but also low-tier mobile devices less likely
-           * to handle large numbers of dom updates efficiently */
-          display={{ mobile: "none", tablet: "block" }}
-        />
       </Card>
     </Box>
   );
