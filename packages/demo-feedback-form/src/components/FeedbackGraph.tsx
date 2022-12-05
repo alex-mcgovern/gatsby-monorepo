@@ -101,7 +101,7 @@ export function FeedbackGraph({
         label="Created"
         labelOffset={32}
         orientation="bottom"
-        numTicks={8}
+        numTicks={5}
         tickFormat={getXAxisTickFormat}
         tickLabelProps={getXAxisLabelProps}
       />
