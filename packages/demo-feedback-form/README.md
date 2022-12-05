@@ -40,6 +40,7 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 - [x] ~Flash of unstyled content on initial load~
 - [x] ~Adding new comment does not scroll to top if not on page 1~
+- [ ] VisX graph X-axis ticks are not readable on mobile
 
 ### Linting
 - [ ] Ensure `tsc` passes for all packages (skipped due to time constraints, critical path is fine)
