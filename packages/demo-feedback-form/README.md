@@ -12,8 +12,9 @@ Simple customer feedback form built with [Gatsby](https://www.gatsbyjs.com/),
 
 - Authentication via Firebase Auth
 - Create & delete comments via Firestore
-- Pagination for Firestore
+- Custom Pagination hook for Firestore
 - Feedback scores visualised with VisX
+- Firebase emulator for local development
 
 ## ToDo
 
@@ -69,46 +70,78 @@ GATSBY_FIREBASE_DATABASE_URL=
 
 Clone the monorepo project
 
-```bash
+```zsh
   git clone https://github.com/alex-mcgovern/alexmcgovern.com.git
 ```
 
 Go to the monorepo root directory
 
-```bash
+```zsh
   cd alexmcgovern.com
 ```
 
-**Note:** Project is built with Node.js v18.12.1. If using nvm you can use the .nvmrc in the project root
+**Note:** Project is built with Node.js v18. If using nvm you can use the .nvmrc in the project root
 
-```bash
+```zsh
   nvm use
 ```
 
 Install dependencies with Lerna
 
-```bash
+```zsh
   npx lerna bootstrap
 ```
 
-Create a `.env.development` file in the project package directory, and populate it with required [Environment Variables](#environment-variables)
+Create a `.env.development` file at `packages/demo-feedback-form`, and populate it with required [Environment Variables](#environment-variables)
 
-```bash
+```zsh
   touch packages/demo-feedback-form/.env.development
 ```
 
-Start the Gatsby development server
+### Run locally against Firebase emulator (preferred)
 
-```bash
-  npm run develop:demo-feedback-form
+Start the Firebase Emulator by running:
+
+```zsh
+  npm run firebase:emulators
+```
+
+Then (in another terminal) start the development server, instructing the app to use the Firebase Emulators like so:
+
+```zsh
+  npm run demo-feedback:develop:emulate-firebase
+```
+
+### Run locally against production Firebase instance
+
+To run the project with production Auth & Firestore data, start the Gatsby development server like so:
+
+```zsh
+  npm run demo-feedback:develop
 ```
 
 ## Running Tests
 
-To run tests, run the following command
+To run unit tests with Jest, run:
 
-```bash
-  npm run jest:demo-feedback-form
+```zsh
+  npm run demo-feedback:jest
+```
+
+To run E2E tests with Cypress & the Firebase emulator, run:
+
+```zsh
+  npm run demo-feedback:cy:run:emulate-firebase
+```
+
+You can also start the Firebase emulator seperately and open Cypress UI:
+
+
+```zsh
+  npm run firebase:emulators
+```
+```zsh
+  npm run demo-feedback:cy:open:emulate-firebase
 ```
 
 ## Deployment
