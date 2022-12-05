@@ -34,4 +34,4 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: Run Cypress E2E tests
-      - run: npm run demo-feedback:cy:run:emulate-firebase
+        run: npm run demo-feedback:cy:run:emulate-firebase
